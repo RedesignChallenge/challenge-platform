@@ -1,0 +1,24 @@
+<%= form_for(experience, url: url) do |f| %>
+  <div class='form-group'>
+    <%= f.text_area :description, placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge.", class: 'form-control', autofocus: true, rows: 4 %>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-8'>
+      <div class='form-group'>
+        <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
+        <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your post.</span>
+      </div>
+    </div>
+
+    <div class='col-sm-2 col-xs-6'>
+      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' %>
+    </div>
+
+    <div class='col-sm-2 col-xs-6'>
+      <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-submit' %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :theme_id, value: theme.id %>
+<% end %>

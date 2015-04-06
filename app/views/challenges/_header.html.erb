@@ -1,0 +1,36 @@
+<div id='challenge-header' class='<%= current_page?(challenge_path(@challenge)) ? '' : 'none' %>'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <div class='center-block text-center'>
+          <ul id='challenge-nav' class="list-inline">
+            <% Challenge::STAGES.each_with_index do |stage, index| %>
+
+              <li>
+                <% if @challenge.stage_number >= stage[:number] %>
+                  <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)"), class: (eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") ? "btn btn-xs btn-rounded btn-#{stage[:name]}" : '') do %>
+                    <span class="fa-stack fa-<%= "#{stage[:name]}" unless eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") %>">
+                      <i class="fa fa-circle<%= @challenge.stage_number > stage[:number] && eval("!(params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage)") ? '-thin' : '' %> fa-stack-2x"></i>
+                      <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %> <%= @challenge.stage_number > stage[:number] ? "fa-#{stage[:name]}" : '' %>"></i>
+                    </span>
+                    <b class='hidden-xs'><%= stage[:headline] %></b>
+                  <% end %>
+                <% else %>
+                  <span class="fa-stack">
+                    <i class="fa fa-circle-thin fa-stack-2x" style='color:#D1D3D4'></i>
+                    <i class="fa fa-stack-1x fa-inverse <%= "fa-#{stage[:name]}-light #{stage[:icon]}" %>"></i>
+                  </span>
+                  <b class='hidden-xs'><%= stage[:headline] %></b>
+                <% end %>
+              </li>
+
+              <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution') ) %>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

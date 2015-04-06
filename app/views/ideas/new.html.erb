@@ -1,0 +1,55 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id='idea-form' ng-controller='IdeaCtrl'>
+  <div class='container'>
+    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_idea_stage_path(@challenge, @idea.idea_stage) %>
+    <div class='clearfix'></div>
+
+    <%= render partial: 'ideas/header' %>
+  </div>
+
+  <div class='example-switch'>
+
+    <% if @idea.refinement_parent %>
+      <div ng-show='refinement'>
+        <div class='container'>
+          <%= render partial: 'ideas/refinement' %>
+        </div>
+
+        <div id='refinement-idea-hide' class='well well-example well-right' ng-click="showForm()">
+          <p class='example-heading'>Keep<br> Editing</p>
+          <p class='example-description'>Expand to keep<br> working on your idea.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <div ng-show='form'>
+      <% if @idea.refinement_parent %>
+        <div id='refinement-idea-show' class='well well-example well-left' ng-click="showRefinement()" ng-show='refinement_parent_id'>
+          <p class='example-heading'>Original<br> Idea</p>
+          <p class='example-description'>Expand to show<br> the original idea.</p>
+        </div>
+      <% end %>
+
+      <div class='container'>
+        <%= render partial: 'ideas/form', locals: { url: challenge_idea_stage_problem_statement_ideas_path, cancel_path: challenge_idea_stage_path(@challenge, @idea.idea_stage), submit_text: "Share Idea" } %>
+      </div>
+
+      <div id='example-idea-show' class='well well-example well-right' ng-click="showExample()">
+        <p class='example-heading'>Example<br> Idea</p>
+        <p class='example-description'>Expand to show<br> an example idea.</p>
+      </div>
+    </div>
+
+    <div ng-show='example'>
+      <div id='example-idea-hide' class='well well-example well-left' ng-click="showForm()">
+        <p class='example-heading'>Keep<br> Editing</p>
+        <p class='example-description'>Expand to keep<br>working on your idea.</p>
+      </div>
+
+      <div class='container'>
+        <%= render partial: 'ideas/example' %>
+      </div>
+    </div>
+  </div>
+</div>

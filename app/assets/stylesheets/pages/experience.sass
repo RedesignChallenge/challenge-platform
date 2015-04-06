@@ -1,0 +1,238 @@
+.row-experience
+  margin-left: 0px
+  margin-bottom: 20px
+  .experience-user
+    .caption
+      margin-top: 5px
+      .name
+        font-size: 1.3em
+        font-weight: bold
+        margin-bottom: 0px
+      .title
+        font-size: 0.85em
+        margin-bottom: 0px
+        color: $lightGrayText
+        font-weight: bold
+  .well-experience
+    position: relative
+    z-index: 5
+    background-color: white
+    padding: 15px 15px 10px
+    .twitter-tweet
+      margin: 0px !important
+    .experience-actions
+      margin-top: 15px
+      ul
+        .fa
+          font-size: 1.1em
+          &.fa-thumbs-up
+            font-size: 1.25em
+        margin-bottom: 0px
+        li,.list-link
+          font-size: 0.95em
+          color: #AEAEAE
+        &#actions
+          margin-right: 0px
+          a.dropdown-toggle
+            color: #AEAEAE
+          .dropdown-menu
+            min-width: 100%
+    &.discussion
+      margin-bottom: 0px
+      box-shadow: 0px 10px 15px -5px rgba(2, 1, 1, 0.27)            
+  .new-user-avatar
+    width: 100% !important
+    margin-bottom: 10px
+    .fa-stack-2x
+      font-size: 3.1em !important
+    .fa-stack-1x
+      margin-top: 0.5em
+      font-weight: bold
+  form
+    #experience_description
+      @extend .input-borderless
+      font-size: 16px
+      line-height: 1.7em
+    #experience_link
+      @extend .input-borderless
+      @extend .input-graybg
+  .well-experience-discussion
+    @extend .well-experience
+    margin-top: -10px
+    z-index: 3
+    .experience-discussion
+      padding: 15px 30px 0px
+      .discussion-header
+        margin-bottom: 0px
+      hr.break
+        margin: 15px auto
+        width: 50%
+
+.row-latest
+  @extend .row-experience
+  margin-bottom: 5px
+  .well-experience
+    &:hover, &:focus, &:active
+      cursor: pointer
+      border-color: $linkText
+      transition: border .5s ease-in-out
+    margin-bottom: 5px
+    max-height: 130px
+    overflow-y: hidden
+    overflow-x: hidden
+    .experience-description,.experience-link
+      color: $text
+    .embed-responsive-item
+      width: 100%
+      height: auto
+    .twitter-tweet
+      width: 100% !important
+      height: auto
+
+.row-new
+  @extend .row-experience
+  margin-bottom: 0px
+
+#experience-preview
+  padding: 20px 0px
+  .preview-header
+    @extend .text-center
+    font-size: 1.4em
+    font-weight: bold
+    margin-bottom: 0px
+    
+.well-embed
+  @extend .text-center
+  margin-bottom: 5px
+  border: 2px dashed #B1B0B2
+  background-color: #ebeced
+  p
+    font-size: 1.6em
+    color: #B1B0B2
+    margin-bottom: 0px
+
+#experience-form
+  padding: 0px 0px 40px
+  .fa-close.fa-2x
+    @extend .pull-right
+    position: relative
+    top: 30px 
+    color: #999999
+  .theme-block
+    .theme-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .theme-title
+      @extend .section-title
+      color: $experience !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $experience !important
+    .theme-description
+      font-size: 1.1em
+      margin-bottom: 20px
+
+#experience-overview
+  padding: 40px 0px
+  .theme-block
+    .theme-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .theme-title
+      @extend .section-title
+      color: $experience !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $experience !important
+    .theme-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .well-experience
+    padding: 0px
+    background-color: white
+    +border-radius(10px)
+    #actions
+      a
+        color: $grayText
+    .fa-close
+      padding-right: 15px
+      padding-top: 15px
+    .experience-content
+      padding: 0px 30px 20px
+      .row-experience-show
+        margin-bottom: 30px
+        .media-author
+          margin-bottom: 30px
+          .media-left
+            height: 5em
+            .new-user-avatar
+              .fa-stack-2x
+                font-size: 4em !important
+                color: $newUser
+              .fa-stack-1x
+                margin-top: 1em
+                margin-left: 0.75em
+                font-weight: bold
+          .media-body
+            padding-left: 30px
+            .name
+              font-size: 1.3em
+              font-weight: bold
+              margin-bottom: 0px
+            .title
+              font-size: 0.85em
+              margin-bottom: 0px
+              color: $lightGrayText
+              font-weight: bold
+        .experience-show-title
+          font-size: 3.2em
+          line-height: 1.1em
+          font-weight: bold
+          color: $experience
+        .experience-show-embed
+          margin-bottom: 20px
+        .experience-show-heading
+          @extend .text-bold
+          text-transform: uppercase
+          color: $experience
+          font-size: 1.4em
+        .experience-show-description
+          margin-bottom: 40px
+          line-height: 1.4em
+          &:last-child
+            margin-bottom: 0px
+      .row-refinements
+        .refinement-header
+          font-weight: bold
+          color: $lightGrayText
+          font-size: 0.95em
+        .media-refinement
+          .media-body
+            padding-left: 10px
+            a
+              color: $experience
+              font-size: 1.6em
+              line-height: 1.2em
+  .tooltip
+    .tooltip-inner
+      background-color: $linkText
+      font-site: 1.3em
+      text-align: left
+    .tooltip-arrow 
+      border-bottom-color: $linkText
+
+#experience-comments
+  padding: 20px 0px
+
+#experience-share
+  padding: 20px 0px

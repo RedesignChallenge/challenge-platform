@@ -1,0 +1,79 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.hidden_field :setting, value: params[:setting] %>
+  <%= devise_error_messages! %>
+
+  <div class='form-group'>
+    <%= f.label :display_name, "Name you would like to go by" %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-user'></i></span>
+      <%= f.text_field :display_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :twitter %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-at'></i></span>
+      <%= f.text_field :twitter, class: 'form-control', maxlength: "16" %>
+    </div>
+  </div>
+
+  <%= render partial: 'devise/registrations/forms/avatar', locals: { f: f } %>
+
+  <hr>
+
+  <div class='form-group <%= 'hidden' if @setting == 'onboard' %>' ng-init="role='<%= resource.role %>'">
+    <%= f.label :role, "Which option best describes your role?" %>
+    <%= f.select(:role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: "<p class='select-option'>– Select One –</p>" }, class: 'form-control', 'ng-model' => 'role') %>
+    <script>$(function(){$("#user_role").select2({escapeMarkup:function(m){return m;}});});</script>
+  </div>
+
+  <div ng-init="user_state_ids=<%= resource.state_ids %>;user_states_json=<%= resource.states_json %>"></div>
+  <div class="form-group" ng-show="role == 'SEA Staff'" ng-controller='StateCtrl'>
+    <%= f.label :state_ids, "Which SEA do you serve?" %>
+    <%= f.hidden_field :state_ids, {class: 'form-control', 'ng-model' => 'user_state_ids', 'ui-select-2' => 'userOptions', multiple: true} %>
+  </div>
+
+  <div ng-init="user_district_ids=<%= resource.district_ids %>;user_districts_json=<%= resource.districts_json %>;other_lea=<%= resource.role == 'LEA Staff' && resource.districts.empty? && resource.organization.present? %>"></div>
+  <div class="form-group" ng-show="role == 'LEA Staff'" ng-controller='DistrictCtrl' ng-class="{ 'zero-margin-bottom' : other_lea }">
+    <label for='user_district_ids'>
+      Which district(s) do you serve?
+      <small>
+        <a href='#' onclick='return false;' ng-hide='other_lea' ng-click='otherLEA(true)'>Can't find your district?</a>
+        <a href='#' onclick='return false;' ng-show='other_lea' ng-click='otherLEA(false)'>Go to prepopulated list of districts.</a>
+      </small>  
+    </label>
+    <%= f.hidden_field :district_ids, {class: 'form-control', 'ng-model' => 'user_district_ids', 'ng-hide' => 'other_lea', 'ui-select-2' => 'userOptions', multiple: true} %>
+  </div>
+
+  <div ng-init="user_school_ids=<%= resource.school_ids %>;user_schools_json=<%= resource.schools_json %>;other_school=<%= resource.is_teacher? && resource.schools.empty? && resource.organization.present? %>"></div>
+  <div class="form-group" ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'" ng-controller='SchoolCtrl' ng-class="{ 'zero-margin-bottom' : other_school }">
+    <label for='user_school_ids'>
+      Which school(s) do you serve?
+      <small>
+        <a href='#' onclick='return false;' ng-hide='other_school' ng-click="otherSchool(true)">Can't find your school?</a>
+        <a href='#' onclick='return false;' ng-show='other_school' ng-click="otherSchool(false)">Go to prepopulated list of schools.</a>
+      </small>  
+    </label>
+    <%= f.hidden_field :school_ids, {class: 'form-control', 'ng-model' => 'user_school_ids', 'ng-hide' => 'other_school', 'ui-select-2' => 'userOptions', multiple: true} %>
+  </div>
+
+  <div class='form-group' ng-show="role == 'Other' || role == 'Pre-Service Teacher' || (role == 'LEA Staff' && other_lea) || ((role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader') && other_school) && role != 'SEA Staff'" ng-init="organization='<%= resource.organization %>'">
+    <%= f.label :organization, "Which organization do you work for?", 'ng-show' => 'role == "Other"' %>
+    <%= f.label :organization, "Which teacher training institution do you attend?", 'ng-show' => 'role == "Pre-Service Teacher"' %>
+    <%= f.text_field :organization, class: 'form-control', placeholder: "{{ role != 'Other' && role != 'Pre-Service Teacher' ? other_placeholder : ''}}", 'ng-model' => 'organization' %>
+  </div>
+
+  <div class='form-group' ng-show='role && role != "Pre-Service Teacher"' ng-init="title='<%= resource.title %>'">
+    <label for='user_title' ng-show="role == 'LEA Staff' || role == 'SEA Staff' || role == 'Other'">What is your title?</label>
+    <label for='user_title' ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'">Which grade(s) and subject area(s) do you support/teach?</label>
+    <%= f.text_field :title, class: 'form-control', 'ng-model' => 'title' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :bio, "Interests and expertise" %>
+    <%= f.text_area :bio, class: 'form-control', placeholder: "Let other community members learn a bit more about you.", rows: 3 %>
+  </div>
+
+  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-submit btn-rounded btn-longer' %></div>
+<% end %>

@@ -1,0 +1,119 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id='idea_stage-overview'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <div class='row'>
+          <div class='col-sm-10'>
+            <p class='idea_stage-title'><%= @idea_stage.title.html_safe %></p>        
+            <p class='idea_stage-description'><%= @idea_stage.description.html_safe %></p>        
+
+            <p class="challenge-hashtag"><i class='fa fa-twitter'></i> <%= link_to "##{@challenge.hashtag.html_safe}", "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank' %></p>
+          </div>
+          <div class='col-sm-2 idea_stage-icon'>
+            <i class='fa fa-lightbulb-o hidden-xs'></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='idea_stage-navigation' data-spy="affix" data-offset-top="375" class="affix-top">
+  <div class='container'>
+
+    <div class='row'>
+      <% @problem_statements.each do |problem_statement| %>
+        <div class='col-sm-4 nav-link' href='#problem_statement-<%= problem_statement.id %>' du-smooth-scroll du-scrollspy offset='140'>
+          <%= problem_statement.title.html_safe %>
+          <p class='theme-cta'>
+            <% if problem_statement.ideas.count.zero? %>
+              <i class='fa fa-plus' style='margin-left:-50px'></i> Add the first idea.
+            <% else %>
+              <i class='fa fa-lightbulb-o'></i> <%= problem_statement.ideas.count %>
+            <% end %>
+          </p>
+
+          <i class='fa fa-3x fa-play fa-rotate-90'></i>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<div id='idea_stage-content' ng-controller='IdeaStageCtrl'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <% @problem_statements.each do |problem_statement| %>
+          <div id='problem_statement-<%= problem_statement.id %>' class='problem_statement-block'>
+            <p class='problem_statement-header'>Problem Statement</p>
+            <p class='problem_statement-title'><%= problem_statement.title %></p>
+
+            <div class='row'>
+              <div class='col-md-8 col-md-offset-2'>
+                <p class='problem_statement-description'><%= problem_statement.description %></p>
+              </div>
+            </div>
+            
+            <div class='row row-count'>
+              <div class='col-xs-6 col-xs-offset-3'>
+                <div class='problem_statement-header' style='margin-bottom:10px'>
+                  <i class='fa fa-lightbulb-o fa-3x'></i><br>
+                  <span><%= pluralize(problem_statement.ideas.count, 'idea') %></span>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                <%= link_to '+ Add yours', new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %>
+              </div>
+            </div>
+
+            <div ng-switch='problem_statement_<%= problem_statement.id %>_ideas' ng-init='problem_statement_<%= problem_statement.id %>_ideas=show_all'>
+              
+              <div class='row'>
+                <% problem_statement.ideas.first(5).each do |idea| %>
+                  <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
+                <% end %>
+
+                <% if problem_statement.ideas.count > 5 %>
+                  <div ng-show='problem_statement_<%= problem_statement.id %>_ideas'>
+                    <% (problem_statement.ideas - problem_statement.ideas.first(5)).each do |idea| %>
+                      <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
+                    <% end %>
+                  </div>
+                <% end %>
+
+                <%= render partial: 'ideas/card/new', cache: true, locals: { problem_statement: problem_statement } %>
+              </div>
+
+              <% if problem_statement.ideas.count > 5 %>
+                <p class='center-block text-center'>
+                  <%= link_to "Show #{problem_statement.ideas.count-5} More Ideas", '#', "ng-hide" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
+
+                  <%= link_to "Show Less", "#problem_statement-#{problem_statement.id}", "ng-show" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=false", "du-smooth-scroll" => true, offset: '140', onclick: 'return false;', class: 'text-bold' %>
+                </p>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+
+        <p class="section-title-share">Know people who have something to add to this conversation?</p>
+
+        <div class="row">
+          <div class='col-sm-10 col-sm-offset-1'>
+            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+          </div>
+        </div>
+
+        <%= render partial: 'layouts/share_links', locals: { url: challenge_idea_stage_url(@challenge, @idea_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+
+      </div>
+    </div>
+  </div>
+</div>

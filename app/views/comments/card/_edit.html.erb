@@ -1,0 +1,30 @@
+<div class='comment-header'>
+  <div class="media media-commenter pull-left">
+    <p class="timestamp"><%= "#{time_ago_in_words(comment.created_at).titleize} Ago" %></p>
+    <div class="media-left">
+      <% if comment.user.avatar.present? %>
+        <%= image_tag(comment.user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
+      <% else %>
+        <% if user_signed_in? && current_user == comment.user %>
+          <span class="fa-stack fa-lg comment-user-avatar">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-inverse fa-stack-1x">you</i>
+          </span>
+        <% else %>
+          <span class="fa-stack fa-lg comment-user-avatar">
+            <i class="fa fa-circle fa-stack-2x" style='color:<%= comment.user.color %>'></i>
+            <i class="fa fa-inverse fa-stack-1x"><%= comment.user.initials %></i>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="media-body">
+      <p class='name'><%= comment.user.display_name %></p>
+      <p class='title'><%= comment.user.display_organization %></p>
+    </div>
+  </div>
+
+  <div class='clearfix'></div>
+</div>
+
+<%= render partial: 'comments/card/form', locals: { comment: comment, url: comment_path(comment), cancel_path: "comment_#{comment.id}_edit=false", submit_text: 'Update'} %>

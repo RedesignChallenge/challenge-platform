@@ -1,0 +1,18 @@
+<div class='row row-discussion-count'>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <div class='discussion-header'>
+      <span><%= experience.comment_threads.count.zero? ? "Leave a Comment" : "Recent Discussion" %></span>
+    </div>
+  </div>
+</div>
+
+<% experience.root_comments.last(1).each do |comment| %>
+  <%= render file: 'comments/card', locals: { comment: comment } %>
+<% end %>
+
+<%= render partial: 'comments/card/new', locals: { comment: Comment.new(commentable_type: experience.class.to_s, commentable_id: experience.id) } %>
+
+<% unless experience.comment_threads.count.zero? %>
+  <hr class='break'>
+  <p class='text-center'><%= link_to "Show All #{experience.comment_threads.count} Comments", challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: "experience-comments"), class: 'text-bold text-center' %></p>
+<% end %>

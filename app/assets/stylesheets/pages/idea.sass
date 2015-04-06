@@ -1,0 +1,307 @@
+.idea-thumbnail
+  height: 425px
+  padding: 20px
+  position: relative
+  .folded-corner
+    margin: 0 auto
+    font-size: 12px
+    position: relative
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    border-width: 0 20px 20px 0
+    border-color: $lightGrayText #eee
+    border-style: solid
+  .idea-title
+    height: 115px
+    a
+      color: $idea
+      font-size: 1.6em
+      line-height: 1em
+  .idea-description
+    line-height: 1.5em
+  .idea-refinement
+    @extend .help-block
+    font-size: 1em !important
+  .idea-actions
+    position: absolute
+    left: 20px
+    bottom: 10px        
+    right: 10px
+    ul
+      .fa
+        font-size: 1.1em !important
+        &.fa-thumbs-up
+          font-size: 1.25em !important
+      margin-top: 10px
+      li, a
+        font-size: 0.95em
+        color: #AEAEAE
+      &#actions
+        margin-right: 0px
+        a.dropdown-toggle
+          color: #AEAEAE
+        .dropdown-menu
+          min-width: 100%
+          a
+            color: #333
+  .new-user-avatar
+    .fa-stack-2x
+      color: $newUser
+
+.idea-add-thumbnail
+  border: 2px dashed #B1B0B2
+  background-color: #ebeced
+  &:hover, &:focus, &:active
+    text-decoration: none
+    color: $grayText
+  .idea-add
+    @extend .text-center
+    position: relative
+    top: 40%
+    color: #999999
+    p.instruction
+      font-size: 1.5em
+      font-weight: bold
+
+#idea-overview
+  padding: 40px 0px
+  .problem_statement-block
+    .problem_statement-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .problem_statement-title
+      @extend .section-title
+      color: $idea !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $idea !important
+    .problem_statement-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .well-idea
+    padding: 0px
+    background-color: white
+    +border-radius(10px)
+    #actions
+      a
+        color: $grayText
+    .fa-close
+      padding-right: 15px
+      padding-top: 15px
+    .idea-content
+      padding: 0px 30px 20px
+      .row-idea
+        margin-bottom: 30px
+        .media-author
+          margin-bottom: 30px
+          .media-left
+            height: 5em
+            .new-user-avatar
+              .fa-stack-2x
+                font-size: 4em !important
+                color: $newUser
+              .fa-stack-1x
+                margin-top: 1em
+                margin-left: 0.75em
+                font-weight: bold
+          .media-body
+            padding-left: 30px
+            .name
+              font-size: 1.3em
+              font-weight: bold
+              margin-bottom: 0px
+            .title
+              font-size: 0.85em
+              margin-bottom: 0px
+              color: $lightGrayText
+              font-weight: bold
+        .idea-show-title
+          font-size: 3.2em
+          line-height: 1.1em
+          font-weight: bold
+          color: $idea
+        .idea-show-embed
+          margin-bottom: 20px
+        .idea-show-heading
+          @extend .text-bold
+          text-transform: uppercase
+          color: $idea
+          font-size: 1.4em
+        .idea-show-description
+          margin-bottom: 40px
+          line-height: 1.4em
+          &:last-child
+            margin-bottom: 0px
+      .row-refinements
+        .refinement-header
+          font-weight: bold
+          color: $lightGrayText
+          font-size: 0.95em
+        .media-refinement
+          .media-body
+            padding-left: 10px
+            a
+              color: $idea
+              font-size: 1.6em
+              line-height: 1.2em
+  .tooltip
+    .tooltip-inner
+      background-color: $linkText
+      font-site: 1.3em
+      text-align: left
+    .tooltip-arrow 
+      border-bottom-color: $linkText
+
+#idea-comments
+  padding: 20px 0px
+
+#idea-share
+  padding: 20px 0px
+
+#idea-form
+  padding: 0px 0px 40px
+  .fa-close.fa-2x
+    @extend .pull-right
+    position: relative
+    top: 30px 
+    color: #999999
+  .problem_statement-block
+    .problem_statement-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .problem_statement-title
+      @extend .section-title
+      color: $idea !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $idea !important
+    .problem_statement-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .idea-form-thumbnail
+    padding: 20px
+    position: relative
+    .folded-corner
+      margin: 0 auto
+      font-size: 12px
+      position: relative
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      border-width: 0 20px 20px 0
+      border-color: $lightGrayText #eee
+      border-style: solid
+    label
+      @extend .label-borderless
+      text-transform: uppercase
+      color: $idea
+      font-size: 18px
+    #idea_title
+      @extend .input-borderless
+      font-weight: bold
+      font-size: 1.6em
+      color: $idea
+      padding: 6px 12px
+    #idea_description
+      @extend .input-borderless
+      line-height: 1.5em
+      box-shadow: none
+      border: none
+      resize: vertical
+    #idea_impact
+      @extend .input-borderless
+    #idea_implementation
+      @extend .input-borderless
+    #idea_link
+      @extend .input-borderless
+      @extend .input-graybg
+    #idea_refinement
+      padding: 0px 12px
+      .fa-close
+        @extend .pull-left
+        margin-right: 10px
+        color: #656565
+        &:hover, &:focus, &:active
+          cursor: pointer
+      .idea-refinement
+        @extend .help-block
+        font-size: 0.8em !important
+
+#idea-refinement_parent
+  .idea-title
+    margin-bottom: 0px
+    a
+      color: $idea
+      font-size: 1.8em
+      line-height: 1em
+  .modal-body
+    max-height: 405px
+    overflow-y: auto
+    label
+      padding: 0px !important
+    .idea-embed
+      margin-bottom: 15px
+    .idea-description
+      line-height: 1.5em
+      margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0px
+  .modal-dialog
+    margin-top: 70px
+
+.idea-example-thumbnail
+  @extend .idea-form-thumbnail
+  p
+    padding: 6px 12px
+    &.example-idea-title
+      @extend .text-idea
+      @extend .text-bold
+      font-size: 1.6em
+      margin-bottom: 0px
+    &.example-idea-description
+      font-size: 1em
+  .example-idea-embed
+    padding: 6px 12px
+
+.example-switch
+  position: relative
+  .well-example
+    @extend .hidden-xs
+    color: $lightGrayText
+    .example-heading
+      @extend .text-bold
+      font-size: 1.8em
+      line-height: 1.4em
+    .example-description
+      font-size: 1.1em
+    background-color: white
+    position: absolute
+    padding: 100px 19px
+    top: 10px
+    &.well-right
+      right: 0px
+      border-top-right-radius: 0px
+      border-bottom-right-radius: 0px
+      border-right: 0px
+    &.well-left
+      left: 0px
+      border-top-left-radius: 0px
+      border-bottom-left-radius: 0px
+      border-left: 0px
+    &:hover,&:focus,&:active,&.active
+      cursor: pointer

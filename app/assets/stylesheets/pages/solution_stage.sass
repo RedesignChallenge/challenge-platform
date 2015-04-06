@@ -1,0 +1,111 @@
+#solution_stage-carousel
+  .carousel-caption
+    p
+      @extend .text-left
+      &.caption-title
+        a
+          @extend .text-bold
+          font-size: 2.4em
+          line-height: 1.4em
+          color: white
+          &:hover, &:active, &:focused, &.active
+            color: white
+
+
+#solution_stage-overview
+  padding: 30px 0
+  background-color: white
+  color: $text
+  .solution_stage-icon
+    .fa
+      font-size: 10em
+      color: $solutionLight
+  .solution_stage-title
+    color: $solution
+    font-size: 3.2em
+    line-height: 1.1em
+    font-weight: bold
+    margin-bottom: 15px
+  .solution_stage-description
+    font-size: 1.4em
+    line-height: 1.3em
+    font-weight: lighter
+  .challenge-hashtag
+    @extend .pull-left
+    .fa
+      font-size: 1.6em
+      color: $lightGrayText
+    a
+      font-size: 1.3em
+      color: $text
+      font-weight: lighter
+
+#solution_stage-navigation
+  @extend .hidden-xs
+  @extend .text-center
+  background-color: $solution
+  color: white
+  z-index: 1000
+  width: 100%
+  box-shadow: 0 5px 10px rgba(2, 1, 1, 0.27)
+  margin-bottom: 20px
+  &.affix
+    top: 0
+    & + #solution_stage-content
+      margin-top: 140px
+  .nav-link
+    padding-top: 10px
+    padding-bottom: 10px
+    min-height: 100px
+    font-size: 1.3em
+    font-weight: lighter
+    border-right: 1px solid #D8D9DA
+    .fa-play
+      color: transparent
+      position: absolute
+      text-align: center
+      bottom: -20px
+      left: 40%
+      z-index: -1
+    &:last-child
+      border-right: none
+    &:hover,&:focus,&.active
+      background-color: white
+      color: $solution
+      cursor: pointer
+    &.active
+      .fa-play
+        color: white
+    .theme-cta
+      font-size: 0.7em
+      margin-bottom: 0
+      font-weight: lighter
+      position: absolute
+      bottom: 10px
+      left: 45%
+
+#solution_stage-content
+  padding: 40px 0px 20px
+  background-color: $lightestGrayBG
+  &.affix
+    margin-top: 40px
+  .solution_story-block
+    margin-bottom: 50px
+    .solution_story-title
+      @extend .section-title
+      color: $solution !important
+      margin-bottom: 5px
+    .solution_story-description
+      font-size: 1.1em
+      margin-bottom: 20px
+    .well-solution_story
+      background-color: white
+  .row-count
+    margin-bottom: 15px
+    .solution-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em

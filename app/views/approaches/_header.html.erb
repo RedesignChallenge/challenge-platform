@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+
+    <div class='approach_idea-block'>
+      <p class='approach_idea-header'>An approach to the idea of</p>
+      <p class='approach_idea-title'><%= link_to @approach.approach_idea.title, challenge_approach_stage_path(@challenge, @approach.approach_stage, anchor: "approach_idea-#{@approach.approach_idea.id}") %></p>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <% if action_name == 'show' %>
+            <div class='center-block text-center' style='margin-bottom: 30px'>
+              <%= link_to "<i class='fa fa-arrow-left fa-2x' style='color:#969696'></i>".html_safe, challenge_approach_stage_path(@challenge, @approach.approach_stage, anchor: "approach_idea-#{@approach.approach_idea.id}") %>
+            </div>
+          <% else %>
+            <p class='approach_idea-description'><%= @approach.approach_idea.description.html_safe %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

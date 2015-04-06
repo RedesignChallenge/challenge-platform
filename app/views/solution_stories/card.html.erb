@@ -1,0 +1,25 @@
+<div id='solution_story-<%= solution_story.id %>' class='col-sm-6'>
+
+  <div class="thumbnail solution_story-thumbnail">
+    <div class='solution_story-embed'>
+      <%= link_to image_tag(solution_story.image.url, style: 'width:100%'), challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) %>
+    </div>
+
+    <div class='solution_story-content'>
+    
+      <p class='solution_story-title'><%= link_to solution_story.title.truncate(75), challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) %></p>
+
+      <p class='solution_story-description'><%= solution_story.description.truncate(200) %></p>
+
+      <div class='solution_story-effort'>
+        <div class='solution-effort' style='margin-bottom: 0px'>
+          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
+          <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
+            <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

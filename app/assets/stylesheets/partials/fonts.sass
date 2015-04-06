@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic)
+
+$baseFontFamily: 'Source Sans Pro', sans-serif
+
+.text-sans
+  font-family: $baseFontFamily !important
+
+.text-serif
+  font-family: 'Georgia', serif !important
+
+.text-light
+  font-weight: lighter !important
+
+.text-semibold
+  font-weight: bolder !important
+
+.text-bold
+  font-weight: bold !important
+
+.text-italic
+  font-style: italic !important
+
+.text-underline
+  text-decoration: underline !important
+
+.text-default
+  color: $text !important
+
+.text-experience
+  color: $experience !important
+
+.text-idea
+  color: $idea !important
+
+.text-approach
+  color: $approach !important
+
+.text-solution
+  color: $solution !important
+
+.text-experience-light
+  color: $experienceLight !important
+
+.text-idea-light
+  color: $ideaLight !important
+
+.text-approach-light
+  color: $approachLight !important
+
+.text-solution-light
+  color: $solutionLight !important
+
+.text-green
+  color: $headerBG !important
+
+// Element definitions
+
+p,h1,h2,h3,h3,h5,span,a,li,input,button,select,textarea,div,label
+  font-family: $baseFontFamily
+  font-weight: normal
+
+label
+  font-weight: bold
+
+p
+  font-size: 16px
+  line-height: 1.7em
+
+a
+  color: $linkText
+  &:hover, &:focus, &:active
+    color: $linkTextHover
+  // &.dark-link
+  //   color: $darkLinkText
+  //   &:hover, &:focus, &:active
+  //     color: $darkLinkTextHover
+
+// .dark-link
+//   color: $darkLinkText
+//   &:hover, &:focus, &:active
+//     color: $darkLinkTextHover
+
+h1,h2,h3,h4,h5,h6
+  margin-top: 0em
+  padding-top: 0em
+  margin-bottom: .5em
+
+
+p.section-title
+  font-size: 2em
+  font-weight: bold
+  text-align: center
+  color: $text
+
+p.section-description
+  font-size: 1.3em
+  font-weight: 300
+  text-align: center
+  color: $grayText

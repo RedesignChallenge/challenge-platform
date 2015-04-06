@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+
+    <div class='problem_statement-block'>
+      <p class='problem_statement-header'>Idea for</p>
+      <p class='problem_statement-title'><%= link_to @idea.problem_statement.title, challenge_idea_stage_path(@challenge, @idea.problem_statement, anchor: "problem_statement-#{@idea.problem_statement.id}") %></p>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <% if action_name == 'show' %>
+            <div class='center-block text-center' style='margin-bottom: 30px'>
+              <%= link_to "<i class='fa fa-arrow-left fa-2x' style='color:#969696'></i>".html_safe, challenge_idea_stage_path(@challenge, @idea.problem_statement, anchor: "problem_statement-#{@idea.problem_statement.id}") %>
+            </div>
+          <% else %>
+            <p class='problem_statement-description'><%= @idea.problem_statement.description %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

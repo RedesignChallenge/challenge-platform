@@ -1,0 +1,43 @@
+@import "bourbon";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "select2";
+@import "select2-bootstrap";
+
+@import "partials/animate";
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/global";
+@import "partials/buttons";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/user";
+
+@import "pages/home";
+@import "pages/preview";
+@import "pages/devise";
+@import "pages/research";
+@import "pages/legal";
+@import "pages/about";
+@import "pages/user";
+
+@import "pages/suggestion";
+@import "pages/comment";
+@import "pages/challenge";
+@import "pages/experience_stage";
+@import "pages/experience";
+@import "pages/idea_stage";
+@import "pages/idea";
+@import "pages/approach_stage";
+@import "pages/approach_idea";
+@import "pages/approach";
+@import "pages/solution_stage";
+@import "pages/solution_story";
+
+@import "vendor/bootstrap-social";
+@import "vendor/bootstrap";
+@import "vendor/font-awesome-social";
+@import "vendor/font-awesome";
+@import "vendor/shake";
+@import "vendor/zeroclipboard";

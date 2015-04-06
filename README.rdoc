@@ -1,0 +1,54 @@
+== README
+
+This application requires extra utilities to be installed to be fully functional:
+
+ - Sidekiq
+ - PostgresQL
+ - Redis
+ - Memcached
+
+All dependencies should be listed otherwise in the Gemfile.
+
+== Installation
+
+```bundle install```
+
+== Seeding the Database
+
+```rake db:recreate```
+
+== Running the Test Suite
+
+```bundle exec rspec```
+
+== .env configuration
+
+You will require a file called `.env` in the root of the folder.  The following keys should be supplied to it:
+
+  LANG (specify the language of the project - e.g. en_US.UTF-8)
+  MANDRILL_APIKEY
+  MANDRILL_USERNAME
+  REDISTOGO_URL
+  S3_BUCKET
+  S3_KEY
+  S3_SECRET
+  TWITTER_CONSUMER_KEY
+  TWITTER_CONSUMER_SECRET
+  TWITTER_ACCESS_TOKEN
+  TWITTER_ACCESS_SECRET
+  GMAIL_USERNAME
+  SIDEKIQ_CONCURRENCY
+  DISQUS_KEY
+  DISQUS_SECRET
+  DISQUS_SHORTNAME
+  DB_USERNAME
+  DB_PASSWORD
+  DB_DEV_USERNAME
+  DB_DEV_PASSWORD
+  DB_TEST_USERNAME
+  DB_TEST_PASSWORD
+  MEMCACHIER_SERVERS
+  DEPLOY_REMOTE (only concerned with the seeding of data; the three supported values are local, staging, and production)
+  SITE_PROTOCOL (should be http or https)
+  SITE_HOST (should be the address and port of the server you're deploying)
+  S3_REGION

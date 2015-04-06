@@ -1,0 +1,19 @@
+<div class='row row-discussion-count'>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <div class='discussion-header'>
+      <i class='fa fa-comments-o fa-3x'></i><br>
+      <span>Discussion <%= "(#{commentable.comment_threads.count})" unless commentable.comment_threads.count.zero? %></span>
+    </div>
+  </div>
+  <div class='col-xs-3'>
+    <%= link_to("+ Add Comment", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comment_threads.count.zero? %>
+  </div>
+</div>
+
+<div class='well well-lg well-discussion'>
+  <% commentable.root_comments.each do |comment| %>
+    <%= render file: 'comments/card', locals: { comment: comment } %>
+  <% end %>
+
+  <%= render partial: 'comments/card/new', locals: { comment: Comment.new(commentable_type: commentable.class.to_s, commentable_id: commentable.id) } %>
+</div>

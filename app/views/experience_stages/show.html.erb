@@ -1,0 +1,110 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id='experience_stage-overview'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <div class='row'>
+          <div class='col-sm-10'>
+            <p class='experience_stage-title'><%= @experience_stage.title.html_safe %></p>        
+            <p class='experience_stage-description'><%= @experience_stage.description.html_safe %></p>        
+
+            <p class="challenge-hashtag"><i class='fa fa-twitter'></i> <%= link_to "##{@challenge.hashtag.html_safe}", "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank' %></p>
+          </div>
+          <div class='col-sm-2 experience_stage-icon'>
+            <i class='fa fa-comment-o hidden-xs'></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='experience_stage-navigation' data-spy="affix" data-offset-top="280" class="affix-top">
+  <div class='container'>
+
+    <div class='row'>
+      <% @themes.each do |theme| %>
+        <div class='col-sm-4 nav-link' href='#theme-<%= theme.id %>' du-smooth-scroll du-scrollspy offset='110'>
+          <%= theme.title.html_safe %>
+          <p class='theme-cta'>
+            <% if theme.experiences.count.zero? %>
+              <i class='fa fa-plus'></i> Add the first experience
+            <% else %>
+              <i class='fa fa-comment-o'></i> <%= theme.experiences.count %>
+            <% end %>
+          </p>
+
+          <i class='fa fa-3x fa-play fa-rotate-90'></i>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<div id='experience_stage-content' ng-controller='ExperienceStageCtrl'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+        <% @themes.each do |theme| %>
+          <div id='theme-<%= theme.id %>' class='theme-block'>
+            <p class='theme-header'>Theme</p>
+            <p class='theme-title'><%= theme.title %></p>
+
+            <div class='row row-count'>
+              <div class='col-xs-6 col-xs-offset-3'>
+                <div class='theme-header' style='margin-bottom:10px'>
+                  <i class='fa fa-comment-o fa-3x'></i><br>
+                  <span><%= pluralize(theme.experiences.count, 'experience') %></span>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                <%= link_to '+ Add yours', "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", "du-smooth-scroll" => true, offset: 120, class: 'pull-right' %>
+              </div>
+            </div>
+            
+            <div ng-switch='theme_<%= theme.id %>_experiences' ng-init='theme_<%= theme.id %>_experiences=show_all'>
+
+              <% theme.experiences.first(2).each do |experience| %>
+                <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
+              <% end %>
+
+              <% if theme.experiences.count > 2 %>
+                <div ng-show='theme_<%= theme.id %>_experiences'>
+                  <% (theme.experiences - theme.experiences.first(2)).each do |experience| %>
+                    <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= render partial: 'experiences/card/new', cache: true, locals: { theme: theme } %>
+
+              <% if theme.experiences.count > 2 %>
+                <p class='center-block text-center'>
+                  <%= link_to "Show #{theme.experiences.count-2} More Experiences", '#', "ng-hide" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=true", onclick: 'return false;', class: 'text-bold' %>
+
+                  <%= link_to "Show Less", "#theme-#{theme.id}", "ng-show" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+                </p>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+
+        <p class="section-title-share">Know people who have something to add to this conversation?</p>
+
+        <div class="row">
+          <div class='col-sm-10 col-sm-offset-1'>
+            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+          </div>
+        </div>
+
+        <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_url(@challenge, @experience_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class='row'>
+  <div class='col-md-10 col-md-offset-1'>
+
+    <div id='experience-<%= @experience.id %>' class="row row-experience">
+      
+      <div class="col-xs-2">
+        <div class='experience-user center-block text-center'>
+          <% if user_signed_in? %>
+            <% if current_user.avatar.present? %>
+              <%= image_tag(current_user.avatar.profile.url, class: 'img-circle', style: 'width:3.5em') %>
+            <% else %>
+              <span class="fa-stack fa-lg new-user-avatar">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-inverse fa-stack-1x">you</i>
+              </span>
+            <% end %>
+            <div class="caption">
+              <p class='name'><%= current_user.display_name %></p>
+              <p class='title'><%= current_user.display_organization %></p>
+            </div>
+          <% else %>
+            <span class="fa-stack fa-lg new-user-avatar">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-inverse fa-stack-1x">you</i>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="col-xs-10">
+        <div class='well well-experience'>
+          <%= form_for(@experience, url: url) do |f| %>
+            <%= f.hidden_field :theme_id %>
+            <%= render partial: 'layouts/error_messages', locals: { model: @experience } %>
+
+            <div class='form-group'>
+              <%= f.text_area :description, placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge.", class: 'form-control', autofocus: true, rows: 4 %>
+            </div>
+
+            <div class='row'>
+              <div class='col-sm-8'>
+                <div class='input-switch' ng-switch='experience_<%= @experience.id %>_link' ng-init='experience_<%= @experience.id %>_link=<%= @experience.link.present? %>'>
+                  <div ng-hide='experience_<%= @experience.id %>_link' ng-click="experience_<%= @experience.id %>_link=true" class='media'>
+                    <div class='media-left'>
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-plus fa-stack-1x"></i>
+                      </span>
+                    </div>
+                    <div class='media-body'>
+                      <span class='help-text'>Add a link to a video, article, image or other support</span>
+                    </div>
+                  </div>
+
+                  <div ng-show='experience_<%= @experience.id %>_link' class='form-group'>
+                    <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
+                    <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your post.</span>
+                  </div>
+                </div>
+              </div>
+              <div class='col-sm-2 col-xs-6'>
+                <%= link_to 'Cancel', cancel_path, class: 'btn btn-rounded btn-block btn-default' %>
+              </div>
+              <div class='col-sm-2 col-xs-6'>
+                <%= f.submit "#{submit_text}", class: 'btn btn-rounded btn-block btn-submit' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>

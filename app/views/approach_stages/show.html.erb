@@ -1,0 +1,123 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id="approach_stage-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-sm-8">
+            <p class="approach_stage-title"><%= @approach_stage.title.html_safe %></p>
+            <p class="approach_stage-description"><%= @approach_stage.description.html_safe %></p>
+            <p class="challenge-hashtag"><i class="fa fa-twitter"></i><%= link_to "##{@challenge.hashtag.html_safe}", "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank' %></p>
+          </div>
+          <div class="col-sm-4 approach_stage-icon text-center">
+            <p class='text-bold text-approach'><%= @approach_stage.incentive.html_safe if @approach_stage.incentive.present? %></p>
+            <i class="fa fa-flask hidden-xs"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="approach_stage-navigation" data-spy="affix" data-offset-top="375" class="affix-top">
+  <div class="container">
+    <div class="row">
+      <% @approach_ideas.each do |approach_idea| %>
+        <div class="col-sm-4 nav-link" href="<%= "#approach_idea-#{approach_idea.id}" %>" du-smooth-scroll du-scrollspy offset="100">
+          <%= approach_idea.title.html_safe %>
+          <p class="theme-cta">
+            <% if approach_idea.approaches.count.zero? %>
+              <i class='fa fa-plus' style='margin-left:-50px'></i> Add the first approach.
+            <% else %>
+              <i class='fa fa-flask'></i> <%= approach_idea.approaches.count %>
+            <% end %>
+          </p>
+          <i class="fa fa-3x fa-play fa-rotate-90"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="approach_stage-content" ng-controller="ApproachStageCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <% @approach_ideas.each do |approach_idea| %>
+          <div id='approach_idea-<%= approach_idea.id %>' class='approach_idea-block'>
+            <p class='approach_idea-header'>Idea</p>
+            <p class="approach_idea-title"><%= approach_idea.title.html_safe %></p>
+            <div class='row'>
+              <div class='col-md-8 col-sm-offset-2'>
+                <p class='approach_idea-description'><%= approach_idea.description %></p>
+              </div>
+            </div>
+
+            <div class='row' style='margin-top: 20px;margin-bottom: 40px'>
+              <div class='col-sm-4 col-sm-offset-1'>
+                <p class='text-center'>Know how to try this idea?</p>
+                <%= link_to "<i class='fa fa-flask'></i> Share your approach".html_safe, new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'btn btn-block btn-lg btn-info btn-rounded' %>
+              </div>
+              <div class='col-sm-4 col-sm-offset-2'>
+                <p class='text-center'>Want to try this but not sure how?</p>
+                <%= link_to "<i class='fa fa-comments-o'></i> Join the discussion".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments"), class: 'btn btn-block btn-lg btn-info btn-rounded' %>
+                <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{approach_idea.comment_threads.count} comments <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
+              </div>
+            </div>
+            
+            <div class='row row-count'>
+              <div class='col-xs-6 col-xs-offset-3'>
+                <div class='approach_idea-header' style='margin-bottom:10px'>
+                  <i class='fa fa-flask fa-3x'></i><br>
+                  <span><%= pluralize(approach_idea.approaches.count, 'approach') %></span>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                <%= link_to '+ Add yours', new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'pull-right' %>
+              </div>
+            </div>
+
+            <div ng-switch='approach_idea_<%= approach_idea.id %>_approaches' ng-init='approach_idea_<%= approach_idea.id %>_approaches=show_all'>
+              
+              <% approach_idea.approaches.first(2).each do |approach| %>
+                <%= render file: 'approaches/card', cache: true, locals: { approach: approach } %>
+              <% end %>
+
+              <% if approach_idea.approaches.count > 2 %>
+                <div ng-show='approach_idea_<%= approach_idea.id %>_approaches'>
+                  <% (approach_idea.approaches - approach_idea.approaches.first(2)).each do |approach| %>
+                    <%= render file: 'approaches/card', cache: true, locals: { approach: approach } %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= render partial: 'approaches/card/new', cache: true, locals: { approach_idea: approach_idea } %>
+
+              <% if approach_idea.approaches.count > 2 %>
+                <p class='center-block text-center'>
+                  <%= link_to "Show #{approach_idea.approaches.count-2} More Approaches", '#', "ng-hide" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=true", onclick: 'return false;', class: 'text-bold' %>
+
+                  <%= link_to "Show Less", "#approach_idea-#{approach_idea.id}", "ng-show" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+                </p>
+              <% end %>
+
+            </div>
+          </div>
+        <% end %>
+
+        <p class="section-title-share">Know people who have something to add to this conversation?</p>
+
+        <div class="row">
+          <div class='col-sm-10 col-sm-offset-1'>
+            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+          </div>
+        </div>
+
+        <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_url(@challenge, @approach_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+
+      </div>
+    </div>
+  </div>
+</div>

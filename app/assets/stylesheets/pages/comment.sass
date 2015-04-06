@@ -1,0 +1,137 @@
+.comment
+  background-color: white
+  border-bottom: 1.5px solid #e6e6e6
+  padding: 15px 0px
+  &:first-child
+    padding-top: 0px
+  .comment-header
+    .media-commenter
+      margin-bottom: 10px
+      .media-left
+        padding-right: 5px
+        .comment-user-avatar
+          .fa-stack-2x
+            text-align: left
+          .fa-stack-1x
+            left: -2px
+      .media-body
+        .name
+          font-size: 1.15em
+          line-height: 1em
+          font-weight: bold
+          margin-bottom: 0px
+        .title
+          font-size: 0.85em
+          margin-bottom: 0px
+          color: $lightGrayText
+          font-weight: bold
+    .timestamp
+      @extend .pull-right
+      font-size: 0.85em
+      margin-bottom: 0px
+      color: $lightGrayText
+      font-weight: bold
+  .comment-content
+    margin-bottom: 15px
+  .comment-link
+    color: $text
+  .comment-actions
+    ul
+      margin-bottom: 0px
+      li
+        margin-right: 20px
+        .fa
+          font-size: 1.3em
+          margin-right: 3px
+          &.fa-ellipsis-h
+            font-size: 2em
+            position: relative
+            top: 5px
+        font-size: 0.8em
+        color: $lightGrayText
+        a
+          color: $lightGrayText
+  form
+    textarea
+      background-color: $lightestGrayBG
+      box-shadow: none
+      border: none
+      resize: vertical
+      font-size: 16px
+      line-height: 1.7em
+
+.nested-comment
+  border-top: 1.5px solid #e6e6e6
+  margin-top: 15px
+  padding: 15px 0px 0px
+  ul
+    margin-bottom: 0px
+  form
+    textarea
+      background-color: $lightestGrayBG
+      box-shadow: none
+      border: none
+      resize: vertical
+      font-size: 16px
+      line-height: 1.7em
+
+.new-comment
+  @extend .comment
+  padding-bottom: 0px
+  margin: 0px  
+  border-bottom: 0px
+  .input-switch
+    .form-group
+      margin-bottom: 0px
+      .help-block
+        margin-bottom: 0px
+
+.dropdown
+  a
+    color: $lightGrayText
+
+.well-discussion
+  padding: 30px 40px 15px
+  background-color: white
+  +border-radius(10px)
+
+.discussion-header
+  @extend .text-center
+  font-weight: bold
+  text-transform: uppercase
+  color: $lightGrayText
+  font-size: 0.9em
+  margin-bottom: 10px
+.row-discussion-count
+  .col-xs-3
+    a
+      margin-top: 35px
+
+#comment-form
+  padding: 0px 0px 40px
+  .fa-close.fa-2x
+    @extend .pull-right
+    position: relative
+    top: 30px 
+    color: #999999
+  .comment-block
+    .comment-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .comment-title
+      @extend .section-title
+      margin-bottom: 5px
+      a
+        font-weight: bold
+    .comment-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .well-comment
+    @extend .comment
+    padding: 30px 40px 15px
+    background-color: white
+    +border-radius(10px)

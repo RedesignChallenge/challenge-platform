@@ -1,0 +1,40 @@
+<%= form_for(suggestion, url: url) do |f| %>
+  <div class='form-group'>
+    <%= f.text_field :title, placeholder: "Give it a title. Name a challenge we should take on.", class: 'form-control input-lg' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.text_area :description, placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators? How can #{I18n.t(:project_name)} help?", class: 'form-control', rows: 4 %>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-8'>
+      <div class='input-switch' ng-switch='suggestion_link' ng-init='suggestion=<%= suggestion.link.present? %>'>
+        <div ng-hide='suggestion_link' ng-click="suggestion_link=true" class='media'>
+          <div class='media-left'>
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              <i class="fa fa-plus fa-stack-1x"></i>
+            </span>
+          </div>
+          <div class='media-body'>
+            <span class='help-text'>Add a link to a video, article, image or other support</span>
+          </div>
+        </div>
+
+        <div ng-show='suggestion_link' class='form-group'>
+          <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
+          <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your suggestion.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-sm-2 col-xs-6'>
+      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' %>
+    </div>
+
+    <div class='col-sm-2 col-xs-6'>
+      <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-submit' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<li><span class='suggestion-small' >Not at all</span></li>
+
+<% Suggestion::RATING_WEIGHTS.each do |weight| %>
+  <% if user_signed_in? && suggestion.get_likes.where(voter_id: current_user.id, vote_scope: 'rating', vote_weight: weight).present? %>
+    <li>
+      <%= link_to unlike_suggestion_path(suggestion.id, vote_weight: weight), method: :put, remote: true do %>
+        <span class="fa-stack">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-stack-1x" style='color:white'><%= weight %></i>
+        </span>
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to like_suggestion_path(suggestion.id, vote_weight: weight), method: :put, remote: user_signed_in? do %>
+        <span class="fa-stack">
+          <i class="fa fa-circle-thin fa-stack-2x"></i>
+          <i class='fa fa-stack-1x fa-inverse'><%= weight %></i>
+        </span>
+      <% end %>
+    </li>
+
+  <% end %>
+<% end %>
+
+<li><span class='suggestion-small'>A lot</span></li>
+
+
+<!-- if default_like[:weight] === weight
+  style='color:grey'
+else
+  style='color:white'
+end -->

@@ -1,0 +1,108 @@
+.opacity-layer
+  background-color: rgba(47,52,64,0.6)
+
+.well-share
+  border: 2px dashed #B1B0B2
+  background-color: #ebeced
+  p
+    font-size: 1.6em
+    color: #B1B0B2
+    margin-bottom: 0px
+    &.subtitle
+      font-size: 1em
+  &:hover, &:focus, &:active
+    cursor: pointer
+
+.page-wrap
+  background: $lightestGrayBG
+  margin: -20px auto 20px
+
+.zero-margin-bottom
+  margin-bottom: 0px !important
+
+hr.break
+  display: block
+  width: 30%
+  margin: 50px auto
+  border: 0
+  border-top: 1px solid rgba(0,0,0,0.15)
+
+.header-label
+  @extend .text-center
+  font-weight: bold
+  margin-bottom: 0px
+  text-transform: uppercase
+  color: $lightGrayText
+  font-size: 0.9em
+
+div.break
+  margin-bottom: 30px
+
+.alert-fullpage
+  border-radius: 0px !important
+  text-align: center !important
+  margin-bottom: 0px !important
+  padding-top: 10px !important
+  padding-bottom: 10px !important
+  position: relative
+  bottom: 20px
+
+.section-heading
+  margin-bottom: 1em
+
+blockquote.quote
+  text-align: center
+  border-left: 5px solid rgba(0,0,0,0.15)
+  margin-bottom: 20px
+  p
+    font-size: 2em
+    font-style: italic
+    line-height: 1.9em
+
+span
+  font-family: inherit
+
+.container-sm
+  @extend .container
+  max-width: 940px
+
+ul.share-links
+  @extend .text-center, .center-block, .list-inline
+  li
+    padding: 0px 10px
+    a
+      font-size: 1.5em
+
+ul.share-popover
+  margin-bottom: 0px
+  @extend .text-center, .center-block, .list-inline
+  li
+    &:last-of-type
+      padding-right: 0px
+    a
+      color: $lightGrayText
+
+=border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+.input-switch
+  &:hover, &:focus, &:active
+    cursor: pointer
+  .fa-circle-thin
+    color: $lightGrayText
+  .fa-plus
+    color: $linkText
+  .media
+    margin-bottom: 10px
+    padding: 0px 6px
+    .media-body
+      vertical-align: middle
+      .help-text
+        color: $lightGrayText
+
+.section-title-share
+  @extend .section-title
+  @extend .text-green

@@ -1,0 +1,42 @@
+<div id='theme-<%= theme.id %>-experience-new' class="row row-new">
+
+  <div class="col-xs-2">
+    <div class='experience-user center-block text-center'>
+      <% if user_signed_in? %>
+        <% if current_user.avatar.present? %>
+          <%= image_tag(current_user.avatar.profile.url, class: 'img-circle', style: 'width:3.5em') %>
+        <% else %>
+          <span class="fa-stack fa-lg new-user-avatar">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-inverse fa-stack-1x">you</i>
+          </span>
+        <% end %>
+        <div class="caption">
+          <p class='name'><%= current_user.display_name %></p>
+          <p class='title'><%= current_user.display_organization %></p>
+        </div>
+      <% else %>
+        <span class="fa-stack fa-lg new-user-avatar">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-inverse fa-stack-1x">you</i>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-xs-10">
+    <div ng-switch='theme_<%= theme.id %>_draft' ng-init='theme_<%= theme.id %>_draft=false'>
+      <div class='well well-lg well-share' ng-hide='theme_<%= theme.id %>_draft' ng-click='theme_<%= theme.id %>_draft=true'>
+        <p><i class='fa fa-pencil'></i>&nbsp; Share something related to this theme.</p>
+      </div>
+
+      <div ng-show='theme_<%= theme.id %>_draft' class='well well-experience'>
+        <%= render partial: 'experiences/card/form', locals: { experience: new_experience, theme: theme, url: challenge_experience_stage_theme_experiences_path(@challenge, @challenge.experience_stage, theme), cancel_path: "theme_#{theme.id}_draft=false", submit_text: 'Share'} %>
+
+        <div class='clearfix'></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

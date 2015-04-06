@@ -1,0 +1,11 @@
+<% if user_signed_in? && current_user.liked?(@idea, {vote_scope: @idea.default_like[:scope]}) %>
+  <%= link_to unlike_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea, partial: 'like'), class: 'btn btn-block btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
+    <i class='<%= @idea.default_like[:liked][:icon] %>'></i> <%= @idea.default_like[:liked][:name] %>
+    <%= "(#{@idea.cached_votes_up})" unless @idea.cached_votes_up.zero? %>
+  <% end %>
+<% else %>
+  <%= link_to like_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea, partial: 'like'), class: 'btn btn-block btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
+    <i class='<%= @idea.default_like[:unliked][:icon] %>'></i> <%= @idea.default_like[:unliked][:name] %>
+    <%= "(#{@idea.cached_votes_up})" unless @idea.cached_votes_up.zero? %>
+  <% end %>
+<% end %>

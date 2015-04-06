@@ -1,0 +1,102 @@
+.panel-platform
+  @extend .panel
+  border-color: $headerBG
+  .panel-heading
+    background-color: $headerBG
+    border-color: $headerBG
+    color: white
+    small
+      font-size: 0.7em
+      font-weight: lighter
+      color: $lightGrayBG
+      a
+        color: $lightGrayBG
+        text-decoration: underline
+    .panel-title
+      font-size: 1.4em
+    a.btn
+      color: white
+
+.radio, .checkbox
+  label
+    font-weight: bold !important
+    .help-block
+      font-weight: normal
+      font-size: 0.85em
+
+.btn-rounded
+  border-radius: 25px
+
+.btn-info
+  background-color: $linkText
+  border-color: $linkText
+  color: white
+  &:hover, &:focus, &:active
+    background-color: $linkText
+    border-color: $linkText
+    color: white
+
+.help-block 
+  font-size: 0.8em
+
+.label
+  font-size: 1em
+  margin-bottom: 15px
+
+.label-experience
+  @extend .label
+  padding: 8px 40px
+  border-radius: 8px 0em 0em 0em
+  background-color: $experience !important
+
+.label-idea
+  @extend .label
+  padding: 8px 40px
+  border-radius: 8px 0em 0em 0em
+  background-color: $idea !important
+
+.label-approach
+  @extend .label
+  padding: 8px 40px
+  border-radius: 8px 0em 0em 0em
+  background-color: $approach !important
+
+.label-solution
+  @extend .label
+  padding: 8px 40px
+  border-radius: 8px 0em 0em 0em
+  background-color: $solution !important
+
+.modal-md
+  @media (min-width: 768px)
+    width: 450px
+
+.label-borderless
+  padding: 0px 12px
+
+.input-borderless
+  border: none
+  box-shadow: none
+  
+.input-graybg
+  background-color: $lightestGrayBG
+
+.field_with_errors
+  .input-borderless
+    border: 1px solid #a94442
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+
+.alert-info 
+  background-color: $linkText
+  border: 1px solid white
+  border-left: 0px
+  border-right: 0px
+  color: white
+  a
+    @extend .text-bold
+    @extend .text-underline
+    color: white
+  button
+    opacity: 1
+    .fa-close
+      color: white

@@ -1,0 +1,103 @@
+<%= form_for(@idea, url: url) do |f| %>
+  <%= f.hidden_field :problem_statement_id %>
+
+  <div class='row'>
+    <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+      <div class="thumbnail idea-form-thumbnail">
+        
+        <% if @idea.refinement_parent %>
+          <div ng-init="refinement_parent_id=<%= @idea.refinement_parent_id %>"></div>
+          <div id='idea_refinement' class='form-group' ng-show='refinement_parent_id'>
+            <%= f.hidden_field :refinement_parent_id, 'ng-value' => 'refinement_parent_id' %>
+            <i class='fa fa-close' ng-click="refinement_parent_id=null"></i> 
+            <span class='idea-refinement'>Refinement of <%= link_to @idea.refinement_parent.title.html_safe, '#', 'ng-click' => 'showRefinement()', onclick: 'return false;' %></span>
+          </div>
+          <div class='clearfix'></div>
+        <% end %>
+
+        <%= render partial: 'layouts/error_messages', locals: { model: @idea } %>
+        
+        <div class='form-group'>
+          <%= f.text_field :title, placeholder: "What is the title of your idea?", autofocus: true, class: 'form-control input-lg' %>
+        </div>
+
+        <div class='form-group'>
+          <%= f.text_area :description, placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better.", class: 'form-control', rows: 5 %>
+        </div>
+
+        <div class='input-switch' ng-switch='idea_impact' ng-init='idea_impact=<%= @idea.impact.present? %>'>
+          <div ng-hide='idea_impact' ng-click="idea_impact=true" class='media'>
+            <div class='media-left'>
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-plus fa-stack-1x"></i>
+              </span>
+            </div>
+            <div class='media-body'>
+              <span class='help-text'>Explain the potential impact of your idea</span>
+            </div>
+          </div>
+
+          <div ng-show='idea_impact' class='form-group'>
+            <%= f.label :impact, "Potential Impact" %>
+            <%= f.text_area :impact, placeholder: "Describe the impact your idea could have.", class: 'form-control', rows: 3 %>
+          </div>
+        </div>
+
+        <div class='input-switch' ng-switch='idea_implementation' ng-init='idea_implementation=<%= @idea.implementation.present? %>'>
+          <div ng-hide='idea_implementation' ng-click="idea_implementation=true" class='media'>
+            <div class='media-left'>
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-plus fa-stack-1x"></i>
+              </span>
+            </div>
+            <div class='media-body'>
+              <span class='help-text'>Explain how your idea may be implemented</span>
+            </div>
+          </div>
+
+          <div ng-show='idea_implementation' class='form-group'>
+            <%= f.label :implementation, "Possible Implementation" %>
+            <%= f.text_area :implementation, placeholder: "Describe how your idea may be implemented.", class: 'form-control', rows: 3 %>
+          </div>
+        </div>
+
+        <div class='input-switch' ng-switch='idea_link' ng-init='idea_link=<%= @idea.link.present? %>'>
+          <div ng-hide='idea_link' ng-click="idea_link=true" class='media'>
+            <div class='media-left'>
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-plus fa-stack-1x"></i>
+              </span>
+            </div>
+            <div class='media-body'>
+              <span class='help-text'>Add a link to a video, article, image or other support</span>
+            </div>
+          </div>
+
+          <div ng-show='idea_link' class='form-group'>
+            <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
+            <span class='help-block'>Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+
+      <div class='row'>
+        <div class='col-xs-4 col-xs-offset-4'>
+          <%= link_to "Cancel", cancel_path, class: 'btn btn-default btn-rounded btn-block pull-right', data: { confirm: "Are you sure? Any unsaved changes you've made will be lost." } %>
+        </div>
+        <div class='col-xs-4'>
+          <%= f.submit submit_text, class: 'btn btn-submit btn-rounded btn-block pull-right' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>

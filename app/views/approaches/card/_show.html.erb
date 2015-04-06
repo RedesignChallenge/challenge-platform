@@ -1,0 +1,79 @@
+<div id='approach-<%= approach.id %>' class="well well-approach">
+  
+  <div class='row row-heading'>
+    <div class='col-xs-1'>
+      <i class='fa fa-flask fa-approach fa-2x'></i>
+    </div>
+
+    <div class='col-xs-7'>
+      <p class='approach-title'><%= link_to approach.title, challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach) %></p>
+    </div>
+
+    <div class='col-xs-4'>
+      <div class='row'>
+        <div class='col-sm-7'>
+          <div class="media media-author">
+            <div class="media-left">
+              <% if approach.user.avatar.present? %>
+                <%= image_tag(approach.user.avatar.profile.url, class: 'img-circle', style: 'width:2.5em') %>
+              <% else %>
+                <% if user_signed_in? && current_user == approach.user %>
+                  <span class="fa-stack fa-lg new-user-avatar">
+                    <i class="fa fa-circle fa-stack-2x" style='font-size: 1.8em'></i>
+                    <i class="fa fa-inverse fa-stack-1x" style='font-size: 0.75em'>you</i>
+                  </span>
+                <% else %>
+                  <span class="fa-stack fa-lg new-user-avatar">
+                    <i class="fa fa-circle fa-stack-2x" style='color:<%= approach.user.color %>;font-size: 1.8em'></i>
+                    <i class="fa fa-inverse fa-stack-1x" style='font-size: 0.75em'><%= approach.user.initials %></i>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="media-body">
+              <p class='name'><%= approach.user.display_name %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-sm-5'>
+          <ul class='list-actions'>
+            <li><%= link_to "<i class='fa fa-comments-o'></i> #{approach.comment_threads.present? ? approach.comment_threads.count : ''}".html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach, { anchor: 'approach-comments' }) %></li>
+
+            <li id='approach-<%= approach.id %>-like'><%= render partial: 'approaches/card/like', locals: { approach: approach } %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row row-content'>
+    <div class='col-xs-1'>
+      <% if user_signed_in? && approach.user == current_user %>
+        <div class='btn-group-vertical'>
+          <%= link_to "<i class='fa fa-edit'></i>".html_safe, edit_challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach), class: 'btn btn-block btn-warning' %>
+          <%= link_to "<i class='fa fa-trash'></i>".html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach), method: :delete, data: { confirm: "Are you sure you want to delete your approach?"}, class: 'btn btn-block btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+    <div class='col-xs-7'>
+      <% if !approach.steps.count.zero? %>
+        <div class='approach-steps'>
+          <p class='approach-heading'>How To</p>
+          <p class='approach-step'><b class='text-approach'>1.</b> <%= approach.steps.first.description.truncate(140) %></p>
+          <% if approach.steps.count > 2 %>
+            <p style='margin-left: 15px'><i class='fa fa-ellipsis-v fa-approach'></i></p>
+            <p class='approach-step'><b class='text-approach'><%= approach.steps.count %>.</b> <%= approach.steps.last.description.truncate(140) %></p>
+          <% end %>
+        </div>
+      <% else %>
+      <p class='approach-heading'>Description</p>
+        <p class='approach-description'><%= approach.description.truncate(140) %></p>
+      <% end %>
+    </div>
+    <div class='col-xs-4'>
+      <p class='approach-heading'>What you'll need</p>
+      <p class='approach-content'><%= approach.needs %></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<%= render partial: 'mailers/shared/header', locals: { header: @header } %>
+
+  <%= render partial: 'mailers/shared/intro', locals: { resource: @resource } %>
+
+    <%= yield %>
+
+  <%= render partial: 'mailers/shared/outro' %>
+
+  <%= yield(:callout) %>
+
+<%= render partial: 'mailers/shared/footer' %>

@@ -1,0 +1,287 @@
+.well-approach
+  background-color: white
+  +border-radius(10px)
+  .row-heading
+    margin-bottom: 20px
+    .approach-title
+      a
+        color: $approach
+        font-weight: bold
+        font-size: 1.4em
+    .media-author
+      .media-left
+        padding-right: 0px
+      .media-body
+        .name
+          margin: 5px 0px 0px
+          color: $lightGrayText
+    .list-actions
+      @extend .list-inline
+      @extend .pull-right
+      li
+        margin: 5px 1px
+        color: #AEAEAE
+        .fa
+          font-size: 1.2em
+        a  
+          color: #AEAEAE
+  .row-content
+    .approach-heading
+      color: $approach
+      text-transform: uppercase
+      font-weight: 800
+      font-size: 0.95em
+    .approach-content    
+
+#approach-overview
+  padding: 40px 0px
+  .approach_idea-block
+    .approach_idea-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .approach_idea-title
+      @extend .section-title
+      color: $approach !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $approach !important
+    .approach_idea-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .well-approach
+    padding: 0px
+    background-color: white
+    +border-radius(10px)
+    #actions
+      a
+        color: $grayText
+    .fa-close
+      padding-right: 15px
+      padding-top: 15px
+    .approach-content
+      padding: 0px 30px 20px
+      .row-approach
+        margin-bottom: 30px
+        .media-author
+          margin-bottom: 30px
+          .media-left
+            height: 5em
+            .new-user-avatar
+              .fa-stack-2x
+                font-size: 4em !important
+                color: $newUser
+              .fa-stack-1x
+                margin-top: 1em
+                margin-left: 0.75em
+                font-weight: bold
+          .media-body
+            padding-left: 30px
+            .name
+              font-size: 1.3em
+              font-weight: bold
+              margin-bottom: 0px
+            .title
+              font-size: 0.85em
+              margin-bottom: 0px
+              color: $lightGrayText
+              font-weight: bold
+        .approach-show-title
+          font-size: 3.2em
+          line-height: 1.1em
+          font-weight: bold
+          color: $approach
+        .approach-show-embed
+          margin-bottom: 20px
+        .approach-show-heading
+          @extend .text-bold
+          text-transform: uppercase
+          color: $approach
+          font-size: 1.4em
+        .approach-show-description
+          margin-bottom: 40px
+          line-height: 1.4em
+          &:last-child
+            margin-bottom: 0px
+      .row-refinements
+        .refinement-header
+          font-weight: bold
+          color: $lightGrayText
+          font-size: 0.95em
+        .media-refinement
+          .media-body
+            padding-left: 10px
+            a
+              color: $approach
+              font-size: 1.6em
+              line-height: 1.2em
+  .tooltip
+    .tooltip-inner
+      background-color: $linkText
+      font-site: 1.3em
+      text-align: left
+    .tooltip-arrow 
+      border-bottom-color: $linkText
+  .media-step
+    min-height: 50px
+    margin-bottom: 30px
+    .media-left
+      .fa-stack-2x
+        font-size: 3em
+      .fa-stack-1x
+        font-size: 1.75em
+        margin-left: 4px
+        margin-top: 7px
+    .media-body
+      padding-top: 5px
+      padding-left: 20px
+    &:last-child
+      margin-bottom: 0px
+
+#approach-comments
+  padding: 20px 0px
+
+#approach-share
+  padding: 20px 0px
+
+#approach-form
+  padding: 0px 0px 40px
+  .fa-close.fa-2x
+    @extend .pull-right
+    position: relative
+    top: 30px 
+    color: #999999
+  .approach_idea-block
+    .approach_idea-header
+      @extend .text-center
+      font-weight: bold
+      margin-bottom: 0px
+      text-transform: uppercase
+      color: $lightGrayText
+      font-size: 0.9em
+    .approach_idea-title
+      @extend .section-title
+      color: $approach !important
+      margin-bottom: 5px
+      a
+        font-weight: bold
+        color: $approach !important
+    .approach_idea-description
+      font-size: 1.1em
+      margin-bottom: 20px
+  .panel-approach
+    border: 1px solid #e3e3e3
+    +border-radius(10px)
+    .panel-heading
+      background-color: $approach
+      color: white
+      border-top-right-radius: 10px
+      border-top-left-radius: 10px
+      .panel-title
+        @extend .text-center
+        @extend .text-bold
+        text-transform: uppercase
+        color: white
+        line-height: 0.9em
+        letter-spacing: 1px
+        font-size: 1em
+    .panel-body
+      padding: 20px 50px 10px
+      label
+        @extend .label-borderless
+        text-transform: uppercase
+        color: $approach
+        font-size: 18px
+      #approach_title
+        @extend .input-borderless
+        @extend .text-center
+        font-weight: bold
+        font-size: 1.6em
+        color: $approach
+        padding: 6px 12px
+      #approach_description
+        @extend .input-borderless
+        line-height: 1.5em
+        box-shadow: none
+        border: none
+        resize: vertical
+      #approach_needs
+        @extend .input-borderless
+      #approach_steps
+        @extend .input-borderless
+      #approach_link
+        @extend .input-borderless
+        @extend .input-graybg
+      ul.icon-list
+        .fa
+          color: rgb(153, 153, 153)
+      #approach_refinement
+        padding: 0px 12px
+        .fa-close
+          @extend .pull-left
+          margin-right: 10px
+          color: #656565
+          &:hover, &:focus, &:active
+            cursor: pointer
+        .approach-refinement
+          @extend .help-block
+          font-size: 0.8em !important
+      .media-step
+        min-height: 50px
+        margin-bottom: 30px
+        .fa-close
+          color: #656565
+        .media-left
+          padding: 0px 12px
+          .fa-stack-2x
+            font-size: 3em
+          .fa-stack-1x
+            font-size: 1.75em
+            margin-left: 4px
+            margin-top: 7px
+        .media-body
+          padding-top: 5px
+          padding-left: 20px
+          textarea
+            @extend .input-borderless
+        &:last-child
+          margin-bottom: 0px
+      a.add_fields
+        &:hover
+          color: #999
+      .media-step-new
+        margin-top: -15px
+        @extend .media-step
+        .placeholder
+          font-size: 1em
+          color: #999
+          margin-top: 5px
+          margin-left: 15px
+
+#approach-refinement_parent
+  .approach-title
+    margin-bottom: 0px
+    a
+      color: $approach
+      font-size: 1.8em
+      line-height: 1em
+  .modal-body
+    max-height: 405px
+    overflow-y: auto
+    label
+      padding: 0px !important
+    .approach-embed
+      margin-bottom: 15px
+    .approach-description
+      line-height: 1.5em
+      margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0px
+    .media-step-refinement-parent
+      @extend .media-step
+  .modal-dialog
+    margin-top: 70px

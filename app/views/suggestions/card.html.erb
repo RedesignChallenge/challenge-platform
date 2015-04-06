@@ -1,0 +1,23 @@
+<div id='suggestion-<%= suggestion.id %>'>
+
+  <% if user_signed_in? && suggestion.user == current_user %>
+
+    <div ng-switch="suggestion_<%= suggestion.id %>_edit" ng-init="suggestion_<%= suggestion.id %>_edit=false">
+      <div class="well well-lg well-suggestion" ng-hide="suggestion_<%= suggestion.id %>_edit"> 
+        <%= render partial: 'suggestions/card/show', locals: { suggestion: suggestion } %>
+      </div>
+
+      <div class='well well-suggestion' ng-show="suggestion_<%= suggestion.id %>_edit">
+        <%= render partial: 'suggestions/card/edit', locals: { suggestion: suggestion } %>
+      </div>
+    </div>
+
+  <% else %>
+
+    <div class="well well-lg well-suggestion"> 
+      <%= render partial: 'suggestions/card/show', locals: { suggestion: suggestion } %>
+    </div>
+
+  <% end %>
+
+</div>

@@ -1,0 +1,3 @@
+<div class='suggestion-form'>
+  <%= render partial: 'suggestions/card/form', locals: { suggestion: suggestion, url: suggestion_path(id: suggestion.id), cancel_path: "suggestion_#{suggestion.id}_edit=false", submit_text: "Update" } %>
+</div>

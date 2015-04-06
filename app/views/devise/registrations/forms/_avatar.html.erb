@@ -1,0 +1,19 @@
+<div class='form-group' ng-init="avatar_option='<%= resource.avatar_option %>'">
+  <%= f.label :avatar, 'Profile Photo'.html_safe %><br>
+  <label class="radio-inline">
+    <%= f.radio_button :avatar_option, 'twitter', 'ng-model' => 'avatar_option' %> Use Twitter photo
+  </label>
+<!--   <label class="radio-inline">
+    <%#= f.radio_button :avatar_option, 'upload', 'ng-model' => 'avatar_option' %> Upload photo
+  </label> -->
+  <label class="radio-inline">
+    <%= f.radio_button :avatar_option, 'none', 'ng-model' => 'avatar_option' %> Rather not have a photo
+  </label>
+</div>
+
+<!-- <div class='form-group' ng-show='avatar_option=="upload"'>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
+    <%#= f.file_field :avatar, class: 'form-control' %>
+  </div>
+</div> -->

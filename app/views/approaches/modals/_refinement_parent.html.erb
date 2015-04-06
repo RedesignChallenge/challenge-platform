@@ -1,0 +1,50 @@
+<div class="modal fade" id="approach-refinement_parent">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class='modal-header'>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+        <p class='approach-title text-center'><%= link_to @approach.refinement_parent.title.html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.refinement_parent.approach_idea, @approach.refinement_parent) %></p>
+      </div>
+      <div class="modal-body">
+
+        <% if @approach.refinement_parent.embed.present? %>
+          <div class='approach-embed'><%= @approach.refinement_parent.embed.html_safe %></div>
+        <% end %>
+
+        <p class='approach-description'><%= @approach.refinement_parent.description.html_safe %></p>
+
+        <% if @approach.refinement_parent.needs.present? %>
+          <label>What You'll Need</label>
+          <p class='approach-description'><%= @approach.refinement_parent.needs.html_safe %></p>
+        <% end %>
+
+        <% if @approach.refinement_parent.steps.present? %>
+          <label>How To</label>
+          <% @approach.refinement_parent.steps.each_with_index do |step, index| %>
+            <div class='media media-step-refinement-parent'>
+              <div class='media-left'>
+                <span class="fa-stack">
+                  <i class="fa fa-circle-thin fa-approach fa-stack-2x"></i>
+                  <i class="fa fa-approach fa-stack-1x"><%= index+1 %></i>
+                </span>
+              </div>
+              <div class='media-body'>
+                <p class='approach-show-description'><%= step.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @approach.refinement_parent.link.present? && @approach.refinement_parent.embed.blank? %>
+          <label>Link</label>
+          <p class='approach-description'><%= link_to @approach.refinement_parent.link.html_safe, @approach.refinement_parent.link, target: '_blank' %></p>
+        <% end %>
+      </div>
+      <div class='modal-footer'>
+        <div class='center-block text-center'>
+          <%= link_to "Read More", challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.refinement_parent.approach_idea, @approach.refinement_parent), class: 'btn btn-info btn-rounded btn-sm' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

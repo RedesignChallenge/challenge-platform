@@ -1,0 +1,10 @@
+<div class='suggestion-form' id='new-suggestion' ng-switch='suggestion_draft' ng-init='suggestion_draft=false'>
+  <div class='well well-lg well-share' ng-hide='suggestion_draft' ng-click='suggestion_draft=true'>
+    <p><i class='fa fa-pencil'></i>&nbsp; Share a suggestion that you think we should tackle with the <%= "#{I18n.t(:project_name)}" %>!</p>
+  </div>
+
+  <div ng-show='suggestion_draft' class='well well-suggestion'>
+    <%= render partial: 'suggestions/card/form', locals: { suggestion: new_suggestion, url: suggestions_path, cancel_path: "suggestion_draft=false", submit_text: "Share" } %>
+    <div class='clearfix'></div>
+  </div>
+</div>

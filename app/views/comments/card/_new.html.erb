@@ -1,0 +1,38 @@
+<div id="<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" class="new-comment">
+  <div class='comment-header'>
+    <div class="media media-commenter pull-left">
+      <% if user_signed_in? %>
+        <p class="timestamp pull-right" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
+        <div class="media-left">
+          <% if current_user.avatar.present? %>
+            <%= image_tag(current_user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
+          <% else %>
+            <span class="fa-stack fa-lg comment-user-avatar">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-inverse fa-stack-1x">you</i>
+            </span>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <p class='name'><%= current_user.display_name %></p>
+          <p class='title'><%= current_user.display_organization %></p>
+        </div>
+      <% else %>
+        <p class="timestamp pull-right" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
+        <div class="media-left">
+          <span class="fa-stack fa-lg comment-user-avatar">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-inverse fa-stack-1x">you</i>
+          </span>
+        </div>
+        <div class="media-body">
+          <p class='name'>Your Name</p>
+          <p class='title'>Organization</p>
+        </div>
+      <% end %>
+      <div class='clearfix'></div>
+    </div>
+  </div>
+
+  <%= render partial: 'comments/card/form', locals: { comment: comment, url: comments_path, cancel_path: false, submit_text: 'Submit'} %>
+</div>

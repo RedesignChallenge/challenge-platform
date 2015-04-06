@@ -1,0 +1,2 @@
+module SolutionStoriesHelper
+end

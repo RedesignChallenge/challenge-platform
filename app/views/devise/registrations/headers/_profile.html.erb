@@ -1,0 +1,28 @@
+<div id='user-header'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+
+        <% if current_user.avatar.present? %>
+          <%= image_tag(current_user.avatar.profile.url, class: 'img-circle') %>
+        <% else %>
+          <span class="fa-stack fa-lg new-user-avatar">
+            <i class="fa fa-circle fa-stack-2x" style='color:<%= current_user.color %>'></i>
+            <i class="fa fa-inverse fa-stack-1x"><%= current_user.initials %></i>
+          </span>
+        <% end %>
+
+        <p class='name'><%= current_user.display_name %></p>
+        <p class='title'><%= current_user.display_organization %></p>
+        <p class='location'><%#= current_user.display_name %></p>
+
+        <ul class="nav nav-tabs nav-justified">
+          <li role="presentation" class='active'><%= link_to 'Profile', edit_user_registration_path(setting: 'profile') %></li>
+          <li role="presentation"><%= link_to 'Account', edit_user_registration_path(setting: 'account') %></li>
+          <li role="presentation"><%= link_to 'Notifications', edit_user_registration_path(setting: 'notifications') %></li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+
+    <div class='theme-block'>
+      <p class='theme-header'>Response to the Theme of</p>
+      <p class='theme-title'><%= link_to @experience.theme.title, challenge_experience_stage_path(@challenge, @experience.theme, anchor: "theme-#{@experience.theme.id}") %></p>
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <% if action_name == 'show' %>
+            <div class='center-block text-center' style='margin-bottom: 30px'>
+              <%= link_to "<i class='fa fa-arrow-left fa-2x' style='color:#969696'></i>".html_safe, challenge_experience_stage_path(@challenge, @experience.theme, anchor: "theme-#{@experience.theme.id}") %>
+            </div>
+          <% else %>
+            <p class='theme-description'><%= @experience.theme.description %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

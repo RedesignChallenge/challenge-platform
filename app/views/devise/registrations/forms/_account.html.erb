@@ -1,0 +1,51 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.hidden_field :setting, value: params[:setting] %>
+  <%= devise_error_messages! %>
+
+  <div class='row'>
+    <div class='col-xs-6 form-group'>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class='col-xs-6 form-group'>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :email, "Email Address" %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-envelope-o'></i></span>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class='form-group'>
+    <%= f.label :current_password, "Current Password <small>(we need your current password to change it)</small>".html_safe %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-key'></i></span>
+      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :password, "New Password <small>(Leave blank if you don't want to change it)</small>".html_safe %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-key'></i></span>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :password_confirmation, "Confirm Password <small>(Leave blank if you don't want to change it)</small>".html_safe %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class='fa fa-key'></i></span>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-submit btn-rounded btn-longer' %></div>
+<% end %>

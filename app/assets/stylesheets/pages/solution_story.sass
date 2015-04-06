@@ -1,0 +1,168 @@
+.solution_story-thumbnail
+  min-height: 550px
+  padding: 0px
+  +border-radius(5px)
+  .solution_story-content
+    padding: 20px
+    .solution_story-title
+      a
+        color: $solution
+        font-size: 1.4em
+        line-height: 1em
+    .solution_story-description
+      line-height: 1.5em
+    .solution_story-effort
+
+#solution_story-overview
+  padding: 0px 0px 40px
+  .solution_story-header
+    @extend .text-center
+    font-weight: bold
+    margin: 15px auto
+    text-transform: uppercase
+    color: $lightGrayText
+    font-size: 0.9em
+  .solution_story-title
+    @extend .text-center
+    @extend .text-solution
+    font-size: 2.8em
+    line-height: 1.1em
+    font-weight: bold
+  .solution_story-description
+    @extend .lead
+    font-weight: normal
+    line-height: 1.6em
+    margin-bottom: 20px
+  .well-solution_story
+    padding: 0px
+    background-color: white
+    +border-radius(10px)
+    #actions
+      a
+        color: $grayText
+    .fa-close
+      padding-right: 15px
+      padding-top: 15px
+    .solution_story-content
+      padding-top: 15px
+      .solution-show-title
+        @extend .section-title
+        @extend .text-solution
+      .row-solution
+        margin-top: 20px
+        margin-bottom: 30px
+        .media-author
+          margin-bottom: 30px
+          .media-left
+            height: 5em
+            .new-user-avatar
+              .fa-stack-2x
+                font-size: 4em !important
+                color: $newUser
+              .fa-stack-1x
+                margin-top: 1em
+                margin-left: 0.75em
+                font-weight: bold
+          .media-body
+            padding-left: 30px
+            .name
+              font-size: 1.3em
+              font-weight: bold
+              margin-bottom: 0px
+            .title
+              font-size: 0.85em
+              margin-bottom: 0px
+              color: $lightGrayText
+              font-weight: bold
+        .solution-credits
+          margin-bottom: 30px
+          .solution-credit
+            margin-bottom: 20px
+            .credit-heading
+              @extend .text-solution
+              @extend .text-bold
+            .credit-names
+              margin-top: 10px
+            &.solution-approach
+              .img-circle
+                width: 7.5em
+              .fa-stack
+                width: 6em
+                height: 6em
+                line-height: 6em
+                .fa-stack-2x
+                  font-size: 6em !important
+                  color: $newUser
+                .fa-stack-1x
+                  font-size: 2em
+                  font-weight: bold
+            &.solution-ideas
+              .img-circle
+                width: 4em
+              .fa-stack
+                width: 2.5em
+                height: 3.5em
+                line-height: 3.5em
+                .fa-stack-2x
+                  font-size: 3.5em !important
+                  color: $newUser
+                .fa-stack-1x
+                  margin-left: 0.25em
+                  font-weight: bold
+            &.solution-experiences
+              .img-circle
+                width: 2em
+        .solution-show-embed
+          margin-bottom: 20px
+        .solution-show-heading
+          @extend .text-bold
+          @extend .text-solution
+          text-transform: uppercase
+          font-size: 1.4em
+        .solution-show-description
+          margin-bottom: 40px
+          line-height: 1.4em
+          &:last-child
+            margin-bottom: 0px
+        .solution-show-file
+          margin-top: 20px
+          .fa-4x
+            color: $lightGrayText
+  .media-step
+    min-height: 50px
+    margin-bottom: 30px
+    .media-left
+      .fa-stack-2x
+        font-size: 3em
+      .fa-stack-1x
+        font-size: 1.75em
+        margin-left: 4px
+        margin-top: 7px
+    .media-body
+      padding-top: 5px
+      padding-left: 20px
+    &:last-child
+      margin-bottom: 0px
+
+#solution_story-comments
+  padding: 20px 0px
+
+#solution_story-share
+  padding: 20px 0px
+
+.solution-effort
+  margin-bottom: 15px
+  @extend .badge
+  padding: 5px
+  border-radius: 20px
+  background-color: #E6E7E8
+  .badge
+    border-radius: 20px
+    padding: 5px 15px
+    color: $text
+    background-color: #E6E7E8
+    &:first-child
+      background-color: white
+    &.active
+      background-color: $solution
+      color: white

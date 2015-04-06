@@ -1,0 +1,54 @@
+  <div class='experience-content'>
+    <% if experience.embed.present? %>
+      <div class='row'>
+        <div class='col-sm-6'>
+          <p class='experience-description'><%= experience.description %></p>
+        </div>
+        <div class='col-sm-6'>
+          <%= experience.embed.html_safe %>
+        </div>
+      </div>
+    <% else %>
+      <p class='experience-description'><%= experience.description %></p>
+      <% unless experience.link.blank? %>
+        <p class='experience-link'><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class='experience-actions'>
+    <ul id='actions' class='list-inline'>
+      <li><%= link_to "#{time_ago_in_words(experience.created_at)} ago", challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience), class: 'list-link' %></li>
+      <li>&bull;</li>
+
+      <li><%= link_to "<i class='fa fa-comments-o'></i> <span class='hidden-xs'>Comment</span> #{experience.comment_threads.present? ? "(#{experience.comment_threads.count})" : ''}".html_safe, '#', 'ng-click' => "experience_#{experience.id}_discussion=!experience_#{experience.id}_discussion", onclick: 'return false;', class: 'list-link' %></li>
+
+      <li id="experience-<%= experience.id %>-like">
+        <%= render partial: 'experiences/card/like', locals: { challenge: @challenge, experience_stage: experience.experience_stage, experience: experience }%>
+      </li>
+
+      <li id='experience-<%= experience.id %>-share'>
+        <%= link_to '#', class: 'list-link', onclick: 'return false;', data: { container: 'body', toggle: 'popover', placement: 'bottom', html: true, trigger: 'focus', delay: {'hide': 1000}, content: "#{render partial: 'layouts/share_popover', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, experience.experience_stage, experience.theme, experience), title: @challenge.title.html_safe, description: experience.description.html_safe, hashtag: @challenge.hashtag }}"} do  %>
+          <i class='fa fa-share-alt'></i> <span class='hidden-xs'>Share</span>
+        <% end %>
+      </li>
+
+      <% if user_signed_in? && experience.user == current_user %>
+        <li>
+          <%= link_to "<i class='fa fa-edit'></i> <span class='hidden-xs'>Edit</span>".html_safe, '#', 'ng-click' => "experience_#{experience.id}_edit=true", onclick: 'return false;', class: 'list-link' %>
+        </li>
+        <li>
+          <%= link_to "<i class='fa fa-trash'></i> <span class='hidden-xs'>Delete</span>".html_safe, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience.id), method: :delete, data: { confirm: "Are you sure you want to delete your experience?"} , class: 'list-link' %>
+        </li>
+      <% else %>
+        <!-- <li class='dropdown'>
+          <a id="experience-<%= experience.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
+            <i class='fa fa-ellipsis-h'></i>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="experience-<%= experience.id %>-other">
+            <li role="presentation"><%#= link_to "<i class='fa fa-flag'></i> Report".html_safe, '#' %></li>
+          </ul>
+        </li> -->
+      <% end %>
+    </ul>
+  </div>

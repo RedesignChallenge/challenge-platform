@@ -1,0 +1,187 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id='approach-overview'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <%= render partial: 'approaches/header' %>
+
+        <div class='well well-approach'>
+          <span class="label label-approach pull-left"><i class='fa fa-flask'></i> Approach</span>
+          <div class='clearfix'></div>
+
+          <div class='approach-content'>
+            <div class='row row-approach'>
+              <div class="col-sm-4">
+
+                <div class="media media-author">
+                  <div class="media-left">
+                    <% if @approach.user.avatar.present? %>
+                      <%= image_tag(@approach.user.avatar.profile.url, class: 'img-circle', style: 'width:5.5em') %>
+                    <% else %>
+                      <% if user_signed_in? && current_user == @approach.user %>
+                        <span class="fa-stack fa-lg new-user-avatar">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-inverse fa-stack-1x">you</i>
+                        </span>
+                      <% else %>
+                        <span class="fa-stack fa-lg new-user-avatar">
+                          <i class="fa fa-circle fa-stack-2x" style='color:<%= @approach.user.color %>'></i>
+                          <i class="fa fa-inverse fa-stack-1x"><%= @approach.user.initials %></i>
+                        </span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="media-body">
+                    <p class='name'><%= @approach.user.display_name %></p>
+                    <p class='title'><%= @approach.user.display_organization %></p>
+                  </div>
+                </div>
+
+                <div class='row'>
+                  <div class='col-xs-7'>
+
+                    <% if user_signed_in? && @approach.user == current_user %>
+                      <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
+                        <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
+                        <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), method: :delete, data: { confirm: "Are you sure you want to delete your approach?" }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                      </div>
+                    <% end %>
+                    
+                    <div id='approach-<%= @approach.id %>-like'>
+                      <%= render partial: 'approaches/like' %>
+                    </div>
+
+                    <div id='approach-<%= @approach.id %>-share'>
+                      <%= render partial: 'layouts/share_button', locals: { url: challenge_approach_stage_approach_idea_approach_url(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), title: @approach.title.html_safe, description: @approach.description.html_safe, hashtag: @challenge.hashtag } %>
+                    </div>
+
+                    <%= link_to new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, refinement_parent_id: @approach.id), class: 'btn btn-block btn-sm btn-rounded btn-info', data: { toggle: 'popover', trigger: 'hover', placement: 'bottom', container: '#approach-overview', html: 'true', title: "<b class='text-center'>Inspired to make this approach better?</b>", content: "Create a refined version. Refinements are treated as separate approaches, but refer back to the original with a linked reference."}, id: 'refinement-link' do %>
+                      <i class="fa fa-pencil"></i> Refine
+                    <% end %>
+                    <script>$(function(){$("#refinement-link").popover('show');});</script>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class='col-sm-8'>
+                <p class='approach-show-title'><%= @approach.title.html_safe %></p>
+                
+                <% if @approach.embed.present? %>
+                  <div class='approach-show-embed'><%= @approach.embed.html_safe %></div>
+                <% end %>
+                
+                <p class='approach-show-description'><%= @approach.description.html_safe %></p>
+
+                <% if @approach.needs.present? %>
+                  <p class='approach-show-heading'>What You'll Need</p>
+                  <p class='approach-show-description'><%= @approach.needs.html_safe %></p>
+                <% end %>
+
+                <% if @approach.steps.present? %>
+                  <p class='approach-show-heading'>How To</label>
+                  <% @approach.steps.each_with_index do |step, index| %>
+                    <div class='media media-step'>
+                      <div class='media-left'>
+                        <span class="fa-stack">
+                          <i class="fa fa-circle-thin fa-approach fa-stack-2x"></i>
+                          <i class="fa fa-approach fa-stack-1x"><%= index+1 %></i>
+                        </span>
+                      </div>
+                      <div class='media-body'>
+                        <p class='approach-show-description'><%= step.description %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+
+                <% if @approach.link.present? && @approach.embed.blank? %>
+                  <p class='approach-show-heading'>Link</p>
+                  <p class='approach-show-description'><%= link_to @approach.link.html_safe, @approach.link, target: '_blank' %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="row row-refinements">
+              <div class='col-sm-4'>
+                <% if @approach.refinement_parent.present? %>
+                  <p class='refinement-header'>Based On</p>
+
+                  <div class="media media-refinement">
+                    <div class="media-left">
+                      <% if @approach.refinement_parent.user.avatar.present? %>
+                        <%= image_tag(@approach.refinement_parent.user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
+                      <% else %>
+                        <% if user_signed_in? && current_user == @approach.refinement_parent.user %>
+                          <span class="fa-stack fa-lg new-user-avatar">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-inverse fa-stack-1x">you</i>
+                          </span>
+                        <% else %>
+                          <span class="fa-stack fa-lg new-user-avatar">
+                            <i class="fa fa-circle fa-stack-2x" style='color:<%= @approach.refinement_parent.user.color %>'></i>
+                            <i class="fa fa-inverse fa-stack-1x"><%= @approach.refinement_parent.user.initials %></i>
+                          </span>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="media-body">
+                      <%= link_to @approach.refinement_parent.title, challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, @approach.refinement_parent.approach_idea, @approach.refinement_parent) %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-sm-8">
+                <% if @approach.refinements.present? %>
+                  <p class='refinement-header'><%= pluralize(@approach.refinements.count, 'Refinement') %></p>
+
+                  <div class='row'>
+                    <% @approach.refinements.each do |refinement| %>
+                      <%= render partial: 'approaches/card/show', locals: { approach: refinement, columns: 'col-sm-6' } %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='approach-comments'>
+  <div class='container'>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <%= render partial: 'comments/discussion', locals: { commentable: @approach } %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='approach-share'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <p class="section-title-share">Know people who have something to add to this conversation?</p>
+
+        <div class="row">
+          <div class='col-sm-10 col-sm-offset-1'>
+            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+          </div>
+        </div>
+
+        <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_approach_idea_approach_url(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), title: @approach.title.html_safe, description: @approach.description.html_safe, hashtag: @challenge.hashtag } %>
+        
+      </div>
+    </div>
+  </div>
+</div>
