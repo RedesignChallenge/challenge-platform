@@ -13,6 +13,17 @@ gem 'friendly_id'
 gem 'numbers_and_words'
 gem 'cocoon'
 
+## FRONT END JS ASSETS
+source 'https://rails-assets.org' do
+  gem 'rails-assets-underscore'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-angular-resource'
+  gem 'rails-assets-angular-sanitize'
+  gem 'rails-assets-angular-animate'
+  gem 'rails-assets-angular-ui-select2'
+  gem 'rails-assets-angular-scroll'
+end
+
 ## FRONT-END GEMS
 gem 'jquery-rails'
 gem 'coffee-rails'
@@ -21,6 +32,7 @@ gem 'autoprefixer-rails'
 gem 'select2-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'bootstrap-switch-rails'
 gem 'bourbon', '~> 4.2.1'
 
 ## FILE/PHOTO UPLOADS
@@ -46,7 +58,8 @@ gem 'rails_admin'
 gem 'kaminari'
 
 ## MAILERS
-gem 'mandrill_mailer'
+gem 'mandrill-api'
+gem 'mailkick'
 
 ## PERFORMANCE ENHANCEMENTS
 gem 'multi_fetch_fragments'
@@ -90,15 +103,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-end
-
-## FRONT END JS ASSETS
-source 'https://rails-assets.org' do
-  gem 'rails-assets-underscore'
-  gem 'rails-assets-angular'
-  gem 'rails-assets-angular-resource'
-  gem 'rails-assets-angular-sanitize'
-  gem 'rails-assets-angular-animate'
-  gem 'rails-assets-angular-ui-select2'
-  gem 'rails-assets-angular-scroll'
 end

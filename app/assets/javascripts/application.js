@@ -21,5 +21,6 @@
 //= require angular-scroll
 //= require select2
 //= require angular-ui-select2
+//= require bootstrap-switch
 //= require cocoon
 //= require_tree .

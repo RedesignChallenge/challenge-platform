@@ -1,30 +1,19 @@
 <div class="row" style='margin-bottom: 15px'>
   <div class='col-sm-10'>
-    <span class="suggestion-title"><%= suggestion.title %></span>
-    <% if user_signed_in? && suggestion.user == current_user %>
-      <small style='margin-left:10px'>
-        <%= link_to "<i class='fa fa-edit'></i> <span class='hidden-xs'>Edit</span>".html_safe, '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' %> 
-        &nbsp; &bull; &nbsp;
-        <%= link_to "<i class='fa fa-trash'></i> <span class='hidden-xs'>Delete</span>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: "Are you sure you want to delete your suggestion?"}, class: 'list-link' %>
-      </small>
-    <% end %>
+    <h3 class="suggestion-title text-black">
+      <%= suggestion.title %>
+      <% if user_signed_in? && suggestion.user == current_user %>
+        <small style='margin-left:10px'>
+          <%= link_to "<i class='fa fa-edit'></i>".html_safe, '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' %> 
+          &nbsp; &bull; &nbsp;
+          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: "Are you sure you want to delete your suggestion?"}, class: 'list-link' %>
+        </small>
+      <% end %>
+    </h3>
   </div>
 
   <div class='col-sm-2'>
-    <ul class='actions'>
-      <li><%= "#{time_ago_in_words(suggestion.created_at)} ago" %></li>
-      <!-- <li>&bull;</li> -->
-      <% unless user_signed_in? && suggestion.user == current_user %>
-        <!-- <li class='dropdown'>
-          <a id="suggestion-<%= suggestion.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
-            <i class='fa fa-ellipsis-h'></i>
-          </a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="suggestion-<%= suggestion.id %>-other">
-            <li role="presentation"><%#= link_to "<i class='fa fa-flag'></i> Report".html_safe, '#' %></li>
-          </ul>
-        </li> -->
-      <% end %>
-    </ul>
+    <p class='suggestion-time'><%= "#{time_ago_in_words(suggestion.created_at)} ago" %></p>
   </div>
 </div>
 

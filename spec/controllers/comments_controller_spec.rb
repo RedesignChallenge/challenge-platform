@@ -4,7 +4,7 @@ describe CommentsController do
 
   let(:user) { FactoryGirl.create(:user, email: Faker::Internet.email) }
   let(:idea) {
-    idea = FactoryGirl.create(:idea)
+    idea = FactoryGirl.create(:idea, user: FactoryGirl.create(:user))
     idea_stage = FactoryGirl.create(:idea_stage)
     challenge = FactoryGirl.create(:challenge)
     problem_statement = FactoryGirl.create(:problem_statement)
@@ -38,6 +38,7 @@ describe CommentsController do
         expect(assigns(:comment).body).to eq 'This is a body of text!'
         expect(assigns(:comment).link).to eq 'http://youtu.be/rJGifTou5FE'
         expect(assigns(:comment).commentable).to eq idea
+        expect(assigns(:comment).persisted?).to eq true
       end
 
       context 'with a comment that can be saved' do
@@ -45,13 +46,18 @@ describe CommentsController do
         it 'updates the flash message appropriately' do
           post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
-          expect(flash[:success]).to eq "You've successfully shared your comment."
+          expect(flash[:success]).to eq "You've successfully shared your comment. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
         end
 
         it 'redirects to the correct path for this particular commentable entity' do
           post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
           expect(response).to redirect_to("/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}")
+        end
+
+        it 'queues a mail job' do
+          post :create, comment: {body: "This is for emails", commentable_type: 'Idea', commentable_id: idea.id}
+          expect(Sidekiq::Extensions::DelayedMailer.jobs.size).to eq 1
         end
       end
 
@@ -64,6 +70,12 @@ describe CommentsController do
 
           expect(assigns(:comment).parent_id).to eq existing_comment.id
           expect(existing_comment.has_children?).to be true
+        end
+
+
+        it 'queues two mail jobs' do
+          post :create, comment: {body: "This is for emails", commentable_type: 'Idea', commentable_id: idea.id, temporal_parent_id: existing_comment.id}
+          expect(Sidekiq::Extensions::DelayedMailer.jobs.size).to eq 2
         end
       end
 
@@ -105,7 +117,7 @@ describe CommentsController do
 
   describe 'DELETE #destroy' do
 
-    let(:other_user) { FactoryGirl.create(:user, email: 'evil_user@malicious.com') }
+    let(:other_user) { FactoryGirl.create(:user) }
 
     before(:each) do
       sign_in user
@@ -131,7 +143,7 @@ describe CommentsController do
     it 'updates the flash message appropriately' do
       delete :destroy, id: comment.id
 
-      expect(flash[:success]).to eq "You've successfully deleted your comment."
+      expect(flash[:success]).to eq "You've successfully deleted your comment. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
     end
 
     context 'if the commented user and the logged in user are not the same' do

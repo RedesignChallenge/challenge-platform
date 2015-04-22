@@ -1,34 +1,16 @@
 #experience_stage-overview
   padding: 30px 0px
   background-color: white
-  color: $experience
-  .experience_stage-icon
-    .fa
-      font-size: 8em
-      color: $experienceLight
-  .experience_stage-title
-    font-size: 3.2em
-    line-height: 1.1em
-    font-weight: bold
-    margin-bottom: 15px
-  .experience_stage-description
-    font-size: 1.4em
-    line-height: 1.3em
-    color: $text
-    font-weight: lighter
-  .challenge-hashtag
-    @extend .pull-left
-    .fa
-      font-size: 1.6em
-      color: $lightGrayText
-    a
-      font-size: 1.3em
-      color: $text
-      font-weight: lighter
+  h1
+    margin-bottom: 10px
+  .fa-comments
+    @extend .text-experience-light
+    top: 0em
+    font-size: 18em
+    line-height: 0.5em    
 
 #experience_stage-navigation
   @extend .hidden-xs
-  @extend .text-center
   background-color: $experience
   color: white
   z-index: 1000
@@ -39,59 +21,13 @@
     top: 0
     & + #experience_stage-content
       margin-top: 110px
-      // &.row-experience:before
-      //   display: block
-      //   content: " "
-      //   margin-top: -80px
-      //   height: 80px
-      //   visibility: hidden
   .nav-link
-    padding-top: 10px
-    padding-bottom: 10px
-    min-height: 60px
-    font-size: 1.3em
-    font-weight: lighter
-    border-right: 1px solid #D8D9DA
-    .fa-play
-      color: transparent
-      position: absolute
-      text-align: center
-      bottom: -20px
-      left: 43%
-      z-index: -1
-    &:last-child
-      border-right: none
     &:hover,&:focus,&.active
-      background-color: white
-      color: $experience
-      cursor: pointer
-    &.active
-      .fa-play
-        color: white
-    .theme-cta
-      font-size: 0.7em
-      margin-bottom: 0px
-      font-weight: lighter
+      @extend .text-experience
+
 
 #experience_stage-content
   padding: 20px 0px
   background-color: $lightestGrayBG
   &.affix
     margin-top: 40px
-  .theme-block
-    margin-bottom: 50px
-    .theme-header
-      @extend .text-center
-      font-weight: bold
-      margin-bottom: 0px
-      text-transform: uppercase
-      color: $lightGrayText
-      font-size: 0.9em
-    .theme-title
-      @extend .section-title
-      @extend .text-experience
-      margin-bottom: 10px
-  .row-count
-    .col-xs-3
-      a
-        margin-top: 35px

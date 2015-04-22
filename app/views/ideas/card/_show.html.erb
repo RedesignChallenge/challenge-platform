@@ -2,11 +2,14 @@
 
   <div class="thumbnail idea-thumbnail">
     <div class="folded-corner">
-      <p class='idea-title'><%= link_to idea.title.truncate(50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></p>
-      <p class='idea-description'><%= idea.description.truncate(200) %></p>
+      <div class='idea-title'>
+        <p class='text-xlarge text-lighter text-normal'><%= link_to idea.title.truncate(50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-xlarge text-idea text-normal' %></p>
+      </div>
+
+      <p><%= idea.description.truncate(200) %></p>
 
       <% if idea.refinement_parent %>
-        <p class='idea-refinement'>
+        <p class='text-xsmall-normal'>
           <i class='fa fa-pencil'></i> Refinement of 
           <%= link_to idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.refinement_parent) %>
         </p>
@@ -15,37 +18,35 @@
 
     <div class='idea-actions'>
       <ul id='actions' class='list-inline pull-left'>
-        <li><%= link_to "<i class='fa fa-comments-o'></i> #{idea.comment_threads.present? ? idea.comment_threads.count : ''}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) %></li>
+        <li id="idea-<%= idea.id %>-comments">
+          <%= link_to "<i class='fa fa-comments-o'></i> #{idea.comment_threads.present? ? idea.comment_threads.count : ''}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) %>
+        </li>
 
         <li id="idea-<%= idea.id %>-like">
           <%= render partial: 'ideas/card/like', locals: { idea: idea } %>
         </li>
-        
-        <% if user_signed_in? && idea.user == current_user %>
-          <li>
-            <%= link_to "<i class='fa fa-edit'></i><span class='hidden-xs'> Edit</span>".html_safe, edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'list-link' %>
-            &nbsp; &bull; &nbsp; 
-            <%= link_to "<i class='fa fa-trash'></i><span class='hidden-xs'> Delete</span>".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), method: :delete, data: { confirm: "Are you sure you want to delete your idea?"} , class: 'list-link' %>
-          </li>
-        <% end %>
+
+        <!-- <li id='idea-<%#= idea.id %>-share'> -->
+          <%#= link_to 'Share', '#', class: 'list-link', onclick: 'return false;', data: { container: 'body', toggle: 'popover', placement: 'bottom', html: true, trigger: 'focus', delay: {'hide': 1000}, content: "#{render partial: 'layouts/share_popover', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, idea.idea_stage, idea.problem_statement, idea), title: idea.title.html_safe, description: idea.description.html_safe, hashtag: @challenge.hashtag }}"} %>
+        <!-- </li> -->
+
+        <li class='dropdown'>
+          <a id="idea-<%= idea.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
+            <i class='fa fa-ellipsis-h'></i>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="idea-<%= idea.id %>-other">
+            <% if user_signed_in? && idea.user == current_user %>
+              <li><%= link_to 'Edit', edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
+              <li><%= link_to 'Delete', challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: "Are you sure you want to delete your idea?"} %></li>
+            <% else %>
+              <li role="presentation"><%= link_to 'Flag', '#' %></li>
+            <% end %>
+          </ul>
+        </li>
       </ul>
       
       <div class='pull-right'>
-        <% if idea.user.avatar.present? %>
-          <%= image_tag(idea.user.avatar.profile.url, class: 'img-circle', style: 'width:2.25em') %>
-        <% else %>
-          <% if user_signed_in? && current_user == idea.user %>
-            <span class="fa-stack fa-lg new-user-avatar">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-inverse fa-stack-1x">you</i>
-            </span>
-          <% else %>
-            <span class="fa-stack fa-lg new-user-avatar">
-              <i class="fa fa-circle fa-stack-2x" style='color:<%= idea.user.color %>'></i>
-              <i class="fa fa-inverse fa-stack-1x"><%= idea.user.initials %></i>
-            </span>
-          <% end %>
-        <% end %>
+        <%= render partial: 'shared/avatar', locals: {user: idea.user, avatar_style: 'width:2.25em;top: 0.5em;position: relative;' } %>
       </div>
     </div>
 

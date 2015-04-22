@@ -22,9 +22,13 @@
 require 'webmock/rspec'
 require 'devise'
 require 'database_cleaner'
-
+require 'carrierwave'
 WebMock.disable_net_connect!(allow_localhost: true)
 
+class CarrierWave::Mount::Mounter
+  def store!
+  end
+end
 
 RSpec.configure do |config|
 
@@ -115,5 +119,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    # FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
   end
 end

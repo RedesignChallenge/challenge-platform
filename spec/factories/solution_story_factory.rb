@@ -1,3 +1,4 @@
+ 
 # == Schema Information
 #
 # Table name: solution_stories
@@ -19,5 +20,6 @@ FactoryGirl.define do
     title 'This is a solution story title from FactoryGirl.'
     description 'This is a solution story from FactoryGirl.'
   end
+
 
 end

@@ -13,7 +13,7 @@ private
     like = session[:like]
     likeable = eval("#{like[:likeable_type].titleize}.find_by(id: #{like[:likeable_id]})")
     if likeable && likeable.liked_by(current_user, vote_scope: like[:vote_scope], vote_weight: like[:vote_weight])
-      flash[:success] = "You've successfully #{like[:weight].present? ? 'voted for' : 'liked'} this #{likeable.class.name.downcase}."
+      flash[:success] = "You've successfully #{like[:vote_weight].present? ? 'voted for' : 'liked'} this #{likeable.class.name.downcase}."
       store_location_for(:user, after_update_object_path_for(likeable))
     end
   rescue
@@ -23,7 +23,8 @@ private
     object = session[:object]
     object.user = current_user
     if object.save
-      flash[:success] = "You've successfully shared your #{object.class.name.downcase}."
+      object.send_notifications if object.class == Comment && !Rails.env.development?
+      flash[:success] = object_flash_message_for(object)
       store_location_for(:user, after_update_object_path_for(object))
     end
   rescue

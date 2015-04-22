@@ -3,6 +3,7 @@ class IdeasController < ApplicationController
   before_action :authenticate_user!,  except: [:new, :create, :show, :like]
   before_action :load_idea,           only:   [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authorize_user!,     only:   [:edit, :update, :destroy]
+  before_action :set_published_at!,   only: [:create, :update]
 
   def new
     @idea = Idea.new(problem_statement_id: params[:problem_statement_id], refinement_parent_id: params[:refinement_parent_id])
@@ -13,7 +14,7 @@ class IdeasController < ApplicationController
     if user_signed_in?
       @idea.user = current_user
       if @idea.save
-        flash[:success] = "You've successfully shared your idea."
+        flash[:success] = object_flash_message_for(@idea)
         redirect_to after_update_object_path_for(@idea)
       else
         render :new
@@ -35,8 +36,9 @@ class IdeasController < ApplicationController
   end
 
   def update
+    published = !@idea.published_at? && idea_params[:published_at].present?
     if @idea.update(idea_params)
-      flash[:success] = "You've successfully updated your idea."
+      flash[:success] = object_flash_message_for(@idea, {published: published})
       redirect_to after_update_object_path_for(@idea)
     else
       render :edit
@@ -45,7 +47,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea.destroy
-    flash[:success] = "You've successfully deleted your idea."
+    flash[:success] = object_flash_message_for(@idea)
     redirect_to after_update_object_path_for(@idea)
   end
 
@@ -74,11 +76,15 @@ class IdeasController < ApplicationController
 private
 
   def idea_params
-    params.require(:idea).permit(:title, :description, :impact, :implementation, :link, :problem_statement_id, :refinement_parent_id)
+    params.require(:idea).permit(:title, :description, :impact, :implementation, :link, :problem_statement_id, :refinement_parent_id, :published_at)
   end
 
   def load_idea
     @idea = Idea.find(params[:id])
+    unless @idea.user == current_user || @idea.published_at?
+      flash[:error] = 'Sorry, that idea has not been published yet.'
+      redirect_to challenge_idea_stage_path(@challenge, @idea.idea_stage)
+    end
     @idea_stage = @idea.idea_stage
   end
 
@@ -87,6 +93,10 @@ private
       flash[:danger] = 'You do not have access to that area or operation.'
       redirect_to after_update_object_path_for(@idea)
     end
+  end
+
+  def set_published_at!
+    params[:idea][:published_at] = params[:idea][:published] == 'true' ? Time.now : nil
   end
 
 end

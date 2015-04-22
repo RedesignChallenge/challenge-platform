@@ -3,7 +3,7 @@
 This application requires extra utilities to be installed to be fully functional:
 
  - Sidekiq
- - PostgresQL
+ - PostgresQL with the HStore extension
  - Redis
  - Memcached
 
@@ -13,13 +13,35 @@ All dependencies should be listed otherwise in the Gemfile.
 
 ```bundle install```
 
-== Seeding the Database
+== Seeding and Recreating the Database
 
 ```rake db:recreate```
 
 == Running the Test Suite
 
 ```bundle exec rspec```
+
+== .yml configuration
+
+You will require a .yml file to live in config/database.yml.  For local deployment, you only require a `development` and `test` section.  For deployments to production, you will require a `production` section as well.
+
+A sample:
+
+    development:
+      adapter: <DB_ADAPTER>
+      database: <DB_NAME>
+      username: <DB_USERNAME>
+      password: <DB_PASSWORD>
+      host: <DB_HOST> (locally can be localhost)
+
+    test:
+      adapter: <DB_ADAPTER>
+      database: <DB_NAME>_test
+      username: <DB_USERNAME>
+      password: <DB_PASSWORD>
+      host: localhost
+
+
 
 == .env configuration
 
@@ -38,15 +60,6 @@ You will require a file called `.env` in the root of the folder.  The following 
   TWITTER_ACCESS_SECRET
   GMAIL_USERNAME
   SIDEKIQ_CONCURRENCY
-  DISQUS_KEY
-  DISQUS_SECRET
-  DISQUS_SHORTNAME
-  DB_USERNAME
-  DB_PASSWORD
-  DB_DEV_USERNAME
-  DB_DEV_PASSWORD
-  DB_TEST_USERNAME
-  DB_TEST_PASSWORD
   MEMCACHIER_SERVERS
   DEPLOY_REMOTE (only concerned with the seeding of data; the three supported values are local, staging, and production)
   SITE_PROTOCOL (should be http or https)

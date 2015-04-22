@@ -25,14 +25,9 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title-share">Know people who have something to add to this conversation?</p>
-
-        <div class="row">
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
-          </div>
-        </div>
-
+        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
+        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        
         <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_approach_idea_url(@challenge, @approach_idea.approach_stage, @approach_idea), title: @approach_idea.title.html_safe, description: @approach_idea.description.html_safe, hashtag: @challenge.hashtag } %>
         
       </div>

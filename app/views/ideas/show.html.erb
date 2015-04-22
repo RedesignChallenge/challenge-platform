@@ -17,77 +17,84 @@
 
                 <div class="media media-author">
                   <div class="media-left">
-                    <% if @idea.user.avatar.present? %>
-                      <%= image_tag(@idea.user.avatar.profile.url, class: 'img-circle', style: 'width:5.5em') %>
-                    <% else %>
-                      <% if user_signed_in? && current_user == @idea.user %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x"></i>
-                          <i class="fa fa-inverse fa-stack-1x">you</i>
-                        </span>
-                      <% else %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x" style='color:<%= @idea.user.color %>'></i>
-                          <i class="fa fa-inverse fa-stack-1x"><%= @idea.user.initials %></i>
-                        </span>
-                      <% end %>
-                    <% end %>
+                    <%= render partial: 'shared/avatar', locals: { user: @idea.user, avatar_style: 'width:4.5em' } %>
                   </div>
-                  <div class="media-body">
-                    <p class='name'><%= @idea.user.display_name %></p>
-                    <p class='title'><%= @idea.user.display_organization %></p>
+                  <div class="media-body" style='<%= 'padding-left: 0em' if @idea.user.avatar.present? %>'>
+                    <div class='user-caption' style='<%= 'margin-top: 0.5em' if @idea.user.avatar.present? %>'>
+                      <p class='user-name'><%= link_to "#{@idea.user.display_name}", user_path(@idea.user) %></p>
+                      <p class='user-title text-default'><%= @idea.user.display_organization %></p>
+                      <p class='user-link'><%= "#{time_ago_in_words(@idea.created_at)} ago".titleize %></p>
+                    </div>
                   </div>
                 </div>
 
                 <div class='row'>
-                  <div class='col-xs-7'>
+                  <div class='col-xs-8'>
 
-                    <% if user_signed_in? && @idea.user == current_user %>
-                      <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
-                        <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
-                        <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), method: :delete, data: { confirm: "Are you sure you want to delete your idea?" } , class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                    <% if @idea.published_at? %>
+                      <% if user_signed_in? && @idea.user == current_user %>
+                        <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
+                          <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
+                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), method: :delete, data: { confirm: "Are you sure you want to delete your idea?" } , class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                        </div>
+                      <% end %>
+
+                      <div id='idea-<%= @idea.id %>-like'>
+                        <%= render partial: 'ideas/like' %>
                       </div>
-                    <% end %>
-                    
-                    <div id='idea-<%= @idea.id %>-like'>
-                      <%= render partial: 'ideas/like' %>
-                    </div>
 
-                    <div id='idea-<%= @idea.id %>-share'>
-                      <%= render partial: 'layouts/share_button', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), title: @idea.title.html_safe, description: @idea.description.html_safe, hashtag: @challenge.hashtag } %>
-                    </div>
+                      <div id='idea-<%= @idea.id %>-discuss' style='margin-bottom:10px'>
+                        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#idea-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                      </div>
 
-                    <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, refinement_parent_id: @idea.id), class: 'btn btn-block btn-sm btn-rounded btn-info', data: { toggle: 'popover', trigger: 'hover', placement: 'bottom', container: '#idea-overview', html: 'true', title: "<b class='text-center'>Inspired to make this idea better?</b>", content: "Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference."}, id: 'refinement-link' do %>
-                      <i class="fa fa-pencil"></i> <span>Refine</span>
+                      <div id='idea-<%= @idea.id %>-share'>
+                        <%= render partial: 'layouts/share_button', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), title: @idea.title.html_safe, description: @idea.description.html_safe, hashtag: @challenge.hashtag } %>
+                      </div>
+
+                      <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, refinement_parent_id: @idea.id), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', data: { toggle: 'tooltip', trigger: 'hover', placement: 'bottom', container: '#idea-overview', html: 'true', title: "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"}, id: 'refinement-link' do %>
+                        <i class="fa fa-pencil"></i> <span>Refine</span>
+                      <% end unless @challenge.stage_number > 2 %>
+                      <script>$(function(){setTimeout(function(){$("#refinement-link").tooltip('show');}, 2000);});</script>
+                    <% else %>
+                      <%= render partial: 'shared/draft', locals: { edit_path: edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), delete_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea) } %>
                     <% end %>
-                    <script>$(function(){$("#refinement-link").popover('show');});</script>
 
                   </div>
                 </div>
               </div>
 
               <div class='col-sm-8'>
-                <p class='idea-show-title'><%= @idea.title.html_safe %></p>
+                <h1 class='text-idea' style='margin-top:0em'><%= @idea.title.html_safe %></h1>
                 
                 <% if @idea.embed.present? %>
-                  <div class='idea-show-embed'><%= @idea.embed.html_safe %></div>
+                  <div class='content-block'>
+                    <%= @idea.embed.html_safe %>
+                  </div>
                 <% end %>
                 
-                <p class='idea-show-description'><%= @idea.description.html_safe %></p>
+                <div class='content-block'>
+                  <p><%= @idea.description.html_safe %></p>
+                </div>
 
                 <% if @idea.impact.present? %>
-                  <p class='idea-show-heading'>Potential Impact</p>
-                  <p class='idea-show-description'><%= @idea.impact.html_safe %></p>
+                  <div class='content-block'>
+                    <p class='text-idea text-large text-bold text-uppercase'>Potential Impact</p>
+                    <p><%= @idea.impact.html_safe %></p>
+                  </div>
                 <% end %>
 
                 <% if @idea.implementation.present? %>
-                  <p class='idea-show-heading'>Possible Implementation</label>
-                  <p class='idea-show-description'><%= @idea.implementation.html_safe %></p>
+                  <div class='content-block'>
+                    <p class='text-idea text-large text-bold text-uppercase'>Possible Implementation</p>
+                    <p><%= @idea.implementation.html_safe %></p>
+                  </div>
                 <% end %>
 
                 <% if @idea.link.present? && @idea.embed.blank? %>
-                  <p class='idea-show-heading'>Link</p>
-                  <p class='idea-show-description'><%= link_to @idea.link.html_safe, @idea.link, target: '_blank' %></p>
+                  <div class='content-block'>
+                    <p class='text-idea text-large text-bold text-uppercase'>Link</p>
+                    <p><%= link_to @idea.link.html_safe, @idea.link, target: '_blank' %></p>
+                  </div>
                 <% end %>
               </div>
             </div>
@@ -95,35 +102,23 @@
             <div class="row row-refinements">
               <div class='col-sm-4'>
                 <% if @idea.refinement_parent.present? %>
-                  <p class='refinement-header'>Based On</p>
+                  <p class='text-small text-gray text-bold'>Based On</p>
 
                   <div class="media media-refinement">
                     <div class="media-left">
-                      <% if @idea.refinement_parent.user.avatar.present? %>
-                        <%= image_tag(@idea.refinement_parent.user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
-                      <% else %>
-                        <% if user_signed_in? && current_user == @idea.refinement_parent.user %>
-                          <span class="fa-stack fa-lg new-user-avatar">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-inverse fa-stack-1x">you</i>
-                          </span>
-                        <% else %>
-                          <span class="fa-stack fa-lg new-user-avatar">
-                            <i class="fa fa-circle fa-stack-2x" style='color:<%= @idea.refinement_parent.user.color %>'></i>
-                            <i class="fa fa-inverse fa-stack-1x"><%= @idea.refinement_parent.user.initials %></i>
-                          </span>
-                        <% end %>
-                      <% end %>
+                      <%= render partial: 'shared/avatar', locals: { user: @idea.refinement_parent.user, avatar_style: 'width:2.25em'} %>
                     </div>
-                    <div class="media-body">
-                      <%= link_to @idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, @idea.refinement_parent.problem_statement, @idea.refinement_parent) %>
+                    <div class="media-body" style='<%= 'padding-left: 0em;padding-top:0em' if @idea.refinement_parent.user.avatar.present? %>'>
+                      <p class='text-large'>
+                        <%= link_to @idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, @idea.refinement_parent.problem_statement, @idea.refinement_parent), class: 'text-idea text-large' %>
+                      </p>
                     </div>
                   </div>
                 <% end %>
               </div>
               <div class="col-sm-8">
                 <% if @idea.refinements.present? %>
-                  <p class='refinement-header'><%= pluralize(@idea.refinements.count, 'Refinement') %></p>
+                  <p class='text-small text-gray text-bold'><%= pluralize(@idea.refinements.count, 'Refinement') %></p>
 
                   <div class='row'>
                     <% @idea.refinements.each do |refinement| %>
@@ -158,14 +153,9 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title-share">Know people who have something to add to this conversation?</p>
-
-        <div class="row">
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
-          </div>
-        </div>
-
+        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
+        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        
         <%= render partial: 'layouts/share_links', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), title: @idea.title.html_safe, description: @idea.description.html_safe, hashtag: @challenge.hashtag } %>
         
       </div>

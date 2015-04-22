@@ -6,14 +6,17 @@
       <div class='col-md-10 col-md-offset-1'>
 
         <div class='row'>
-          <div class='col-sm-10'>
-            <p class='experience_stage-title'><%= @experience_stage.title.html_safe %></p>        
-            <p class='experience_stage-description'><%= @experience_stage.description.html_safe %></p>        
-
-            <p class="challenge-hashtag"><i class='fa fa-twitter'></i> <%= link_to "##{@challenge.hashtag.html_safe}", "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank' %></p>
+          <div class='col-sm-9'>
+            <h1 class='text-experience'><%= @challenge.stage_number > 1 ? 'Get inspired.' : @experience_stage.title.html_safe %></h1>
+            <p class='text-large'>
+              <%= @challenge.stage_number > 1 ? "Browse the stories other educators shared." : @experience_stage.description.html_safe %>
+              <%= "Then, #{link_to "get involved in Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge)}".html_safe if @challenge.stage_number > 1 && @challenge.stage_number != 4 %>
+            </p>
+              
+            <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
           </div>
-          <div class='col-sm-2 experience_stage-icon'>
-            <i class='fa fa-comment-o hidden-xs'></i>
+          <div class='col-sm-3 text-center'>
+            <i class='fa fa-comments hidden-xs'></i>
           </div>
         </div>
 
@@ -28,12 +31,13 @@
     <div class='row'>
       <% @themes.each do |theme| %>
         <div class='col-sm-4 nav-link' href='#theme-<%= theme.id %>' du-smooth-scroll du-scrollspy offset='110'>
-          <%= theme.title.html_safe %>
-          <p class='theme-cta'>
-            <% if theme.experiences.count.zero? %>
+          <p class='title text-large'><%= theme.title.html_safe %></p>
+
+          <p class='cta text-lighter text-small'>
+            <% if theme.experiences.published.count.zero? %>
               <i class='fa fa-plus'></i> Add the first experience
             <% else %>
-              <i class='fa fa-comment-o'></i> <%= theme.experiences.count %>
+              <i class='fa fa-comment'></i> <%= theme.experiences.published.count %>
             <% end %>
           </p>
 
@@ -49,42 +53,51 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
+      
         <% @themes.each do |theme| %>
-          <div id='theme-<%= theme.id %>' class='theme-block'>
-            <p class='theme-header'>Theme</p>
-            <p class='theme-title'><%= theme.title %></p>
+          <div id='theme-<%= theme.id %>' class='content-block-xl'>
+            <h6 class='text-center'>Theme</h6>
+            <h2 class='section-title text-experience'><%= theme.title %></h2>
 
             <div class='row row-count'>
-              <div class='col-xs-6 col-xs-offset-3'>
-                <div class='theme-header' style='margin-bottom:10px'>
-                  <i class='fa fa-comment-o fa-3x'></i><br>
-                  <span><%= pluralize(theme.experiences.count, 'experience') %></span>
-                </div>
+              <div class='col-xs-2 col-xs-offset-2'>
+                <ul class='action text-right text-small list-inline'>
+                  <!-- <li><a>Popular</a></li>
+                  <li><a>Latest</a></li> -->
+                </ul>
               </div>
-              <div class='col-xs-3'>
-                <%= link_to '+ Add yours', "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", "du-smooth-scroll" => true, offset: 120, class: 'pull-right' %>
+              <div class='col-xs-4'>
+                <h6 class='text-center center-block'>
+                  <i class='fa fa-comment fa-3x'></i><br>
+                  <span class='text-bolder'><%= pluralize(theme.experiences.published.count, 'experience') %></span>
+                </h6>
+              </div>
+              <div class='col-xs-2'>
+                <% unless @challenge.stage_number > 1 %>
+                  <p class='action text-right text-small'><%= link_to '+ Add yours', "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", "du-smooth-scroll" => true, offset: 120 %></p>
+                <% end %>
               </div>
             </div>
             
             <div ng-switch='theme_<%= theme.id %>_experiences' ng-init='theme_<%= theme.id %>_experiences=show_all'>
 
-              <% theme.experiences.first(2).each do |experience| %>
+              <% theme.experiences.published.first(2).each do |experience| %>
                 <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
               <% end %>
 
-              <% if theme.experiences.count > 2 %>
+              <% if theme.experiences.published.count > 2 %>
                 <div ng-show='theme_<%= theme.id %>_experiences'>
-                  <% (theme.experiences - theme.experiences.first(2)).each do |experience| %>
+                  <% (theme.experiences.published - theme.experiences.published.first(2)).each do |experience| %>
                     <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
                   <% end %>
                 </div>
               <% end %>
 
-              <%= render partial: 'experiences/card/new', cache: true, locals: { theme: theme } %>
+              <%= render partial: 'experiences/card/new', cache: true, locals: { theme: theme } unless @challenge.stage_number == 4 %>
 
-              <% if theme.experiences.count > 2 %>
+              <% if theme.experiences.published.count > 2 %>
                 <p class='center-block text-center'>
-                  <%= link_to "Show #{theme.experiences.count-2} More Experiences", '#', "ng-hide" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=true", onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to "Show #{theme.experiences.published.count-2} More Experiences", '#', "ng-hide" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=true", onclick: 'return false;', class: 'text-bold' %>
 
                   <%= link_to "Show Less", "#theme-#{theme.id}", "ng-show" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
                 </p>
@@ -94,13 +107,8 @@
           </div>
         <% end %>
 
-        <p class="section-title-share">Know people who have something to add to this conversation?</p>
-
-        <div class="row">
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'>More people means more problems solved. Share this challenge!</p>
-          </div>
-        </div>
+        <h2 class="section-title text-experience">Know people who have something to add to this conversation?</h2>
+        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
 
         <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_url(@challenge, @experience_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 

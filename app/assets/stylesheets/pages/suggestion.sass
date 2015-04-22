@@ -2,80 +2,71 @@
   +border-radius(10px)
   background-color: white
   margin-bottom: 15px
-  color: $text
-  .suggestion-title
-    @extend .text-bold
-    font-size: 1.5em
-    display: inline
+  padding-left: 3em
+  padding-right: 3em
+  .suggestion-time
+    @extend .text-xsmall
+    @extend .text-right
+    @extend .text-capitalize
+    margin-top: 2.6em
   .suggestion-content
     margin-bottom: 15px
   .suggestion-user
-    @extend .text-bold
+    @extend .text-small
+    @extend .text-bolder
+    color: #333    
     margin-bottom: 0px
-  ul.actions
-    @extend .list-inline
-    @extend .text-right
-    margin: 10px 0px 0px
-    .fa
-      font-size: 1.1em
-    li,.list-link
-      font-size: 0.95em
-      color: #AEAEAE
-    a.dropdown-toggle
-      color: #AEAEAE
-    .dropdown-menu
-      min-width: 100%
-  .suggestion-small
-    font-size: 0.95em
-    color: #AEAEAE
   ul.vote
     @extend .list-inline
     @extend .text-center
     margin: 0px
+    bottom: 5px
+    position: relative
     .fa
-      color: #AEAEAE
+      color: #979797
       &.fa-stack-2x
-        font-size: 1.8em
+        font-size: 2.25em
       &.fa-stack-1x
-        font-size: 0.9em
+        margin-top: 1px
+        font-size: 1.125em
     li,.list-link
+      @extend .text-xsmall
       padding: 0px 3px
-      font-size: 0.95em
-      color: #AEAEAE
-        
+            
 .suggestion-form
   .well-share
     border: 2px dashed #B1B0B2
     background-color: white
     p
-      font-size: 1.6em
+      @extend .text-large
       color: #B1B0B2
       margin-bottom: 0px
     &:hover, &:focus, &:active
       cursor: pointer
-    form
-  #suggestion_title
-    @extend .input-borderless
-    @extend .text-bold
-    font-size: 1.5em
-    padding: 6px
-  #suggestion_description
-    @extend .input-borderless
-    @extend .input-graybg
-    font-size: 16px
-    line-height: 1.7em
-  #suggestion_link
-    @extend .input-borderless
-    @extend .input-graybg
-  .input-switch
-    .form-group
-      margin-bottom: 0px
-    .help-block
-      margin-bottom: 0px
+  form
+    margin-top: 15px
+    #suggestion_title
+      @extend .input-borderless
+      @extend .text-black
+      @extend .text-bold
+      font-size: $font-size-h3
+      padding: 6px
+    #suggestion_description
+      @extend .input-borderless
+      @extend .input-graybg
+    #suggestion_link
+      @extend .input-borderless
+      @extend .input-graybg
+    .input-switch
+      .form-group
+        margin-bottom: 0px
+      .help-block
+        margin-bottom: 0px
+
 
 #suggestion-form
   @extend .suggestion-form
-  padding: 0px 0px 40px
+  padding: 20px 0px 40px
   .fa-close.fa-2x
     @extend .pull-right
     position: relative
@@ -84,18 +75,7 @@
   .suggestion-block
     .suggestion-header
       @extend .text-center
-      font-weight: bold
       margin-bottom: 0px
-      text-transform: uppercase
-      color: $lightGrayText
-      font-size: 0.9em
     .suggestion-title
       @extend .section-title
       @extend .text-green
-      margin-bottom: 5px
-      a
-        font-weight: bold
-        color: $experience !important
-    .suggestion-description
-      font-size: 1.1em
-      margin-bottom: 20px

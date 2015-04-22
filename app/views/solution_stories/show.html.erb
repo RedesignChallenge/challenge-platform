@@ -5,8 +5,6 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
 
-        <%= render partial: 'solution_stories/header' %>
-
         <div class="well well-solution_story">
 
           <% if @solution_story.embed.present? %>
@@ -18,14 +16,21 @@
           <div class='row'>
             <div class='col-sm-10 col-sm-offset-1'>
               <div class='solution_story-content'>
-                <p class="solution_story-header"><i class="fa fa-puzzle-piece fa-2x"></i><br> Story From The Field</p>
 
-                <p class="solution_story-title"><%= @solution_story.title.html_safe %></p>
-                <p class='solution_story-description'><%= @solution_story.description %></p>
+                <h6 class='text-center center-block'>
+                  <i class='fa fa-puzzle-piece fa-3x' style='margin-bottom: 0.25em'></i><br>
+                  <span class='text-bolder'>Story From The Field</span>
+                </h6>
+
+                <h2 class='text-solution' style='font-size: 2.1em;line-height: 1.4em;margin:0.5em 0em'><%= @solution_story.title.html_safe %></h2>
+                <p class='text-large text-double-spaced'><%= @solution_story.description %></p>
 
                 <hr class='break'>
 
-                <p class="solution_story-header"><i class="fa fa-puzzle-piece fa-2x"></i><br> How To Guide</p>
+                <h6 class='text-center center-block'>
+                  <i class='fa fa-puzzle-piece fa-3x' style='margin-bottom: 0.25em'></i><br>
+                  <span class='text-bolder'>How To Guide</span>
+                </h6>
 
                 <%= render file: 'solutions/show', locals: { solution: @solution_story.solution } %>
               </div>

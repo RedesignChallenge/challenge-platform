@@ -16,7 +16,8 @@ challenge.solution_stage.solution_stories.each do |solution_story|
     experience_ids:  Experience.pluck(:id).sample(4),
     idea_ids:  Idea.pluck(:id).sample(2),
     approach_ids:  Approach.pluck(:id).sample,
-    user_id: (User.pluck(:id) - challenge.panelists.pluck(:id)).sample
+    user_id: (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
+    published_at: Time.now
   )
 
   1+rand(5).times do |index|

@@ -16,6 +16,12 @@ describe IdeasController do
   }
 
   let(:preexisting_entity) {
+    idea = FactoryGirl.create(:idea, user: user, published_at: Time.now)
+    third_fragment.ideas << idea
+    idea
+  }
+
+  let(:unpublished_entity) {
     idea = FactoryGirl.create(:idea, user: user)
     third_fragment.ideas << idea
     idea
@@ -25,16 +31,25 @@ describe IdeasController do
 
   let(:savable_entity) {
     {
-      title: "A generic title", 
-      description: "this is a pretty bland description", 
-      problem_statement_id: third_fragment.id
+      title: 'A generic title',
+      description: 'this is a pretty bland description',
+      problem_statement_id: third_fragment.id,
+      published: 'true'
+    }
+  }
+
+  let(:draft_entity) {
+    {
+      title: 'A generic title',
+      description: 'this is a pretty bland description',
+      problem_statement_id: third_fragment.id,
     }
   }
 
   let(:unsavable_entity) {
     {
-      title: "A generic title", 
-      description: "this is a pretty broken description", 
+      title: 'A generic title',
+      description: 'this is a pretty broken description',
       problem_statement_id: third_fragment.id, 
       link: 'ftp://google.com'
     }
@@ -44,6 +59,14 @@ describe IdeasController do
     {
       description: 'This is a much, much better description!!', 
       link: 'http://www.yahoo.com'
+    }
+  }
+
+  let(:valid_patch_publish_model) {
+    {
+      description: 'This is a much, much better description!!',
+      link: 'http://www.yahoo.com',
+      published: 'true'
     }
   }
 

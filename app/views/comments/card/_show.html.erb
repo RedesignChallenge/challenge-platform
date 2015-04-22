@@ -2,25 +2,13 @@
   <div class="media media-commenter pull-left">
     <p class="timestamp"><%= "#{time_ago_in_words(comment.created_at).titleize} Ago" %></p>
     <div class="media-left">
-      <% if comment.user.avatar.present? %>
-        <%= image_tag(comment.user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
-      <% else %>
-        <% if user_signed_in? && current_user == comment.user %>
-          <span class="fa-stack fa-lg comment-user-avatar">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-inverse fa-stack-1x">you</i>
-          </span>
-        <% else %>
-          <span class="fa-stack fa-lg comment-user-avatar">
-            <i class="fa fa-circle fa-stack-2x" style='color:<%= comment.user.color %>'></i>
-            <i class="fa fa-inverse fa-stack-1x"><%= comment.user.initials %></i>
-          </span>
-        <% end %>
-      <% end %>
+      <%= render partial: 'shared/avatar', locals: { user: comment.user, avatar_style: 'width:2.25em' } %>
     </div>
-    <div class="media-body">
-      <p class='name'><%= comment.user.display_name %></p>
-      <p class='title'><%= comment.user.display_organization %></p>
+    <div class="media-body" style='<%= 'padding-left: 0em' if comment.user.avatar.present? %>'>
+      <div class='user-caption' style='<%= 'margin-top: 0em' if comment.user.avatar.present? %>'>
+        <p class='user-name'><%= link_to "#{comment.user.display_name}", user_path(comment.user) %></p>
+        <p class='user-title'><%= comment.user.display_organization %></p>
+      </div>
     </div>
   </div>
 
@@ -47,24 +35,26 @@
 
 <div class="comment-actions" data-comment-id="<%= comment.id %>">
   <ul class="list-inline">
-    <li><a href="#<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" du-smooth-scroll ng-click="temporal_parent_id=<%= comment.id %>"><i class="fa fa-reply fa-flip-horizontal"></i> <span class='hidden-xs'>Reply</span></a></li>
+    <li id="comment-<%= comment.id %>-reply">
+      <a href="#<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" du-smooth-scroll ng-click="temporal_parent_id=<%= comment.id %>"><i class="fa fa-reply"></i>  <span class='text-bolder'>Reply</span></a>
+    </li>
 
     <li id="comment-<%= comment.id %>-like">
       <%= render partial: 'comments/card/like', locals: { comment: comment } %>
     </li>
 
-    <% if user_signed_in? && comment.user == current_user %>
-      <li>
-        <%= link_to "<i class='fa fa-edit'></i> <span class='hidden-xs'>Edit</span>".html_safe, '#', 'ng-click' => "comment_#{comment.id}_edit=true", onclick: 'return false;', class: 'list-link' %>
-      </li>
-      <li>
-        <%= link_to "<i class='fa fa-trash'></i> <span class='hidden-xs'>Delete</span>".html_safe, comment_path(comment.id), method: :delete, data: { confirm: "Are you sure you want to delete your comment?"}, class: 'list-link' %>
-      </li>
-    <% else %>
-      <% ## TODO implement dropdown functionality for reporting %>
-      <!-- <li class="dropdown" data-dropdown-id="<%= comment.id %>">
-        <a id="comment-options-<%= comment.id %>" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
-      </li> -->
-    <% end %>
+    <li class="dropdown">
+      <a id="comment-<%= comment.id %>-other" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
+        <i class="fa fa-ellipsis-h"></i>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="comment-<%= comment.id %>-other">
+        <% if user_signed_in? && comment.user == current_user %>
+          <li class='dropdown-link'><%= link_to 'Edit', '#', 'ng-click' => "comment_#{comment.id}_edit=true", onclick: 'return false;' %></li>
+          <li class='dropdown-link'><%= link_to 'Delete', comment_path(comment.id), method: :delete, data: { confirm: "Are you sure you want to delete your comment?"} %></li>
+        <% else %>
+          <li class='dropdown-link'><%= link_to 'Flag', '#' %></li>
+        <% end %>
+      </ul>
+    </li>
   </ul>
 </div>

@@ -23,7 +23,7 @@ approach_idea_titles.each do |approach_idea_title|
   )
 
   ## Creating comment threads for those ideas
-  1+rand(8).times do
+  1+rand(8).times do |n|
     comment = Comment.build_from(
       approach_idea,
       (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
@@ -39,5 +39,10 @@ approach_idea_titles.each do |approach_idea_title|
       link: links.sample,
       temporal_parent_id: comment.id
     ) if [true, false].sample
+
+    # Add featured comments for every multiple of 3.
+    if n % 3 == 0
+      Feature.create!(user_id: challenge.panelists.pluck(:id).sample, featured: comment, active: true, reason: Faker::Hacker.say_something_smart)
+    end
   end
 end

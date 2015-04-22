@@ -1,37 +1,26 @@
 <div class="well well-comment">
   <div class='comment-header'>
     <div class="media media-commenter pull-left">
+      <p class="timestamp" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
+      <div class="media-left">
+        <%= render partial: 'shared/avatar', locals: {user: current_user, avatar_style: "width:2.25em"} %>
+      </div>
       <% if user_signed_in? %>
-        <p class="timestamp pull-right" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
-        <div class="media-left">
-          <% if current_user.avatar.present? %>
-            <%= image_tag(current_user.avatar.profile.url, class: 'img-circle', style: 'width:2em') %>
-          <% else %>
-            <span class="fa-stack fa-lg new-user-avatar">
-              <i class="fa fa-circle fa-stack-2x"></i>
-              <i class="fa fa-inverse fa-stack-1x">you</i>
-            </span>
-          <% end %>
-        </div>
-        <div class="media-body">
-          <p class='name'><%= current_user.display_name %></p>
-          <p class='title'><%= current_user.display_organization %></p>
+        <div class="media-body" style='<%= 'padding-left: 0em' if current_user.avatar.present? %>'>
+          <div class='user-caption' style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
+            <p class='user-name'><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
+            <p class='user-title'><%= current_user.display_organization %></p>
+          </div>
         </div>
       <% else %>
-        <p class="timestamp pull-right" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
-        <div class="media-left">
-          <span class="fa-stack fa-lg new-user-avatar">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-inverse fa-stack-1x">you</i>
-          </span>
-        </div>
         <div class="media-body">
-          <p class='name'>Your Name</p>
-          <p class='title'>Organization</p>
+          <div class='user-caption'>
+            <p class='user-name'>Your Name</p>
+            <p class='user-title'>Organization</p>
+          </div>
         </div>
       <% end %>
     </div>
-
     <div class='clearfix'></div>
   </div>
 
@@ -51,9 +40,9 @@
         <div class='input-switch' ng-switch='comment_<%= @comment.id %>_link' ng-init='comment_<%= @comment.id %>_link=<%= @comment.link.present? %>'>
           <div ng-hide='comment_<%= @comment.id %>_link' ng-click="comment_<%= @comment.id %>_link=true" class='media'>
             <div class='media-left'>
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-plus fa-stack-1x"></i>
+              <span class="fa-stack">
+                <i class="fa fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-stack-1x fa-plus"></i>
               </span>
             </div>
             <div class='media-body'>
@@ -69,11 +58,11 @@
       </div>
 
       <div class='col-sm-2 col-xs-6'>
-        <%= link_to 'Cancel', cancel_path, class: 'btn btn-rounded btn-block btn-default' %>
+        <%= link_to 'Cancel', cancel_path, class: 'btn btn-sm btn-rounded btn-block btn-default' %>
       </div>
 
       <div class='col-sm-2 col-xs-6'>
-        <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-submit' %>
+        <%= f.submit submit_text, class: 'btn btn-sm btn-rounded btn-block btn-info' %>
       </div>
 
     </div>

@@ -31,6 +31,7 @@
 #  referrer_id            :integer
 #  display_name           :string
 #  avatar_option          :string           default("twitter")
+#  notifications          :hstore           default({"comment_posted"=>"true", "comment_replied"=>"true"})
 #
 
 class User < ActiveRecord::Base
@@ -46,13 +47,16 @@ class User < ActiveRecord::Base
   has_many :approaches
   has_many :solutions
   has_many :comments
+  has_many :suggestions
   belongs_to :referrer, class_name: "User", foreign_key: :referrer_id
   has_many :referrals,  class_name: "User", foreign_key: :referrer_id
+  store_accessor :notifications, :comment_replied, :comment_posted
 
   mount_uploader :avatar, AvatarUploader
   process_in_background :avatar
 
   acts_as_voter
+  mailkick_user
 
   before_create do |user|
     user.color = User::COLORS.sample
@@ -63,6 +67,8 @@ class User < ActiveRecord::Base
     user.email = user.email.downcase
     user.twitter = user.twitter.sub('@','') if user.twitter.present?
   end
+
+  MAX_AVATAR_SIZE = 3
 
   ## REQUIRED
   validates :first_name, presence: true, length: { maximum: 255 }
@@ -75,6 +81,8 @@ class User < ActiveRecord::Base
   validates :title, length: { maximum: 255 }
   validates :twitter, length: { maximum: 16 }
   validates :bio, length: { maximum: 2047 }
+
+  validate :avatar_file_size
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -115,7 +123,11 @@ class User < ActiveRecord::Base
   end
 
   def is_teacher?
-    return ['Current Teacher', 'Teacher Leader', 'Instructional Coach', 'School Leader'].include?(self.role)
+    ['Current Teacher', 'Teacher Leader', 'Instructional Coach', 'School Leader'].include?(self.role)
+  end
+
+  def has_draft_submissions?
+    experiences.exists?(['published_at IS NULL']) || ideas.exists?(['published_at IS NULL']) || approaches.exists?(['published_at IS NULL']) || solutions.exists?(['published_at IS NULL'])
   end
 
   def set_avatar_from_twitter
@@ -163,6 +175,12 @@ class User < ActiveRecord::Base
       "<p class='select-option'>Other</p>" => 'Other'
     }
 
-  COLORS = ['#11487e', '#8BB734', '#7F3F98', '#F26606']
+  COLORS = %w(#11487e #8BB734 #7F3F98 #F26606)
 
+  private
+  def avatar_file_size
+    if avatar && avatar.file && avatar.file.size.to_i > MAX_AVATAR_SIZE.megabytes.to_i
+      errors.add("Avatar is too large; it must be smaller than #{MAX_AVATAR_SIZE} MB")
+    end
+  end
 end

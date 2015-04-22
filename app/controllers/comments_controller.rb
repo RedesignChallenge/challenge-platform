@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
     if user_signed_in?
       @comment.user = current_user
       if @comment.save
-        flash[:success] = "You've successfully shared your comment."
+        flash[:success] = object_flash_message_for(@comment)
+        @comment.send_notifications unless Rails.env.development?
         redirect_to after_update_object_path_for(@comment)
       else
         render :new
@@ -31,7 +32,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      flash[:success] = "You've successfully updated your comment."
+      flash[:success] = object_flash_message_for(@comment)
       redirect_to after_update_object_path_for(@comment)
     else
       render :edit
@@ -40,7 +41,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    flash[:success] = "You've successfully deleted your comment."
+    flash[:success] = object_flash_message_for(@comment)
     redirect_to after_update_object_path_for(@comment)
   end
 

@@ -1,164 +1,150 @@
-<p class='solution-show-title'><%= @solution.title.html_safe %></p>
+<h3 class='text-solution text-center'><%= @solution.title.html_safe %></h3>
 
 <div class='row row-solution'>
 
   <div class="col-sm-3">
-    <div class='row'>
-      <div class='col-xs-10'>
-        <div class='solution-credits text-center center-block'>
+    <div class='solution-credits text-center center-block'>
 
-          <div class='solution-credit solution-approach'>
-            <p class='credit-heading'>Implemented by</p>
+      <div class='solution-credit solution-approach'>
+        <h5 class='text-solution'>Implemented by</h5>
+        <%= render partial: 'shared/avatar', locals: { user: @solution.user } %>
+        <p class='text-small'><%= @solution.user.display_name %></p>
+      </div>
 
-            <% if @solution.user.avatar.present? %>
-              <%= image_tag(@solution.user.avatar.profile.url, class: 'img-circle') %>
-            <% else %>
-              <% if user_signed_in? && current_user == @solution.user %>
-                <span class="fa-stack fa-lg new-user-avatar">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-inverse fa-stack-1x">you</i>
-                </span>
-              <% else %>
-                <span class="fa-stack fa-lg new-user-avatar">
-                  <i class="fa fa-circle fa-stack-2x" style='color:<%= @solution.user.color %>'></i>
-                  <i class="fa fa-inverse fa-stack-1x"><%= @solution.user.initials %></i>
-                </span>
-              <% end %>
-            <% end %>
-
-            <p class='credit-names'><%= @solution.user.display_name %></p>
-          </div>
-
-          <div class='solution-credit solution-ideas'>
-            <p class='credit-heading'>Based on Ideas by</p>
-            
-            <ul class='list-inline'>
-              <% @solution.ideas.each do |idea| %>
-                <li>
-                  <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) do %>
-                    <% if idea.user.avatar.present? %>
-                      <%= image_tag(idea.user.avatar.profile.url, class: 'img-circle') %>
-                    <% else %>
-                      <% if user_signed_in? && current_user == idea.user %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x"></i>
-                          <i class="fa fa-inverse fa-stack-1x">you</i>
-                        </span>
-                      <% else %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x" style='color:<%= idea.user.color %>'></i>
-                          <i class="fa fa-inverse fa-stack-1x"><%= idea.user.initials %></i>
-                        </span>
-                      <% end %>
-                    <% end %>
+      <div class='solution-credit solution-ideas'>
+        <h5 class='text-solution'>Based on Ideas by</h5>
+        
+        <ul class='list-inline'>
+          <% @solution.ideas.each do |idea| %>
+            <li>
+              <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) do %>
+                <% if idea.user.avatar.present? %>
+                  <%= image_tag(idea.user.avatar.profile.url, class: 'img-circle') %>
+                <% else %>
+                  <% if user_signed_in? && current_user == idea.user %>
+                    <span class="fa-stack fa-user-avatar">
+                      <i class="fa fa-stack-2x fa-circle"></i>
+                      <i class="fa fa-stack-1x fa-inverse">you</i>
+                    </span>
+                  <% else %>
+                    <span class="fa-stack fa-user-avatar">
+                      <i class="fa fa-stack-2x fa-circle" style='color:<%= idea.user.color %>'></i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= idea.user.initials %></i>
+                    </span>
                   <% end %>
-                <li>
+                <% end %>
               <% end %>
-            </ul>
+            <li>
+          <% end %>
+        </ul>
 
-            <p class='credit-names'><%= @solution.ideas.collect{|i| i.user.display_name}.join(', ') %></p>
-          </div>
+        <p class='text-small'><%= @solution.ideas.collect{|i| i.user.display_name}.join(', ') %></p>
+      </div>
 
-          <div class='solution-credit solution-experiences'>
-            <p class='credit-heading'>and Experiences of</p>
-            
-            <ul class='list-inline'>
-              <% @solution.experiences.each do |experience| %>
-                <li>
-                  <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
-                    <% if experience.user.avatar.present? %>
-                      <%= image_tag(experience.user.avatar.profile.url, class: 'img-circle') %>
-                    <% else %>
-                      <% if user_signed_in? && current_user == experience.user %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x"></i>
-                          <i class="fa fa-inverse fa-stack-1x">you</i>
-                        </span>
-                      <% else %>
-                        <span class="fa-stack fa-lg new-user-avatar">
-                          <i class="fa fa-circle fa-stack-2x" style='color:<%= experience.user.color %>'></i>
-                          <i class="fa fa-inverse fa-stack-1x"><%= experience.user.initials %></i>
-                        </span>
-                      <% end %>
-                    <% end %>
+      <div class='solution-credit solution-experiences'>
+        <h5 class='text-solution'>Inspired by the Experiences of</h5>
+        
+        <ul class='list-inline'>
+          <% @solution.experiences.each do |experience| %>
+            <li>
+              <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
+                <% if experience.user.avatar.present? %>
+                  <%= image_tag(experience.user.avatar.profile.url, class: 'img-circle') %>
+                <% else %>
+                  <% if user_signed_in? && current_user == experience.user %>
+                    <span class="fa-stack fa-user-avatar">
+                      <i class="fa fa-stack-2x fa-circle"></i>
+                      <i class="fa fa-stack-1x fa-inverse">you</i>
+                    </span>
+                  <% else %>
+                    <span class="fa-stack fa-user-avatar">
+                      <i class="fa fa-stack-2x fa-circle" style='color:<%= experience.user.color %>'></i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= experience.user.initials %></i>
+                    </span>
                   <% end %>
-                </li>
+                <% end %>
               <% end %>
-            </ul>
+            </li>
+          <% end %>
+        </ul>
 
-            <p class='credit-names'><%= @solution.experiences.collect{|e| e.user.display_name}.join(', ') %></p>
-          </div>
-        </div>
+        <p class='text-small'><%= @solution.experiences.collect{|e| e.user.display_name}.join(', ') %></p>
       </div>
     </div>
 
-    <div class='row'>
-      <div class='col-xs-10'>
-        <div class='solution-buttons'>
+    <div class='solution-buttons'>
 
-          <div id='solution-<%= @solution.id %>-like'>
-            <%= render partial: 'solutions/like' %>
-          </div>
-
-          <div id='solution-<%= @solution.id %>-share'>
-            <%= render partial: 'layouts/share_button', locals: { url: challenge_solution_stage_solution_story_solution_url(@challenge, @solution.solution_stage, @solution.solution_story, @solution), title: @solution.title.html_safe, description: @solution.description.html_safe, hashtag: @challenge.hashtag } %>
-          </div>
-
-          <div class="btn-group btn-block">
-            <%= link_to "<i class='fa fa-comments-o'></i> Discuss".html_safe, '#solution_story-comments', class: 'btn btn-block btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true, offset: '20' %>
-          </div>
-
-          <% if @solution.file.present? %>
-            <div class='solution-show-file'>
-              <%= link_to "<p class='text-center'><i class='fa fa-file-text-o fa-4x'></i></p>".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution) %>
-              <%= link_to "<i class='fa fa-cloud-download'></i> Download".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution), class: 'btn btn-block btn-sm btn-rounded btn-info' %>
-            </div>
-          <% end %>
-        </div>
+      <div id='solution-<%= @solution.id %>-like'>
+        <%= render partial: 'solutions/like' %>
       </div>
+
+      <div id='solution-<%= @solution.id %>-discuss' style='margin-bottom:10px'>
+        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, '#solution_story-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true, offset: '20' %>
+      </div>
+
+      <div id='solution-<%= @solution.id %>-share'>
+        <%= render partial: 'layouts/share_button', locals: { url: challenge_solution_stage_solution_story_solution_url(@challenge, @solution.solution_stage, @solution.solution_story, @solution), title: @solution.title.html_safe, description: @solution.description.html_safe, hashtag: @challenge.hashtag } %>
+      </div>
+
+      <% if @solution.file.present? %>
+        <div class='solution-show-file'>
+          <%= link_to "<p class='text-center'><i class='fa fa-file-text-o fa-4x'></i></p>".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution) %>
+          <%= link_to "<i class='fa fa-download'></i> Download".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info' %>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div class='col-sm-9'>
     <% if @solution.embed.present? %>
-      <div class='solution-show-embed'><%= @solution.embed.html_safe %></div>
+      <div class='content-block'>
+        <%= @solution.embed.html_safe %>
+      </div>
     <% end %>
     
-    <p class='solution-show-description'><%= @solution.description.html_safe %></p>
+    <div class='content-block'>
+      <p><%= @solution.description.html_safe %></p>
+    </div>
 
     <% if @solution.needs.present? %>
-      <p class='solution-show-heading'>What You'll Need</p>
+      <div class='content-block'>
+        <p class='text-solution text-large text-bold text-uppercase'>What You'll Need</p>
 
-      <div class='solution-effort'>
-        <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
-        <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
-          <span class="badge <%= effort == @solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
-        <% end %>
+        <div class='solution-effort'>
+          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
+          <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
+            <span class="badge <%= effort == @solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
+          <% end %>
+        </div>
+
+        <p><%= @solution.needs.html_safe %></p>
       </div>
-
-      <p class='solution-show-description'><%= @solution.needs.html_safe %></p>
     <% end %>
 
     <% if @solution.steps.present? %>
-      <p class='solution-show-heading'>How To</label>
-      <% @solution.steps.each_with_index do |step, index| %>
-        <div class='media media-step'>
-          <div class='media-left'>
-            <span class="fa-stack">
-              <i class="fa fa-circle-thin fa-solution fa-stack-2x"></i>
-              <i class="fa fa-solution fa-stack-1x"><%= index+1 %></i>
-            </span>
+      <div class='content-block'>
+        <p class='text-solution text-large text-bold text-uppercase'>How To</p>
+        <% @solution.steps.each_with_index do |step, index| %>
+          <div class='media media-step'>
+            <div class='media-left'>
+              <span class="fa-stack">
+                <i class="fa fa-circle-thin text-solution fa-stack-2x"></i>
+                <i class="fa text-solution fa-stack-1x"><%= index+1 %></i>
+              </span>
+            </div>
+            <div class='media-body'>
+              <p class='solution-show-description'><%= step.description %></p>
+            </div>
           </div>
-          <div class='media-body'>
-            <p class='solution-show-description'><%= step.description %></p>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
 
     <% if @solution.link.present? && @solution.embed.blank? %>
-      <p class='solution-show-heading'>Link</p>
-      <p class='solution-show-description'><%= link_to @solution.link.html_safe, @solution.link, target: '_blank' %></p>
+      <div class='content-block'>
+        <p class='text-solution text-large text-bold text-uppercase'>Link</p>
+        <p class='solution-show-description'><%= link_to @solution.link.html_safe, @solution.link, target: '_blank' %></p>
+      </div>
     <% end %>
   </div>
 </div>

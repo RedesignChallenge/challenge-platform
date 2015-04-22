@@ -35,5 +35,9 @@ class Suggestion < ActiveRecord::Base
   validates :link, url: true, allow_blank: true
 
   RATING_WEIGHTS = [1,2,3,4]
+
+  def icon
+    'fa-archive'
+  end
   
 end

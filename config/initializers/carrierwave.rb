@@ -14,3 +14,28 @@ CarrierWave.configure do |config|
   }
 
 end
+#
+# if Rails.env.test?
+# # Stub out CarrierWave so that we can test user avatars without uploading anything
+#   CarrierWave.configure do |config|
+#     config.storage = :file
+#     config.enable_processing = false
+#     config.aws_bucket = 'test'
+#   end
+#
+#   # Add any uploader here that we need to be auto-loaded for our testing purposes.
+#   AvatarUploader
+#
+#   CarrierWave::Uploader::Base.descendants.each do |klass|
+#     next if klass.anonymous?
+#     klass.class_eval do
+#       def cache_dir
+#         "#{Rails.root}/spec/support/uploads/tmp"
+#       end
+#
+#       def store_dir
+#         "#{Rails.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+#       end
+#     end
+#   end
+# end

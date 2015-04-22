@@ -23,16 +23,20 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  published_at            :datetime
 #
 
 class Approach < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
+  include Publishable
+
   default_scope { order(created_at: :asc) }
 
   belongs_to :approach_idea
   belongs_to :user
   has_many :steps, as: :steppable
+  has_one :feature, as: :featured
   has_many :refinements, class_name: 'Approach', foreign_key: 'refinement_parent_id'
   belongs_to :refinement_parent, class_name: 'Approach'
   has_and_belongs_to_many :solutions
@@ -56,8 +60,16 @@ class Approach < ActiveRecord::Base
     self.approach_stage.challenge
   end
 
+  def featured?
+    feature && feature.active
+  end
+
   def default_like
     DEFAULT_LIKE
+  end
+
+  def icon
+    'fa-flask'
   end
 
 end

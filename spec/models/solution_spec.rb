@@ -23,11 +23,14 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  published_at            :datetime
 #
 
 require 'rails_helper'
 require 'models/concerns/embeddable_concern'
 require 'models/concerns/url_normalizer_concern'
+require 'models/concerns/publishable_concern'
+require 'models/concerns/feature_concern'
 
 describe Solution do
 
@@ -37,7 +40,19 @@ describe Solution do
   it { is_expected.to have_and_belong_to_many(:experiences) }
   it { is_expected.to have_and_belong_to_many(:ideas) }
   it { is_expected.to have_and_belong_to_many(:approaches) }
+  it { is_expected.to have_one :feature }
 
   it_behaves_like 'embeddable'
   it_behaves_like 'normalizable'
+  it_behaves_like 'a publishable entity'
+
+  let(:entity) {
+    solution_stage = FactoryGirl.create(:solution_stage, challenge: challenge)
+    solution_story = FactoryGirl.create(:solution_story, solution_stage: solution_stage)
+    solution = FactoryGirl.create(:solution, solution_story: solution_story)
+
+    solution
+  }
+
+  it_behaves_like 'a featurable entity'
 end

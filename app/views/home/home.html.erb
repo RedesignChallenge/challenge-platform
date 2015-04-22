@@ -5,12 +5,10 @@
 
         <div class='row'>
           <div class='col-sm-7'>
-            <p id='headline' data-fittext data-fittext-min="28" data-fittext-max="48">
-              Tough Challenges.<br>
-              Inspired Ideas.<br>
-              Real Solutions.
-            </p>
-            <%= link_to "Explore Our First Challenge", challenge_path(@featured), class: 'btn btn-info btn-rounded' if @featured %>
+            <h1 id='headline'>
+              Welcome to the <%= "#{I18n.t(:project_name)}" %>
+            </h1>
+            <%= link_to "Explore Our First Challenge", challenge_path(@featured), class: 'btn btn-info btn-rounded text-small' if @featured %>
           </div>
         </div>
       </div>
@@ -23,34 +21,33 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title"><%= "What is the #{I18n.t(:project_name)}?" %></p>
-        <div class="row">
+        <h2 class="text-center"><%= "What is the #{I18n.t(:project_name)}?" %></h2>
+        <div class="row" style='margin-bottom:15px'>
           <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'><%= "We know that the best ideas for solving problems in education come from educators. The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality." %></p>
+            <p class='section-description'>We know that the best ideas for solving problems in education come from educators. The <%= "#{I18n.t(:project_name)}" %> is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality.</p>
           </div>
         </div>
 
         <div id='process-stages'>
-          <p class="section-title">Each Challenge goes through four stages</p>
+          <h2 class="section-title">Each Challenge will go through four phases:</h2>
           
           <div class='row row-process'>
             <% Challenge::STAGES.each_with_index do |stage, index| %>
               <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
-                <span class="fa-stack challenge-fa-bubble fa-<%= stage[:name] %>">
-                  <i class="fa fa-circle fa-stack-2x"></i>
+                <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %>">
+                  <i class="fa fa-stack-2x fa-circle"></i>
                   <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %>"></i>
                 </span>
                 <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution') ) %>
                 <div class='clearfix'></div>
                 <div class="caption">
-                  <p class='stage'><%= "#{index+1}. #{stage[:headline]}" %></p>
+                  <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
                   <p class='description'><%= stage[:description] %></p>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -62,12 +59,12 @@
       <div class='row'>
         <div class='col-md-10 col-md-offset-1'>
 
-          <p class="section-title">Our First Challenge</p>
+          <h2 class="text-center">Our First Challenge</h2>
 
           <div class='well well-lg well-challenge'>
             <div class='well-content'>
 
-              <p class='well-title'>The Classroom<br> Video Challenge</p>
+              <h1 class='well-title'>The Classroom<br> Video Challenge</h1>
               <p class='well-subtitle'>Interested in helping solve this challenge?</p>
 
               <%= link_to 'Learn More', challenge_path(@featured), class: 'btn btn-info btn-rounded col-xs-5 col-sm-3' %>
@@ -86,16 +83,11 @@
     <div class="row">
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title">What challenges should we tackle next?</p>
-        <div class="row" style='margin-bottom: 15px'>
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{I18n.t(:project_hashtag)}".html_safe, "https://twitter.com/#{I18n.t(:project_name)}", target: '_blank' %></p>
-            <p class='section-description'>Tell us what challenges affect you most, and vote on additional challenges suggested by others.</p>
-          </div>
-        </div>
+        <h2 class="section-title" style='margin-bottom:10px'>What challenges should we tackle next?</h2>
+          <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{I18n.t(:project_hashtag)}".html_safe, "https://twitter.com/#{I18n.t(:project_name)}", target: '_blank' %></p>
+        <p class='section-description' style='margin-bottom:20px'>Tell us what challenges affect you most, and vote on additional challenges suggested by others.</p>
 
-        <h4 class="text-bold pull-left"><%= pluralize(@suggestions.count, 'Suggestion') %></h4>
-        <%= link_to("+ Add Suggestion", '#new-suggestion', class: 'pull-right', 'ng-click' => "suggestion_draft=true", "du-smooth-scroll" => true) unless @suggestions.count.zero? %>
+        <h5 class="pull-left text-black"><%= pluralize(@suggestions.count, 'Suggestion') %></h5>
         <div class='clearfix'></div>
 
         <div ng-switch="suggestions" ng-init="suggestions=show_all">
@@ -132,13 +124,8 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title-share">Know someone who may want to add to the discussion?</p>
-
-        <div class="row">
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'>The more the merrier! Share our platform to help us get the best suggestions from educators like you.</p>
-          </div>
-        </div>
+        <h2 class="section-title text-submit">Know someone who may want to add to the discussion?</h2>
+        <p class='section-description'>The more the merrier! Share our platform to help us get the best suggestions from educators like you.</p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: "The #{I18n.t(:project_name)}", description: "The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality.".html_safe, hashtag: I18n.t(:project_hashtag) } %>
 

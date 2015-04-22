@@ -1,12 +1,18 @@
-<div class='row row-discussion-count'>
-  <div class='col-xs-6 col-xs-offset-3'>
-    <div class='discussion-header'>
+<div class='row row-count'>
+  <div class='col-xs-3'>
+    <ul class='action text-left text-small list-inline'>
+      <!-- <li><a>Popular</a></li>
+      <li><a>Latest</a></li> -->
+    </ul>
+  </div>
+  <div class='col-xs-6'>
+    <h6 class='text-center center-block'>
       <i class='fa fa-comments-o fa-3x'></i><br>
-      <span>Discussion <%= "(#{commentable.comment_threads.count})" unless commentable.comment_threads.count.zero? %></span>
-    </div>
+      <span class='text-bolder'>Discussion <%= "(#{commentable.comment_threads.count})" unless commentable.comment_threads.count.zero? %></span>
+    </h6>
   </div>
   <div class='col-xs-3'>
-    <%= link_to("+ Add Comment", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comment_threads.count.zero? %>
+    <p class='action text-right text-small'><%= link_to("+ Add Comment", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comment_threads.count.zero? %></p>
   </div>
 </div>
 

@@ -15,11 +15,11 @@ module ChallengePlatform
     config.action_controller.asset_host = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}"
     config.action_mailer.asset_host     = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}"
     config.action_mailer.default_url_options = { host: "#{ENV['SITE_HOST']}", protocol: "#{ENV['SITE_PROTOCOL']}" }
-    config.mandrill_mailer.default_url_options = { host: "#{ENV['SITE_HOST']}", protocol: "#{ENV['SITE_PROTOCOL']}" }
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/lib/modules)
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     # Creates test suites for rspec
     config.generators { |generator| generator.test_framework(:rspec) }

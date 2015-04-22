@@ -2,9 +2,10 @@
   height: 425px
   padding: 20px
   position: relative
+  background-color: white
   .folded-corner
     margin: 0 auto
-    font-size: 12px
+    // font-size: 12px
     position: relative
   &:after
     content: ''
@@ -12,32 +13,20 @@
     top: 0
     right: 0
     border-width: 0 20px 20px 0
-    border-color: $lightGrayText #eee
+    border-color: #B9B9B9 #F4F5F5
     border-style: solid
   .idea-title
-    height: 115px
-    a
-      color: $idea
-      font-size: 1.6em
-      line-height: 1em
-  .idea-description
-    line-height: 1.5em
-  .idea-refinement
-    @extend .help-block
-    font-size: 1em !important
+    min-height: 100px
   .idea-actions
     position: absolute
     left: 20px
-    bottom: 10px        
-    right: 10px
+    bottom: 0.25em
+    width: 100%
+    padding-right: 2.5em
     ul
-      .fa
-        font-size: 1.1em !important
-        &.fa-thumbs-up
-          font-size: 1.25em !important
+      @extend .text-small
       margin-top: 10px
-      li, a
-        font-size: 0.95em
+      a
         color: #AEAEAE
       &#actions
         margin-right: 0px
@@ -47,9 +36,15 @@
           min-width: 100%
           a
             color: #333
-  .new-user-avatar
+  .fa-user-avatar
+    @extend .pull-right
+    width: auto !important
+    right: 1.5em
     .fa-stack-2x
-      color: $newUser
+      @extend .fa-2x
+    .fa-stack-1x
+      margin-top: 0.75em
+      margin-left: 0.5em
 
 .idea-add-thumbnail
   border: 2px dashed #B1B0B2
@@ -68,24 +63,6 @@
 
 #idea-overview
   padding: 40px 0px
-  .problem_statement-block
-    .problem_statement-header
-      @extend .text-center
-      font-weight: bold
-      margin-bottom: 0px
-      text-transform: uppercase
-      color: $lightGrayText
-      font-size: 0.9em
-    .problem_statement-title
-      @extend .section-title
-      color: $idea !important
-      margin-bottom: 5px
-      a
-        font-weight: bold
-        color: $idea !important
-    .problem_statement-description
-      font-size: 1.1em
-      margin-bottom: 20px
   .well-idea
     padding: 0px
     background-color: white
@@ -97,68 +74,45 @@
       padding-right: 15px
       padding-top: 15px
     .idea-content
-      padding: 0px 30px 20px
+      padding: 0px 3em 1.5em
       .row-idea
         margin-bottom: 30px
         .media-author
           margin-bottom: 30px
           .media-left
             height: 5em
-            .new-user-avatar
+            .fa-user-avatar
               .fa-stack-2x
                 font-size: 4em !important
-                color: $newUser
               .fa-stack-1x
-                margin-top: 1em
-                margin-left: 0.75em
-                font-weight: bold
+                margin-top: 1.9em
+                margin-left: 1.9em
           .media-body
-            padding-left: 30px
-            .name
-              font-size: 1.3em
-              font-weight: bold
-              margin-bottom: 0px
-            .title
-              font-size: 0.85em
-              margin-bottom: 0px
-              color: $lightGrayText
-              font-weight: bold
-        .idea-show-title
-          font-size: 3.2em
-          line-height: 1.1em
-          font-weight: bold
-          color: $idea
-        .idea-show-embed
-          margin-bottom: 20px
-        .idea-show-heading
-          @extend .text-bold
-          text-transform: uppercase
-          color: $idea
-          font-size: 1.4em
-        .idea-show-description
-          margin-bottom: 40px
-          line-height: 1.4em
-          &:last-child
-            margin-bottom: 0px
+            padding-left: 5em
+        .content-block:last-child
+          margin-bottom: 0px
       .row-refinements
         .refinement-header
-          font-weight: bold
+          @extend .text-bold
           color: $lightGrayText
           font-size: 0.95em
         .media-refinement
+          .media-left
+            .fa-user-avatar
+              .fa-stack-2x
+                @extend .fa-2x
+              .fa-stack-1x
+                margin-top: 0.85em
+                margin-left: 0.45em
           .media-body
-            padding-left: 10px
-            a
-              color: $idea
-              font-size: 1.6em
-              line-height: 1.2em
+            padding-top: 0.5em
+            padding-left: 2.25em
   .tooltip
     .tooltip-inner
-      background-color: $linkText
-      font-site: 1.3em
-      text-align: left
+      background-color: $link-color
+      padding: 1em
     .tooltip-arrow 
-      border-bottom-color: $linkText
+      border-bottom-color: $link-color
 
 #idea-comments
   padding: 20px 0px
@@ -173,30 +127,12 @@
     position: relative
     top: 30px 
     color: #999999
-  .problem_statement-block
-    .problem_statement-header
-      @extend .text-center
-      font-weight: bold
-      margin-bottom: 0px
-      text-transform: uppercase
-      color: $lightGrayText
-      font-size: 0.9em
-    .problem_statement-title
-      @extend .section-title
-      color: $idea !important
-      margin-bottom: 5px
-      a
-        font-weight: bold
-        color: $idea !important
-    .problem_statement-description
-      font-size: 1.1em
-      margin-bottom: 20px
   .idea-form-thumbnail
+    background-color: white
     padding: 20px
     position: relative
     .folded-corner
       margin: 0 auto
-      font-size: 12px
       position: relative
     &:after
       content: ''
@@ -204,18 +140,18 @@
       top: 0
       right: 0
       border-width: 0 20px 20px 0
-      border-color: $lightGrayText #eee
+      border-color: #B9B9B9 #F4F5F5
       border-style: solid
     label
       @extend .label-borderless
-      text-transform: uppercase
-      color: $idea
+      @extend .text-idea
+      @extend .text-uppercase
       font-size: 18px
     #idea_title
       @extend .input-borderless
-      font-weight: bold
+      @extend .text-bold
+      @extend .text-idea
       font-size: 1.6em
-      color: $idea
       padding: 6px 12px
     #idea_description
       @extend .input-borderless

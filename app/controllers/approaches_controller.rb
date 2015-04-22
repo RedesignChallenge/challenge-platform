@@ -3,6 +3,7 @@ class ApproachesController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create, :show, :like]
   before_action :load_approach,      only:   [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authorize_user!,    only:   [:edit, :update, :destroy]
+  before_action :set_published_at!,  only: [:create, :update]
 
   def new
     @approach = Approach.new(approach_idea_id: params[:approach_idea_id], refinement_parent_id:  params[:refinement_parent_id])
@@ -14,7 +15,7 @@ class ApproachesController < ApplicationController
     if user_signed_in?
       @approach.user = current_user
       if @approach.save
-        flash[:success] = "You've successfully shared your approach."
+        flash[:success] = object_flash_message_for(@approach)
         redirect_to after_update_object_path_for(@approach)
       else
         render :new
@@ -36,8 +37,9 @@ class ApproachesController < ApplicationController
   end
 
   def update
+    published = !@approach.published_at? && approach_params[:published_at].present?
     if @approach.update(approach_params)
-      flash[:success] = "You've successfully updated your approach."
+      flash[:success] = object_flash_message_for(@approach, {published: published})
       redirect_to after_update_object_path_for(@approach)
     else
       render :edit
@@ -46,7 +48,7 @@ class ApproachesController < ApplicationController
 
   def destroy
     @approach.destroy
-    flash[:success] = "You've successfully deleted your approach."
+    flash[:success] = object_flash_message_for(@approach)
     redirect_to after_update_object_path_for(@approach)
   end
 
@@ -75,11 +77,15 @@ class ApproachesController < ApplicationController
 private
 
   def approach_params
-    params.require(:approach).permit(:title, :description, :needs, :link, :approach_idea_id, steps_attributes: [:id, :display_order, :description, :_destroy])
+    params.require(:approach).permit(:title, :description, :needs, :link, :approach_idea_id, :published_at, steps_attributes: [:id, :display_order, :description, :_destroy])
   end
 
   def load_approach
     @approach = Approach.find(params[:id])
+    unless @approach.user == current_user || @approach.published_at?
+      flash[:error] = 'Sorry, that approach has not been published yet.'
+      redirect_to challenge_approach_stage_path(@challenge, @approach.approach_stage)
+    end
     @approach_stage = @approach.approach_stage
   end
 
@@ -88,6 +94,10 @@ private
       flash[:danger] = 'You do not have access to that area or operation.'
       redirect_to after_update_object_path_for(@approach)
     end
+  end
+
+  def set_published_at!
+    params[:approach][:published_at] = params[:approach][:published] == 'true' ? Time.now : nil
   end
 
 end

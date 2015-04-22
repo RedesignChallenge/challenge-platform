@@ -24,11 +24,14 @@
 #  cached_weighted_average :float            default(0.0)
 #  impact                  :text
 #  implementation          :text
+#  published_at            :datetime
 #
 
 class Idea < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
+  include Publishable
+
   default_scope { order(created_at: :asc) }
 
   belongs_to :user
@@ -36,6 +39,7 @@ class Idea < ActiveRecord::Base
   has_many :refinements, class_name: 'Idea', foreign_key: 'refinement_parent_id'
   belongs_to :refinement_parent, class_name: 'Idea'
   has_and_belongs_to_many :solutions
+  has_one :feature, as: :featured
   
   acts_as_votable
   acts_as_commentable
@@ -57,6 +61,10 @@ class Idea < ActiveRecord::Base
 
   def default_like
     DEFAULT_LIKE
+  end
+
+  def icon
+    'fa-lightbulb-o'
   end
 
 end

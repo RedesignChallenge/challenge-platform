@@ -3,7 +3,7 @@
 <div id='approach-form'>
   <div class='container'>
 
-    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_approach_stage_path(@challenge, @approach.approach_stage) %>
+    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_approach_stage_path(@challenge, @approach.approach_stage), data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." } %>
     <div class='clearfix'></div>
 
     <%= render partial: 'approaches/header' %>
@@ -16,7 +16,7 @@
             <p class="panel-title">New Approach</p>
           </div>
           <div class="panel-body">
-            <%= render partial: 'approaches/form', locals: { url: challenge_approach_stage_approach_idea_approaches_path, cancel_path: challenge_approach_stage_path(@challenge, @approach.approach_stage) , submit_text: 'Share Approach'} %>
+            <%= render partial: 'approaches/form', locals: { url: challenge_approach_stage_approach_idea_approaches_path, cancel_path: challenge_approach_stage_path(@challenge, @approach.approach_stage), submit_text: 'Share Approach'} %>
           </div>
         </div>
 

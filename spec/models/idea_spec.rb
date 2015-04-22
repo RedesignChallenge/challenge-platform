@@ -24,11 +24,14 @@
 #  cached_weighted_average :float            default(0.0)
 #  impact                  :text
 #  implementation          :text
+#  published_at            :datetime
 #
 
 require 'rails_helper'
 require 'models/concerns/embeddable_concern'
 require 'models/concerns/url_normalizer_concern'
+require 'models/concerns/publishable_concern'
+require 'models/concerns/feature_concern'
 
 describe Idea do
 
@@ -42,7 +45,19 @@ describe Idea do
   it { is_expected.to belong_to(:problem_statement) }
   it { is_expected.to belong_to(:refinement_parent).class_name('Idea') }
   it { is_expected.to have_many(:refinements).class_name('Idea').with_foreign_key('refinement_parent_id') }
+  it { is_expected.to have_one :feature }
 
   it_behaves_like 'embeddable'
   it_behaves_like 'normalizable'
+  it_behaves_like 'a publishable entity'
+
+  let(:entity) {
+    idea_stage = FactoryGirl.create(:idea_stage, challenge: challenge)
+    problem_statement = FactoryGirl.create(:problem_statement, idea_stage: idea_stage)
+    idea = FactoryGirl.create(:idea, problem_statement: problem_statement)
+
+    idea
+  }
+
+  it_behaves_like 'a featurable entity'
 end

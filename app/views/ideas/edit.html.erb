@@ -2,8 +2,7 @@
 
 <div id='idea-form' ng-controller='IdeaCtrl'>
   <div class='container'>
-
-    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea) %>
+    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." } %>
     <div class='clearfix'></div>
 
     <%= render partial: 'ideas/header' %>
@@ -32,7 +31,7 @@
       <% end %>
 
       <div class='container'>
-        <%= render partial: 'ideas/form', locals: { url: challenge_idea_stage_problem_statement_idea_path, cancel_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), submit_text: "Update Idea" } %>
+        <%= render partial: 'ideas/form', locals: { url: challenge_idea_stage_problem_statement_idea_path, cancel_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), submit_text: 'Update Idea' } %>
       </div>
 
       <div id='example-idea-show' class='well well-example well-right' ng-click="showExample()">

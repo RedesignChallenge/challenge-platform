@@ -22,11 +22,14 @@
 #  cached_weighted_average :float            default(0.0)
 #  embed                   :text
 #  destroyed_at            :datetime
+#  published_at            :datetime
 #
 
 require 'rails_helper'
 require 'models/concerns/embeddable_concern'
 require 'models/concerns/url_normalizer_concern'
+require 'models/concerns/publishable_concern'
+require 'models/concerns/feature_concern'
 
 describe Experience do
 
@@ -34,7 +37,19 @@ describe Experience do
   it { is_expected.to validate_length_of(:description).is_at_most(1024)}
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:theme) }
+  it { is_expected.to have_one :feature }
 
   it_behaves_like 'embeddable'
   it_behaves_like 'normalizable'
+  it_behaves_like 'a publishable entity'
+
+  let(:entity) {
+    experience_stage = FactoryGirl.create(:experience_stage, challenge: challenge)
+    theme = FactoryGirl.create(:theme, experience_stage: experience_stage)
+    experience = FactoryGirl.create(:experience, theme: theme)
+
+    experience
+  }
+
+  it_behaves_like 'a featurable entity'
 end

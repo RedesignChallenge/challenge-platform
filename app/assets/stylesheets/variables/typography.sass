@@ -1,0 +1,150 @@
+// Additional on top of bootstrap
+
+$font-size-xsmall:        ceil(($font-size-base * 0.65)) // ~12px
+$font-size-xlarge:        ceil(($font-size-base * 1.65)) // ~12px
+$font-size-medium:        ceil(($font-size-base * 1.1)) // ~12px
+
+// Families
+
+.text-sans
+  font-family: $font-family-sans-serif
+
+.text-serif
+  font-family: $font-family-serif
+
+
+// Weights
+
+.text-lighter
+  font-weight: 100 !important
+
+.text-normal
+  font-weight: 300 !important
+
+.text-bold
+  font-weight: 500 !important
+
+.text-bolder
+  font-weight: 700 !important
+
+// Decorations
+
+.text-italic
+  font-style: italic !important
+
+.text-underline
+  text-decoration: underline !important
+
+// Sizing
+.text-large
+  font-size: $font-size-large !important
+
+.text-small
+  font-size: $font-size-small !important
+
+.text-xsmall
+  @extend .text-bolder
+  font-size: $font-size-xsmall !important
+  color: #979797
+
+.text-xsmall-normal
+  @extend .text-bold
+  font-size: $font-size-xsmall !important
+  color: #979797
+
+.text-xlarge
+  font-size: $font-size-xlarge !important
+  line-height: 1.2em
+
+.text-medium
+  font-size: $font-size-medium !important
+
+.text-h2
+  font-size: $font-size-h2 !important
+
+.text-double-spaced
+  line-height: 1.9em
+
+// Colors
+
+.text-experience
+  color: $experience !important
+
+.text-idea
+  color: $idea !important
+
+.text-approach
+  color: $approach !important
+
+.text-solution
+  color: $solution !important
+
+.text-experience-light
+  color: $experienceLight !important
+
+.text-idea-light
+  color: $ideaLight !important
+
+.text-approach-light
+  color: $approachLight !important
+
+.text-solution-light
+  color: $solutionLight !important
+
+.text-green,.text-submit
+  color: $navbar-default-bg !important
+
+.text-suggestion
+  @extend .text-submit
+  margin: 0.5em 0em 1em !important
+
+.text-gray
+  color: #979797 !important
+
+.text-black
+  color: #000000 !important
+
+.text-white
+  color: #FFF !important
+
+.text-default
+  color: $text-color !important
+
+// Element definitions
+
+h1,h2,h3,h4,h5
+  @extend .text-bolder
+  margin-bottom: 1em
+  a
+    @extend .text-bolder
+    color: inherit
+    &:hover,&:focus,&:active,&.active
+      color: inherit
+
+h6
+  @extend .text-bolder
+  @extend .text-uppercase
+  color: #979797
+  a
+    @extend .text-bolder
+    @extend .text-uppercase
+    color: inherit
+    &:hover,&:focus,&:active,&.active
+      color: inherit
+
+a,label
+  @extend .text-bold
+
+p,span,li,input,div
+  @extend .text-normal
+
+// Universal Classes
+
+.section-title
+  @extend .text-center
+  margin-bottom: 0.5em
+
+.section-description
+  @extend .text-center
+  @extend .text-large
+  color: $gray

@@ -1,18 +1,26 @@
 @import "bourbon";
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import "font-awesome";
 @import "select2";
 @import "select2-bootstrap";
+@import "bootstrap3-switch";
+@import "vendor/shake";
+@import "vendor/bootstrap-social";
+@import "partials/mixins";
+
+@import "variables/colors";
+@import "variables/bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "variables/typography";
+
+@import "overrides/bootstrap";
+@import "overrides/font-awesome";
 
 @import "partials/animate";
-@import "partials/colors";
-@import "partials/fonts";
-@import "partials/global";
-@import "partials/buttons";
 @import "partials/header";
 @import "partials/footer";
-@import "partials/user";
+@import "partials/global";
+@import "partials/draft";
 
 @import "pages/home";
 @import "pages/preview";
@@ -21,7 +29,6 @@
 @import "pages/legal";
 @import "pages/about";
 @import "pages/user";
-
 @import "pages/suggestion";
 @import "pages/comment";
 @import "pages/challenge";
@@ -34,10 +41,3 @@
 @import "pages/approach";
 @import "pages/solution_stage";
 @import "pages/solution_story";
-
-@import "vendor/bootstrap-social";
-@import "vendor/bootstrap";
-@import "vendor/font-awesome-social";
-@import "vendor/font-awesome";
-@import "vendor/shake";
-@import "vendor/zeroclipboard";

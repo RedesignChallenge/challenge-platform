@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402132212) do
+ActiveRecord::Schema.define(version: 20150410222151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "approach_ideas", force: :cascade do |t|
     t.string   "title"
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150402132212) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.datetime "published_at"
   end
 
   add_index "approaches", ["cached_votes_down"], name: "index_approaches_on_cached_votes_down", using: :btree
@@ -215,6 +217,7 @@ ActiveRecord::Schema.define(version: 20150402132212) do
     t.float    "cached_weighted_average", default: 0.0
     t.text     "embed"
     t.datetime "destroyed_at"
+    t.datetime "published_at"
   end
 
   add_index "experiences", ["cached_votes_down"], name: "index_experiences_on_cached_votes_down", using: :btree
@@ -232,6 +235,19 @@ ActiveRecord::Schema.define(version: 20150402132212) do
 
   add_index "experiences_solutions", ["experience_id"], name: "index_experiences_solutions_on_experience_id", using: :btree
   add_index "experiences_solutions", ["solution_id"], name: "index_experiences_solutions_on_solution_id", using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.text     "reason"
+    t.string   "category"
+    t.boolean  "active"
+    t.integer  "user_id"
+    t.integer  "featured_id"
+    t.string   "featured_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "features", ["featured_id", "featured_type"], name: "index_features_on_featured_id_and_featured_type", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -280,6 +296,7 @@ ActiveRecord::Schema.define(version: 20150402132212) do
     t.float    "cached_weighted_average", default: 0.0
     t.text     "impact"
     t.text     "implementation"
+    t.datetime "published_at"
   end
 
   add_index "ideas", ["cached_votes_down"], name: "index_ideas_on_cached_votes_down", using: :btree
@@ -297,6 +314,20 @@ ActiveRecord::Schema.define(version: 20150402132212) do
 
   add_index "ideas_solutions", ["idea_id"], name: "index_ideas_solutions_on_idea_id", using: :btree
   add_index "ideas_solutions", ["solution_id"], name: "index_ideas_solutions_on_solution_id", using: :btree
+
+  create_table "mailkick_opt_outs", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.boolean  "active",     default: true, null: false
+    t.string   "reason"
+    t.string   "list"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mailkick_opt_outs", ["email"], name: "index_mailkick_opt_outs_on_email", using: :btree
+  add_index "mailkick_opt_outs", ["user_id", "user_type"], name: "index_mailkick_opt_outs_on_user_id_and_user_type", using: :btree
 
   create_table "panels", force: :cascade do |t|
     t.text     "about"
@@ -416,6 +447,7 @@ ActiveRecord::Schema.define(version: 20150402132212) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.datetime "published_at"
   end
 
   add_index "solutions", ["cached_votes_down"], name: "index_solutions_on_cached_votes_down", using: :btree
@@ -493,12 +525,12 @@ ActiveRecord::Schema.define(version: 20150402132212) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: "",        null: false
+    t.string   "email",                  default: "",                                                    null: false
+    t.string   "encrypted_password",     default: "",                                                    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer  "sign_in_count",          default: 0,                                                     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -521,6 +553,7 @@ ActiveRecord::Schema.define(version: 20150402132212) do
     t.integer  "referrer_id"
     t.string   "display_name"
     t.string   "avatar_option",          default: "twitter"
+    t.hstore   "notifications",          default: {"comment_posted"=>"true", "comment_replied"=>"true"}
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,100 +1,45 @@
 #approach_stage-overview
-  padding: 30px 0
+  padding: 1.8em 0em
   background-color: white
-  color: $text
-  .approach_stage-icon
-    .fa
-      font-size: 10em
-      color: $approachLight
-  .approach_stage-title
-    color: $approach
-    font-size: 3.2em
-    line-height: 1.1em
-    font-weight: bold
-    margin-bottom: 15px
-  .approach_stage-description
-    font-size: 1.4em
-    line-height: 1.3em
-    font-weight: lighter
-  .challenge-hashtag
-    @extend .pull-left
-    .fa
-      font-size: 1.6em
-      color: $lightGrayText
-    a
-      font-size: 1.3em
-      color: $text
-      font-weight: lighter
+  h1
+    margin-bottom: 0.75em
+  .fa-flask
+    @extend .text-approach-light
+    top: 0.25em
+    font-size: 15em
+    line-height: 0.5em
+  .featured-contributors
+    padding: 1em 0em 0em
+    .fa-user-avatar
+      width: auto !important
+      margin-right: 2em
+      .fa-stack-2x
+        @extend .fa-2x
+      .fa-stack-1x
+        margin-left: 0.5em
+        margin-top: 0.65em
 
 #approach_stage-navigation
   @extend .hidden-xs
-  @extend .text-center
   background-color: $approach
   color: white
   z-index: 1000
   width: 100%
-  box-shadow: 0 5px 10px rgba(2, 1, 1, 0.27)
+  box-shadow: 0px 5px 10px rgba(2, 1, 1, 0.27)
   margin-bottom: 20px
   &.affix
     top: 0
     & + #approach_stage-content
-      margin-top: 140px
+      margin-top: 20px
   .nav-link
-    padding-top: 10px
-    padding-bottom: 10px
-    min-height: 100px
-    font-size: 1.3em
-    font-weight: lighter
-    border-right: 1px solid #D8D9DA
-    .fa-play
-      color: transparent
-      position: absolute
-      text-align: center
-      bottom: -20px
-      left: 40%
-      z-index: -1
-    &:last-child
-      border-right: none
     &:hover,&:focus,&.active
-      background-color: white
-      color: $approach
-      cursor: pointer
-    &.active
-      .fa-play
-        color: white
-    .theme-cta
-      font-size: 0.7em
-      margin-bottom: 0
-      font-weight: lighter
-      position: absolute
-      bottom: 10px
-      left: 45%
+      @extend .text-approach
 
 #approach_stage-content
   padding: 20px 0
   background-color: $lightestGrayBG
   &.affix
-    margin-top: 40px
-  .approach_idea-block
-    margin-bottom: 50px
-    .approach_idea-header
-      @extend .text-center
-      font-weight: bold
-      margin-bottom: 0px
-      text-transform: uppercase
-      color: $lightGrayText
-      font-size: 0.9em
-    .approach_idea-title
-      @extend .section-title
-      color: $approach !important
-      margin-bottom: 5px
-    .approach_idea-description
-      font-size: 1.1em
-      margin-bottom: 20px
-  .row-count
-    .col-xs-3
-      a
-        margin-top: 35px
+    margin-top: 20px
   .approach-new
     .well-share
       &:hover, &:focus, &:active

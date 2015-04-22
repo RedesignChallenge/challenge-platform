@@ -27,12 +27,16 @@
 #
 
 require 'rails_helper'
+require 'models/concerns/embeddable_concern'
+require 'models/concerns/url_normalizer_concern'
+require 'models/concerns/feature_concern'
 
 describe Comment do
 
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:commentable) }
   it { is_expected.to validate_presence_of(:body) }
+  it { is_expected.to have_one :feature }
 
   it_behaves_like 'embeddable'
   it_behaves_like 'normalizable'
@@ -50,4 +54,17 @@ describe Comment do
       expect(Comment.all).not_to include deleted_comment
     end
   end
+
+
+  let(:entity) {
+    comment = FactoryGirl.create(:comment)
+    idea_stage = FactoryGirl.create(:idea_stage, challenge: challenge)
+    problem_statement = FactoryGirl.create(:problem_statement, idea_stage: idea_stage)
+    commentable_entity = FactoryGirl.create(:idea, problem_statement: problem_statement)
+
+    comment.commentable = commentable_entity
+    comment
+  }
+
+  it_behaves_like 'a featurable entity'
 end

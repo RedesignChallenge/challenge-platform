@@ -1,10 +1,16 @@
 <div id='problem_statement-<%= problem_statement.id %>-idea-new' class="col-sm-6 col-md-4">
-
-  <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'thumbnail idea-thumbnail idea-add-thumbnail' do %>
-    <div class="idea-add">
-      <i class="fa fa-plus"></i>
-      <p class='instruction'>Add Your Idea</p>
+  <% if @challenge.stage_number > 2 %>
+    <div class='thumbnail idea-thumbnail idea-add-thumbnail'>
+      <div class="idea-add">
+        <p class='instruction text-bold'>Want to get involved? Contribute in <%= link_to "Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge) %></p>
+      </div>
     </div>
+  <% else %>
+    <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'thumbnail idea-thumbnail idea-add-thumbnail' do %>
+      <div class="idea-add">
+        <i class="fa fa-plus"></i>
+        <p class='instruction'>Add Your Idea</p>
+      </div>
+    <% end %>
   <% end %>
-
 </div>

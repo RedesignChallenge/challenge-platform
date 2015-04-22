@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }
+  resources :users, only: [:show]
   
   root to: 'home#index'
+  match 'preview',          to: 'home#preview', via: :get
+  match 'about',            to: 'home#about', via: :get
+  match 'privacy',          to: 'home#privacy', via: :get
+  match 'terms',            to: 'home#terms', via: :get
+  match 'report',           to: 'home#report', via: :get
+  match 'report_redirect',  to: 'home#report_redirect', via: :get
 
   resources :challenges, only: [:show, :index] do
     resources :experience_stages, only: [:show] do
@@ -65,20 +72,7 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'preview', to: 'home#preview', via: 'get'
-
-  match 'about', to: 'static_pages#about', via: 'get'
-  match 'contact', to: 'static_pages#contact', via: 'get'
-  match 'research', to: 'static_pages#research', via: 'get'
-  match 'privacy', to: 'static_pages#privacy', via: 'get'
-  match 'terms', to: 'static_pages#terms', via: 'get'
-  match 'bcg_report', to: 'static_pages#bcg_report', via: 'get'
-
   match 'states/search', to: 'states#search', via: 'get'
   match 'districts/search', to: 'districts#search', via: 'get'
   match 'schools/search', to: 'schools#search', via: 'get'
-
-  ## FIXES FOR ALPHA NAME CHANGE ISSUES (REMOVE AFTER A WHILE)
-  get '/challenges/:challenge_id/ideation_stages(*all)', to: redirect("/challenges/%{challenge_id}/idea_stages%{all}")
-  ## FIXES FOR ALPHA NAME CHANGE ISSUES (REMOVE AFTER A WHILE)
 end

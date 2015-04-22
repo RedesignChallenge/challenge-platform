@@ -33,6 +33,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
+  has_one :feature, as: :featured
   
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -45,10 +46,37 @@ class Comment < ActiveRecord::Base
       parent_comment = Comment.find_by(id: self.temporal_parent_id)
       self.move_to_child_of(parent_comment) if parent_comment
     end
+
+    # self.send_notifications unless Rails.env.development?
   end
+
+  def send_notifications
+    ## PARENT COMMENT USER
+    parent_comment_user = self.parent ? self.parent.user : nil
+    CommentMailer.delay.replied(self.id) if parent_comment_user && 
+                                            parent_comment_user.notifications['comment_replied'].true? && 
+                                            !parent_comment_user.opted_out?(list: 'comment_replied') && 
+                                            parent_comment_user != self.user
+
+    ## COMMENTABLE USER
+    commentable_user = self.commentable.user ? self.commentable.user : nil
+    CommentMailer.delay.posted(self.id) if  commentable_user &&
+                                            commentable_user.notifications['comment_posted'].true? && 
+                                            !commentable_user.opted_out?(list: 'comment_posted') &&
+                                            commentable_user != self.user && 
+                                            (
+                                              parent_comment_user.nil? || 
+                                              parent_comment_user != commentable_user
+                                            )
+  end
+
   
   validates :body, presence: true
   validates :link, url: true, allow_blank: true
+
+  def challenge
+    commentable.challenge
+  end
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -67,7 +95,15 @@ class Comment < ActiveRecord::Base
   end
 
   def has_parent?
-    self.parent_id.present?
+    self.parent.present?
+  end
+
+  def extended_family
+    Comment.where(commentable: self.commentable).where.not(id: self.id)
+  end
+
+  def commentable_title
+    self.commentable.title.present? ? self.commentable.title : self.commentable.description.truncate(255)
   end
 
   # Helper class method to lookup all comments assigned
@@ -76,10 +112,7 @@ class Comment < ActiveRecord::Base
 
   # Helper class method to look up all comments for
   # commentable class name and commentable id.
-  scope :find_comments_for_commentable,
-        lambda { |commentable_str, commentable_id|
-          where(commentable_type: commentable_str.to_s, commentable_id: commentable_id).order(created_at: :desc)
-        }
+  scope :find_comments_for_commentable,lambda { |commentable_str, commentable_id| where(commentable_type: commentable_str.to_s, commentable_id: commentable_id).order(created_at: :desc)}
 
   # Helper class method to look up a commentable object
   # given the commentable class name and id

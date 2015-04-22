@@ -23,8 +23,7 @@ class HomeController < ApplicationController
 private
 
   def user_page
-    # return 'home_logged_in' if user_signed_in?
-    'home_logged_out'
+    'home'
   end
 
 end

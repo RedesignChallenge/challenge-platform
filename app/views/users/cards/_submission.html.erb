@@ -1,0 +1,39 @@
+<tr>
+  <td>
+    <h6 class='text-right text-normal'><%= submission.class.to_s %></h6>
+    <%= "<small class='text-xsmall-normal text-white label label-danger pull-right' style='bottom:0.25em;position:relative;'>DRAFT</small>".html_safe unless submission.class.to_s.downcase == 'suggestion' || submission.published_at? %>
+  </td>
+  <td>
+    <h4 class='text-<%= submission.class.to_s.downcase %>'>
+      <i class='fa <%= submission.icon %>'></i> 
+      <%= link_to submission.title, after_update_object_path_for(submission) %>
+    </h4>
+    <p class='zero-margin-bottom'><%= submission.description %></p>
+  </td>
+</tr>
+
+<% unless submission.class.to_s.downcase == 'suggestion' || submission.comment_threads.count.zero? %>
+  <tr>
+    <td>
+      <% # This table dimension intentionally left blank. %>
+    </td>
+    <td class='text-small'>
+      <i class="fa fa-comments-o"></i>
+      <b><%= display_commenters(submission) %></b>
+      <i><%= "commented on your #{submission.class.to_s.downcase}" %></i>
+    </td>
+  </tr>
+<% end %>
+
+<% unless submission.votes_for.count.zero? %>
+  <tr>
+    <td>
+      <% # This table dimension intentionally left blank. %>
+    </td>
+    <td class='text-small'>
+      <i class="fa fa-thumbs-up"></i>
+      <b><%= display_likers(submission) %></b>
+      <i><%= "liked your #{submission.class.to_s.downcase}" %></i>
+    </td>
+  </tr>
+<% end %>

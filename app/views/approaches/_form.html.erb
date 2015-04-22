@@ -1,16 +1,6 @@
 <%= form_for(@approach, url: url) do |f| %>
   <%= f.hidden_field :approach_idea_id %>
-
-  <% if @approach.refinement_parent %>
-    <div id='approach_refinement' class='form-group' ng-hide='refinement_parent_id==null'>
-      <div ng-init="refinement_parent_id=<%= @approach.refinement_parent_id %>"></div>
-      <%= f.hidden_field :refinement_parent_id, 'ng-value' => 'refinement_parent_id' %>
-      <i class='fa fa-close' ng-click="refinement_parent_id=null"></i> 
-      <span class='approach-refinement'>Refinement of <%= link_to @approach.refinement_parent.title.html_safe, '#', data: { toggle: 'modal', target: "#approach-refinement_parent" } %></span>
-    </div>
-    <div class='clearfix'></div>
-    <%= render partial: 'approaches/modals/refinement_parent' %>
-  <% end %>
+  <%= f.hidden_field :published, value: nil, 'ng-value' => 'published' %>
 
   <%= render partial: 'layouts/error_messages', locals: { model: @approach } %>
   
@@ -46,8 +36,8 @@
             <div class='media media-step-new'>
               <div class='media-left'>
                 <span class="fa-stack">
-                  <i class="fa fa-circle-thin fa-approach fa-stack-2x"></i>
-                  <i class="fa fa-approach fa-stack-1x" style='margin-top:5px'>+</i>
+                  <i class="fa fa-stack-2x fa-circle-thin text-approach"></i>
+                  <i class="fa fa-stack-1x fa-plus text-approach"></i>
                 </span>
               </div>
               <div class='media-body'>
@@ -75,12 +65,19 @@
     </div>
   </div>
 
-  <div class='row' style='margin-bottom: 30px'>
-    <div class='col-xs-3 col-xs-offset-3'>
-      <%= link_to "Cancel", cancel_path, class: 'btn btn-default btn-rounded btn-block', data: { confirm: "Are you sure? Any unsaved changes you've made will be lost." } %>
-    </div>
-    <div class='col-xs-3'>
-      <%= f.submit submit_text, class: 'btn btn-submit btn-rounded btn-block' %>
+  <div class='row' style='margin-bottom: 30px' ng-init="published=<%= @approach.published_at? %>">
+    <div class='col-sm-8 col-sm-offset-1'>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <%= f.submit 'Save and finish later', class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
+        </div>
+        <div class='col-sm-4'>
+          <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-default' %>
+        </div>
+        <div class='col-sm-4'>
+          <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-info', 'ng-click' => "published=true" %>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -93,9 +90,9 @@
       <div class='row'>
         <div class='media col-xs-4 col-xs-offset-4'>
           <div class='media-left'>
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle-thin fa-stack-2x"></i>
-              <i class="fa fa-plus fa-stack-1x"></i>
+            <span class="fa-stack">
+              <i class="fa fa-stack-2x fa-circle-thin"></i>
+              <i class="fa fa-stack-1x fa-plus"></i>
             </span>
           </div>
           <div class='media-body'>

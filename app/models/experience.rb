@@ -22,16 +22,20 @@
 #  cached_weighted_average :float            default(0.0)
 #  embed                   :text
 #  destroyed_at            :datetime
+#  published_at            :datetime
 #
 
 class Experience < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
+  include Publishable
+
   default_scope { order(created_at: :asc) }
 
   belongs_to :user
   belongs_to :theme
   has_and_belongs_to_many :solutions
+  has_one :feature, as: :featured
 
   acts_as_votable
   acts_as_commentable
@@ -39,6 +43,10 @@ class Experience < ActiveRecord::Base
 
   validates :description, presence: true, length: { maximum: 1024 }
   validates :link, url: true, allow_blank: true
+
+  def title
+    self.description.truncate(50)  
+  end
 
   def experience_stage
     self.theme.experience_stage
@@ -50,6 +58,10 @@ class Experience < ActiveRecord::Base
 
   def default_like
     DEFAULT_LIKE
+  end
+
+  def icon
+    'fa-comment'
   end
 
 end

@@ -6,8 +6,5 @@ ActionMailer::Base.smtp_settings = {
     :domain =>         'heroku.com',
     :authentication => :plain
 }
-ActionMailer::Base.delivery_method = :smtp
 
-MandrillMailer.configure do |config|
-  config.api_key = ENV['MANDRILL_APIKEY']
-end
+ActionMailer::Base.delivery_method = :smtp

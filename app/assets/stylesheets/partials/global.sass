@@ -1,21 +1,111 @@
+.submit-link
+  @extend .text-small
+  background-color: transparent
+  border: none
+  cursor: pointer
+  color: $link-color
+  &:hover,&:focus,&:active
+    text-decoration: underline
+
+ul.actions
+  margin-bottom: 0px
+  li,.list-link
+    @extend .text-small
+    color: $lightGrayText
+  &#actions
+    margin-right: 0px
+    a.dropdown-toggle
+      color: $lightGrayText
+    .dropdown-menu
+      min-width: 100%
+
+.fa-user-avatar
+  width: 100%
+  margin-top: 0.5em
+  margin-left: 0.05em
+  @extend .fa-lg
+  .fa-stack-2x
+    @extend .fa-3x
+    @extend .fa-lg
+    color: $newUser
+  .fa-stack-1x
+    @extend .fa-lg
+    @extend .text-small
+    @extend .text-bolder
+    margin-top: 1.4em
+  .fa-inverse 
+    a
+      color: white
+
+.user-caption
+  margin-top: 1em
+  .user-name
+    @extend .text-default
+    @extend .text-bolder
+    margin-bottom: 0.25em
+    a
+      font-weight: inherit !important
+      @extend .text-default
+  .user-title
+    @extend .text-xsmall
+    margin-bottom: 0em
+  .user-link
+    @extend .user-title
+    a
+      color: #AEAEAE
+
+.nav-link
+  padding-top: 0.85em
+  min-height: 3.5em
+  border-right: 1px solid #D8D9DA
+  .fa-play
+    color: transparent
+    position: absolute
+    text-align: center
+    bottom: -20px
+    left: 43%
+    z-index: -1
+  &:last-child
+    border-right: none
+  &:hover,&:focus,&.active
+    @extend .text-experience
+    background-color: white      
+    cursor: pointer
+  &.active
+    .fa-play
+      @extend .text-white
+  .title
+    min-height: 5em
+  .cta
+    position: absolute
+    bottom: 0
+
+.content-block
+  margin-bottom: 2em
+  .section-title
+    margin-top: 0.25em
+
+.content-block-xl
+  @extend .content-block
+  margin-bottom: 4em
+
+.row-count
+  h6
+    .fa
+      margin-bottom: 0.25em
+  .action
+    margin-top: 3.85em
+    ul
+      a
+        &:hover,&:focus,&:active,.active        
+          cursor: pointer
+          @extend .text-bolder
+      
 .opacity-layer
   background-color: rgba(47,52,64,0.6)
 
-.well-share
-  border: 2px dashed #B1B0B2
-  background-color: #ebeced
-  p
-    font-size: 1.6em
-    color: #B1B0B2
-    margin-bottom: 0px
-    &.subtitle
-      font-size: 1em
-  &:hover, &:focus, &:active
-    cursor: pointer
-
 .page-wrap
-  background: $lightestGrayBG
-  margin: -20px auto 20px
+  margin: -($line-height-computed) auto $line-height-computed
 
 .zero-margin-bottom
   margin-bottom: 0px !important
@@ -38,40 +128,13 @@ hr.break
 div.break
   margin-bottom: 30px
 
-.alert-fullpage
-  border-radius: 0px !important
-  text-align: center !important
-  margin-bottom: 0px !important
-  padding-top: 10px !important
-  padding-bottom: 10px !important
-  position: relative
-  bottom: 20px
-
 .section-heading
   margin-bottom: 1em
-
-blockquote.quote
-  text-align: center
-  border-left: 5px solid rgba(0,0,0,0.15)
-  margin-bottom: 20px
-  p
-    font-size: 2em
-    font-style: italic
-    line-height: 1.9em
-
-span
-  font-family: inherit
-
-.container-sm
-  @extend .container
-  max-width: 940px
 
 ul.share-links
   @extend .text-center, .center-block, .list-inline
   li
     padding: 0px 10px
-    a
-      font-size: 1.5em
 
 ul.share-popover
   margin-bottom: 0px
@@ -82,27 +145,18 @@ ul.share-popover
     a
       color: $lightGrayText
 
-=border-radius($radius)
-  -webkit-border-radius: $radius
-  -moz-border-radius: $radius
-  -ms-border-radius: $radius
-  border-radius: $radius
-
 .input-switch
   &:hover, &:focus, &:active
     cursor: pointer
   .fa-circle-thin
     color: $lightGrayText
   .fa-plus
-    color: $linkText
+    color: $link-color
   .media
     margin-bottom: 10px
     padding: 0px 6px
     .media-body
       vertical-align: middle
       .help-text
+        @extend .text-small
         color: $lightGrayText
-
-.section-title-share
-  @extend .section-title
-  @extend .text-green

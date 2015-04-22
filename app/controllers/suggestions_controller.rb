@@ -12,7 +12,7 @@ class SuggestionsController < ApplicationController
     if user_signed_in?
       @suggestion.user = current_user
       if @suggestion.save
-        flash[:success] = "You've successfully shared your suggestion."
+        flash[:success] = object_flash_message_for(@suggestion)
         redirect_to after_update_object_path_for(@suggestion)
       else
         render :new
@@ -32,7 +32,7 @@ class SuggestionsController < ApplicationController
 
   def update
     if @suggestion.update(suggestion_params)
-      flash[:success] = "You've successfully updated your suggestion."
+      flash[:success] = object_flash_message_for(@suggestion)
       redirect_to after_update_object_path_for(@suggestion)
     else
       render :edit
@@ -41,7 +41,7 @@ class SuggestionsController < ApplicationController
 
   def destroy
     @suggestion.destroy
-    flash[:success] = "You've successfully deleted your suggestion."
+    flash[:success] = object_flash_message_for(@suggestion)
     redirect_to after_update_object_path_for(@suggestion)
   end
 

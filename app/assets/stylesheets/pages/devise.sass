@@ -43,7 +43,7 @@
       @extend .section-title
     span.select2-chosen
       @extend .input-borderless
-      background-color: $lightGrayBG
+      padding: .5em
     .auth-header
       @extend .page-header
       @extend .text-bold
@@ -109,3 +109,12 @@
   font-size: 0.85em
   margin: 0px 15px
 
+.select2-container
+  padding: 0px !important
+  height: 2.3em !important
+  border: none !important
+  .select2-choice
+    height: 2.3em
+
+.select2-choices
+  border-radius: 4px !important

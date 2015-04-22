@@ -23,15 +23,18 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  published_at            :datetime
 #
 
 class Solution < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
+  include Publishable
 
   belongs_to :solution_story
   belongs_to :user
   has_many :steps, as: :steppable
+  has_one :feature, as: :featured
   has_and_belongs_to_many :experiences
   has_and_belongs_to_many :ideas
   has_and_belongs_to_many :approaches
@@ -53,6 +56,10 @@ class Solution < ActiveRecord::Base
 
   def default_like
     DEFAULT_LIKE
+  end
+
+  def icon
+    'fa-puzzle-piece'
   end
 
 end

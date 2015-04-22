@@ -1,10 +1,10 @@
 <% if user_signed_in? && current_user.liked?(@approach, {vote_scope: @approach.default_like[:scope]}) %>
-  <%= link_to unlike_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach.id, partial: '_button'), class: 'btn btn-block btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
+  <%= link_to unlike_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach.id, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
     <i class='<%= @approach.default_like[:liked][:icon] %>'></i> <%= @approach.default_like[:liked][:name] %>
     <%= "(#{@approach.cached_votes_up})" unless @approach.cached_votes_up.zero? %>
   <% end %>
 <% else %>
-  <%= link_to like_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach.id, partial: '_button'), class: 'btn btn-block btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
+  <%= link_to like_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach.id, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
     <i class='<%= @approach.default_like[:unliked][:icon] %>'></i> <%= @approach.default_like[:unliked][:name] %>
     <%= "(#{@approach.cached_votes_up})" unless @approach.cached_votes_up.zero? %>
   <% end %>

@@ -52,11 +52,11 @@ class Challenge < ActiveRecord::Base
 
   def featured_contributions
     if self.active_stage == 'experience'
-      self.experience_stage.experiences.reorder(cached_votes_up: :desc).first(2)
+      self.experience_stage.experiences.published.reorder(cached_votes_up: :desc).first(2)
     elsif self.active_stage == 'idea'
-      self.idea_stage.ideas.reorder(cached_votes_up: :desc).first(3)
+      self.idea_stage.ideas.published.reorder(cached_votes_up: :desc).first(3)
     elsif self.active_stage == 'approach'
-      self.approach_stage.approaches.reorder(cached_votes_up: :desc).first(2)
+      self.approach_stage.published.approaches.reorder(cached_votes_up: :desc).first(2)
     elsif self.active_stage == 'solution'
       self.solution_stage.solutions.reorder(cached_votes_up: :desc).first(2)
     end
@@ -82,7 +82,7 @@ class Challenge < ActiveRecord::Base
       number: 1,
       name: 'experience',
       action: 'shared',
-      icon: 'fa-comment-o',
+      icon: 'fa-comment',
       headline: 'Share Experiences',
       description: 'Tell others about problems that have affected you as an educator.'
     },
@@ -107,7 +107,7 @@ class Challenge < ActiveRecord::Base
       name: 'solution',
       action: 'tried',
       icon: 'fa-puzzle-piece',
-      headline: 'See Real Stories',
+      headline: 'Explore Real Stories',
       description: 'See stories of how real schools have adopted the solutions you’ve inspired, or try them out yourself!'
     }
   ]

@@ -12,9 +12,9 @@
       <div class='input-switch' ng-switch='suggestion_link' ng-init='suggestion=<%= suggestion.link.present? %>'>
         <div ng-hide='suggestion_link' ng-click="suggestion_link=true" class='media'>
           <div class='media-left'>
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle-thin fa-stack-2x"></i>
-              <i class="fa fa-plus fa-stack-1x"></i>
+            <span class="fa-stack">
+              <i class="fa fa-stack-2x fa-circle-thin"></i>
+              <i class="fa fa-stack-1x fa-plus"></i>
             </span>
           </div>
           <div class='media-body'>
@@ -30,11 +30,11 @@
     </div>
 
     <div class='col-sm-2 col-xs-6'>
-      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' %>
+      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-sm btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' %>
     </div>
 
     <div class='col-sm-2 col-xs-6'>
-      <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-submit' %>
+      <%= f.submit submit_text, class: 'btn btn-rounded btn-sm btn-block btn-info' %>
     </div>
   </div>
 <% end %>

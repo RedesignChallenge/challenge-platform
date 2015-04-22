@@ -47,5 +47,31 @@
     </div>
   </div>
 
-  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-submit btn-rounded btn-longer' %></div>
+  <hr>
+
+  <%= label_tag "Receive email notifications when:" %>
+
+  <div class='form-group'>
+    <div class='row'>
+      <div class='col-xs-9'>
+        <span>Someone comments on my experience, idea, approach, or solution</span> &nbsp;
+      </div>
+      <div class='col-xs-3 text-right'>
+        <%= f.check_box :comment_posted, checked: resource.comment_posted.true?, class: 'radio-switch', data: { 'radio-all-off' => true, size: 'mini', 'on-color' => 'info', 'on-text' => 'Yes', 'off-text' => 'No' }%>
+      </div>
+    </div>
+  </div>
+
+  <div class='form-group' style='margin-bottom: 20px'>
+    <div class='row'>
+      <div class='col-xs-9'>
+        <span>Someone replies to my comment</span> &nbsp;
+      </div>
+      <div class='col-xs-3 text-right'>
+        <%= f.check_box :comment_replied, checked: resource.comment_replied.true?, class: 'radio-switch', data: { 'radio-all-off' => true, size: 'mini', 'on-color' => 'info', 'on-text' => 'Yes', 'off-text' => 'No' }%>
+      </div>
+    </div>
+  </div>
+
+  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-info btn-rounded btn-longer' %></div>
 <% end %>

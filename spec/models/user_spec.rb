@@ -31,6 +31,7 @@
 #  referrer_id            :integer
 #  display_name           :string
 #  avatar_option          :string           default("twitter")
+#  notifications          :hstore           default({"comment_posted"=>"true", "comment_replied"=>"true"})
 #
 
 require 'rails_helper'
@@ -61,4 +62,105 @@ describe User do
   it { is_expected.to validate_length_of(:twitter).is_at_most(16) }
   it { is_expected.to validate_length_of(:bio).is_at_most(2047) }
 
+  describe '#has_draft_submissions?' do
+    context 'with an entity that is unpublished' do
+      let(:user) {
+        FactoryGirl.create(:user)
+      }
+
+      let(:experience) {
+        FactoryGirl.create_list(:experience, 1) + FactoryGirl.create_list(:experience, 5, published_at: Time.now)
+      }
+
+      let(:idea) {
+        FactoryGirl.create_list(:idea, 1) + FactoryGirl.create_list(:idea, 5, published_at: Time.now)
+      }
+
+      let(:approach) {
+        FactoryGirl.create_list(:approach, 1) + FactoryGirl.create_list(:approach, 5, published_at: Time.now)
+      }
+
+      let(:solution) {
+        FactoryGirl.create_list(:solution, 1) + FactoryGirl.create_list(:solution, 5, published_at: Time.now)
+      }
+
+      it 'returns true for an experience' do
+        user.experiences << experience
+        expect(user.has_draft_submissions?).to eq true
+      end
+
+      it 'returns true for an idea' do
+        user.ideas << idea
+        expect(user.has_draft_submissions?).to eq true
+      end
+
+      it 'returns true for an approach' do
+        user.approaches << approach
+        expect(user.has_draft_submissions?).to eq true
+      end
+
+      it 'returns true for a solution' do
+        user.solutions << solution
+        expect(user.has_draft_submissions?).to eq true
+      end
+
+      it 'returns true with an experience, idea, approach, and solution unpublished' do
+        user.experiences << experience
+        user.ideas << idea
+        user.approaches << approach
+        user.solutions << solution
+        expect(user.has_draft_submissions?).to eq true
+      end
+    end
+
+    context 'with no entities that are unpublished' do
+      let(:user) {
+        FactoryGirl.create(:user)
+      }
+
+      let(:experience) {
+        FactoryGirl.create_list(:experience, 5, published_at: Time.now)
+      }
+
+      let(:idea) {
+        FactoryGirl.create_list(:idea, 5, published_at: Time.now)
+      }
+
+      let(:approach) {
+        FactoryGirl.create_list(:approach, 5, published_at: Time.now)
+      }
+
+      let(:solution) {
+        FactoryGirl.create_list(:solution, 5, published_at: Time.now)
+      }
+
+      it 'returns false for an experience' do
+        user.experiences << experience
+        expect(user.has_draft_submissions?).to eq false
+      end
+
+      it 'returns false for an idea' do
+        user.ideas << idea
+        expect(user.has_draft_submissions?).to eq false
+      end
+
+      it 'returns false for an approach' do
+        user.approaches << approach
+        expect(user.has_draft_submissions?).to eq false
+      end
+
+      it 'returns false for a solution' do
+        user.solutions << solution
+        expect(user.has_draft_submissions?).to eq false
+      end
+
+      it 'returns false with an experience, idea, approach, and solution all published' do
+        user.experiences << experience
+        user.ideas << idea
+        user.approaches << approach
+        user.solutions << solution
+        expect(user.has_draft_submissions?).to eq false
+      end
+    end
+  end
 end

@@ -6,14 +6,16 @@ end
 describe PersistenceOrientedConcern do
 
   let(:user) { FactoryGirl.create(:user, email: 'the-user@overload.net')}
-  let(:experience) { experience = FactoryGirl.create(:experience) }
-  let(:idea) { FactoryGirl.create(:idea, user: FactoryGirl.create(:user, email: Faker::Internet.email)) }
 
   before(:each) do
     sign_in user
   end
 
   context 'when persisting likes' do
+
+    let(:experience) { FactoryGirl.create(:experience) }
+    let(:published_experience) { FactoryGirl.create(:experience, published_at: Time.now) }
+    let(:idea) { FactoryGirl.create(:idea, user: FactoryGirl.create(:user, email: Faker::Internet.email)) }
 
     it 'persists nothing if the session contains none to persist' do
       subject.persist_pending_cache
@@ -75,26 +77,35 @@ describe PersistenceOrientedConcern do
   end
 
   context 'when persisting entities' do
+
+    let(:experience) { FactoryGirl.build(:experience) }
+    let(:published_experience) { FactoryGirl.build(:experience, published_at: Time.now) }
+
     it 'actually persists the entity' do
-      experience = FactoryGirl.create(:experience)
       subject.cache_pending_object(experience)
 
       subject.persist_pending_cache
+
+      expect(experience.persisted?).to eq true
 
       expect(experience.user).to eq user
     end
 
     it 'sets the flash message appropriately' do
-      experience = FactoryGirl.create(:experience)
       subject.cache_pending_object(experience)
 
       subject.persist_pending_cache
 
-      expect(flash[:success]).to eq "You've successfully shared your experience."
+      expect(flash[:success]).to eq "You've successfully saved a draft of your experience. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+    end
+
+    it 'sets the flash message for published entities appropriately' do
+      subject.cache_pending_object(published_experience)
+      subject.persist_pending_cache
+      expect(flash[:success]).to eq "You've successfully shared your experience. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
     end
 
     it "sets the entity's return path correctly" do
-      experience = FactoryGirl.create(:experience)
       challenge = FactoryGirl.create(:challenge)
       experience_stage = FactoryGirl.create(:experience_stage)
       theme = FactoryGirl.create(:theme)
@@ -112,7 +123,6 @@ describe PersistenceOrientedConcern do
     end
 
     it 'removes the entity from the cache' do
-      experience = FactoryGirl.create(:experience)
       subject.cache_pending_object(experience)
 
       subject.persist_pending_cache
@@ -120,4 +130,26 @@ describe PersistenceOrientedConcern do
       expect(session[:object]).to be_nil
     end
   end
+
+  context 'when persisting a comment' do
+    let(:commentable) { FactoryGirl.create(:experience, user: FactoryGirl.create(:user)) }
+    let(:parent_comment) { FactoryGirl.create(:comment, commentable: commentable) }
+    let(:comment_with_parent) { FactoryGirl.create(:comment, commentable: commentable, temporal_parent_id: parent_comment.id) }
+    let(:comment) { FactoryGirl.create(:comment, commentable: commentable) }
+
+    it 'queues one mail job with no parent id attached' do
+      subject.cache_pending_object(comment)
+      subject.persist_pending_cache
+
+      expect(Sidekiq::Extensions::DelayedMailer.jobs.size).to eq 1
+    end
+
+    it 'queues two mail jobs with a parent id attached' do
+      subject.cache_pending_object(comment_with_parent)
+      subject.persist_pending_cache
+
+      expect(Sidekiq::Extensions::DelayedMailer.jobs.size).to eq 2
+    end
+  end
+
 end

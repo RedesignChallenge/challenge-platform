@@ -16,4 +16,19 @@ module ChallengesHelper
     end
   end
 
+  def challenge_nav_margin(challenge)
+    case challenge.active_stage.downcase
+    when 'experience'
+      'margin: 0.25em 3.525em'
+    when 'idea'
+      'margin: 0.25em 2.85em'
+    when 'approach'
+      'margin: 0.25em 2.175em'
+    when 'solution'
+      'margin: 0.25em 1.5em'
+    else
+      'margin: 0.25em 1.5em'
+    end    
+  end
+
 end

@@ -16,6 +16,101 @@ shared_examples_for 'a standard controller' do
     end
   end
 
+  describe 'GET #show' do
+    context 'with a user that is logged in and owns the fetched entity' do
+
+      let(:user) {
+        FactoryGirl.create(:user)
+      }
+
+      before(:each) {
+        sign_in user
+      }
+
+      it 'renders the :show template' do
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(response).to render_template(:show)
+      end
+
+      it 'sets the current entity to the published entity' do
+        # unpublished_entity
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(assigns(target_model)).to eq unpublished_entity
+      end
+    end
+
+    context 'with a user that is logged in and does not own the fetched entity' do
+
+      let(:user) {
+        FactoryGirl.create(:user)
+      }
+
+      let(:other_user) {
+        FactoryGirl.create(:user)
+      }
+
+      before(:each) {
+        sign_out user
+        sign_in other_user
+      }
+
+      it 'redirects to the stage fragment for the entity' do
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(response).to redirect_to "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+      end
+
+      it 'updates the flash message with an error' do
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(flash[:error]).to eq "Sorry, that #{target_model} has not been published yet."
+      end
+    end
+
+    context 'with a user that is not logged in' do
+      let(:user) {
+        FactoryGirl.create(:user)
+      }
+
+      before(:each) {
+        unpublished_entity.user = user
+        sign_out user
+      }
+
+      it 'redirects to the stage fragment for the entity' do
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(response).to redirect_to "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+      end
+
+      it 'updates the flash message with an error' do
+        get :show, challenge_id: challenge.id,
+            :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+            :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+            id: unpublished_entity.id
+
+        expect(flash[:error]).to eq "Sorry, that #{target_model} has not been published yet."
+      end
+    end
+  end
+
   describe 'POST #create' do
 
     context 'with an authenticated user' do
@@ -23,21 +118,40 @@ shared_examples_for 'a standard controller' do
         sign_in user
       end
 
-      it 'creates the controller\'s entity' do
-        post :create, challenge_id: challenge.id,
-             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
-             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
-             :"#{target_model}" => savable_entity
-        expect(assigns(target_model).description).to eq "this is a pretty bland description"
-      end
-
       context 'with an entity that can be persisted' do
+
+        it 'creates the controller\'s entity' do
+          post :create, challenge_id: challenge.id,
+               :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+               :"#{target_model}" => savable_entity
+          expect(assigns(target_model).published_at).to_not be_nil
+          expect(assigns(target_model).persisted?).to eq true
+        end
+
+        it 'creates the a draft entity' do
+          post :create, challenge_id: challenge.id,
+               :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+               :"#{target_model}" => draft_entity
+          expect(assigns(target_model).published_at).to be_nil
+          expect(assigns(target_model).persisted?).to eq true
+        end
+
         it 'updates the flash message' do
           post :create, challenge_id: challenge.id,
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => savable_entity
-          expect(flash[:success]).to eq "You've successfully shared your #{target_model}."
+          expect(flash[:success]).to eq "You've successfully shared your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        end
+
+        it 'updates the flash message for a draft entity' do
+          post :create, challenge_id: challenge.id,
+               :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+               :"#{target_model}" => draft_entity
+          expect(flash[:success]).to eq "You've successfully saved a draft of your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
         end
 
         it 'redirects correctly after creation' do
@@ -114,6 +228,9 @@ shared_examples_for 'a standard controller' do
 
         expect(assigns(target_model).link).to eq valid_patch_model[:link]
         expect(assigns(target_model).description).to eq valid_patch_model[:description]
+        expect(assigns(target_model).persisted?).to eq true
+        expect(assigns(target_model).published_at).to be_nil
+
       end
 
       it 'sets the flash message correctly' do
@@ -122,7 +239,7 @@ shared_examples_for 'a standard controller' do
               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
               id: preexisting_entity.id,
               :"#{target_model}" => valid_patch_model
-        expect(flash[:success]).to eq "You've successfully updated your #{target_model}."
+        expect(flash[:success]).to eq "You've successfully updated the draft of your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
       end
 
       it 'redirects to the correct path' do
@@ -132,6 +249,32 @@ shared_examples_for 'a standard controller' do
               id: preexisting_entity.id,
               :"#{target_model}" => valid_patch_model
         expect(response).to redirect_to redirect_path || "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
+      end
+    end
+
+    context 'when the entity is a draft' do
+
+      it 'updates the preexisting entity with a timestamp' do
+        patch :update, challenge_id: challenge.id,
+              :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+              :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+              id: unpublished_entity.id,
+              :"#{target_model}" => valid_patch_publish_model
+
+        expect(assigns(target_model).link).to eq valid_patch_publish_model[:link]
+        expect(assigns(target_model).description).to eq valid_patch_publish_model[:description]
+        expect(assigns(target_model).persisted?).to eq true
+        expect(assigns(target_model).published_at).to_not be_nil
+
+      end
+
+      it 'sets the flash message correctly' do
+        patch :update, challenge_id: challenge.id,
+              :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
+              :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
+              id: unpublished_entity.id,
+              :"#{target_model}" => valid_patch_publish_model
+        expect(flash[:success]).to eq "You've successfully published your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
       end
     end
 
@@ -169,7 +312,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                id: preexisting_entity.id
-        expect(flash[:success]).to eq "You've successfully deleted your #{target_model}."
+        expect(flash[:success]).to eq "You've successfully deleted your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
       end
 
       it 'redirects to the appropriate path' do
@@ -299,5 +442,4 @@ shared_examples_for 'a standard controller' do
       "/challenges/#{challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
     end
   end
-
 end

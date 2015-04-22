@@ -24,6 +24,7 @@
 #  cached_weighted_average :float            default(0.0)
 #  impact                  :text
 #  implementation          :text
+#  published_at            :datetime
 #
 
 FactoryGirl.define do

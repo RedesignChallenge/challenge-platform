@@ -11,7 +11,8 @@ challenge.idea_stage.problem_statements.each do |problem_statement|
       impact: Faker::Lorem.paragraph,
       implementation: Faker::Lorem.paragraph,
       user_id: (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
-      link: links.sample
+      link: links.sample,
+      published_at: Time.now
     )
 
 

@@ -1,10 +1,10 @@
 <% if user_signed_in? && current_user.liked?(@experience, {vote_scope: @experience.default_like[:scope]}) %>
-  <%= link_to unlike_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience, partial: 'like'), class: 'btn btn-block btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
+  <%= link_to unlike_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
     <i class='<%= @experience.default_like[:liked][:icon] %>'></i> <%= @experience.default_like[:liked][:name] %>
     <%= "(#{@experience.cached_votes_up})" unless @experience.cached_votes_up.zero? %>
   <% end %>
 <% else %>
-  <%= link_to like_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience, partial: 'like'), class: 'btn btn-block btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
+  <%= link_to like_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
     <i class='<%= @experience.default_like[:unliked][:icon] %>'></i> <%= @experience.default_like[:unliked][:name] %>
     <%= "(#{@experience.cached_votes_up})" unless @experience.cached_votes_up.zero? %>
   <% end %>

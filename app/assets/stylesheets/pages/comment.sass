@@ -1,54 +1,51 @@
 .comment
   background-color: white
   border-bottom: 1.5px solid #e6e6e6
-  padding: 15px 0px
+  padding: 1em 0px
   &:first-child
     padding-top: 0px
   .comment-header
     .media-commenter
-      margin-bottom: 10px
+      margin-bottom: 0.75em
       .media-left
-        padding-right: 5px
-        .comment-user-avatar
+        .fa-user-avatar
+          width: 100% !important
+          margin-top: 0.5em
+          @extend .fa-lg
           .fa-stack-2x
-            text-align: left
+            @extend .fa-2x
+            color: $newUser
           .fa-stack-1x
-            left: -2px
+            @extend .fa-lg
+            @extend .text-small
+            @extend .text-bolder
+            margin-top: 0.75em
+            margin-left: 0.5em
       .media-body
-        .name
-          font-size: 1.15em
-          line-height: 1em
-          font-weight: bold
-          margin-bottom: 0px
-        .title
-          font-size: 0.85em
-          margin-bottom: 0px
-          color: $lightGrayText
-          font-weight: bold
+        padding-left: 2.25em
+        .user-caption
+          margin-top: 0.5em
+          .user-name
+            margin-bottom: 0em
     .timestamp
+      @extend .text-xsmall 
       @extend .pull-right
-      font-size: 0.85em
-      margin-bottom: 0px
-      color: $lightGrayText
-      font-weight: bold
+      margin-top: 2.5em
   .comment-content
-    margin-bottom: 15px
+    margin-bottom: 1em
   .comment-link
-    color: $text
+    color: $text-color
   .comment-actions
     ul
-      margin-bottom: 0px
+      margin-bottom: 0em
       li
-        margin-right: 20px
-        .fa
-          font-size: 1.3em
-          margin-right: 3px
-          &.fa-ellipsis-h
-            font-size: 2em
-            position: relative
-            top: 5px
-        font-size: 0.8em
+        font-size: $font-size-h6
         color: $lightGrayText
+        margin-right: 1.5em
+        &.dropdown-link
+          margin-right: 0px
+          a
+            color: $lightGrayText
         a
           color: $lightGrayText
   form
@@ -85,10 +82,6 @@
       margin-bottom: 0px
       .help-block
         margin-bottom: 0px
-
-.dropdown
-  a
-    color: $lightGrayText
 
 .well-discussion
   padding: 30px 40px 15px

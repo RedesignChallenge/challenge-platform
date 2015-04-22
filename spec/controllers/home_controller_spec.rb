@@ -5,7 +5,7 @@ describe HomeController do
 
     it 'renders the correct home page' do
       get 'index'
-      expect(response).to render_template 'home_logged_out'
+      expect(response).to render_template 'home'
     end
 
     context 'with two featured challenges, and the first has not ended' do

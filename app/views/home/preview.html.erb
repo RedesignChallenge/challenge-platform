@@ -7,7 +7,7 @@
 
         <div class='well well-auth' ng-switch='new_user' ng-init='new_user=false'>
           <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, @cancel_path, class: 'auth-cancel' %>
-          <p class='auth-title'>Your <%= @class_name %> will be shared once you sign {{new_user ? 'up' : 'in'}}</p>
+          <h2 class='section-title'>Your <%= @class_name %> will be shared once you sign {{new_user ? 'up' : 'in'}}</h2>
 
           <div ng-hide="new_user">
             <%= render partial: 'devise/sessions/form', locals: { cancel_path: @cancel_path, switch_link: link_to("Sign Up.", '#', onclick: 'return false;', 'ng-click' => 'new_user=true') } %>

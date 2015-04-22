@@ -1,19 +1,42 @@
 <div class='form-group' ng-init="avatar_option='<%= resource.avatar_option %>'">
   <%= f.label :avatar, 'Profile Photo'.html_safe %><br>
-  <label class="radio-inline">
+  <label class="radio-inline text-normal">
     <%= f.radio_button :avatar_option, 'twitter', 'ng-model' => 'avatar_option' %> Use Twitter photo
   </label>
-<!--   <label class="radio-inline">
-    <%#= f.radio_button :avatar_option, 'upload', 'ng-model' => 'avatar_option' %> Upload photo
-  </label> -->
-  <label class="radio-inline">
-    <%= f.radio_button :avatar_option, 'none', 'ng-model' => 'avatar_option' %> Rather not have a photo
+  <label class="radio-inline text-normal">
+    <%= f.radio_button :avatar_option, 'upload', 'ng-model' => 'avatar_option' %> Upload photo
+  </label>
+  <label class="radio-inline text-normal">
+    <%= f.radio_button :avatar_option, 'none', 'ng-model' => 'avatar_option' %> No photo
   </label>
 </div>
 
-<!-- <div class='form-group' ng-show='avatar_option=="upload"'>
-  <div class="input-group">
-    <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
-    <%#= f.file_field :avatar, class: 'form-control' %>
-  </div>
-</div> -->
+<div class='form-group' ng-show='avatar_option=="upload"'>
+  <% if resource.avatar.present? %>
+    <div ng-init='upload_new=false' ng-hide='upload_new'>
+      <label>
+        Current Avatar
+        <a href='#' onclick='return false;' ng-click='upload_new=true'>
+          <small>Upload new photo?</small>
+        </a>
+      </label><br>
+      <%= image_tag(current_user.avatar.url, class: 'img-circle', size: '52x52') %>
+    </div>
+    <label ng-hide='!upload_new'>
+      Upload Avatar
+      <a href='#' onclick='return false;' ng-click='upload_new=false'>
+        <small>Cancel</small>
+      </a>
+      <br>
+    </label>
+    <div class="input-group" ng-hide='!upload_new'>
+      <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
+      <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+  <% else %>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
+      <%= f.file_field :avatar, class: 'form-control' %>
+    </div>
+  <% end %>
+</div>

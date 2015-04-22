@@ -8,7 +8,8 @@ links = ['https://youtube.com/watch?v=rzfhs3M4lus', 'https://twitter.com/MrBronk
     description: Faker::Lorem.paragraph,
     user_id: (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
     theme_id: challenge.experience_stage.themes.pluck(:id).sample,
-    link: links.sample
+    link: links.sample,
+    published_at: Time.now
   )
 
   ## Creating comment threads for those ideas

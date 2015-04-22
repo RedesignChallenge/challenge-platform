@@ -16,6 +16,12 @@ describe ApproachesController do
   }
 
   let(:preexisting_entity) {
+    approach = FactoryGirl.create(:approach, user: user, published_at: Time.now)
+    third_fragment.approaches << approach
+    approach
+  }
+
+  let(:unpublished_entity) {
     approach = FactoryGirl.create(:approach, user: user)
     third_fragment.approaches << approach
     approach
@@ -34,7 +40,23 @@ describe ApproachesController do
         {description: 'Roll up sleeves. This is going to get messy.'},
         {description: 'Put on a blindfold and start typing furiously away at the keyboard.  You will know when you are done.'}
       ],
-      approach_idea_id: third_fragment.id
+      approach_idea_id: third_fragment.id,
+      published: 'true'
+    }
+  }
+
+  let(:draft_entity) {
+    {
+      title: 'An awesome approach',
+      description: 'this is a pretty bland description',
+      needs: 'Elbow grease, Red Bull, and faith',
+      link: 'http://www.google.com',
+      steps_attributes: [
+        {description: 'Drink the Red Bull.  Gain wings.'},
+        {description: 'Roll up sleeves. This is going to get messy.'},
+        {description: 'Put on a blindfold and start typing furiously away at the keyboard.  You will know when you are done.'}
+      ],
+      approach_idea_id: third_fragment.id,
     }
   }
 
@@ -50,6 +72,14 @@ describe ApproachesController do
     {
       description: 'This is a much, much better description!!',
       link: 'http://www.yahoo.com'
+    }
+  }
+
+  let(:valid_patch_publish_model) {
+    {
+      description: 'This is a much, much better description!!',
+      link: 'http://www.yahoo.com',
+      published: 'true'
     }
   }
 

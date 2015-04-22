@@ -1,7 +1,7 @@
 <% url = user_signed_in? ? "#{url}?referrer_id=#{current_user.id}" : url %>
 
 <div class="btn-group btn-block" style='margin-bottom: 10px'>
-  <button type="button" class="btn btn-block btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share-alt"></i> Share</button>
+  <button type="button" class="btn btn-block btn-fa btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share"></i> Share</button>
   <ul class="dropdown-menu" role='menu'>
     <li role="presentation">
       <%= link_to "<i class='fa fa-twitter'></i> Twitter".html_safe, "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' %>

@@ -12,17 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  #
-  # Create a new user registration
-  #
-  # This method is overridden from the Devise method call because we need to parse the
-  # strings of district ids
-  def create
-    parse_state_params
-    parse_district_params
-    parse_school_params
-  end
-
   def edit
     set_edit_setting
   end
@@ -38,11 +27,13 @@ class RegistrationsController < Devise::RegistrationsController
     parse_district_params
     parse_school_params
     check_password_needed
-    twitter_changed = resource.twitter != params[:user][:twitter]
+    # We're persisting the check before the super block.
+    # If we do not, the existing resource values will be the same as the params.
+    avatar_updated = avatar_updated?
 
     super do |resource|
       if resource.valid?
-        resource.delay.set_avatar_from_twitter if twitter_changed
+        update_avatar(resource) if avatar_updated
       end
     end
   end
@@ -130,6 +121,21 @@ private
 
   def after_update_path_for(resource)
     edit_user_registration_path(setting: (@setting == 'onboard' ? 'profile': "#{@setting}"))
+  end
+
+  def update_avatar(resource)
+    if params[:user][:avatar_option] == 'none'
+      resource.remove_avatar!
+      resource.save
+    else
+      resource.delay.set_avatar_from_twitter
+    end
+  end
+
+  def avatar_updated?
+    twitter_changed = resource.twitter != params[:user][:twitter] || (params[:user][:avatar_option] == 'twitter' && resource.avatar_option != 'twitter')
+    remove_avatar = resource.avatar.present? && params[:user][:avatar_option] == 'none'
+    twitter_changed || remove_avatar
   end
 
 end

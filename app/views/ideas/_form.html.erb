@@ -1,5 +1,6 @@
 <%= form_for(@idea, url: url) do |f| %>
   <%= f.hidden_field :problem_statement_id %>
+  <%= f.hidden_field :published, value: nil, 'ng-value' => 'published' %>
 
   <div class='row'>
     <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
@@ -28,9 +29,9 @@
         <div class='input-switch' ng-switch='idea_impact' ng-init='idea_impact=<%= @idea.impact.present? %>'>
           <div ng-hide='idea_impact' ng-click="idea_impact=true" class='media'>
             <div class='media-left'>
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-plus fa-stack-1x"></i>
+              <span class="fa-stack">
+                <i class="fa fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-stack-1x fa-plus"></i>
               </span>
             </div>
             <div class='media-body'>
@@ -47,9 +48,9 @@
         <div class='input-switch' ng-switch='idea_implementation' ng-init='idea_implementation=<%= @idea.implementation.present? %>'>
           <div ng-hide='idea_implementation' ng-click="idea_implementation=true" class='media'>
             <div class='media-left'>
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-plus fa-stack-1x"></i>
+              <span class="fa-stack">
+                <i class="fa fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-stack-1x fa-plus"></i>
               </span>
             </div>
             <div class='media-body'>
@@ -66,9 +67,9 @@
         <div class='input-switch' ng-switch='idea_link' ng-init='idea_link=<%= @idea.link.present? %>'>
           <div ng-hide='idea_link' ng-click="idea_link=true" class='media'>
             <div class='media-left'>
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-plus fa-stack-1x"></i>
+              <span class="fa-stack">
+                <i class="fa fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-stack-1x fa-plus"></i>
               </span>
             </div>
             <div class='media-body'>
@@ -86,18 +87,20 @@
     </div>
   </div>
 
-  <div class='row'>
+  <div class='row' ng-init="published=<%= @idea.published_at? %>">
     <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
 
       <div class='row'>
-        <div class='col-xs-4 col-xs-offset-4'>
-          <%= link_to "Cancel", cancel_path, class: 'btn btn-default btn-rounded btn-block pull-right', data: { confirm: "Are you sure? Any unsaved changes you've made will be lost." } %>
+        <div class='col-xs-4'>
+          <%= f.submit 'Save and finish later', class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
         </div>
         <div class='col-xs-4'>
-          <%= f.submit submit_text, class: 'btn btn-submit btn-rounded btn-block pull-right' %>
+          <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-default' %>
+        </div>
+        <div class='col-xs-4'>
+          <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-info pull-right', 'ng-click' => "published=true" %>
         </div>
       </div>
-
     </div>
   </div>
 <% end %>

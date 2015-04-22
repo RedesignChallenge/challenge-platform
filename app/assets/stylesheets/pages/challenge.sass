@@ -1,93 +1,97 @@
 #challenge-header
-  padding: 5px 0px
-  background-color: white
-  color: $text
-  border-bottom: 4px solid $linkText
-  &.experience
-    border-bottom: 4px solid $experience
-  &.idea
-    border-bottom: 4px solid $idea
-  &.approach
-    border-bottom: 4px solid $approach
-  &.solution
-    border-bottom: 4px solid $solution
-  &.none
-    border-bottom: none
-  #challenge-title
-    a
-      font-size: 2em
-      margin-bottom: 50px
-      color: $text
-  #challenge-about
-    margin-top: 10px
-    margin-bottom: 5px
-    a
-      color: $text
-      font-weight: bolder
-      .fa
-        color: $linkText
+  background-color: transparent
+  padding: 0.25em 0em
+  &.experience_stages,&.idea_stages,&.approach_stages
+    background-color: white
+  &.experiences,&.ideas,&.approach_ideas,&.approaches,&.solutions
+    #challenge-nav
+      background-color: white
+  &.splash
+    position: absolute
+    top: 3.5em
+    width: 100%
+    z-index: 1000
+    #challenge-nav
+      background-color: white
   #challenge-nav
-    margin: 5px 0px
-    .fa-play
-      color: #D1D3D4
-    li
-      padding: 0px 20px
-      &:first-of-type
-        padding-left: 0px
-      &:last-of-type
-        padding-right: 0px
-      a
-        color: $text
-        font-weight: bold
-        &.active
-          &.experience
-            color: $experience
-          &.idea
-            color: $idea
-          &.approach
-            color: $approach
-          &.solution
-            color: $solution
-        &.btn
+    @extend .text-center, .center-block, .text-small
+    margin: 0.25em 1.5em
+    padding: 0px
+    +border-radius(2em)
+    .badge
+      @extend .text-default, .text-small
+      +border-radius(2em)
+      background-color: white
+      padding: 5px 15px
+      vertical-align: bottom
+      .fa
+        min-height: 1.1em
+        top: 0em
+        &.fa-check
+          @extend .text-default
+          font-size: 1.1em
+          top: -0.1em
+      .fa-stack
+        height: 1.7em
+        width: 1.8em
+        vertical-align: bottom
+        .fa-stack-2x
+          font-size: 1.8em
+      .headline
+        @extend .hidden-xs
+        @extend .text-bolder
+        top: -0.3em
+        position: relative
+      &.active
+        background-color: #E9E9E9 !important
+      &.selected
+        .headline,.fa.fa-check
+          @extend .text-white
+      &:first-child
+        margin-left: 0px
+      &:last-child
+        margin-right: 0px
+    .badge-experience
+      &.active
+        .fa-stack-1x
           font-size: 1em
-          padding: 2px 10px
-          font-weight: normal
-      .time
-        font-size: 0.85em
-        margin-bottom: 5px
-        color: #666666
+      &.selected
+        background-color: $experience !important
+    .badge-idea
+      &.selected
+        background-color: $idea !important
+    .badge-approach
+      &.selected
+        background-color: $approach !important
+    .badge-solution
+      &.selected
+        background-color: $solution !important
+    .fa-play
+      color: #CECFD0
+      position: relative
+      top: -0.4em
+      margin: 0em 1em
 
 #challenge-overview
-  padding: 20px 0px
+  padding: 4.5em 0em 1.5em
   background-repeat: no-repeat
   background-size: cover
   background-position: 50% 0%
-  color: $text
+  color: $text-color
   .challenge-headline
-    font-size: 3.3em
-    line-height: 1.2em
-    font-weight: 800
     margin-bottom: 20px
-  .challenge-hashtag
-    color: $text
-    font-size: 1.4em
-    a
-      color: $text
-      font-weight: lighter
-    .fa
-      font-size: 1.5em
   .embed-responsive
     margin-top: 10px
 
 #challenge-description
-  padding: 40px 0px
-  background-color: white
+  padding: 20px 0px 0px
+  background-color: $lightGrayBG
 
 #challenge-details
   padding: 15px 0px 30px
   background-color: $lightGrayBG
   .section-title
-    color: $text
+    color: $text-color
     font-weight: bold
     font-size: 1.9em
     line-height: 1.4em
@@ -101,62 +105,31 @@
     margin-bottom: 45px
     .col-xs-6,.col-sm-3
       min-height: 300px
-      margin-bottom: 30px
-      .challenge-fa-bubble
-        &.pending
-          color: transparent
-          .fa-circle
-            @extend .fa-circle-thin
-            color: #D1D3D4
-          &.fa-experience
-            .fa-stack-1x
-              @extend .text-experience-light
-          &.fa-idea
-            .fa-stack-1x
-              @extend .text-idea-light
-          &.fa-approach
-            .fa-stack-1x
-              @extend .text-approach-light
-          &.fa-solution
-            .fa-stack-1x
-              @extend .text-solution-light
-        &.completed
-          color: transparent
-          &.fa-experience
-            .fa-circle
-              @extend .fa-circle-thin
-              @extend .text-experience
-            .fa-stack-1x
-              @extend .text-experience
-          &.fa-idea
-            .fa-circle
-              @extend .fa-circle-thin
-              @extend .text-idea
-            .fa-stack-1x
-              @extend .text-idea
-          &.fa-approach
-            .fa-circle
-              @extend .fa-circle-thin
-              @extend .text-approach
-            .fa-stack-1x
-              @extend .text-approach
-          &.fa-solution 
-            .fa-circle
-              @extend .fa-circle-thin
-              @extend .text-solution
-            .fa-stack-1x
-              @extend .text-solution
+      .stage-recap
+        a,p,div
+          &:hover,&:focus,&:active,&.active
+            text-decoration: none
+        .challenge-fa-bubble
+          &.pending
+            .fa-circle-thin
+              color: #D1D3D4
+        h4
+          font-size: 1.5em
+          &:hover,&:focus,&:active,&.active
+            text-decoration: underline
       .stage-cta
+        @extend .text-center
         position: absolute
         bottom: 0px
         width: 100%
         margin: -15px
-        text-align: center
         p
+          @extend .text-small
           margin-bottom: 5px
-          font-size: 1em
           &.pending
             color: #A5A7AA
+        .btn
+          @extend .text-small
 
 #challenge-panel
   padding: 30px 0px
@@ -164,27 +137,14 @@
   .row-panelists
     @extend .center-block, .text-center
     margin-top: 20px
-    .caption
-      margin-top: 5px
-      .name
-        margin-bottom: 0px
-        font-size: 1.2em
-        a
-          font-weight: bold
-          color: $text
-      .title
-        font-size: 0.85em
-        margin-bottom: 0px
-        color: $grayText
+    margin-bottom: 20px
   .panelist-title
     @extend .text-center
+    @extend .text-large
     margin: 0px
-    font-size: 1.4em
-  .panelist-bio
-    font-size: 1em
 
 #challenge-featured
-  padding: 40px 0px
+  padding: 30px 0px
   background-color: $lightGrayBG
 
 #challenge-invite

@@ -1,38 +1,21 @@
 .solution_story-thumbnail
-  min-height: 550px
+  background-color: white
   padding: 0px
-  +border-radius(5px)
+  +border-radius(10px)
+  img
+    border-top-right-radius: 10px
+    border-top-left-radius: 10px
   .solution_story-content
-    padding: 20px
-    .solution_story-title
-      a
-        color: $solution
-        font-size: 1.4em
-        line-height: 1em
-    .solution_story-description
-      line-height: 1.5em
+    min-height: 250px
+    padding: 1.5em
+    position: relative
     .solution_story-effort
+      position: absolute
+      bottom: 1.5em
+      left: 0.75em
 
 #solution_story-overview
-  padding: 0px 0px 40px
-  .solution_story-header
-    @extend .text-center
-    font-weight: bold
-    margin: 15px auto
-    text-transform: uppercase
-    color: $lightGrayText
-    font-size: 0.9em
-  .solution_story-title
-    @extend .text-center
-    @extend .text-solution
-    font-size: 2.8em
-    line-height: 1.1em
-    font-weight: bold
-  .solution_story-description
-    @extend .lead
-    font-weight: normal
-    line-height: 1.6em
-    margin-bottom: 20px
+  padding: 4em 0em
   .well-solution_story
     padding: 0px
     background-color: white
@@ -45,9 +28,6 @@
       padding-top: 15px
     .solution_story-content
       padding-top: 15px
-      .solution-show-title
-        @extend .section-title
-        @extend .text-solution
       .row-solution
         margin-top: 20px
         margin-bottom: 30px
@@ -86,69 +66,54 @@
             &.solution-approach
               .img-circle
                 width: 7.5em
-              .fa-stack
+              .fa-user-avatar
                 width: 6em
                 height: 6em
                 line-height: 6em
                 .fa-stack-2x
                   font-size: 6em !important
-                  color: $newUser
                 .fa-stack-1x
-                  font-size: 2em
-                  font-weight: bold
+                  font-size: 2em !important
+                  margin-top: 0.8em
             &.solution-ideas
               .img-circle
                 width: 4em
-              .fa-stack
+              .fa-user-avatar
                 width: 2.5em
                 height: 3.5em
                 line-height: 3.5em
-                .fa-stack-2x
-                  font-size: 3.5em !important
-                  color: $newUser
-                .fa-stack-1x
-                  margin-left: 0.25em
-                  font-weight: bold
             &.solution-experiences
               .img-circle
                 width: 2em
-        .solution-show-embed
-          margin-bottom: 20px
-        .solution-show-heading
-          @extend .text-bold
-          @extend .text-solution
-          text-transform: uppercase
-          font-size: 1.4em
-        .solution-show-description
-          margin-bottom: 40px
-          line-height: 1.4em
-          &:last-child
-            margin-bottom: 0px
+              .fa-user-avatar
+                width: 1.5em
+                height: 1.5em
+                line-height: 1em
+                .fa-stack-2x
+                  @extend .fa-2x
+                .fa-stack-1x
+                  margin-left: 0.09em
+                  margin-top: 0.75em
+        .content-block:last-child
+          margin-bottom: 0px
         .solution-show-file
           margin-top: 20px
           .fa-4x
             color: $lightGrayText
   .media-step
-    min-height: 50px
-    margin-bottom: 30px
-    .media-left
-      .fa-stack-2x
-        font-size: 3em
-      .fa-stack-1x
-        font-size: 1.75em
-        margin-left: 4px
-        margin-top: 7px
+    min-height: 4em
+    margin-bottom: 2em
     .media-body
-      padding-top: 5px
-      padding-left: 20px
+      padding-top: 0.5em
+      padding-left: 1em
     &:last-child
-      margin-bottom: 0px
+      margin-bottom: 0em
 
 #solution_story-comments
-  padding: 20px 0px
+  padding: 2em 0em
 
 #solution_story-share
-  padding: 20px 0px
+  padding: 2em 0em
 
 .solution-effort
   margin-bottom: 15px
@@ -159,7 +124,7 @@
   .badge
     border-radius: 20px
     padding: 5px 15px
-    color: $text
+    color: $text-color
     background-color: #E6E7E8
     &:first-child
       background-color: white

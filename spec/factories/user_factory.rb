@@ -31,13 +31,13 @@
 #  referrer_id            :integer
 #  display_name           :string
 #  avatar_option          :string           default("twitter")
+#  notifications          :hstore           default({"comment_posted"=>"true", "comment_replied"=>"true"})
 #
 
 require 'faker'
 
 FactoryGirl.define do
   factory :user, class: User do
-    email Faker::Internet.email
     password Faker::Internet.password(12)
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
@@ -45,6 +45,17 @@ FactoryGirl.define do
     role 'FactoryGirl Role'
     title Faker::Name.title
     organization Faker::Company.name
+
+    sequence :email do |n|
+      "testname#{n}@example.com"
+    end
   end
+  #
+  # trait :with_small_avatar_file do
+  #   after :create do | user |
+  #     user.avatar = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/support/images/small_image.png'))
+  #   end
+  # end
+
 end
 

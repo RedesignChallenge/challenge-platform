@@ -16,6 +16,12 @@ describe ExperiencesController do
   }
 
   let(:preexisting_entity) {
+    experience = FactoryGirl.create(:experience, user: user, published_at: Time.now)
+    third_fragment.experiences << experience
+    experience
+  }
+
+  let(:unpublished_entity) {
     experience = FactoryGirl.create(:experience, user: user)
     third_fragment.experiences << experience
     experience
@@ -25,14 +31,22 @@ describe ExperiencesController do
 
   let(:savable_entity) {
     {
-      description: "this is a pretty bland description", 
-      theme_id: third_fragment.id
+      description: 'this is a pretty bland description',
+      theme_id: third_fragment.id,
+      published: 'true'
+    }
+  }
+
+  let(:draft_entity) {
+    {
+        description: 'this is a pretty bland description',
+        theme_id: third_fragment.id,
     }
   }
 
   let(:unsavable_entity) {
     {
-      description: "this is a pretty bad entity", 
+      description: 'this is a pretty bad entity',
       link: 'ftp://google.com'
     }
   }
@@ -41,6 +55,14 @@ describe ExperiencesController do
     {
       description: 'This is a much, much better description!!', 
       link: 'http://www.yahoo.com'
+    }
+  }
+
+  let(:valid_patch_publish_model) {
+    {
+      description: 'This is a much, much better description!!',
+      link: 'http://www.yahoo.com',
+      published: 'true'
     }
   }
 

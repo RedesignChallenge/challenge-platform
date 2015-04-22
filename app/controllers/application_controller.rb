@@ -60,4 +60,25 @@ private
     session[:referrer_id] = params[:referrer_id] if params[:referrer_id]
   end
 
+  def object_flash_message_for(object, options = {})
+    if object.destroyed_at?
+      action = 'deleted'
+    else
+      if ['experience','idea','approach'].include?(object.class.to_s.downcase)
+        if object.published_at?
+          action = object.created_at == object.updated_at ? 'shared' : options[:published] ? 'published' : 'updated'
+        else
+          action = object.created_at == object.updated_at ? 'saved a draft of' : 'updated the draft of'
+        end
+      else
+        action = object.created_at == object.updated_at ? 'shared' : 'updated'
+      end
+    end
+
+    message = "You've successfully #{action} your #{object.class.name.downcase}. <a href='#{user_path(object.user)}'>Click here</a> to see all of your contributions."
+
+    return message
+  rescue
+  end
+
 end

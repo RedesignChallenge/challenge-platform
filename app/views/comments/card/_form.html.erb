@@ -13,29 +13,29 @@
       <div class='input-switch' ng-switch='comment_<%= comment.id %>_link' ng-init='comment_<%= comment.id %>_link=<%= comment.link.present? %>'>
         <div ng-hide='comment_<%= comment.id %>_link' ng-click="comment_<%= comment.id %>_link=true" class='media'>
           <div class='media-left'>
-            <span class="fa-stack fa-lg">
-              <i class="fa fa-circle-thin fa-stack-2x"></i>
-              <i class="fa fa-plus fa-stack-1x"></i>
+            <span class="fa-stack">
+              <i class="fa fa-stack-2x fa-circle-thin"></i>
+              <i class="fa fa-stack-1x fa-plus"></i>
             </span>
           </div>
           <div class='media-body'>
-            <span class='help-text'>Add a link to a video, article, image or other support</span>
+            <span class='help-text'>Add a link to a video, article, or image</span>
           </div>
         </div>
 
         <div ng-show='comment_<%= comment.id %>_link' class='form-group'>
           <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
-          <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your comment.</span>
+          <span class='help-block'>Attach a link and we'll display it alongside your post.</span>
         </div>
       </div>
     </div>
 
     <div class='col-sm-2 col-xs-6'>
-      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' if cancel_path %>
+      <%= link_to 'Cancel', '#', class: 'btn btn-sm btn-rounded btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' if cancel_path %>
     </div>
 
     <div class='col-sm-2 col-xs-6'>
-      <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-submit' %>
+      <%= f.submit submit_text, class: 'btn btn-sm btn-rounded btn-block btn-info' %>
     </div>
 
   </div>
