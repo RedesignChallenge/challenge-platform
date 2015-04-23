@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   include RoutingConcern
   include CachingConcern
   include PersistenceConcern
+  include HttpAcceptLanguage::AutoLocale
+
+
+ 
+
 
   ## Callback
   before_action :authenticate_user!, if: Proc.new { ENV['SITE_LOCKED'] == 'true' }
@@ -52,6 +57,10 @@ class ApplicationController < ActionController::Base
 
   def load_challenge
     @challenge = Challenge.find(params[:challenge_id])
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
 
 private

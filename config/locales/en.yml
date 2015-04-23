@@ -23,6 +23,29 @@ en:
   hello: "Hello world"
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
+  # Multiple Pages
+  social_sharing:
+  
+  # approach_stages/show
+  stage2_show_title: "See approaches"
+  # stage2_show_description: "See the approaches educators proposed to try the top ideas from Stage 2"
+  views:
+    approach_stages:
+      show:
+        contributers: "Featured Contributors"
+        try: "Know how to try this idea?"
+  # stage2_show_add: "Add the first Approach"
+  # stage2_show_section_title: "Idea"
+  # stage2_show_try: "Know how to try this idea?"
+
+
+
+
+
+
+
+
+
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
     distance_in_words:

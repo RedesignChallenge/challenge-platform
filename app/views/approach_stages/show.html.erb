@@ -1,3 +1,4 @@
+approach_stages/show
 <%= render partial: 'challenges/header', cache: true %>
 
 <div id="approach_stage-overview">
@@ -8,6 +9,7 @@
         <div class="row">
           <div class="col-sm-9">
             <h1 class='text-approach'><%= @challenge.stage_number > 3 ? 'See approaches.' : @approach_stage.title.html_safe %></h1>
+
             <p class='text-large'><%=  @challenge.stage_number > 3 ? 'See the approaches educators proposed to try the top ideas from Stage 2' : @approach_stage.description.html_safe %></p>
 
             <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
@@ -20,7 +22,7 @@
 
         <% unless @featured_approaches.count.zero? %>
           <div class="featured-contributors">
-            <h6 class='zero-margin-bottom'>Featured Contributors</h6>
+            <h6 class='zero-margin-bottom'><%= t '.contributors' %></h6>
             <% @featured_approaches.each do |featured_entity_container| %>
               <%= link_to challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, featured_entity_container.featured.approach_idea, featured_entity_container.featured), title: featured_entity_container.reason do %>
                 <%= render partial: 'shared/avatar', locals: { user:  featured_entity_container.featured.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em' } %>

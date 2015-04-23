@@ -67,6 +67,10 @@ gem 'newrelic_rpm'
 gem 'memcachier'
 gem 'dalli'
 
+## LOCALIZATION
+gem 'rails-i18n', '~> 4.0.0'
+gem 'http_accept_language'
+
 ## DELAYED JOBS
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', require: nil

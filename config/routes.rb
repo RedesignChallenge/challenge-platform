@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   match 'report',           to: 'home#report', via: :get
   match 'report_redirect',  to: 'home#report_redirect', via: :get
 
+
   resources :challenges, only: [:show, :index] do
     resources :experience_stages, only: [:show] do
       resources :themes, only: [:show] do
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
 
   resources :comments do
     member do
