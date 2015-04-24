@@ -45,7 +45,7 @@ approach_stages/show
           <%= approach_idea.title.html_safe %>
           <p class="theme-cta">
             <% if approach_idea.approaches.published.count.zero? %>
-              <i class='fa fa-plus' style='margin-left:-50px'></i> Add the first approach.
+              <i class='fa fa-plus' style='margin-left:-50px'></i> <%= t '.add_first' %>
             <% else %>
               <i class='fa fa-flask'></i> <%= approach_idea.approaches.published.count %>
             <% end %>
@@ -65,7 +65,7 @@ approach_stages/show
 
         <% @approach_ideas.each do |approach_idea| %>
           <div id='approach_idea-<%= approach_idea.id %>' class='content-block-xl'>
-            <h6 class='text-center'>Idea</h6>
+            <h6 class='text-center'><%= t '.section_title' %></h6>
             <h2 class='section-title text-approach'><%= approach_idea.title %></h2>
             
             <div class='row'>
@@ -77,11 +77,11 @@ approach_stages/show
             <% unless @challenge.stage_number > 3 %>
               <div class='row' style='margin-top: 20px;margin-bottom: 40px'>
                 <div class='col-sm-4 col-sm-offset-1'>
-                  <p class='text-center text-medium'>Know how to try this idea?</p>
+                  <p class='text-center text-medium'><%= t '.question_1' %></p>
                   <%= link_to "<i class='fa fa-flask'></i> Share your approach".html_safe, new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
                 </div>
                 <div class='col-sm-4 col-sm-offset-2'>
-                  <p class='text-center text-medium'>Want to try this but not sure how?</p>
+                  <p class='text-center text-medium'><%= t '.question_2' %></p>
                   <%= link_to "<i class='fa fa-comments-o'></i> Join the discussion".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments"), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
                   <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{approach_idea.comment_threads.count} comments <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
                 </div>
@@ -139,8 +139,8 @@ approach_stages/show
           </div>
         <% end %>
 
-        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-submit'><%= t '.social_sharing_question' %></h2>
+        <p class='section-description'><%= t '.social_sharing_description' %></p>
         
         <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_url(@challenge, @approach_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 
