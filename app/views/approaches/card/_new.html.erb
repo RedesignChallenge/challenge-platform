@@ -1,8 +1,7 @@
-approaches/card/_new
 <div id='approach_idea-<%= approach_idea.id %>-new' class='approach-new'>
   <div class='well well-lg well-share'>
-    <p><%= t('approaches.card._new.new_question') %> <%= link_to "Share your approach", new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea) %>.</p>
+    <p><%= t('approaches.card._new.new_question') %> <%= link_to "#{t('approaches.card._new.submit_new')}", new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea) %>.</p>
 
-    <p class='subtitle'><%= t('approaches.card._new.discussion_question') %> <%= link_to "See the discussion for this idea <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea) %></p>
+    <p class='subtitle'><%= t('approaches.card._new.discussion_question') %> <%= link_to "#{t('approaches.card._new.see_discusion')}".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea) %></p>
   </div>
 </div>

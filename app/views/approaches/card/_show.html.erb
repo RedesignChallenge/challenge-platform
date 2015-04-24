@@ -1,4 +1,3 @@
-approaches/card/_show
 <div id='approach-<%= approach.id %>' class="well well-approach">
   
   <div class='row row-heading'>
@@ -41,10 +40,10 @@ approaches/card/_show
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="approach-<%= approach.id %>-other">
                 <% if user_signed_in? && approach.user == current_user %>
-                  <li class='dropdown-link'><%= link_to 'Edit', edit_challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach) %></li>
-                  <li class='dropdown-link'><%= link_to 'Delete', challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach.id), method: :delete, data: { confirm: "Are you sure you want to delete your approach?"} %></li>
+                  <li class='dropdown-link'><%= link_to "#{t('approaches.card._show.edit')}", edit_challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach) %></li>
+                  <li class='dropdown-link'><%= link_to "#{t('approaches.card._show.delete')}", challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach.id), method: :delete, data: { confirm: "#{t('approaches.card._show.confirm')}"} %></li>
                 <% else %>
-                  <li  class='dropdown-link'><%= link_to 'Flag', '#' %></li>
+                  <li  class='dropdown-link'><%= link_to "#{t('approaches.card._show.flag')}", '#' %></li>
                 <% end %>
               </ul>
             </li>
