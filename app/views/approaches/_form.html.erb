@@ -1,3 +1,5 @@
+approaches/modals/_form
+
 <%= form_for(@approach, url: url) do |f| %>
   <%= f.hidden_field :approach_idea_id %>
   <%= f.hidden_field :published, value: nil, 'ng-value' => 'published' %>
@@ -81,7 +83,7 @@
     </div>
   </div>
 
-  <p class='header-label'>Optional</p>
+  <p class='header-label'><%= t('approaches.modals._form.header') %></p>
   <hr style='border-top: 2px dashed #C3C5C6;margin: 5px 0px 20px'>
 
   <div class='input-switch' ng-switch='approach_link' ng-init='approach_link=<%= @approach.link.present? %>'>
@@ -96,7 +98,7 @@
             </span>
           </div>
           <div class='media-body'>
-            <span class='help-text'>Add a link to a video, article, image or other supporting material</span><br>
+            <span class='help-text'><%= t('approaches.modals._form.add_link') %></span><br>
             <ul class='icon-list list-inline'>
               <li><i class='fa fa-youtube-play fa-3x'></i></li>
               <li><i class='fa fa-image fa-3x'></i></li>
@@ -110,7 +112,7 @@
 
     <div ng-show='approach_link' class='form-group'>
       <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
-      <span class='help-block'>Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach.</span>
+      <span class='help-block'><%= t('approaches.modals._form.instructions') %></span>
     </div>
   </div>
 

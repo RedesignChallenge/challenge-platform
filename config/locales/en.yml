@@ -31,9 +31,6 @@ en:
       social_sharing_question: "Know people who have something to add to this conversation?" #line 29
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 30
 
-  # <%= t '.social_sharing_question' %>
-  # <%= t('approaches.card._show.section_title') %>
-
   approach_stages:
     show:
       # title: "See approaches" line 11
@@ -70,8 +67,25 @@ en:
         header_1: "How To" #line 62
         header_2: "Description" #line 70
         header_3: "What you'll need" #line 75
+    modals:
+      _form:
+        # title_placeholder: "Add a Title" #line 10
+        # description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?" line 15
+        # needs_label: "Resources Needed" line 21
+        # needs_placeholder: "List any required materials or resources." line 22
+        # steps_label: "How To" line 28
+        # step_placeholder: "Click to add another step" line 46
+        # save: "Save and finish later" line 74
+        # cancel: "Cancel" line 77
+        # cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost." line 77
+        header: "Optional" #line 86
+        add_link: "Add a link to a video, article, image or other supporting material" #line 101
+        # add_url: "Add URL" line 114
+        instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
 
 
+  # <%= t '.social_sharing_question' %>
+  # <%= t('approaches.modals._form.instructions') %>
 
 
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
