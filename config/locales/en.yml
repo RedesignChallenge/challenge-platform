@@ -33,8 +33,8 @@ en:
 
 
 
-      # <%= t '.social_sharing_question' %>
-      # <%= t('approach_ideas._header.section_title') %>
+  # <%= t '.social_sharing_question' %>
+  # <%= t('approach_ideas._header.section_title') %>
 
   approach_stages:
     show:
@@ -57,7 +57,11 @@ en:
       social_sharing_question: "Know people who have something to add to this conversation?" #line 142
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 143
 
-
+  approaches:
+    card:
+      _new:
+        # submit_new: "Share your approach" line 4
+        # see_discusion: "See the discussion for this idea" #line 6
 
 
 
