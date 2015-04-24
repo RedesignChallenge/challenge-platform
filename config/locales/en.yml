@@ -27,8 +27,13 @@ en:
   approach_ideas:
     _header:
       section_title: "Idea" #line 7
+    show:
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 29
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 30
 
-      # <%= t '.section_title' %>
+
+
+      # <%= t '.social_sharing_question' %>
       # <%= t('approach_ideas._header.section_title') %>
 
   approach_stages:
