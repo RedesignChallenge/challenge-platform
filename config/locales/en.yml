@@ -85,12 +85,14 @@ en:
       _header:
         title: "An approach to the idea of" #line 6
         featured: "Featured Approach" #line 23
+      _step_fields:
+        description_placeholder: "Outline how to test this idea step by step." #line 12
 
 
 
-  # <%= t('approaches.modals._header.featured') %>
+  # <%= t('approaches.modals._step_fields.description_placeholder') %>
 
-
+# "#{t('approaches.modals._step_fields.description_placeholder')}"
 
 
 
