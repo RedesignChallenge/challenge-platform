@@ -82,10 +82,20 @@ en:
         add_link: "Add a link to a video, article, image or other supporting material" #line 101
         # add_url: "Add URL" line 114
         instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+      _header:
+        title: "An approach to the idea of" #line 6
+        featured: "Featured Approach" #line 23
+
+
+
+  # <%= t('approaches.modals._header.featured') %>
+
+
+
 
 
   # <%= t '.social_sharing_question' %>
-  # <%= t('approaches.modals._form.instructions') %>
+
 
 
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
