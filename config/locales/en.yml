@@ -69,18 +69,20 @@ en:
         header_3: "What you'll need" #line 75
     modals:
       _form:
-        # title_placeholder: "Add a Title" #line 10
-        # description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?" line 15
-        # needs_label: "Resources Needed" line 21
-        # needs_placeholder: "List any required materials or resources." line 22
-        # steps_label: "How To" line 28
-        # step_placeholder: "Click to add another step" line 46
-        # save: "Save and finish later" line 74
-        # cancel: "Cancel" line 77
-        # cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost." line 77
+        title_placeholder: "Add a Title" #line 10
+        description_label: "Description" #line 14
+        description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?" #line 15
+        needs_label: "Resources Needed" #line 21
+        needs_placeholder: "List any required materials or resources." #line 22
+        steps_label: "How To" #line 28
+        step_placeholder: "Click to add another step" #line 46
+        save: "Save and finish later" #line 74
+        cancel: "Cancel" #line 77
+        cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 77
+        submit: "Share Approach" #line 80
         header: "Optional" #line 86
         add_link: "Add a link to a video, article, image or other supporting material" #line 101
-        # add_url: "Add URL" line 114
+        add_url: "Add URL" #line 114
         instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
       _header:
         title: "An approach to the idea of" #line 6
@@ -90,9 +92,9 @@ en:
 
 
 
-  # <%= t('approaches.modals._step_fields.description_placeholder') %>
+  # <%= t('approaches.modals._form.step_placeholder') %>
 
-# "#{t('approaches.modals._step_fields.description_placeholder')}"
+  # "#{t('approaches.modals._form.add_url')}"
 
 
 
