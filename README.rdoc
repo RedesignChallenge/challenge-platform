@@ -1,5 +1,9 @@
 == README
 
+== What
+
+Challenge Platform is an open source application that leads participants through a multi-stage problem solving process and allows them to collaborate and develop real-world solutions to specific challenges.
+
 This application requires extra utilities to be installed to be fully functional:
 
  - Sidekiq

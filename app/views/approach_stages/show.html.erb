@@ -8,9 +8,9 @@ approach_stages/show
 
         <div class="row">
           <div class="col-sm-9">
-            <h1 class='text-approach'><%= @challenge.stage_number > 3 ? 'See approaches.' : @approach_stage.title.html_safe %></h1>
+            <h1 class='text-approach'><%= @challenge.stage_number > 3 ? "#{t('approach_stages.show.title')}" : @approach_stage.title.html_safe %></h1>
 
-            <p class='text-large'><%=  @challenge.stage_number > 3 ? 'See the approaches educators proposed to try the top ideas from Stage 2' : @approach_stage.description.html_safe %></p>
+            <p class='text-large'><%=  @challenge.stage_number > 3 ? "#{t('approach_stages.show.description')}" : @approach_stage.description.html_safe %></p>
 
             <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
           </div>
@@ -78,11 +78,11 @@ approach_stages/show
               <div class='row' style='margin-top: 20px;margin-bottom: 40px'>
                 <div class='col-sm-4 col-sm-offset-1'>
                   <p class='text-center text-medium'><%= t '.question_1' %></p>
-                  <%= link_to "<i class='fa fa-flask'></i> Share your approach".html_safe, new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
+                  <%= link_to "#{t('approach_stages.show.share')}".html_safe, new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
                 </div>
                 <div class='col-sm-4 col-sm-offset-2'>
                   <p class='text-center text-medium'><%= t '.question_2' %></p>
-                  <%= link_to "<i class='fa fa-comments-o'></i> Join the discussion".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments"), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
+                  <%= link_to "#{t('approach_stages.show.join')}".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments"), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
                   <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{approach_idea.comment_threads.count} comments <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
                 </div>
               </div>
@@ -98,12 +98,12 @@ approach_stages/show
               <div class='col-xs-6'>
                 <h6 class='text-center center-block'>
                   <i class='fa fa-flask fa-3x'></i><br>
-                  <span><%= pluralize(approach_idea.approaches.published.count, 'approach') %></span>
+                  <span><%= pluralize(approach_idea.approaches.published.count, "#{t('approach_stages.show.stage_name')}") %></span>
                 </h6>
               </div>
               <div class='col-xs-3'>
                 <% unless @challenge.stage_number > 3 %>
-                  <p class='action text-right text-small'><%= link_to '+ Add yours', new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'pull-right' %></p>
+                  <p class='action text-right text-small'><%= link_to "#{t('approach_stages.show.add_new')}", new_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach_stage, approach_idea), class: 'pull-right' %></p>
                 <% end %>
               </div>
             </div>
@@ -128,7 +128,7 @@ approach_stages/show
                 <p class='center-block text-center'>
                   <%= link_to "Show #{approach_idea.approaches.published.count-2} More Approaches", '#', "ng-hide" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=true", onclick: 'return false;', class: 'text-bold' %>
 
-                  <%= link_to "Show Less", "#approach_idea-#{approach_idea.id}", "ng-show" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to "#{t('approach_stages.show.show_less')}", "#approach_idea-#{approach_idea.id}", "ng-show" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
                 </p>
               <% end %>
 

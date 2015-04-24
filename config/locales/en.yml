@@ -33,21 +33,21 @@ en:
 
   approach_stages:
     show:
-      # title: "See approaches" line 11
-      # description: "See the approaches educators proposed to try the top ideas from Stage 2" line 13
+      title: "See approaches" #line 11
+      description: "See the approaches educators proposed to try the top ideas from Stage 2" #line 13
       section_title: "Idea" # line 68
       contributors: "Featured Contributors" #line 25
       try: "Know how to try this idea?"
       add_first: "Add the first approach." #line 48
       question_1: "Know how to try this idea?" #line 80
       question_2: "Want to try this but not sure how?" #line 84
-      # share: "Share your approach" line 81
-      # join: "Join the discussion" line 85
-      # comment_expand: "See all #{approach_idea.comment_threads.count} comments " line 86
-      # stage_name: "approach" #line 101
-      # add_new: "+ Add yours" #line 106
+      share: "<i class='fa fa-flask'></i> Share your approach" #line 81
+      join: "<i class='fa fa-comments-o'></i> Join the discussion" #line 85
+      # comment_expand: "See all #{approach_idea.comment_threads.count} comments <i class='fa fa-angle-right'></i>" #line 86
+      stage_name: "approach" #line 101
+      add_new: "+ Add yours" #line 106
       # show_more: "Show #{approach_idea.approaches.published.count-2} More Approaches" #line 129
-      # show_less: "Show Less" #line 131
+      show_less: "Show Less" #line 131
       # discussion_expand: "See all #{approach_idea.comment_threads.count} discussions" line 136
       social_sharing_question: "Know people who have something to add to this conversation?" #line 142
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 143
@@ -94,7 +94,7 @@ en:
 
   # <%= t('approaches.modals._form.step_placeholder') %>
 
-  # "#{t('approaches.card._show.flag')}"
+  # "#{t('approach_stages.show.show_less')}"
 
 
 
