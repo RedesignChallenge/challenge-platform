@@ -24,6 +24,13 @@ en:
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
 
+  approach_ideas:
+    _header:
+      section_title: "Idea" #line 7
+
+      # <%= t '.section_title' %>
+      # <%= t('approach_ideas._header.section_title') %>
+
   approach_stages:
     show:
       # title: "See approaches" line 11
@@ -44,9 +51,6 @@ en:
       # discussion_expand: "See all #{approach_idea.comment_threads.count} discussions" line 136
       social_sharing_question: "Know people who have something to add to this conversation?" #line 142
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 143
-
-
-# <%= t '.social_sharing_description' %>
 
 
 
