@@ -31,10 +31,8 @@ en:
       social_sharing_question: "Know people who have something to add to this conversation?" #line 29
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 30
 
-
-
   # <%= t '.social_sharing_question' %>
-  # <%= t('approach_ideas._header.section_title') %>
+  # <%= t('approaches.card._show.section_title') %>
 
   approach_stages:
     show:
@@ -60,8 +58,19 @@ en:
   approaches:
     card:
       _new:
+        new_question: "Know how to try this idea?" #line 4
         # submit_new: "Share your approach" line 4
+        discussion_question: "Still not sure?" #line 6
         # see_discusion: "See the discussion for this idea" #line 6
+      _show:
+        # edit: "Edit" line 44
+        # delete: "Delete" line 45
+        # confirm: "Are you sure you want to delete your approach?" line 45
+        # flag: "Flag" line 47
+        header_1: "How To" #line 62
+        header_2: "Description" #line 70
+        header_3: "What you'll need" #line 75
+
 
 
 
