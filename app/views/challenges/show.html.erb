@@ -176,9 +176,9 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class="text-center"> <%= @challenge.cta %> <%= link_to "Get Involved", challenge_active_stage_path(@challenge), class: 'btn btn-md btn-rounded btn-info' %></h2>
+        <h2 class="text-center"> <%= @challenge.cta %> <%= link_to "#{t('challenges.show.cta2')}", challenge_active_stage_path(@challenge), class: 'btn btn-md btn-rounded btn-info' %></h2>
 
-        <h2 class="text-center"><%= t('challenges.show.featured', :title => @challenge.title) %></h2>
+        <h2 class="text-center"><%= t('challenges.show.featured') %> <%= @challenge.title %></h2>
 
         <div class='row'>
           <% @challenge.featured_contributions.each do |featured| %>

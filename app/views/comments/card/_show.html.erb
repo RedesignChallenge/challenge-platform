@@ -1,6 +1,14 @@
 <div class='comment-header'>
   <div class="media media-commenter pull-left">
-    <p class="timestamp"><%= "#{time_ago_in_words(comment.created_at).titleize} Ago" %></p>
+    <p class="timestamp">
+
+<%= "#{t('comments.card._show.time', :time => time_ago_in_words(comment.created_at))}".titleize %>
+
+     
+
+
+
+    </p>
     <div class="media-left">
       <%= render partial: 'shared/avatar', locals: { user: comment.user, avatar_style: 'width:2.25em' } %>
     </div>

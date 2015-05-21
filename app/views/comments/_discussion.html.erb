@@ -12,7 +12,7 @@
     </h6>
   </div>
   <div class='col-xs-3'>
-    <p class='action text-right text-small'><%= link_to("+ Add Comment", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comment_threads.count.zero? %></p>
+    <p class='action text-right text-small'><%= link_to("#{t('comments._discussion.add')}", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comment_threads.count.zero? %></p>
   </div>
 </div>
 
@@ -23,3 +23,4 @@
 
   <%= render partial: 'comments/card/new', locals: { comment: Comment.new(commentable_type: commentable.class.to_s, commentable_id: commentable.id) } %>
 </div>
+

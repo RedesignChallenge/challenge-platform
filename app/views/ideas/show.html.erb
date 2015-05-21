@@ -23,10 +23,11 @@
                     <div class='user-caption' style='<%= 'margin-top: 0.5em' if @idea.user.avatar.present? %>'>
                       <p class='user-name'><%= link_to "#{@idea.user.display_name}", user_path(@idea.user) %></p>
                       <p class='user-title text-default'><%= @idea.user.display_organization %></p>
-                      <p class='user-link'><%= "#{time_ago_in_words(@idea.created_at)} ago".titleize %></p>
+                      <p class='user-link'><%= "#{t('ideas.show.time', :time => time_ago_in_words(@idea.created_at))}".titleize %></p>
                     </div>
                   </div>
                 </div>
+      
 
                 <div class='row'>
                   <div class='col-xs-8'>
@@ -34,7 +35,7 @@
                     <% if @idea.published_at? %>
                       <% if user_signed_in? && @idea.user == current_user %>
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
-                          <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
+                          <%= link_to "#{t('ideas.show.delete')}".html_safe, edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
                           <%= link_to "#{t('ideas.show.delete')}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), method: :delete, data: { confirm: "#{t('ideas.show.confirm')}" } , class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
                         </div>
                       <% end %>
@@ -44,7 +45,7 @@
                       </div>
 
                       <div id='idea-<%= @idea.id %>-discuss' style='margin-bottom:10px'>
-                        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#idea-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                        <%= link_to "#{t('ideas.show.discuss')}".html_safe, "#idea-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
                       </div>
 
                       <div id='idea-<%= @idea.id %>-share'>

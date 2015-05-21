@@ -122,7 +122,7 @@ en:
       about: "About <%= %{name} %>" #line 159
       empty: "Not yet provided." #line 162
       cta2: "Get Involved" #line 179
-      featured: "Featured contributions from <%= %{title} %>" #line 181
+      featured: "Featured contributions from" #line 181
       more: "Show More" #line 191
       social_sharing_question: "Know people who have something to add to this conversation?" #line 205
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 206
@@ -144,6 +144,7 @@ en:
         organization: "Your Organization" #line 19
         submit: "Submit" #line 27
       _show:
+        time: "%{time} ago" #line 3
         reply: "Reply" #line 39
         edit: "Edit" #line 52
         delete:  "Delete" #line 53
@@ -151,6 +152,7 @@ en:
         flag: "Flag" #line 55
     _discussion:
       header: "Discussion test" #line 11
+      add: "+ Add Comment" #line 15
     _form:
       reply: "In reply to Comment #{{temporal_parent_id}} above." #line 4
       cancel: "Cancel reply?" #line 4
@@ -309,8 +311,11 @@ en:
       description3: "Expand to show<br> an example idea." #line 40
     show:
       header: "Idea" #line 11
+      time: "%{time} ago" #line 26
+      edit: "<i class='fa fa-edit'></i> Edit" #line 38
       delete: "<i class='fa fa-trash'></i> Delete" #line 38
       confirm: "Are you sure you want to delete your idea?" #line 38
+      discuss: "<i class='fa fa-reply'></i> Discuss" #line #47
       title:  "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>" #line 54
       header2: "Refine" #line 55
       header3: "Potential Impact" #line 81
