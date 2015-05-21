@@ -20,9 +20,9 @@
 
         <% if user_signed_in? && current_user == @user %>
           <ul class="nav nav-tabs nav-justified">
-            <li role="presentation"><%= link_to 'Edit Profile', edit_user_registration_path(setting: 'profile') %></li>
-            <li role="presentation"><%= link_to 'Account Settings', edit_user_registration_path(setting: 'account') %></li>
-            <li role="presentation" class='active'><%= link_to 'Activity', user_path(current_user) %></li>
+            <li role="presentation"><%= link_to "#{t('users._header.edit')}", edit_user_registration_path(setting: 'profile') %></li>
+            <li role="presentation"><%= link_to "#{t('users._header.settings')}", edit_user_registration_path(setting: 'account') %></li>
+            <li role="presentation" class='active'><%= link_to "#{t('users._header.activity')}", user_path(current_user) %></li>
           </ul>
         <% end %>
 

@@ -20,7 +20,7 @@
     <td class='text-small'>
       <i class="fa fa-comments-o"></i>
       <b><%= display_commenters(submission) %></b>
-      <i><%= "commented on your #{submission.class.to_s.downcase}" %></i>
+      <i><%= "#{t('users.cards._submission.commenters')}" "#{submission.class.to_s.downcase}" %></i>
     </td>
   </tr>
 <% end %>
@@ -33,7 +33,7 @@
     <td class='text-small'>
       <i class="fa fa-thumbs-up"></i>
       <b><%= display_likers(submission) %></b>
-      <i><%= "liked your #{submission.class.to_s.downcase}" %></i>
+      <i><%= "#{t('users.cards._submission.likers')}" "#{submission.class.to_s.downcase}" %></i>
     </td>
   </tr>
 <% end %>

@@ -1,4 +1,4 @@
-<li style='top:3px;position:relative'>Not at all</li>
+<li style='top:3px;position:relative'><%= t('suggestions.card._vote.low') %></li>
 
 <% Suggestion::RATING_WEIGHTS.each do |weight| %>
   <% if user_signed_in? && suggestion.get_likes.where(voter_id: current_user.id, vote_scope: 'rating', vote_weight: weight).present? %>
@@ -23,4 +23,4 @@
   <% end %>
 <% end %>
 
-<li style='top:3px;position:relative'>A lot</li>
+<li style='top:3px;position:relative'><%= t('suggestions.card._vote.high') %></li>

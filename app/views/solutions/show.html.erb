@@ -111,7 +111,7 @@
         <p class='text-solution text-large text-bold text-uppercase'><%= t('solutions.show.header4') %></p>
 
         <div class='solution-effort'>
-          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'><%= t('solutions.show.header5') %></span>
+          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'><%= t('solutions.show.header5') %></span></span>
           <% ["#{t('solutions.show.time1')}", "#{t('solutions.show.time2')}", "#{t('solutions.show.time3')}", "#{t('solutions.show.time4')}"].each do |effort| %>
             <span class="badge <%= effort == @solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
           <% end %>

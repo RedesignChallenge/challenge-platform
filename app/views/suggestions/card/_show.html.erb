@@ -6,7 +6,7 @@
         <small style='margin-left:10px'>
           <%= link_to "<i class='fa fa-edit'></i>".html_safe, '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' %> 
           &nbsp; &bull; &nbsp;
-          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: "Are you sure you want to delete your suggestion?"}, class: 'list-link' %>
+          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: "#{t('suggestions.card._show.confirm')}"}, class: 'list-link' %>
         </small>
       <% end %>
     </h3>
@@ -37,7 +37,7 @@
 
 <div class="row">
   <div class="col-sm-4">
-    <p class='suggestion-user text-left'>How much does this impact you?</p>
+    <p class='suggestion-user text-left'><%= t('suggestions.card._show.question') %></p>
   </div>
 
   <div class="col-sm-5">
