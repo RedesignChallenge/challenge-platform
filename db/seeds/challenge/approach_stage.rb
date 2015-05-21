@@ -1,5 +1,5 @@
 challenge = Challenge.find(1)
-# challenge.update_column(:active_stage, 'approach')
+challenge.update_column(:active_stage, 'approach')
 
 ## CREATING APPROACH STAGE
 approach_stage = challenge.create_approach_stage!(title: "Let's make these ideas work!",

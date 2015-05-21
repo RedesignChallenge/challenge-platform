@@ -8,7 +8,7 @@
         <%= render partial: 'experiences/header' %>
 
         <div class='well well-experience'>
-          <span class="label label-experience pull-left"><i class='fa fa-comment'></i> Experience</span>
+          <span class="label label-experience pull-left"><i class='fa fa-comment'></i> <%= t('experiences.show.header') %></span>
           <div class='clearfix'></div>
 
           <div class='experience-content'>
@@ -35,14 +35,14 @@
                       <% if user_signed_in? && @experience.user == current_user %>
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
                           <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
-                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: {confirm: "Are you sure you want to delete your experience?"}, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: {confirm: "#{t('experiences.show.confirm')}"}, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
                         </div>
                       <% end %>
                       <div id='experience-<%= @experience.id %>-like'>
                         <%= render partial: 'experiences/like' %>
                       </div>
                       <div id='experience-<%= @experience.id %>-discuss' style='margin-bottom:10px'>
-                        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#experience-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                        <%= link_to "#{t('experiences.show.discuss')}".html_safe, "#experience-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
                       </div>
                       <div id='experience-<%= @experience.id %>-share'>
                         <%= render partial: 'layouts/share_button', locals: {url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag} %>
@@ -67,7 +67,7 @@
 
                 <% if @experience.link.present? && @experience.embed.blank? %>
                   <div class='content-block'>
-                    <p class='text-experience text-large text-bold text-uppercase'>Link</p>
+                    <p class='text-experience text-large text-bold text-uppercase'><%= t('experiences.show.link') %></p>
                     <p><%= link_to @experience.link.html_safe, @experience.link, target: '_blank' %></p>
                   </div>
                 <% end %>
@@ -99,8 +99,8 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-submit'><%= t('experiences.show.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('experiences.show.social_sharing_description') %></p>
         
         <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag } %>
         

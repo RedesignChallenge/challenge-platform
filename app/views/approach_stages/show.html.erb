@@ -1,4 +1,4 @@
-approach_stages/show
+
 <%= render partial: 'challenges/header', cache: true %>
 
 <div id="approach_stage-overview">
@@ -83,7 +83,7 @@ approach_stages/show
                 <div class='col-sm-4 col-sm-offset-2'>
                   <p class='text-center text-medium'><%= t '.question_2' %></p>
                   <%= link_to "#{t('approach_stages.show.join')}".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments"), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
-                  <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{approach_idea.comment_threads.count} comments <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
+                  <div class='text-center center-block' style='margin-top: 5px'><%= link_to "#{t('approach_stages.show.comment_expand', :count => approach_idea.comment_threads.count)}".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
                 </div>
               </div>
             <% end %>
@@ -126,14 +126,14 @@ approach_stages/show
 
               <% if approach_idea.approaches.published.count > 2 %>
                 <p class='center-block text-center'>
-                  <%= link_to "Show #{approach_idea.approaches.published.count-2} More Approaches", '#', "ng-hide" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=true", onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to "#{t('approach_stages.show.show_more', :count => approach_idea.approaches.published.count-2)}", '#', "ng-hide" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=true", onclick: 'return false;', class: 'text-bold' %>
 
                   <%= link_to "#{t('approach_stages.show.show_less')}", "#approach_idea-#{approach_idea.id}", "ng-show" => "approach_idea_#{approach_idea.id}_approaches", "ng-click" => "approach_idea_#{approach_idea.id}_approaches=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
                 </p>
               <% end %>
 
               <% if @challenge.stage_number > 3 %>
-                <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{approach_idea.comment_threads.count} discussions <i class='fa fa-angle-right'></i>".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
+                <div class='text-center center-block' style='margin-top: 5px'><%= link_to "#{t('approach_stages.show.discussion_expand', :count => approach_idea.comment_threads.count)}".html_safe, challenge_approach_stage_approach_idea_path(@challenge, @approach_stage, approach_idea, anchor: "approach_idea-comments") unless approach_idea.comment_threads.count.zero? %></div>
               <% end %>
             </div>
           </div>

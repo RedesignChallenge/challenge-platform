@@ -1,6 +1,6 @@
 <% if model.errors.any? %>
   <div id="error_explanation">
-    <div class="alert alert-danger">The form contains the following errors:</div>
+    <div class="alert alert-danger"><%= t('layouts._error_messages.header') %></div>
     <ul style='margin:5px;font-size:16px;'>
       <% model.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li> <% end %>

@@ -1,7 +1,7 @@
 <% url = user_signed_in? ? "#{url}?referrer_id=#{current_user.id}" : url %>
 
 <div class="btn-group btn-block" style='margin-bottom: 10px'>
-  <button type="button" class="btn btn-block btn-fa btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share"></i> Share</button>
+  <button type="button" class="btn btn-block btn-fa btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share"></i> <%= t('layouts._share_button.header') %></button>
   <ul class="dropdown-menu" role='menu'>
     <li role="presentation">
       <%= link_to "<i class='fa fa-twitter'></i> Twitter".html_safe, "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' %>
@@ -13,7 +13,7 @@
       <%= link_to "<i class='fa fa-linkedin'></i> LinkedIn".html_safe, "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %>
     </li>
     <li role="presentation">
-      <%= mail_to '', "<i class='fa fa-envelope'></i> Email".html_safe, {subject: "Check out #{title} on #{I18n.t(:project_name)}", body: "Here's the URL: #{url}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} %>
+      <%= mail_to '', "#{t('layouts._share_button.email')}".html_safe, {subject: "Check out #{title} on #{I18n.t(:project_name)}", body: "#{t('layouts._share_button.body')}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} %>
     </li>
   </ul>
 </div>

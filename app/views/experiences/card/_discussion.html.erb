@@ -1,7 +1,8 @@
+
 <div class='row row-discussion-count'>
   <div class='col-xs-6 col-xs-offset-3'>
     <div class='discussion-header'>
-      <span class='text-xsmall'><%= experience.comment_threads.count.zero? ? "Leave a Comment" : "Discussion" %></span>
+      <span class='text-xsmall'><%= experience.comment_threads.count.zero? ? "#{t('experiences.card._discussion.comment')}" : "#{t('experiences.card._discussion.discussion')}" %></span>
     </div>
   </div>
 </div>
@@ -14,5 +15,5 @@
 
 <% unless experience.comment_threads.count.zero? || (controller_name == 'experiences' && action_name == 'show') %>
   <hr class='break'>
-  <p class='text-center'><%= link_to "Show All #{experience.comment_threads.count} Comments", challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: "experience-comments"), class: 'text-bold text-center' %></p>
+  <p class='text-center'><%= link_to "#{t('experiences.card._discussion.count', :count => experience.comment_threads.count)}", challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: "experience-comments"), class: 'text-bold text-center' %></p>
 <% end %>

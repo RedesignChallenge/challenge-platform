@@ -3,19 +3,19 @@
   <%= f.hidden_field :published, value: nil, 'ng-value' => "theme_#{theme.id}_experience_#{experience.id}_published" %>
 
   <div class='form-group'>
-    <%= f.text_area :description, placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge.", class: 'form-control', autofocus: true, rows: 4 %>
+    <%= f.text_area :description, placeholder: "#{t('experiences.card._form.description_placeholder')}", class: 'form-control', autofocus: true, rows: 4 %>
   </div>
 
   <div class='row'>
     <div class='col-sm-8'>
-      <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
-      <span class='help-block' style='margin-bottom:0px'>Attach a link and we'll display it alongside your post.</span>
+      <%= f.text_field :link, placeholder: "#{t('experiences.card._form.link_placeholder')}", class: 'form-control' %>
+      <span class='help-block' style='margin-bottom:0px'><%= t('experiences.card._form.link_description') %></span>
     </div>
 
     <div class='col-sm-4' ng-init="theme_<%= theme.id %>_experience_<%= experience.id %>_published=<%= experience.published_at? %>">
       <div class='row'>
         <div class='col-xs-6'>
-          <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-block btn-sm btn-default', 'ng-click' => cancel_path, onclick: 'return false;' %>
+          <%= link_to "#{t('experiences.card._form.cancel')}", '#', class: 'btn btn-rounded btn-block btn-sm btn-default', 'ng-click' => cancel_path, onclick: 'return false;' %>
         </div>
 
         <div class='col-xs-6'>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <%= f.submit 'Save and finish later', class: 'submit-link pull-right', style: 'margin-top: 0.5em', 'ng-click' => "theme_#{theme.id}_experience_#{experience.id}_published=false", 'ng-hide' => "theme_#{theme.id}_experience_#{experience.id}_published" %>
+      <%= f.submit "#{t('experiences.card._form.save')}", class: 'submit-link pull-right', style: 'margin-top: 0.5em', 'ng-click' => "theme_#{theme.id}_experience_#{experience.id}_published=false", 'ng-hide' => "theme_#{theme.id}_experience_#{experience.id}_published" %>
     </div>
   </div>
 <% end %>

@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
   hello: "Hello world"
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
@@ -99,12 +99,12 @@ en:
         submit: "Share Approach" #line 20
       show: 
         title: "Approach" #line 12
-        time: "%{time} ago" #line 27
-        edit: "<i class='fa fa-edit'></i> Edit" #line 38
-        delete: "<i class='fa fa-trash'></i> Delete" #line 39 
+        time: "%{time} pasado" #line 27
+        edit: "<i class='fa fa-edit'></i> Editar" #line 38
+        delete: "<i class='fa fa-trash'></i> Borrar" #line 39 
         confirm: "Are you sure you want to delete your approach?" #line 39
         discuss: "<i class='fa fa-reply'></i> Discuss" #line 48
-        needs: "What You'll Need" #line 76
+        needs: "Lo que necesitarás" #line 76
         how: "How To" #line 83
         link: "Link"
         social_sharing_question: "Know people who have something to add to this conversation?" #line 134
@@ -391,39 +391,16 @@ en:
 
   solutions:
     show:
-      header: "Implemented by" #line 9
-      header2: "Based on Ideas by" #line 15
-      user: "you" #line 27 and 57
-      header3: "Inspired by the Experiences of" #line 45
-      discuss: "<i class='fa fa-reply'></i> Discuss" #line 82
-      download: "<i class='fa fa-download'></i> Download" #line 92
-      header4: "What You'll Need" #line 111
-      header5: "Required</span> Effort" #line 114
-      time1: "hours" #line 115
-      time2: "days" #line 115
-      time3: "weeks" #line 115
-      time4: "months" #line 115
-      header6: "How To" #line 126     
-      header7: "Link" #line 145
+      
 
-  suggestions:
-    card:
-      _edit: 
-        submit: "Update" #line 2
-      _form:
-        description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{name} help?"
+  # <%= t('solution_stories.show.header2') %>
 
-
-
-
-  # <%= t('solutions.show.header7') %>
-
-  # "#{t('suggestions.card._edit.submit')}"
+  # "#{t('solution_stories.card.time1')}"
 
 
 # <%= t('comments._header.comment', :class => @comment.commentable.class.to_s) %>
 
-  # "#{t('suggestions.card._form.description_placeholder', :name => #{I18n.t(:project_name)})}"
+  # "#{t('idea_stages.show.show_more', :count => problem_statement.ideas.published.count-5)}"
 
 
 

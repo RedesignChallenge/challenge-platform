@@ -10,7 +10,7 @@
 
       <% if idea.refinement_parent %>
         <p class='text-xsmall-normal'>
-          <i class='fa fa-pencil'></i> Refinement of 
+          <i class='fa fa-pencil'></i> <%= t('ideas.card._show.refinement') %> 
           <%= link_to idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.refinement_parent) %>
         </p>
       <% end %>
@@ -36,10 +36,10 @@
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="idea-<%= idea.id %>-other">
             <% if user_signed_in? && idea.user == current_user %>
-              <li><%= link_to 'Edit', edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
-              <li><%= link_to 'Delete', challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: "Are you sure you want to delete your idea?"} %></li>
+              <li><%= link_to "#{t('ideas.card._show.edit')}", edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
+              <li><%= link_to "#{t('ideas.card._show.delete')}", challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: "#{t('ideas.card._show.confirm')}"} %></li>
             <% else %>
-              <li role="presentation"><%= link_to 'Flag', '#' %></li>
+              <li role="presentation"><%= link_to "#{t('ideas.card._show.flag')}", '#' %></li>
             <% end %>
           </ul>
         </li>

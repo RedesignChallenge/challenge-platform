@@ -23,7 +23,7 @@
             <%= render partial: 'layouts/error_messages', locals: { model: @experience } %>
 
             <div class='form-group'>
-              <%= f.text_area :description, placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge.", class: 'form-control', autofocus: true, rows: 4 %>
+              <%= f.text_area :description, placeholder: "#{t('experiences._form.description_placeholder')}", class: 'form-control', autofocus: true, rows: 4 %>
             </div>
 
             <div class='row'>
@@ -37,13 +37,13 @@
                       </span>
                     </div>
                     <div class='media-body'>
-                      <span class='help-text'>Add a link to a video, article, or image</span>
+                      <span class='help-text'><%= t('experiences._form.add_link') %></span>
                     </div>
                   </div>
 
                   <div ng-show='experience_<%= @experience.id %>_link'>
-                    <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
-                    <span class='help-block'>Attach a link and we'll display it alongside your post.</span>
+                    <%= f.text_field :link, placeholder: "#{t('experiences._form.link_placeholder')}", class: 'form-control' %>
+                    <span class='help-block'><%= t('experiences._form.link_description') %></span>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
               <div class='col-sm-4' ng-init="published=<%= @experience.published_at? %>">
                 <div class='row'>
                   <div class='col-xs-6'>
-                    <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-sm btn-default' %>
+                    <%= link_to "#{t('experiences._form.cancel')}", cancel_path, data: { confirm: "#{t('experiences._form.confirm')}" }, class: 'btn btn-rounded btn-block btn-sm btn-default' %>
                   </div>
 
                   <div class='col-xs-6'>
@@ -59,7 +59,7 @@
                   </div>
                 </div>
 
-                <%= f.submit 'Save and finish later', class: 'submit-link pull-right', style: 'margin-top: 0.5em', 'ng-click' => 'published=false', 'ng-hide' => 'published' %>
+                <%= f.submit "#{t('experiences._form.save')}", class: 'submit-link pull-right', style: 'margin-top: 0.5em', 'ng-click' => 'published=false', 'ng-hide' => 'published' %>
               </div>
             </div>
           <% end %>

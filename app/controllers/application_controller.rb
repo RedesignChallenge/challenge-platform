@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
   before_action :capture_referrer_id
   after_action :set_csrf_cookie_for_ng
   after_action :set_ga_dimension_session
+  before_action :set_locale
+
+  
+ 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

@@ -2,7 +2,7 @@
 
 <%= render partial: 'mailers/shared/blockquote', locals: { quote: @comment.body, source: "#{@comment.user.display_name}, #{@comment.created_at.strftime("%B %d, %Y")}" } %>
 
-<%= render partial: 'mailers/shared/button', locals: { url: after_update_object_url_for(@comment, {anchor: "comment-#{@comment.id}"}), action: 'View and Reply' } %>
+<%= render partial: 'mailers/shared/button', locals: { url: after_update_object_url_for(@comment, {anchor: "comment-#{@comment.id}"}), action: "#{t('mailers.comment.posted.action')}" } %>
 
 <% provide :callout do %>
   <%= render partial: 'mailers/shared/callout', locals: { callout: "Don't want to receive these kinds of notifications? #{link_to "Unsubscribe", mailkick_unsubscribe_url, style: 'color:white'}." } %>

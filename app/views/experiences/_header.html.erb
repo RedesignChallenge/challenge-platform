@@ -2,7 +2,7 @@
   <div class='col-sm-10 col-sm-offset-1'>
 
     <div class='content-block'>
-      <h6 class='text-center'>Response to the Theme of</h6>
+      <h6 class='text-center'><%= t('experiences._header.response') %></h6>
       <h2 class='section-title text-experience'><%= link_to @experience.theme.title, challenge_experience_stage_path(@challenge, @experience.theme, anchor: "theme-#{@experience.theme.id}") %></h2>
     </div>
 
