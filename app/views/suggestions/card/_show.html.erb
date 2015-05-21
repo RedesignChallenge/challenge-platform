@@ -13,7 +13,13 @@
   </div>
 
   <div class='col-sm-2'>
-    <p class='suggestion-time'><%= "#{time_ago_in_words(suggestion.created_at)} ago" %></p>
+    <p class='suggestion-time'>
+
+
+      
+
+<%= "#{t('suggestions.card._show.time', :time => time_ago_in_words(suggestion.created_at))}".titleize %>
+    </p>
   </div>
 </div>
 

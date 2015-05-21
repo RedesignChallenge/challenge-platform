@@ -217,6 +217,8 @@ en:
       save: "Save and finish later" #line 62
     _header:
       response: "Response to the Theme of" #line 5
+    card:
+      time: "%{time} ago" #line 9
     edit:
       confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 6
       submit: "Update" #line 11
@@ -225,11 +227,50 @@ en:
       submit: "Share" #line 11
     show:
       header: "Experience" #line 11
+      time: "%{time} ago" #line 26
       confirm:  "Are you sure you want to delete your experience?" #line 38
       discuss: "<i class='fa fa-reply'></i> Discuss" #line 45
       link: "Link" #line 70
       social_sharing_question: "Know people who have something to add to this conversation?" #line 102
       social_sharing_description: "More people means more problems solved. Share this challenge!" #line 103
+
+  home:
+    home: 
+      welcome: "Welcome to the " #line 9
+      explore: "Explore Our First Challenge" #line 11
+      what: "What is the "
+      description: "Project description paragraph" #line 27
+      header: "Each Challenge will go through four phases:" #line 32
+      header2: "Our First Challenge" #line 62
+      header3: "First Challenge Name" #line 67
+      header4: "Interested in helping solve this challenge?" #line 68
+      learn_more: "Learn More" #line 70
+      header5: "What challenges should we tackle next?" #line 86
+      cta: "Tell us what challenges affect you most, and vote on additional challenges suggested by others." #line 88
+      suggest: "Suggestion" #line 90
+      more: "Show %{count} More Suggestions" #line 110
+      less: "Show Less" #line 112
+      social_sharing_question: "Know someone who may want to add to the discussion?" #line 127
+      social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you." #line 130
+      share_description: " project description." #line 130
+
+
+
+
+
+# <%= "#{t('experiences.show.time', :time => time_ago_in_words(@experience.created_at))}".titleize %>
+# 
+
+
+      # <%= t('home.home.social_sharing_description') %>
+
+  # "#{t('home.home.share_description')}"
+
+
+# <%= t('experiences.show.time', :time => time_ago_in_words(@experience.created_at).titleize %>
+
+# "#{t('experiences.show.time', :time => time_ago_in_words(@experience.created_at)}"
+
 
   idea_stages:
     show:
@@ -428,6 +469,7 @@ en:
         submit: "Share" #line 7
       _show: 
         confirm: "Are you sure you want to delete your suggestion?" #line 9
+        time: "%{time} ago" #line 16
         question: "How much does this impact you?" #line 40
       _vote:
         low: "Not at all" #line 1

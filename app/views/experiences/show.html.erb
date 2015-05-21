@@ -23,7 +23,7 @@
                     <div class='user-caption' style='<%= 'margin-top: 0.5em' if @experience.user.avatar.present? %>'>
                       <p class='user-name'><%= link_to "#{@experience.user.display_name}", user_path(@experience.user) %></p>
                       <p class='user-title text-default'><%= @experience.user.display_organization %></p>
-                      <p class='user-link'><%= "#{time_ago_in_words(@experience.created_at)} ago".titleize %></p>
+                      <p class='user-link'><%= "#{t('experiences.show.time', :time => time_ago_in_words(@experience.created_at))}".titleize %></p>
                     </div>
                   </div>
                 </div>

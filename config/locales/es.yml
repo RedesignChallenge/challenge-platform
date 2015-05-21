@@ -148,7 +148,7 @@ es:
         reply: "Responder" #line 39
         edit: "Editar" #line 52
         delete:  "Eliminar" #line 53
-        confirm:  "¿Estás seguro de querer eliminar tu comentario?" #line 53
+        confirm:  "¿Estás seguro(a) de querer eliminar tu comentario?" #line 53
         flag: "Reportar" #line 55
     _discussion:
       header: "Prueba de la conversación" #line 11
@@ -186,7 +186,7 @@ es:
     card:
       _discussion:
         comment: "Dejar un Comentario" #line 5
-        discussion: "Conversación" #line 5
+        # discussion: "Conversación" #line 5
         count: "Mostrar Los %{count} Comentarios" #line 18
       _edit:
         submit: "Actualizar" #line 1
@@ -216,6 +216,8 @@ es:
       save: "Guardar y finalizar después" #line 62
     _header:
       response: "Respuestas al Tema de" #line 5
+    card:
+      time: "hace %{time}" #line 9
     edit:
       confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 6
       submit: "Actualizar" #line 11
@@ -224,11 +226,32 @@ es:
       submit: "Compartir" #line 11
     show:
       header: "Experiencia" #line 11
+      time: "hace %{time}" #line 26
       confirm:  "¿Estás seguro(a) de que quieres eliminar tu experiencia?" #line 38
       discuss: "<i class='fa fa-reply'></i> Conversar" #line 45
       link: "Enlace" #line 70
       social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 102
       social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 103
+
+  home:
+    home: 
+      welcome: "Bienvenido a " #line 9
+      explore: "Explora Nuestro Primer Reto" #line 11
+      what: "¿Qué es "
+      description: "Párrafo que describe el proyecto" #line 27
+      header: "Cada reto pasará por cuatro etapas:" #line 32
+      header2: "Nuestro Primer Reto" #line 62
+      header3: "Nombre del Primer Reto" #line 67
+      header4: "¿Estás interesado(a) en ayudar a solucionar este reto?" #line 68
+      learn_more: "Conoce Más" #line 70
+      header5: "¿Cuáles son los siguientes retos que deberíamos enfrentar?" #line 86
+      cta: "Cuéntanos qué retos te afectan más y vota por retos adicionales sugeridos por otros educadores." #line 88
+      suggest: "Sugerencia" #line 90
+      more: "Mostrar %{count} Sugerencias Más" #line 110
+      less: "Mostrar Menos" #line 112
+      social_sharing_question: "¿Conoces a alguien a quien le interesaría añadir algo a la conversación?" #line 127
+      social_sharing_description: "¡Mientras más, mejor! Comparte nuestra plataforma para ayudarnos a obtener las mejores sugerencias de educadores como tú." #line 130
+      share_description: " descripción del proyecto." #line 130
 
   idea_stages:
     show:
@@ -329,11 +352,11 @@ es:
     _error_messages: 
       header: "El formulario tiene los siguientes errores:" #line 3
     _footer:
-      terms: "Términos" #line 11
+      terms: "Términos y condiciones" #line 11
       privacy: "Privacidad" #line 12
     _header:
       header: "Cambiar navegación" #line 6
-      about: "Quienes Somos" #line 22
+      about: "Quiénes Somos" #line 22
       sign_in: "Entrar" #line 47
       sign_up: "Registrarse" #line 48
     _share_button: 
@@ -423,14 +446,15 @@ es:
         link_placeholder: "Comparte un enlace, imagen, video, o Tweet; lo mostraremos con tu sugerencia." #line 27
         cancel: "Cancelar" #line 33
       _new: 
-        placeholder: "Comparte una sugerencia que crees que debamos abordar con" #line 3
+        placeholder: "¡Comparte una sugerencia que crees que debamos abordar con" #line 3
         submit: "Compartir" #line 7
       _show: 
         confirm: "¿Estás seguro(a) de querer eliminar tu sugerencia?" #line 9
+        time: "hace %{time}" #line 26
         question: "¿Cuánto te impacta esto?" #line 40
       _vote:
         low: "Nada" #line 1
-        high: "Mucho" #line 26
+        high: "Mucho" #line 16
     _form: 
       title_placeholder: "Ponle un título. Nombra un reto que deberíamos asumir." #line 4
       description_placeholder: "Explica el reto. ¿Por qué es importante? ¿Cómo te afecta a ti y a otros educadores?" #line 8
