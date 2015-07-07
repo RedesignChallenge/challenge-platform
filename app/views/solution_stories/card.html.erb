@@ -11,8 +11,8 @@
 
       <div class='solution_story-effort'>
         <div class='solution-effort' style='margin-bottom: 0px'>
-          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
-          <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
+          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'><%= t('solution_stories.card.header') %></span>
+          <% ["#{t('solution_stories.card.time1')}", "#{t('solution_stories.card.time2')}", "#{t('solution_stories.card.time3')}", "#{t('solution_stories.card.time4')}"].each do |effort| %>
             <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
           <% end %>
         </div>

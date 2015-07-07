@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Subscriptions</title>
+    <title><%= t('mailkick.subscriptions.show.header') %></title>
 
     <style>
       body {
@@ -25,10 +25,10 @@
   <body>
     <div class="container">
       <% if opted_out? %>
-        <p>You are unsubscribed.</p>
+        <p><%= t('mailkick.subscriptions.show.unsubscribed') %></p>
         <p><%= link_to "Resubscribe", subscribe_url %></p>
       <% else %>
-        <p>You are subscribed.</p>
+        <p><%= t('mailkick.subscriptions.show.subscribed') %></p>
         <p><%= link_to "Unsubscribe", unsubscribe_url %></p>
       <% end %>
     </div>

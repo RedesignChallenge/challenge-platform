@@ -46,13 +46,13 @@ describe CommentsController do
         it 'updates the flash message appropriately' do
           post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
-          expect(flash[:success]).to eq "You've successfully shared your comment. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+          expect(flash[:success]).to eq "You've successfully shared your comment. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
         end
 
         it 'redirects to the correct path for this particular commentable entity' do
           post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
-          expect(response).to redirect_to("/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}")
+          expect(response).to redirect_to("/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}")
         end
 
         it 'queues a mail job' do
@@ -104,7 +104,7 @@ describe CommentsController do
       it 'redirects to the preview path' do
         post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
-        expect(response).to redirect_to '/preview?class_name=comment'
+        expect(response).to redirect_to '/preview?class_name=comment&locale=en'
       end
 
       it 'renders new if the comment is invalid' do
@@ -137,13 +137,13 @@ describe CommentsController do
     it 'redirects to the correct path for ideas' do
       delete :destroy, id: comment.id
 
-      expect(response).to redirect_to("/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}")
+      expect(response).to redirect_to("/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}")
     end
 
     it 'updates the flash message appropriately' do
       delete :destroy, id: comment.id
 
-      expect(flash[:success]).to eq "You've successfully deleted your comment. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+      expect(flash[:success]).to eq "You've successfully deleted your comment. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
     end
 
     context 'if the commented user and the logged in user are not the same' do
@@ -186,7 +186,7 @@ describe CommentsController do
       it 'redirects if not rendering JavaScript' do
         put :like, id: comment.id
 
-        expect(response).to redirect_to "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
+        expect(response).to redirect_to "/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
       end
     end
 
@@ -229,7 +229,7 @@ describe CommentsController do
       it 'redirects if not rendering JavaScript' do
         put :unlike, id: comment.id
         
-        expect(response).to redirect_to "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
+        expect(response).to redirect_to "/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
       end
     end
   end

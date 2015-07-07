@@ -1,6 +1,6 @@
 <div class='comment-header'>
   <div class="media media-commenter pull-left">
-    <p class="timestamp"><%= "#{time_ago_in_words(comment.created_at).titleize} Ago" %></p>
+    <p class="timestamp"><%= "#{t('comments.card._show.time', :time => time_ago_in_words(comment.created_at))}".titleize %></p>
     <div class="media-left">
       <%= render partial: 'shared/avatar', locals: { user: comment.user, avatar_style: 'width:2.25em' } %>
     </div>
@@ -36,7 +36,7 @@
 <div class="comment-actions" data-comment-id="<%= comment.id %>">
   <ul class="list-inline">
     <li id="comment-<%= comment.id %>-reply">
-      <a href="#<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" du-smooth-scroll ng-click="temporal_parent_id=<%= comment.id %>"><i class="fa fa-reply"></i>  <span class='text-bolder'>Reply</span></a>
+      <a href="#<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" du-smooth-scroll ng-click="temporal_parent_id=<%= comment.id %>"><i class="fa fa-reply"></i>  <span class='text-bolder'><%= t('comments.card._show.reply') %></span></a>
     </li>
 
     <li id="comment-<%= comment.id %>-like">
@@ -49,10 +49,10 @@
       </a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="comment-<%= comment.id %>-other">
         <% if user_signed_in? && comment.user == current_user %>
-          <li class='dropdown-link'><%= link_to 'Edit', '#', 'ng-click' => "comment_#{comment.id}_edit=true", onclick: 'return false;' %></li>
-          <li class='dropdown-link'><%= link_to 'Delete', comment_path(comment.id), method: :delete, data: { confirm: "Are you sure you want to delete your comment?"} %></li>
+          <li class='dropdown-link'><%= link_to "#{t('comments.card._show.edit')}", '#', 'ng-click' => "comment_#{comment.id}_edit=true", onclick: 'return false;' %></li>
+          <li class='dropdown-link'><%= link_to "#{t('comments.card._show.delete')}", comment_path(comment.id), method: :delete, data: { confirm: "#{t('comments.card._show.confirm')}"} %></li>
         <% else %>
-          <li class='dropdown-link'><%= link_to 'Flag', '#' %></li>
+          <li class='dropdown-link'><%= link_to "#{t('comments.card._show.flag')}", '#' %></li>
         <% end %>
       </ul>
     </li>

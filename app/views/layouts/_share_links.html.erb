@@ -11,6 +11,6 @@
     <%= link_to "<i class='fa fa-linkedin'></i>".html_safe, "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %>
   </li>
   <li>
-    <%= mail_to '', "<i class='fa fa-envelope'></i>".html_safe, {subject: "Check out #{title} on #{I18n.t(:project_name)}", body: "Here's the URL: #{url}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} %>
+    <%= mail_to '', "<i class='fa fa-envelope'></i>".html_safe, {subject: "Check out #{title} on #{I18n.t(:project_name)}", body: "#{t('layouts._share_links.body')}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} %>
   </li>
 </ul>

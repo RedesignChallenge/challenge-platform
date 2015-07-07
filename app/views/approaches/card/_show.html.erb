@@ -40,10 +40,10 @@
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="approach-<%= approach.id %>-other">
                 <% if user_signed_in? && approach.user == current_user %>
-                  <li class='dropdown-link'><%= link_to 'Edit', edit_challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach) %></li>
-                  <li class='dropdown-link'><%= link_to 'Delete', challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach.id), method: :delete, data: { confirm: "Are you sure you want to delete your approach?"} %></li>
+                  <li class='dropdown-link'><%= link_to "#{t('approaches.card._show.edit')}", edit_challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach) %></li>
+                  <li class='dropdown-link'><%= link_to "#{t('approaches.card._show.delete')}", challenge_approach_stage_approach_idea_approach_path(@challenge, approach.approach_stage, approach.approach_idea, approach.id), method: :delete, data: { confirm: "#{t('approaches.card._show.confirm')}"} %></li>
                 <% else %>
-                  <li  class='dropdown-link'><%= link_to 'Flag', '#' %></li>
+                  <li  class='dropdown-link'><%= link_to "#{t('approaches.card._show.flag')}", '#' %></li>
                 <% end %>
               </ul>
             </li>
@@ -58,7 +58,7 @@
     <div class='col-xs-7 col-xs-offset-1'>
       <% if !approach.steps.count.zero? %>
         <div class='approach-steps'>
-          <h6 class='text-approach'>How To</h6>
+          <h6 class='text-approach'><%= t('approaches.card._show.header_1') %></h6>
           <p><b class='text-approach'>1.</b> <%= approach.steps.first.description.truncate(140) %></p>
           <% if approach.steps.count > 2 %>
             <p style='margin-left: 15px'><i class='fa fa-ellipsis-v text-approach'></i></p>
@@ -66,12 +66,12 @@
           <% end %>
         </div>
       <% else %>
-        <h6 class='text-approach'>Description</h6>
+        <h6 class='text-approach'><%= t('approaches.card._show.header_2') %></h6>
         <p class='approach-description'><%= approach.description.truncate(140) %></p>
       <% end %>
     </div>
     <div class='col-xs-4'>
-      <h6 class='text-approach'>What you'll need</h6>
+      <h6 class='text-approach'><%= t('approaches.card._show.header_3') %></h6>
       <p><%= approach.needs %></p>
     </div>
   </div>

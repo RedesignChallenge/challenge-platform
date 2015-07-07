@@ -5,25 +5,25 @@
   <%= render partial: 'layouts/error_messages', locals: { model: @approach } %>
   
   <div class='form-group'>
-    <%= f.text_field :title, placeholder: "Add a Title",  autofocus: true, class: 'form-control input-lg' %>
+    <%= f.text_field :title, placeholder: "#{t('approaches.modals._form.title_placeholder')}",  autofocus: true, class: 'form-control input-lg' %>
   </div>
 
   <div class='form-group'>
-    <%= f.label :description %>
-    <%= f.text_area :description, placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?", class: 'form-control', rows: 5 %>
+    <%= f.label :description, "#{t('approaches.modals._form.description_label')}" %>
+    <%= f.text_area :description, placeholder: "#{t('approaches.modals._form.description_placeholder')}", class: 'form-control', rows: 5 %>
   </div>
 
   <div class='row' style='margin-bottom: 30px'>
     <div class='col-sm-3'>
       <div class='form-group'>
-        <%= f.label :needs, "Resources Needed" %>
-        <%= f.text_area :needs, placeholder: "List any required materials or resources.", class: 'form-control', rows: 9 %>
+        <%= f.label :needs, "#{t('approaches.modals._form.needs_label')}" %>
+        <%= f.text_area :needs, placeholder: "#{t('approaches.modals._form.needs_placeholder')}", class: 'form-control', rows: 9 %>
       </div>
     </div>
 
     <div class='col-sm-9'>
       <div id='approach-steps' class='form-group'>
-        <%= f.label :steps, "How To" %>
+        <%= f.label :steps, "#{t('approaches.modals._form.steps_label')}" %>
         
         <div id='steps'>
           <%= f.fields_for :steps do |step| %>
@@ -41,7 +41,7 @@
                 </span>
               </div>
               <div class='media-body'>
-                <p class='placeholder'>Click to add another step</p>
+                <p class='placeholder'><%= t('approaches.modals._form.step_placeholder') %></p>
               </div>
             </div>
           <% end %>
@@ -69,19 +69,19 @@
     <div class='col-sm-8 col-sm-offset-1'>
       <div class='row'>
         <div class='col-sm-4'>
-          <%= f.submit 'Save and finish later', class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
+          <%= f.submit "#{t('approaches.modals._form.save')}", class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
         </div>
         <div class='col-sm-4'>
-          <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-default' %>
+          <%= link_to "#{t('approaches.modals._form.cancel')}", cancel_path, data: { confirm: "#{t('approaches.modals._form.cancel_confirm')}" }, class: 'btn btn-rounded btn-block btn-default' %>
         </div>
         <div class='col-sm-4'>
-          <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-info', 'ng-click' => "published=true" %>
+          <%= f.submit "#{t('approaches.modals._form.submit')}", class: 'btn btn-rounded btn-block btn-info', 'ng-click' => "published=true" %>
         </div>
       </div>
     </div>
   </div>
 
-  <p class='header-label'>Optional</p>
+  <p class='header-label'><%= t('approaches.modals._form.header') %></p>
   <hr style='border-top: 2px dashed #C3C5C6;margin: 5px 0px 20px'>
 
   <div class='input-switch' ng-switch='approach_link' ng-init='approach_link=<%= @approach.link.present? %>'>
@@ -96,7 +96,7 @@
             </span>
           </div>
           <div class='media-body'>
-            <span class='help-text'>Add a link to a video, article, image or other supporting material</span><br>
+            <span class='help-text'><%= t('approaches.modals._form.add_link') %></span><br>
             <ul class='icon-list list-inline'>
               <li><i class='fa fa-youtube-play fa-3x'></i></li>
               <li><i class='fa fa-image fa-3x'></i></li>
@@ -109,8 +109,8 @@
     </div>
 
     <div ng-show='approach_link' class='form-group'>
-      <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
-      <span class='help-block'>Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach.</span>
+      <%= f.text_field :link, placeholder: "#{t('approaches.modals._form.add_url')}", class: 'form-control' %>
+      <span class='help-block'><%= t('approaches.modals._form.instructions') %></span>
     </div>
   </div>
 

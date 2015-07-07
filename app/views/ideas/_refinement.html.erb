@@ -14,19 +14,19 @@
         <p class='example-idea-description'><%= @idea.refinement_parent.description.html_safe %></p>
 
         <% if @idea.refinement_parent.impact.present? %>
-          <label>Potential Impact</label>
+          <label><%= t('ideas._refinement.header1') %></label>
           <p class='example-idea-description'><%= @idea.refinement_parent.impact.html_safe %></p>
         <% end %>
 
         <% if @idea.refinement_parent.implementation.present? %>
-          <label>Possible Implementation</label>
+          <label><%= t('ideas._refinement.header2') %></label>
           <p class='example-idea-description'><%= @idea.refinement_parent.implementation.html_safe %></p>
         <% end %>
       </div>
 
       <div class='form-group'>
         <% if @idea.refinement_parent.link.present? && @idea.refinement_parent.embed.blank? %>
-          <label>Link</label>
+          <label><%= t('ideas._refinement.header3') %></label>
           <p class='example-idea-description'><%= link_to @idea.refinement_parent.link.html_safe, @idea.refinement_parent.link, target: '_blank' %></p>
         <% end %>
       </div>
@@ -40,7 +40,7 @@
 
     <div class='row'>
       <div class='col-xs-4 col-xs-offset-8'>
-        <%= link_to "Go Back to My Idea", '#', class: 'btn btn-default btn-rounded btn-block pull-right', 'ng-click' => "showForm()", onclick: 'return false;' %>
+        <%= link_to "#{t('ideas._refinement.back')}", '#', class: 'btn btn-default btn-rounded btn-block pull-right', 'ng-click' => "showForm()", onclick: 'return false;' %>
       </div>
     </div>
 

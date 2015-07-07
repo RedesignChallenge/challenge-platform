@@ -43,7 +43,7 @@ describe SolutionsController do
       it "redirects if not rendering JavaScript" do
         put :like, challenge_id: solution.challenge.id, solution_stage_id: solution.solution_stage.id, solution_story_id: solution.solution_story.id, id: solution.id
 
-        expect(response).to redirect_to("/challenges/#{assigns(:solution).challenge.slug}/solution_stages/#{assigns(:solution).solution_stage.id}/solution_stories/#{assigns(:solution).solution_story.id}")
+        expect(response).to redirect_to("/en/challenges/#{assigns(:solution).challenge.slug}/solution_stages/#{assigns(:solution).solution_stage.id}/solution_stories/#{assigns(:solution).solution_story.id}")
       end
     end
 
@@ -85,7 +85,7 @@ describe SolutionsController do
       it "redirects if not rendering JavaScript" do
         put :unlike, challenge_id: solution.challenge.id, solution_stage_id: solution.solution_stage.id, solution_story_id: solution.solution_story.id, id: solution.id
 
-        expect(response).to redirect_to("/challenges/#{assigns(:solution).challenge.slug}/solution_stages/#{assigns(:solution).solution_stage.id}/solution_stories/#{assigns(:solution).solution_story.id}")
+        expect(response).to redirect_to("/en/challenges/#{assigns(:solution).challenge.slug}/solution_stages/#{assigns(:solution).solution_stage.id}/solution_stories/#{assigns(:solution).solution_story.id}")
       end
     end
   end

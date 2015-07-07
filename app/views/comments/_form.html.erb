@@ -1,7 +1,7 @@
 <div class="well well-comment">
   <div class='comment-header'>
     <div class="media media-commenter pull-left">
-      <p class="timestamp" ng-show='temporal_parent_id != null'>In reply to Comment #{{temporal_parent_id}} above. <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>Cancel reply?</a></p>
+      <p class="timestamp" ng-show='temporal_parent_id != null'><%= t('comments._form.reply') %> <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'><%= t('comments._form.cancel') %></a></p>
       <div class="media-left">
         <%= render partial: 'shared/avatar', locals: {user: current_user, avatar_style: "width:2.25em"} %>
       </div>
@@ -15,8 +15,8 @@
       <% else %>
         <div class="media-body">
           <div class='user-caption'>
-            <p class='user-name'>Your Name</p>
-            <p class='user-title'>Organization</p>
+            <p class='user-name'><%= t('comments._form.name') %></p>
+            <p class='user-title'><%= t('comments._form.organization') %></p>
           </div>
         </div>
       <% end %>
@@ -31,7 +31,7 @@
     <%= f.hidden_field :commentable_id %>
 
     <div class="form-group">
-      <%= f.text_area :body, class: 'form-control', rows: 3, placeholder: "What do you think about this #{@comment.commentable.class.to_s.downcase}? Suggest an improvement, explain how you think this #{@comment.commentable.class.to_s.downcase} could be implemented, or provide other feedback." %>
+      <%= f.text_area :body, class: 'form-control', rows: 3, placeholder: "#{t('comments._form.organization', :class => @comment.commentable.class.to_s.downcase)}" %>
     </div>
 
     <div class='row'>
@@ -46,19 +46,19 @@
               </span>
             </div>
             <div class='media-body'>
-              <span class='help-text'>Add a link to a video, article, image or other support</span>
+              <span class='help-text'><%= t('comments._form.link') %></span>
             </div>
           </div>
 
           <div ng-show='comment_<%= @comment.id %>_link' class='form-group'>
-            <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
-            <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your comment.</span>
+            <%= f.text_field :link, placeholder: "#{t('comments._form.url')}", class: 'form-control' %>
+            <span class='help-block'><%= t('comments._form.link2') %></span>
           </div>
         </div>
       </div>
 
       <div class='col-sm-2 col-xs-6'>
-        <%= link_to 'Cancel', cancel_path, class: 'btn btn-sm btn-rounded btn-block btn-default' %>
+        <%= link_to "#{t('comments._form.cancel')}", cancel_path, class: 'btn btn-sm btn-rounded btn-block btn-default' %>
       </div>
 
       <div class='col-sm-2 col-xs-6'>

@@ -14,7 +14,6 @@
       <div class="col-md-10 col-md-offset-1">
 
         <%= render partial: 'comments/discussion', locals: { commentable: @approach_idea } %>
-
       </div>
     </div>
   </div>
@@ -25,8 +24,8 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-submit'><%= t ('approach_ideas.show.social_sharing_question') %></h2>
+        <p class='section-description'><%= t ('approach_ideas.show.social_sharing_description') %></p>
         
         <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_approach_idea_url(@challenge, @approach_idea.approach_stage, @approach_idea), title: @approach_idea.title.html_safe, description: @approach_idea.description.html_safe, hashtag: @challenge.hashtag } %>
         

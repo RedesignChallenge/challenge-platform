@@ -11,7 +11,7 @@
           <div id='idea_refinement' class='form-group' ng-show='refinement_parent_id'>
             <%= f.hidden_field :refinement_parent_id, 'ng-value' => 'refinement_parent_id' %>
             <i class='fa fa-close' ng-click="refinement_parent_id=null"></i> 
-            <span class='idea-refinement'>Refinement of <%= link_to @idea.refinement_parent.title.html_safe, '#', 'ng-click' => 'showRefinement()', onclick: 'return false;' %></span>
+            <span class='idea-refinement'><%= t('ideas._form.refinement') %> <%= link_to @idea.refinement_parent.title.html_safe, '#', 'ng-click' => 'showRefinement()', onclick: 'return false;' %></span>
           </div>
           <div class='clearfix'></div>
         <% end %>
@@ -19,11 +19,11 @@
         <%= render partial: 'layouts/error_messages', locals: { model: @idea } %>
         
         <div class='form-group'>
-          <%= f.text_field :title, placeholder: "What is the title of your idea?", autofocus: true, class: 'form-control input-lg' %>
+          <%= f.text_field :title, placeholder: "#{t('ideas._form.title_placeholder')}", autofocus: true, class: 'form-control input-lg' %>
         </div>
 
         <div class='form-group'>
-          <%= f.text_area :description, placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better.", class: 'form-control', rows: 5 %>
+          <%= f.text_area :description, placeholder: "#{t('ideas._form.description_placeholder')}", class: 'form-control', rows: 5 %>
         </div>
 
         <div class='input-switch' ng-switch='idea_impact' ng-init='idea_impact=<%= @idea.impact.present? %>'>
@@ -35,13 +35,13 @@
               </span>
             </div>
             <div class='media-body'>
-              <span class='help-text'>Explain the potential impact of your idea</span>
+              <span class='help-text'><%= t('ideas._form.help') %></span>
             </div>
           </div>
 
           <div ng-show='idea_impact' class='form-group'>
-            <%= f.label :impact, "Potential Impact" %>
-            <%= f.text_area :impact, placeholder: "Describe the impact your idea could have.", class: 'form-control', rows: 3 %>
+            <%= f.label :impact, "#{t('ideas._form.impact_label')}" %>
+            <%= f.text_area :impact, placeholder: "#{t('ideas._form.impact_placeholder')}", class: 'form-control', rows: 3 %>
           </div>
         </div>
 
@@ -54,13 +54,13 @@
               </span>
             </div>
             <div class='media-body'>
-              <span class='help-text'>Explain how your idea may be implemented</span>
+              <span class='help-text'><%= t('ideas._form.body_help') %></span>
             </div>
           </div>
 
           <div ng-show='idea_implementation' class='form-group'>
-            <%= f.label :implementation, "Possible Implementation" %>
-            <%= f.text_area :implementation, placeholder: "Describe how your idea may be implemented.", class: 'form-control', rows: 3 %>
+            <%= f.label :implementation, "#{t('ideas._form.implementation_label')}" %>
+            <%= f.text_area :implementation, placeholder: "#{t('ideas._form.implementation_placeholder')}", class: 'form-control', rows: 3 %>
           </div>
         </div>
 
@@ -73,13 +73,13 @@
               </span>
             </div>
             <div class='media-body'>
-              <span class='help-text'>Add a link to a video, article, image or other support</span>
+              <span class='help-text'><%= t('ideas._form.link_placeholder') %></span>
             </div>
           </div>
 
           <div ng-show='idea_link' class='form-group'>
-            <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
-            <span class='help-block'>Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea.</span>
+            <%= f.text_field :link, placeholder: "#{t('ideas._form.url')}", class: 'form-control' %>
+            <span class='help-block'><%= t('ideas._form.link_description') %></span>
           </div>
         </div>
 
@@ -92,10 +92,10 @@
 
       <div class='row'>
         <div class='col-xs-4'>
-          <%= f.submit 'Save and finish later', class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
+          <%= f.submit "#{t('ideas._form.save')}", class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
         </div>
         <div class='col-xs-4'>
-          <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-default' %>
+          <%= link_to "#{t('ideas._form.cancel')}", cancel_path, data: { confirm: "#{t('ideas._form.confirm')}" }, class: 'btn btn-rounded btn-block btn-default' %>
         </div>
         <div class='col-xs-4'>
           <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-info pull-right', 'ng-click' => "published=true" %>

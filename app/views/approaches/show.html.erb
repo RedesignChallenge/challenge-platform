@@ -8,7 +8,7 @@
         <%= render partial: 'approaches/header' %>
 
         <div class='well well-approach'>
-          <span class="label label-approach pull-left"><i class='fa fa-flask'></i> Approach</span>
+          <span class="label label-approach pull-left"><i class='fa fa-flask'></i> <%= t('approaches.modals.show.title') %></span>
           <div class='clearfix'></div>
 
           <div class='approach-content'>
@@ -23,7 +23,7 @@
                     <div class='user-caption' style='<%= 'margin-top: 0.5em' if @approach.user.avatar.present? %>'>
                       <p class='user-name'><%= link_to "#{@approach.user.display_name}", user_path(@approach.user) %></p>
                       <p class='user-title text-default'><%= @approach.user.display_organization %></p>
-                      <p class='user-link'><%= "#{time_ago_in_words(@approach.created_at)} ago".titleize %></p>
+                      <p class='user-link'><%= "#{t('approaches.modals.show.time', :time => time_ago_in_words(@approach.created_at))}".titleize %></p>
                     </div>
                   </div>
                 </div>
@@ -34,8 +34,8 @@
                     <% if @approach.published_at? %>
                       <% if user_signed_in? && @approach.user == current_user %>
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
-                          <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
-                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), method: :delete, data: { confirm: "Are you sure you want to delete your approach?" }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                          <%= link_to "#{t('approaches.modals.show.edit')}".html_safe, edit_challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
+                          <%= link_to "#{t('approaches.modals.show.delete')}".html_safe, challenge_approach_stage_approach_idea_approach_path(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), method: :delete, data: { confirm: "#{t('approaches.modals.show.confirm')}" }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
                         </div>
                       <% end %>
 
@@ -44,7 +44,7 @@
                       </div>
 
                       <div id='approach-<%= @approach.id %>-discuss' style='margin-bottom:10px'>
-                          <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#approach-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                          <%= link_to "#{t('approaches.modals.show.discuss')}".html_safe, "#approach-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
                       </div>
 
                       <div id='approach-<%= @approach.id %>-share'>
@@ -72,14 +72,14 @@
 
                 <% if @approach.needs.present? %>
                   <div class='content-block'>
-                    <p class='text-approach text-large text-bold text-uppercase'>What You'll Need</p>
+                    <p class='text-approach text-large text-bold text-uppercase'><%= t('approaches.modals.show.needs') %></p>
                     <p><%= @approach.needs.html_safe %></p>
                   </div>
                 <% end %>
 
                 <% if @approach.steps.present? %>
                   <div class='content-block'>
-                    <p class='text-approach text-large text-bold text-uppercase'>How To</p>
+                    <p class='text-approach text-large text-bold text-uppercase'><%= t('approaches.modals.show.how') %></p>
                     <% @approach.steps.each_with_index do |step, index| %>
                       <div class='media media-step'>
                         <div class='media-left'>
@@ -98,7 +98,7 @@
 
                 <% if @approach.link.present? && @approach.embed.blank? %>
                   <div class='content-block'>
-                    <p class='text-approach text-large text-bold text-uppercase'>Link</p>
+                    <p class='text-approach text-large text-bold text-uppercase'><%= t('approaches.modals.show.link') %></p>
                     <p><%= link_to @approach.link.html_safe, @approach.link, target: '_blank' %></p>
                   </div>
                 <% end %>
@@ -130,8 +130,8 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-submit'><%= t('approaches.modals.show.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('approaches.modals.show.social_sharing_description') %></p>
         
         <%= render partial: 'layouts/share_links', locals: { url: challenge_approach_stage_approach_idea_approach_url(@challenge, @approach.approach_stage, @approach.approach_idea, @approach), title: @approach.title.html_safe, description: @approach.description.html_safe, hashtag: @challenge.hashtag } %>
         

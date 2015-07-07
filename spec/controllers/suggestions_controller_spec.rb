@@ -32,13 +32,13 @@ describe SuggestionsController do
         it "updates the suggestion flash message appropriately" do
           post :create, suggestion: {title: "this is a suggestion title", description: "this is a suggestion description"}
 
-          expect(flash[:success]).to eq "You've successfully shared your suggestion. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+          expect(flash[:success]).to eq "You've successfully shared your suggestion. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
         end
 
         it "redirects to the correct path for this suggestion" do
           post :create, suggestion: {title: "this is a suggestion title", description: "this is a suggestion description"}
 
-          expect(response).to redirect_to("/")
+          expect(response).to redirect_to("/?locale=en")
         end
       end
 
@@ -69,7 +69,7 @@ describe SuggestionsController do
         it "redirects to the correct path" do
           post :create, suggestion: {title: "this is a suggestion title", description: "this is a suggestion description"}
 
-          expect(response).to redirect_to("/preview?class_name=suggestion")
+          expect(response).to redirect_to("/preview?class_name=suggestion&locale=en")
         end
       end
 
@@ -102,14 +102,14 @@ describe SuggestionsController do
         request.env['HTTP_REFERER'] = "http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags"
         patch :update, id: suggestion.id, suggestion: {description: "suggestion description update"}
 
-        expect(flash[:success]).to eq "You've successfully updated your suggestion. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        expect(flash[:success]).to eq "You've successfully updated your suggestion. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
       end
 
       it "redirects to the correct path after update" do
-        request.env['HTTP_REFERER'] = '/'
+        request.env['HTTP_REFERER'] = '/?locale=en'
         patch :update, id: suggestion.id, suggestion: { description: "suggestion description update" }
 
-        expect(response).to redirect_to "/"
+        expect(response).to redirect_to "/?locale=en"
       end
     end
 
@@ -146,12 +146,12 @@ describe SuggestionsController do
 
       it "updates the flash message for delete" do
         delete :destroy, id: suggestion.id
-        expect(flash[:success]).to eq "You've successfully deleted your suggestion. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        expect(flash[:success]).to eq "You've successfully deleted your suggestion. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
       end
 
       it "redirects to the correct path for suggestions" do
         delete :destroy, id: suggestion.id
-        expect(response).to redirect_to("/")
+        expect(response).to redirect_to("/?locale=en")
       end
     end
 
@@ -194,7 +194,7 @@ describe SuggestionsController do
       it "redirects if not rendering JavaScript" do
         put :like, id: suggestion.id
 
-        expect(response).to redirect_to("/")
+        expect(response).to redirect_to("/?locale=en")
       end
     end
 
@@ -237,7 +237,7 @@ describe SuggestionsController do
       it "redirects if not rendering JavaScript" do
         put :unlike, id: suggestion.id
 
-        expect(response).to redirect_to("/")
+        expect(response).to redirect_to("/?locale=en")
       end
 
     end

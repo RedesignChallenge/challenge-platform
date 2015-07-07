@@ -1,0 +1,541 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  hello: "Hello world"
+  project_name: "Challenge Platform"
+  project_hashtag:  "#ChallengePlatformGenericTag"
+
+  approach_ideas:
+    _header:
+      section_title: "Idea" #line 7
+    show:
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 29
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 30
+
+  approach_stages:
+    show:
+      title: "Ver propuestas" #line 11
+      description: "Ver propuestas de los educadores para probar las mejores ideas de la segunda etapa" #line 13
+      section_title: "Idea" # line 68
+      contributors: "Colaboradores Destacados" #line 25
+      try: "¿Sabes cómo probar esta idea?"
+      add_first: "Añade la primera propuesta." #line 48
+      question_1: "¿Sabes cómo probar esta idea?" #line 80
+      question_2: "¿Quieres probarla pero no sabes cómo?" #line 84
+      share: "<i class='fa fa-flask'></i> Comparte tu propuesta" #line 81
+      join: "<i class='fa fa-comments-o'></i> Participa en la conversación" #line 85
+      comment_expand: "Mira los %{count} comentarios <i class='fa fa-angle-right'></i>" #line 86
+      stage_name: "propuesta" #line 101
+      add_new: "+ Añade la tuya" #line 106
+      show_more: "Mostrar %{count} Propuestas Más" #line 129
+      show_less: "Mostrar Menos" #line 131
+      discussion_expand: "Mira las %{count} conversaciones <i class='fa fa-angle-right'></i>" #line 136
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 142
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 143
+
+  approaches:
+    card:
+      _new:
+        new_question: "¿Sabes cómo probar esta idea?" #line 4
+        submit_new: "Comparte tu propuesta" #line 4
+        discussion_question: "¿Aún no estás seguro(a)?" #line 6
+        see_discusion: "Ir a la conversación que generó esta idea <i class='fa fa-angle-right'></i>" #line 6
+      _show:
+        edit: "Editar" #line 44
+        delete: "Eliminar" #line 45
+        confirm: "¿Estás seguro(a) de que quieres eliminar tu propuesta?" #line 45
+        flag: "Reportar" #line 47
+        header_1: "Instrucciones" #line 62
+        header_2: "Descripción" #line 70
+        header_3: "¿Qué necesitas?" #line 75
+    modals:
+      _form:
+        title_placeholder: "Añade un Título" #line 10
+        description_label: "Descripción" #line 14
+        description_placeholder: "Describe cómo probar esta idea. ¿Cuál es tu propuesta? ¿Cuáles son las metas? ¿Cuáles son los retos? ¿Por qué la propuesta es importante?" #line 15
+        needs_label: "Requerimientos" #line 21
+        needs_placeholder: "Haz una lista de materiales o recursos requeridos." #line 22
+        steps_label: "Instrucciones" #line 28
+        step_placeholder: "Haz clic para añadir otro paso" #line 46
+        save: "Guardar y finalizar más tarde" #line 74
+        cancel: "Cancelar" #line 77
+        cancel_confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 77
+        submit: "Compartir Propuesta" #line 80
+        header: "Opcional" #line 86
+        add_link: "Añade el enlace a un video, artículo, imagen u otro material de apoyo" #line 101
+        add_url: "Añade URL" #line 114
+        instructions: "Si añades el enlace a un video, artículo, imagen u otro material de apoyo, lo mostraremos con tu propuesta." # line 115
+      _header:
+        title: "Añade una propuesta a la idea de" #line 6
+        featured: "Propuesta Destacada" #line 23
+      _step_fields:
+        description_placeholder: "Describe en términos generales cómo probar esta idea paso a paso." #line 12
+      edit:
+        confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 6
+        title: "Editar Propuesta" #line 18
+        submit: "Actualizar Propuesta" #line 21
+      new: 
+        confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 7
+        title: "Nueva Propuesta" #line 17
+        submit: "Compartir Propuesta" #line 20
+      show: 
+        title: "Propuesta" #line 12
+        time: "hace %{time}" #line 27
+        edit: "<i class='fa fa-edit'></i> Editar" #line 38
+        delete: "<i class='fa fa-trash'></i> Eliminar" #line 39 
+        confirm: "¿Estás seguro(a) de que quieres eliminar tu propuesta?" #line 39
+        discuss: "<i class='fa fa-reply'></i> Conversar" #line 48
+        needs: "Recursos requeridos" #line 76
+        how: "Instrucciones" #line 83
+        link: "Enlace"
+        social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 134
+        social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 135
+
+  challenges:
+    show:
+      cta: "¿Estás listo? ¡Ahora!" #line 92
+      completed: "Completado" #line 95
+      active: "Aún no está activo" #line 97
+      challenge: "El Reto" #line 109
+      goal: "La Meta" #line 113
+      role: "Tu Rol" #line 117 
+      guides: "Conoce a Nuestros Moderadores de Retos" #line 133
+      about: "Sobre <%= %{name} %>" #line 159
+      empty: "Aún no ha sido ingresado." #line 162
+      cta2: "Participa" #line 179
+      featured: "Colaboraciones destacadas de" #line 181
+      more: "Mostrar Más" #line 191
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 205
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 206
+
+  comments:
+    card:
+      _edit:
+        submit: "Actualizar" #line 18
+      _form:
+        comment_placeholder: "¿Qué opinas sobre esta %{stage}? Explica cómo se podría implementar esta %{stage}, o sugiere mejoras y retroalimentación." #line 7
+        comment_help: "Añade el enlace a un video, artículo o imagen" # line 22
+        url_placeholder: "Añade URL" # line 27
+        url_help: "Si añades un enlace, lo mostraremos con tu mensaje." #line 28
+        cancel: "Cancelar" #line 34
+      _new:
+        reply: "Como respuesta al Comentario #{{temporal_parent_id}} de arriba." #line 4
+        cancel: "¿Cancelar respuesta?" #line 4
+        name: "Tu Nombre" #line 18
+        organization: "Tu Organización" #line 19
+        submit: "Enviar" #line 27
+      _show:
+        time: "hace %{time}" #line 3
+        reply: "Responder" #line 39
+        edit: "Editar" #line 52
+        delete:  "Eliminar" #line 53
+        confirm:  "¿Estás seguro(a) de querer eliminar tu comentario?" #line 53
+        flag: "Reportar" #line 55
+    _discussion:
+      header: "Prueba de la conversación" #line 11
+      add: "+ Adicionar Comentario" #line 15
+    _form:
+      reply: "Como respuesta al Comentario #{{temporal_parent_id}} de arriba." #line 4
+      cancel: "¿Cancelar respuesta?" #line 4
+      name: "Tu Nombre" #line 18
+      organization: "Tu Organización" #line 19
+      opinion: "¿Qué te parece esta %{class}? Explica cómo crees que esta %{class} se podría implementar, o sugiere mejoras y retroalimentación." #line 34
+      link: "Añade el enlace a un video, artículo, imagen u otro apoyo." #line 49
+      url: "Añade URL" #line 54
+      link2: "Comparte un enlace, imagen, video o Tweet; lo mostraremos con tu comentario." #line 55
+      cancel: "Cancelar" #line 61
+    _header:
+      comment: "Haz un comentario sobre <%= %{class} %>" #line 5
+    edit:
+      submit: "Actualizar" #line 11
+    submit:
+      submit: "Enviar" #line 11
+
+  experience_stages:
+    show:
+      inspired: "Inspírate." #line 11
+      browse: "Mira las historias que otros educadores compartieron." #line 13
+      add: "Añade la primera experiencia" #line 39
+      header: "Tema" #line 60
+      experience: "experiencia" #line 73
+      more: "Mostrar %{count} Experiencias Más" #line 1010
+      less: "Mostrar Menos" #line 103
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 111
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 112
+
+  experiences:
+    card:
+      _discussion:
+        comment: "Dejar un Comentario" #line 5
+        # discussion: "Conversación" #line 5
+        count: "Mostrar Los %{count} Comentarios" #line 18
+      _edit:
+        submit: "Actualizar" #line 1
+      _form:
+        description_placeholder: "Por favor describe tu experiencia relacionada con este tema para nosotros compartirla con el reto." #line 6
+        link_placeholder: "Añade URL" #line 11
+        link_description: "Añade un enlace para mostrarlo con tu mensaje." #line 12
+        cancel: "Cancelar" #line 18
+        save: "Guardar y finalizar después" #line 26
+      _new:
+        cta: "¿Quieres participar? Colabora" #line 5
+        cta2: "Comparte algo relacionado con este tema." #line 18
+        submit: "Compartir" #line 22
+      _show:
+        link: "Enlace:" #line 14
+        edit: "Editar" #line 39
+        delete: "Eliminar" #line 40
+        confirm: "¿Estás seguro(a) de que quieres eliminar tu experiencia?" #line 40
+        flag: "Reportar" #line 42
+    _form: 
+      description_placeholder: "Por favor describe tu experiencia relacionada con este tema para nosotros compartirla con el reto." #line 26
+      add_link: "Añade el enlace a un video, artículo o imagen" #line 40
+      link_placeholder: "Añade URL" #line 45
+      link_description: "Añade un enlace para mostrarlo con tu mensaje." #line 46
+      cancel: "Cancelar" #line 54
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 54
+      save: "Guardar y finalizar después" #line 62
+    _header:
+      response: "Respuestas al Tema de" #line 5
+    card:
+      time: "hace %{time}" #line 9
+    edit:
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 6
+      submit: "Actualizar" #line 11
+    new:
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 6
+      submit: "Compartir" #line 11
+    show:
+      header: "Experiencia" #line 11
+      time: "hace %{time}" #line 26
+      confirm:  "¿Estás seguro(a) de que quieres eliminar tu experiencia?" #line 38
+      discuss: "<i class='fa fa-reply'></i> Conversar" #line 45
+      link: "Enlace" #line 70
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 102
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 103
+
+  home:
+    home: 
+      welcome: "Bienvenido a " #line 9
+      explore: "Explora Nuestro Primer Reto" #line 11
+      what: "¿Qué es "
+      description: "Párrafo que describe el proyecto" #line 27
+      header: "Cada reto pasará por cuatro etapas:" #line 32
+      header2: "Nuestro Primer Reto" #line 62
+      header3: "Nombre del Primer Reto" #line 67
+      header4: "¿Estás interesado(a) en ayudar a solucionar este reto?" #line 68
+      learn_more: "Conoce Más" #line 70
+      header5: "¿Cuáles son los siguientes retos que deberíamos enfrentar?" #line 86
+      cta: "Cuéntanos qué retos te afectan más y vota por retos adicionales sugeridos por otros educadores." #line 88
+      suggest: "Sugerencia" #line 90
+      more: "Mostrar %{count} Sugerencias Más" #line 110
+      less: "Mostrar Menos" #line 112
+      social_sharing_question: "¿Conoces a alguien a quien le interesaría añadir algo a la conversación?" #line 127
+      social_sharing_description: "¡Mientras más, mejor! Comparte nuestra plataforma para ayudarnos a obtener las mejores sugerencias de educadores como tú." #line 130
+      share_description: " descripción del proyecto." #line 130
+
+  idea_stages:
+    show:
+      cta: "Mira algunas ideas." #line 10
+      cta2: "Mira las ideas que otros educadores han compartido." #line 12
+      add: "Añade la primera idea" #line 38
+      header: "Planteamiento del Problema" #line 59
+      stage: "idea" #line 78
+      add: "+ Añade la tuya" #line 83
+      show_more: "Mostrar %{count} Ideas Más" #line 108
+      show_less: "Mostrar Menos" #line 110
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 118
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 119
+
+  ideas:
+    card:
+      _new:
+        cta: "¿Quieres participar? Colabora" #line 5
+        add: "Añade Tu Idea" #line 12
+      _show: 
+        refinement: "Refinamiento de" #line 13
+        edit: "Editar" #line 39
+        delete: "Eliminar" #line 40
+        confirm: "¿Estás seguro(a) de que quieres eliminar tu idea?" #line 40
+        flag: "Reportar" #line 42
+    _example: 
+      title_description: "Un título conciso y descriptivo ayuda a que las personas encuentren y entiendan más fácil tu idea." #line 5
+      title: "¡Idea Genial de Ejemplo!" #line 6
+      body_description: "Explica tu idea en términos de cómo podría ejecutarse y cómo podría impactar a las personas involucradas." #line 9
+      placeholder1: "Lorem" #line 11
+      label1: "Impacto Potencial" #line 14
+      placeholder2: "Lorem" #line 16
+      label2: "Posible Implementación" #line 19
+      placeholder3: "Lorem" #line 21
+      link_description: "Añadir un enlace a un video, artículo, imagen u otro material de apoyo le adiciona valor a tu idea." #line 25
+      label3: "Enlace" #line 26
+      placeholder4: "Lorem" #line 28
+      back: "Regresar a Mi Idea" #line 41
+    _form:
+      refinement: "Refinamiento de" #line 14
+      title_placeholder: "¿Cuál es el título de tu idea?" #line 22
+      description_placeholder: "Describe tu idea. Puede ser simple, de unas cuantas líneas, pero mientras más claros sean los detalles, mejor." #line 26
+      help: "Explica el impacto potencial de tu idea" #line 38
+      impact_label: "Impacto Potencial" #line 43
+      impact_placeholder: "Describe el impacto que puede tener tu idea." #line 44
+      body_help: "Explica cómo puede ser implementada tu idea" #line 57
+      implementation_label: "Posible Implementación" #line 62
+      implementation_placeholder: "Describe cómo puede ser implementada tu idea." #line 63
+      link_placeholder: "Añade el enlace a un video, artículo, imagen u otro apoyo" #line 76
+      url: "Añade URL" #line 81
+      link_description: "Comparte el enlace a un video, artículo, imagen u otro material de apoyo para mostrarlo con tu idea." #line 82
+      save: "Guardar y finalizar después" #line 95
+      cancel: "Cancelar" #line 98
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 98
+    _header: 
+      header: "Idea para" #line 5
+    _refinement:
+      header1: "Impacto Potencial" #line 17
+      header2: "Posible Implementación" #line 22
+      header3: "Enlace" #line 29
+      back: "Regresar A Mi Idea" #line 43
+    edit: 
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 5
+      header: "Sigue<br> Editando" #line 19 and 45
+      description: "Expandir para seguir<br> trabajando en tu idea." #line 20 and 46
+      header2: "Idea<br> Original" #line 28
+      description2: "Expandir para mostrar<br> la idea original." #line 29
+      submit: "Actualizar Idea" #line 34
+      header3: "Idea<br> Ejemplo" #line 38
+      description3: "Expandir para mostrar<br> una idea de ejemplo." #line 39
+    new:
+      confirm: "¿Estás seguro(a) de que quieres cancelar? Perderás los cambios que no has guardado." #line 5
+      header: "Sigue<br> Editando" #line 20 and 46
+      description: "Expandir para seguir<br> trabajando en tu idea." #line 21 and 47
+      header2: "Idea<br> Original" #line 29
+      description2: "Expandir para mostrar<br> la idea original." #line 30
+      submit: "Compartir Idea" #line 35
+      header3: "Idea<br> Ejemplo" #line 39
+      description3: "Expandir para mostrar<br> una idea de ejemplo." #line 40
+    show:
+      header: "Idea" #line 11
+      time: "hace %{time}" #line 26
+      edit: "<i class='fa fa-edit'></i> Editer" #line 38
+      delete: "<i class='fa fa-trash'></i> Eliminar" #line 38
+      confirm: "¿Estás seguro(a) de que quieres eliminar tu idea?" #line 38
+      discuss: "<i class='fa fa-reply'></i> Conversar" #line #47
+      title:  "<p class='text-center text-bold'>¿Te inspiraste para mejorar esta idea?</p><p class='text-lighter zero-margin-bottom'>Crea una versión refinada. Los refinamientos se tratan como ideas separadas, pero hacen referencia a la idea original por medio de un enlace.</p>" #line 54
+      header2: "Refinar" #line 55
+      header3: "Impacto Potencial" #line 81
+      header4: "Posible Implamentación" #line 88
+      header5: "Enlace" #line 95
+      header6: "Refinamiento de" #line 105
+      header7: "Refinamiento" #line 121
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 156
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 157
+
+  layouts:
+    _error_messages: 
+      header: "El formulario tiene los siguientes errores:" #line 3
+    _footer:
+      terms: "Términos y condiciones" #line 11
+      privacy: "Privacidad" #line 12
+    _header:
+      header: "Cambiar navegación" #line 6
+      about: "Quiénes Somos" #line 22
+      sign_in: "Entrar" #line 47
+      sign_up: "Registrarse" #line 48
+    _share_button: 
+      header: "Compartir" #line 4
+      email: "<i class='fa fa-envelope'></i> Email" #line 16
+      subject:
+      body: "Esta es la URL: #{url}" #line 16
+    _share_links:
+      body: "Esta es la URL: #{url}" #line 14
+    _share_popover:
+      body: "Esta es la URL: #{url}" #line 10
+
+  mailers:
+    comment:
+      posted:
+        content:
+        action: "Ver y Responder" #line 5
+        callout: 
+    shared:
+      action: 
+        paragraph1: "Por favor confirma tu dirección de correo electrónico haciendo clic en el enlace de abajo." #line 80
+        paragraph2: "Posiblemente necesitemos enviarte información relevante sobre nuestro servicio y es importante que tengamos una cuenta de correo electrónico válida." #line 85
+        paragraph3: "Confirmar Email"
+
+  mailkick:
+    subscriptions:
+      show:
+        header: "Suscripciones" #line 4
+        unsubscribed: "Has cancelado tu suscripción." #line 28
+        subscribed: "Estás suscrito." #line 31
+
+  shared:
+    _draft:
+      header: "Borrador" #line 2
+      continue: "Seguir Editando >" #line 3
+      delete: "Eliminar Borrador" #line 4
+      confirm: "¿Estas seguro(a) de que quieres eliminar tu borrador?" #line 4
+
+  solution_stages:
+    show:
+      previous: "Anterior" #line 25
+      next: "Siguiente" #line 29
+      header: "Pronto..." #line 40
+      header2: "El reto aún está activo." #line 42
+      header3: "Cómo se están enfrentando las personas al reto." #line 65
+      stage: "historia" #line 77
+      social_sharing_question: "¿Conoces personas que puedan aportar algo a esta conversación?" #line 89
+      social_sharing_description: "Más personas significa más problemas solucionados. ¡Comparte este reto!" #line 90
+
+  solution_stories:
+    card:
+      header: "Esfuerzo Requerido" #line 14
+      time1: "horas" #line 15
+      time2: "días" #line 15
+      time3: "semanas" #line 15
+      time4: "meses" #line 15
+    show:
+      header: "Una Historia del Campo" #line 22
+      header2: "Guía Práctica" #line 32
+
+  solutions:
+    show:
+      header: "Implementada por" #line 9
+      header2: "Basada en Ideas de" #line 15
+      user: "tú" #line 27 and 57
+      header3: "Inspirada en las Experiencias de" #line 45
+      discuss: "<i class='fa fa-reply'></i> Conversar" #line 82
+      download: "<i class='fa fa-download'></i> Descargar" #line 92
+      header4: "Recursos requeridos" #line 111
+      header5: "Esfuerzo Requerido" #line 114
+      time1: "horas" #line 115
+      time2: "días" #line 115
+      time3: "semanas" #line 115
+      time4: "meses" #line 115
+      header6: "Guía" #line 126     
+      header7: "Enlace" #line 145
+
+  suggestions:
+    card:
+      _edit: 
+        submit: "Actualizar" #line 2
+      _form:
+        title_placeholder: "Ponle un título. Nombra un reto que deberíamos asumir."
+        description_placeholder: "Explica el reto. ¿Por qué es importante? ¿Cómo te afecta a ti y a otros educadores?" #line 7
+        link_description: "Añade el enlace a un video, artículo, imagen u otro apoyo" #line 21
+        url: "Añade URL" #line 26
+        link_placeholder: "Comparte un enlace, imagen, video, o Tweet; lo mostraremos con tu sugerencia." #line 27
+        cancel: "Cancelar" #line 33
+      _new: 
+        placeholder: "¡Comparte una sugerencia que crees que debamos abordar con" #line 3
+        submit: "Compartir" #line 7
+      _show: 
+        confirm: "¿Estás seguro(a) de querer eliminar tu sugerencia?" #line 9
+        time: "hace %{time}" #line 26
+        question: "¿Cuánto te impacta esto?" #line 40
+      _vote:
+        low: "Nada" #line 1
+        high: "Mucho" #line 16
+    _form: 
+      title_placeholder: "Ponle un título. Nombra un reto que deberíamos asumir." #line 4
+      description_placeholder: "Explica el reto. ¿Por qué es importante? ¿Cómo te afecta a ti y a otros educadores?" #line 8
+      link_description: "Añade el enlace a un video, artículo, imagen u otro apoyo" #line 22
+      url: "Añade URL" #line 27
+      link_placeholder: "Comparte un enlace, imagen, video, o Tweet; lo mostraremos con tu sugerencia." #line 28
+      cancel: "Cancelar" #line 34
+    edit:
+      header: "Sugerencia" #line 11
+      title: "Editar Sugerencia" #line 12
+      submit: "Actualizar" #line 16
+    new:
+      header: "Sugerencia" #line 11
+      title: "Editar Sugerencia" #line 12
+      submit: "Compartir" #line 16
+
+  users:
+    cards:
+      _submission:
+        commenters: "comentó sobre tu" #line 23
+        likers: "le gustó tu" #line 36
+    _header:
+      edit: "Editar Perfil" #line 23
+      settings: "Configuración de Cuenta" #line 24
+      activity: "Actividad" #line 25
+
+
+
+
+  # <%= t('solutions.show.header7') %>
+
+  # "#{t('suggestions.card._edit.submit')}"
+
+
+# <%= t('comments._header.comment', :class => @comment.commentable.class.to_s) %>
+
+  # "#{t('suggestions.card._form.description_placeholder', :name => #{I18n.t(:project_name)})}"
+
+
+
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:   "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one:   "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one:   "menos de un minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one:   "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:   "1 hora"
+        other: "%{count} horas"
+      x_days:
+        one:   "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      x_months:
+        one:   "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:   "1 año"
+        other: "%{count} años"
+      over_x_years:
+        one:   "alrededor de 1 año"
+        other: "alrededor de %{count} años"
+      almost_x_years:
+        one:   "casi 1 año"
+        other: "casi %{count} años"
+    prompts:
+      year:   "Año"
+      month:  "Mes"
+      day:    "Día"
+      hour:   "Hora"
+      minute: "Minutos"
+      second: "Segundos"

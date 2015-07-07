@@ -32,21 +32,21 @@ describe RoutingOrientedController do
   it 'returns the correct route for experiences if we pass in an experience' do
     result = subject.after_update_object_path_for(experience)
 
-    expect(result).to eq "/challenges/#{experience.challenge.slug}/experience_stages/#{experience.experience_stage.id}/themes/#{experience.theme.id}/experiences/#{experience.id}"
+    expect(result).to eq "/en/challenges/#{experience.challenge.slug}/experience_stages/#{experience.experience_stage.id}/themes/#{experience.theme.id}/experiences/#{experience.id}"
   end
 
   context 'if the object is an idea' do
     it 'returns the correct route for ideas if we pass in an idea that is not destroyed' do
       result = subject.after_update_object_path_for(idea)
 
-      expect(result).to eq "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
+      expect(result).to eq "/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
     end
 
     it 'returns the correct route for ideas if we pass in an idea that is destroyed' do
       idea.destroy
       result = subject.after_update_object_path_for(idea)
 
-      expect(result).to eq "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}"
+      expect(result).to eq "/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}"
     end
   end
 
@@ -58,14 +58,14 @@ describe RoutingOrientedController do
       comment.commentable = experience
       result = subject.after_update_object_path_for(comment)
 
-      expect(result).to eq "/challenges/#{experience.challenge.slug}/experience_stages/#{experience.experience_stage.id}/themes/#{experience.theme.id}/experiences/#{experience.id}"
+      expect(result).to eq "/en/challenges/#{experience.challenge.slug}/experience_stages/#{experience.experience_stage.id}/themes/#{experience.theme.id}/experiences/#{experience.id}"
     end
 
     it 'returns the correct route for ideas if we pass in an idea' do
       comment.commentable = idea
       result = subject.after_update_object_path_for(comment)
 
-      expect(result).to eq "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
+      expect(result).to eq "/en/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
     end
   end
 
@@ -73,13 +73,13 @@ describe RoutingOrientedController do
     a_string = 'This is a string!'
     result = subject.after_update_object_path_for(a_string)
 
-    expect(result).to eq '/'
+    expect(result).to eq '/?locale=en'
   end
 
   it 'returns the root path in case of an error' do
     result = subject.after_update_object_path_for(nil)
     
-    expect(result).to eq '/'
+    expect(result).to eq '/?locale=en'
   end
 
 end

@@ -11,7 +11,7 @@
     <% else %>
       <p class='text-bold'><%= experience.description %></p>
       <% unless experience.link.blank? %>
-        <p class='text-bold'><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
+        <p class='text-bold'><b><i class='fa fa-link'></i> <%= t('experiences.card._show.link') %></b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
       <% end %>
     <% end %>
   </div>
@@ -36,10 +36,10 @@
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="experience-<%= experience.id %>-other">
           <% if user_signed_in? && experience.user == current_user %>
-            <li><%= link_to 'Edit', '#', 'ng-click' => "experience_#{experience.id}_edit=true", onclick: 'return false;' %></li>
-            <li><%= link_to 'Delete', challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience.id), method: :delete, data: { confirm: "Are you sure you want to delete your experience?"} %></li>
+            <li><%= link_to "#{t('experiences.card._show.edit')}", '#', 'ng-click' => "experience_#{experience.id}_edit=true", onclick: 'return false;' %></li>
+            <li><%= link_to "#{t('experiences.card._show.delete')}", challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience.id), method: :delete, data: { confirm: "#{t('experiences.card._show.confirm')}"} %></li>
           <% else %>
-            <li role="presentation"><%= link_to 'Flag', '#' %></li>
+            <li role="presentation"><%= link_to "#{t('experiences.card._show.flag')}", '#' %></li>
           <% end %>
         </ul>
       </li>

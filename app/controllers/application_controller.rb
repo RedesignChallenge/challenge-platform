@@ -2,12 +2,24 @@ class ApplicationController < ActionController::Base
   include RoutingConcern
   include CachingConcern
   include PersistenceConcern
+  include HttpAcceptLanguage::AutoLocale
+
+
+ 
+
 
   ## Callback
   before_action :authenticate_user!, if: Proc.new { ENV['SITE_LOCKED'] == 'true' }
   before_action :capture_referrer_id
   after_action :set_csrf_cookie_for_ng
   after_action :set_ga_dimension_session
+  before_action :set_locale
+
+  
+ 
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -52,6 +64,10 @@ class ApplicationController < ActionController::Base
 
   def load_challenge
     @challenge = Challenge.find(params[:challenge_id])
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
 
 private

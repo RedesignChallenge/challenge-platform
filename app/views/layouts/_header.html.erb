@@ -3,7 +3,7 @@
 
     <div class="navbar-header">
       <button id='navbar-hamburger' type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only"><%= t('layouts._header.header') %></span>
         <i class='fa fa-inverse fa-bars'></i>
       </button>
       <%= link_to I18n.t(:project_name), root_path, class: 'navbar-brand' %>
@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id='collapse-nav'>
       
       <ul class="nav navbar-nav">
-        <li><%= link_to "About Us", about_path, class: 'text-lighter' %></li>
+        <li><%= link_to "#{t('layouts._header.about')}", about_path, class: 'text-lighter' %></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -44,8 +44,8 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-sm btn-info btn-rounded' %></li>
+          <li><%= link_to "#{t('layouts._header.sign_in')}", new_user_session_path %></li>
+          <li><%= link_to "#{t('layouts._header.sign_up')}", new_user_registration_path, class: 'btn btn-sm btn-info btn-rounded' %></li>
         <% end %>
       </ul>
 

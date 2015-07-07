@@ -23,6 +23,497 @@ en:
   hello: "Hello world"
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
+
+  approach_ideas:
+    _header:
+      section_title: "Idea" #line 7
+    show:
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 29
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 30
+
+  approach_stages:
+    show:
+      title: "See approaches" #line 11
+      description: "See the approaches educators proposed to try the top ideas from Stage 2" #line 13
+      section_title: "Idea" # line 68
+      contributors: "Featured Contributors" #line 25
+      try: "Know how to try this idea?"
+      add_first: "Add the first approach." #line 48
+      question_1: "Know how to try this idea?" #line 80
+      question_2: "Want to try this but not sure how?" #line 84
+      share: "<i class='fa fa-flask'></i> Share your approach" #line 81
+      join: "<i class='fa fa-comments-o'></i> Join the discussion" #line 85
+      comment_expand: "See all %{count} comments <i class='fa fa-angle-right'></i>" #line 86
+      stage_name: "approach" #line 101
+      add_new: "+ Add yours" #line 106
+      show_more: "Show %{count} More Approaches" #line 129
+      show_less: "Show Less" #line 131
+      discussion_expand: "See all %{count} discussions <i class='fa fa-angle-right'></i>" #line 136
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 142
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 143
+
+  approaches:
+    card:
+      _new:
+        new_question: "Know how to try this idea?" #line 4
+        submit_new: "Share your approach" #line 4
+        discussion_question: "Still not sure?" #line 6
+        see_discusion: "See the discussion for this idea <i class='fa fa-angle-right'></i>" #line 6
+      _show:
+        edit: "Edit" #line 44
+        delete: "Delete" #line 45
+        confirm: "Are you sure you want to delete your approach?" #line 45
+        flag: "Flag" #line 47
+        header_1: "How To" #line 62
+        header_2: "Description" #line 70
+        header_3: "What you'll need" #line 75
+    modals:
+      _form:
+        title_placeholder: "Add a Title" #line 10
+        description_label: "Description" #line 14
+        description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?" #line 15
+        needs_label: "Resources Needed" #line 21
+        needs_placeholder: "List any required materials or resources." #line 22
+        steps_label: "How To" #line 28
+        step_placeholder: "Click to add another step" #line 46
+        save: "Save and finish later" #line 74
+        cancel: "Cancel" #line 77
+        cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 77
+        submit: "Share Approach" #line 80
+        header: "Optional" #line 86
+        add_link: "Add a link to a video, article, image or other supporting material" #line 101
+        add_url: "Add URL" #line 114
+        instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+      _header:
+        title: "An approach to the idea of" #line 6
+        featured: "Featured Approach" #line 23
+      _step_fields:
+        description_placeholder: "Outline how to test this idea step by step." #line 12
+      edit:
+        confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 6
+        title: "Edit Approach" #line 18
+        submit: "Update Approach" #line 21
+      new: 
+        confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 7
+        title: "New Approach" #line 17
+        submit: "Share Approach" #line 20
+      show: 
+        title: "Approach" #line 12
+        time: "%{time} ago" #line 27
+        edit: "<i class='fa fa-edit'></i> Edit" #line 38
+        delete: "<i class='fa fa-trash'></i> Delete" #line 39 
+        confirm: "Are you sure you want to delete your approach?" #line 39
+        discuss: "<i class='fa fa-reply'></i> Discuss" #line 48
+        needs: "What You'll Need" #line 76
+        how: "How To" #line 83
+        link: "Link"
+        social_sharing_question: "Know people who have something to add to this conversation?" #line 134
+        social_sharing_description: "More people means more problems solved. Share this challenge!" #line 135
+
+  challenges:
+    show:
+      cta: "Get Set, Create!" #line 92
+      completed: "Completed" #line 95
+      active: "Not yet active" #line 97
+      challenge: "The Challenge" #line 109
+      goal: "The Goal" #line 113
+      role: "Your Role" #line 117 
+      guides: "Meet Our Challenge Guides" #line 133
+      about: "About <%= %{name} %>" #line 159
+      empty: "Not yet provided." #line 162
+      cta2: "Get Involved" #line 179
+      featured: "Featured contributions from" #line 181
+      more: "Show More" #line 191
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 205
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 206
+
+  comments:
+    card:
+      _edit:
+        submit: "Update" #line 18
+      _form:
+        comment_placeholder: "What do you think about this %{stage} Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback." #line 7
+        comment_help: "Add a link to a video, article, or image" # line 22
+        url_placeholder: "Add URL" # line 27
+        url_help: "Attach a link and we'll display it alongside your post." #line 28
+        cancel: "Cancel" #line 34
+      _new:
+        reply: "In reply to Comment #{{temporal_parent_id}} above." #line 4
+        cancel: "Cancel reply?" #line 4
+        name: "Your Name" #line 18
+        organization: "Your Organization" #line 19
+        submit: "Submit" #line 27
+      _show:
+        time: "%{time} ago" #line 3
+        reply: "Reply" #line 39
+        edit: "Edit" #line 52
+        delete:  "Delete" #line 53
+        confirm:  "Are you sure you want to delete your comment?" #line 53
+        flag: "Flag" #line 55
+    _discussion:
+      header: "Discussion test" #line 11
+      add: "+ Add Comment" #line 15
+    _form:
+      reply: "In reply to Comment #{{temporal_parent_id}} above." #line 4
+      cancel: "Cancel reply?" #line 4
+      name: "Your Name" #line 18
+      organization: "Your Organization" #line 19
+      opinion: "What do you think about this %{class}? Suggest an improvement, explain how you think this %{class} could be implemented, or provide other feedback." #line 34
+      link: "Add a link to a video, article, image or other support" #line 49
+      url: "Add URL" #line 54
+      link2: "Share a link, image, video, or Tweet– we'll display it alongside your comment." #line 55
+      cancel: "Cancel" #line 61
+    _header:
+      comment: "Comment on the <%= %{class} %>" #line 5
+    edit:
+      submit: "Update" #line 11
+    submit:
+      submit: "Submit" #line 11
+
+  experience_stages:
+    show:
+      inspired: "Get inspired." #line 11
+      browse: "Browse the stories other educators shared." #line 13
+
+      add: "Add the first experience" #line 39
+      header: "Theme" #line 60
+      experience: "experience" #line 73
+      more: "Show %{count} More Experiences" #line 1010
+      less: "Show Less" #line 103
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 111
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 112
+
+  experiences:
+    card:
+      _discussion:
+        comment: "Leave a Comment" #line 5
+        discussion: "Discussion" #line 5
+        count: "Show All %{count} Comments" #line 18
+      _edit:
+        submit: "Update" #line 1
+      _form:
+        description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge." #line 6
+        link_placeholder: "Add URL" #line 11
+        link_description: "Attach a link and we'll display it alongside your post." #line 12
+        cancel: "Cancel" #line 18
+        save: "Save and finish later" #line 26
+      _new:
+        cta: "Want to get involved? Contribute in" #line 5
+        cta2: "Share something related to this theme." #line 18
+        submit: "Share" #line 22
+      _show:
+        link: "Link:" #line 14
+        edit: "Edit" #line 39
+        delete: "Delete" #line 40
+        confirm: "Are you sure you want to delete your experience?" #line 40
+        flag: "Flag" #line 42
+    _form: 
+      description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge." #line 26
+      add_link: "Add a link to a video, article, or image" #line 40
+      link_placeholder: "Add URL" #line 45
+      link_description: "Attach a link and we'll display it alongside your post." #line 46
+      cancel: "Cancel" #line 54
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 54
+      save: "Save and finish later" #line 62
+    _header:
+      response: "Response to the Theme of" #line 5
+    card:
+      time: "%{time} ago" #line 9
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 6
+      submit: "Update" #line 11
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 6
+      submit: "Share" #line 11
+    show:
+      header: "Experience" #line 11
+      time: "%{time} ago" #line 26
+      confirm:  "Are you sure you want to delete your experience?" #line 38
+      discuss: "<i class='fa fa-reply'></i> Discuss" #line 45
+      link: "Link" #line 70
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 102
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 103
+
+  home:
+    home: 
+      welcome: "Welcome to the " #line 9
+      explore: "Explore Our First Challenge" #line 11
+      what: "What is the "
+      description: "Project description paragraph" #line 27
+      header: "Each Challenge will go through four phases:" #line 32
+      header2: "Our First Challenge" #line 62
+      header3: "First Challenge Name" #line 67
+      header4: "Interested in helping solve this challenge?" #line 68
+      learn_more: "Learn More" #line 70
+      header5: "What challenges should we tackle next?" #line 86
+      cta: "Tell us what challenges affect you most, and vote on additional challenges suggested by others." #line 88
+      suggest: "Suggestion" #line 90
+      more: "Show %{count} More Suggestions" #line 110
+      less: "Show Less" #line 112
+      social_sharing_question: "Know someone who may want to add to the discussion?" #line 127
+      social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you." #line 130
+      share_description: " project description." #line 130
+
+
+
+
+
+# <%= "#{t('experiences.show.time', :time => time_ago_in_words(@experience.created_at))}".titleize %>
+# 
+
+
+      # <%= t('home.home.social_sharing_description') %>
+
+  # "#{t('home.home.share_description')}"
+
+
+# <%= t('experiences.show.time', :time => time_ago_in_words(@experience.created_at).titleize %>
+
+# "#{t('experiences.show.time', :time => time_ago_in_words(@experience.created_at)}"
+
+
+  idea_stages:
+    show:
+      cta: "Get some ideas." #line 10
+      cta2: "Look at the ideas other educators have shared." #line 12
+      add: "Add the first idea" #line 38
+      header: "Problem Statement" #line 59
+      stage: "idea" #line 78
+      add: "+ Add yours" #line 83
+      show_more: "Show %{count} More Ideas" #line 108
+      show_less: "Show Less" #line 110
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 118
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 119
+
+  ideas:
+    card:
+      _new:
+        cta: "Want to get involved? Contribute in" #line 5
+        add: "Add Your Idea" #line 12
+      _show: 
+        refinement: "Refinement of" #line 13
+        edit: "Edit" #line 39
+        delete: "Delete" #line 40
+        confirm: "Are you sure you want to delete your idea?" #line 40
+        flag: "Flag" #line 42
+    _example: 
+      title_description: "A concise descriptive title makes it easy for people to find and understand your idea." #line 5
+      title: "Awesome Example Idea!" #line 6
+      body_description: "Explain your idea in terms of how it might be executed and how it could impact the various people involved." #line 9
+      placeholder1: "Lorem" #line 11
+      label1: "Potential Impact" #line 14
+      placeholder2: "Lorem" #line 16
+      label2: "Possible Implementation" #line 19
+      placeholder3: "Lorem" #line 21
+      link_description: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging." #line 25
+      label3: "Link" #line 26
+      placeholder4: "Lorem" #line 28
+      back: "Go Back to My Idea" #line 41
+    _form:
+      refinement: "Refinement of" #line 14
+      title_placeholder: "What is the title of your idea?" #line 22
+      description_placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better." #line 26
+      help: "Explain the potential impact of your idea" #line 38
+      impact_label: "Potential Impact" #line 43
+      impact_placeholder: "Describe the impact your idea could have." #line 44
+      body_help: "Explain how your idea may be implemented" #line 57
+      implementation_label: "Possible Implementation" #line 62
+      implementation_placeholder: "Describe how your idea may be implemented." #line 63
+      link_placeholder: "Add a link to a video, article, image or other support" #line 76
+      url: "Add URL" #line 81
+      link_description: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea." #line 82
+      save: "Save and finish later" #line 95
+      cancel: "Cancel" #line 98
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 98
+    _header: 
+      header: "Idea for" #line 5
+    _refinement:
+      header1: "Potential Impact" #line 17
+      header2: "Possible Implementation" #line 22
+      header3: "Link" #line 29
+      back: "Go Back to My Idea" #line 43
+    edit: 
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 5
+      header: "Keep<br> Editing" #line 19 and 45
+      description: "Expand to keep<br> working on your idea." #line 20 and 46
+      header2: "Original<br> Idea" #line 28
+      description2: "Expand to show<br> the original idea." #line 29
+      submit: "Update Idea" #line 34
+      header3: "Example<br> Idea" #line 38
+      description3: "Expand to show<br> an example idea." #line 39
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost." #line 5
+      header: "Keep<br> Editing" #line 20 and 46
+      description: "Expand to keep<br> working on your idea." #line 21 and 47
+      header2: "Original<br> Idea" #line 29
+      description2: "Expand to show<br> the original idea." #line 30
+      submit: "Share Idea" #line 35
+      header3: "Example<br> Idea" #line 39
+      description3: "Expand to show<br> an example idea." #line 40
+    show:
+      header: "Idea" #line 11
+      time: "%{time} ago" #line 26
+      edit: "<i class='fa fa-edit'></i> Edit" #line 38
+      delete: "<i class='fa fa-trash'></i> Delete" #line 38
+      confirm: "Are you sure you want to delete your idea?" #line 38
+      discuss: "<i class='fa fa-reply'></i> Discuss" #line #47
+      title:  "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>" #line 54
+      header2: "Refine" #line 55
+      header3: "Potential Impact" #line 81
+      header4: "Possible Implementation" #line 88
+      header5: "Link" #line 95
+      header6: "Based On" #line 105
+      header7: "Refinement" #line 121
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 156
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 157
+
+  layouts:
+    _error_messages: 
+      header: "The form contains the following errors:" #line 3
+    _footer:
+      terms: "Terms" #line 11
+      privacy: "Privacy" #line 12
+    _header:
+      header: "Toggle navigation" #line 6
+      about: "About Us" #line 22
+      sign_in: "Sign In" #line 47
+      sign_up: "Sign Up" #line 48
+    _share_button: 
+      header: "Share" #line 4
+      email: "<i class='fa fa-envelope'></i> Email" #line 16
+      subject:
+      body: "Here's the URL: #{url}" #line 16
+    _share_links:
+      body: "Here's the URL: #{url}" #line 14
+    _share_popover:
+      body: "Here's the URL: #{url}" #line 10
+
+  mailers:
+    comment:
+      posted:
+        content:
+        action: "View and Reply" #line 5
+        callout: 
+    shared:
+      action: 
+        paragraph1: "Please confirm your email address by clicking the link below." #line 80
+        paragraph2: "We may need to send you critical information about our service and it is important that we have an accurate email address." #line 85
+        paragraph3: Confirm email address
+
+  mailkick:
+    subscriptions:
+      show:
+        header: "Subscriptions" #line 4
+        unsubscribed: "You are unsubscribed." #line 28
+        subscribed: "You are subscribed." #line 31
+
+  shared:
+    _draft:
+      header: "Draft" #line 2
+      continue: "Continue Editing >" #line 3
+      delete: "Delete Draft" #line 4
+      confirm: "Are you sure you wish to delete your draft?" #line 4
+
+  solution_stages:
+    show:
+      previous: "Previous" #line 25
+      next: "Next" #line 29
+      header: "Coming soon..." #line 40
+      header2: "The challenge is still running." #line 42
+      header3: "How people are meeting the challenge" #line 65
+      stage: "story" #line 77
+      social_sharing_question: "Know people who have something to add to this conversation?" #line 89
+      social_sharing_description: "More people means more problems solved. Share this challenge!" #line 90
+
+  solution_stories:
+    card:
+      header: "Required Effort" #line 14
+      time1: "hours" #line 15
+      time2: "days" #line 15
+      time3: "weeks" #line 15
+      time4: "months" #line 15
+    show:
+      header: "Story From The Field" #line 22
+      header2: "How To Guide" #line 32
+
+  solutions:
+    show:
+      header: "Implemented by" #line 9
+      header2: "Based on Ideas by" #line 15
+      user: "you" #line 27 and 57
+      header3: "Inspired by the Experiences of" #line 45
+      discuss: "<i class='fa fa-reply'></i> Discuss" #line 82
+      download: "<i class='fa fa-download'></i> Download" #line 92
+      header4: "What You'll Need" #line 111
+      header5: "Required Effort" #line 114
+      time1: "hours" #line 115
+      time2: "days" #line 115
+      time3: "weeks" #line 115
+      time4: "months" #line 115
+      header6: "How To" #line 126     
+      header7: "Link" #line 145
+
+  suggestions:
+    card:
+      _edit: 
+        submit: "Update" #line 2
+      _form:
+        title_placeholder: "Give it a title. Name a challenge we should take on."
+        description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?" #line 7
+        link_description: "Add a link to a video, article, image or other support" #line 21
+        url: "Add URL" #line 26
+        link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion." #line 27
+        cancel: "Cancel" #line 33
+      _new: 
+        placeholder: "Share a suggestion that you think we should tackle with the" #line 3
+        submit: "Share" #line 7
+      _show: 
+        confirm: "Are you sure you want to delete your suggestion?" #line 9
+        time: "%{time} ago" #line 16
+        question: "How much does this impact you?" #line 40
+      _vote:
+        low: "Not at all" #line 1
+        high: "A lot" #line 26
+    _form: 
+      title_placeholder: "Give it a title. Name a challenge we should take on." #line 4
+      description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?" #line 8
+      link_description: "Add a link to a video, article, image or other support" #line 22
+      url: "Add URL" #line 27
+      link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion." #line 28
+      cancel: "Cancel" #line 34
+    edit:
+      header: "Suggestion" #line 11
+      title: "Edit Suggestion" #line 12
+      submit: "Update" #line 16
+    new:
+      header: "Suggestion" #line 11
+      title: "Edit Suggestion" #line 12
+      submit: "Share" #line 16
+
+  users:
+    cards:
+      _submission:
+        commenters: "commented on your" #line 23
+        likers: "liked your" #line 36
+    _header:
+      edit: "Edit Profile" #line 23
+      settings: "Account Settings" #line 24
+      activity: "Activity" #line 25
+
+
+
+
+  # <%= t('suggestions.new.header') %>
+
+  # "#{t('users._header.activity')}"
+
+
+# <%= t('comments._header.comment', :class => @comment.commentable.class.to_s) %>
+
+  # "#{t('users.cards._submission.commenters', :commenters => #{submission.class.to_s.downcase}"
+
+
+
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
     distance_in_words:

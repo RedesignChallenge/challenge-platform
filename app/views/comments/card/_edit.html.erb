@@ -15,4 +15,4 @@
   <div class='clearfix'></div>
 </div>
 
-<%= render partial: 'comments/card/form', locals: { comment: comment, url: comment_path(comment), cancel_path: "comment_#{comment.id}_edit=false", submit_text: 'Update'} %>
+<%= render partial: 'comments/card/form', locals: { comment: comment, url: comment_path(comment), cancel_path: "comment_#{comment.id}_edit=false", submit_text: "#{t('comments.card._edit.submit')}"} %>

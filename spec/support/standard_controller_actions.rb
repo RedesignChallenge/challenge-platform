@@ -68,7 +68,7 @@ shared_examples_for 'a standard controller' do
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
             id: unpublished_entity.id
 
-        expect(response).to redirect_to "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+        expect(response).to redirect_to "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
       end
 
       it 'updates the flash message with an error' do
@@ -97,7 +97,7 @@ shared_examples_for 'a standard controller' do
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
             id: unpublished_entity.id
 
-        expect(response).to redirect_to "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+        expect(response).to redirect_to "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
       end
 
       it 'updates the flash message with an error' do
@@ -143,7 +143,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => savable_entity
-          expect(flash[:success]).to eq "You've successfully shared your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+          expect(flash[:success]).to eq "You've successfully shared your #{target_model}. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
         end
 
         it 'updates the flash message for a draft entity' do
@@ -151,7 +151,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => draft_entity
-          expect(flash[:success]).to eq "You've successfully saved a draft of your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+          expect(flash[:success]).to eq "You've successfully saved a draft of your #{target_model}. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
         end
 
         it 'redirects correctly after creation' do
@@ -159,7 +159,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => savable_entity
-          expect(response).to redirect_to redirect_path || "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
+          expect(response).to redirect_to redirect_path || "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
         end
       end
 
@@ -194,7 +194,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => savable_entity
-          expect(response).to redirect_to("/preview?class_name=#{target_model}")
+          expect(response).to redirect_to("/preview?class_name=#{target_model}&locale=en")
         end
       end
 
@@ -239,7 +239,7 @@ shared_examples_for 'a standard controller' do
               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
               id: preexisting_entity.id,
               :"#{target_model}" => valid_patch_model
-        expect(flash[:success]).to eq "You've successfully updated the draft of your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        expect(flash[:success]).to eq "You've successfully updated the draft of your #{target_model}. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
       end
 
       it 'redirects to the correct path' do
@@ -248,7 +248,7 @@ shared_examples_for 'a standard controller' do
               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
               id: preexisting_entity.id,
               :"#{target_model}" => valid_patch_model
-        expect(response).to redirect_to redirect_path || "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
+        expect(response).to redirect_to redirect_path || "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
       end
     end
 
@@ -274,7 +274,7 @@ shared_examples_for 'a standard controller' do
               :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
               id: unpublished_entity.id,
               :"#{target_model}" => valid_patch_publish_model
-        expect(flash[:success]).to eq "You've successfully published your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        expect(flash[:success]).to eq "You've successfully published your #{target_model}. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
       end
     end
 
@@ -312,7 +312,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                id: preexisting_entity.id
-        expect(flash[:success]).to eq "You've successfully deleted your #{target_model}. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+        expect(flash[:success]).to eq "You've successfully deleted your #{target_model}. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
       end
 
       it 'redirects to the appropriate path' do
@@ -320,7 +320,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                id: preexisting_entity.id
-        expect(response).to redirect_to "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+        expect(response).to redirect_to "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
       end
 
       it 'does not *actually* destroy the entity' do
@@ -414,7 +414,7 @@ shared_examples_for 'a standard controller' do
             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
             id: preexisting_entity.id
-        expect(response).to redirect_to redirect_path || "/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
+        expect(response).to redirect_to redirect_path || "/en/challenges/#{assigns(target_model).challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
       end
     end
   end
@@ -437,9 +437,9 @@ shared_examples_for 'a standard controller' do
 
   def build_redirect_path(second_fragment, target_model=nil)
     if target_model
-      "/challenges/#{challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
+      "/en/challenges/#{challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}/#{underscore_and_pluralize(third_fragment.class)}/#{third_fragment.id}/#{pluralize(target_model)}/#{assigns(target_model).id}"
     else
-      "/challenges/#{challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
+      "/en/challenges/#{challenge.slug}/#{underscore_and_pluralize(second_fragment.class)}/#{second_fragment.id}"
     end
   end
 end
