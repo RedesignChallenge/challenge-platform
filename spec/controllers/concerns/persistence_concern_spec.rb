@@ -54,7 +54,7 @@ describe PersistenceOrientedConcern do
       subject.cache_pending_like(experience, {vote_scope: 'sample scope'})
       subject.persist_pending_cache
 
-      expect(session[:user_return_to]).to eq "/"
+      expect(session[:user_return_to]).to eq "/?locale=en"
     end
 
     it 'clears the cache after persistence' do
@@ -96,13 +96,13 @@ describe PersistenceOrientedConcern do
 
       subject.persist_pending_cache
 
-      expect(flash[:success]).to eq "You've successfully saved a draft of your experience. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+      expect(flash[:success]).to eq "You've successfully saved a draft of your experience. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
     end
 
     it 'sets the flash message for published entities appropriately' do
       subject.cache_pending_object(published_experience)
       subject.persist_pending_cache
-      expect(flash[:success]).to eq "You've successfully shared your experience. <a href='/users/#{user.id}'>Click here</a> to see all of your contributions."
+      expect(flash[:success]).to eq "You've successfully shared your experience. <a href='/users/#{user.id}?locale=en'>Click here</a> to see all of your contributions."
     end
 
     it "sets the entity's return path correctly" do
@@ -119,7 +119,7 @@ describe PersistenceOrientedConcern do
 
       subject.persist_pending_cache
       
-      expect(session[:user_return_to]).to eq "/challenges/#{challenge.slug}/experience_stages/#{experience_stage.id}/themes/#{theme.id}/experiences/#{experience.id}"
+      expect(session[:user_return_to]).to eq "/en/challenges/#{challenge.slug}/experience_stages/#{experience_stage.id}/themes/#{theme.id}/experiences/#{experience.id}"
     end
 
     it 'removes the entity from the cache' do

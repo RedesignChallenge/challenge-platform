@@ -133,7 +133,7 @@ describe HomeController do
 
       it 'redirects to the root path if no referrer is specified' do
         get 'preview', class_name: 'bogus'
-        expect(response).to redirect_to '/'
+        expect(response).to redirect_to '/?locale=en'
       end
     end
   end
