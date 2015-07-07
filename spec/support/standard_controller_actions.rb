@@ -194,7 +194,7 @@ shared_examples_for 'a standard controller' do
                :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
                :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
                :"#{target_model}" => savable_entity
-          expect(response).to redirect_to("/preview?class_name=#{target_model}?locale=en")
+          expect(response).to redirect_to("/preview?class_name=#{target_model}&locale=en")
         end
       end
 

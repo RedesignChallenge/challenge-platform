@@ -104,7 +104,7 @@ describe CommentsController do
       it 'redirects to the preview path' do
         post :create, comment: {body: "Everything is cool when you're part of a team!", link: 'http://youtu.be/StTqXEQ2l-Y', commentable_type: 'Idea', commentable_id: idea.id}
 
-        expect(response).to redirect_to '/preview?class_name=comment'
+        expect(response).to redirect_to '/preview?class_name=comment&locale=en'
       end
 
       it 'renders new if the comment is invalid' do

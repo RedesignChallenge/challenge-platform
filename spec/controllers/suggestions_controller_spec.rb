@@ -69,7 +69,7 @@ describe SuggestionsController do
         it "redirects to the correct path" do
           post :create, suggestion: {title: "this is a suggestion title", description: "this is a suggestion description"}
 
-          expect(response).to redirect_to("/preview?class_name=suggestion?locale=en")
+          expect(response).to redirect_to("/preview?class_name=suggestion&locale=en")
         end
       end
 
