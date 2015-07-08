@@ -8,7 +8,7 @@ namespace :db do
     Rake::Task['tmp:clear'].invoke
     Rake::Task['db:drop'].invoke
     Rake::Task['db:create'].invoke
-    Rake::Task['db:migrate'].invoke
+    Rake::Task['db:schema:load'].invoke
     Rake::Task['db:seed'].invoke
     Sidekiq::Queue.new.clear
     Sidekiq::RetrySet.new.clear
