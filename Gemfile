@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.4'
 
 ## RAILS SETUP
-gem 'rails', '4.2.1'
+gem 'rails'
 gem 'pg'
 gem 'unicorn'
 gem 'active_model_serializers'
@@ -12,6 +12,7 @@ gem 'uglifier'
 gem 'friendly_id'
 gem 'numbers_and_words'
 gem 'cocoon'
+gem 'truncate_html'
 
 ## FRONT END JS ASSETS
 source 'https://rails-assets.org' do
@@ -20,7 +21,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-resource'
   gem 'rails-assets-angular-sanitize'
   gem 'rails-assets-angular-animate'
-  gem 'rails-assets-angular-ui-select2'
+  gem 'rails-assets-angular-ui-select'
   gem 'rails-assets-angular-scroll'
 end
 
@@ -29,11 +30,11 @@ gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'sass-rails'
 gem 'autoprefixer-rails'
-gem 'select2-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'bootstrap-switch-rails'
-gem 'bourbon', '~> 4.2.1'
+gem 'bourbon'
+gem 'select2-rails'
 
 ## FILE/PHOTO UPLOADS
 gem 'twitter'
@@ -46,10 +47,10 @@ gem 'carrierwave_backgrounder'
 gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
 
 ## COMMENTING
-gem 'acts_as_commentable_with_threading', '~> 2.0.0'
+gem 'acts_as_commentable_with_threading'
 
 ## DELETING ENTITIES
-gem 'paranoia', '~> 2.0'
+gem 'paranoia'
 
 ## AUTHENTICATION/ADMINISTRATION
 gem 'devise'
@@ -69,12 +70,12 @@ gem 'dalli'
 
 ## DELAYED JOBS
 gem 'sidekiq'
-gem 'sinatra', '>= 1.3.0', require: nil
+gem 'sinatra'
 gem 'devise-async'
-gem 'exception_notification', '>= 4.1.0rc1'
+gem 'exception_notification'
 
 ## VALIDATOR HELPER
-gem 'public_suffix', '~> 1.4.6'
+gem 'public_suffix'
 
 ## SEEDING DATA
 gem 'faker'
@@ -91,14 +92,14 @@ end
 group :development, :test do
   gem 'spring'
   gem 'dotenv-rails'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
 group :test do
-  gem 'webmock', '~> 1.20.4'
-  gem 'shoulda-matchers', require: false
-  gem 'database_cleaner', '~> 1.4.0'
+  gem 'webmock'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :production do

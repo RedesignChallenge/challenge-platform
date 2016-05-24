@@ -16,7 +16,7 @@
           </div>
           <div class="carousel-caption">
             <p class='text-h2 text-white text-left'><%= link_to solution_story.title, challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story), style: 'color: white' %></p>
-            <p class='text-white text-left'><%= solution_story.description.truncate(300) %></p>
+            <p class='text-white text-left'><%= truncate_html(solution_story.description, length: 300).html_safe %></p>
           </div>
         </div>
       <% end %>
@@ -38,10 +38,7 @@
           <div class='row'>
             <div class='col-sm-9'>
               <h1 class='text-solution'>Coming soon...</h1>
-              <p class='text-large'>
-                The challenge is still running.
-                <%= link_to "Get involved in Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge) %>
-              </p>  
+              <p class='text-large'>Check back to see how educators will be trying out your Challenge ideas.</p>
 
               <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
             </div>
@@ -88,9 +85,9 @@
 
         <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
         <p class='section-description'>More people means more problems solved. Share this challenge!</p>
-        
-        <%= render partial: 'layouts/share_links', locals: { url: challenge_solution_stage_url(@challenge, @solution_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 
+        <%= render partial: 'layouts/share_links', locals: { url: challenge_idea_stage_url(@challenge, @idea_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+        
       </div>
     </div>
   </div>

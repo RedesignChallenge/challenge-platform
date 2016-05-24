@@ -20,7 +20,7 @@
           <small>Upload new photo?</small>
         </a>
       </label><br>
-      <%= image_tag(current_user.avatar.url, class: 'img-circle', size: '52x52') %>
+      <%= image_tag(current_user.avatar.thumb.url, class: 'img-circle', size: '52x52') %>
     </div>
     <label ng-hide='!upload_new'>
       Upload Avatar

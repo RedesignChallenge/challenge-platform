@@ -33,8 +33,7 @@
 
       <div class='form-group'>
         <%= f.label :role, "Which option best describes your role?" %>
-        <%= f.select(:role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: "<p class='select-option'>– Select One –</p>" }, class: 'form-control input-lg') %>
-        <script>$(function(){$("#user_role").select2({escapeMarkup:function(m){return m;}});});</script>
+        <%= f.select :role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: "Select One" }, class: 'form-control input-lg' %>
       </div>
     </div>
 
@@ -58,7 +57,7 @@
 
   <div class='row row-disclaimer'>
     <div class='col-sm-8 col-sm-offset-2'>
-      <div class='auth-disclaimer text-small'>Other than your first name and last initial, none of this information will ever be shared or displayed. By signing up, you are agreeing to our <%= link_to 'Terms and Conditions', terms_path, target: '_blank' %> and <%= link_to 'Privacy Policy', privacy_path, target: '_blank' %>.</div>
+      <div class='auth-disclaimer text-small'>By signing up, you are agreeing to our <%= link_to 'Terms and Conditions', terms_path, target: '_blank' %> and <%= link_to 'Privacy Policy', privacy_path, target: '_blank' %>.</div>
     </div>
   </div>
 

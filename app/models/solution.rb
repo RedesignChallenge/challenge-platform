@@ -5,7 +5,7 @@
 #  id                      :integer          not null, primary key
 #  title                   :string
 #  description             :text
-#  needs                   :text
+#  materials               :text
 #  effort                  :string
 #  link                    :text
 #  embed                   :text
@@ -24,20 +24,27 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  published_at            :datetime
+#  comments_count          :integer          default(0)
+#  featured                :boolean          default(FALSE)
+#  community               :text
+#  conditions              :text
+#  evidence                :text
+#  protips                 :text
 #
 
 class Solution < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
   include Publishable
+  include Orderable
 
   belongs_to :solution_story
   belongs_to :user
   has_many :steps, as: :steppable
-  has_one :feature, as: :featured
+  has_one :feature, as: :featureable
   has_and_belongs_to_many :experiences
   has_and_belongs_to_many :ideas
-  has_and_belongs_to_many :approaches
+  has_and_belongs_to_many :recipes
 
   mount_uploader :file, FileUploader
   process_in_background :file

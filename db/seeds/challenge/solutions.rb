@@ -10,12 +10,12 @@ challenge.solution_stage.solution_stories.each do |solution_story|
   solution = solution_story.create_solution!(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph(10),
-    needs: Faker::Lorem.paragraph(5),
+    materials: Faker::Lorem.paragraph(5),
     effort: efforts.sample,
     link: links.sample,
     experience_ids:  Experience.pluck(:id).sample(4),
     idea_ids:  Idea.pluck(:id).sample(2),
-    approach_ids:  Approach.pluck(:id).sample,
+    recipe_ids:  Recipe.pluck(:id).sample,
     user_id: (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
     published_at: Time.now
   )
@@ -32,7 +32,7 @@ challenge.solution_stage.solution_stories.each do |solution_story|
   1+rand(8).times do
     comment = Comment.build_from(
       solution,
-      (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
+      User.pluck(:id).sample,
       { body: Faker::Lorem.sentence, link: links.sample }
     )
     comment.save!
@@ -40,7 +40,7 @@ challenge.solution_stage.solution_stories.each do |solution_story|
     ## Nested comment
     nested = Comment.create!(
       commentable: solution,
-      user: User.find((User.pluck(:id) - challenge.panelists.pluck(:id)).sample),
+      user: User.find(User.pluck(:id).sample),
       body: 'Nested: ' + Faker::Lorem.sentence,
       link: links.sample,
       temporal_parent_id: comment.id
@@ -48,3 +48,11 @@ challenge.solution_stage.solution_stories.each do |solution_story|
   end
     
 end
+
+feature = Feature.create!(
+  user_id: challenge.panelists.pluck(:id).sample,
+  featureable: challenge.solution_stage.solutions.sample,
+  active: true,
+  challenge: challenge,
+  reason: Faker::Hacker.say_something_smart
+)

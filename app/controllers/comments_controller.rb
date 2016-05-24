@@ -70,6 +70,15 @@ class CommentsController < ApplicationController
 private
 
   def comment_params
+    # If the parent does not exist, nil out the field for the temporal_parent_id to prevent incredulous spoofs.
+    if params[:comment][:temporal_parent_id].present?
+      params[:comment][:temporal_parent_id] = nil unless Comment.exists?(
+        id: params[:comment][:temporal_parent_id],
+        commentable_type: params[:comment][:commentable_type],
+        commentable_id: params[:comment][:commentable_id]
+      )
+    end
+
     params.require(:comment).permit(:body, :link, :temporal_parent_id, :commentable_type, :commentable_id)
   end
 

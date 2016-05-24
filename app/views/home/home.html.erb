@@ -1,5 +1,38 @@
 <div id='landing-splash'>
-  <div class='container'>
+  <div class='opacity-layer'>
+    <div class='opacity-content'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-md-10 col-md-offset-1'>
+
+            <h1 class='text-white'><%= "Join the #{I18n.t(:project_name)}." %><br><small class='text-white'>Make your ideas real.</small></h1>
+
+            <div class='row'>
+              <div class='col-md-4'>
+                <% if user_signed_in? %>
+                    <% if @featured %>
+                        <%= link_to "Return to Challenge", challenge_active_stage_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                    <% else %>
+                        <%= link_to "Learn More", about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                    <% end %>
+                <% else %>
+                    <% if @featured %>
+                        <%= link_to "See Featured Challenge", challenge_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                    <% else %>
+                        <%= link_to "Learn More", about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='landing-challenge'>
+  <div class="container">
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
@@ -24,13 +57,13 @@
         <h2 class="text-center"><%= "What is the #{I18n.t(:project_name)}?" %></h2>
         <div class="row" style='margin-bottom:15px'>
           <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'>We know that the best ideas for solving problems in education come from educators. The <%= "#{I18n.t(:project_name)}" %> is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality.</p>
+            <p class='section-description'><%= "We know that the best ideas for solving problems in education come from educators. The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality." %></p>
           </div>
         </div>
 
         <div id='process-stages'>
           <h2 class="section-title">Each Challenge will go through four phases:</h2>
-          
+
           <div class='row row-process'>
             <% Challenge::STAGES.each_with_index do |stage, index| %>
               <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
@@ -53,41 +86,51 @@
   </div>
 </div>
 
-<% if @featured %>
-  <div id='landing-challenge'>
-    <div class="container">
-      <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
+<div id='landing-challenge'>
+  <div class="container">
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+        <div class='row'>
+          <div class='col-sm-7'>
+            <h2 class='text-green' style='font-size:2.25em'>Our Featured Challenge</h2>
+            <h2 class='half-margin-bottom'>
+              <%= "Challenge #{@featured.id}: #{@featured.title}" %>
+            </h2>
+            <p class='text-large'>Share your experience with the first challenge!</p>
 
-          <h2 class="text-center">Our First Challenge</h2>
+            <div class='break'></div>
 
-          <div class='well well-lg well-challenge'>
-            <div class='well-content'>
-
-              <h1 class='well-title'>The Classroom<br> Video Challenge</h1>
-              <p class='well-subtitle'>Interested in helping solve this challenge?</p>
-
-              <%= link_to 'Learn More', challenge_path(@featured), class: 'btn btn-info btn-rounded col-xs-5 col-sm-3' %>
-              <div class='clearfix'></div>
-            </div>
+            <% if user_signed_in? %>
+                <%= link_to "<h4 class='half-margin-bottom'>Learn More and Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, challenge_path(@featured) if @featured %>
+            <% else %>
+                <% if @featured %>
+                    <%= link_to "<h4 class='half-margin-bottom'>Learn More and Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, challenge_path(@featured) %>
+                <% else %>
+                    <%= link_to "<h4 class='half-margin-bottom'>Register Today to Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, new_user_registration_path %>
+                <% end %>
+            <% end %>
           </div>
-
         </div>
       </div>
     </div>
   </div>
-<% end %>
+</div>
 
 <div id="landing-suggest">
   <div class="container">
     <div class="row">
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class="section-title" style='margin-bottom:10px'>What challenges should we tackle next?</h2>
-          <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{I18n.t(:project_hashtag)}".html_safe, "https://twitter.com/#{I18n.t(:project_name)}", target: '_blank' %></p>
-        <p class='section-description' style='margin-bottom:20px'>Tell us what challenges affect you most, and vote on additional challenges suggested by others.</p>
+        <p class="section-title">What challenges should we tackle next?</p>
+        <div class="row" style='margin-bottom: 15px'>
+          <div class='col-sm-10 col-sm-offset-1'>
+            <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{I18n.t(:project_hashtag)}".html_safe, "https://twitter.com/#{I18n.t(:project_name)}", target: '_blank' %></p>
+            <p class='section-description'>Tell us what challenges affect you most, and vote on additional challenges suggested by others.</p>
+          </div>
+        </div>
 
-        <h5 class="pull-left text-black"><%= pluralize(@suggestions.count, 'Suggestion') %></h5>
+        <h4 class="text-bold pull-left"><%= pluralize(@suggestions.count, 'Suggestion') %></h4>
+        <%= link_to("+ Add Suggestion", '#new-suggestion', class: 'pull-right', 'ng-click' => "suggestion_draft=true", "du-smooth-scroll" => true) unless @suggestions.count.zero? %>
         <div class='clearfix'></div>
 
         <div ng-switch="suggestions" ng-init="suggestions=show_all">
@@ -123,12 +166,10 @@
   <div class="container">
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-
         <h2 class="section-title text-submit">Know someone who may want to add to the discussion?</h2>
         <p class='section-description'>The more the merrier! Share our platform to help us get the best suggestions from educators like you.</p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: "The #{I18n.t(:project_name)}", description: "The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality.".html_safe, hashtag: I18n.t(:project_hashtag) } %>
-
       </div>
     </div>
   </div>

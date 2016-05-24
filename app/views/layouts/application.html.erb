@@ -8,15 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
+    <%= favicon_link_tag 'favicon.png', type: 'image/png', rel: 'apple-touch-icon' %>
 
     <%= render partial: 'layouts/shim', cache: true %>
-    <%= render partial: 'layouts/google' if ENV['GA_KEY'].present? %>
+    <%= render partial: 'layouts/google', cache: true if ENV['GA_KEY'].present? %>
     <%= render partial: 'layouts/twitter' %>
 
     <%= csrf_meta_tags %>
   </head>
 
   <body>
+    <%= render partial: 'layouts/facebook', cache: true %>
     <%= render partial: 'layouts/header', cache: true unless @hide_navs %>
     <%= render partial: 'layouts/flashes', cache: true unless @hide_navs %>
 

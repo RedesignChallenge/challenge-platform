@@ -1,12 +1,20 @@
 <div id='idea-<%= idea.id %>' class="<%= columns %>">
 
   <div class="thumbnail idea-thumbnail">
+    <% if idea.featured? %>
+      <div class="ribbon-wrapper">
+        <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) do %>
+          <div class="ribbon ribbon-idea">Featured</div>
+        <% end %>
+      </div>
+    <% end %>
+
     <div class="folded-corner">
       <div class='idea-title'>
-        <p class='text-xlarge text-lighter text-normal'><%= link_to idea.title.truncate(50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-xlarge text-idea text-normal' %></p>
+        <p class='text-xlarge text-lighter text-normal'><%= link_to truncate(idea.title, length: 50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-xlarge text-idea text-normal' %></p>
       </div>
 
-      <p><%= idea.description.truncate(200) %></p>
+      <p><%= truncate_html(idea.description, length: 200).html_safe %></p>
 
       <% if idea.refinement_parent %>
         <p class='text-xsmall-normal'>
@@ -19,7 +27,7 @@
     <div class='idea-actions'>
       <ul id='actions' class='list-inline pull-left'>
         <li id="idea-<%= idea.id %>-comments">
-          <%= link_to "<i class='fa fa-comments-o'></i> #{idea.comment_threads.present? ? idea.comment_threads.count : ''}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) %>
+          <%= link_to "<i class='fa fa-comments-o'></i> #{idea.comments_count unless idea.comments_count.zero?}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) %>
         </li>
 
         <li id="idea-<%= idea.id %>-like">

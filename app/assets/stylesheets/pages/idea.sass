@@ -13,7 +13,7 @@
     top: 0
     right: 0
     border-width: 0 20px 20px 0
-    border-color: #B9B9B9 #F4F5F5
+    border-color: #B9B9B9 $lightestGrayBG
     border-style: solid
   .idea-title
     min-height: 100px
@@ -46,6 +46,33 @@
       margin-top: 0.75em
       margin-left: 0.5em
 
+.idea-inspiration
+  @extend .idea-thumbnail
+  background-color: $idea !important
+  color: white
+  .folded-corner
+    margin: 0 auto
+    // font-size: 12px
+    position: relative
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    right: 0
+    border-width: 0 20px 20px 0
+    border-color: $ideaLight $lightestGrayBG
+    border-style: solid
+  .idea-actions
+    ul
+      a
+        color: white
+      &#actions
+        a.dropdown-toggle
+          color: white
+        .dropdown-menu
+          a
+            color: #333
+
 .idea-add-thumbnail
   border: 2px dashed #B1B0B2
   background-color: #ebeced
@@ -63,6 +90,11 @@
 
 #idea-overview
   padding: 40px 0px
+  .well-featured-idea
+    @extend .well, .well-sm, .text-center, .text-white
+    +border-radius(1em)
+    padding: 0.25em
+    background-color: $idea !important
   .well-idea
     padding: 0px
     background-color: white
@@ -107,12 +139,6 @@
           .media-body
             padding-top: 0.5em
             padding-left: 2.25em
-  .tooltip
-    .tooltip-inner
-      background-color: $link-color
-      padding: 1em
-    .tooltip-arrow 
-      border-bottom-color: $link-color
 
 #idea-comments
   padding: 20px 0px

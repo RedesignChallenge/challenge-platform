@@ -5,7 +5,7 @@
 #  id                      :integer          not null, primary key
 #  title                   :string
 #  description             :text
-#  needs                   :text
+#  materials               :text
 #  effort                  :string
 #  link                    :text
 #  embed                   :text
@@ -24,6 +24,12 @@
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
 #  published_at            :datetime
+#  comments_count          :integer          default(0)
+#  featured                :boolean          default(FALSE)
+#  community               :text
+#  conditions              :text
+#  evidence                :text
+#  protips                 :text
 #
 
 FactoryGirl.define do

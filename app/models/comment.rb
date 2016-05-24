@@ -24,6 +24,7 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  featured                :boolean          default(FALSE)
 #
 
 class Comment < ActiveRecord::Base
@@ -33,7 +34,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
-  has_one :feature, as: :featured
+  has_one :feature, as: :featureable
   
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -46,33 +47,53 @@ class Comment < ActiveRecord::Base
       parent_comment = Comment.find_by(id: self.temporal_parent_id)
       self.move_to_child_of(parent_comment) if parent_comment
     end
+  end
 
-    # self.send_notifications unless Rails.env.development?
+  validates :body, presence: true
+  validates :link, url: true, allow_blank: true
+
+  # We update our commentable both after we save our comment *and* after we destroy it.
+  after_save do
+    update_commentable_values
+  end
+
+  after_destroy do
+    update_commentable_values
   end
 
   def send_notifications
+    replied_notification_sent = false; posted_notification_sent = false
+
     ## PARENT COMMENT USER
     parent_comment_user = self.parent ? self.parent.user : nil
-    CommentMailer.delay.replied(self.id) if parent_comment_user && 
-                                            parent_comment_user.notifications['comment_replied'].true? && 
-                                            !parent_comment_user.opted_out?(list: 'comment_replied') && 
-                                            parent_comment_user != self.user
+    if parent_comment_user && parent_comment_user != self.user && parent_comment_user.comment_replied.true?
+      CommentMailer.delay.replied(self.id) 
+      replied_notification_sent = true
+    end
 
-    ## COMMENTABLE USER
+    ## POSTING COMMENT USER
     commentable_user = self.commentable.user ? self.commentable.user : nil
-    CommentMailer.delay.posted(self.id) if  commentable_user &&
-                                            commentable_user.notifications['comment_posted'].true? && 
-                                            !commentable_user.opted_out?(list: 'comment_posted') &&
-                                            commentable_user != self.user && 
-                                            (
-                                              parent_comment_user.nil? || 
-                                              parent_comment_user != commentable_user
-                                            )
-  end
+    if commentable_user && commentable_user != self.user && commentable_user.comment_posted.true? &&
+       (commentable_user == parent_comment_user ? !replied_notification_sent : true)
+      CommentMailer.delay.posted(self.id)
+      posted_notification_sent = true
+    end
 
-  
-  validates :body, presence: true
-  validates :link, url: true, allow_blank: true
+    ## SIBLING COMMENT USERS
+    self.sibling_comments.collect(&:user).uniq.each do |sibling_comment_user|
+      if sibling_comment_user != self.user && sibling_comment_user.comment_followed.true? &&
+         (
+          if sibling_comment_user == parent_comment_user
+            !replied_notification_sent
+          else
+            sibling_comment_user == commentable_user ? !posted_notification_sent : true
+          end
+         )
+             
+        CommentMailer.delay.followed(self.id, sibling_comment_user.id)
+      end
+    end    
+  end
 
   def challenge
     commentable.challenge
@@ -98,8 +119,8 @@ class Comment < ActiveRecord::Base
     self.parent.present?
   end
 
-  def extended_family
-    Comment.where(commentable: self.commentable).where.not(id: self.id)
+  def sibling_comments
+    commentable.comment_threads.where.not(id: self.id)
   end
 
   def commentable_title
@@ -122,6 +143,16 @@ class Comment < ActiveRecord::Base
 
   def default_like
     DEFAULT_LIKE
+  end
+
+private
+
+  def update_commentable_values
+    # These classes are the only ones that have the new comments_count column defined on them.
+    # If you add a class to this array, be *certain* that there is a migration for the comments_count column.
+    if COMMENTABLE_ENTITIES.include?(self.commentable.class)
+      self.commentable.update_column(:comments_count, self.commentable.comment_threads.count)
+    end
   end
 
 end

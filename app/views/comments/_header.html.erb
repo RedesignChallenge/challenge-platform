@@ -4,7 +4,7 @@
     <div class='content-block'>
       <h6 class='text-center'>Comment on the <%= @comment.commentable.class.to_s %></h6>
 
-      <h2 class='section-title'><%= link_to (@comment.commentable.title || @comment.commentable.description.truncate(30)), after_update_object_path_for(@comment.commentable), class: "text-#{@comment.commentable.class.to_s.downcase}" %></p>
+      <h2 class='section-title'><%= link_to @comment.commentable.title, after_update_object_path_for(@comment.commentable), class: "text-#{@comment.commentable.class.to_s.downcase}" %></p>
     </div>
 
   </div>

@@ -17,7 +17,7 @@ private
   def set_action_and_header
     @action = action_name
     @header = "#{mailer_name.split('_')[0]} #{action_name}"
-    message[:mailkick_list] = "#{mailer_name.split('_')[0]}_#{action_name}"
+    # headers[:mailkick_list] = "#{mailer_name.split('_')[0]}_#{action_name}"
   end
 
   def set_recipient_and_send

@@ -15,26 +15,26 @@ module RoutingConcern
       if object.paranoia_destroyed?
         challenge_experience_stage_path(object.challenge, object.experience_stage)
       else
-        challenge_experience_stage_theme_experience_path(object.challenge, object.experience_stage, object.theme, object, anchor: options[:anchor])
+        challenge_experience_stage_theme_experience_path(object.challenge, object.experience_stage, object.theme, object, anchor: options[:anchor], temporal_parent_id: options[:temporal_parent_id])
       end
     when 'idea'
       if object.paranoia_destroyed?
         challenge_idea_stage_path(object.challenge, object.idea_stage)
       else
-        challenge_idea_stage_problem_statement_idea_path(object.challenge, object.idea_stage, object.problem_statement, object, anchor: options[:anchor])
+        challenge_idea_stage_problem_statement_idea_path(object.challenge, object.idea_stage, object.problem_statement, object, anchor: options[:anchor], temporal_parent_id: options[:temporal_parent_id])
       end
-    when 'approach'
+    when 'recipe'
       if object.paranoia_destroyed?
-        challenge_approach_stage_path(object.challenge, object.approach_stage)
+        challenge_recipe_stage_path(object.challenge, object.recipe_stage)
       else
-        challenge_approach_stage_approach_idea_approach_path(object.challenge, object.approach_stage, object.approach_idea, object, anchor: options[:anchor])
+        challenge_recipe_stage_cookbook_recipe_path(object.challenge, object.recipe_stage, object.cookbook, object, anchor: options[:anchor], temporal_parent_id: options[:temporal_parent_id])
       end
-    when 'approachidea'
-      challenge_approach_stage_approach_idea_path(object.challenge, object.approach_stage, object)
+    when 'cookbook'
+      challenge_recipe_stage_cookbook_path(object.challenge, object.recipe_stage, object)
     when 'solutionstory'
-      challenge_solution_stage_solution_story_path(object.challenge, object.solution_stage, object, anchor: options[:anchor])
+      challenge_solution_stage_solution_story_path(object.challenge, object.solution_stage, object, anchor: options[:anchor], temporal_parent_id: options[:temporal_parent_id])
     when 'solution'
-      challenge_solution_stage_solution_story_path(object.challenge, object.solution_stage, object.solution_story, anchor: options[:anchor])
+      challenge_solution_stage_solution_story_path(object.challenge, object.solution_stage, object.solution_story, anchor: options[:anchor], temporal_parent_id: options[:temporal_parent_id])
     when 'comment'
       after_update_object_path_for(object.commentable, options)
     when 'suggestion'

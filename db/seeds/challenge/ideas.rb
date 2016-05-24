@@ -20,7 +20,7 @@ challenge.idea_stage.problem_statements.each do |problem_statement|
     1+rand(8).times do
       comment = Comment.build_from(
         idea,
-        (User.pluck(:id) - challenge.panelists.pluck(:id)).sample,
+        User.pluck(:id).sample,
         { body: Faker::Lorem.sentence, link: links.sample }
       )
       comment.save!
@@ -28,7 +28,7 @@ challenge.idea_stage.problem_statements.each do |problem_statement|
       ## Nested comment
       nested = Comment.create!(
         commentable: idea,
-        user: User.find((User.pluck(:id) - challenge.panelists.pluck(:id)).sample),
+        user: User.find(User.pluck(:id).sample),
         body: 'Nested: ' + Faker::Lorem.sentence,
         link: links.sample,
         temporal_parent_id: comment.id
@@ -49,4 +49,11 @@ challenge.idea_stage.problem_statements.each do |problem_statement|
     remainder.update_column(:refinement_parent_id, (parents+subparents).collect(&:id).sample) if remainder.id.odd?
   end
 
+  feature = Feature.create!(
+    user_id: challenge.panelists.pluck(:id).sample,
+    featureable: problem_statement.ideas.sample,
+    active: true,
+    challenge: challenge,
+    reason: Faker::Hacker.say_something_smart
+  )
 end

@@ -12,7 +12,7 @@
   </td>
 </tr>
 
-<% unless submission.class.to_s.downcase == 'suggestion' || submission.comment_threads.count.zero? %>
+<% unless submission.class.to_s.downcase == 'suggestion' || submission.comments_count.zero? %>
   <tr>
     <td>
       <% # This table dimension intentionally left blank. %>

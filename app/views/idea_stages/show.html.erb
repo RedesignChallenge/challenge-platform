@@ -6,20 +6,31 @@
       <div class='col-md-10 col-md-offset-1'>
 
         <div class='row'>
-          <div class='col-sm-9'>
-            <h1 class='text-idea'><%= @challenge.stage_number > 2 ? 'Get some ideas.' : @idea_stage.title.html_safe %></h1>
-            <p class='text-large'>
-              <%= @challenge.stage_number > 2 ? "Look at the ideas other educators have shared." : @idea_stage.description.html_safe %>
-              <%= "Then, #{link_to "get involved in Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge)}".html_safe if @challenge.stage_number > 2 && @challenge.stage_number != 4 %>
-            </p>  
+          <div class='col-sm-8'>
+            <h1 class='text-idea'><%= @idea_stage.title.html_safe if @idea_stage.title %></h1>
+            <p class='text-large'><%= @idea_stage.description.html_safe if @idea_stage.description %></p>
 
             <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+
+            <% if @idea_stage.ends_at %>
+              &nbsp; <span class='text-large'>&bull;</span> &nbsp;
+              <i class='fa fa-clock-o' style='font-size:1.5em;'></i>&nbsp; <span class='text-large'><%= time_left(@idea_stage) %></span>
+            <% end %>
+
+            <% if @featured_ideas.present? %>
+              <div class="featured-contributors">
+                <h6 class='zero-margin-bottom'>Featured Contributions</h6>
+                <% @featured_ideas.each do |idea| %>
+                  <%= render partial: 'shared/avatar', locals: { user:  idea.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
-          <div class='col-sm-3 text-center'>
+          <div class='col-sm-4 text-center'>
+            <p class='text-bold text-idea text-center'><%= @idea_stage.incentive.html_safe if @idea_stage.incentive.present? %></p>
             <i class='fa fa-lightbulb-o hidden-xs'></i>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -30,8 +41,8 @@
 
     <div class='row'>
       <% @problem_statements.each do |problem_statement| %>
-        <div class='col-sm-4 nav-link' href='#problem_statement-<%= problem_statement.id %>' du-smooth-scroll du-scrollspy offset='140'>
-          <p class='title text-large'><%= problem_statement.title.html_safe %></p>
+        <div class='col-sm-3 nav-link' href='#problem_statement-<%= problem_statement.id %>' du-smooth-scroll du-scrollspy offset='160'>
+          <p class='title'><%= problem_statement.title.html_safe %></p>
 
           <p class='cta text-lighter text-small'>
             <% if problem_statement.ideas.published.count.zero? %>
@@ -61,7 +72,7 @@
 
             <div class='row'>
               <div class='col-md-8 col-md-offset-2'>
-                <p><%= problem_statement.description %></p>
+                <p class='text-center'><%= problem_statement.description.html_safe if problem_statement.description.present? %></p>
               </div>
             </div>
 
@@ -79,7 +90,7 @@
                 </h6>
               </div>
               <div class='col-xs-3'>
-                <% unless @challenge.stage_number > 2 %>
+                <% unless @challenge.stage_number == 4 %>
                   <p class='action text-right text-small'><%= link_to '+ Add yours', new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %></p>
                 <% end %>
               </div>
@@ -88,13 +99,13 @@
             <div ng-switch='problem_statement_<%= problem_statement.id %>_ideas' ng-init='problem_statement_<%= problem_statement.id %>_ideas=show_all'>
               
               <div class='row'>
-                <% problem_statement.ideas.published.first(5).each do |idea| %>
+                <% problem_statement.ideas.published.first(@challenge.stage_number == 4 ? 6 : 5).each do |idea| %>
                   <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
                 <% end %>
 
-                <% if problem_statement.ideas.published.count > 5 %>
+                <% if problem_statement.ideas.published.count > (@challenge.stage_number == 4 ? 6 : 5) %>
                   <div ng-show='problem_statement_<%= problem_statement.id %>_ideas'>
-                    <% (problem_statement.ideas.published - problem_statement.ideas.published.first(5)).each do |idea| %>
+                    <% (problem_statement.ideas.published - problem_statement.ideas.published.first(@challenge.stage_number == 4 ? 6 : 5)).each do |idea| %>
                       <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
                     <% end %>
                   </div>
@@ -103,9 +114,9 @@
                 <%= render partial: 'ideas/card/new', cache: true, locals: { problem_statement: problem_statement } unless @challenge.stage_number == 4 %>
               </div>
 
-              <% if problem_statement.ideas.published.count > 5 %>
+              <% if problem_statement.ideas.published.count > (@challenge.stage_number == 4 ? 6 : 5) %>
                 <p class='center-block text-center'>
-                  <%= link_to "Show #{problem_statement.ideas.published.count-5} More Ideas", '#', "ng-hide" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to "Show #{problem_statement.ideas.published.count-(@challenge.stage_number == 4 ? 6 : 5)} More Ideas", '#', "ng-hide" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
 
                   <%= link_to "Show Less", "#problem_statement-#{problem_statement.id}", "ng-show" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=false", "du-smooth-scroll" => true, offset: '140', onclick: 'return false;', class: 'text-bold' %>
                 </p>

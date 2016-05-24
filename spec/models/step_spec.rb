@@ -17,14 +17,14 @@ require 'rails_helper'
 describe Step do
 
   it { is_expected.to validate_presence_of(:description) }
-  it { is_expected.to validate_length_of(:description).is_at_most(1024)}
+  # it { is_expected.to validate_length_of(:description).is_at_most(1024)}
   it { is_expected.to belong_to(:steppable) }
 
-  context 'with multiple steps associated to a approach' do
+  context 'with multiple steps associated to a recipe' do
 
-    let(:sequential_approach) { FactoryGirl.create(:approach, :with_sequential_steps)}
-    let(:standard_approach) {
-      FactoryGirl.create(:approach, steps:
+    let(:sequential_recipe) { FactoryGirl.create(:recipe, :with_sequential_steps)}
+    let(:standard_recipe) {
+      FactoryGirl.create(:recipe, steps:
         [
           FactoryGirl.create(:step, description: 'Alpha'),
           FactoryGirl.create(:step, description: 'Gamma'),
@@ -34,18 +34,18 @@ describe Step do
     }
 
     it 'orders by ID if no display order is specified' do
-      expect(standard_approach.steps.first.description).to eq 'Alpha'
-      expect(standard_approach.steps.second.description).to eq 'Gamma'
-      expect(standard_approach.steps.last.description).to eq 'Beta'
+      expect(standard_recipe.steps.first.description).to eq 'Alpha'
+      expect(standard_recipe.steps.second.description).to eq 'Gamma'
+      expect(standard_recipe.steps.last.description).to eq 'Beta'
     end
 
     it 'orders by display order if specified' do
-      expect(sequential_approach.steps.first.display_order).to eq 1
-      expect(sequential_approach.steps.second.display_order).to eq 2
-      expect(sequential_approach.steps.third.display_order).to eq 3
-      expect(sequential_approach.steps.fourth.display_order).to eq 4
-      expect(sequential_approach.steps.fifth.display_order).to eq 5
-      expect(sequential_approach.steps.last.display_order).to eq 6
+      expect(sequential_recipe.steps.first.display_order).to eq 1
+      expect(sequential_recipe.steps.second.display_order).to eq 2
+      expect(sequential_recipe.steps.third.display_order).to eq 3
+      expect(sequential_recipe.steps.fourth.display_order).to eq 4
+      expect(sequential_recipe.steps.fifth.display_order).to eq 5
+      expect(sequential_recipe.steps.last.display_order).to eq 6
     end
   end
 end

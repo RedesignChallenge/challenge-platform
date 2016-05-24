@@ -4,7 +4,7 @@
       <div class='col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
 
         <% if @user.avatar.present? %>
-          <%= image_tag(@user.avatar.url, class: 'img-circle') %>
+          <%= image_tag(@user.avatar.profile.url, class: 'img-circle') %>
         <% else %>
           <span class="fa-stack fa-user-avatar">
             <i class="fa fa-stack-2x fa-circle" style='color:<%= @user.color %>'></i>
@@ -16,6 +16,7 @@
           <p class='user-name'><%= @user.display_name %></p>
           <p class='user-title'><%= @user.display_organization %></p>
           <p class='user-location'><%#= current_user.display_name %></p>
+          <p class='text-small'><%= @user.bio.html_safe if @user.bio.present? %></p>
         </div>
 
         <% if user_signed_in? && current_user == @user %>

@@ -1,5 +1,5 @@
 <div id='problem_statement-<%= problem_statement.id %>-idea-new' class="col-sm-6 col-md-4">
-  <% if @challenge.stage_number > 2 %>
+  <% if @challenge.stage_number == 4 %>
     <div class='thumbnail idea-thumbnail idea-add-thumbnail'>
       <div class="idea-add">
         <p class='instruction text-bold'>Want to get involved? Contribute in <%= link_to "Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge) %></p>

@@ -1,9 +1,9 @@
 #challenge-header
   background-color: transparent
   padding: 0.25em 0em
-  &.experience_stages,&.idea_stages,&.approach_stages
+  &.experience_stages,&.idea_stages,&.recipe_stages
     background-color: white
-  &.experiences,&.ideas,&.approach_ideas,&.approaches,&.solutions
+  &.experiences,&.ideas,&.cookbooks,&.recipes,&.solutions
     #challenge-nav
       background-color: white
   &.splash
@@ -43,7 +43,7 @@
         top: -0.3em
         position: relative
       &.active
-        background-color: #E9E9E9 !important
+        // background-color: #E9E9E9 !important
       &.selected
         .headline,.fa.fa-check
           @extend .text-white
@@ -60,9 +60,9 @@
     .badge-idea
       &.selected
         background-color: $idea !important
-    .badge-approach
+    .badge-recipe
       &.selected
-        background-color: $approach !important
+        background-color: $recipe !important
     .badge-solution
       &.selected
         background-color: $solution !important
@@ -77,7 +77,7 @@
   background-repeat: no-repeat
   background-size: cover
   background-position: 50% 0%
-  color: $text-color
+  color: white
   .challenge-headline
     margin-bottom: 20px
   .embed-responsive

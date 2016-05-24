@@ -28,7 +28,7 @@
             <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
               <span style='padding:0px 15px;position:relative;top:1px'><%= current_user.first_name %></span>
               <% if current_user.avatar.present? %>
-                <%= image_tag(current_user.avatar.url, size: '30x30', class: 'img-circle') %>
+                <%= image_tag(current_user.avatar.thumb.url, size: '30x30', class: 'img-circle') %>
               <% else %>
                 <span class="fa-stack header-user-avatar">
                   <i class="fa fa-stack-2x fa-circle"></i>

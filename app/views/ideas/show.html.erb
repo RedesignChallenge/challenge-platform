@@ -51,10 +51,10 @@
                         <%= render partial: 'layouts/share_button', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), title: @idea.title.html_safe, description: @idea.description.html_safe, hashtag: @challenge.hashtag } %>
                       </div>
 
-                      <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, refinement_parent_id: @idea.id), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', data: { toggle: 'tooltip', trigger: 'hover', placement: 'bottom', container: '#idea-overview', html: 'true', title: "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"}, id: 'refinement-link' do %>
+                      <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, refinement_parent_id: @idea.id), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', data: { toggle: 'popover', trigger: 'hover', placement: 'bottom', container: '#idea-overview', html: 'true', content: "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"}, id: 'refinement-link' do %>
                         <i class="fa fa-pencil"></i> <span>Refine</span>
-                      <% end unless @challenge.stage_number > 2 %>
-                      <script>$(function(){setTimeout(function(){$("#refinement-link").tooltip('show');}, 2000);});</script>
+                      <% end unless @challenge.stage_number == 4 %>
+                      <script>$(function(){setTimeout(function(){$("#refinement-link").popover('show');}, 2000);});</script>
                     <% else %>
                       <%= render partial: 'shared/draft', locals: { edit_path: edit_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), delete_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea) } %>
                     <% end %>
@@ -64,6 +64,10 @@
               </div>
 
               <div class='col-sm-8'>
+                <% if @idea.inspiration %>
+                  <h4 class='text-uppercase text-idea text-underline text-bold' style='margin-top:0px'>Inspiration</h4>
+                <% end %>
+
                 <h1 class='text-idea' style='margin-top:0em'><%= @idea.title.html_safe %></h1>
                 
                 <% if @idea.embed.present? %>

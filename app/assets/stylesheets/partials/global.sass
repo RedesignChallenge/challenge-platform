@@ -89,6 +89,17 @@ ul.actions
   @extend .content-block
   margin-bottom: 4em
 
+.featured-contributors
+  padding: 1em 0em 0em
+  .fa-user-avatar
+    width: auto !important
+    margin-right: 2em
+    .fa-stack-2x
+      @extend .fa-2x
+    .fa-stack-1x
+      margin-left: 0.5em
+      margin-top: 0.65em
+
 .row-count
   h6
     .fa
@@ -102,13 +113,16 @@ ul.actions
           @extend .text-bolder
       
 .opacity-layer
-  background-color: rgba(47,52,64,0.6)
+  background-color: rgba(47,52,64,0.25)
 
 .page-wrap
   margin: -($line-height-computed) auto $line-height-computed
 
 .zero-margin-bottom
   margin-bottom: 0px !important
+
+.half-margin-bottom
+  margin-bottom: 0.5em !important
 
 hr.break
   display: block
@@ -160,3 +174,7 @@ ul.share-popover
       .help-text
         @extend .text-small
         color: $lightGrayText
+
+.moderator
+  font-variant: small-caps
+  margin-left: 10px

@@ -6,16 +6,16 @@ describe RegistrationsController do
   describe 'PATCH #update' do
 
     let(:user) {
-      FactoryGirl.create(:user, email: Faker::Internet.email, avatar_option: 'twitter')
+      FactoryGirl.create(:user, avatar_option: 'twitter')
     }
 
     let(:upload) {
       ActionDispatch::Http::UploadedFile.new(
-        {
-          filename: 'avatar.png',
-          content_type: 'image/png',
-          tempfile: File.new("#{Rails.root}/spec/support/images/small_image.png")
-        }
+          {
+              filename: 'avatar.png',
+              content_type: 'image/png',
+              tempfile: File.new("#{Rails.root}/spec/support/images/small_image.png")
+          }
       )
     }
 

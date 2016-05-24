@@ -108,12 +108,14 @@ app.controller('UserCtrl', function($scope, $animate) {
 
   $scope.otherLEA = function(arg){
     $scope.other_lea = arg;
-    $scope.other_placeholder = 'Please type in your District or CMO'
+    $scope.other_placeholder = 'Please type in your District or CMO';
+    arg ? $('.select2-container').hide() : $('.select2-container').show();
   }
 
   $scope.otherSchool = function(arg){
     $scope.other_school = arg;
-    $scope.other_placeholder = 'Please type in your school'
+    $scope.other_placeholder = 'Please type in your school';
+    arg ? $('.select2-container').hide() : $('.select2-container').show();
   }
 
 });

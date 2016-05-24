@@ -14,6 +14,12 @@
     <%= f.radio_button :comment_replied, 'false' %> No
   </div>
 
+  <div class='form-group'>
+    <%= f.label :comment_followed, "For comments that are part of a discussion that I'm participating in" %>
+    <%= f.radio_button :comment_followed, 'true' %> Yes
+    <%= f.radio_button :comment_followed, 'false' %> No
+  </div>
+
   <hr>
 
   <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-submit btn-rounded btn-longer' %></div>

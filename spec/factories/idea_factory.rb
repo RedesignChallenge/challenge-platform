@@ -25,6 +25,9 @@
 #  impact                  :text
 #  implementation          :text
 #  published_at            :datetime
+#  comments_count          :integer          default(0)
+#  inspiration             :boolean          default(FALSE)
+#  featured                :boolean          default(FALSE)
 #
 
 FactoryGirl.define do

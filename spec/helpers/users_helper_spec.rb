@@ -17,8 +17,8 @@ describe UsersHelper do
         FactoryGirl.create_list(:idea, 5, user: user)
       }
 
-      let(:approaches) {
-        FactoryGirl.create_list(:approach, 5, user: user)
+      let(:recipes) {
+        FactoryGirl.create_list(:recipe, 5, user: user)
       }
 
       let(:solutions) {
@@ -39,8 +39,8 @@ describe UsersHelper do
         expect(submissions(user, user).size).to eq 5
       end
 
-      it 'pulls back all approaches' do
-        user.approaches << approaches
+      it 'pulls back all recipes' do
+        user.recipes << recipes
         expect(submissions(user, user).size).to eq 5
       end
 
@@ -57,7 +57,7 @@ describe UsersHelper do
       it 'pulls back everything' do
         user.experiences << experiences
         user.ideas << ideas
-        user.approaches << approaches
+        user.recipes << recipes
         user.solutions << solutions
         user.suggestions << suggestions
 
@@ -87,9 +87,9 @@ describe UsersHelper do
         pub + unpub
       }
 
-      let(:approaches) {
-        pub = FactoryGirl.create_list(:approach, 5, user: user, published_at: Time.now)
-        unpub = FactoryGirl.create_list(:approach, 15, user: user)
+      let(:recipes) {
+        pub = FactoryGirl.create_list(:recipe, 5, user: user, published_at: Time.now)
+        unpub = FactoryGirl.create_list(:recipe, 15, user: user)
         pub + unpub
       }
 
@@ -114,8 +114,8 @@ describe UsersHelper do
         expect(submissions(user, other_user).size).to eq 5
       end
 
-      it 'pulls back all published approaches' do
-        user.approaches << approaches
+      it 'pulls back all published recipes' do
+        user.recipes << recipes
         expect(submissions(user, other_user).size).to eq 5
       end
 
@@ -132,7 +132,7 @@ describe UsersHelper do
       it 'pulls back everything that is published' do
         user.experiences << experiences
         user.ideas << ideas
-        user.approaches << approaches
+        user.recipes << recipes
         user.solutions << solutions
         user.suggestions << suggestions
 

@@ -17,6 +17,6 @@ class Step < ActiveRecord::Base
 
   belongs_to :steppable, polymorphic: true
 
-  validates :description, presence: true, length: { maximum: 1024 }
+  validates :description, presence: true
 
 end

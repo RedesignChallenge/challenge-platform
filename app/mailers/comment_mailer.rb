@@ -15,4 +15,11 @@ class CommentMailer < ApplicationMailer
     @subject = "#{@comment.user.display_name} commented on your #{@comment.commentable_type}: #{@comment.commentable_title.truncate(30)}"
   end
 
+  def followed(comment_id, user_id)
+    @comment = Comment.find(comment_id)
+
+    @resource = User.find(user_id)
+    @subject = "#{@comment.user.display_name} added a comment in the discussion of #{@comment.commentable_type}: #{@comment.commentable_title.truncate(30)}"
+  end
+
 end

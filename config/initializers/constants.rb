@@ -12,3 +12,8 @@ DEFAULT_LIKE = {
     icon: 'fa fa-thumbs-o-up'
   }
 }
+
+MAIN_ENTITIES = [Experience, Idea, Recipe, Solution]
+COMMENTABLE_ENTITIES = MAIN_ENTITIES + [Cookbook]
+
+OPEN_RECIPE_SUBMISSIONS = false

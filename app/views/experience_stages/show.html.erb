@@ -6,16 +6,28 @@
       <div class='col-md-10 col-md-offset-1'>
 
         <div class='row'>
-          <div class='col-sm-9'>
-            <h1 class='text-experience'><%= @challenge.stage_number > 1 ? 'Get inspired.' : @experience_stage.title.html_safe %></h1>
-            <p class='text-large'>
-              <%= @challenge.stage_number > 1 ? "Browse the stories other educators shared." : @experience_stage.description.html_safe %>
-              <%= "Then, #{link_to "get involved in Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge)}".html_safe if @challenge.stage_number > 1 && @challenge.stage_number != 4 %>
-            </p>
+          <div class='col-sm-8'>
+            <h1 class='text-experience'><%= @experience_stage.title.html_safe if @experience_stage.title %></h1>
+            <p class='text-large'><%= @experience_stage.description.html_safe if @experience_stage.description %></p>
               
             <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+
+            <% if @experience_stage.ends_at %>
+              &nbsp; <span class='text-large'>&bull;</span> &nbsp;
+              <i class='fa fa-clock-o' style='font-size:1.5em;'></i>&nbsp; <span class='text-large'><%= time_left(@experience_stage) %></span>
+            <% end %>
+
+            <% if @featured_experiences.present? %>
+              <div class="featured-contributors">
+                <h6 class='zero-margin-bottom'>Featured Contributions</h6>
+                <% @featured_experiences.each do |experience| %>
+                  <%= render partial: 'shared/avatar', locals: { user:  experience.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_experience_stage_theme_experience_path(@challenge, @experience_stage, experience.theme, experience) } %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
-          <div class='col-sm-3 text-center'>
+          <div class='col-sm-4 text-center'>
+            <p class='text-bold text-experience text-center'><%= @experience_stage.incentive.html_safe if @experience_stage.incentive.present? %></p>
             <i class='fa fa-comments hidden-xs'></i>
           </div>
         </div>
@@ -31,7 +43,7 @@
     <div class='row'>
       <% @themes.each do |theme| %>
         <div class='col-sm-4 nav-link' href='#theme-<%= theme.id %>' du-smooth-scroll du-scrollspy offset='110'>
-          <p class='title text-large'><%= theme.title.html_safe %></p>
+          <p class='title'><%= theme.title.html_safe %></p>
 
           <p class='cta text-lighter text-small'>
             <% if theme.experiences.published.count.zero? %>
@@ -73,7 +85,7 @@
                 </h6>
               </div>
               <div class='col-xs-2'>
-                <% unless @challenge.stage_number > 1 %>
+                <% unless @challenge.stage_number == 4 %>
                   <p class='action text-right text-small'><%= link_to '+ Add yours', "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", "du-smooth-scroll" => true, offset: 120 %></p>
                 <% end %>
               </div>

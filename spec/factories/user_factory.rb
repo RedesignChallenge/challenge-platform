@@ -31,7 +31,7 @@
 #  referrer_id            :integer
 #  display_name           :string
 #  avatar_option          :string           default("twitter")
-#  notifications          :hstore           default({"comment_posted"=>"true", "comment_replied"=>"true"})
+#  notifications          :hstore           default({"comment_posted"=>"true", "comment_replied"=>"true", "comment_followed"=>"true"})
 #
 
 require 'faker'

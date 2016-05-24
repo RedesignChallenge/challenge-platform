@@ -1,5 +1,7 @@
+<div ng-init='temporal_parent_id=<%= params[:temporal_parent_id] || "null" %> '> </div>
+
 <%= form_for(comment, url: url) do |f| %>
-  <%= f.hidden_field :temporal_parent_id, 'ng-value' => 'temporal_parent_id' %>
+  <%= f.hidden_field :temporal_parent_id, 'ng-value' =>  'temporal_parent_id' %>
   <%= f.hidden_field :commentable_type %>
   <%= f.hidden_field :commentable_id %>
 

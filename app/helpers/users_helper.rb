@@ -13,7 +13,7 @@ module UsersHelper
     (
       profile_user.experiences.published(viewing_user) +
       profile_user.ideas.published(viewing_user) +
-      profile_user.approaches.published(viewing_user) +
+      profile_user.recipes.published(viewing_user) +
       profile_user.solutions.published(viewing_user) +
       profile_user.suggestions(viewing_user)
     ).sort_by(&:created_at).reverse
