@@ -67,6 +67,13 @@ describe RoutingOrientedController do
 
       expect(result).to eq "/challenges/#{idea.challenge.slug}/idea_stages/#{idea.idea_stage.id}/problem_statements/#{idea.problem_statement.id}/ideas/#{idea.id}"
     end
+
+    it 'returns a query parameter indicating the parent comment ID if provided' do
+      comment.commentable = experience
+      result = subject.after_update_object_path_for(comment, temporal_parent_id: 2)
+
+      expect(result).to eq "/challenges/#{experience.challenge.slug}/experience_stages/#{experience.experience_stage.id}/themes/#{experience.theme.id}/experiences/#{experience.id}?temporal_parent_id=2"
+    end
   end
 
   it 'returns the root path if the object is not a comment, idea or experience' do

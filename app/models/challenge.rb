@@ -26,6 +26,7 @@
 
 class Challenge < ActiveRecord::Base
   extend FriendlyId
+  include ActiveRecord::QueryMethods
   friendly_id :title, use: [:slugged, :finders]
   rails_admin do
     configure :slug do
@@ -36,7 +37,7 @@ class Challenge < ActiveRecord::Base
   has_one :panel
   has_one :experience_stage
   has_one :idea_stage
-  has_one :approach_stage
+  has_one :recipe_stage
   has_one :solution_stage
 
   mount_uploader :banner, ImageUploader
@@ -51,15 +52,22 @@ class Challenge < ActiveRecord::Base
   end
 
   def featured_contributions
-    if self.active_stage == 'experience'
-      self.experience_stage.experiences.published.reorder(cached_votes_up: :desc).first(2)
-    elsif self.active_stage == 'idea'
-      self.idea_stage.ideas.published.reorder(cached_votes_up: :desc).first(3)
-    elsif self.active_stage == 'approach'
-      self.approach_stage.published.approaches.reorder(cached_votes_up: :desc).first(2)
-    elsif self.active_stage == 'solution'
-      self.solution_stage.solutions.reorder(cached_votes_up: :desc).first(2)
+    case self.active_stage
+    when 'experience'
+      self.experience_stage.experiences.published.first(2)
+    when 'idea'
+      self.idea_stage.ideas.published.where(inspiration: false).first(3)
+    when 'recipe'
+      self.recipe_stage.recipes.published.first(2)
+    when 'solution'
+      self.solution_stage.solutions.first(2)
+    else
+      nil
     end
+  end
+
+  def has_featured_for(type)
+    Feature.exists?(featureable_type: type, active: true, challenge_id: self.id)
   end
 
   def stage_number
@@ -68,7 +76,7 @@ class Challenge < ActiveRecord::Base
       1
     when 'idea'
       2
-    when 'approach'
+    when 'recipe'
       3
     when 'solution'
       4
@@ -84,7 +92,7 @@ class Challenge < ActiveRecord::Base
       action: 'shared',
       icon: 'fa-comment',
       headline: 'Share Experiences',
-      description: 'Tell others about problems that have affected you as an educator.'
+      description: 'Tell others about your experience with this challenge.'
     },
     {
       number: 2,
@@ -92,22 +100,22 @@ class Challenge < ActiveRecord::Base
       action: 'contributed',
       icon: 'fa-lightbulb-o',
       headline: 'Contribute Ideas',
-      description: 'Contribute and compare ideas you might use to solve these problems.'
+      description: 'Contribute and compare ideas you might use to solve this challenge.'
     },
     {
       number: 3,
-      name: 'approach',
+      name: 'recipe',
       action: 'developed',
       icon: 'fa-flask',
-      headline: 'Develop Approaches',
-      description: 'Develop and propose different approaches to tackling these problems.'
+      headline: 'Develop Recipes',
+      description: 'Develop and propose different recipes to tackling this challenge.'
     },
     {
       number: 4,
       name: 'solution',
       action: 'tried',
       icon: 'fa-puzzle-piece',
-      headline: 'Explore Real Stories',
+      headline: 'See Your Solutions',
       description: 'See stories of how real schools have adopted the solutions you’ve inspired, or try them out yourself!'
     }
   ]

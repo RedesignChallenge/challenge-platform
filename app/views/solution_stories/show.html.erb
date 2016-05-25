@@ -6,7 +6,6 @@
       <div class="col-md-10 col-md-offset-1">
 
         <div class="well well-solution_story">
-
           <% if @solution_story.embed.present? %>
             <div class='solution_story-show-embed'><%= @solution_story.embed.html_safe %></div>
           <% elsif @solution_story.image.present? %>

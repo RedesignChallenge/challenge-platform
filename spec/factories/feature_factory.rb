@@ -2,15 +2,16 @@
 #
 # Table name: features
 #
-#  id            :integer          not null, primary key
-#  reason        :text
-#  category      :string
-#  active        :boolean
-#  user_id       :integer
-#  featured_id   :integer
-#  featured_type :string
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id               :integer          not null, primary key
+#  reason           :text
+#  category         :string
+#  active           :boolean
+#  user_id          :integer
+#  featureable_id   :integer
+#  featureable_type :string
+#  created_at       :datetime
+#  updated_at       :datetime
+#  challenge_id     :integer          not null
 #
 
 FactoryGirl.define do

@@ -1,0 +1,136 @@
+<%= form_for(@recipe, url: url) do |f| %>
+  <%= f.hidden_field :cookbook_id %>
+  <%= f.hidden_field :published, value: nil, 'ng-value' => 'published' %>
+
+  <%= render partial: 'layouts/error_messages', locals: { model: @recipe } %>
+  
+  <div class='form-group'>
+    <%= f.text_field :title, placeholder: @recipe.recipe_stage.title_instructions,  autofocus: true, class: 'form-control input-lg' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: @recipe.recipe_stage.description_instructions, class: 'form-control', rows: 5 %>
+  </div>
+
+  <div class='row' style='margin-bottom: 30px'>
+    <div class='col-sm-4'>
+      <div class='form-group'>
+        <%= f.label :materials %>
+        <%= f.text_area :materials, placeholder: @recipe.recipe_stage.materials_instructions, class: 'form-control', rows: 6 %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :community %>
+        <%= f.text_area :community, placeholder: @recipe.recipe_stage.community_instructions,class: 'form-control', rows: 6 %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :conditions %>
+        <%= f.text_area :conditions, placeholder: @recipe.recipe_stage.conditions_instructions,class: 'form-control', rows: 6 %>
+      </div>
+    </div>
+
+    <div class='col-sm-8'>
+      <div id='recipe-steps' class='form-group'>
+        <%= f.label :steps, "How To" %>
+
+        <div id='steps'>
+          <%= f.fields_for :steps do |step| %>
+            <%= render partial: 'recipes/step_fields', locals: { f: step } %>
+          <% end %>
+        </div>
+
+        <div class='links'>
+          <%= link_to_add_association f, :steps do %>
+            <div class='media media-step-new'>
+              <div class='media-left'>
+                <span class="fa-stack">
+                  <i class="fa fa-stack-2x fa-circle-thin text-recipe"></i>
+                  <i class="fa fa-stack-1x fa-plus text-recipe"></i>
+                </span>
+              </div>
+              <div class='media-body'>
+                <p class='placeholder'>Click to add another step</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- For handling numbers of index items on removal of step -->
+        <script>
+          $(function() {
+            $('#recipe-steps')
+              .on('cocoon:before-insert', function(e, insertedItem) {
+                $(insertedItem).find('.step-count').html($(".media-step").length+1);
+              })
+              .on('cocoon:after-remove', function(e, removedItem) {
+                $(removedItem).removeClass("media-step");
+                _.each($(".media-step"), function(step,index){$(step).find('.step-count').html(index+1)});
+              });
+          });
+        </script>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :evidence %>
+        <%= f.text_area :evidence, placeholder: @recipe.recipe_stage.evidence_instructions,class: 'form-control', rows: 5 %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :protips %>
+        <%= f.text_area :protips, placeholder: @recipe.recipe_stage.protips_instructions,class: 'form-control', rows: 5 %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row' style='margin-bottom: 30px' ng-init="published=<%= @recipe.published_at? %>">
+    <div class='col-sm-8 col-sm-offset-1'>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <%= f.submit 'Save and finish later', class: 'submit-link pull-right', 'ng-click' => "published=false", 'ng-hide' => 'published', style: 'margin-top: 0.5em' %>
+        </div>
+        <div class='col-sm-4'>
+          <%= link_to 'Cancel', cancel_path, data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." }, class: 'btn btn-rounded btn-block btn-default' %>
+        </div>
+        <div class='col-sm-4'>
+          <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-info', 'ng-click' => "published=true" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class='header-label'>Optional</p>
+  <hr style='border-top: 2px dashed #C3C5C6;margin: 5px 0px 20px'>
+
+  <div class='input-switch' ng-switch='recipe_link' ng-init='recipe_link=<%= @recipe.link.present? %>'>
+    <div ng-hide='recipe_link' ng-click="recipe_link=true">
+
+      <div class='row'>
+        <div class='media col-xs-4 col-xs-offset-4'>
+          <div class='media-left'>
+            <span class="fa-stack">
+              <i class="fa fa-stack-2x fa-circle-thin"></i>
+              <i class="fa fa-stack-1x fa-plus"></i>
+            </span>
+          </div>
+          <div class='media-body'>
+            <span class='help-text'>Add a link to a video, article, image or other supporting material</span><br>
+            <ul class='icon-list list-inline'>
+              <li><i class='fa fa-youtube-play fa-3x'></i></li>
+              <li><i class='fa fa-image fa-3x'></i></li>
+              <li><i class='fa fa-newspaper-o fa-3x'></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div ng-show='recipe_link' class='form-group'>
+      <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
+      <span class='help-block'>Share a link to a video, article, image, or other supporting materials and we'll display it alongside your recipe.</span>
+    </div>
+  </div>
+
+<% end %>

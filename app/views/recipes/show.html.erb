@@ -1,0 +1,174 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id='recipe-overview'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <%= render partial: 'recipes/header' %>
+
+        <div class='well well-recipe'>
+          <span class="label label-recipe pull-left"><i class='fa fa-flask'></i> Recipe</span>
+          <div class='clearfix'></div>
+
+          <div class='recipe-content'>
+            <div class='row row-recipe'>
+              <div class="col-sm-4">
+
+                <div class="media media-author">
+                  <div class="media-left">
+                    <%= render partial: 'shared/avatar', locals: { user: @recipe.user, avatar_style: 'width:4.5em'} %>
+                  </div>
+                  <div class="media-body" style='<%= 'padding-left: 0em' if @recipe.user.avatar.present? %>'>
+                    <div class='user-caption' style='<%= 'margin-top: 0.5em' if @recipe.user.avatar.present? %>'>
+                      <p class='user-name'><%= link_to "#{@recipe.user.display_name}", user_path(@recipe.user) %></p>
+                      <p class='user-title text-default'><%= @recipe.user.display_organization %></p>
+                      <p class='user-link'><%= "#{time_ago_in_words(@recipe.created_at)} ago".titleize %></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='row content-block'>
+                  <div class='col-xs-8'>
+
+                    <% if @recipe.published_at? %>
+                      <% if user_signed_in? && @recipe.user == current_user %>
+                        <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
+                          <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
+                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), method: :delete, data: { confirm: "Are you sure you want to delete your recipe?" }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                        </div>
+                      <% else %>
+                        <div id='recipe-<%= @recipe.id %>-try'>
+                          <%= render partial: 'recipes/try' %>
+                        </div>
+                      <% end %>
+
+                      <div id='recipe-<%= @recipe.id %>-like'>
+                        <%= render partial: 'recipes/like' %>
+                      </div>
+
+                      <div id='recipe-<%= @recipe.id %>-discuss' style='margin-bottom:10px'>
+                        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#recipe-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                      </div>
+
+                      <div id='recipe-<%= @recipe.id %>-share'>
+                        <%= render partial: 'layouts/share_button', locals: { url: challenge_recipe_stage_cookbook_recipe_url(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), title: @recipe.title.html_safe, description: @recipe.description.html_safe, hashtag: @challenge.hashtag } %>
+                      </div>
+                    <% else %>
+                      <%= render partial: 'shared/draft', locals: { edit_path: edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), delete_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe) } %>
+                    <% end %>
+                  </div>
+                </div>
+
+                <% if @recipe.materials.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Materials</p>
+                    <p><%= @recipe.materials.html_safe %></p>
+                  </div>
+                <% end %>
+
+                <% if @recipe.community.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Community</p>
+                    <p><%= @recipe.community.html_safe %></p>
+                  </div>
+                <% end %>
+
+                <% if @recipe.conditions.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Conditions</p>
+                    <p><%= @recipe.conditions.html_safe %></p>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class='col-sm-8'>
+                <h1 class='text-recipe' style='margin:0em 0em 0.25em'><%= @recipe.title.html_safe %></h1>
+
+                <% if @recipe.embed.present? %>
+                  <div class='content-block'>
+                    <%= @recipe.embed.html_safe %>
+                  </div>
+                <% end %>
+
+                <div class='content-block'>
+                  <p class='text-recipe text-large text-bold text-uppercase'>Problem Statement & Description</p>
+                  <p><%= @recipe.description.html_safe %></p>
+                </div>
+
+                <% if @recipe.steps.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>How To</p>
+                    <% @recipe.steps.each_with_index do |step, index| %>
+                      <div class='media media-step'>
+                        <div class='media-left'>
+                          <span class="fa-stack">
+                            <i class="fa fa-stack-2x fa-circle-thin text-recipe"></i>
+                            <i class="fa fa-stack-1x text-recipe"><%= index+1 %></i>
+                          </span>
+                        </div>
+                        <div class='media-body'>
+                          <p><%= step.description %></p>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+
+                <% if @recipe.evidence.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Evidence to know we're on the right track</p>
+                    <p><%= @recipe.evidence.html_safe %></p>
+                  </div>
+                <% end %>
+
+                <% if @recipe.protips.present? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Protips for Practical Problem Solving</p>
+                    <p><%= @recipe.protips.html_safe %></p>
+                  </div>
+                <% end %>
+
+                <% if @recipe.link.present? && @recipe.embed.blank? %>
+                  <div class='content-block'>
+                    <p class='text-recipe text-large text-bold text-uppercase'>Link</p>
+                    <p><%= link_to @recipe.link.html_safe, @recipe.link, target: '_blank' %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='recipe-comments'>
+  <div class='container'>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <%= render partial: 'comments/discussion', locals: { commentable: @recipe } %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='recipe-share'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+
+        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
+        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+
+        <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+
+      </div>
+    </div>
+  </div>
+</div>

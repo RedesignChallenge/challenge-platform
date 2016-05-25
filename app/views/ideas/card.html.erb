@@ -1,1 +1,1 @@
-<%= render partial: 'ideas/card/show', locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
+<%= render partial: "ideas/card/#{idea.inspiration ? 'inspiration' : 'show'}", locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>

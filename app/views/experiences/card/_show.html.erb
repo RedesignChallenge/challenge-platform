@@ -1,17 +1,25 @@
   <div class='experience-content'>
+    <% if experience.featured? %>
+      <div class="ribbon-wrapper">
+        <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
+          <div class="ribbon ribbon-experience">Featured</div>
+        <% end %>
+      </div>
+    <% end %>
+
     <% if experience.embed.present? %>
       <div class='row'>
         <div class='col-sm-6'>
-          <p class='text-bold'><%= experience.description %></p>
+          <p><%= experience.description %></p>
         </div>
         <div class='col-sm-6'>
           <%= experience.embed.html_safe %>
         </div>
       </div>
     <% else %>
-      <p class='text-bold'><%= experience.description %></p>
+      <p><%= experience.description %></p>
       <% unless experience.link.blank? %>
-        <p class='text-bold'><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
+        <p><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
       <% end %>
     <% end %>
   </div>
@@ -23,7 +31,7 @@
       </li>
 
       <li id='experience-<%= experience.id %>-comments'>
-        <%= link_to "<i class='fa fa-comments-o'></i> #{experience.comment_threads.present? ? "#{experience.comment_threads.count}" : ''}".html_safe, '#', 'ng-click' => "experience_#{experience.id}_discussion=!experience_#{experience.id}_discussion", onclick: 'return false;', class: 'list-link' %>
+        <%= link_to "<i class='fa fa-comments-o'></i> #{experience.comments_count unless experience.comments_count.zero?}".html_safe, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: 'experience-comments'), class: 'list-link' %>
       </li>
 
       <!-- <li id='experience-<%#= experience.id %>-share'> -->

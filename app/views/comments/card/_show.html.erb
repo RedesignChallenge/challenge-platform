@@ -6,7 +6,14 @@
     </div>
     <div class="media-body" style='<%= 'padding-left: 0em' if comment.user.avatar.present? %>'>
       <div class='user-caption' style='<%= 'margin-top: 0em' if comment.user.avatar.present? %>'>
-        <p class='user-name'><%= link_to "#{comment.user.display_name}", user_path(comment.user) %></p>
+        <p class='user-name'>
+          <%= link_to "#{comment.user.display_name}", user_path(comment.user) %>
+          <% if @challenge.panel.user_ids.include?(comment.user_id) %>
+            <span class="badge badge-green text-xsmall text-white" style='bottom: 0.2em;position: relative;'>
+              Community Guide
+            </span>
+          <% end %>
+        </p>
         <p class='user-title'><%= comment.user.display_organization %></p>
       </div>
     </div>

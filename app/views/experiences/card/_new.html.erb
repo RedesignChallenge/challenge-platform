@@ -1,5 +1,5 @@
 <div id='theme-<%= theme.id %>-experience-new' class="row row-new">
-  <% if @challenge.stage_number > 1 %>
+  <% if @challenge.stage_number == 4 %>
     <div class="col-xs-8 col-xs-offset-2">
       <div class='well well-lg well-share'>
         <p class='text-bold'>Want to get involved? Contribute in <%= link_to "Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge) %>

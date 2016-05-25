@@ -7,8 +7,7 @@
 #  description             :text
 #  image                   :string
 #  link                    :text
-#  featured                :boolean
-#  top_comment             :boolean
+#  featured                :boolean          default(FALSE)
 #  user_id                 :integer
 #  theme_id                :integer
 #  created_at              :datetime
@@ -23,6 +22,7 @@
 #  embed                   :text
 #  destroyed_at            :datetime
 #  published_at            :datetime
+#  comments_count          :integer          default(0)
 #
 
 FactoryGirl.define do

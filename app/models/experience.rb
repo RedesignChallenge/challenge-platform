@@ -7,8 +7,7 @@
 #  description             :text
 #  image                   :string
 #  link                    :text
-#  featured                :boolean
-#  top_comment             :boolean
+#  featured                :boolean          default(FALSE)
 #  user_id                 :integer
 #  theme_id                :integer
 #  created_at              :datetime
@@ -23,29 +22,29 @@
 #  embed                   :text
 #  destroyed_at            :datetime
 #  published_at            :datetime
+#  comments_count          :integer          default(0)
 #
 
 class Experience < ActiveRecord::Base
   include Embeddable
   include URLNormalizer
   include Publishable
-
-  default_scope { order(created_at: :asc) }
+  include Orderable
 
   belongs_to :user
   belongs_to :theme
   has_and_belongs_to_many :solutions
-  has_one :feature, as: :featured
+  has_one :feature, as: :featureable
 
   acts_as_votable
   acts_as_commentable
   acts_as_paranoid column: :destroyed_at
 
-  validates :description, presence: true, length: { maximum: 1024 }
-  validates :link, url: true, allow_blank: true
+  validates :description, presence: true
+  validates :link,        url: true, allow_blank: true
 
   def title
-    self.description.truncate(50)  
+    self.description.present? ? self.description.truncate(50) : nil
   end
 
   def experience_stage

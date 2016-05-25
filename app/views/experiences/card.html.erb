@@ -13,8 +13,8 @@
 
   <div class="col-xs-8">
 
-    <div ng-switch='experience_<%= experience.id %>_discussion' ng-init='experience_<%= experience.id %>_discussion=<%= controller_name == 'experiences' && action_name == 'show' %>'>
-      <div class='well well-experience' ng-class="{discussion: experience_<%= experience.id %>_discussion}">
+    <!-- <div ng-switch='experience_<%#= experience.id %>_discussion' ng-init='experience_<%#= experience.id %>_discussion=<%#= controller_name == 'experiences' && action_name == 'show' %>'> -->
+      <div class='well well-experience'> <!-- ng-class="{discussion: experience_<%#= experience.id %>_discussion}" -->
         <% if user_signed_in? && experience.user == current_user %>
           <div ng-switch="experience_<%= experience.id %>_edit" ng-init="experience_<%= experience.id %>_edit=false">
             <div ng-hide="experience_<%= experience.id %>_edit">
@@ -30,12 +30,12 @@
         <% end %>
       </div>
 
-      <div class='well well-experience-discussion' ng-show='experience_<%= experience.id %>_discussion'>
-        <div class='experience-discussion'>
-          <%= render partial: 'experiences/card/discussion', locals: { experience: experience } %>
-        </div>
-      </div>
-    </div>
+      <!-- <div class='well well-experience-discussion' ng-show='experience_<%= experience.id %>_discussion'> -->
+        <!-- <div class='experience-discussion'> -->
+          <%#= render partial: 'experiences/card/discussion', locals: { experience: experience } %>
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
   </div>
 

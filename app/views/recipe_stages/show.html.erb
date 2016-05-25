@@ -1,0 +1,152 @@
+<%= render partial: 'challenges/header', cache: true %>
+
+<div id="recipe_stage-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h1 class='text-recipe'><%= @recipe_stage.title.html_safe if @recipe_stage.title %></h1>
+            <p class='text-large'><%= @recipe_stage.description.html_safe if @recipe_stage.description %></p>
+
+            <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+            
+            <% if @recipe_stage.ends_at %>
+              &nbsp; <span class='text-large'>&bull;</span> &nbsp;
+              <i class='fa fa-clock-o' style='font-size:1.5em;'></i>&nbsp; <span class='text-large'><%= time_left(@recipe_stage) %></span>
+            <% end %>
+
+            <% if @featured_recipes.present? %>
+              <div class="featured-contributors">
+                <h6 class='zero-margin-bottom'>Featured Contributions</h6>
+                <% @featured_recipes.each do |recipe| %>
+                  <%= render partial: 'shared/avatar', locals: { user:  recipe.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, recipe.cookbook, recipe) } %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-sm-4">
+            <p class='text-bold text-recipe text-center'><%= @recipe_stage.incentive.html_safe if @recipe_stage.incentive.present? %></p>
+            <i class="fa fa-flask hidden-xs text-left"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='recipe_stage-navigation' data-spy="affix" data-offset-top="425" class="affix-top">
+  <div class='container'>
+
+    <div class='row'>
+      <% @cookbooks.each do |cookbook| %>
+        <div class="col-sm-4 nav-link" href="<%= "#cookbook-#{cookbook.id}" %>" du-smooth-scroll du-scrollspy offset="125">
+          <p class='title'><%= cookbook.title.html_safe %></p>
+
+          <p class='cta text-lighter text-small'>
+            <% if cookbook.recipes.published.count.zero? %>
+              <!-- <i class='fa fa-plus'></i> Add the first recipe -->
+            <% else %>
+              <i class='fa fa-flask'></i> <%= cookbook.recipes.published.count %>
+            <% end %>
+          </p>
+
+          <i class='fa fa-3x fa-play fa-rotate-90'></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="recipe_stage-content" ng-controller="RecipeStageCtrl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <% @cookbooks.each do |cookbook| %>
+          <div id='cookbook-<%= cookbook.id %>' class='content-block-xl'>
+            <h6 class='text-center'>Cookbook</h6>
+            <h2 class='section-title text-recipe'><%= cookbook.title %></h2>
+            
+            <div class='row'>
+              <div class='col-md-8 col-md-offset-2'>
+                <p><%= cookbook.description.html_safe if cookbook.description.present? %></p>
+              </div>
+            </div>
+
+            <% if OPEN_RECIPE_SUBMISSIONS && @challenge.stage_number != 4 %>
+              <div class='row' style='margin-top: 20px;margin-bottom: 40px'>
+                <div class='col-sm-4 col-sm-offset-1'>
+                  <p class='text-center text-medium'>Have a recipe for this cookbook?</p>
+                  <%= link_to "<i class='fa fa-flask'></i> Share your recipe".html_safe, new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
+                </div>
+                <div class='col-sm-4 col-sm-offset-2'>
+                  <p class='text-center text-medium'>Feedback on this cookbook?</p>
+                  <%= link_to "<i class='fa fa-comments-o'></i> Join the discussion".html_safe, challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook, anchor: "cookbook-comments"), class: 'btn btn-fa btn-block btn-lg btn-info btn-rounded' %>
+                  <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{cookbook.comments_count} comments <i class='fa fa-angle-right'></i>".html_safe, challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook, anchor: "cookbook-comments") unless cookbook.comments_count.zero? %></div>
+                </div>
+              </div>
+            <% end %>
+
+            <div class='row row-count'>
+              <div class='col-xs-3'>
+                <ul class='action text-left text-small list-inline'>
+                  <!-- <li><a>Popular</a></li>
+                  <li><a>Latest</a></li> -->
+                </ul>
+              </div>
+              <div class='col-xs-6'>
+                <h6 class='text-center center-block'>
+                  <i class='fa fa-flask fa-3x'></i><br>
+                  <span><%= pluralize(cookbook.recipes.published.count, 'recipe') %></span>
+                </h6>
+              </div>
+              <div class='col-xs-3'>
+                <% if OPEN_RECIPE_SUBMISSIONS && @challenge.stage_number != 4 %>
+                  <p class='action text-right text-small'><%= link_to '+ Add yours', new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook), class: 'pull-right' %></p>
+                <% end %>
+              </div>
+            </div>
+
+            <div ng-switch='cookbook_<%= cookbook.id %>_recipes' ng-init='cookbook_<%= cookbook.id %>_recipes=show_all'>
+              
+              <% cookbook.recipes.published.first(3).each do |recipe| %>
+                <%= render file: 'recipes/card', cache: true, locals: { recipe: recipe } %>
+              <% end %>
+
+              <% if cookbook.recipes.published.count > 3 %>
+                <div ng-show='cookbook_<%= cookbook.id %>_recipes'>
+                  <% (cookbook.recipes.published - cookbook.recipes.published.first(3)).each do |recipe| %>
+                    <%= render file: 'recipes/card', cache: true, locals: { recipe: recipe } %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= render partial: 'recipes/card/new', cache: true, locals: { cookbook: cookbook } if OPEN_RECIPE_SUBMISSIONS && @challenge.stage_number != 4 %>
+
+              <% if cookbook.recipes.published.count > 3 %>
+                <p class='center-block text-center'>
+                  <%= link_to "Show #{cookbook.recipes.published.count-3} More Recipes", '#', "ng-hide" => "cookbook_#{cookbook.id}_recipes", "ng-click" => "cookbook_#{cookbook.id}_recipes=true", onclick: 'return false;', class: 'text-bold' %>
+
+                  <%= link_to "Show Less", "#cookbook-#{cookbook.id}", "ng-show" => "cookbook_#{cookbook.id}_recipes", "ng-click" => "cookbook_#{cookbook.id}_recipes=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+                </p>
+              <% end %>
+
+              <% if @challenge.stage_number == 4 %>
+                <div class='text-center center-block' style='margin-top: 5px'><%= link_to "See all #{cookbook.comments_count} discussions <i class='fa fa-angle-right'></i>".html_safe, challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook, anchor: "cookbook-comments") unless cookbook.comments_count.zero? %></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
+        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+
+        <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
+
+      </div>
+    </div>
+  </div>
+</div>

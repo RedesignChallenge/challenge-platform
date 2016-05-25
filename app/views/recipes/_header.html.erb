@@ -1,0 +1,32 @@
+<div class='row'>
+  <div class='col-sm-10 col-sm-offset-1'>
+
+    <div class='content-block'>
+      <h6 class='text-center'>A recipe for the cookbook</h6>
+      <h2 class='section-title text-recipe'><%= link_to @recipe.cookbook.title, challenge_recipe_stage_path(@challenge, @recipe.recipe_stage, anchor: "cookbook-#{@recipe.cookbook.id}") %></h2>
+      
+      <div class='row'>
+        <div class='col-md-8 col-md-offset-2'>
+          <p><%= @recipe.cookbook.description.html_safe %></p>
+        </div>
+      </div>
+    </div>
+
+    <% if @recipe.featured? %>
+      <div class="row">
+        <div class="col-sm-10 col-md-offset-1">
+
+          <div class='well-featured-recipe'>
+            <div class='row'>
+              <div class='col-sm-10 col-sm-offset-1'>
+                <h6 class='text-white'>Featured Recipe</h6>
+                <p class='text-small'><%= @recipe.feature.reason %></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

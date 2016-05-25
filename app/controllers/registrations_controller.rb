@@ -1,17 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  #
-  # Create a new user registration
-  #
-  # This method is overridden from the Devise method call because are not allowing new user sign ups
-  def new
-    if ENV['SITE_LOCKED'] == 'true'
-      redirect_to root_path
-    else
-      super
-    end
-  end
-
   def edit
     set_edit_setting
   end
@@ -23,73 +11,19 @@ class RegistrationsController < Devise::RegistrationsController
   # strings of district ids
   def update
     set_edit_setting
-    parse_state_params
-    parse_district_params
-    parse_school_params
     check_password_needed
     # We're persisting the check before the super block.
     # If we do not, the existing resource values will be the same as the params.
     avatar_updated = avatar_updated?
 
     super do |resource|
-      if resource.valid?
+      if resource.errors.empty?
         update_avatar(resource) if avatar_updated
       end
     end
   end
 
 private
-
-  #
-  # Parse both district_ids into arrays
-  #
-  # Affects the params instance variable, does not return anything.
-  def parse_state_params
-    if params[:user][:state_ids].present? && params[:user][:state_ids].first.class == String
-      # Districts can come in as a list of district ids (as a comma-separated string)
-      # In that case, separate it into an array of objects
-
-      if params[:user][:state_ids].first == "[]"
-        params[:user][:state_ids] = nil
-      else
-        params[:user][:state_ids] = params[:user][:state_ids].first.split(',')
-      end
-    end
-  end
-
-  #
-  # Parse both district_ids into arrays
-  #
-  # Affects the params instance variable, does not return anything.
-  def parse_district_params
-    if params[:user][:district_ids].present? && params[:user][:district_ids].first.class == String
-      # Districts can come in as a list of district ids (as a comma-separated string)
-      # In that case, separate it into an array of objects
-
-      if params[:user][:district_ids].first == "[]"
-        params[:user][:district_ids] = nil
-      else
-        params[:user][:district_ids] = params[:user][:district_ids].first.split(',')
-      end
-    end
-  end
-
-  #
-  # Parse both school_ids into arrays
-  #
-  # Affects the params instance variable, does not return anything.
-  def parse_school_params
-    if params[:user][:school_ids].present? && params[:user][:school_ids].first.class == String
-      # Districts can come in as a list of district ids (as a comma-separated string)
-      # In that case, separate it into an array of objects
-
-      if params[:user][:school_ids].first == "[]"
-        params[:user][:school_ids] = nil
-      else
-        params[:user][:school_ids] = params[:user][:school_ids].first.split(',')
-      end
-    end
-  end
 
   #
   # Parse both district_ids into arrays
@@ -112,7 +46,6 @@ private
       resource.update_with_password(params)
     end
   end
-
 
   def set_edit_setting
     @setting = params[:user] ? params[:user][:setting] : params[:setting]

@@ -4,18 +4,20 @@
 <% font_size = '' unless local_assigns[:font_size] %>
 
 <% if user %>
+  <% link_path = user_path(user) unless local_assigns[:link_path] %>
+  
   <% if user.avatar.present? %>
-    <%= link_to image_tag(user.avatar.profile.url,  class: 'img-circle', style: avatar_style.html_safe), user_path(user) %>
+    <%= link_to image_tag(user.avatar.profile.url,  class: 'img-circle', style: avatar_style.html_safe), link_path %>
   <% else %>
     <% if user_signed_in? && current_user == user %>
-      <%= link_to user_path(user) do %>
+      <%= link_to link_path do %>
         <span class="fa-stack fa-user-avatar">
           <i class="fa fa-stack-2x fa-circle" <%= "style='font-size: #{circle_font_size}'".html_safe if circle_font_size %>></i>
           <i class="fa fa-stack-1x fa-inverse" <%= "style='font-size: #{inverse_font_size}'".html_safe if inverse_font_size %>>you</i>
         </span>
       <% end %>
     <% else %>
-      <%= link_to user_path(user) do %>
+      <%= link_to link_path do %>
         <span class="fa-stack fa-user-avatar">
           <i class="fa fa-stack-2x fa-circle" style='color:<%= user.color %>;<%= "font-size: #{font_size}" if font_size.present? %>'></i>
           <i class="fa fa-stack-1x fa-inverse" <%= "style='font-size: #{inverse_font_size}'".html_safe if inverse_font_size %> >

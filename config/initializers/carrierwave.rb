@@ -5,15 +5,15 @@ CarrierWave.configure do |config|
 
   ## AWS CONFIG
   config.storage    =  :aws                   # required
+  config.aws_acl    =  'public-read'          # required
   config.aws_bucket =  ENV['S3_BUCKET']       # required
-  config.aws_acl    =  :public_read
   config.aws_credentials = {
     access_key_id:      ENV['S3_KEY'],        # required
     secret_access_key:  ENV['S3_SECRET'],     # required
     region:             ENV['S3_REGION']      # required  
   }
-
 end
+
 #
 # if Rails.env.test?
 # # Stub out CarrierWave so that we can test user avatars without uploading anything

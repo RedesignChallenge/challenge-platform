@@ -218,7 +218,6 @@ shared_examples_for 'a standard controller' do
     end
 
     context 'when the entity can be updated' do
-
       it 'updates the preexisting entity' do
         patch :update, challenge_id: challenge.id,
               :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
@@ -230,7 +229,6 @@ shared_examples_for 'a standard controller' do
         expect(assigns(target_model).description).to eq valid_patch_model[:description]
         expect(assigns(target_model).persisted?).to eq true
         expect(assigns(target_model).published_at).to be_nil
-
       end
 
       it 'sets the flash message correctly' do
@@ -253,7 +251,6 @@ shared_examples_for 'a standard controller' do
     end
 
     context 'when the entity is a draft' do
-
       it 'updates the preexisting entity with a timestamp' do
         patch :update, challenge_id: challenge.id,
               :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
@@ -265,7 +262,6 @@ shared_examples_for 'a standard controller' do
         expect(assigns(target_model).description).to eq valid_patch_publish_model[:description]
         expect(assigns(target_model).persisted?).to eq true
         expect(assigns(target_model).published_at).to_not be_nil
-
       end
 
       it 'sets the flash message correctly' do
@@ -286,14 +282,12 @@ shared_examples_for 'a standard controller' do
               id: preexisting_entity.id,
               :"#{target_model}" => invalid_patch_model
         expect(response).to render_template :edit
-
       end
     end
   end
 
   describe 'DELETE #destroy' do
     context 'with a user that owns the entity' do
-
       before(:each) do
         sign_in user
         request.env['HTTP_REFERER'] = 'http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags'
@@ -333,7 +327,6 @@ shared_examples_for 'a standard controller' do
     end
 
     context 'with a user that does not own the entity' do
-
       let(:other_user) {
         FactoryGirl.create(:user, email: Faker::Internet.email)
       }
@@ -366,12 +359,11 @@ shared_examples_for 'a standard controller' do
             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
             id: preexisting_entity.id
-        expect(assigns(target_model).get_upvotes(vote_scope: preexisting_entity.default_like[:scope]).length).to eq 1
+        expect(assigns(target_model).get_upvotes(vote_scope: assigns(target_model).default_like[:scope]).length).to eq 1
       end
     end
 
     context 'with an unauthenticated user' do
-
       before(:each) do
         sign_out user
       end
@@ -399,16 +391,18 @@ shared_examples_for 'a standard controller' do
             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
             id: preexisting_entity.id
-        expect(assigns(target_model).get_upvotes(vote_scope: preexisting_entity.default_like[:scope]).size).to eq 0
+        expect(assigns(target_model).get_upvotes(vote_scope: assigns(target_model).default_like[:scope]).size).to eq 0
       end
 
       it 'responds with JavaScript when calling via JavaScript' do
         put :unlike, challenge_id: challenge.id,
             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,
             :"#{underscore(third_fragment.class)}_id" => third_fragment.id,
-            id: preexisting_entity.id, format: :js
+            id: preexisting_entity.id,
+            format: :js
         expect(response).to render_template :unlike
       end
+
       it 'redirects when calling via HTML' do
         put :unlike, challenge_id: challenge.id,
             :"#{underscore(second_fragment.class)}_id" => second_fragment.id,

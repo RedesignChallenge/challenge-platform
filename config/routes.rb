@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   
   root to: 'home#index'
-  match 'preview',          to: 'home#preview', via: :get
-  match 'about',            to: 'home#about', via: :get
-  match 'privacy',          to: 'home#privacy', via: :get
-  match 'terms',            to: 'home#terms', via: :get
-  match 'report',           to: 'home#report', via: :get
-  match 'report_redirect',  to: 'home#report_redirect', via: :get
+  match 'preview',          to: 'home#preview',         via: :get
+  match 'about',            to: 'home#about',           via: :get
+  match 'privacy',          to: 'home#privacy',         via: :get
+  match 'terms',            to: 'home#terms',           via: :get
+
+  match 'states/search',    to: 'states#search',        via: :get
+  match 'districts/search', to: 'districts#search',     via: :get
+  match 'schools/search',   to: 'schools#search',       via: :get
 
   resources :challenges, only: [:show, :index] do
     resources :experience_stages, only: [:show] do
@@ -38,11 +40,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :approach_stages, only: [:show] do
-      resources :approach_ideas, only: [:show] do
-        resources :approaches do
+    resources :recipe_stages, only: [:show] do
+      resources :cookbooks, only: [:show] do
+        resources :recipes do
           member do
-            put :like, :unlike
+            put :like, :unlike, :try, :untry
           end
         end
       end
@@ -71,8 +73,4 @@ Rails.application.routes.draw do
       put :like, :unlike
     end
   end
-
-  match 'states/search', to: 'states#search', via: 'get'
-  match 'districts/search', to: 'districts#search', via: 'get'
-  match 'schools/search', to: 'schools#search', via: 'get'
 end

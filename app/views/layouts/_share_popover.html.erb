@@ -3,7 +3,7 @@
 <ul class="share-popover" style='margin-bottom:0px'>
   <li><%= link_to "<i class='fa fa-twitter'></i>".html_safe, "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' %></li>
 
-  <li><%= link_to "<i class='fa fa-facebook'></i>".html_safe, "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=#{url_encode(url)}&p[title]=#{url_encode(title)}&p[summary]=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %></li>
+  <li><%= link_to "<i class='fa fa-facebook'></i>".html_safe, "https://www.facebook.com/dialog/share?app_id=811290972280440&display=popup&href=#{url_encode(url)}&redirect_uri=#{url_encode(url)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %></li>
 
   <li><%= link_to "<i class='fa fa-linkedin'></i>".html_safe, "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %></li>
 

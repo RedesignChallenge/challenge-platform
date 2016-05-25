@@ -5,7 +5,7 @@
   <div class="col-sm-3">
     <div class='solution-credits text-center center-block'>
 
-      <div class='solution-credit solution-approach'>
+      <div class='solution-credit solution-recipe'>
         <h5 class='text-solution'>Implemented by</h5>
         <%= render partial: 'shared/avatar', locals: { user: @solution.user } %>
         <p class='text-small'><%= @solution.user.display_name %></p>
@@ -106,7 +106,7 @@
       <p><%= @solution.description.html_safe %></p>
     </div>
 
-    <% if @solution.needs.present? %>
+    <% if @solution.materials.present? %>
       <div class='content-block'>
         <p class='text-solution text-large text-bold text-uppercase'>What You'll Need</p>
 
@@ -117,7 +117,7 @@
           <% end %>
         </div>
 
-        <p><%= @solution.needs.html_safe %></p>
+        <p><%= @solution.materials.html_safe %></p>
       </div>
     <% end %>
 

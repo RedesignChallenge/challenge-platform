@@ -4,21 +4,15 @@ class ApplicationController < ActionController::Base
   include PersistenceConcern
 
   ## Callback
-  before_action :authenticate_user!, if: Proc.new { ENV['SITE_LOCKED'] == 'true' }
   before_action :capture_referrer_id
   after_action :set_csrf_cookie_for_ng
-  after_action :set_ga_dimension_session
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
-  end
-
-  def set_ga_dimension_session
-    session[:cp_ga_dimension] = params[:ref] if params[:ref].present? && session[:cp_ga_dimension].nil?
   end
   
   def resource_name
@@ -43,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verified_request?
-    super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
+    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
   end
 
   def hide_navs
@@ -64,7 +58,7 @@ private
     if object.destroyed_at?
       action = 'deleted'
     else
-      if ['experience','idea','approach'].include?(object.class.to_s.downcase)
+      if ['experience','idea','recipe'].include?(object.class.to_s.downcase)
         if object.published_at?
           action = object.created_at == object.updated_at ? 'shared' : options[:published] ? 'published' : 'updated'
         else

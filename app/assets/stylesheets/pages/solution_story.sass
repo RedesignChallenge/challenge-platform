@@ -13,9 +13,17 @@
       position: absolute
       bottom: 1.5em
       left: 0.75em
+  .ribbon-wrapper
+    top: 1px
+    left: 16px
 
 #solution_story-overview
   padding: 4em 0em
+  .well-featured-solution_story
+    @extend .well, .well-sm, .text-center, .text-white
+    +border-radius(1em)
+    padding: 0.25em
+    background-color: $solution !important
   .well-solution_story
     padding: 0px
     background-color: white
@@ -63,7 +71,7 @@
               @extend .text-bold
             .credit-names
               margin-top: 10px
-            &.solution-approach
+            &.solution-recipe
               .img-circle
                 width: 7.5em
               .fa-user-avatar
