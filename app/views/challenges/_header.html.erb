@@ -8,7 +8,7 @@
 
             <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
               <span class="badge badge-<%= stage[:name] %> <%= 'active' if @challenge.stage_number >= stage[:number] %> <%= 'selected' if eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") %>">
-                
+
                 <% if stage[:name] == @challenge.active_stage %>
                   <span class="fa-stack">
                     <i class="fa fa-stack-2x fa-circle text-<%= eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") ? 'white' : stage[:name] %>"></i>
