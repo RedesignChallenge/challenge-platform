@@ -31,7 +31,9 @@ class CarrierWave::Mount::Mounter
 end
 
 RSpec.configure do |config|
-
+  config.before(:each) do
+    stub_request(:any, /169\.254\..*/).to_return(status: 200, body: '', headers: {})
+  end
   # Devise-related testing (for tests that have to do with authentication)
   config.include Devise::TestHelpers, type: :controller
 
