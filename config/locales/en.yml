@@ -31,6 +31,31 @@ en:
     social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you."
     share_experience: "Share your experience with the first challenge!"
 
+  about:
+    our_mission: "Our Mission"
+    welcome: "Welcome to the %{platform}.  You are essential to our success! Our mission is to bring educators together in an engaged online community that inspires breakthrough ideas in teaching and learning. The %{platform} offers educators a place to share experiences, exchange ideas and refine new approaches to old problems. The %{platform} will help educators find a precise understanding about why things don’t work in K-12 education and respond quickly to find solutions."
+    our_solution: "Our Solution"
+    solution: "The %{platform} is an open dialogue between those who often make the decisions and those who have to live with those decisions. Conversations will be guided by experienced educators.  Participants will focus on one theme, or “challenge,” at a time. Our first challenge is to help make videos for professional learning more relevant and useful to educators. All educators – from the classroom teacher to district superintendent – are invited to participate. The %{platform} community will determine the best ideas and pick subsequent challenges."
+    community_guidelines:
+      header: "Community Guidelines"
+      do: "DO:"
+      be_nice: "Be Nice."
+      be_nice_explanation: "We value diversity and encourage lively debate. We want people to feel safe and welcome posting here. Please be polite and respectful in your interactions. By posting, you are agreeing to abide by the %{platform} user agreement."
+      be_relevant: "Be Relevant."
+      be_relevant_explanation: "Please keep your posts on topic. When you introduce a new topic, please create a new post. Use headlines to help others find your content later on."
+      seek_advice: "Seek advice & share solutions."
+      seek_advice_explanation: "Strive to shed more light than heat on a subject."
+      share_expertise: "Share your expertise!"
+      share_expertise_explanation: "Aim to post content that is informative, educational or encourages discussion."
+      be_yourself: "Be yourself."
+      be_yourself_explanation: "You don't need to share your real name but you should not be impersonating anyone."
+      dont: "DON'T:"
+      unacceptable_content: "Post content that is confidential, defamatory, misleading or deceptive, offensive, abusive, harassing, threatening, designed to intimidate or bully, or that infringes copyright or contains hate speech."
+      commercial_activity: "Engage in commercial activity. Please do not use this site to promote the-sale of goods or services."
+      use_all_caps: "Use all CAPS in comments. Caps might be construed as yelling, which isn't nice. Be careful with bolding or underlining – it can sometimes feel aggressive."
+      violation_warning: "Engaging in any of the \"don't\" behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account."
+
+
   approach_ideas:
     _header:
       section_title: "Idea"
