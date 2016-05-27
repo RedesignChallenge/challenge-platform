@@ -1,29 +1,474 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
-  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  formal_project: "The %{project}"
+
+  home:
+    welcome: "Welcome to the %{platform}"
+    explore: "Explore Our First Challenge"
+    what: "What is the %{platform}?"
+    join: "Join the %{platform}."
+    return_to_challenge: "Return to Challenge"
+    see_featured_challenge: "See Featured Challenge"
+    make_ideas_real: "Make your ideas real."
+    description: "We know that the best ideas for solving problems in education come from educators. The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
+    social_description: "The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
+    challenge_phases_header: "Each Challenge will go through four phases:"
+    featured_challenge:
+      header:  "Our Featured Challenge"
+      title:  "Challenge %{id}: %{title}"
+    learn_more: "Learn More"
+    learn_more_and_participate: "Learn More and Participate"
+    register_today_to_participate: "Register Today to Participate"
+    cta_tackle_header: "What challenges should we tackle next?"
+    cta_tackle: "Tell us what challenges affect you most, and vote on additional challenges suggested by others."
+    suggestions: "Suggestion"
+    add_suggestion: "+ Add Suggestion"
+    more: "Show %{count} More Suggestions"
+    less: "Show Less"
+    social_sharing_question: "Know someone who may want to add to the discussion?"
+    social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you."
+    share_experience: "Share your experience with the first challenge!"
+
+  approach_ideas:
+    _header:
+      section_title: "Idea"
+    show:
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  approach_stages:
+    show:
+      title: "See approaches"
+      description: "See the approaches educators proposed to try the top ideas from Stage 2"
+      section_title: "Idea" # line 68
+      contributors: "Featured Contributors"
+      try: "Know how to try this idea?"
+      add_first: "Add the first approach."
+      question_1: "Know how to try this idea?"
+      question_2: "Want to try this but not sure how?"
+      share: "<i class='fa fa-flask'></i> Share your approach"
+      join: "<i class='fa fa-comments-o'></i> Join the discussion"
+      comment_expand: "See all %{count} comments <i class='fa fa-angle-right'></i>"
+      stage_name: "approach"
+      add_new: "+ Add yours"
+      show_more: "Show %{count} More Approaches"
+      show_less: "Show Less"
+      discussion_expand: "See all %{count} discussions <i class='fa fa-angle-right'></i>"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  approaches:
+    card:
+      _new:
+        new_question: "Know how to try this idea?"
+        submit_new: "Share your approach"
+        discussion_question: "Still not sure?"
+        see_discusion: "See the discussion for this idea <i class='fa fa-angle-right'></i>"
+      _show:
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your approach?"
+        flag: "Flag"
+        header_1: "How To"
+        header_2: "Description"
+        header_3: "What you'll need"
+    modals:
+      _form:
+        title_placeholder: "Add a Title"
+        description_label: "Description"
+        description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?"
+        needs_label: "Resources Needed"
+        needs_placeholder: "List any required materials or resources."
+        steps_label: "How To"
+        step_placeholder: "Click to add another step"
+        save: "Save and finish later"
+        cancel: "Cancel"
+        cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+        submit: "Share Approach"
+        header: "Optional"
+        add_link: "Add a link to a video, article, image or other supporting material"
+        add_url: "Add URL"
+        instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+      _header:
+        title: "An approach to the idea of"
+        featured: "Featured Approach"
+      _step_fields:
+        description_placeholder: "Outline how to test this idea step by step."
+      edit:
+        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+        title: "Edit Approach"
+        submit: "Update Approach"
+      new: 
+        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+        title: "New Approach"
+        submit: "Share Approach"
+      show: 
+        title: "Approach"
+        time: "%{time} ago"
+        edit: "<i class='fa fa-edit'></i> Edit"
+        delete: "<i class='fa fa-trash'></i> Delete"
+        confirm: "Are you sure you want to delete your approach?"
+        discuss: "<i class='fa fa-reply'></i> Discuss"
+        needs: "What You'll Need"
+        how: "How To"
+        link: "Link"
+        social_sharing_question: "Know people who have something to add to this conversation?"
+        social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  challenges:
+    show:
+      cta: "Get Set, Create!"
+      completed: "Completed"
+      active: "Not yet active"
+      challenge: "The Challenge"
+      goal: "The Goal"
+      role: "Your Role"
+      guides: "Meet Our Challenge Guides"
+      about: "About <%= %{name} %>"
+      empty: "Not yet provided."
+      cta2: "Get Involved"
+      featured: "Featured contributions from"
+      more: "Show More"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  comments:
+    card:
+      _edit:
+        submit: "Update"
+      _form:
+        comment_placeholder: "What do you think about this %{stage} Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback."
+        comment_help: "Add a link to a video, article, or image" # line 22
+        url_placeholder: "Add URL" # line 27
+        url_help: "Attach a link and we'll display it alongside your post."
+        cancel: "Cancel"
+      _new:
+        reply: "In reply to Comment #{{temporal_parent_id}} above."
+        cancel: "Cancel reply?"
+        name: "Your Name"
+        organization: "Your Organization"
+        submit: "Submit"
+      _show:
+        time: "%{time} ago"
+        reply: "Reply"
+        edit: "Edit"
+        delete:  "Delete"
+        confirm:  "Are you sure you want to delete your comment?"
+        flag: "Flag"
+    _discussion:
+      header: "Discussion test"
+      add: "+ Add Comment"
+    _form:
+      reply: "In reply to Comment #{{temporal_parent_id}} above."
+      cancel: "Cancel reply?"
+      name: "Your Name"
+      organization: "Your Organization"
+      opinion: "What do you think about this %{class}? Suggest an improvement, explain how you think this %{class} could be implemented, or provide other feedback."
+      link: "Add a link to a video, article, image or other support"
+      url: "Add URL"
+      link2: "Share a link, image, video, or Tweet– we'll display it alongside your comment."
+      cancel: "Cancel"
+    _header:
+      comment: "Comment on the <%= %{class} %>"
+    edit:
+      submit: "Update"
+    submit:
+      submit: "Submit"
+
+  experience_stages:
+    show:
+      inspired: "Get inspired."
+      browse: "Browse the stories other educators shared."
+
+      add: "Add the first experience"
+      header: "Theme"
+      experience: "experience"
+      more: "Show %{count} More Experiences"
+      less: "Show Less"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  experiences:
+    card:
+      _discussion:
+        comment: "Leave a Comment"
+        discussion: "Discussion"
+        count: "Show All %{count} Comments"
+      _edit:
+        submit: "Update"
+      _form:
+        description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
+        link_placeholder: "Add URL"
+        link_description: "Attach a link and we'll display it alongside your post."
+        cancel: "Cancel"
+        save: "Save and finish later"
+      _new:
+        cta: "Want to get involved? Contribute in"
+        cta2: "Share something related to this theme."
+        submit: "Share"
+      _show:
+        link: "Link:"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your experience?"
+        flag: "Flag"
+    _form: 
+      description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
+      add_link: "Add a link to a video, article, or image"
+      link_placeholder: "Add URL"
+      link_description: "Attach a link and we'll display it alongside your post."
+      cancel: "Cancel"
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      save: "Save and finish later"
+    _header:
+      response: "Response to the Theme of"
+    card:
+      time: "%{time} ago"
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Update"
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Share"
+    show:
+      header: "Experience"
+      time: "%{time} ago"
+      confirm:  "Are you sure you want to delete your experience?"
+      discuss: "<i class='fa fa-reply'></i> Discuss"
+      link: "Link"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  idea_stages:
+    show:
+      cta: "Get some ideas."
+      cta2: "Look at the ideas other educators have shared."
+      add: "Add the first idea"
+      header: "Problem Statement"
+      stage: "idea"
+      add: "+ Add yours"
+      show_more: "Show %{count} More Ideas"
+      show_less: "Show Less"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  ideas:
+    card:
+      _new:
+        cta: "Want to get involved? Contribute in"
+        add: "Add Your Idea"
+      _show: 
+        refinement: "Refinement of"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your idea?"
+        flag: "Flag"
+    _example: 
+      title_description: "A concise descriptive title makes it easy for people to find and understand your idea."
+      title: "Awesome Example Idea!"
+      body_description: "Explain your idea in terms of how it might be executed and how it could impact the various people involved."
+      placeholder1: "Lorem"
+      label1: "Potential Impact"
+      placeholder2: "Lorem"
+      label2: "Possible Implementation"
+      placeholder3: "Lorem"
+      link_description: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging."
+      label3: "Link"
+      placeholder4: "Lorem"
+      back: "Go Back to My Idea"
+    _form:
+      refinement: "Refinement of"
+      title_placeholder: "What is the title of your idea?"
+      description_placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better."
+      help: "Explain the potential impact of your idea"
+      impact_label: "Potential Impact"
+      impact_placeholder: "Describe the impact your idea could have."
+      body_help: "Explain how your idea may be implemented"
+      implementation_label: "Possible Implementation"
+      implementation_placeholder: "Describe how your idea may be implemented."
+      link_placeholder: "Add a link to a video, article, image or other support"
+      url: "Add URL"
+      link_description: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea."
+      save: "Save and finish later"
+      cancel: "Cancel"
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+    _header: 
+      header: "Idea for"
+    _refinement:
+      header1: "Potential Impact"
+      header2: "Possible Implementation"
+      header3: "Link"
+      back: "Go Back to My Idea"
+    edit: 
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      header: "Keep<br> Editing"
+      description: "Expand to keep<br> working on your idea."
+      header2: "Original<br> Idea"
+      description2: "Expand to show<br> the original idea."
+      submit: "Update Idea"
+      header3: "Example<br> Idea"
+      description3: "Expand to show<br> an example idea."
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      header: "Keep<br> Editing"
+      description: "Expand to keep<br> working on your idea."
+      header2: "Original<br> Idea"
+      description2: "Expand to show<br> the original idea."
+      submit: "Share Idea"
+      header3: "Example<br> Idea"
+      description3: "Expand to show<br> an example idea."
+    show:
+      header: "Idea"
+      time: "%{time} ago"
+      edit: "<i class='fa fa-edit'></i> Edit"
+      delete: "<i class='fa fa-trash'></i> Delete"
+      confirm: "Are you sure you want to delete your idea?"
+      discuss: "<i class='fa fa-reply'></i> Discuss"
+      title:  "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"
+      header2: "Refine"
+      header3: "Potential Impact"
+      header4: "Possible Implementation"
+      header5: "Link"
+      header6: "Based On"
+      header7: "Refinement"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  layouts:
+    _error_messages: 
+      header: "The form contains the following errors:"
+    _footer:
+      terms: "Terms"
+      privacy: "Privacy"
+    _header:
+      header: "Toggle navigation"
+      about: "About Us"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+    _share_button: 
+      header: "Share"
+      email: "<i class='fa fa-envelope'></i> Email"
+      subject:
+      body: "Here's the URL: #{url}"
+    _share_links:
+      body: "Here's the URL: #{url}"
+    _share_popover:
+      body: "Here's the URL: #{url}"
+
+  mailers:
+    comment:
+      posted:
+        content:
+        action: "View and Reply"
+        callout: 
+    shared:
+      action: 
+        paragraph1: "Please confirm your email address by clicking the link below."
+        paragraph2: "We may need to send you critical information about our service and it is important that we have an accurate email address."
+        paragraph3: Confirm email address
+
+  mailkick:
+    subscriptions:
+      show:
+        header: "Subscriptions"
+        unsubscribed: "You are unsubscribed."
+        subscribed: "You are subscribed."
+
+  shared:
+    _draft:
+      header: "Draft"
+      continue: "Continue Editing >"
+      delete: "Delete Draft"
+      confirm: "Are you sure you wish to delete your draft?"
+
+  solution_stages:
+    show:
+      previous: "Previous"
+      next: "Next"
+      header: "Coming soon..."
+      header2: "The challenge is still running."
+      header3: "How people are meeting the challenge"
+      stage: "story"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  solution_stories:
+    card:
+      header: "Required Effort"
+      time1: "hours"
+      time2: "days"
+      time3: "weeks"
+      time4: "months"
+    show:
+      header: "Story From The Field"
+      header2: "How To Guide"
+
+  solutions:
+    show:
+      header: "Implemented by"
+      header2: "Based on Ideas by"
+      user: "you"
+      header3: "Inspired by the Experiences of"
+      discuss: "<i class='fa fa-reply'></i> Discuss"
+      download: "<i class='fa fa-download'></i> Download"
+      header4: "What You'll Need"
+      header5: "Required Effort"
+      time1: "hours"
+      time2: "days"
+      time3: "weeks"
+      time4: "months"
+      header6: "How To"
+      header7: "Link"
+
+  suggestions:
+    card:
+      _edit: 
+        submit: "Update"
+      _form:
+        title_placeholder: "Give it a title. Name a challenge we should take on."
+        description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?"
+        link_description: "Add a link to a video, article, image or other support"
+        url: "Add URL"
+        link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+        cancel: "Cancel"
+      _new: 
+        placeholder: "Share a suggestion that you think we should tackle with the"
+        submit: "Share"
+      _show: 
+        confirm: "Are you sure you want to delete your suggestion?"
+        time: "%{time} ago"
+        question: "How much does this impact you?"
+      _vote:
+        low: "Not at all"
+        high: "A lot"
+    _form: 
+      title_placeholder: "Give it a title. Name a challenge we should take on."
+      description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?"
+      link_description: "Add a link to a video, article, image or other support"
+      url: "Add URL"
+      link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+      cancel: "Cancel"
+    edit:
+      header: "Suggestion"
+      title: "Edit Suggestion"
+      submit: "Update"
+    new:
+      header: "Suggestion"
+      title: "Edit Suggestion"
+      submit: "Share"
+
+  users:
+    cards:
+      _submission:
+        commenters: "commented on your"
+        likers: "liked your"
+    _header:
+      edit: "Edit Profile"
+      settings: "Account Settings"
+      activity: "Activity"
+
   datetime:
     distance_in_words:
       half_a_minute: "half a minute"

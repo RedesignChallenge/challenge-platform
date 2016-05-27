@@ -4,22 +4,22 @@
       <div class='container'>
         <div class='row'>
           <div class='col-md-10 col-md-offset-1'>
-
-            <h1 class='text-white'><%= "Join the #{I18n.t(:project_name)}." %><br><small class='text-white'>Make your ideas real.</small></h1>
-
+            <h1 class='text-white'><%= t('home.join', platform: t(:project_name)) %><br>
+              <small class='text-white'><%= t('home.make_ideas_real') %></small>
+            </h1>
             <div class='row'>
               <div class='col-md-4'>
                 <% if user_signed_in? %>
                     <% if @featured %>
-                        <%= link_to "Return to Challenge", challenge_active_stage_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                        <%= link_to t('home.return_to_challenge'), challenge_active_stage_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
                     <% else %>
-                        <%= link_to "Learn More", about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                        <%= link_to t('home.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
                     <% end %>
                 <% else %>
                     <% if @featured %>
-                        <%= link_to "See Featured Challenge", challenge_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                        <%= link_to t('home.see_featured_challenge'), challenge_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
                     <% else %>
-                        <%= link_to "Learn More", about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                        <%= link_to t('home.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
                     <% end %>
                 <% end %>
               </div>
@@ -35,13 +35,12 @@
   <div class="container">
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-
         <div class='row'>
           <div class='col-sm-7'>
             <h1 id='headline'>
-              Welcome to the <%= "#{I18n.t(:project_name)}" %>
+              <%= t('home.welcome', platform: t(:project_name)) %>
             </h1>
-            <%= link_to "Explore Our First Challenge", challenge_path(@featured), class: 'btn btn-info btn-rounded text-small' if @featured %>
+            <%= link_to t('home.explore'), challenge_path(@featured), class: 'btn btn-info btn-rounded text-small' if @featured %>
           </div>
         </div>
       </div>
@@ -53,31 +52,28 @@
   <div class="container">
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-
-        <h2 class="text-center"><%= "What is the #{I18n.t(:project_name)}?" %></h2>
+        <h2 class="text-center"><%= t('home.what', platform: t(:project_name)) %></h2>
         <div class="row" style='margin-bottom:15px'>
           <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'><%= "We know that the best ideas for solving problems in education come from educators. The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality." %></p>
+            <p class='section-description'><%= t('home.description', platform: t(:project_name)) %></p>
           </div>
         </div>
-
         <div id='process-stages'>
-          <h2 class="section-title">Each Challenge will go through four phases:</h2>
-
+          <h2 class="section-title"><%= t('home.challenge_phases_header') %></h2>
           <div class='row row-process'>
             <% Challenge::STAGES.each_with_index do |stage, index| %>
-              <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
+                <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
                 <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %>">
                   <i class="fa fa-stack-2x fa-circle"></i>
                   <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %>"></i>
                 </span>
-                <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution') ) %>
-                <div class='clearfix'></div>
-                <div class="caption">
-                  <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
-                  <p class='description'><%= stage[:description] %></p>
+                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
+                  <div class='clearfix'></div>
+                  <div class="caption">
+                    <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
+                    <p class='description'><%= stage[:description] %></p>
+                  </div>
                 </div>
-              </div>
             <% end %>
           </div>
         </div>
@@ -92,21 +88,36 @@
       <div class='col-md-10 col-md-offset-1'>
         <div class='row'>
           <div class='col-sm-7'>
-            <h2 class='text-green' style='font-size:2.25em'>Our Featured Challenge</h2>
+            <h2 class='text-green' style='font-size:2.25em'><%= t('home.featured_challenge.header') %></h2>
             <h2 class='half-margin-bottom'>
-              <%= "Challenge #{@featured.id}: #{@featured.title}" %>
+              <%= t('home.featured_challenge.title', id: @featured.id, title: @featured.title) %>
             </h2>
-            <p class='text-large'>Share your experience with the first challenge!</p>
-
+            <p class='text-large'><%= t('home.share_experience') %></p>
             <div class='break'></div>
-
             <% if user_signed_in? %>
-                <%= link_to "<h4 class='half-margin-bottom'>Learn More and Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, challenge_path(@featured) if @featured %>
+                <% if @featured %>
+                    <%= link_to challenge_path(@featured) do %>
+                        <h4 class='half-margin-bottom'>
+                          <%= t('home.learn_more_and_participate') %>
+                          <small class='text-link'><i class='fa fa-chevron-right'></i></small>
+                        </h4>
+                    <% end %>
+                <% end %>
             <% else %>
                 <% if @featured %>
-                    <%= link_to "<h4 class='half-margin-bottom'>Learn More and Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, challenge_path(@featured) %>
+                    <%= link_to challenge_path(@featured) do %>
+                        <h4 class='half-margin-bottom'>
+                          <%= t('home.learn_more_and_participate') %>
+                          <small class='text-link'><i class='fa fa-chevron-right'></i></small>
+                        </h4>
+                    <% end %>
                 <% else %>
-                    <%= link_to "<h4 class='half-margin-bottom'>Register Today to Participate <small class='text-link'><i class='fa fa-chevron-right'></i></small></h4>".html_safe, new_user_registration_path %>
+                    <%= link_to new_user_registration_path do %>
+                        <h4 class='half-margin-bottom'>
+                          <%= t('home.register_today_to_participate') %>
+                          <small class='text-link'><i class='fa fa-chevron-right'></i></small>
+                        </h4>
+                    <% end %>
                 <% end %>
             <% end %>
           </div>
@@ -121,42 +132,40 @@
     <div class="row">
       <div class='col-md-10 col-md-offset-1'>
 
-        <p class="section-title">What challenges should we tackle next?</p>
+        <p class="section-title"><%= t('home.cta_tackle_header') %></p>
         <div class="row" style='margin-bottom: 15px'>
           <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{I18n.t(:project_hashtag)}".html_safe, "https://twitter.com/#{I18n.t(:project_name)}", target: '_blank' %></p>
-            <p class='section-description'>Tell us what challenges affect you most, and vote on additional challenges suggested by others.</p>
+            <p class='section-description'><%= link_to "<i class='fa fa-twitter'></i> #{t(:project_hashtag)}".html_safe, "https://twitter.com/#{t(:project_name)}", target: '_blank' %></p>
+            <p class='section-description'><%= t('home.cta_tackle') %></p>
           </div>
         </div>
 
-        <h4 class="text-bold pull-left"><%= pluralize(@suggestions.count, 'Suggestion') %></h4>
-        <%= link_to("+ Add Suggestion", '#new-suggestion', class: 'pull-right', 'ng-click' => "suggestion_draft=true", "du-smooth-scroll" => true) unless @suggestions.count.zero? %>
+        <h4 class="text-bold pull-left"><%= pluralize(@suggestions.count, t('home.suggestions')) %></h4>
+        <%= link_to(t('home.add_suggestion'), '#new-suggestion', class: 'pull-right', 'ng-click' => 'suggestion_draft=true', 'du-smooth-scroll' => true) unless @suggestions.count.zero? %>
         <div class='clearfix'></div>
 
         <div ng-switch="suggestions" ng-init="suggestions=show_all">
           <% @suggestions.first(2).each do |suggestion| %>
-              <%= render file: 'suggestions/card', cache: true, locals: { suggestion: suggestion } %>
+              <%= render file: 'suggestions/card', cache: true, locals: {suggestion: suggestion} %>
           <% end %>
 
           <% if @suggestions.count > 2 %>
-            <div ng-show='suggestions'>
-              <% (@suggestions - @suggestions.first(2)).each do |suggestion| %>
-                <%= render file: 'suggestions/card', cache: true, locals: { suggestion: suggestion } %>
-              <% end %>
-            </div>
+              <div ng-show='suggestions'>
+                <% (@suggestions - @suggestions.first(2)).each do |suggestion| %>
+                    <%= render file: 'suggestions/card', cache: true, locals: {suggestion: suggestion} %>
+                <% end %>
+              </div>
           <% end %>
 
           <%= render partial: 'suggestions/card/new', cache: true %>
 
           <% if @suggestions.count > 2 %>
-            <p class='center-block text-center'>
-              <%= link_to "Show #{@suggestions.count-2} More Suggestions", '#', "ng-hide" => "suggestions", "ng-click" => "suggestions=true", onclick: 'return false;', class: 'text-bold' %>
-
-              <%= link_to "Show Less", "#landing-suggest", "ng-show" => "suggestions", "ng-click" => "suggestions=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
-            </p>
+              <p class='center-block text-center'>
+                <%= link_to t('home.more', count: @suggestions.count-2), '#', 'ng-hide' => 'suggestions', 'ng-click' => 'suggestions=true', onclick: 'return false;', class: 'text-bold' %>
+                <%= link_to t('home.less'), '#landing-suggest', 'ng-show' => 'suggestions', 'ng-click' => 'suggestions=false', 'du-smooth-scroll' => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+              </p>
           <% end %>
         </div>
-
       </div>
     </div>
   </div>
@@ -166,10 +175,9 @@
   <div class="container">
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-        <h2 class="section-title text-submit">Know someone who may want to add to the discussion?</h2>
-        <p class='section-description'>The more the merrier! Share our platform to help us get the best suggestions from educators like you.</p>
-
-        <%= render partial: 'layouts/share_links', locals: { url: root_url, title: "The #{I18n.t(:project_name)}", description: "The #{I18n.t(:project_name)} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality.".html_safe, hashtag: I18n.t(:project_hashtag) } %>
+        <h2 class="section-title text-submit"><%= t('home.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('home.social_sharing_description') %></p>
+        <%= render partial: 'layouts/share_links', locals: {url: root_url, title: t(:formal_project, project: t(:project_name)), description: t('home.social_description', platform: t(:project_name)), hashtag: t(:project_hashtag)} %>
       </div>
     </div>
   </div>

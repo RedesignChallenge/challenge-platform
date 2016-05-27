@@ -68,6 +68,8 @@ gem 'newrelic_rpm'
 gem 'memcachier'
 gem 'dalli'
 
+gem 'rails-i18n'
+
 ## DELAYED JOBS
 gem 'sidekiq'
 gem 'sinatra'
