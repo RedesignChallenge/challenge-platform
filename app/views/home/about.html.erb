@@ -2,33 +2,41 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-7 col-md-offset-4'>
-
-        <h2 id='mission' class='text-submit'>Our Mission</h2>
-        <p class='text-large'>Welcome to the <%= "#{I18n.t(:project_name)}" %>. You are essential to our success! Our mission is to bring educators together in an engaged online community that inspires breakthrough ideas in teaching and learning. The <%= "#{I18n.t(:project_name)}" %> offers educators a place to share experiences, exchange ideas and refine new approaches to old problems. The <%= "#{I18n.t(:project_name)}" %> will help educators find a precise understanding about why things don’t work in K-12 education and respond quickly to find solutions.</p>
-
-        <h2 id='solution' class='text-submit'>Our Solution</h2>
-        <p class='text-large'>The <%= "#{I18n.t(:project_name)}" %> is an open dialogue between those who often make the decisions and those who have to live with those decisions. Conversations will be guided by experienced educators.  Participants will focus on one theme, or “challenge,” at a time. Our first challenge is to help make videos for professional learning more relevant and useful to educators. All educators – from the classroom teacher to district superintendent – are invited to participate. The <%= "#{I18n.t(:project_name)}" %> community will determine the best ideas and pick subsequent challenges.</p>
-
-        <h2 id='guidelines' class='text-submit'>Community Guidelines</h2>
-
-        <h4 class='text-submit'>DO:</h4>
+        <h2 id='mission' class='text-submit'><%= t('about.our_mission') %></h2>
+        <p class='text-large'><%= t('about.welcome', platform: t(:project_name)) %></p>
+        <h2 id='solution' class='text-submit'><%= t('about.our_solution') %></h2>
+        <p class='text-large'><%= t('about.solution', platform: t(:project_name)) %></p>
+        <h2 id='guidelines' class='text-submit'><%= t('about.community_guidelines.header') %></h2>
+        <h4 class='text-submit'><%= t('about.community_guidelines.do') %></h4>
         <ul class='section-list'>
-          <li><b>Be Nice.</b> We value diversity and encourage lively debate. We want people to feel safe and welcome posting here. Please be polite and respectful in your interactions. By posting, you are agreeing to abide by the <%= "#{I18n.t(:project_name)}" %> user agreement.</li>
-          <li><b>Be Relevant.</b> Please keep your posts on topic. When you introduce a new topic, please create a new post.  Use headlines to help others find your content later on.</li>
-          <li><b>Seek advice & share solutions.</b> Strive to shed more light than heat on a subject.</li>
-          <li><b>Share your expertise!</b> Aim to post content that is informative, educational or encourages discussion.</li>
-          <li><b>Be yourself.</b> You don’t need to share your real name but you should not be impersonating anyone.</li>
+          <li>
+            <b><%= t('about.community_guidelines.be_nice') %></b>
+            <%= t('about.community_guidelines.be_nice_explanation', platform: t(:project_name)) %>
+          </li>
+          <li>
+            <b><%= t('about.community_guidelines.be_relevant') %></b>
+            <%= t('about.community_guidelines.be_relevant_explanation') %>
+          </li>
+          <li>
+            <b><%= t('about.community_guidelines.seek_advice') %></b>
+            <%= t('about.community_guidelines.seek_advice_explanation') %></li>
+          <li>
+            <b><%= t('about.community_guidelines.share_expertise') %></b>
+            <%= t('about.community_guidelines.share_expertise_explanation') %>
+          </li>
+          <li>
+            <b><%= t('about.community_guidelines.be_yourself') %></b>
+            <%= t('about.community_guidelines.be_yourself_explanation') %>
+          </li>
         </ul>
 
-        <h4 class='text-submit'>DON'T:</h4>
+        <h4 class='text-submit'><%= t('about.community_guidelines.dont') %></h4>
         <ul class='section-list'>
-          <li>Post content that is confidential, defamatory, misleading or deceptive, offensive, abusive, harassing, threatening, designed to intimidate or bully, or that infringes copyright or contains hate speech.</li>
-          <li>Engage in commercial activity. Please do not use this site to promote the-sale of goods or services.</li>
-          <li>Use all CAPS in comments. Caps might be construed as yelling, which isn't nice.  Be careful with bolding or underlining – it can sometimes feel aggressive.</li>
+          <li><%= t('about.community_guidelines.unacceptable_content') %></li>
+          <li><%= t('about.community_guidelines.commercial_activity') %></li>
+          <li><%= t('about.community_guidelines.use_all_caps') %></li>
         </ul>
-
-        <p class='text-large text-underline'>Engaging in any of the “don’t” behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account.</p>
-
+        <p class='text-large text-underline'><%= t('about.community_guidelines.violation_warning') %></p>
       </div>
     </div>
   </div>
