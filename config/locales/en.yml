@@ -4,6 +4,10 @@ en:
   project_hashtag:  "#ChallengePlatformGenericTag"
   formal_project: "The %{project}"
 
+  constants:
+    like: 'Like'
+    liked: 'Liked'
+
   home:
     welcome: "Welcome to the %{platform}"
     explore: "Explore Our First Challenge"
