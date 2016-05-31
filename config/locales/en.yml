@@ -55,36 +55,35 @@ en:
       use_all_caps: "Use all CAPS in comments. Caps might be construed as yelling, which isn't nice. Be careful with bolding or underlining – it can sometimes feel aggressive."
       violation_warning: "Engaging in any of the \"don't\" behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account."
 
-
-  approach_ideas:
+  cookbook:
     _header:
       section_title: "Idea"
     show:
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  approach_stages:
+  recipe_stages:
     show:
-      title: "See approaches"
-      description: "See the approaches educators proposed to try the top ideas from Stage 2"
-      section_title: "Idea" # line 68
-      contributors: "Featured Contributors"
-      try: "Know how to try this idea?"
-      add_first: "Add the first approach."
-      question_1: "Know how to try this idea?"
-      question_2: "Want to try this but not sure how?"
-      share: "<i class='fa fa-flask'></i> Share your approach"
-      join: "<i class='fa fa-comments-o'></i> Join the discussion"
-      comment_expand: "See all %{count} comments <i class='fa fa-angle-right'></i>"
-      stage_name: "approach"
+      featured_contributions: "Featured Contributions"
+      cookbook:
+        header: "Cookbook"
+        have_recipe: "Have a recipe for this cookbook?"
+        feedback: "Feedback on this cookbook?"
+      share: "Share your recipe"
+      join: "Join the discussion"
+      comment: "comment"
+      recipe: "recipe"
+      discussion: "discussion"
+      comment_expand: "See all %{pluralized_comment_count}"
       add_new: "+ Add yours"
-      show_more: "Show %{count} More Approaches"
+      more_recipe: "More Recipe"
+      show_more: "Show %{pluralized_recipe_count}"
       show_less: "Show Less"
-      discussion_expand: "See all %{count} discussions <i class='fa fa-angle-right'></i>"
+      discussion_expand: "See all %{pluralized_discussion_count}"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  approaches:
+  recipes:
     card:
       _new:
         new_question: "Know how to try this idea?"
