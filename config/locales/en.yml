@@ -4,6 +4,10 @@ en:
   project_hashtag:  "#ChallengePlatformGenericTag"
   formal_project: "The %{project}"
 
+  constants:
+    like: 'Like'
+    liked: 'Liked'
+
   home:
     welcome: "Welcome to the %{platform}"
     explore: "Explore Our First Challenge"
@@ -55,94 +59,104 @@ en:
       use_all_caps: "Use all CAPS in comments. Caps might be construed as yelling, which isn't nice. Be careful with bolding or underlining – it can sometimes feel aggressive."
       violation_warning: "Engaging in any of the \"don't\" behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account."
 
-
-  approach_ideas:
+  cookbook:
     _header:
-      section_title: "Idea"
+      title: "Cookbook"
     show:
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  approach_stages:
+  recipe_stages:
+    headline: "Develop Recipes"
+    description: "Develop and propose different recipes to tackling this challenge."
     show:
-      title: "See approaches"
-      description: "See the approaches educators proposed to try the top ideas from Stage 2"
-      section_title: "Idea" # line 68
-      contributors: "Featured Contributors"
-      try: "Know how to try this idea?"
-      add_first: "Add the first approach."
-      question_1: "Know how to try this idea?"
-      question_2: "Want to try this but not sure how?"
-      share: "<i class='fa fa-flask'></i> Share your approach"
-      join: "<i class='fa fa-comments-o'></i> Join the discussion"
-      comment_expand: "See all %{count} comments <i class='fa fa-angle-right'></i>"
-      stage_name: "approach"
+      featured_contributions: "Featured Contributions"
+      cookbook:
+        header: "Cookbook"
+        have_recipe: "Have a recipe for this cookbook?"
+        feedback: "Feedback on this cookbook?"
+      share: "Share your recipe"
+      join: "Join the discussion"
+      comment: "comment"
+      recipe: "recipe"
+      discussion: "discussion"
+      comment_expand: "See all %{pluralized_comment_count}"
       add_new: "+ Add yours"
-      show_more: "Show %{count} More Approaches"
+      more_recipe: "More Recipe"
+      show_more: "Show %{pluralized_recipe_count}"
       show_less: "Show Less"
-      discussion_expand: "See all %{count} discussions <i class='fa fa-angle-right'></i>"
+      discussion_expand: "See all %{pluralized_discussion_count}"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  approaches:
+  recipes:
     card:
       _new:
         new_question: "Know how to try this idea?"
-        submit_new: "Share your approach"
+        submit_new: "Share your recipe."
         discussion_question: "Still not sure?"
-        see_discusion: "See the discussion for this idea <i class='fa fa-angle-right'></i>"
+        see_discusion: "See the discussion for this idea"
       _show:
+        featured: "Featured"
         edit: "Edit"
         delete: "Delete"
-        confirm: "Are you sure you want to delete your approach?"
+        confirm: "Are you sure you want to delete your recipe?"
         flag: "Flag"
-        header_1: "How To"
-        header_2: "Description"
-        header_3: "What you'll need"
-    modals:
-      _form:
-        title_placeholder: "Add a Title"
-        description_label: "Description"
-        description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?"
-        needs_label: "Resources Needed"
-        needs_placeholder: "List any required materials or resources."
-        steps_label: "How To"
-        step_placeholder: "Click to add another step"
-        save: "Save and finish later"
-        cancel: "Cancel"
-        cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        submit: "Share Approach"
-        header: "Optional"
-        add_link: "Add a link to a video, article, image or other supporting material"
-        add_url: "Add URL"
-        instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
-      _header:
-        title: "An approach to the idea of"
-        featured: "Featured Approach"
-      _step_fields:
-        description_placeholder: "Outline how to test this idea step by step."
-      edit:
-        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "Edit Approach"
-        submit: "Update Approach"
-      new: 
-        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "New Approach"
-        submit: "Share Approach"
-      show: 
-        title: "Approach"
-        time: "%{time} ago"
-        edit: "<i class='fa fa-edit'></i> Edit"
-        delete: "<i class='fa fa-trash'></i> Delete"
-        confirm: "Are you sure you want to delete your approach?"
-        discuss: "<i class='fa fa-reply'></i> Discuss"
-        needs: "What You'll Need"
-        how: "How To"
-        link: "Link"
-        social_sharing_question: "Know people who have something to add to this conversation?"
-        social_sharing_description: "More people means more problems solved. Share this challenge!"
+        how_to: "How To"
+        description: "Description"
+        materials_needed: "Materials Needed"
+    _try:
+      trying_out: "Trying Out"
+      try_out: "Try Out"
+      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
+    _form:
+      steps_label: "How To"
+      step_placeholder: "Click to add another step"
+      save: "Save and finish later"
+      cancel: "Cancel"
+      cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Share Approach"
+      header_optional: "Optional"
+      add_link: "Add a link to a video, article, image or other supporting material"
+      add_url: "Add URL"
+      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+    _header:
+      title: "A recipe for the cookbook"
+      featured: "Featured Recipe"
+    _step_fields:
+      description_placeholder: "Outline how to test this idea step by step."
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "Edit Recipe"
+      submit: "Update Recipe"
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "New Recipe"
+      submit: "Share Recipe"
+    show:
+      title: "Recipe"
+      time: "%{time} Ago"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure you want to delete your recipe?"
+      discuss: "Discuss"
+      materials: "Materials"
+      community: "Community"
+      conditions: "Conditions"
+      problem_statement: "Problem Statement & Desecription"
+      how: "How To"
+      evidence: "Evidence to know we're on the right track"
+      protips: "Protips for Practical Problem Solving"
+      link: "Link"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   challenges:
+    helper:
+      days: "Days"
+      hours: "Hours"
+      minutes: "Minutes"
+      time_left: "%{number} %{unit} Left"
     show:
       cta: "Get Set, Create!"
       completed: "Completed"
@@ -164,11 +178,12 @@ en:
       _edit:
         submit: "Update"
       _form:
-        comment_placeholder: "What do you think about this %{stage} Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback."
-        comment_help: "Add a link to a video, article, or image" # line 22
-        url_placeholder: "Add URL" # line 27
+        comment_placeholder: "What do you think about this %{stage}? Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback."
+        add_link: "Add a link to a video, article, or image"
+        url_placeholder: "Add URL"
         url_help: "Attach a link and we'll display it alongside your post."
         cancel: "Cancel"
+        submit: "Submit"
       _new:
         reply: "In reply to Comment #{{temporal_parent_id}} above."
         cancel: "Cancel reply?"
@@ -176,14 +191,16 @@ en:
         organization: "Your Organization"
         submit: "Submit"
       _show:
-        time: "%{time} ago"
+        time: "%{time} Ago"
         reply: "Reply"
         edit: "Edit"
         delete:  "Delete"
         confirm:  "Are you sure you want to delete your comment?"
         flag: "Flag"
+        community_guide: "Community Guide"
+        link: "Link:"
     _discussion:
-      header: "Discussion test"
+      header: "Discussion (%{count})"
       add: "+ Add Comment"
     _form:
       reply: "In reply to Comment #{{temporal_parent_id}} above."
@@ -203,6 +220,8 @@ en:
       submit: "Submit"
 
   experience_stages:
+    headline: "Share Experiences"
+    description: "Tell others about your experience with this challenge."
     show:
       inspired: "Get inspired."
       browse: "Browse the stories other educators shared."
@@ -267,6 +286,8 @@ en:
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   idea_stages:
+    headline: "Contribute Ideas"
+    description: "Contribute and compare ideas you might use to solve this challenge."
     show:
       cta: "Get some ideas."
       cta2: "Look at the ideas other educators have shared."
@@ -402,6 +423,8 @@ en:
         subscribed: "You are subscribed."
 
   shared:
+    _avatar:
+      you: "you"
     _draft:
       header: "Draft"
       continue: "Continue Editing >"
@@ -409,6 +432,8 @@ en:
       confirm: "Are you sure you wish to delete your draft?"
 
   solution_stages:
+    headline: "See Your Solutions"
+    description: "See stories of how real schools have adopted the solutions you've inspired, or try them out yourself!"
     show:
       previous: "Previous"
       next: "Next"

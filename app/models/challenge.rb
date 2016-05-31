@@ -91,32 +91,32 @@ class Challenge < ActiveRecord::Base
       name: 'experience',
       action: 'shared',
       icon: 'fa-comment',
-      headline: 'Share Experiences',
-      description: 'Tell others about your experience with this challenge.'
+      headline: I18n.t('experience_stages.headline'),
+      description: I18n.t('experience_stages.description')
     },
     {
       number: 2,
       name: 'idea',
       action: 'contributed',
       icon: 'fa-lightbulb-o',
-      headline: 'Contribute Ideas',
-      description: 'Contribute and compare ideas you might use to solve this challenge.'
+      headline: I18n.t('idea_stages.headline'),
+      description: I18n.t('idea_stages.description')
     },
     {
       number: 3,
       name: 'recipe',
       action: 'developed',
       icon: 'fa-flask',
-      headline: 'Develop Recipes',
-      description: 'Develop and propose different recipes to tackling this challenge.'
+      headline: I18n.t('recipe_stages.headline'),
+      description: I18n.t('recipe_stages.description')
     },
     {
       number: 4,
       name: 'solution',
       action: 'tried',
       icon: 'fa-puzzle-piece',
-      headline: 'See Your Solutions',
-      description: 'See stories of how real schools have adopted the solutions you’ve inspired, or try them out yourself!'
+      headline: I18n.t('solution_stages.headline'),
+      description: I18n.t('solution_stages.description')
     }
   ]
 end

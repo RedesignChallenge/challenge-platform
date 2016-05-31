@@ -1,18 +1,12 @@
 <div class='row row-count'>
-  <div class='col-xs-3'>
-    <ul class='action text-left text-small list-inline'>
-      <!-- <li><a>Popular</a></li>
-      <li><a>Latest</a></li> -->
-    </ul>
-  </div>
-  <div class='col-xs-6'>
+  <div class='col-xs-6 col-xs-offset-3'>
     <h6 class='text-center center-block'>
       <i class='fa fa-comments-o fa-3x'></i><br>
-      <span class='text-bolder'>Discussion <%= "(#{commentable.comments_count})" unless commentable.comments_count.zero? %></span>
+      <span class='text-bolder'><%= t('comments._discussion.header', count: commentable.comments_count) unless commentable.comments_count.zero? %></span>
     </h6>
   </div>
   <div class='col-xs-3'>
-    <p class='action text-right text-small'><%= link_to("+ Add Comment", "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', "du-smooth-scroll" => true) unless commentable.comments_count.zero? %></p>
+    <p class='action text-right text-small'><%= link_to(t('comments._discussion.add'), "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', 'du-smooth-scroll' => true) unless commentable.comments_count.zero? %></p>
   </div>
 </div>
 

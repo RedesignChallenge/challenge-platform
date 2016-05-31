@@ -4,11 +4,11 @@ FILE_EXTENSION_WHITELIST = %w(pdf doc docx xls xlsx ppt pptx)
 DEFAULT_LIKE = {
   scope: 'like',
   liked: {
-    name: 'Liked',
+    name: I18n.t('constants.liked'),
     icon: 'fa fa-thumbs-up'
   },
   unliked: {
-    name: 'Like',
+    name: I18n.t('constants.like'),
     icon: 'fa fa-thumbs-o-up'
   }
 }
