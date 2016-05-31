@@ -37,24 +37,24 @@ module ChallengesHelper
 
       if remaining/1.day >= 2
         number = (remaining/1.day).floor
-        unit = 'Days'
+        unit = I18n.t('challenges.helper.days')
       elsif remaining/1.hour >= 2
         number = (remaining/1.hour).floor
-        unit = 'Hours'
+        unit = I18n.t('challenges.helper.hours')
       elsif remaining/1.minute > 1
         number = (remaining/1.minute).floor
-        unit = 'Minutes'
+        unit = I18n.t('challenges.helper.minutes')
       else
         number = 0
-        unit = 'Days'
+        unit = I18n.t('challenges.helper.days')
       end
 
-      time = "#{number} #{unit} Left"
+      time = I18n.t('challenges.helper.time_left', number: number, unit: unit)
     else
       time = ''
     end
 
-    return time.html_safe
+    time.html_safe
   end
 
 end

@@ -63,6 +63,8 @@ en:
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   recipe_stages:
+    headline: "Develop Recipes"
+    description: "Develop and propose different recipes to tackling this challenge."
     show:
       featured_contributions: "Featured Contributions"
       cookbook:
@@ -142,6 +144,11 @@ en:
         social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   challenges:
+    helper:
+      days: "Days"
+      hours: "Hours"
+      minutes: "Minutes"
+      time_left: "%{number} %{unit} Left"
     show:
       cta: "Get Set, Create!"
       completed: "Completed"
@@ -202,6 +209,8 @@ en:
       submit: "Submit"
 
   experience_stages:
+    headline: "Share Experiences"
+    description: "Tell others about your experience with this challenge."
     show:
       inspired: "Get inspired."
       browse: "Browse the stories other educators shared."
@@ -266,6 +275,8 @@ en:
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   idea_stages:
+    headline: "Contribute Ideas"
+    description: "Contribute and compare ideas you might use to solve this challenge."
     show:
       cta: "Get some ideas."
       cta2: "Look at the ideas other educators have shared."
@@ -408,6 +419,8 @@ en:
       confirm: "Are you sure you wish to delete your draft?"
 
   solution_stages:
+    headline: "See Your Solutions"
+    description: "See stories of how real schools have adopted the solutions you've inspired, or try them out yourself!"
     show:
       previous: "Previous"
       next: "Next"
