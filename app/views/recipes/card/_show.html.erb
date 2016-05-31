@@ -2,7 +2,7 @@
   <% if recipe.featured? %>
     <div class="ribbon-wrapper">
       <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) do %>
-        <div class="ribbon ribbon-recipe">Featured</div>
+        <div class="ribbon ribbon-recipe"><%= t('recipe.card._show.featured') %></div>
       <% end %>
     </div>
   <% end %>
@@ -47,10 +47,10 @@
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="recipe-<%= recipe.id %>-other">
                 <% if user_signed_in? && recipe.user == current_user %>
-                  <li class='dropdown-link'><%= link_to 'Edit', edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) %></li>
-                  <li class='dropdown-link'><%= link_to 'Delete', challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe.id), method: :delete, data: { confirm: "Are you sure you want to delete your recipe?"} %></li>
+                  <li class='dropdown-link'><%= link_to t('recipe.card._show.edit'), edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) %></li>
+                  <li class='dropdown-link'><%= link_to t('recipe.card._show.delete'), challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe.id), method: :delete, data: { confirm: t('recipe.card._show.confirm')} %></li>
                 <% else %>
-                  <li  class='dropdown-link'><%= link_to 'Flag', '#' %></li>
+                  <li  class='dropdown-link'><%= link_to t('recipe.card._show.flag'), '#' %></li>
                 <% end %>
               </ul>
             </li>
@@ -65,7 +65,7 @@
     <div class='col-xs-7 col-xs-offset-1'>
       <% if !recipe.steps.count.zero? %>
         <div class='recipe-steps'>
-          <h6 class='text-recipe'>How To</h6>
+          <h6 class='text-recipe'><%= t('recipe.card._show.how_to') %></h6>
           <p><b class='text-recipe'>1.</b> <%= truncate_html(recipe.steps.first.description, length: 140).html_safe %></p>
           <% if recipe.steps.count > 2 %>
             <p style='margin-left: 15px'><i class='fa fa-ellipsis-v text-recipe'></i></p>
@@ -73,12 +73,12 @@
           <% end %>
         </div>
       <% else %>
-        <h6 class='text-recipe'>Description</h6>
+        <h6 class='text-recipe'><%= t('recipe.card._show.description') %></h6>
         <p class='recipe-description'><%= truncate_html(recipe.description, length: 140).html_safe %></p>
       <% end %>
     </div>
     <div class='col-xs-4'>
-      <h6 class='text-recipe'>Materials Needed</h6>
+      <h6 class='text-recipe'><%= t('recipe.card._show.materials_needed') %></h6>
       <p><%= truncate_html(recipe.materials, length: 250).html_safe %></p>
     </div>
   </div>

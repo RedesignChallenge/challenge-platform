@@ -85,7 +85,7 @@ en:
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  recipes:
+  recipe:
     card:
       _new:
         new_question: "Know how to try this idea?"
@@ -93,13 +93,14 @@ en:
         discussion_question: "Still not sure?"
         see_discusion: "See the discussion for this idea <i class='fa fa-angle-right'></i>"
       _show:
+        featured: "Featured"
         edit: "Edit"
         delete: "Delete"
-        confirm: "Are you sure you want to delete your approach?"
+        confirm: "Are you sure you want to delete your recipe?"
         flag: "Flag"
-        header_1: "How To"
-        header_2: "Description"
-        header_3: "What you'll need"
+        how_to: "How To"
+        description: "Description"
+        materials_needed: "Materials Needed"
     modals:
       _form:
         title_placeholder: "Add a Title"
@@ -412,6 +413,8 @@ en:
         subscribed: "You are subscribed."
 
   shared:
+    _avatar:
+      you: "you"
     _draft:
       header: "Draft"
       continue: "Continue Editing >"

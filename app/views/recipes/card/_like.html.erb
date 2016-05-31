@@ -1,10 +1,10 @@
 <% if user_signed_in? && current_user.liked?(recipe, {vote_scope: recipe.default_like[:scope]}) %>
-  <%= link_to unlike_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, partial: "card/like"), class: 'list-link', method: :put, remote: true do %>
+  <%= link_to unlike_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, partial: 'card/like'), class: 'list-link', method: :put, remote: true do %>
     <i class='<%= recipe.default_like[:liked][:icon] %>'></i> 
     <%= "#{recipe.cached_votes_up}" unless recipe.cached_votes_up.zero? %>
   <% end %>
 <% else %>
-  <%= link_to like_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, partial: "card/like"), class: 'list-link', method: :put, remote: user_signed_in? do %>
+  <%= link_to like_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, partial: 'card/like'), class: 'list-link', method: :put, remote: user_signed_in? do %>
     <i class='<%= recipe.default_like[:unliked][:icon] %>'></i> 
     <%= "#{recipe.cached_votes_up}" unless recipe.cached_votes_up.zero? %>
   <% end %>
