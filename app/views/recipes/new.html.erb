@@ -10,10 +10,10 @@
 
         <div class="panel panel-recipe">
           <div class="panel-heading">
-            <p class="panel-title"><%= t('recipe.modals.new.title') %></p>
+            <p class="panel-title"><%= t('recipes.modals.new.title') %></p>
           </div>
           <div class="panel-body">
-            <%= render partial: 'recipes/form', locals: { url: challenge_recipe_stage_cookbook_recipes_path, cancel_path: challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), submit_text: t('recipe.modals.new.submit')} %>
+            <%= render partial: 'recipes/form', locals: { url: challenge_recipe_stage_cookbook_recipes_path, cancel_path: challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), submit_text: t('recipes.modals.new.submit')} %>
           </div>
         </div>
       </div>

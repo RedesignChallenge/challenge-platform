@@ -85,7 +85,7 @@ en:
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
-  recipe:
+  recipes:
     _try:
       trying_out: "Trying Out"
       try_out: "Try Out"
