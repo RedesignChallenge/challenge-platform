@@ -10,7 +10,7 @@
         <div class='well well-recipe'>
           <span class="label label-recipe pull-left">
             <i class='fa fa-flask'></i>
-            <%= t('recipes.modals.show.title') %>
+            <%= t('recipes.show.title') %>
           </span>
           <div class='clearfix'></div>
 
@@ -26,7 +26,7 @@
                     <div class='user-caption' style='<%= 'margin-top: 0.5em' if @recipe.user.avatar.present? %>'>
                       <p class='user-name'><%= link_to "#{@recipe.user.display_name}", user_path(@recipe.user) %></p>
                       <p class='user-title text-default'><%= @recipe.user.display_organization %></p>
-                      <p class='user-link'><%= t('recipes.modals.show.time', time: time_ago_in_words(@recipe.created_at).titleize) %></p>
+                      <p class='user-link'><%= t('recipes.show.time', time: time_ago_in_words(@recipe.created_at).titleize) %></p>
                     </div>
                   </div>
                 </div>
@@ -39,11 +39,11 @@
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
                           <%= link_to edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' do %>
                             <i class='fa fa-edit'></i>
-                            <%= t('recipes.modals.show.edit') %>
+                            <%= t('recipes.show.edit') %>
                           <% end %>
-                          <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), method: :delete, data: { confirm: t('recipes.modals.show.confirm') }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' do %>
+                          <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), method: :delete, data: { confirm: t('recipes.show.confirm') }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' do %>
                             <i class='fa fa-trash'></i>
-                              <%= t('recipes.modals.show.delete') %>
+                              <%= t('recipes.show.delete') %>
                           <% end %>
                         </div>
                       <% else %>
@@ -59,7 +59,7 @@
                       <div id='recipe-<%= @recipe.id %>-discuss' style='margin-bottom:10px'>
                         <%= link_to '#recipe-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true do %>
                           <i class='fa fa-reply'></i>
-                          <%= t('recipes.modals.show.discuss') %>
+                          <%= t('recipes.show.discuss') %>
                         <% end %>
                       </div>
 
@@ -74,21 +74,21 @@
 
                 <% if @recipe.materials.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.materials') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.materials') %></p>
                     <p><%= @recipe.materials.html_safe %></p>
                   </div>
                 <% end %>
 
                 <% if @recipe.community.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.community') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.community') %></p>
                     <p><%= @recipe.community.html_safe %></p>
                   </div>
                 <% end %>
 
                 <% if @recipe.conditions.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.conditions') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.conditions') %></p>
                     <p><%= @recipe.conditions.html_safe %></p>
                   </div>
                 <% end %>
@@ -104,13 +104,13 @@
                 <% end %>
 
                 <div class='content-block'>
-                  <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.problem_statement') %></p>
+                  <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.problem_statement') %></p>
                   <p><%= @recipe.description.html_safe %></p>
                 </div>
 
                 <% if @recipe.steps.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.how') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.how') %></p>
                     <% @recipe.steps.each_with_index do |step, index| %>
                       <div class='media media-step'>
                         <div class='media-left'>
@@ -129,21 +129,21 @@
 
                 <% if @recipe.evidence.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.evidence') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.evidence') %></p>
                     <p><%= @recipe.evidence.html_safe %></p>
                   </div>
                 <% end %>
 
                 <% if @recipe.protips.present? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.protips') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.protips') %></p>
                     <p><%= @recipe.protips.html_safe %></p>
                   </div>
                 <% end %>
 
                 <% if @recipe.link.present? && @recipe.embed.blank? %>
                   <div class='content-block'>
-                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.modals.show.link') %></p>
+                    <p class='text-recipe text-large text-bold text-uppercase'><%= t('recipes.show.link') %></p>
                     <p><%= link_to @recipe.link.html_safe, @recipe.link, target: '_blank' %></p>
                   </div>
                 <% end %>
@@ -170,8 +170,8 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-        <h2 class='section-title text-submit'><%= t('recipes.modals.show.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('recipes.modals.show.social_sharing_description') %></p>
+        <h2 class='section-title text-submit'><%= t('recipes.show.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('recipes.show.social_sharing_description') %></p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
       </div>

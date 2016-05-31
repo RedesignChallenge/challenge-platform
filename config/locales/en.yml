@@ -86,10 +86,6 @@ en:
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   recipes:
-    _try:
-      trying_out: "Trying Out"
-      try_out: "Try Out"
-      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
     card:
       _new:
         new_question: "Know how to try this idea?"
@@ -105,48 +101,51 @@ en:
         how_to: "How To"
         description: "Description"
         materials_needed: "Materials Needed"
-    modals:
-      _form:
-        steps_label: "How To"
-        step_placeholder: "Click to add another step"
-        save: "Save and finish later"
-        cancel: "Cancel"
-        cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        submit: "Share Approach"
-        header_optional: "Optional"
-        add_link: "Add a link to a video, article, image or other supporting material"
-        add_url: "Add URL"
-        instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
-      _header:
-        title: "A recipe for the cookbook"
-        featured: "Featured Recipe"
-      _step_fields:
-        description_placeholder: "Outline how to test this idea step by step."
-      edit:
-        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "Edit Recipe"
-        submit: "Update Recipe"
-      new: 
-        confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "New Recipe"
-        submit: "Share Recipe"
-      show: 
-        title: "Recipe"
-        time: "%{time} Ago"
-        edit: "Edit"
-        delete: "Delete"
-        confirm: "Are you sure you want to delete your recipe?"
-        discuss: "Discuss"
-        materials: "Materials"
-        community: "Community"
-        conditions: "Conditions"
-        problem_statement: "Problem Statement & Desecription"
-        how: "How To"
-        evidence: "Evidence to know we're on the right track"
-        protips: "Protips for Practical Problem Solving"
-        link: "Link"
-        social_sharing_question: "Know people who have something to add to this conversation?"
-        social_sharing_description: "More people means more problems solved. Share this challenge!"
+    _try:
+      trying_out: "Trying Out"
+      try_out: "Try Out"
+      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
+    _form:
+      steps_label: "How To"
+      step_placeholder: "Click to add another step"
+      save: "Save and finish later"
+      cancel: "Cancel"
+      cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Share Approach"
+      header_optional: "Optional"
+      add_link: "Add a link to a video, article, image or other supporting material"
+      add_url: "Add URL"
+      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+    _header:
+      title: "A recipe for the cookbook"
+      featured: "Featured Recipe"
+    _step_fields:
+      description_placeholder: "Outline how to test this idea step by step."
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "Edit Recipe"
+      submit: "Update Recipe"
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "New Recipe"
+      submit: "Share Recipe"
+    show:
+      title: "Recipe"
+      time: "%{time} Ago"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure you want to delete your recipe?"
+      discuss: "Discuss"
+      materials: "Materials"
+      community: "Community"
+      conditions: "Conditions"
+      problem_statement: "Problem Statement & Desecription"
+      how: "How To"
+      evidence: "Evidence to know we're on the right track"
+      protips: "Protips for Practical Problem Solving"
+      link: "Link"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   challenges:
     helper:
