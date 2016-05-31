@@ -57,7 +57,7 @@ en:
 
   cookbook:
     _header:
-      section_title: "Idea"
+      title: "Cookbook"
     show:
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
@@ -86,12 +86,16 @@ en:
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   recipe:
+    _try:
+      trying_out: "Trying Out"
+      try_out: "Try Out"
+      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
     card:
       _new:
         new_question: "Know how to try this idea?"
-        submit_new: "Share your approach"
+        submit_new: "Share your recipe."
         discussion_question: "Still not sure?"
-        see_discusion: "See the discussion for this idea <i class='fa fa-angle-right'></i>"
+        see_discusion: "See the discussion for this idea"
       _show:
         featured: "Featured"
         edit: "Edit"
@@ -103,43 +107,43 @@ en:
         materials_needed: "Materials Needed"
     modals:
       _form:
-        title_placeholder: "Add a Title"
-        description_label: "Description"
-        description_placeholder: "Describe how to try this idea. What is your approach? What are the goals? What are the challenges? Why does this approach matter?"
-        needs_label: "Resources Needed"
-        needs_placeholder: "List any required materials or resources."
         steps_label: "How To"
         step_placeholder: "Click to add another step"
         save: "Save and finish later"
         cancel: "Cancel"
         cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
         submit: "Share Approach"
-        header: "Optional"
+        header_optional: "Optional"
         add_link: "Add a link to a video, article, image or other supporting material"
         add_url: "Add URL"
         instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
       _header:
-        title: "An approach to the idea of"
-        featured: "Featured Approach"
+        title: "A recipe for the cookbook"
+        featured: "Featured Recipe"
       _step_fields:
         description_placeholder: "Outline how to test this idea step by step."
       edit:
         confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "Edit Approach"
-        submit: "Update Approach"
+        title: "Edit Recipe"
+        submit: "Update Recipe"
       new: 
         confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-        title: "New Approach"
-        submit: "Share Approach"
+        title: "New Recipe"
+        submit: "Share Recipe"
       show: 
-        title: "Approach"
-        time: "%{time} ago"
-        edit: "<i class='fa fa-edit'></i> Edit"
-        delete: "<i class='fa fa-trash'></i> Delete"
-        confirm: "Are you sure you want to delete your approach?"
-        discuss: "<i class='fa fa-reply'></i> Discuss"
-        needs: "What You'll Need"
+        title: "Recipe"
+        time: "%{time} Ago"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your recipe?"
+        discuss: "Discuss"
+        materials: "Materials"
+        community: "Community"
+        conditions: "Conditions"
+        problem_statement: "Problem Statement & Desecription"
         how: "How To"
+        evidence: "Evidence to know we're on the right track"
+        protips: "Protips for Practical Problem Solving"
         link: "Link"
         social_sharing_question: "Know people who have something to add to this conversation?"
         social_sharing_description: "More people means more problems solved. Share this challenge!"
@@ -171,11 +175,12 @@ en:
       _edit:
         submit: "Update"
       _form:
-        comment_placeholder: "What do you think about this %{stage} Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback."
-        comment_help: "Add a link to a video, article, or image" # line 22
-        url_placeholder: "Add URL" # line 27
+        comment_placeholder: "What do you think about this %{stage}? Suggest an improvement, explain how you think this %{stage} could be implemented, or provide other feedback."
+        add_link: "Add a link to a video, article, or image"
+        url_placeholder: "Add URL"
         url_help: "Attach a link and we'll display it alongside your post."
         cancel: "Cancel"
+        submit: "Submit"
       _new:
         reply: "In reply to Comment #{{temporal_parent_id}} above."
         cancel: "Cancel reply?"
@@ -183,14 +188,16 @@ en:
         organization: "Your Organization"
         submit: "Submit"
       _show:
-        time: "%{time} ago"
+        time: "%{time} Ago"
         reply: "Reply"
         edit: "Edit"
         delete:  "Delete"
         confirm:  "Are you sure you want to delete your comment?"
         flag: "Flag"
+        community_guide: "Community Guide"
+        link: "Link:"
     _discussion:
-      header: "Discussion test"
+      header: "Discussion (%{count})"
       add: "+ Add Comment"
     _form:
       reply: "In reply to Comment #{{temporal_parent_id}} above."

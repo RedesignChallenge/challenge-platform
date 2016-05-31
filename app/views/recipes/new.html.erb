@@ -2,28 +2,21 @@
 
 <div id='recipe-form'>
   <div class='container'>
-
     <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), data: { confirm: "Are you sure you want to cancel? Any unsaved work will be lost." } %>
     <div class='clearfix'></div>
-
     <%= render partial: 'recipes/header' %>
-
     <div class='row'>
       <div class='col-xs-10 col-xs-offset-1'>
 
         <div class="panel panel-recipe">
           <div class="panel-heading">
-            <p class="panel-title">New Recipe</p>
+            <p class="panel-title"><%= t('recipe.modals.new.title') %></p>
           </div>
           <div class="panel-body">
-            <%= render partial: 'recipes/form', locals: { url: challenge_recipe_stage_cookbook_recipes_path, cancel_path: challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), submit_text: 'Share Recipe'} %>
+            <%= render partial: 'recipes/form', locals: { url: challenge_recipe_stage_cookbook_recipes_path, cancel_path: challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), submit_text: t('recipe.modals.new.submit')} %>
           </div>
         </div>
-
       </div>
     </div>
-
-  
-
   </div>
 </div>

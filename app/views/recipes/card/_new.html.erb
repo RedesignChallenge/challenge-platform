@@ -1,7 +1,13 @@
 <div id='cookbook-<%= cookbook.id %>-new' class='recipe-new'>
   <div class='well well-lg well-share'>
-    <p>Know how to try this idea? <%= link_to "Share your recipe", new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook) %>.</p>
+    <p><%= t('recipe.card._new.new_question') %> <%= link_to t('recipe.card._new.submit_new'), new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook) %></p>
 
-    <p class='subtitle'>Still not sure? <%= link_to "See the discussion for this idea <i class='fa fa-angle-right'></i>".html_safe, challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook) %></p>
+    <p class='subtitle'>
+      <%= t('recipe.card._new.discussion_question') %>
+      <%= link_to challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook) do %>
+          <%= t('recipe.card._new.see_discusion') %>
+          <i class='fa fa-angle-right'></i>
+      <% end %>
+    </p>
   </div>
 </div>
