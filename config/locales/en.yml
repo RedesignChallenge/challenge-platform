@@ -459,11 +459,8 @@ en:
 
   solution_stories:
     card:
-      header: "Required Effort"
-      time1: "hours"
-      time2: "days"
-      time3: "weeks"
-      time4: "months"
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      featured: "Featured"
     show:
       header: "Story From The Field"
       header2: "How To Guide"
