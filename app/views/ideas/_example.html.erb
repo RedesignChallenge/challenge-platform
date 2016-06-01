@@ -3,48 +3,43 @@
     <div class="thumbnail idea-example-thumbnail">
 
       <div class='form-group'>
-        <div style='margin:12px' class='label label-default'>EXAMPLE IDEA</div>
-      </div>
-      
-      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='A concise descriptive title makes it easy for people to find and understand your idea.' data-container='.example-switch'>
-        <p class='example-idea-title'>Flipped Professional Learning for Teachers</p>
+        <div style='margin:12px' class='label label-default'><%= t('ideas._example.header') %></div>
       </div>
 
-      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='Explain your idea in terms of how it might be executed and how it could impact the various people involved.' data-container='.example-switch'>
-        <p class='example-idea-description'>
-          Teaching is hard and regardless of the grade-level or subject area, there are gaps in teacher content knowledge.  So, what if we had teachers creating five-minute mini-lessons for other teachers?  Struggling to teach balancing equations?  Watch this video by a great math teacher in Texas.  Not sure about comma splices?  Check out this video by an English teacher in New York
-        </p>
-
-        <%= label_tag "Potential Impact" %>
-        <p class='example-idea-description'>
-          This idea can impact all teachers, from K-12 as it is simply a way for teachers to quickly remediate small gaps in their content knowledge.
-        </p>
-
-        <%= label_tag "Possible Implementation" %>
-        <p class='example-idea-description'>
-          A website where teachers can submit these videos.  They would then get sorted, filtered, and tagged by discipline and skill for easy access.
-        </p>
+      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='<%= t('ideas._example.title_popover') %>' data-container='.example-switch'>
+        <p class='example-idea-title'><%= t('ideas._example.title') %></p>
       </div>
 
-      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='Adding a link to a video, article, image, or other supporting material helps make your idea engaging.' data-container='.example-switch'>
-        <%= label_tag "Link" %>
+      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='<%= t('ideas._example.potential_impact_popover') %>' data-container='.example-switch'>
         <p class='example-idea-description'>
+          <%= t('ideas._example.body') %>
+        </p>
 
+        <%= label_tag t('ideas._example.potential_impact') %>
+        <p class='example-idea-description'>
+          <%= t('ideas._example.potential_impact_body') %>
+        </p>
+
+        <%= label_tag t('ideas._example.possible_implementation') %>
+        <p class='example-idea-description'>
+          <%= t('ideas._example.possible_implementation_body') %>
         </p>
       </div>
 
+      <div class='form-group example-popover' data-toggle='popover' data-trigger='manual' data-placement='right' html='true' data-content='<%= t('ideas._example.link_description') %>' data-container='.example-switch'>
+        <%= label_tag t('ideas._example.link') %>
+        <p class='example-idea-description'></p>
+      </div>
     </div>
   </div>
 </div>
 
 <div class='row'>
   <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
-
     <div class='row'>
       <div class='col-xs-4 col-xs-offset-8'>
-        <%= link_to "Go Back to My Idea", '#', class: 'btn btn-default btn-rounded btn-block pull-right', 'ng-click' => "showForm()", onclick: 'return false;' %>
+        <%= link_to t('ideas._example.go_back'), '#', class: 'btn btn-default btn-rounded btn-block pull-right', 'ng-click' => 'showForm()', onclick: 'return false;' %>
       </div>
     </div>
-
   </div>
 </div>
