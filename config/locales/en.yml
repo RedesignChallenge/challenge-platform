@@ -305,7 +305,15 @@ en:
       _new:
         cta: "Want to get involved? Contribute in"
         add: "Add Your Idea"
-      _show: 
+      _show:
+        featured: "Featured"
+        refinement: "Refinement of"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your idea?"
+        flag: "Flag"
+      _inspiration:
+        inspiration: "Inspiration"
         refinement: "Refinement of"
         edit: "Edit"
         delete: "Delete"

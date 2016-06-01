@@ -3,7 +3,7 @@
   <div class="thumbnail idea-inspiration">
     <div class="folded-corner">
 
-      <h6 class='text-uppercase text-bold text-idea-light'>Inspiration</h6>
+      <h6 class='text-uppercase text-bold text-idea-light'><%= t('ideas.card._inspiration.inspiration') %></h6>
 
       <div class='idea-title'>
         <p class='text-xlarge text-lighter text-normal text-white'><%= link_to truncate(idea.title, length: 50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-xlarge text-idea text-normal text-white' %></p>
@@ -13,7 +13,7 @@
 
       <% if idea.refinement_parent %>
         <p class='text-xsmall-normal text-white'>
-          <i class='fa fa-pencil text-white'></i> Refinement of 
+          <i class='fa fa-pencil text-white'></i> <%= t('ideas.card._inspiration.refinement') %>
           <%= link_to idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.refinement_parent), class: 'text-white text-underline' %>
         </p>
       <% end %>
@@ -35,10 +35,10 @@
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="idea-<%= idea.id %>-other">
             <% if user_signed_in? && idea.user == current_user %>
-              <li><%= link_to 'Edit', edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
-              <li><%= link_to 'Delete', challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: "Are you sure you want to delete your idea?"} %></li>
+              <li><%= link_to t('ideas.card._inspiration.edit'), edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
+              <li><%= link_to t('ideas.card._inspiration.delete'), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: t('ideas.card._inspiration.confirm')} %></li>
             <% else %>
-              <li role="presentation"><%= link_to 'Flag', '#' %></li>
+              <li role="presentation"><%= link_to t('ideas.card._inspiration.flag'), '#' %></li>
             <% end %>
           </ul>
         </li>
