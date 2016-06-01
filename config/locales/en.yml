@@ -449,40 +449,34 @@ en:
     show:
       previous: "Previous"
       next: "Next"
-      header: "Coming soon..."
-      header2: "The challenge is still running."
-      header3: "How people are meeting the challenge"
+      coming_soon:
+        header: "Coming soon..."
+        check_back:  "Check back to see how educators will be trying out your Challenge ideas."
+      meeting_the_challenge: "How people are meeting the challenge"
       stage: "story"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   solution_stories:
     card:
-      header: "Required Effort"
-      time1: "hours"
-      time2: "days"
-      time3: "weeks"
-      time4: "months"
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      featured: "Featured"
     show:
-      header: "Story From The Field"
-      header2: "How To Guide"
+      story_from_the_field: "Story From The Field"
+      how_to_guide: "How To Guide"
 
   solutions:
     show:
-      header: "Implemented by"
-      header2: "Based on Ideas by"
+      implemented_by: "Implemented by"
+      based_on_ideas: "Based on Ideas by"
       user: "you"
-      header3: "Inspired by the Experiences of"
-      discuss: "<i class='fa fa-reply'></i> Discuss"
-      download: "<i class='fa fa-download'></i> Download"
-      header4: "What You'll Need"
-      header5: "Required Effort"
-      time1: "hours"
-      time2: "days"
-      time3: "weeks"
-      time4: "months"
-      header6: "How To"
-      header7: "Link"
+      inspired_by: "Inspired by the Experiences of"
+      discuss: "Discuss"
+      download: "Download"
+      what_you_need: "What You'll Need"
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      how_to: "How To"
+      link: "Link"
 
   suggestions:
     card:

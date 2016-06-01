@@ -4,7 +4,7 @@
     <% if solution_story.solution.featured? %>
       <div class="ribbon-wrapper">
         <%= link_to challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) do %>
-          <div class="ribbon ribbon-solution">Featured</div>
+          <div class="ribbon ribbon-solution"><%= t('.featured') %></div>
         <% end %>
       </div>
     <% end %>
@@ -19,13 +19,12 @@
 
       <div class='solution_story-effort'>
         <div class='solution-effort' style='margin-bottom: 0px'>
-          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
-          <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
+          <span class="badge"><%= t('.required_effort_html') %></span>
+          <% %w(hours days weeks months).each do |effort| %>
             <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-
 </div>
