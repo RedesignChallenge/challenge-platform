@@ -19,7 +19,7 @@
 
             <% if @featured_ideas.present? %>
               <div class="featured-contributors">
-                <h6 class='zero-margin-bottom'>Featured Contributions</h6>
+                <h6 class='zero-margin-bottom'><%= t('.featured_contributions') %></h6>
                 <% @featured_ideas.each do |idea| %>
                   <%= render partial: 'shared/avatar', locals: { user:  idea.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
                 <% end %>
@@ -46,7 +46,8 @@
 
           <p class='cta text-lighter text-small'>
             <% if problem_statement.ideas.published.count.zero? %>
-              <i class='fa fa-plus'></i> Add the first idea
+              <i class='fa fa-plus'></i>
+              <%= t('.add_first_idea') %>
             <% else %>
               <i class='fa fa-lightbulb-o'></i> <%= problem_statement.ideas.published.count %>
             <% end %>
@@ -56,7 +57,6 @@
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
 
@@ -67,7 +67,7 @@
 
         <% @problem_statements.each do |problem_statement| %>
           <div id='problem_statement-<%= problem_statement.id %>' class='content-block-xl'>
-            <h6 class='text-center'>Problem Statement</h6>
+            <h6 class='text-center'><%= t('.problem_statement') %></h6>
             <h2 class='section-title text-idea'><%= problem_statement.title %></h2>
 
             <div class='row'>
@@ -77,13 +77,7 @@
             </div>
 
             <div class='row row-count'>
-              <div class='col-xs-3'>
-                <ul class='action text-left text-small list-inline'>
-                  <!-- <li><a>Popular</a></li>
-                  <li><a>Latest</a></li> -->
-                </ul>
-              </div>
-              <div class='col-xs-6'>
+              <div class='col-xs-6 col-xs-offset-3'>
                 <h6 class='text-center center-block'>
                   <i class='fa fa-lightbulb-o fa-3x'></i><br>
                   <span><%= pluralize(problem_statement.ideas.published.count, 'idea') %></span>
@@ -91,7 +85,7 @@
               </div>
               <div class='col-xs-3'>
                 <% unless @challenge.stage_number == 4 %>
-                  <p class='action text-right text-small'><%= link_to '+ Add yours', new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %></p>
+                  <p class='action text-right text-small'><%= link_to t('.add'), new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %></p>
                 <% end %>
               </div>
             </div>
@@ -116,9 +110,8 @@
 
               <% if problem_statement.ideas.published.count > (@challenge.stage_number == 4 ? 6 : 5) %>
                 <p class='center-block text-center'>
-                  <%= link_to "Show #{problem_statement.ideas.published.count-(@challenge.stage_number == 4 ? 6 : 5)} More Ideas", '#', "ng-hide" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
-
-                  <%= link_to "Show Less", "#problem_statement-#{problem_statement.id}", "ng-show" => "problem_statement_#{problem_statement.id}_ideas", "ng-click" => "problem_statement_#{problem_statement.id}_ideas=false", "du-smooth-scroll" => true, offset: '140', onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to t('.show_more', pluralized_idea_count: pluralize(problem_statement.ideas.published.count-(@challenge.stage_number == 4 ? 6 : 5), t('.more_idea'))), '#', 'ng-hide' => "problem_statement_#{problem_statement.id}_ideas", 'ng-click' => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to t('.show_less'), "#problem_statement-#{problem_statement.id}", 'ng-show' => "problem_statement_#{problem_statement.id}_ideas", 'ng-click' => "problem_statement_#{problem_statement.id}_ideas=false", 'du-smooth-scroll' => true, offset: '140', onclick: 'return false;', class: 'text-bold' %>
                 </p>
               <% end %>
             </div>
@@ -126,8 +119,8 @@
           </div>
         <% end %>
 
-        <h2 class='section-title text-idea'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-idea'><%= t('.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('.social_sharing_description') %></p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 
