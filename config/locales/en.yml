@@ -303,7 +303,8 @@ en:
   ideas:
     card:
       _new:
-        cta: "Want to get involved? Contribute in"
+        stage_number: "Stage %{number} >"
+        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
         add: "Add Your Idea"
       _show:
         featured: "Featured"
