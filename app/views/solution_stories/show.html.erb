@@ -7,9 +7,9 @@
 
         <div class="well well-solution_story">
           <% if @solution_story.embed.present? %>
-            <div class='solution_story-show-embed'><%= @solution_story.embed.html_safe %></div>
+              <div class='solution_story-show-embed'><%= @solution_story.embed.html_safe %></div>
           <% elsif @solution_story.image.present? %>
-            <%= image_tag(@solution_story.image.url, width: '100%') %>
+              <%= image_tag(@solution_story.image.url, width: '100%') %>
           <% end %>
 
           <div class='row'>
@@ -34,20 +34,18 @@
                 <%= render file: 'solutions/show', locals: { solution: @solution_story.solution } %>
               </div>
             </div>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
-</div>
 
-<div id='solution_story-comments'>
-  <div class='container'>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-
-        <%= render partial: 'comments/discussion', locals: { commentable: @solution_story.solution } %>
-
+  <div id='solution_story-comments'>
+    <div class='container'>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <%= render partial: 'comments/discussion', locals: { commentable: @solution_story.solution } %>
+        </div>
       </div>
     </div>
   </div>

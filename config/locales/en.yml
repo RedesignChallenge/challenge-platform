@@ -467,20 +467,16 @@ en:
 
   solutions:
     show:
-      header: "Implemented by"
-      header2: "Based on Ideas by"
+      implemented_by: "Implemented by"
+      based_on_ideas: "Based on Ideas by"
       user: "you"
-      header3: "Inspired by the Experiences of"
-      discuss: "<i class='fa fa-reply'></i> Discuss"
-      download: "<i class='fa fa-download'></i> Download"
-      header4: "What You'll Need"
-      header5: "Required Effort"
-      time1: "hours"
-      time2: "days"
-      time3: "weeks"
-      time4: "months"
-      header6: "How To"
-      header7: "Link"
+      inspired_by: "Inspired by the Experiences of"
+      discuss: "Discuss"
+      download: "Download"
+      what_you_need: "What You'll Need"
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      how_to: "How To"
+      link: "Link"
 
   suggestions:
     card:

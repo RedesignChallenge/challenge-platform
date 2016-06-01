@@ -6,13 +6,13 @@
     <div class='solution-credits text-center center-block'>
 
       <div class='solution-credit solution-recipe'>
-        <h5 class='text-solution'>Implemented by</h5>
+        <h5 class='text-solution'><%= t('.implemented_by') %></h5>
         <%= render partial: 'shared/avatar', locals: { user: @solution.user } %>
         <p class='text-small'><%= @solution.user.display_name %></p>
       </div>
 
       <div class='solution-credit solution-ideas'>
-        <h5 class='text-solution'>Based on Ideas by</h5>
+        <h5 class='text-solution'><%= t('.based_on_ideas') %></h5>
         
         <ul class='list-inline'>
           <% @solution.ideas.each do |idea| %>
@@ -24,7 +24,7 @@
                   <% if user_signed_in? && current_user == idea.user %>
                     <span class="fa-stack fa-user-avatar">
                       <i class="fa fa-stack-2x fa-circle"></i>
-                      <i class="fa fa-stack-1x fa-inverse">you</i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= t('shared._avatar.you') %></i>
                     </span>
                   <% else %>
                     <span class="fa-stack fa-user-avatar">
@@ -42,7 +42,7 @@
       </div>
 
       <div class='solution-credit solution-experiences'>
-        <h5 class='text-solution'>Inspired by the Experiences of</h5>
+        <h5 class='text-solution'><%= t('.inspired_by') %></h5>
         
         <ul class='list-inline'>
           <% @solution.experiences.each do |experience| %>
@@ -54,7 +54,7 @@
                   <% if user_signed_in? && current_user == experience.user %>
                     <span class="fa-stack fa-user-avatar">
                       <i class="fa fa-stack-2x fa-circle"></i>
-                      <i class="fa fa-stack-1x fa-inverse">you</i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= t('shared._avatar.you') %></i>
                     </span>
                   <% else %>
                     <span class="fa-stack fa-user-avatar">
@@ -79,7 +79,9 @@
       </div>
 
       <div id='solution-<%= @solution.id %>-discuss' style='margin-bottom:10px'>
-        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, '#solution_story-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true, offset: '20' %>
+        <%= link_to '#solution_story-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true, offset: '20' do %>
+          <i class='fa fa-reply'></i><%= t('.discuss') %>
+        <% end %>
       </div>
 
       <div id='solution-<%= @solution.id %>-share'>
@@ -89,7 +91,9 @@
       <% if @solution.file.present? %>
         <div class='solution-show-file'>
           <%= link_to "<p class='text-center'><i class='fa fa-file-text-o fa-4x'></i></p>".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution) %>
-          <%= link_to "<i class='fa fa-download'></i> Download".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info' %>
+          <%= link_to file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info' do %>
+            <i class='fa fa-download'></i><%= t('.download') %>
+          <% end %>
         </div>
       <% end %>
     </div>
@@ -108,11 +112,11 @@
 
     <% if @solution.materials.present? %>
       <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'>What You'll Need</p>
+        <p class='text-solution text-large text-bold text-uppercase'><%= t('.what_you_need') %></p>
 
         <div class='solution-effort'>
-          <span class="badge"><span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort</span>
-          <% ['hours', 'days', 'weeks', 'months'].each do |effort| %>
+          <span class="badge"><%= t('.required_effort_html') %></span>
+          <% %w(hours days weeks months).each do |effort| %>
             <span class="badge <%= effort == @solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
           <% end %>
         </div>
@@ -123,7 +127,7 @@
 
     <% if @solution.steps.present? %>
       <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'>How To</p>
+        <p class='text-solution text-large text-bold text-uppercase'><%= t('.how_to') %></p>
         <% @solution.steps.each_with_index do |step, index| %>
           <div class='media media-step'>
             <div class='media-left'>
@@ -142,7 +146,7 @@
 
     <% if @solution.link.present? && @solution.embed.blank? %>
       <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'>Link</p>
+        <p class='text-solution text-large text-bold text-uppercase'><%= t('.link') %></p>
         <p class='solution-show-description'><%= link_to @solution.link.html_safe, @solution.link, target: '_blank' %></p>
       </div>
     <% end %>
