@@ -449,9 +449,10 @@ en:
     show:
       previous: "Previous"
       next: "Next"
-      header: "Coming soon..."
-      header2: "The challenge is still running."
-      header3: "How people are meeting the challenge"
+      coming_soon:
+        header: "Coming soon..."
+        check_back:  "Check back to see how educators will be trying out your Challenge ideas."
+      meeting_the_challenge: "How people are meeting the challenge"
       stage: "story"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
