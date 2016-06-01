@@ -78,10 +78,10 @@
                         <i class='fa icon-check'></i> 
                         <%= pluralize(eval("@challenge.#{stage[:name]}_stage.#{stage[:name].pluralize}.published.count"), stage[:name]).titleize %> <%= stage[:action].titleize %>
                       <% else %>
-                        <%= stage[:headline] %>
+                        <%= stage[:headline].call %>
                       <% end %>
                     </h4>
-                    <p class='description'><%= stage[:description] %></p>
+                    <p class='description'><%= stage[:description].call %></p>
                   </div>
                 <% end %>
               </div>

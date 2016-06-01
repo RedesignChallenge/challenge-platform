@@ -5,8 +5,8 @@ en:
   formal_project: "The %{project}"
 
   constants:
-    like: 'Like'
-    liked: 'Liked'
+    like: "Like"
+    liked: "Liked"
 
   home:
     welcome: "Welcome to the %{platform}"

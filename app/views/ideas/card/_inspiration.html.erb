@@ -29,10 +29,6 @@
           <%= render partial: 'ideas/card/like', locals: { idea: idea } %>
         </li>
 
-        <!-- <li id='idea-<%#= idea.id %>-share'> -->
-          <%#= link_to 'Share', '#', class: 'list-link', onclick: 'return false;', data: { container: 'body', toggle: 'popover', placement: 'bottom', html: true, trigger: 'focus', delay: {'hide': 1000}, content: "#{render partial: 'layouts/share_popover', locals: { url: challenge_idea_stage_problem_statement_idea_url(@challenge, idea.idea_stage, idea.problem_statement, idea), title: idea.title.html_safe, description: idea.description.html_safe, hashtag: @challenge.hashtag }}"} %>
-        <!-- </li> -->
-
         <li class='dropdown'>
           <a id="idea-<%= idea.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
             <i class='fa fa-ellipsis-h'></i>

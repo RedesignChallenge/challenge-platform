@@ -53,16 +53,16 @@ class Challenge < ActiveRecord::Base
 
   def featured_contributions
     case self.active_stage
-    when 'experience'
-      self.experience_stage.experiences.published.first(2)
-    when 'idea'
-      self.idea_stage.ideas.published.where(inspiration: false).first(3)
-    when 'recipe'
-      self.recipe_stage.recipes.published.first(2)
-    when 'solution'
-      self.solution_stage.solutions.first(2)
-    else
-      nil
+      when 'experience'
+        self.experience_stage.experiences.published.first(2)
+      when 'idea'
+        self.idea_stage.ideas.published.where(inspiration: false).first(3)
+      when 'recipe'
+        self.recipe_stage.recipes.published.first(2)
+      when 'solution'
+        self.solution_stage.solutions.first(2)
+      else
+        nil
     end
   end
 
@@ -72,16 +72,16 @@ class Challenge < ActiveRecord::Base
 
   def stage_number
     case self.active_stage
-    when 'experience'
-      1
-    when 'idea'
-      2
-    when 'recipe'
-      3
-    when 'solution'
-      4
-    else
-      1
+      when 'experience'
+        1
+      when 'idea'
+        2
+      when 'recipe'
+        3
+      when 'solution'
+        4
+      else
+        1
     end
   end
 
@@ -91,32 +91,32 @@ class Challenge < ActiveRecord::Base
       name: 'experience',
       action: 'shared',
       icon: 'fa-comment',
-      headline: I18n.t('experience_stages.headline'),
-      description: I18n.t('experience_stages.description')
+      headline: -> { I18n.t('experience_stages.headline') },
+      description: -> { I18n.t('experience_stages.description') }
     },
     {
       number: 2,
       name: 'idea',
       action: 'contributed',
       icon: 'fa-lightbulb-o',
-      headline: I18n.t('idea_stages.headline'),
-      description: I18n.t('idea_stages.description')
+      headline: -> { I18n.t('idea_stages.headline') },
+      description: -> { I18n.t('idea_stages.description') }
     },
     {
       number: 3,
       name: 'recipe',
       action: 'developed',
       icon: 'fa-flask',
-      headline: I18n.t('recipe_stages.headline'),
-      description: I18n.t('recipe_stages.description')
+      headline: -> { I18n.t('recipe_stages.headline') },
+      description: -> { I18n.t('recipe_stages.description') }
     },
     {
       number: 4,
       name: 'solution',
       action: 'tried',
       icon: 'fa-puzzle-piece',
-      headline: I18n.t('solution_stages.headline'),
-      description: I18n.t('solution_stages.description')
+      headline: -> { I18n.t('solution_stages.headline') },
+      description: -> { I18n.t('solution_stages.description') }
     }
   ]
 end

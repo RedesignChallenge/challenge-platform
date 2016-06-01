@@ -70,8 +70,8 @@
                   <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
                   <div class='clearfix'></div>
                   <div class="caption">
-                    <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
-                    <p class='description'><%= stage[:description] %></p>
+                    <h4><%= "#{index+1}. #{stage[:headline].call}" %></h4>
+                    <p class='description'><%= stage[:description].call %></p>
                   </div>
                 </div>
             <% end %>
