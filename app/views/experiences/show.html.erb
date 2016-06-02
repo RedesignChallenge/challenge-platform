@@ -8,7 +8,7 @@
         <%= render partial: 'experiences/header' %>
 
         <div class='well well-experience'>
-          <span class="label label-experience pull-left"><i class='fa fa-comment'></i> Experience</span>
+          <span class="label label-experience pull-left"><i class='fa fa-comment'></i><%= t('.header') %></span>
           <div class='clearfix'></div>
 
           <div class='experience-content'>
@@ -17,13 +17,13 @@
 
                 <div class="media media-author">
                   <div class="media-left">
-                    <%= render partial: 'shared/avatar', locals: { user: @experience.user, avatar_style: "width:4.5em"} %>
+                    <%= render partial: 'shared/avatar', locals: { user: @experience.user, avatar_style: 'width:4.5em' } %>
                   </div>
                   <div class="media-body" style='<%= 'padding-left: 0em' if @experience.user.avatar.present? %>'>
                     <div class='user-caption' style='<%= 'margin-top: 0.5em' if @experience.user.avatar.present? %>'>
                       <p class='user-name'><%= link_to "#{@experience.user.display_name}", user_path(@experience.user) %></p>
                       <p class='user-title text-default'><%= @experience.user.display_organization %></p>
-                      <p class='user-link'><%= "#{time_ago_in_words(@experience.created_at)} ago".titleize %></p>
+                      <p class='user-link'><%= t('.time', time: time_ago_in_words(@experience.created_at)).titleize %></p>
                     </div>
                   </div>
                 </div>
@@ -34,15 +34,21 @@
                     <% if @experience.published_at? %>
                       <% if user_signed_in? && @experience.user == current_user %>
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
-                          <%= link_to "<i class='fa fa-edit'></i> Edit".html_safe, edit_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' %>
-                          <%= link_to "<i class='fa fa-trash'></i> Delete".html_safe, challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: {confirm: "Are you sure you want to delete your experience?"}, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' %>
+                          <%= link_to edit_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' do %>
+                            <i class='fa fa-edit'></i> <%= t('experiences.show.edit') %>
+                          <% end %>
+                          <%= link_to challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: {confirm: t('.confirm')}, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' do %>
+                            <i class='fa fa-trash'></i> <%= t('experiences.show.delete') %>
+                          <% end %>
                         </div>
                       <% end %>
                       <div id='experience-<%= @experience.id %>-like'>
                         <%= render partial: 'experiences/like' %>
                       </div>
                       <div id='experience-<%= @experience.id %>-discuss' style='margin-bottom:10px'>
-                        <%= link_to "<i class='fa fa-reply'></i> Discuss".html_safe, "#experience-comments", class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', "du-smooth-scroll" => true %>
+                        <%= link_to '#experience-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true do %>
+                          <i class='fa fa-reply'></i> <%= t('experiences.show.discuss') %>
+                        <% end %>
                       </div>
                       <div id='experience-<%= @experience.id %>-share'>
                         <%= render partial: 'layouts/share_button', locals: {url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag} %>
@@ -67,16 +73,14 @@
 
                 <% if @experience.link.present? && @experience.embed.blank? %>
                   <div class='content-block'>
-                    <p class='text-experience text-large text-bold text-uppercase'>Link</p>
+                    <p class='text-experience text-large text-bold text-uppercase'><%= t('.link') %></p>
                     <p><%= link_to @experience.link.html_safe, @experience.link, target: '_blank' %></p>
                   </div>
                 <% end %>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -86,9 +90,7 @@
   <div class='container'>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-
         <%= render partial: 'comments/discussion', locals: { commentable: @experience } %>
-
       </div>
     </div>
   </div>
@@ -99,8 +101,8 @@
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
 
-        <h2 class='section-title text-submit'>Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class='section-title text-submit'><%= t('.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('.social_sharing_description') %></p>
         
         <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag } %>
         

@@ -245,7 +245,7 @@ en:
         submit: "Update"
       _form:
         description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
-        link_placeholder: "Add URL"
+        add_url: "Add URL"
         link_description: "Attach a link and we'll display it alongside your post."
         cancel: "Cancel"
         save: "Save and finish later"
@@ -279,8 +279,10 @@ en:
     show:
       header: "Experience"
       time: "%{time} ago"
+      edit: "Edit"
+      delete: "Delete"
       confirm:  "Are you sure you want to delete your experience?"
-      discuss: "<i class='fa fa-reply'></i> Discuss"
+      discuss: "Discuss"
       link: "Link"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
