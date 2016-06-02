@@ -6,14 +6,14 @@
         <small style='margin-left:10px'>
           <%= link_to "<i class='fa fa-edit'></i>".html_safe, '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' %> 
           &nbsp; &bull; &nbsp;
-          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: "Are you sure you want to delete your suggestion?"}, class: 'list-link' %>
+          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: t('suggestions.card._show.confirm')}, class: 'list-link' %>
         </small>
       <% end %>
     </h3>
   </div>
 
   <div class='col-sm-2'>
-    <p class='suggestion-time'><%= "#{time_ago_in_words(suggestion.created_at)} ago" %></p>
+    <p class='suggestion-time'><%= t('suggestions.card._show.time', time: time_ago_in_words(suggestion.created_at)) %></p>
   </div>
 </div>
 
@@ -30,14 +30,14 @@
   <% else %>
     <p class='suggestion-description'><%= suggestion.description %></p>
     <% unless suggestion.link.blank? %>
-      <p class='suggestion-link'><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(suggestion.link, length: 150), suggestion.link, target: '_blank' %></p>
+      <p class='suggestion-link'><b><i class='fa fa-link'></i> <%=  t('suggestions.card._show.link')%></b> <%= link_to truncate(suggestion.link, length: 150), suggestion.link, target: '_blank' %></p>
     <% end %>
   <% end %>
 </div>
 
 <div class="row">
   <div class="col-sm-4">
-    <p class='suggestion-user text-left'>How much does this impact you?</p>
+    <p class='suggestion-user text-left'><%= t('suggestions.card._show.impact') %></p>
   </div>
 
   <div class="col-sm-5">

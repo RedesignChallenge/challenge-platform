@@ -500,7 +500,8 @@ en:
       _show: 
         confirm: "Are you sure you want to delete your suggestion?"
         time: "%{time} ago"
-        question: "How much does this impact you?"
+        impact: "How much does this impact you?"
+        link: "Link:"
       _vote:
         low: "Not at all"
         high: "A lot"
