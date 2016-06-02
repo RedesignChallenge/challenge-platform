@@ -19,7 +19,7 @@ All dependencies should be listed otherwise in the Gemfile.
 
 == Running the Test Suite
 
-```bundle exec rspec```
+```S3_REGION=test bundle exec rspec```
 
 == .yml configuration
 
