@@ -27,7 +27,7 @@ en:
     register_today_to_participate: "Register Today to Participate"
     cta_tackle_header: "What challenges should we tackle next?"
     cta_tackle: "Tell us what challenges affect you most, and vote on additional challenges suggested by others."
-    suggestions: "Suggestion"
+    suggestion: "Suggestion"
     add_suggestion: "+ Add Suggestion"
     more: "Show %{count} More Suggestions"
     less: "Show Less"

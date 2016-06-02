@@ -140,9 +140,17 @@
           </div>
         </div>
 
-        <h4 class="text-bold pull-left"><%= pluralize(@suggestions.count, t('home.suggestions')) %></h4>
-        <%= link_to(t('home.add_suggestion'), '#new-suggestion', class: 'pull-right', 'ng-click' => 'suggestion_draft=true', 'du-smooth-scroll' => true) unless @suggestions.count.zero? %>
-        <div class='clearfix'></div>
+        <div class='row row-count'>
+          <div class='col-xs-6 col-xs-offset-3'>
+            <h6 class='text-default text-center center-block'>
+              <i class='fa fa-archive fa-3x'></i><br>
+              <span><%= pluralize(@suggestions.count, t('home.suggestion')) %></span>
+            </h6>
+          </div>
+          <div class='col-xs-3'>
+            <p class='action text-right text-small'><%= link_to t('home.add_suggestion'), '#new-suggestion', class: 'pull-right', 'ng-click' => 'suggestion_draft=true', 'du-smooth-scroll' => true unless @suggestions.count.zero? %></p>
+          </div>
+        </div>
 
         <div ng-switch="suggestions" ng-init="suggestions=show_all">
           <% @suggestions.first(2).each do |suggestion| %>
