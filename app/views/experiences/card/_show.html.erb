@@ -2,7 +2,7 @@
     <% if experience.featured? %>
       <div class="ribbon-wrapper">
         <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
-          <div class="ribbon ribbon-experience">Featured</div>
+          <div class="ribbon ribbon-experience"><%= t('experiences.card._show.featured') %></div>
         <% end %>
       </div>
     <% end %>
@@ -19,7 +19,7 @@
     <% else %>
       <p><%= experience.description %></p>
       <% unless experience.link.blank? %>
-        <p><b><i class='fa fa-link'></i> Link:</b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
+        <p><b><i class='fa fa-link'></i><%= t('experiences.card._show.link') %></b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
       <% end %>
     <% end %>
   </div>
@@ -34,20 +34,16 @@
         <%= link_to "<i class='fa fa-comments-o'></i> #{experience.comments_count unless experience.comments_count.zero?}".html_safe, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: 'experience-comments'), class: 'list-link' %>
       </li>
 
-      <!-- <li id='experience-<%#= experience.id %>-share'> -->
-        <%#= link_to 'Share', '#', class: 'list-link', onclick: 'return false;', data: { container: 'body', toggle: 'popover', placement: 'bottom', html: true, trigger: 'focus', delay: {'hide': 1000}, content: "#{render partial: 'layouts/share_popover', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, experience.experience_stage, experience.theme, experience), title: @challenge.title.html_safe, description: experience.description.html_safe, hashtag: @challenge.hashtag }}"} %>
-      <!-- </li> -->
-
       <li class='dropdown'>
         <a id="experience-<%= experience.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
           <i class='fa fa-ellipsis-h'></i>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="experience-<%= experience.id %>-other">
           <% if user_signed_in? && experience.user == current_user %>
-            <li><%= link_to 'Edit', '#', 'ng-click' => "experience_#{experience.id}_edit=true", onclick: 'return false;' %></li>
-            <li><%= link_to 'Delete', challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience.id), method: :delete, data: { confirm: "Are you sure you want to delete your experience?"} %></li>
+            <li><%= link_to t('experiences.card._show.edit'), '#', 'ng-click' => "experience_#{experience.id}_edit=true", onclick: 'return false;' %></li>
+            <li><%= link_to t('experiences.card._show.delete'), challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience.id), method: :delete, data: { confirm: t('experiences.card._show.confirm')} %></li>
           <% else %>
-            <li role="presentation"><%= link_to 'Flag', '#' %></li>
+            <li role="presentation"><%= link_to t('experiences.card._show.flag'), '#' %></li>
           <% end %>
         </ul>
       </li>

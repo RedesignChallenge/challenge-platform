@@ -223,36 +223,40 @@ en:
     headline: "Share Experiences"
     description: "Tell others about your experience with this challenge."
     show:
-      inspired: "Get inspired."
-      browse: "Browse the stories other educators shared."
-
-      add: "Add the first experience"
+      featured_contributions: "Featured Contributions"
+      add_first_experience: "Add the first experience"
       header: "Theme"
       experience: "experience"
-      more: "Show %{count} More Experiences"
+      add_yours: "+ Add yours"
+      more_experience: "More Experience"
+      more: "Show %{pluralized_experience_count}"
       less: "Show Less"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
   experiences:
     card:
+      time: "%{time} ago"
       _discussion:
-        comment: "Leave a Comment"
+        leave_a_comment: "Leave a Comment"
+        comment: "Comment"
         discussion: "Discussion"
-        count: "Show All %{count} Comments"
+        count: "Show All %{pluralized_comment_count}"
       _edit:
         submit: "Update"
       _form:
         description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
-        link_placeholder: "Add URL"
+        add_url: "Add URL"
         link_description: "Attach a link and we'll display it alongside your post."
         cancel: "Cancel"
         save: "Save and finish later"
       _new:
-        cta: "Want to get involved? Contribute in"
-        cta2: "Share something related to this theme."
+        stage_number: "Stage %{number} >"
+        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
+        share_something_related: "Share something related to this theme."
         submit: "Share"
       _show:
+        featured: "Featured"
         link: "Link:"
         edit: "Edit"
         delete: "Delete"
@@ -261,15 +265,14 @@ en:
     _form: 
       description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
       add_link: "Add a link to a video, article, or image"
-      link_placeholder: "Add URL"
+      add_url: "Add URL"
       link_description: "Attach a link and we'll display it alongside your post."
       cancel: "Cancel"
       confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
       save: "Save and finish later"
     _header:
       response: "Response to the Theme of"
-    card:
-      time: "%{time} ago"
+      featured_experience: "Featured Experience"
     edit:
       confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
       submit: "Update"
@@ -279,8 +282,10 @@ en:
     show:
       header: "Experience"
       time: "%{time} ago"
+      edit: "Edit"
+      delete: "Delete"
       confirm:  "Are you sure you want to delete your experience?"
-      discuss: "<i class='fa fa-reply'></i> Discuss"
+      discuss: "Discuss"
       link: "Link"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
