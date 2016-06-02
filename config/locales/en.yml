@@ -236,6 +236,7 @@ en:
 
   experiences:
     card:
+      time: "%{time} ago"
       _discussion:
         comment: "Leave a Comment"
         discussion: "Discussion"
@@ -253,6 +254,7 @@ en:
         cta2: "Share something related to this theme."
         submit: "Share"
       _show:
+        featured: "Featured"
         link: "Link:"
         edit: "Edit"
         delete: "Delete"
@@ -268,8 +270,6 @@ en:
       save: "Save and finish later"
     _header:
       response: "Response to the Theme of"
-    card:
-      time: "%{time} ago"
     edit:
       confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
       submit: "Update"
