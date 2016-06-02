@@ -19,7 +19,7 @@
 
             <% if @featured_experiences.present? %>
               <div class="featured-contributors">
-                <h6 class='zero-margin-bottom'>Featured Contributions</h6>
+                <h6 class='zero-margin-bottom'><%= t('.featured_contributions') %></h6>
                 <% @featured_experiences.each do |experience| %>
                   <%= render partial: 'shared/avatar', locals: { user:  experience.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_experience_stage_theme_experience_path(@challenge, @experience_stage, experience.theme, experience) } %>
                 <% end %>
@@ -47,7 +47,7 @@
 
           <p class='cta text-lighter text-small'>
             <% if theme.experiences.published.count.zero? %>
-              <i class='fa fa-plus'></i> Add the first experience
+              <i class='fa fa-plus'></i> <%= t('.add_first_experience') %>
             <% else %>
               <i class='fa fa-comment'></i> <%= theme.experiences.published.count %>
             <% end %>
@@ -68,25 +68,19 @@
       
         <% @themes.each do |theme| %>
           <div id='theme-<%= theme.id %>' class='content-block-xl'>
-            <h6 class='text-center'>Theme</h6>
+            <h6 class='text-center'><%= t('.header') %></h6>
             <h2 class='section-title text-experience'><%= theme.title %></h2>
 
             <div class='row row-count'>
-              <div class='col-xs-2 col-xs-offset-2'>
-                <ul class='action text-right text-small list-inline'>
-                  <!-- <li><a>Popular</a></li>
-                  <li><a>Latest</a></li> -->
-                </ul>
-              </div>
-              <div class='col-xs-4'>
+              <div class='col-xs-4 col-xs-offset-4'>
                 <h6 class='text-center center-block'>
                   <i class='fa fa-comment fa-3x'></i><br>
-                  <span class='text-bolder'><%= pluralize(theme.experiences.published.count, 'experience') %></span>
+                  <span class='text-bolder'><%= pluralize(theme.experiences.published.count, t('.experience')) %></span>
                 </h6>
               </div>
               <div class='col-xs-2'>
                 <% unless @challenge.stage_number == 4 %>
-                  <p class='action text-right text-small'><%= link_to '+ Add yours', "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", "du-smooth-scroll" => true, offset: 120 %></p>
+                  <p class='action text-right text-small'><%= link_to t('.add_yours'), "#theme-#{theme.id}-experience-new", 'ng-click' => "theme_#{theme.id}_draft=true", 'du-smooth-scroll' => true, offset: 120 %></p>
                 <% end %>
               </div>
             </div>
@@ -109,9 +103,8 @@
 
               <% if theme.experiences.published.count > 2 %>
                 <p class='center-block text-center'>
-                  <%= link_to "Show #{theme.experiences.published.count-2} More Experiences", '#', "ng-hide" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=true", onclick: 'return false;', class: 'text-bold' %>
-
-                  <%= link_to "Show Less", "#theme-#{theme.id}", "ng-show" => "theme_#{theme.id}_experiences", "ng-click" => "theme_#{theme.id}_experiences=false", "du-smooth-scroll" => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to t('.more', pluralized_experience_count: pluralize(theme.experiences.published.count-2, t('.more_experience'))), '#', 'ng-hide' => "theme_#{theme.id}_experiences", 'ng-click' => "theme_#{theme.id}_experiences=true", onclick: 'return false;', class: 'text-bold' %>
+                  <%= link_to t('.less'), "#theme-#{theme.id}", 'ng-show' => "theme_#{theme.id}_experiences", 'ng-click' => "theme_#{theme.id}_experiences=false", 'du-smooth-scroll' => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
                 </p>
               <% end %>
             </div>
@@ -119,8 +112,8 @@
           </div>
         <% end %>
 
-        <h2 class="section-title text-experience">Know people who have something to add to this conversation?</h2>
-        <p class='section-description'>More people means more problems solved. Share this challenge!</p>
+        <h2 class="section-title text-experience"><%= t('.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('.social_sharing_description') %></p>
 
         <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_url(@challenge, @experience_stage), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 

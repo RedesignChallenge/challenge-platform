@@ -223,13 +223,13 @@ en:
     headline: "Share Experiences"
     description: "Tell others about your experience with this challenge."
     show:
-      inspired: "Get inspired."
-      browse: "Browse the stories other educators shared."
-
-      add: "Add the first experience"
+      featured_contributions: "Featured Contributions"
+      add_first_experience: "Add the first experience"
       header: "Theme"
       experience: "experience"
-      more: "Show %{count} More Experiences"
+      add_yours: "+ Add yours"
+      more_experience: "More Experience"
+      more: "Show %{pluralized_experience_count}"
       less: "Show Less"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
