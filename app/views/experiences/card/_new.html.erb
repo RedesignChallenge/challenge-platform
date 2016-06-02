@@ -2,24 +2,24 @@
   <% if @challenge.stage_number == 4 %>
     <div class="col-xs-8 col-xs-offset-2">
       <div class='well well-lg well-share'>
-        <p class='text-bold'>Want to get involved? Contribute in <%= link_to "Stage #{@challenge.stage_number} >", challenge_active_stage_path(@challenge) %>
+        <p class='text-bold'><%= t('experiences.card._new.get_involved', stage_number_link: link_to(t('experiences.card._new.stage_number', number: @challenge.stage_number), challenge_active_stage_path(@challenge))).html_safe %>
       </div>
     </div>
   <% else %>
     <div class="col-xs-2">
       <div class='center-block text-center'>
-        <%= render partial: 'shared/avatar', locals: { user: current_user, avatar_style: "width:3.5em"} %>
+        <%= render partial: 'shared/avatar', locals: { user: current_user, avatar_style: 'width:3.5em' } %>
       </div>
     </div>
 
     <div class="col-xs-8">
       <div ng-switch='theme_<%= theme.id %>_draft' ng-init='theme_<%= theme.id %>_draft=false'>
         <div class='well well-lg well-share' ng-hide='theme_<%= theme.id %>_draft' ng-click='theme_<%= theme.id %>_draft=true'>
-          <p><i class='fa fa-pencil'></i>&nbsp; Share something related to this theme.</p>
+          <p><i class='fa fa-pencil'></i>&nbsp; <%= t('experiences.card._new.share_something_related') %></p>
         </div>
 
         <div ng-show='theme_<%= theme.id %>_draft' class='well well-experience'>
-          <%= render partial: 'experiences/card/form', locals: { experience: new_experience, theme: theme, url: challenge_experience_stage_theme_experiences_path(@challenge, @challenge.experience_stage, theme), cancel_path: "theme_#{theme.id}_draft=false", submit_text: 'Share'} %>
+          <%= render partial: 'experiences/card/form', locals: { experience: new_experience, theme: theme, url: challenge_experience_stage_theme_experiences_path(@challenge, @challenge.experience_stage, theme), cancel_path: "theme_#{theme.id}_draft=false", submit_text: t('experiences.card._new.submit')} %>
           <div class='clearfix'></div>
         </div>
       </div>
