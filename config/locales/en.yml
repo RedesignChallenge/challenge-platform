@@ -524,8 +524,11 @@ en:
   users:
     cards:
       _submission:
-        commenters: "commented on your"
-        likers: "liked your"
+        draft: "DRAFT"
+        other: "other"
+        pluralized_name_list: "%{names} and %{remainder}"
+        commented: "commented on your %{submission_type}"
+        liked: "liked your %{submission_type}"
     _header:
       edit: "Edit Profile"
       settings: "Account Settings"
