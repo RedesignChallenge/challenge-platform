@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :suggestions
   belongs_to :referrer, class_name: "User", foreign_key: :referrer_id
-  has_many :referrals,  class_name: "User", foreign_key: :referrer_id
+  has_many :referrals, class_name: "User", foreign_key: :referrer_id
   store_accessor :notifications, :comment_replied, :comment_posted, :comment_followed
 
   mount_uploader :avatar, AvatarUploader
@@ -73,22 +73,22 @@ class User < ActiveRecord::Base
     user.display_name = "#{user.first_name} #{user.last_name[0]}"
   end
 
-  before_save do |user| 
+  before_save do |user|
     user.email = user.email.downcase
-    user.twitter = user.twitter.sub('@','') if user.twitter.present?
+    user.twitter = user.twitter.sub('@', '') if user.twitter.present?
   end
 
   MAX_AVATAR_SIZE = 3
 
   ## VALIDATIONS
-  validates :first_name,    length: { maximum: 255 }, presence: true
-  validates :last_name,     length: { maximum: 255 }, presence: true
-  validates :role,          length: { maximum: 255 }, presence: true
-  validates :display_name,  length: { maximum: 255 }, presence: true, on: :update
-  validates :organization,  length: { maximum: 255 }, allow_blank: true
-  validates :title,         length: { maximum: 255 }, allow_blank: true
-  validates :twitter,       length: { maximum: 16 },  allow_blank: true
-  validate  :avatar_file_size
+  validates :first_name, length: { maximum: 255 }, presence: true
+  validates :last_name, length: { maximum: 255 }, presence: true
+  validates :role, length: { maximum: 255 }, presence: true
+  validates :display_name, length: { maximum: 255 }, presence: true, on: :update
+  validates :organization, length: { maximum: 255 }, allow_blank: true
+  validates :title, length: { maximum: 255 }, allow_blank: true
+  validates :twitter, length: { maximum: 16 }, allow_blank: true
+  validate :avatar_file_size
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -161,26 +161,20 @@ class User < ActiveRecord::Base
   rescue
   end
 
-  # <p class='select-help'>I am currently training to be a teacher in a whole class, resource, or one-on-one setting.</p>
-  # <p class='select-help'>I am currently working with a whole class in a classroom, in small groups in a resource room, or one-on-one inside or outside a regular classroom.</p>
-  # <p class='select-help'>I am currently a teacher and I spend a portion of my time supporting other adults in my school.</p>
-  # <p class='select-help'>I spend the majority of my time supporting the professional development of adults in my school.</p>
-  # <p class='select-help'>I am an administrator in a school (principal, assistant principal, dean, etc.).</p>
-
   ROLES = {
-    "Pre-Service Teacher" => 'Pre-Service Teacher',
-    "Current Teacher" => 'Current Teacher',
-    "Teacher Leader" => 'Teacher Leader',
-    "Instructional Coach" => 'Instructional Coach',
-    "School Leader" => 'School Leader',
-    "District or CMO Staff" => 'LEA Staff',
-    "State Educational Agency Staff" => 'SEA Staff',
-    "Other" => 'Other'
+    'Pre-Service Teacher' => 'Pre-Service Teacher',
+    'Current Teacher' => 'Current Teacher',
+    'Teacher Leader' => 'Teacher Leader',
+    'Instructional Coach' => 'Instructional Coach',
+    'School Leader' => 'School Leader',
+    'District or CMO Staff' => 'LEA Staff',
+    'State Educational Agency Staff' => 'SEA Staff',
+    'Other' => 'Other'
   }
 
   COLORS = %w(#11487e #8BB734 #7F3F98 #F26606)
 
-private
+  private
 
   def avatar_file_size
     if avatar && avatar.file && avatar.file.size.to_i > MAX_AVATAR_SIZE.megabytes.to_i

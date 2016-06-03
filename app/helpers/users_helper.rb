@@ -32,5 +32,4 @@ module UsersHelper
              remainder: pluralize(remainder, I18n.t('users.cards._submission.other')))
     end
   end
-
 end
