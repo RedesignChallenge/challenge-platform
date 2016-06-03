@@ -488,36 +488,37 @@ en:
       _edit: 
         submit: "Update"
       _form:
-        title_placeholder: "Give it a title. Name a challenge we should take on."
-        description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?"
-        link_description: "Add a link to a video, article, image or other support"
-        url: "Add URL"
-        link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+        title: "Give it a title. Name a challenge we should take on."
+        description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
+        add_link: "Add a link to a video, article, image or other support"
+        add_url: "Add URL"
+        share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
         cancel: "Cancel"
       _new: 
-        placeholder: "Share a suggestion that you think we should tackle with the"
+        placeholder: "Share a suggestion that you think we should tackle with the %{platform}!"
         submit: "Share"
       _show: 
         confirm: "Are you sure you want to delete your suggestion?"
         time: "%{time} ago"
-        question: "How much does this impact you?"
+        impact: "How much does this impact you?"
+        link: "Link:"
       _vote:
         low: "Not at all"
         high: "A lot"
     _form: 
-      title_placeholder: "Give it a title. Name a challenge we should take on."
-      description_placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators?"
-      link_description: "Add a link to a video, article, image or other support"
-      url: "Add URL"
-      link_placeholder: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+      title: "Give it a title. Name a challenge we should take on."
+      description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
+      add_link: "Add a link to a video, article, image or other support"
+      add_url: "Add URL"
+      share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
       cancel: "Cancel"
     edit:
       header: "Suggestion"
-      title: "Edit Suggestion"
+      edit_suggestion: "Edit Suggestion"
       submit: "Update"
     new:
       header: "Suggestion"
-      title: "Edit Suggestion"
+      new_suggestion: "New Suggestion"
       submit: "Share"
 
   users:

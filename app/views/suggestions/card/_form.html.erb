@@ -1,10 +1,10 @@
 <%= form_for(suggestion, url: url) do |f| %>
   <div class='form-group'>
-    <%= f.text_field :title, placeholder: "Give it a title. Name a challenge we should take on.", class: 'form-control input-lg' %>
+    <%= f.text_field :title, placeholder: t('suggestions.card._form.title'), class: 'form-control input-lg' %>
   </div>
 
   <div class='form-group'>
-    <%= f.text_area :description, placeholder: "Explain the challenge. Why is it important? How does it affect you and other educators? How can #{I18n.t(:project_name)} help?", class: 'form-control', rows: 4 %>
+    <%= f.text_area :description, placeholder: t('suggestions.card._form.description', platform: t('project_name')), class: 'form-control', rows: 4 %>
   </div>
 
   <div class='row'>
@@ -18,19 +18,19 @@
             </span>
           </div>
           <div class='media-body'>
-            <span class='help-text'>Add a link to a video, article, image or other support</span>
+            <span class='help-text'><%= t('suggestions.card._form.add_link') %></span>
           </div>
         </div>
 
         <div ng-show='suggestion_link' class='form-group'>
-          <%= f.text_field :link, placeholder: "Add URL", class: 'form-control' %>
-          <span class='help-block'>Share a link, image, video, or Tweet– we'll display it alongside your suggestion.</span>
+          <%= f.text_field :link, placeholder: t('suggestions.card._form.add_url'), class: 'form-control' %>
+          <span class='help-block'><%= t('suggestions.card._form.share_link') %></span>
         </div>
       </div>
     </div>
 
     <div class='col-sm-2 col-xs-6'>
-      <%= link_to 'Cancel', '#', class: 'btn btn-rounded btn-sm btn-block btn-default', "ng-click" => cancel_path, onclick: 'return false;' %>
+      <%= link_to t('suggestions.card._form.cancel'), '#', class: 'btn btn-rounded btn-sm btn-block btn-default', 'ng-click' => cancel_path, onclick: 'return false;' %>
     </div>
 
     <div class='col-sm-2 col-xs-6'>
