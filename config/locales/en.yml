@@ -7,148 +7,6 @@ en:
     like: "Like"
     liked: "Liked"
 
-  home:
-    welcome: "Welcome to the %{platform}"
-    explore: "Explore Our First Challenge"
-    what: "What is the %{platform}?"
-    join: "Join the %{platform}."
-    return_to_challenge: "Return to Challenge"
-    see_featured_challenge: "See Featured Challenge"
-    make_ideas_real: "Make your ideas real."
-    description: "We know that the best ideas for solving problems in education come from educators. The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
-    social_description: "The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
-    challenge_phases_header: "Each Challenge will go through four phases:"
-    featured_challenge:
-      header:  "Our Featured Challenge"
-      title:  "Challenge %{id}: %{title}"
-    learn_more: "Learn More"
-    learn_more_and_participate: "Learn More and Participate"
-    register_today_to_participate: "Register Today to Participate"
-    cta_tackle_header: "What challenges should we tackle next?"
-    cta_tackle: "Tell us what challenges affect you most, and vote on additional challenges suggested by others."
-    suggestion: "Suggestion"
-    add_suggestion: "+ Add Suggestion"
-    more: "Show %{count} More Suggestions"
-    less: "Show Less"
-    social_sharing_question: "Know someone who may want to add to the discussion?"
-    social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you."
-    share_experience: "Share your experience with the first challenge!"
-
-  about:
-    our_mission: "Our Mission"
-    welcome: "Welcome to the %{platform}.  You are essential to our success! Our mission is to bring educators together in an engaged online community that inspires breakthrough ideas in teaching and learning. The %{platform} offers educators a place to share experiences, exchange ideas and refine new approaches to old problems. The %{platform} will help educators find a precise understanding about why things don’t work in K-12 education and respond quickly to find solutions."
-    our_solution: "Our Solution"
-    solution: "The %{platform} is an open dialogue between those who often make the decisions and those who have to live with those decisions. Conversations will be guided by experienced educators.  Participants will focus on one theme, or “challenge,” at a time. Our first challenge is to help make videos for professional learning more relevant and useful to educators. All educators – from the classroom teacher to district superintendent – are invited to participate. The %{platform} community will determine the best ideas and pick subsequent challenges."
-    community_guidelines:
-      header: "Community Guidelines"
-      do: "DO:"
-      be_nice: "Be Nice."
-      be_nice_explanation: "We value diversity and encourage lively debate. We want people to feel safe and welcome posting here. Please be polite and respectful in your interactions. By posting, you are agreeing to abide by the %{platform} user agreement."
-      be_relevant: "Be Relevant."
-      be_relevant_explanation: "Please keep your posts on topic. When you introduce a new topic, please create a new post. Use headlines to help others find your content later on."
-      seek_advice: "Seek advice & share solutions."
-      seek_advice_explanation: "Strive to shed more light than heat on a subject."
-      share_expertise: "Share your expertise!"
-      share_expertise_explanation: "Aim to post content that is informative, educational or encourages discussion."
-      be_yourself: "Be yourself."
-      be_yourself_explanation: "You don't need to share your real name but you should not be impersonating anyone."
-      dont: "DON'T:"
-      unacceptable_content: "Post content that is confidential, defamatory, misleading or deceptive, offensive, abusive, harassing, threatening, designed to intimidate or bully, or that infringes copyright or contains hate speech."
-      commercial_activity: "Engage in commercial activity. Please do not use this site to promote the-sale of goods or services."
-      use_all_caps: "Use all CAPS in comments. Caps might be construed as yelling, which isn't nice. Be careful with bolding or underlining – it can sometimes feel aggressive."
-      violation_warning: "Engaging in any of the \"don't\" behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account."
-
-  cookbook:
-    _header:
-      title: "Cookbook"
-    show:
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  recipe_stages:
-    headline: "Develop Recipes"
-    description: "Develop and propose different recipes to tackling this challenge."
-    show:
-      featured_contributions: "Featured Contributions"
-      cookbook:
-        header: "Cookbook"
-        have_recipe: "Have a recipe for this cookbook?"
-        feedback: "Feedback on this cookbook?"
-      share: "Share your recipe"
-      join: "Join the discussion"
-      comment: "comment"
-      recipe: "recipe"
-      discussion: "discussion"
-      comment_expand: "See all %{pluralized_comment_count}"
-      add_new: "+ Add yours"
-      more_recipe: "More Recipe"
-      show_more: "Show %{pluralized_recipe_count}"
-      show_less: "Show Less"
-      discussion_expand: "See all %{pluralized_discussion_count}"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  recipes:
-    card:
-      _new:
-        new_question: "Know how to try this idea?"
-        submit_new: "Share your recipe."
-        discussion_question: "Still not sure?"
-        see_discusion: "See the discussion for this idea"
-      _show:
-        featured: "Featured"
-        edit: "Edit"
-        delete: "Delete"
-        confirm: "Are you sure you want to delete your recipe?"
-        flag: "Flag"
-        how_to: "How To"
-        description: "Description"
-        materials_needed: "Materials Needed"
-    _try:
-      trying_out: "Trying Out"
-      try_out: "Try Out"
-      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
-    _form:
-      steps_label: "How To"
-      step_placeholder: "Click to add another step"
-      save: "Save and finish later"
-      cancel: "Cancel"
-      cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      header_optional: "Optional"
-      add_link: "Add a link to a video, article, image or other supporting material"
-      add_url: "Add URL"
-      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
-    _header:
-      title: "A recipe for the cookbook"
-      featured: "Featured Recipe"
-    _step_fields:
-      description_placeholder: "Outline how to test this idea step by step."
-    edit:
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      title: "Edit Recipe"
-      submit: "Update Recipe"
-    new:
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      title: "New Recipe"
-      submit: "Share Recipe"
-    show:
-      title: "Recipe"
-      time: "%{time} Ago"
-      edit: "Edit"
-      delete: "Delete"
-      confirm: "Are you sure you want to delete your recipe?"
-      discuss: "Discuss"
-      materials: "Materials"
-      community: "Community"
-      conditions: "Conditions"
-      problem_statement: "Problem Statement & Desecription"
-      how: "How To"
-      evidence: "Evidence to know we're on the right track"
-      protips: "Protips for Practical Problem Solving"
-      link: "Link"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
   challenges:
     helper:
       days: "Days"
@@ -215,325 +73,12 @@ en:
     edit:
       submit: "Update"
 
-  experience_stages:
-    headline: "Share Experiences"
-    description: "Tell others about your experience with this challenge."
-    show:
-      featured_contributions: "Featured Contributions"
-      add_first_experience: "Add the first experience"
-      header: "Theme"
-      experience: "experience"
-      add_yours: "+ Add yours"
-      more_experience: "More Experience"
-      more: "Show %{pluralized_experience_count}"
-      less: "Show Less"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  experiences:
-    card:
-      time: "%{time} ago"
-      _discussion:
-        leave_a_comment: "Leave a Comment"
-        comment: "Comment"
-        discussion: "Discussion"
-        count: "Show All %{pluralized_comment_count}"
-      _edit:
-        submit: "Update"
-      _form:
-        description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
-        add_url: "Add URL"
-        link_description: "Attach a link and we'll display it alongside your post."
-        cancel: "Cancel"
-        save: "Save and finish later"
-      _new:
-        stage_number: "Stage %{number} >"
-        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
-        share_something_related: "Share something related to this theme."
-        submit: "Share"
-      _show:
-        featured: "Featured"
-        link: "Link:"
-        edit: "Edit"
-        delete: "Delete"
-        confirm: "Are you sure you want to delete your experience?"
-        flag: "Flag"
-    _form: 
-      description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
-      add_link: "Add a link to a video, article, or image"
-      add_url: "Add URL"
-      link_description: "Attach a link and we'll display it alongside your post."
-      cancel: "Cancel"
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      save: "Save and finish later"
+  cookbooks:
     _header:
-      response: "Response to the Theme of"
-      featured_experience: "Featured Experience"
-    edit:
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      submit: "Update"
-    new:
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      submit: "Share"
+      title: "Cookbook"
     show:
-      header: "Experience"
-      time: "%{time} ago"
-      edit: "Edit"
-      delete: "Delete"
-      confirm:  "Are you sure you want to delete your experience?"
-      discuss: "Discuss"
-      link: "Link"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  idea_stages:
-    headline: "Contribute Ideas"
-    description: "Contribute and compare ideas you might use to solve this challenge."
-    show:
-      featured_contributions: "Featured Contributions"
-      add_first_idea: "Add the first idea"
-      problem_statement: "Problem Statement"
-      stage: "idea"
-      add: "+ Add yours"
-      more_idea: "More Idea"
-      show_more: "Show %{pluralized_idea_count}"
-      show_less: "Show Less"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  ideas:
-    card:
-      _new:
-        stage_number: "Stage %{number} >"
-        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
-        add: "Add Your Idea"
-      _show:
-        featured: "Featured"
-        refinement: "Refinement of"
-        edit: "Edit"
-        delete: "Delete"
-        confirm: "Are you sure you want to delete your idea?"
-        flag: "Flag"
-      _inspiration:
-        inspiration: "Inspiration"
-        refinement: "Refinement of"
-        edit: "Edit"
-        delete: "Delete"
-        confirm: "Are you sure you want to delete your idea?"
-        flag: "Flag"
-    _example:
-      header: "EXAMPLE IDEA"
-      title: "Flipped Professional Learning for Teachers"
-      title_popover: "A concise descriptive title makes it easy for people to find and understand your idea."
-      body: "Teaching is hard and regardless of the grade-level or subject area, there are gaps in teacher content knowledge.  So, what if we had teachers creating five-minute mini-lessons for other teachers?  Struggling to teach balancing equations?  Watch this video by a great math teacher in Texas.  Not sure about comma splices?  Check out this video by an English teacher in New York"
-      potential_impact_popover: "Explain your idea in terms of how it might be executed and how it could impact the various people involved."
-      potential_impact: "Potential Impact"
-      potential_impact_body: "This idea can impact all teachers, from K-12 as it is simply a way for teachers to quickly remediate small gaps in their content knowledge."
-      possible_implementation: "Possible Implementation"
-      possible_implementation_body: "A website where teachers can submit these videos.  They would then get sorted, filtered, and tagged by discipline and skill for easy access."
-      link_description: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging."
-      link: "Link"
-      go_back: "Go Back to My Idea"
-    _form:
-      refinement: "Refinement of"
-      title_placeholder: "What is the title of your idea?"
-      description_placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better."
-      potential_impact_help: "Explain the potential impact of your idea"
-      impact_label: "Potential Impact"
-      impact_placeholder: "Describe the impact your idea could have."
-      body_help: "Explain how your idea may be implemented"
-      implementation_label: "Possible Implementation"
-      implementation_placeholder: "Describe how your idea may be implemented."
-      link_placeholder: "Add a link to a video, article, image or other support"
-      url: "Add URL"
-      link_description: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea."
-      save: "Save and finish later"
-      cancel: "Cancel"
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-    _header: 
-      header: "Idea for"
-      featured_idea: "Featured Idea"
-    _refinement:
-      potential_impact: "Potential Impact"
-      possible_implementation: "Possible Implementation"
-      link: "Link"
-      go_back: "Go Back to My Idea"
-    edit: 
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      keep_editing_html: "Keep<br> Editing"
-      expand_keep_editing_html: "Expand to keep<br> working on your idea."
-      original_idea_html: "Original<br> Idea"
-      expand_original_idea_html: "Expand to show<br> the original idea."
-      submit: "Update Idea"
-      example_idea_html: "Example<br> Idea"
-      expand_example_idea_html: "Expand to show<br> an example idea."
-    new:
-      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      keep_editing_html: "Keep<br> Editing"
-      expand_keep_editing_html: "Expand to keep<br> working on your idea."
-      original_idea_html: "Original<br> Idea"
-      expand_original_idea_html: "Expand to show<br> the original idea."
-      submit: "Share Idea"
-      example_idea_html: "Example<br> Idea"
-      expand_example_idea_html: "Expand to show<br> an example idea."
-    show:
-      header: "Idea"
-      time: "%{time} ago"
-      edit: "Edit"
-      delete: "Delete"
-      confirm: "Are you sure you want to delete your idea?"
-      discuss: "Discuss"
-      content: "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"
-      refine: "Refine"
-      potential_impact: "Potential Impact"
-      possible_implementation: "Possible Implementation"
-      inspiration: "Inspiration"
-      link: "Link"
-      based_on: "Based On"
-      refinement: "Refinement"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  layouts:
-    _error_messages: 
-      header: "The form contains the following errors:"
-    _footer:
-      terms: "Terms"
-      privacy: "Privacy"
-    _header:
-      header: "Toggle navigation"
-      about: "About Us"
-      profile: "Profile"
-      settings: "Settings"
-      sign_out: "Sign Out"
-      sign_in: "Sign In"
-      sign_up: "Sign Up"
-    _share_button:
-      twitter: "Twitter"
-      facebook: "Facebook"
-      linked_in: "LinkedIn"
-      email: "Email"
-      button_label: "Share"
-      email_subject: "Check out %{title} on %{platform}"
-      email_body_html: "Here's the URL: %{url}"
-    _share_links:
-      email_subject: "Check out %{title} on %{platform}"
-      email_body_html: "Here's the URL: %{url}"
-    _share_popover:
-      email_subject: "Check out \"%{title}\" on %{platform}"
-      email_body_html: "Here's the URL: %{url}"
-
-  mailers:
-    shared:
-      action: 
-        confirm_email: "Please confirm your email address by clicking the link below."
-        send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
-        confirm_address: "Confirm email address"
-        signature: "The %{project} Team"
-
-  mailkick:
-    subscriptions:
-      show:
-        header: "Subscriptions"
-        unsubscribed: "You are unsubscribed."
-        subscribed: "You are subscribed."
-        resubscribe: "Resubscribe"
-        unsubscribe: "Unsubscribe"
-
-  shared:
-    _avatar:
-      you: "you"
-    _draft:
-      header: "Draft"
-      continue: "Continue Editing >"
-      delete: "Delete Draft"
-      confirm: "Are you sure you wish to delete your draft?"
-
-  solution_stages:
-    headline: "See Your Solutions"
-    description: "See stories of how real schools have adopted the solutions you've inspired, or try them out yourself!"
-    show:
-      previous: "Previous"
-      next: "Next"
-      coming_soon:
-        header: "Coming soon..."
-        check_back:  "Check back to see how educators will be trying out your Challenge ideas."
-      meeting_the_challenge: "How people are meeting the challenge"
-      stage: "story"
-      social_sharing_question: "Know people who have something to add to this conversation?"
-      social_sharing_description: "More people means more problems solved. Share this challenge!"
-
-  solution_stories:
-    card:
-      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
-      featured: "Featured"
-    show:
-      story_from_the_field: "Story From The Field"
-      how_to_guide: "How To Guide"
-
-  solutions:
-    show:
-      implemented_by: "Implemented by"
-      based_on_ideas: "Based on Ideas by"
-      user: "you"
-      inspired_by: "Inspired by the Experiences of"
-      discuss: "Discuss"
-      download: "Download"
-      what_you_need: "What You'll Need"
-      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
-      how_to: "How To"
-      link: "Link"
-
-  suggestions:
-    card:
-      _edit: 
-        submit: "Update"
-      _form:
-        title: "Give it a title. Name a challenge we should take on."
-        description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
-        add_link: "Add a link to a video, article, image or other support"
-        add_url: "Add URL"
-        share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
-        cancel: "Cancel"
-      _new: 
-        placeholder: "Share a suggestion that you think we should tackle with the %{platform}!"
-        submit: "Share"
-      _show: 
-        confirm: "Are you sure you want to delete your suggestion?"
-        time: "%{time} ago"
-        impact: "How much does this impact you?"
-        link: "Link:"
-      _vote:
-        low: "Not at all"
-        high: "A lot"
-    _form: 
-      title: "Give it a title. Name a challenge we should take on."
-      description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
-      add_link: "Add a link to a video, article, image or other support"
-      add_url: "Add URL"
-      share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
-      cancel: "Cancel"
-    edit:
-      header: "Suggestion"
-      edit_suggestion: "Edit Suggestion"
-      submit: "Update"
-    new:
-      header: "Suggestion"
-      new_suggestion: "New Suggestion"
-      submit: "Share"
-
-  users:
-    cards:
-      _submission:
-        draft: "DRAFT"
-        other: "other"
-        pluralized_name_list: "%{names} and %{remainder}"
-        commented: "commented on your %{submission_type}"
-        liked: "liked your %{submission_type}"
-    _header:
-      edit: "Edit Profile"
-      settings: "Account Settings"
-      activity: "Activity"
 
   devise:
     confirmations:
@@ -661,3 +206,462 @@ en:
         no_confirmation_instructions: "Didn't receive confirmation instructions?"
         no_unlock_instructions: "Didn't receive unlock instructions?"
         sign_in_with_omniauth: "Sign in with %{provider}"
+
+  experience_stages:
+    headline: "Share Experiences"
+    description: "Tell others about your experience with this challenge."
+    show:
+      featured_contributions: "Featured Contributions"
+      add_first_experience: "Add the first experience"
+      header: "Theme"
+      experience: "experience"
+      add_yours: "+ Add yours"
+      more_experience: "More Experience"
+      more: "Show %{pluralized_experience_count}"
+      less: "Show Less"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  experiences:
+    card:
+      time: "%{time} ago"
+      _discussion:
+        leave_a_comment: "Leave a Comment"
+        comment: "Comment"
+        discussion: "Discussion"
+        count: "Show All %{pluralized_comment_count}"
+      _edit:
+        submit: "Update"
+      _form:
+        description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
+        add_url: "Add URL"
+        link_description: "Attach a link and we'll display it alongside your post."
+        cancel: "Cancel"
+        save: "Save and finish later"
+      _new:
+        stage_number: "Stage %{number} >"
+        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
+        share_something_related: "Share something related to this theme."
+        submit: "Share"
+      _show:
+        featured: "Featured"
+        link: "Link:"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your experience?"
+        flag: "Flag"
+    _form:
+      description_placeholder: "Please describe your experience as it relates to this theme and we'll share it with this challenge."
+      add_link: "Add a link to a video, article, or image"
+      add_url: "Add URL"
+      link_description: "Attach a link and we'll display it alongside your post."
+      cancel: "Cancel"
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      save: "Save and finish later"
+    _header:
+      response: "Response to the Theme of"
+      featured_experience: "Featured Experience"
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Update"
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      submit: "Share"
+    show:
+      header: "Experience"
+      time: "%{time} ago"
+      edit: "Edit"
+      delete: "Delete"
+      confirm:  "Are you sure you want to delete your experience?"
+      discuss: "Discuss"
+      link: "Link"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  home:
+    about:
+      our_mission: "Our Mission"
+      welcome: "Welcome to the %{platform}.  You are essential to our success! Our mission is to bring educators together in an engaged online community that inspires breakthrough ideas in teaching and learning. The %{platform} offers educators a place to share experiences, exchange ideas and refine new approaches to old problems. The %{platform} will help educators find a precise understanding about why things don’t work in K-12 education and respond quickly to find solutions."
+      our_solution: "Our Solution"
+      solution: "The %{platform} is an open dialogue between those who often make the decisions and those who have to live with those decisions. Conversations will be guided by experienced educators.  Participants will focus on one theme, or “challenge,” at a time. Our first challenge is to help make videos for professional learning more relevant and useful to educators. All educators – from the classroom teacher to district superintendent – are invited to participate. The %{platform} community will determine the best ideas and pick subsequent challenges."
+      community_guidelines: "Community Guidelines"
+      do: "DO:"
+      be_nice: "Be Nice."
+      be_nice_explanation: "We value diversity and encourage lively debate. We want people to feel safe and welcome posting here. Please be polite and respectful in your interactions. By posting, you are agreeing to abide by the %{platform} user agreement."
+      be_relevant: "Be Relevant."
+      be_relevant_explanation: "Please keep your posts on topic. When you introduce a new topic, please create a new post. Use headlines to help others find your content later on."
+      seek_advice: "Seek advice & share solutions."
+      seek_advice_explanation: "Strive to shed more light than heat on a subject."
+      share_expertise: "Share your expertise!"
+      share_expertise_explanation: "Aim to post content that is informative, educational or encourages discussion."
+      be_yourself: "Be yourself."
+      be_yourself_explanation: "You don't need to share your real name but you should not be impersonating anyone."
+      dont: "DON'T:"
+      unacceptable_content: "Post content that is confidential, defamatory, misleading or deceptive, offensive, abusive, harassing, threatening, designed to intimidate or bully, or that infringes copyright or contains hate speech."
+      commercial_activity: "Engage in commercial activity. Please do not use this site to promote the-sale of goods or services."
+      use_all_caps: "Use all CAPS in comments. Caps might be construed as yelling, which isn't nice. Be careful with bolding or underlining – it can sometimes feel aggressive."
+      violation_warning: "Engaging in any of the \"don't\" behaviors may result in the removal of your contributions, the loss of posting privileges, or the deletion of your account."
+    home:
+      welcome: "Welcome to the %{platform}"
+      explore: "Explore Our First Challenge"
+      what: "What is the %{platform}?"
+      join: "Join the %{platform}."
+      return_to_challenge: "Return to Challenge"
+      see_featured_challenge: "See Featured Challenge"
+      make_ideas_real: "Make your ideas real."
+      description: "We know that the best ideas for solving problems in education come from educators. The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
+      social_description: "The %{platform} is an online community of educators like you who will collaborate to solve common challenges by sharing experiences, getting and offering advice, and turning ideas into reality."
+      challenge_phases_header: "Each Challenge will go through four phases:"
+      featured_challenge_header:  "Our Featured Challenge"
+      featured_challenge_title:  "Challenge %{id}: %{title}"
+      learn_more: "Learn More"
+      learn_more_and_participate: "Learn More and Participate"
+      register_today_to_participate: "Register Today to Participate"
+      cta_tackle_header: "What challenges should we tackle next?"
+      cta_tackle: "Tell us what challenges affect you most, and vote on additional challenges suggested by others."
+      suggestion: "Suggestion"
+      add_suggestion: "+ Add Suggestion"
+      more: "Show %{count} More Suggestions"
+      less: "Show Less"
+      social_sharing_question: "Know someone who may want to add to the discussion?"
+      social_sharing_description: "The more the merrier! Share our platform to help us get the best suggestions from educators like you."
+      share_experience: "Share your experience with the first challenge!"
+    preview:
+      shared:  "shared"
+      saved_as_draft: "saved as a draft"
+      sign_up_link: "Sign Up"
+      sign_in_link: "Sign In"
+      title: "Your %{entity} will be %{action} once you {{new_user ? 'sign up' : 'sign in'}}"
+
+  idea_stages:
+    headline: "Contribute Ideas"
+    description: "Contribute and compare ideas you might use to solve this challenge."
+    show:
+      featured_contributions: "Featured Contributions"
+      add_first_idea: "Add the first idea"
+      problem_statement: "Problem Statement"
+      stage: "idea"
+      add: "+ Add yours"
+      more_idea: "More Idea"
+      show_more: "Show %{pluralized_idea_count}"
+      show_less: "Show Less"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  ideas:
+    card:
+      _new:
+        stage_number: "Stage %{number} >"
+        get_involved: "Want to get involved? Contribute in %{stage_number_link}"
+        add: "Add Your Idea"
+      _show:
+        featured: "Featured"
+        refinement: "Refinement of"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your idea?"
+        flag: "Flag"
+      _inspiration:
+        inspiration: "Inspiration"
+        refinement: "Refinement of"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your idea?"
+        flag: "Flag"
+    _example:
+      header: "EXAMPLE IDEA"
+      title: "Flipped Professional Learning for Teachers"
+      title_popover: "A concise descriptive title makes it easy for people to find and understand your idea."
+      body: "Teaching is hard and regardless of the grade-level or subject area, there are gaps in teacher content knowledge.  So, what if we had teachers creating five-minute mini-lessons for other teachers?  Struggling to teach balancing equations?  Watch this video by a great math teacher in Texas.  Not sure about comma splices?  Check out this video by an English teacher in New York"
+      potential_impact_popover: "Explain your idea in terms of how it might be executed and how it could impact the various people involved."
+      potential_impact: "Potential Impact"
+      potential_impact_body: "This idea can impact all teachers, from K-12 as it is simply a way for teachers to quickly remediate small gaps in their content knowledge."
+      possible_implementation: "Possible Implementation"
+      possible_implementation_body: "A website where teachers can submit these videos.  They would then get sorted, filtered, and tagged by discipline and skill for easy access."
+      link_description: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging."
+      link: "Link"
+      go_back: "Go Back to My Idea"
+    _form:
+      refinement: "Refinement of"
+      title_placeholder: "What is the title of your idea?"
+      description_placeholder: "Describe your idea. Your idea can be simple – just a few lines, but the clearer you are about the details, the better."
+      potential_impact_help: "Explain the potential impact of your idea"
+      impact_label: "Potential Impact"
+      impact_placeholder: "Describe the impact your idea could have."
+      body_help: "Explain how your idea may be implemented"
+      implementation_label: "Possible Implementation"
+      implementation_placeholder: "Describe how your idea may be implemented."
+      link_placeholder: "Add a link to a video, article, image or other support"
+      url: "Add URL"
+      link_description: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your idea."
+      save: "Save and finish later"
+      cancel: "Cancel"
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+    _header:
+      header: "Idea for"
+      featured_idea: "Featured Idea"
+    _refinement:
+      potential_impact: "Potential Impact"
+      possible_implementation: "Possible Implementation"
+      link: "Link"
+      go_back: "Go Back to My Idea"
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      keep_editing_html: "Keep<br> Editing"
+      expand_keep_editing_html: "Expand to keep<br> working on your idea."
+      original_idea_html: "Original<br> Idea"
+      expand_original_idea_html: "Expand to show<br> the original idea."
+      submit: "Update Idea"
+      example_idea_html: "Example<br> Idea"
+      expand_example_idea_html: "Expand to show<br> an example idea."
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      keep_editing_html: "Keep<br> Editing"
+      expand_keep_editing_html: "Expand to keep<br> working on your idea."
+      original_idea_html: "Original<br> Idea"
+      expand_original_idea_html: "Expand to show<br> the original idea."
+      submit: "Share Idea"
+      example_idea_html: "Example<br> Idea"
+      expand_example_idea_html: "Expand to show<br> an example idea."
+    show:
+      header: "Idea"
+      time: "%{time} ago"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure you want to delete your idea?"
+      discuss: "Discuss"
+      content: "<p class='text-center text-bold'>Inspired to improve this idea?</p><p class='text-lighter zero-margin-bottom'>Create a refined version. Refinements are treated as separate ideas, but refer back to the original with a linked reference.</p>"
+      refine: "Refine"
+      potential_impact: "Potential Impact"
+      possible_implementation: "Possible Implementation"
+      inspiration: "Inspiration"
+      link: "Link"
+      based_on: "Based On"
+      refinement: "Refinement"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  layouts:
+    _error_messages:
+      header: "The form contains the following errors:"
+    _footer:
+      terms: "Terms"
+      privacy: "Privacy"
+    _header:
+      header: "Toggle navigation"
+      about: "About Us"
+      profile: "Profile"
+      settings: "Settings"
+      sign_out: "Sign Out"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+    _share_button:
+      twitter: "Twitter"
+      facebook: "Facebook"
+      linked_in: "LinkedIn"
+      email: "Email"
+      button_label: "Share"
+      email_subject: "Check out %{title} on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
+    _share_links:
+      email_subject: "Check out %{title} on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
+    _share_popover:
+      email_subject: "Check out \"%{title}\" on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
+
+  mailers:
+    shared:
+      action:
+        confirm_email: "Please confirm your email address by clicking the link below."
+        send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
+        confirm_address: "Confirm email address"
+        signature: "The %{project} Team"
+
+  mailkick:
+    subscriptions:
+      show:
+        header: "Subscriptions"
+        unsubscribed: "You are unsubscribed."
+        subscribed: "You are subscribed."
+        resubscribe: "Resubscribe"
+        unsubscribe: "Unsubscribe"
+
+  recipe_stages:
+    headline: "Develop Recipes"
+    description: "Develop and propose different recipes to tackling this challenge."
+    show:
+      featured_contributions: "Featured Contributions"
+      cookbook:
+        header: "Cookbook"
+        have_recipe: "Have a recipe for this cookbook?"
+        feedback: "Feedback on this cookbook?"
+      share: "Share your recipe"
+      join: "Join the discussion"
+      comment: "comment"
+      recipe: "recipe"
+      discussion: "discussion"
+      comment_expand: "See all %{pluralized_comment_count}"
+      add_new: "+ Add yours"
+      more_recipe: "More Recipe"
+      show_more: "Show %{pluralized_recipe_count}"
+      show_less: "Show Less"
+      discussion_expand: "See all %{pluralized_discussion_count}"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  recipes:
+    card:
+      _new:
+        new_question: "Know how to try this idea?"
+        submit_new: "Share your recipe."
+        discussion_question: "Still not sure?"
+        see_discusion: "See the discussion for this idea"
+      _show:
+        featured: "Featured"
+        edit: "Edit"
+        delete: "Delete"
+        confirm: "Are you sure you want to delete your recipe?"
+        flag: "Flag"
+        how_to: "How To"
+        description: "Description"
+        materials_needed: "Materials Needed"
+    _try:
+      trying_out: "Trying Out"
+      try_out: "Try Out"
+      content: "<p class='text-center text-bold'>Inspired to try out this recipe?</p><p class='text-lighter zero-margin-bottom'>Click this button and the %{project} team will get in touch with more information on how you can try this out in your school or district.</p>"
+    _form:
+      steps_label: "How To"
+      step_placeholder: "Click to add another step"
+      save: "Save and finish later"
+      cancel: "Cancel"
+      cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      header_optional: "Optional"
+      add_link: "Add a link to a video, article, image or other supporting material"
+      add_url: "Add URL"
+      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+    _header:
+      title: "A recipe for the cookbook"
+      featured: "Featured Recipe"
+    _step_fields:
+      description_placeholder: "Outline how to test this idea step by step."
+    edit:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "Edit Recipe"
+      submit: "Update Recipe"
+    new:
+      confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
+      title: "New Recipe"
+      submit: "Share Recipe"
+    show:
+      title: "Recipe"
+      time: "%{time} Ago"
+      edit: "Edit"
+      delete: "Delete"
+      confirm: "Are you sure you want to delete your recipe?"
+      discuss: "Discuss"
+      materials: "Materials"
+      community: "Community"
+      conditions: "Conditions"
+      problem_statement: "Problem Statement & Desecription"
+      how: "How To"
+      evidence: "Evidence to know we're on the right track"
+      protips: "Protips for Practical Problem Solving"
+      link: "Link"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  shared:
+    _avatar:
+      you: "you"
+    _draft:
+      header: "Draft"
+      continue: "Continue Editing >"
+      delete: "Delete Draft"
+      confirm: "Are you sure you wish to delete your draft?"
+
+  solution_stages:
+    headline: "See Your Solutions"
+    description: "See stories of how real schools have adopted the solutions you've inspired, or try them out yourself!"
+    show:
+      previous: "Previous"
+      next: "Next"
+      coming_soon:
+        header: "Coming soon..."
+        check_back:  "Check back to see how educators will be trying out your Challenge ideas."
+      meeting_the_challenge: "How people are meeting the challenge"
+      stage: "story"
+      social_sharing_question: "Know people who have something to add to this conversation?"
+      social_sharing_description: "More people means more problems solved. Share this challenge!"
+
+  solution_stories:
+    card:
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      featured: "Featured"
+    show:
+      story_from_the_field: "Story From The Field"
+      how_to_guide: "How To Guide"
+
+  solutions:
+    show:
+      implemented_by: "Implemented by"
+      based_on_ideas: "Based on Ideas by"
+      user: "you"
+      inspired_by: "Inspired by the Experiences of"
+      discuss: "Discuss"
+      download: "Download"
+      what_you_need: "What You'll Need"
+      required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
+      how_to: "How To"
+      link: "Link"
+
+  suggestions:
+    card:
+      _edit: 
+        submit: "Update"
+      _form:
+        title: "Give it a title. Name a challenge we should take on."
+        description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
+        add_link: "Add a link to a video, article, image or other support"
+        add_url: "Add URL"
+        share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+        cancel: "Cancel"
+      _new: 
+        placeholder: "Share a suggestion that you think we should tackle with the %{platform}!"
+        submit: "Share"
+      _show: 
+        confirm: "Are you sure you want to delete your suggestion?"
+        time: "%{time} ago"
+        impact: "How much does this impact you?"
+        link: "Link:"
+      _vote:
+        low: "Not at all"
+        high: "A lot"
+    _form: 
+      title: "Give it a title. Name a challenge we should take on."
+      description: "Explain the challenge. Why is it important? How does it affect you and other educators? How can %{platform} help?"
+      add_link: "Add a link to a video, article, image or other support"
+      add_url: "Add URL"
+      share_link: "Share a link, image, video, or Tweet– we'll display it alongside your suggestion."
+      cancel: "Cancel"
+    edit:
+      header: "Suggestion"
+      edit_suggestion: "Edit Suggestion"
+      submit: "Update"
+    new:
+      header: "Suggestion"
+      new_suggestion: "New Suggestion"
+      submit: "Share"
+
+  users:
+    cards:
+      _submission:
+        draft: "DRAFT"
+        other: "other"
+        pluralized_name_list: "%{names} and %{remainder}"
+        commented: "commented on your %{submission_type}"
+        liked: "liked your %{submission_type}"
+    _header:
+      edit: "Edit Profile"
+      settings: "Account Settings"
+      activity: "Activity"

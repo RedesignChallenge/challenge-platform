@@ -20,8 +20,8 @@
   <div class='container'>
     <div class='row'>
       <div class='col-md-10 col-md-offset-1'>
-        <h2 class='section-title text-submit'><%= t('cookbook.show.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('cookbook.show.social_sharing_description') %></p>
+        <h2 class='section-title text-submit'><%= t('.social_sharing_question') %></h2>
+        <p class='section-description'><%= t('.social_sharing_description') %></p>
         <%= render partial: 'layouts/share_links', locals: {url: root_url, title: @cookbook.title.html_safe, description: @cookbook.description.html_safe, hashtag: @challenge.hashtag} %>
       </div>
     </div>
