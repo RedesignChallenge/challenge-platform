@@ -587,6 +587,38 @@ en:
       second: "Seconds"
 
   devise:
+    confirmations:
+      new:
+        email: "Email"
+        submit: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        content: "You can confirm your account email through the button below:"
+        action: "Confirm My Account"
+      reset_password_instructions:
+        content_change_password: "We understand you'd like to change your password. Just click the button below and follow the prompts to do so. And don't forget your password is case sensitive."
+        action: "Change My Password"
+        content_no_change_password: "You didn't ask to change your password? Then just ignore this email– your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        content: "Your account has been locked due to an excessive number of unsuccessful sign in attempts. Click the button below to unlock your account."
+        action: "Unlock My Account"
+    passwords:
+      edit:
+        title: "Update Your Password"
+        password_label: "Choose new password"
+        password_confirmation_label: "Confirm new password"
+        reset_password: "Reset your password."
+        not_working_html: "Not working? %{reset_password_link}"
+        cancel: "Cancel"
+        submit: "Update"
+      new:
+        title: "Reset Your Password"
+        email_label: "Email"
+        email_placeholder: "Please enter your email address"
+        sign_up: "Sign Up"
+        no_account_html: "Don't have an account? %{sign_up_link}"
+        cancel: "Cancel"
+        submit: "Reset"
     registrations:
       forms:
         _account:
@@ -649,3 +681,11 @@ en:
       new:
         participate: "Sign Up to Participate"
         switch_link_text: "Sign in."
+    shared:
+      _links:
+        sign_in: "Sign in"
+        sign_up: "Sign up"
+        forgot_password: "Forgot your password?"
+        no_confirmation_instructions: "Didn't receive confirmation instructions?"
+        no_unlock_instructions: "Didn't receive unlock instructions?"
+        sign_in_with_omniauth: "Sign in with %{provider}"
