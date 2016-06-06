@@ -408,17 +408,25 @@ en:
     _header:
       header: "Toggle navigation"
       about: "About Us"
+      profile: "Profile"
+      settings: "Settings"
+      sign_out: "Sign Out"
       sign_in: "Sign In"
       sign_up: "Sign Up"
-    _share_button: 
-      header: "Share"
-      email: "<i class='fa fa-envelope'></i> Email"
-      subject:
-      body: "Here's the URL: #{url}"
+    _share_button:
+      twitter: "Twitter"
+      facebook: "Facebook"
+      linked_in: "LinkedIn"
+      email: "Email"
+      button_label: "Share"
+      email_subject: "Check out %{title} on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
     _share_links:
-      body: "Here's the URL: #{url}"
+      email_subject: "Check out %{title} on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
     _share_popover:
-      body: "Here's the URL: #{url}"
+      email_subject: "Check out \"%{title}\" on %{platform}"
+      email_body_html: "Here's the URL: %{url}"
 
   mailers:
     comment:
