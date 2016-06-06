@@ -657,6 +657,13 @@ en:
           have_account_html: "Already have an account? %{switch_link}"
           cancel: "Cancel"
           submit: "Sign Up"
+        _notifications:
+          comment_posted_label: "For comments that are left on posts which I've authored"
+          comment_replied_label: "For comments that are in reply to a comment that I've left"
+          comment_followed_label: "For comments that are part of a discussion that I'm participating in"
+          true_value: "Yes"
+          false_value: "No"
+          submit: "Update"
         _profile:
           display_name: "Name you would like to go by"
           prompt: "Select One"
@@ -678,6 +685,22 @@ en:
           interests_and_expertise: "Interests and expertise"
           learn_more_about_you: "Let other community members learn a bit more about you."
           submit: "Update"
+      headers:
+        _account:
+          edit_profile: "Edit Profile"
+          account_settings: "Account Settings"
+          activity: "Activity"
+        _notifications:
+          profile: "Profile"
+          account: "Account"
+          notifications: "Notifications"
+        _onboard:
+          welcome: "Welcome to %{platform}!"
+          complete_profile: "Please complete your profile below:"
+        _profile:
+          edit_profile: "Edit Profile"
+          account_settings: "Account Settings"
+          activity: "Activity"
       new:
         participate: "Sign Up to Participate"
         switch_link_text: "Sign in."

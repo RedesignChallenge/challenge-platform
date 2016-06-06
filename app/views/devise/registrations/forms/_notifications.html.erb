@@ -3,24 +3,24 @@
   <%= devise_error_messages! %>
 
   <div class='form-group'>
-    <%= f.label :comment_posted, "For comments that are left on posts which I've authored" %>
-    <%= f.radio_button :comment_posted, 'true' %> Yes
-    <%= f.radio_button :comment_posted, 'false' %> No
+    <%= f.label :comment_posted, t('devise.registrations.forms._notifications.comment_posted_label') %>
+    <%= f.radio_button :comment_posted, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
+    <%= f.radio_button :comment_posted, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
   </div>
 
   <div class='form-group'>
-    <%= f.label :comment_replied, "For comments that are in reply to a comment that I've left" %>
-    <%= f.radio_button :comment_replied, 'true' %> Yes
-    <%= f.radio_button :comment_replied, 'false' %> No
+    <%= f.label :comment_replied, t('devise.registrations.forms._notifications.comment_replied_label') %>
+    <%= f.radio_button :comment_replied, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
+    <%= f.radio_button :comment_replied, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
   </div>
 
   <div class='form-group'>
-    <%= f.label :comment_followed, "For comments that are part of a discussion that I'm participating in" %>
-    <%= f.radio_button :comment_followed, 'true' %> Yes
-    <%= f.radio_button :comment_followed, 'false' %> No
+    <%= f.label :comment_followed, t('devise.registrations.forms._notifications.comment_followed_label') %>
+    <%= f.radio_button :comment_followed, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
+    <%= f.radio_button :comment_followed, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
   </div>
 
   <hr>
 
-  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-submit btn-rounded btn-longer' %></div>
+  <div class='text-center center-block'><%= f.submit t('devise.registrations.forms._notifications.submit'), class: 'btn btn-submit btn-rounded btn-longer' %></div>
 <% end %>
