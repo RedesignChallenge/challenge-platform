@@ -1,9 +1,9 @@
-<%= render partial: 'mailers/shared/text', locals: { content: "One of your esteemed collaborators on #{I18n.t(:project_name)} added a comment in the discussion of #{link_to @comment.commentable_title.truncate(30), after_update_object_url_for(@comment.commentable)}:" } %>
+<%= render partial: 'mailers/shared/text', locals: { content: t('.comment', platform: t('project_name'), commentable: link_to(@comment.commentable_title.truncate(30), after_update_object_url_for(@comment.commentable))) } %>
 
 <%= render partial: 'mailers/shared/blockquote', locals: { quote: @comment.body, source: "#{@comment.user.display_name}, #{@comment.created_at.strftime("%B %d, %Y")}" } %>
 
-<%= render partial: 'mailers/shared/button', locals: { url: after_update_object_url_for(@comment, {anchor: "comment-#{@comment.id}", temporal_parent_id: @comment.id}), action: 'View and Reply' } %>
+<%= render partial: 'mailers/shared/button', locals: { url: after_update_object_url_for(@comment, {anchor: "comment-#{@comment.id}", temporal_parent_id: @comment.id}), action: t('.action') } %>
 
 <% provide :callout do %>
-  <%= render partial: 'mailers/shared/callout', locals: { callout: "Don't want to receive these kinds of notifications? #{link_to "Unsubscribe from your settings page", edit_user_registration_url(setting: 'account'), style: 'color:white'}." } %>
+  <%= render partial: 'mailers/shared/callout', locals: { callout: t('.callout_html', unsubscribe_link: link_to(t('.unsubscribe'), edit_user_registration_url(setting: 'account'), style: 'color:white')) } %>
 <% end %>

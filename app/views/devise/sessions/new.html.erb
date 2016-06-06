@@ -2,14 +2,11 @@
   <div class='container'>
     <div class='row'>
       <div class='col-sm-10 col-sm-offset-1'>
-
         <div class='well well-auth'>
-          <h2 class='section-title'>Sign In</h2>
-
-          <%= render partial: 'devise/sessions/form', locals: { cancel_path: root_path, switch_link: link_to("Sign Up.", new_user_registration_path) } %>
+          <h2 class='section-title'><%= t('.sign_in') %></h2>
+          <%= render partial: 'devise/sessions/form', locals: { cancel_path: root_path, switch_link: link_to(t('.sign_up'), new_user_registration_path) } %>
         </div>
-
-      </div>  
+      </div>
     </div>
   </div>
 </div>

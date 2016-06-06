@@ -1,10 +1,10 @@
 <% if user_signed_in? && current_user.liked?(comment, {vote_scope: comment.default_like[:scope]}) %>
-  <%= link_to unlike_comment_path(comment, partial: "card/like"), class: 'list-link', method: :put, remote: true do %>
+  <%= link_to unlike_comment_path(comment, partial: 'card/like'), class: 'list-link', method: :put, remote: true do %>
     <i class='<%= comment.default_like[:liked][:icon] %>'></i> 
     <%= comment.cached_votes_up unless comment.cached_votes_up.zero? %>
   <% end %>
 <% else %>
-  <%= link_to like_comment_path(comment, partial: "card/like"), class: 'list-link', method: :put, remote: user_signed_in? do %>
+  <%= link_to like_comment_path(comment, partial: 'card/like'), class: 'list-link', method: :put, remote: user_signed_in? do %>
     <i class='<%= comment.default_like[:unliked][:icon] %>'></i> 
     <%= comment.cached_votes_up unless comment.cached_votes_up.zero? %>
   <% end %>
