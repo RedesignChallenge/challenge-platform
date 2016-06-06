@@ -1,5 +1,4 @@
 en:
-  hello: "Hello world"
   project_name: "Challenge Platform"
   project_hashtag:  "#ChallengePlatformGenericTag"
   formal_project: "The %{project}"
@@ -541,50 +540,6 @@ en:
       edit: "Edit Profile"
       settings: "Account Settings"
       activity: "Activity"
-
-  datetime:
-    distance_in_words:
-      half_a_minute: "half a minute"
-      less_than_x_seconds:
-        one:   "less than 1 second"
-        other: "less than %{count} seconds"
-      x_seconds:
-        one:   "1 second"
-        other: "%{count} seconds"
-      less_than_x_minutes:
-        one:   "less than a minute"
-        other: "less than %{count} minutes"
-      x_minutes:
-        one:   "1 minute"
-        other: "%{count} minutes"
-      about_x_hours:
-        one:   "1 hour"
-        other: "%{count} hours"
-      x_days:
-        one:   "1 day"
-        other: "%{count} days"
-      about_x_months:
-        one:   "1 month"
-        other: "%{count} months"
-      x_months:
-        one:   "1 month"
-        other: "%{count} months"
-      about_x_years:
-        one:   "1 year"
-        other: "%{count} years"
-      over_x_years:
-        one:   "over 1 year"
-        other: "over %{count} years"
-      almost_x_years:
-        one:   "almost 1 year"
-        other: "almost %{count} years"
-    prompts:
-      year:   "Year"
-      month:  "Month"
-      day:    "Day"
-      hour:   "Hour"
-      minute: "Minute"
-      second: "Seconds"
 
   devise:
     confirmations:

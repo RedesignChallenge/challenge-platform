@@ -96,6 +96,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'i18n-tasks'
 end
 
 group :test do
