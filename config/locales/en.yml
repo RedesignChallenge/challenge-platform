@@ -114,7 +114,6 @@ en:
       save: "Save and finish later"
       cancel: "Cancel"
       cancel_confirm: "Are you sure you want to cancel? Any unsaved work will be lost."
-      submit: "Share Approach"
       header_optional: "Optional"
       add_link: "Add a link to a video, article, image or other supporting material"
       add_url: "Add URL"
@@ -157,18 +156,19 @@ en:
       minutes: "Minutes"
       time_left: "%{number} %{unit} Left"
     show:
-      cta: "Get Set, Create!"
       completed: "Completed"
       active: "Not yet active"
       challenge: "The Challenge"
       goal: "The Goal"
       role: "Your Role"
       guides: "Meet Our Challenge Guides"
-      about: "About <%= %{name} %>"
-      empty: "Not yet provided."
-      cta2: "Get Involved"
-      featured: "Featured contributions from"
+      empty_bio: "Not yet provided."
+      view_panelist_profile: "View Profile"
+      about_panelist: "About %{panelist}"
+      get_started: "Get Started Now"
+      featured: "Featured contributions from %{challenge}"
       more: "Show More"
+      story: "Tell Your Story"
       social_sharing_question: "Know people who have something to add to this conversation?"
       social_sharing_description: "More people means more problems solved. Share this challenge!"
 
@@ -182,7 +182,6 @@ en:
         url_placeholder: "Add URL"
         url_help: "Attach a link and we'll display it alongside your post."
         cancel: "Cancel"
-        submit: "Submit"
       _new:
         reply: "In reply to Comment #{{temporal_parent_id}} above."
         cancel: "Cancel reply?"
@@ -215,8 +214,6 @@ en:
       comment: "Comment on the <%= %{class} %>"
     edit:
       submit: "Update"
-    submit:
-      submit: "Submit"
 
   experience_stages:
     headline: "Share Experiences"
@@ -336,7 +333,6 @@ en:
       possible_implementation_body: "A website where teachers can submit these videos.  They would then get sorted, filtered, and tagged by discipline and skill for easy access."
       link_description: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging."
       link: "Link"
-      link_popover: "Adding a link to a video, article, image, or other supporting material helps make your idea engaging."
       go_back: "Go Back to My Idea"
     _form:
       refinement: "Refinement of"
@@ -428,16 +424,12 @@ en:
       email_body_html: "Here's the URL: %{url}"
 
   mailers:
-    comment:
-      posted:
-        content:
-        action: "View and Reply"
-        callout: 
     shared:
       action: 
-        paragraph1: "Please confirm your email address by clicking the link below."
-        paragraph2: "We may need to send you critical information about our service and it is important that we have an accurate email address."
-        paragraph3: Confirm email address
+        confirm_email: "Please confirm your email address by clicking the link below."
+        send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
+        confirm_address: "Confirm email address"
+        signature: "The %{project} Team"
 
   mailkick:
     subscriptions:
@@ -445,6 +437,8 @@ en:
         header: "Subscriptions"
         unsubscribed: "You are unsubscribed."
         subscribed: "You are subscribed."
+        resubscribe: "Resubscribe"
+        unsubscribe: "Unsubscribe"
 
   shared:
     _avatar:

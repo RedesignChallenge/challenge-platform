@@ -24,7 +24,7 @@
                   <% if user_signed_in? && current_user == idea.user %>
                     <span class="fa-stack fa-user-avatar">
                       <i class="fa fa-stack-2x fa-circle"></i>
-                      <i class="fa fa-stack-1x fa-inverse"><%= t('shared._avatar.you') %></i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= t('.user') %></i>
                     </span>
                   <% else %>
                     <span class="fa-stack fa-user-avatar">
@@ -54,7 +54,7 @@
                   <% if user_signed_in? && current_user == experience.user %>
                     <span class="fa-stack fa-user-avatar">
                       <i class="fa fa-stack-2x fa-circle"></i>
-                      <i class="fa fa-stack-1x fa-inverse"><%= t('shared._avatar.you') %></i>
+                      <i class="fa fa-stack-1x fa-inverse"><%= t('.user') %></i>
                     </span>
                   <% else %>
                     <span class="fa-stack fa-user-avatar">

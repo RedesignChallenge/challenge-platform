@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Subscriptions</title>
+    <title><%= t('.header') %></title>
 
     <style>
       body {
@@ -25,11 +25,11 @@
   <body>
     <div class="container">
       <% if opted_out? %>
-        <p>You are unsubscribed.</p>
-        <p><%= link_to "Resubscribe", subscribe_url %></p>
+        <p><%= t('.unsubscribed') %></p>
+        <p><%= link_to t('.resubscribe'), subscribe_url %></p>
       <% else %>
-        <p>You are subscribed.</p>
-        <p><%= link_to "Unsubscribe", unsubscribe_url %></p>
+        <p><%= t('.subscribed') %></p>
+        <p><%= link_to t('.unsubscribe'), unsubscribe_url %></p>
       <% end %>
     </div>
   </body>
