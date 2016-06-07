@@ -1,3 +1,17 @@
-app = angular.module("ChallengePlatformApp", ['ngSanitize', 'ngResource', 'ngAnimate', 'duScroll', 'ngFitText']);
+(function () {
+  'use strict';
 
-app.value('duScrollDuration', 1000).value('duScrollOffset', 30);
+  angular
+    .module('ChallengePlatformApp',
+      ['ngSanitize',
+        'ngResource',
+        'ngAnimate',
+        'duScroll',
+        'ngFitText']);
+
+  angular
+    .module('ChallengePlatformApp')
+    .value('duScrollDuration', 1000)
+    .value('duScrollOffset', 30);
+})();
+

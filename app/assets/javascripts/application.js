@@ -22,4 +22,5 @@
 //= require select2
 //= require bootstrap-switch
 //= require cocoon
+//= require ngFitText
 //= require_tree .

@@ -264,6 +264,8 @@ GEM
       rails-assets-angular (>= 1.2.16, < 2)
     rails-assets-angular-ui-select (0.17.1)
       rails-assets-angular (>= 1.2.18)
+    rails-assets-ngFitText (4.2.0)
+      rails-assets-angular (~> 1.0)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -445,6 +447,7 @@ DEPENDENCIES
   rails-assets-angular-sanitize!
   rails-assets-angular-scroll!
   rails-assets-angular-ui-select!
+  rails-assets-ngFitText!
   rails-assets-underscore!
   rails-i18n
   rails_12factor

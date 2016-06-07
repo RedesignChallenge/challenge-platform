@@ -1,30 +1,42 @@
-app.controller('IdeaCtrl', function($scope, $timeout) {
-  $scope.form = true;
+(function () {
+  'use strict';
 
-  $scope.showExample = function(){
-    $scope.form = false;
-    $scope.example = true;
-    $scope.refinement = false;
+  angular
+    .module('ChallengePlatformApp')
+    .controller('IdeaCtrl', IdeaCtrl);
 
-    $timeout(function(){
-      $(".example-popover").popover('show');
-    });
-  }
+  IdeaCtrl.$inject = [
+    '$scope',
+    '$timeout'
+  ];
 
-  $scope.showForm = function(){
+  function IdeaCtrl($scope, $timeout) {
     $scope.form = true;
-    $scope.example = false;
-    $scope.refinement = false;
 
-    $timeout(function(){
-      $(".example-popover").popover('hide');
-    });
+    $scope.showExample = function () {
+      $scope.form = false;
+      $scope.example = true;
+      $scope.refinement = false;
+
+      $timeout(function () {
+        $(".example-popover").popover('show');
+      });
+    };
+
+    $scope.showForm = function () {
+      $scope.form = true;
+      $scope.example = false;
+      $scope.refinement = false;
+
+      $timeout(function () {
+        $(".example-popover").popover('hide');
+      });
+    };
+
+    $scope.showRefinement = function () {
+      $scope.form = false;
+      $scope.example = false;
+      $scope.refinement = true;
+    };
   }
-
-  $scope.showRefinement = function(){
-    $scope.form = false;
-    $scope.example = false;
-    $scope.refinement = true;
-  }
-
-});
+})();
