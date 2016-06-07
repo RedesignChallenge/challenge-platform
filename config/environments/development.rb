@@ -7,7 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = true
+  config.eager_load = false
 
   # Eager load I18n before the rest of the application so it can be used as part of initialization
   # such as mailers and models which are only invoked once

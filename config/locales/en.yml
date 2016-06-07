@@ -493,12 +493,17 @@ en:
   mailers:
     comment:
       followed:
-        comment: "One of your esteemed collaborators on %{platform} added a comment in the discussion of %{commentable}:"
+        content: "One of your esteemed collaborators on %{platform} added a comment in the discussion of %{commentable}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
       posted:
-        comment: "One of your esteemed collaborators on %{platform} posted a comment on your %{commentable} %{commentable_link}:"
+        content: "One of your esteemed collaborators on %{platform} posted a comment on your %{commentable} %{commentable_link}:"
+        action: "View and Reply"
+        unsubscribe: "Unsubscribe from your settings page"
+        callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
+      replied:
+        content: "One of your esteemed collaborators on %{platform} replied to your comment on the %{commentable} %{commentable_link}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
