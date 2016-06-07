@@ -134,6 +134,8 @@ en:
         header: "Resend confirmation instructions"
         email: "Email"
         submit: "Resend confirmation instructions"
+    failure:
+      unauthenticated: "Thanks for visiting the ${project_name}. Please sign in with your account below to continue."
     mailer:
       confirmation_instructions:
         content: "You can confirm your account email through the button below:"
@@ -163,6 +165,7 @@ en:
         cancel: "Cancel"
         submit: "Reset"
     registrations:
+      signed_up: "Welcome to the ${platform_name}!"
       forms:
         _account:
           first_name: "First name"
@@ -250,6 +253,7 @@ en:
         participate: "Sign Up to Participate"
         switch_link_text: "Sign in."
     sessions:
+      signed_in: "Welcome back to the ${project_name}!"
       _form:
         email_label: "Email"
         forgot_password: "Forgot your password?"

@@ -68,7 +68,9 @@ gem 'newrelic_rpm'
 gem 'memcachier'
 gem 'dalli'
 
+## INTERNATIONALIZATION
 gem 'rails-i18n'
+gem 'i18n-recursive-lookup'
 
 ## DELAYED JOBS
 gem 'sidekiq'
