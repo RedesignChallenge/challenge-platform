@@ -20,7 +20,7 @@
                 
                 <%= "<i class='fa fa-check'></i>".html_safe if @challenge.stage_number > stage[:number] %>
 
-                <span class='headline text-<%= stage[:name] if @challenge.stage_number == stage[:number] %>'><%= stage[:headline].call %></span>
+                <span class='headline text-<%= stage[:name] if @challenge.stage_number == stage[:number] %>'><%= stage[:headline] %></span>
               </span>
             <% end %>
 

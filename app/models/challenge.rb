@@ -91,32 +91,32 @@ class Challenge < ActiveRecord::Base
       name: 'experience',
       action: 'shared',
       icon: 'fa-comment',
-      headline: -> { I18n.t('experience_stages.headline') },
-      description: -> { I18n.t('experience_stages.description') }
+      headline: I18n.t('experience_stages.headline'),
+      description: I18n.t('experience_stages.description')
     },
     {
       number: 2,
       name: 'idea',
       action: 'contributed',
       icon: 'fa-lightbulb-o',
-      headline: -> { I18n.t('idea_stages.headline') },
-      description: -> { I18n.t('idea_stages.description') }
+      headline: I18n.t('idea_stages.headline'),
+      description: I18n.t('idea_stages.description')
     },
     {
       number: 3,
       name: 'recipe',
       action: 'developed',
       icon: 'fa-flask',
-      headline: -> { I18n.t('recipe_stages.headline') },
-      description: -> { I18n.t('recipe_stages.description') }
+      headline: I18n.t('recipe_stages.headline'),
+      description: I18n.t('recipe_stages.description')
     },
     {
       number: 4,
       name: 'solution',
       action: 'tried',
       icon: 'fa-puzzle-piece',
-      headline: -> { I18n.t('solution_stages.headline') },
-      description: -> { I18n.t('solution_stages.description') }
+      headline: I18n.t('solution_stages.headline'),
+      description: I18n.t('solution_stages.description')
     }
   ]
 end

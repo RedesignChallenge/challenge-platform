@@ -161,16 +161,7 @@ class User < ActiveRecord::Base
   rescue
   end
 
-  ROLES = {
-    I18n.t('activerecord.models.user.roles.pre_service_teacher_key') => 'Pre-Service Teacher',
-    I18n.t('activerecord.models.user.roles.current_teacher_key') => 'Current Teacher',
-    I18n.t('activerecord.models.user.roles.teacher_leader_key') => 'Teacher Leader',
-    I18n.t('activerecord.models.user.roles.instructional_coach_key') => 'Instructional Coach',
-    I18n.t('activerecord.models.user.roles.school_leader_key') => 'School Leader',
-    I18n.t('activerecord.models.user.roles.district_staff_key') => 'LEA Staff',
-    I18n.t('activerecord.models.user.roles.state_staff_key') => 'SEA Staff',
-    I18n.t('activerecord.models.user.roles.other_key') => 'Other'
-  }
+  ROLES = UsersHelper::ROLES
 
   COLORS = %w(#11487e #8BB734 #7F3F98 #F26606)
 
@@ -178,7 +169,7 @@ class User < ActiveRecord::Base
 
   def avatar_file_size
     if avatar && avatar.file && avatar.file.size.to_i > MAX_AVATAR_SIZE.megabytes.to_i
-      errors.add(:avatar, "Avatar is too large; it must be smaller than #{MAX_AVATAR_SIZE} MB")
+      errors.add(:avatar, I18n.t('activerecord.errors.user.avatar_size_error', avatar_size: MAX_AVATAR_SIZE))
     end
   end
 

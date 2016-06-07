@@ -1,5 +1,16 @@
 module UsersHelper
 
+  ROLES = {
+    I18n.t('helpers.users.roles.pre_service_teacher_key') => 'Pre-Service Teacher',
+    I18n.t('helpers.users.roles.current_teacher_key') => 'Current Teacher',
+    I18n.t('helpers.users.roles.teacher_leader_key') => 'Teacher Leader',
+    I18n.t('helpers.users.roles.instructional_coach_key') => 'Instructional Coach',
+    I18n.t('helpers.users.roles.school_leader_key') => 'School Leader',
+    I18n.t('helpers.users.roles.district_staff_key') => 'LEA Staff',
+    I18n.t('helpers.users.roles.state_staff_key') => 'SEA Staff',
+    I18n.t('helpers.users.roles.other_key') => 'Other'
+  }
+
   def display_commenters(entity)
     render_users(entity.comment_threads.map(&:user).map(&:display_name).uniq)
   end

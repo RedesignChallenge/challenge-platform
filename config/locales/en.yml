@@ -4,21 +4,20 @@ en:
   formal_project: "The %{project}"
 
   activerecord:
-    models:
+    errors:
       user:
-        roles:
-          pre_service_teacher_key: "Pre-Service Teacher"
-          current_teacher_key: "Current Teacher"
-          teacher_leader_key: "Teacher Leader"
-          instructional_coach_key: "Instructional Coach"
-          school_leader_key: "School Leader"
-          district_staff_key: "District or CMO Staff"
-          state_staff_key: "State Educational Agency Staff"
-          other_key: "Other"
+        avatar_size_error: "is too large; it must be smaller than %{avatar_size} MB"
+      feature:
+        invalid_panelist_error: "%{username} is not a panelist for %{challenge}, so they cannot mark this content as featured."
 
   constants:
     like: "Like"
     liked: "Liked"
+
+  controllers:
+    home:
+      flash:
+        danger: "Sorry there is no preview to be shown. Please try again."
 
   challenges:
     helper:
@@ -365,6 +364,18 @@ en:
       sign_up_link: "Sign Up"
       sign_in_link: "Sign In"
       title: "Your %{entity} will be %{action} once you {{new_user ? 'sign up' : 'sign in'}}"
+
+  helpers:
+    users:
+      roles:
+        pre_service_teacher_key: "Pre-Service Teacher"
+        current_teacher_key: "Current Teacher"
+        teacher_leader_key: "Teacher Leader"
+        instructional_coach_key: "Instructional Coach"
+        school_leader_key: "School Leader"
+        district_staff_key: "District or CMO Staff"
+        state_staff_key: "State Educational Agency Staff"
+        other_key: "Other"
 
   idea_stages:
     headline: "Contribute Ideas"
