@@ -117,7 +117,7 @@ private
   def load_recipe
     @recipe = Recipe.find(params[:id])
     unless @recipe.user == current_user || @recipe.published_at?
-      flash[:error] = 'Sorry, that recipe has not been published yet.'
+      flash[:error] = I18n.t('controllers.recipes.flash.error')
       redirect_to challenge_recipe_stage_path(@challenge, @recipe.recipe_stage)
     end
     @recipe_stage = @recipe.recipe_stage
@@ -125,7 +125,7 @@ private
 
   def authorize_user!
     unless @recipe.user == current_user
-      flash[:danger] = 'You do not have access to that area or operation.'
+      flash[:danger] = I18n.t('controllers.recipes.flash.danger')
       redirect_to after_update_object_path_for(@recipe)
     end
   end

@@ -25,9 +25,32 @@ en:
     liked: "Liked"
 
   controllers:
+    application:
+      deleted: "deleted"
+      shared: "shared"
+      published: "published"
+      updated: "updated"
+      saved_draft: "saved a draft of"
+      updated_draft: "updated the draft of"
+      message: "You've successfully %{action} your %{actionable}. <a href='%{url}'>Click here</a> to see all of your contributions."
+    experiences:
+      flash:
+        error: "Sorry, that experience has not been published yet."
+        danger: "You do not have access to that area or operation."
     home:
       flash:
         danger: "Sorry there is no preview to be shown. Please try again."
+    ideas:
+      flash:
+        error: "Sorry, that idea has not been published yet."
+        danger: "You do not have access to that area or operation."
+    recipes:
+      flash:
+        error: "Sorry, that recipe has not been published yet."
+        danger: "You do not have access to that area or operation."
+    suggestions:
+      flash:
+        danger: "You do not have access to that area or operation."
 
   challenges:
     helper:
