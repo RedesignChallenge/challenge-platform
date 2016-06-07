@@ -42,7 +42,7 @@ describe UrlValidator do
   it 'does not validate if the domain is omitted' do
     subject.link = 'http://..com/some_url?path=foo&bar'
     expect(subject).not_to be_valid
-    expect(subject.errors.full_messages).to eq ["Link domain is not valid: #{subject.link}"]
+    expect(subject.errors.full_messages).to eq ['Link hostname is not valid: ..com']
   end
 
   it 'validates well-formed URLs with query parameters' do
@@ -70,7 +70,7 @@ describe UrlValidator do
     expect(subject.errors.full_messages).to eq ['Link is too long, maximum length is 2047 characters']
   end
 
-  it "does not validate a live XSS attempt from a hacker" do
+  it 'does not validate a live XSS attempt from a hacker' do
     subject.link = 'http://asite.com/HTTP-EQUIV="Link" Content="<http://ha.ckers.org/xss.css>; REL=stylesheet"'
     expect(subject).not_to be_valid
   end
