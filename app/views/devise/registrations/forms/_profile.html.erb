@@ -52,7 +52,7 @@
           },
           processResults: function (data) {
             return {
-              results: _.map(data.states, function(state){
+              results: _.map(data, function(state){
                 return{ id: state.id, text: state.name + ' (' + state.mail_state + ')' }
               })
             };
@@ -94,8 +94,8 @@
               return { search: params.term };
             },
             processResults: function (data) {
-              return {
-                results: _.map(data.districts, function(district){
+              return  {
+                results: _.map(data, function(district){
                   return{ id: district.id, text: district.name + ' (' + district.location_city + ', ' + district.location_state + ')' }
                 })
               };
@@ -136,7 +136,7 @@
           },
           processResults: function (data) {
             return {
-              results: _.map(data.schools, function(school){
+              results: _.map(data, function(school){
                 return{ id: school.id, text: school.name + ' (' + school.location_city + ', ' + school.location_state + ')' }
               })
             };
