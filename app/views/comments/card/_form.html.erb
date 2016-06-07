@@ -26,7 +26,7 @@
         </div>
 
         <div ng-show='comment_<%= comment.id %>_link' class='form-group'>
-          <%= f.text_field :link, placeholder: 'Add URL', class: 'form-control' %>
+          <%= f.text_field :link, placeholder: t('comments.card._form.url_placeholder'), class: 'form-control' %>
           <span class='help-block'><%= t('comments.card._form.url_help') %></span>
         </div>
       </div>

@@ -4,45 +4,27 @@
   <div class='row row-fields'>
     <div id='email' class='col-sm-8 col-sm-offset-2'>
       <div class='form-group'>
-        <%= f.label :email %>
+        <%= f.label t('devise.sessions._form.email_label') %>
         <%= f.email_field :email, autofocus: true, class: 'form-control input-lg' %>
       </div>
 
       <div class='form-group'>
         <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control input-lg' %>
-        <p class='auth-helper'><%= link_to "Forgot your password?", new_user_password_path %></p>
+        <%= f.password_field :password, autocomplete: 'off', class: 'form-control input-lg' %>
+        <p class='auth-helper'><%= link_to t('devise.sessions._form.forgot_password'), new_user_password_path %></p>
       </div>
     </div>
-
-    <!-- <div id='or' class='col-sm-2'>
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-stack-1x fa-inverse">or</i>
-      </span>
-    </div>
-
-    <div id='oauth' class='col-sm-5'>
-      <div class='form-group'>
-        <label>Oauth</label>
-        <div class="btn btn-block btn-social btn-lg btn-info"><i class="fa fa-t2t">T2T</i> Sign in with Teacher 2 Teacher</div>
-      </div>
-      <div class='form-group'>
-        <div class="btn btn-block btn-social btn-lg btn-twitter"><i class="fa fa-twitter"></i> Sign in with Twitter</div>
-      </div>
-    </div> -->
   </div>
 
   <div class='row row-actions'>
     <div class='col-sm-4'>
-      <p class='auth-switch'>Don't have an account? <%= switch_link %></p>
+      <p class='auth-switch'><%= t('devise.sessions._form.no_account_html', link: switch_link) %></p>
     </div>
     <div class='col-sm-2'>
-      <%= link_to 'Cancel', cancel_path, class: 'btn btn-default btn-block btn-rounded' %>
+      <%= link_to t('devise.sessions._form.cancel'), cancel_path, class: 'btn btn-default btn-block btn-rounded' %>
     </div>
     <div class='col-sm-2'>
-      <%= f.submit "Sign In", class: 'btn btn-info btn-block btn-rounded' %>
+      <%= f.submit t('devise.sessions._form.submit'), class: 'btn btn-info btn-block btn-rounded' %>
     </div>
   </div>
-
 <% end %>

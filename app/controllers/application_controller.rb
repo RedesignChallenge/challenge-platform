@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
-  
+
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
-  
+
   def resource_name
     :user
   end
@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
   helper_method :resource, :resource_name, :devise_mapping
 
   def devise_parameter_sanitizer
@@ -48,7 +49,7 @@ class ApplicationController < ActionController::Base
     @challenge = Challenge.find(params[:challenge_id])
   end
 
-private
+  private
 
   def capture_referrer_id
     session[:referrer_id] = params[:referrer_id] if params[:referrer_id]
@@ -56,20 +57,27 @@ private
 
   def object_flash_message_for(object, options = {})
     if object.destroyed_at?
-      action = 'deleted'
+      action = I18n.t('controllers.application.deleted')
     else
-      if ['experience','idea','recipe'].include?(object.class.to_s.downcase)
+      if ['experience', 'idea', 'recipe'].include?(object.class.to_s.downcase)
         if object.published_at?
-          action = object.created_at == object.updated_at ? 'shared' : options[:published] ? 'published' : 'updated'
+          action = if object.created_at == object.updated_at
+                     I18n.t('controllers.application.shared')
+                   else
+                     options[:published] ? I18n.t('controllers.application.published') : I18n.t('controllers.application.updated')
+                   end
         else
-          action = object.created_at == object.updated_at ? 'saved a draft of' : 'updated the draft of'
+          action = object.created_at == object.updated_at ? I18n.t('controllers.application.saved_draft') : I18n.t('controllers.application.updated_draft')
         end
       else
-        action = object.created_at == object.updated_at ? 'shared' : 'updated'
+        action = object.created_at == object.updated_at ? I18n.t('controllers.application.shared') : I18n.t('controllers.application.updated')
       end
     end
 
-    message = "You've successfully #{action} your #{object.class.name.downcase}. <a href='#{user_path(object.user)}'>Click here</a> to see all of your contributions."
+    message = I18n.t('controllers.application.message',
+                     action: action,
+                     actionable: object.class.name.downcase,
+                     url: user_path(object.user))
 
     return message
   rescue

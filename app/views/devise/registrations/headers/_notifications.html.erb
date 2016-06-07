@@ -15,13 +15,12 @@
         <div class='user-caption'>
           <p class='user-name'><%= current_user.display_name %></p>
           <p class='user-title'><%= current_user.display_organization %></p>
-          <p class='user-location'><%#= current_user.display_name %></p>
         </div>
 
         <ul class="nav nav-tabs nav-justified">
-          <li role="presentation"><%= link_to 'Profile', edit_user_registration_path(setting: 'profile') %></li>
-          <li role="presentation"><%= link_to 'Account', edit_user_registration_path(setting: 'account') %></li>
-          <li role="presentation" class='active'><%= link_to 'Notifications', edit_user_registration_path(setting: 'notifications') %></li>
+          <li role="presentation"><%= link_to t('devise.registrations.headers._notifications.profile'), edit_user_registration_path(setting: 'profile') %></li>
+          <li role="presentation"><%= link_to t('devise.registrations.headers._notifications.account'), edit_user_registration_path(setting: 'account') %></li>
+          <li role="presentation" class='active'><%= link_to t('devise.registrations.headers._notifications.notifications'), edit_user_registration_path(setting: 'notifications') %></li>
         </ul>
 
       </div>

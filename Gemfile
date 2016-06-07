@@ -68,7 +68,9 @@ gem 'newrelic_rpm'
 gem 'memcachier'
 gem 'dalli'
 
+## INTERNATIONALIZATION
 gem 'rails-i18n'
+gem 'i18n-recursive-lookup'
 
 ## DELAYED JOBS
 gem 'sidekiq'
@@ -96,6 +98,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'i18n-tasks'
 end
 
 group :test do

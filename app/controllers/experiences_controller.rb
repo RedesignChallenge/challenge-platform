@@ -79,7 +79,7 @@ private
   def load_experience
     @experience = Experience.find(params[:id])
     unless @experience.user == current_user || @experience.published_at?
-      flash[:error] = 'Sorry, that experience has not been published yet.'
+      flash[:error] = I18n.t('controllers.experiences.flash.error')
       redirect_to challenge_experience_stage_path(@challenge, @experience.experience_stage)
     end
     @experience_stage = @experience.experience_stage
@@ -87,7 +87,7 @@ private
 
   def authorize_user!
     unless @experience.user == current_user
-      flash[:danger] = 'You do not have access to that area or operation.'
+      flash[:danger] = I18n.t('controllers.experiences.flash.danger')
       redirect_to after_update_object_path_for(@experience)
     end
   end

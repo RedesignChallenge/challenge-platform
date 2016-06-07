@@ -82,7 +82,7 @@ private
   def load_idea
     @idea = Idea.find(params[:id])
     unless @idea.user == current_user || @idea.published_at?
-      flash[:error] = 'Sorry, that idea has not been published yet.'
+      flash[:error] = I18n.t('controllers.ideas.flash.error')
       redirect_to challenge_idea_stage_path(@challenge, @idea.idea_stage)
     end
     @idea_stage = @idea.idea_stage
@@ -90,7 +90,7 @@ private
 
   def authorize_user!
     unless @idea.user == current_user
-      flash[:danger] = 'You do not have access to that area or operation.'
+      flash[:danger] = I18n.t('controllers.ideas.flash.danger')
       redirect_to after_update_object_path_for(@idea)
     end
   end

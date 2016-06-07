@@ -1,6 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
   helper ApplicationHelper
   include Rails.application.routes.url_helpers
+
   def self.default_url_options
     ActionMailer::Base.default_url_options
   end
@@ -10,14 +11,12 @@ class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
 
   before_action :set_action_and_header
-  after_action  :set_recipient_and_send
+  after_action :set_recipient_and_send
 
-private
-
+  private
   def set_action_and_header
     @action = action_name
     @header = "#{mailer_name.split('_')[0]} #{action_name}"
-    # headers[:mailkick_list] = "#{mailer_name.split('_')[0]}_#{action_name}"
   end
 
   def set_recipient_and_send
@@ -26,5 +25,4 @@ private
       mail(to: @recipient, subject: @subject)
     end
   end
-
 end

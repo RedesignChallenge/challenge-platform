@@ -3,7 +3,7 @@
   <%= devise_error_messages! %>
 
   <div class='form-group'>
-    <%= f.label :display_name, "Name you would like to go by" %>
+    <%= f.label :display_name, t('devise.registrations.forms._profile.display_name') %>
     <div class="input-group">
       <span class="input-group-addon"><i class='fa fa-user'></i></span>
       <%= f.text_field :display_name, class: 'form-control' %>
@@ -14,7 +14,7 @@
     <%= f.label :twitter %>
     <div class="input-group">
       <span class="input-group-addon"><i class='fa fa-at'></i></span>
-      <%= f.text_field :twitter, class: 'form-control', maxlength: "16" %>
+      <%= f.text_field :twitter, class: 'form-control', maxlength: '16' %>
     </div>
   </div>
 
@@ -23,12 +23,12 @@
   <hr>
 
   <div class='form-group <%= 'hidden' if @setting == 'onboard' %>' ng-init="role='<%= resource.role %>'">
-    <%= f.label :role, "Which option best describes your role?" %>
-    <%= f.select :role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: "Select One" }, class: 'form-control', 'ng-model' => 'role' %>
+    <%= f.label :role, t('devise.registrations.forms._profile.which_role') %>
+    <%= f.select :role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: t('devise.registrations.forms._profile.prompt') }, class: 'form-control', 'ng-model' => 'role' %>
   </div>
 
   <div class="form-group" ng-show="role == 'SEA Staff'">
-    <%= f.label :state_ids, "Which SEA do you serve?" %>
+    <%= f.label :state_ids, t('devise.registrations.forms._profile.which_sea') %>
     <select id='user_state_ids' name='user[state_ids][]' class='form-control' multiple='true'>
       <% if resource.states.present? %>
         <% resource.states.each do |state| %>
@@ -44,7 +44,7 @@
         allowClear: true,
         multiple: true,
         minimumInputLength: 1,
-        placeholder: "Please select your state",
+        placeholder: "<%= t('devise.registrations.forms._profile.please_select_state') %>",
         ajax: {
           url: "/states/search.json",
           data: function (params) {
@@ -65,10 +65,10 @@
   <div ng-init="other_lea=<%= resource.role == 'LEA Staff' && resource.districts.empty? && resource.organization.present? %>"></div>
   <div class="form-group" ng-show="role == 'LEA Staff'" ng-controller='DistrictCtrl' ng-class="{ 'zero-margin-bottom' : other_lea }">
     <label for='user_district_ids'>
-      Which district(s) do you serve?
+      <%= t('devise.registrations.forms._profile.which_districts') %>
       <small>
-        <a href='#' onclick="return false;" ng-hide='other_lea' ng-click='otherLEA(true)'>Can't find your district?</a>
-        <a href='#' onclick="return false;" ng-show='other_lea' ng-click='otherLEA(false)'>Go to prepopulated list of districts.</a>
+        <a href='#' onclick="return false;" ng-hide='other_lea' ng-click='otherLEA(true)'><%= t('devise.registrations.forms._profile.cant_find_district')%></a>
+        <a href='#' onclick="return false;" ng-show='other_lea' ng-click='otherLEA(false)'><%= t('devise.registrations.forms._profile.prepopulated_district_list') %></a>
       </small>
     </label>
 
@@ -87,7 +87,7 @@
           allowClear: true,
           multiple: true,
           minimumInputLength: 1,
-          placeholder: "Please select your district",
+          placeholder: "<%= t('devise.registrations.forms._profile.please_select_district') %>",
           ajax: {
             url: "/districts/search.json",
             data: function (params) {
@@ -108,10 +108,10 @@
   <div ng-init="other_school=<%= resource.is_teacher? && resource.schools.empty? && resource.organization.present? %>"></div>
   <div class="form-group" ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'" ng-controller='SchoolCtrl' ng-class="{ 'zero-margin-bottom' : other_school }">
     <label for='user_school_ids'>
-      Which school(s) do you serve?
+      <%= t('devise.registrations.forms._profile.which_schools') %>
       <small>
-        <a href='#' onclick='return false;' ng-hide='other_school' ng-click="otherSchool(true)">Can't find your school?</a>
-        <a href='#' onclick='return false;' ng-show='other_school' ng-click="otherSchool(false)">Go to prepopulated list of schools.</a>
+        <a href='#' onclick='return false;' ng-hide='other_school' ng-click="otherSchool(true)"><%= t('devise.registrations.forms._profile.cant_find_school') %></a>
+        <a href='#' onclick='return false;' ng-show='other_school' ng-click="otherSchool(false)"><%= t('devise.registrations.forms._profile.prepopulated_school_list') %></a>
       </small>
     </label>
 
@@ -128,7 +128,7 @@
         allowClear: true,
         multiple: true,
         minimumInputLength: 1,
-        placeholder: "Please select your school",
+        placeholder: "<%= t('devise.registrations.forms._profile.please_select_school') %>",
         ajax: {
           url: "/schools/search.json",
           data: function (params) {
@@ -147,21 +147,21 @@
   </div>
 
   <div class='form-group' ng-show="role == 'Other' || role == 'Pre-Service Teacher' || (role == 'LEA Staff' && other_lea) || ((role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader') && other_school) && role != 'SEA Staff'" ng-init="organization='<%= resource.organization %>'">
-    <%= f.label :organization, "Which organization do you work for?", 'ng-show' => 'role == "Other"' %>
-    <%= f.label :organization, "Which teacher training institution do you attend?", 'ng-show' => 'role == "Pre-Service Teacher"' %>
+    <%= f.label :organization, t('devise.registrations.forms._profile.which_organization'), 'ng-show' => 'role == "Other"' %>
+    <%= f.label :organization, t('devise.registrations.forms._profile.which_institution'), 'ng-show' => 'role == "Pre-Service Teacher"' %>
     <%= f.text_field :organization, class: 'form-control', placeholder: "{{ role != 'Other' && role != 'Pre-Service Teacher' ? other_placeholder : ''}}", 'ng-model' => 'organization' %>
   </div>
 
   <div class='form-group' ng-show='role && role != "Pre-Service Teacher"' ng-init="title='<%= resource.title %>'">
-    <label for='user_title' ng-show="role == 'LEA Staff' || role == 'SEA Staff' || role == 'Other'">What is your title?</label>
-    <label for='user_title' ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'">Which grade(s) and subject area(s) do you support/teach?</label>
+    <label for='user_title' ng-show="role == 'LEA Staff' || role == 'SEA Staff' || role == 'Other'"><%= t('devise.registrations.forms._profile.what_title') %></label>
+    <label for='user_title' ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'"><%= t('devise.registrations.forms._profile.which_grades_taught') %></label>
     <%= f.text_field :title, class: 'form-control', 'ng-model' => 'title' %>
   </div>
 
   <div class='form-group'>
-    <%= f.label :bio, "Interests and expertise" %>
-    <%= f.text_area :bio, class: 'form-control', placeholder: "Let other community members learn a bit more about you.", rows: 3 %>
+    <%= f.label :bio, t('devise.registrations.forms._profile.interests_and_expertise') %>
+    <%= f.text_area :bio, class: 'form-control', placeholder: t('devise.registrations.forms._profile.learn_more_about_you'), rows: 3 %>
   </div>
 
-  <div class='text-center center-block'><%= f.submit "Update", class: 'btn btn-info btn-rounded btn-longer' %></div>
+  <div class='text-center center-block'><%= f.submit t('devise.registrations.forms._profile.submit'), class: 'btn btn-info btn-rounded btn-longer' %></div>
 <% end %>

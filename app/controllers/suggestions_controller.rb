@@ -79,7 +79,7 @@ private
 
   def authorize_user!
     unless @suggestion.user == current_user
-      flash[:danger] = "You do not have access to that area or operation."
+      flash[:danger] = I18n.t('controllers.suggestions.flash.danger')
       redirect_to after_update_object_path_for(@suggestion)
     end
   end

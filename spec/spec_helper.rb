@@ -111,16 +111,15 @@ RSpec.configure do |config|
   # Clean up the database after the tests per http://stackoverflow.com/a/21323315/1079354
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end
 
   config.after(:each) do
     DatabaseCleaner.clean
-    # FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
   end
 end

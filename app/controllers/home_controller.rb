@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     @cancel_path = request.referer
 
     if @object.nil? || !(@class_name == 'vote' || @object.class.name.to_s.downcase == @class_name)
-      flash[:danger] = "Sorry there is no preview to be shown. Please try again."
+      flash[:danger] = I18n.t('controllers.home.flash.danger')
       redirect_to (@cancel_path || root_path)
     end
   end

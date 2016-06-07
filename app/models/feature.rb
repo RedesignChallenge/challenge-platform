@@ -27,7 +27,9 @@ class Feature < ActiveRecord::Base
   def validate_panelist
     if self.user
       unless featureable.challenge.panelists.exists?(user.id)
-        self.errors[:user] = "#{self.user.name} is not a panelist for \"#{featureable.challenge.title}\", so they cannot mark this content as featured."
+        self.errors[:user] = I18n.t('activerecord.errors.feature.invalid_panelist_error',
+                                    username: self.user.name,
+                                    challenge: featureable.challenge.title)
       end
     end
   end

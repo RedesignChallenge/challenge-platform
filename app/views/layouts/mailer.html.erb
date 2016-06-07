@@ -1,6 +1,6 @@
-<%= render partial: 'mailers/shared/header', locals: {challenge_phases_header: @header} %>
+<%= render partial: 'mailers/shared/header', locals: { header: @header } %>
 
-<%= render partial: 'mailers/shared/intro', locals: {resource: @resource} %>
+<%= render partial: 'mailers/shared/intro', locals: { resource: @resource } %>
 
 <%= yield %>
 
