@@ -7,7 +7,14 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = false
+  config.eager_load = true
+
+  # Eager load I18n before the rest of the application so it can be used as part of initialization
+  # such as mailers and models which are only invoked once
+  config.before_configuration do
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    I18n.reload!
+  end
 
   config.active_record.raise_in_transactional_callbacks = true
 
