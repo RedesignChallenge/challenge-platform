@@ -1,6 +1,6 @@
 module RoutingConcern
   extend ActiveSupport::Concern
-  
+
   ## DEVISE ROUTING
   def after_sign_in_path_for(resource)
     persist_pending_cache
@@ -60,7 +60,7 @@ module RoutingConcern
 private
 
   def complete_profile_request
-    flash[:notice] += " Please <a href='#{edit_user_registration_url(setting: 'onboard')}'>complete your profile</a>." if resource.sign_in_count < 5 && !resource.profile_complete?
+    flash[:notice] += I18n.t('concerns.routing.flash.notice', url: edit_user_registration_url(setting: 'onboard')) if resource.sign_in_count < 5 && !resource.profile_complete?
   rescue
   end
 

@@ -99,6 +99,7 @@ ignore_unused:
   - 'devise.passwords.*'
   - 'errors.*'
   - 'users.cards._submission.other'
+  - 'concerns.persistence.{voted_for,liked}'
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:

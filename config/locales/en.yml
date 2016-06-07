@@ -10,6 +10,16 @@ en:
       feature:
         invalid_panelist_error: "%{username} is not a panelist for %{challenge}, so they cannot mark this content as featured."
 
+  concerns:
+    persistence:
+      liked: "liked"
+      voted_for: "voted for"
+      flash:
+        success: "You've successfully %{action} this %{likeable}."
+    routing:
+      flash:
+        notice: " Please <a href='%{url}'>complete your profile</a>."
+
   constants:
     like: "Like"
     liked: "Liked"
@@ -725,3 +735,12 @@ en:
       edit: "Edit Profile"
       settings: "Account Settings"
       activity: "Activity"
+
+  validators:
+    url:
+      too_long: "is too long, maximum length is %{length} characters"
+      invalid_scheme: "doesn't contain a valid scheme: %{value}"
+      invalid_hostname: "hostname is not valid: %{hostname}"
+      invalid_domain: "domain is not valid: %{domain}"
+      invalid_url: "invalid URL"
+      domain_not_allowed: "domain usage is not allowed by authority: %{value}"
