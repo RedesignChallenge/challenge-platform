@@ -3,6 +3,19 @@ en:
   project_hashtag:  "#ChallengePlatformGenericTag"
   formal_project: "The %{project}"
 
+  activerecord:
+    models:
+      user:
+        roles:
+          pre_service_teacher_key: "Pre-Service Teacher"
+          current_teacher_key: "Current Teacher"
+          teacher_leader_key: "Teacher Leader"
+          instructional_coach_key: "Instructional Coach"
+          school_leader_key: "School Leader"
+          district_staff_key: "District or CMO Staff"
+          state_staff_key: "State Educational Agency Staff"
+          other_key: "Other"
+
   constants:
     like: "Like"
     liked: "Liked"

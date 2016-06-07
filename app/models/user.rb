@@ -162,14 +162,14 @@ class User < ActiveRecord::Base
   end
 
   ROLES = {
-    'Pre-Service Teacher' => 'Pre-Service Teacher',
-    'Current Teacher' => 'Current Teacher',
-    'Teacher Leader' => 'Teacher Leader',
-    'Instructional Coach' => 'Instructional Coach',
-    'School Leader' => 'School Leader',
-    'District or CMO Staff' => 'LEA Staff',
-    'State Educational Agency Staff' => 'SEA Staff',
-    'Other' => 'Other'
+    I18n.t('activerecord.models.user.roles.pre_service_teacher_key') => 'Pre-Service Teacher',
+    I18n.t('activerecord.models.user.roles.current_teacher_key') => 'Current Teacher',
+    I18n.t('activerecord.models.user.roles.teacher_leader_key') => 'Teacher Leader',
+    I18n.t('activerecord.models.user.roles.instructional_coach_key') => 'Instructional Coach',
+    I18n.t('activerecord.models.user.roles.school_leader_key') => 'School Leader',
+    I18n.t('activerecord.models.user.roles.district_staff_key') => 'LEA Staff',
+    I18n.t('activerecord.models.user.roles.state_staff_key') => 'SEA Staff',
+    I18n.t('activerecord.models.user.roles.other_key') => 'Other'
   }
 
   COLORS = %w(#11487e #8BB734 #7F3F98 #F26606)
