@@ -10,16 +10,25 @@
   ];
 
   function UserCtrl($scope) {
+
+    $scope.toggleState = function (isVisible) {
+      if (isVisible) {
+        $('.select2-container').hide();
+      } else {
+        $('.select2-container').show();
+      }
+    };
+
     $scope.otherLEA = function (arg) {
       $scope.other_lea = arg;
       $scope.other_placeholder = '<%= I18n.t('devise.registrations.forms._profile.placeholder_lea') %>';
-      arg ? $('.select2-container').hide() : $('.select2-container').show();
+      $scope.toggleState(arg);
     };
 
     $scope.otherSchool = function (arg) {
       $scope.other_school = arg;
       $scope.other_placeholder = '<%= I18n.t('devise.registrations.forms._profile.placeholder_school') %>';
-      arg ? $('.select2-container').hide() : $('.select2-container').show();
+      $scope.toggleState(arg);
     };
   }
 })();

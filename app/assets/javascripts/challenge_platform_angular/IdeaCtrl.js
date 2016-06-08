@@ -19,7 +19,7 @@
       $scope.refinement = false;
 
       $timeout(function () {
-        $(".example-popover").popover('show');
+        $('.example-popover').popover('show');
       });
     };
 
@@ -29,7 +29,7 @@
       $scope.refinement = false;
 
       $timeout(function () {
-        $(".example-popover").popover('hide');
+        $('.example-popover').popover('hide');
       });
     };
 
