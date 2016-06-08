@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ChallengePlatformApp')
+    .module('ChallengePlatform')
     .controller('IdeaCtrl', IdeaCtrl);
 
   IdeaCtrl.$inject = [

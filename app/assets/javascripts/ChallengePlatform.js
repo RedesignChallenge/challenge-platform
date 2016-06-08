@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ChallengePlatformApp',
+    .module('ChallengePlatform',
       ['ngSanitize',
         'ngResource',
         'ngAnimate',
@@ -10,7 +10,7 @@
         'ngFitText']);
 
   angular
-    .module('ChallengePlatformApp')
+    .module('ChallengePlatform')
     .value('duScrollDuration', 1000)
     .value('duScrollOffset', 30);
 })();
