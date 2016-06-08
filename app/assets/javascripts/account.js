@@ -1,6 +1,13 @@
 (function () {
   'use strict';
+
   $(function () {
-    $('.radio-switch').bootstrapSwitch();
+    invokeBootstrapSwitch();
   });
+
 })();
+
+var invokeBootstrapSwitch = function () {
+  'use strict';
+  $('.radio-switch').bootstrapSwitch();
+};

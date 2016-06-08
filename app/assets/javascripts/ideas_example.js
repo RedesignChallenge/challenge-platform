@@ -2,6 +2,10 @@
   'use strict';
 
   $(function () {
-    $('[data-toggle="popover"]').popover();
+    invokePopover();
   });
 })();
+
+var invokePopover = function () {
+  $('[data-toggle="popover"]').popover();
+};
