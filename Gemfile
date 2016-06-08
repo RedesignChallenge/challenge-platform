@@ -100,6 +100,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'i18n-tasks'
+  gem 'jasmine'
+  gem 'rails-assets-angular-mocks'
 end
 
 group :test do
