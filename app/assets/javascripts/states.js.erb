@@ -1,0 +1,26 @@
+(function () {
+  'use strict';
+
+  $(function () {
+    $("#user_state_ids").select2({
+      width: '100%',
+      allowClear: true,
+      multiple: true,
+      minimumInputLength: 1,
+      placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_state') %>",
+      ajax: {
+        url: "/states/search.json",
+        data: function (params) {
+          return {search: params.term};
+        },
+        processResults: function (data) {
+          return {
+            results: _.map(data, function (state) {
+              return {id: state.id, text: state.name + ' (' + state.mail_state + ')'}
+            })
+          };
+        }
+      }
+    });
+  });
+})();

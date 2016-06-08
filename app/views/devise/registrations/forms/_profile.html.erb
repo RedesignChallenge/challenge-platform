@@ -38,32 +38,10 @@
         <% end %>
       <% end %>
     </select>
-    <script>
-      $("#user_state_ids").select2({
-        width: '100%',
-        allowClear: true,
-        multiple: true,
-        minimumInputLength: 1,
-        placeholder: "<%= t('devise.registrations.forms._profile.please_select_state') %>",
-        ajax: {
-          url: "/states/search.json",
-          data: function (params) {
-            return { search: params.term };
-          },
-          processResults: function (data) {
-            return {
-              results: _.map(data, function(state){
-                return{ id: state.id, text: state.name + ' (' + state.mail_state + ')' }
-              })
-            };
-          }
-        }
-      });
-    </script>
   </div>
 
   <div ng-init="other_lea=<%= resource.role == 'LEA Staff' && resource.districts.empty? && resource.organization.present? %>"></div>
-  <div class="form-group" ng-show="role == 'LEA Staff'" ng-controller='DistrictCtrl' ng-class="{ 'zero-margin-bottom' : other_lea }">
+  <div class="form-group" ng-show="role == 'LEA Staff'" ng-class="{ 'zero-margin-bottom' : other_lea }">
     <label for='user_district_ids'>
       <%= t('devise.registrations.forms._profile.which_districts') %>
       <small>
@@ -81,32 +59,10 @@
         <% end %>
       <% end %>
     </select>
-    <script>
-      $("#user_district_ids").select2({
-          width: '100%',
-          allowClear: true,
-          multiple: true,
-          minimumInputLength: 1,
-          placeholder: "<%= t('devise.registrations.forms._profile.please_select_district') %>",
-          ajax: {
-            url: "/districts/search.json",
-            data: function (params) {
-              return { search: params.term };
-            },
-            processResults: function (data) {
-              return  {
-                results: _.map(data, function(district){
-                  return{ id: district.id, text: district.name + ' (' + district.location_city + ', ' + district.location_state + ')' }
-                })
-              };
-            }
-          }
-      });
-    </script>
   </div>
 
   <div ng-init="other_school=<%= resource.is_teacher? && resource.schools.empty? && resource.organization.present? %>"></div>
-  <div class="form-group" ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'" ng-controller='SchoolCtrl' ng-class="{ 'zero-margin-bottom' : other_school }">
+  <div class="form-group" ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'" ng-class="{ 'zero-margin-bottom' : other_school }">
     <label for='user_school_ids'>
       <%= t('devise.registrations.forms._profile.which_schools') %>
       <small>
@@ -122,28 +78,6 @@
         <% end %>
       <% end %>
     </select>
-    <script>
-      $("#user_school_ids").select2({
-        width: '100%',
-        allowClear: true,
-        multiple: true,
-        minimumInputLength: 1,
-        placeholder: "<%= t('devise.registrations.forms._profile.please_select_school') %>",
-        ajax: {
-          url: "/schools/search.json",
-          data: function (params) {
-            return { search: params.term };
-          },
-          processResults: function (data) {
-            return {
-              results: _.map(data, function(school){
-                return{ id: school.id, text: school.name + ' (' + school.location_city + ', ' + school.location_state + ')' }
-              })
-            };
-          }
-        }
-      });
-    </script>
   </div>
 
   <div class='form-group' ng-show="role == 'Other' || role == 'Pre-Service Teacher' || (role == 'LEA Staff' && other_lea) || ((role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader') && other_school) && role != 'SEA Staff'" ng-init="organization='<%= resource.organization %>'">
