@@ -1,9 +1,9 @@
-(function () {
+(function() {
   'use strict';
 
-  describe('schools.js.erb', function () {
+  describe('districts.js.erb', function () {
     describe('standard options', function () {
-      var testObj = schoolSelectOptions;
+      var testObj = districtSelectOptions;
 
       it('sets the right width', function () {
         expect(testObj.width).toBe('100%');
@@ -22,7 +22,7 @@
       });
 
       it('sets the placeholder to an English i18n string', function () {
-        expect(testObj.placeholder).toBe('Please select your school');
+        expect(testObj.placeholder).toBe('Please select your district');
       });
 
       it('has an ajax method defined', function () {
@@ -31,10 +31,10 @@
     });
 
     describe('ajax options', function () {
-      var testObj = schoolSelectAjaxOptions;
+      var testObj = districtSelectAjaxOptions;
 
       it('has the right URL', function () {
-        expect(testObj.url).toEqual('/schools/search.json');
+        expect(testObj.url).toEqual('/districts/search.json');
       });
 
       it('has a processResults method defined', function () {
@@ -52,23 +52,23 @@
 
     describe('processResults function', function () {
       var data = [
-        {id: 1, name: 'Test School Prime', location_city: 'Location', location_state: 'XX'},
-        {id: 2, name: 'Test School Seven', location_city: 'Boundary', location_state: 'YY'},
-        {id: 3, name: 'Test School Rhyme', location_city: 'Domicile', location_state: 'ZZ'}
+        {id: 1, name: 'District Prime', location_city: 'Location', location_state: 'XX'},
+        {id: 2, name: 'District Seven', location_city: 'Boundary', location_state: 'YY'},
+        {id: 3, name: 'District Rhyme', location_city: 'Domicile', location_state: 'ZZ'}
       ];
 
       var actual;
       beforeEach(function () {
-        actual = schoolSelectProcessFn(data);
+        actual = districtSelectProcessFn(data);
       });
 
       it('returns the data in the right format', function () {
         expect(actual).toEqual(
           {
             results: [
-              {id: 1, text: 'Test School Prime (Location, XX)'},
-              {id: 2, text: 'Test School Seven (Boundary, YY)'},
-              {id: 3, text: 'Test School Rhyme (Domicile, ZZ)'}
+              {id: 1, text: 'District Prime (Location, XX)'},
+              {id: 2, text: 'District Seven (Boundary, YY)'},
+              {id: 3, text: 'District Rhyme (Domicile, ZZ)'}
             ]
           }
         );

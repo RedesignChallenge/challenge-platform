@@ -26,10 +26,9 @@ var schoolSelectAjaxOptions = {
   },
 
   processResults: schoolSelectProcessFn
-
 };
 
-var schoolSelectStandardOptions = {
+var schoolSelectOptions = {
   width: '100%',
   allowClear: true,
   multiple: true,
@@ -39,5 +38,5 @@ var schoolSelectStandardOptions = {
 };
 
 var invokeSchoolSelectBox = function () {
-  $('#user_school_ids').select2(schoolSelectStandardOptions);
+  $('#user_school_ids').select2(schoolSelectOptions);
 };
