@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 shared_examples_for 'embeddable' do
-  let(:model) { described_class }
+  let(:model) { described_class.model_name.param_key.to_sym }
 
   context 'when parsing image links' do
     it 'generates the correct img tag for PNGs' do

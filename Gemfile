@@ -23,6 +23,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-animate'
   gem 'rails-assets-angular-ui-select'
   gem 'rails-assets-angular-scroll'
+  gem 'rails-assets-ngFitText'
 end
 
 ## FRONT-END GEMS
@@ -99,6 +100,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'i18n-tasks'
+  gem 'jasmine'
+  gem 'rails-assets-angular-mocks'
 end
 
 group :test do

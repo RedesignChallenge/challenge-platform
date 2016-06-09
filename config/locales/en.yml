@@ -213,6 +213,8 @@ en:
           false_value: "No"
           submit: "Update"
         _profile:
+          placeholder_lea: "Please type in your District or CMO"
+          placeholder_school: "Please type in your school"
           display_name: "Name you would like to go by"
           prompt: "Select One"
           which_sea: "Which SEA do you serve?"

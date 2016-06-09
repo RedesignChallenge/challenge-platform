@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 shared_examples_for 'normalizable' do
-  let(:model) { described_class }
+  let(:model) { described_class.model_name.param_key.to_sym }
 
   it 'normalizes URLs without a protocol' do
     subject = FactoryGirl.create(model, link: 'google.com')

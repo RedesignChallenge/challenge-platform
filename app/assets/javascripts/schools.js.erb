@@ -1,0 +1,42 @@
+(function () {
+  'use strict';
+
+  $(function () {
+    invokeSchoolSelectBox();
+  });
+})();
+
+var schoolSelectProcessFn = function (data) {
+  return {
+    results: _.map(data, function (school) {
+      return {
+        id: school.id,
+        text: school.name + ' (' + school.location_city + ', ' + school.location_state + ')'
+      }
+    })
+  };
+};
+
+var schoolSelectAjaxOptions = {
+  url: '/schools/search.json',
+  data: function (params) {
+    return {
+      search: params.term
+    };
+  },
+
+  processResults: schoolSelectProcessFn
+};
+
+var schoolSelectOptions = {
+  width: '100%',
+  allowClear: true,
+  multiple: true,
+  minimumInputLength: 1,
+  placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_school') %>",
+  ajax: schoolSelectAjaxOptions
+};
+
+var invokeSchoolSelectBox = function () {
+  $('#user_school_ids').select2(schoolSelectOptions);
+};
