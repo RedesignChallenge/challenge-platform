@@ -5,7 +5,7 @@
     describe('on load', function () {
       beforeEach(function () {
         spyOn($.fn, 'bootstrapSwitch');
-        invokeBootstrapSwitch();
+        challenge_platform_js.invokeBootstrapSwitch();
       });
 
       it('invokes bootstrapSwitch', function () {

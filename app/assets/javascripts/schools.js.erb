@@ -1,42 +1,44 @@
-(function () {
+var challenge_platform_js = challenge_platform_js || {};
+
+(function() {
   'use strict';
 
-  $(function () {
-    invokeSchoolSelectBox();
+  $(function() {
+    challenge_platform_js.invokeSchoolSelectBox();
   });
-})();
 
-var schoolSelectProcessFn = function (data) {
-  return {
-    results: _.map(data, function (school) {
-      return {
-        id: school.id,
-        text: school.name + ' (' + school.location_city + ', ' + school.location_state + ')'
-      }
-    })
-  };
-};
-
-var schoolSelectAjaxOptions = {
-  url: '/schools/search.json',
-  data: function (params) {
+  challenge_platform_js.schoolSelectProcessFn = function(data) {
     return {
-      search: params.term
+      results: _.map(data, function(school) {
+        return {
+          id: school.id,
+          text: school.name + ' (' + school.location_city + ', ' + school.location_state + ')'
+        }
+      })
     };
-  },
+  };
 
-  processResults: schoolSelectProcessFn
-};
+  challenge_platform_js.schoolSelectAjaxOptions = {
+    url: '/schools/search.json',
+    data: function(params) {
+      return {
+        search: params.term
+      };
+    },
 
-var schoolSelectOptions = {
-  width: '100%',
-  allowClear: true,
-  multiple: true,
-  minimumInputLength: 1,
-  placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_school') %>",
-  ajax: schoolSelectAjaxOptions
-};
+    processResults: challenge_platform_js.schoolSelectProcessFn
+  };
 
-var invokeSchoolSelectBox = function () {
-  $('#user_school_ids').select2(schoolSelectOptions);
-};
+  challenge_platform_js.schoolSelectOptions = {
+    width: '100%',
+    allowClear: true,
+    multiple: true,
+    minimumInputLength: 1,
+    placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_school') %>",
+    ajax: challenge_platform_js.schoolSelectAjaxOptions
+  };
+
+  challenge_platform_js.invokeSchoolSelectBox = function invokeSchoolSelectBox() {
+    $('#user_school_ids').select2(challenge_platform_js.schoolSelectOptions);
+  };
+})();

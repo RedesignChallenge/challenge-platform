@@ -1,11 +1,14 @@
+var challenge_platform_js = challenge_platform_js || {};
+
 (function () {
   'use strict';
 
   $(function () {
-    invokePopover();
+    challenge_platform_js.invokePopover();
   });
-})();
 
-var invokePopover = function () {
-  $('[data-toggle="popover"]').popover();
-};
+
+  challenge_platform_js.invokePopover = function invokePopover () {
+    $('[data-toggle="popover"]').popover();
+  };
+})();

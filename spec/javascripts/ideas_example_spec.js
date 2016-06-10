@@ -5,8 +5,8 @@
     describe('on load', function () {
       beforeEach(function () {
         spyOn($.fn, 'popover');
-        invokePopover();
-      });
+        challenge_platform_js.invokePopover();
+      }); 
 
       it('invokes popover', function () {
         expect($.fn.popover).toHaveBeenCalled();
