@@ -577,11 +577,16 @@ en:
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
     shared:
-      action:
-        confirm_email: "Please confirm your email address by clicking the link below."
-        send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
-        confirm_address: "Confirm email address"
-        signature: "The %{project} Team"
+      _intro:
+        salutation: "Hi %{first_name},"
+      _outro:
+        valediction: "Thanks,"
+        team: "The %{platform} Team "
+    action:
+      confirm_email: "Please confirm your email address by clicking the link below."
+      send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
+      confirm_address: "Confirm email address"
+      signature: "The %{project} Team"
 
   mailkick:
     subscriptions:

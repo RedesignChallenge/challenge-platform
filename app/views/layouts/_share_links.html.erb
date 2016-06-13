@@ -1,6 +1,6 @@
 <% url = user_signed_in? ? "#{url}?referrer_id=#{current_user.id}" : url %>
 
-<ul class='share-links'>
+<ul class="share-links">
   <li>
     <%= link_to "<i class='fa fa-twitter'></i>".html_safe, "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' %>
   </li>
@@ -11,6 +11,6 @@
     <%= link_to "<i class='fa fa-linkedin'></i>".html_safe, "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %>
   </li>
   <li>
-    <%= mail_to '', "<i class='fa fa-envelope'></i>".html_safe, {subject: t('layouts._share_links.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_links.email_body_html', url: url), onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} %>
+    <%= mail_to '', "<i class='fa fa-envelope'></i>".html_safe, { subject: t('layouts._share_links.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_links.email_body_html', url: url), onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" } %>
   </li>
 </ul>

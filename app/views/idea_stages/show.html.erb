@@ -1,34 +1,35 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id='idea_stage-overview'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
+<div id="idea_stage-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
 
-        <div class='row'>
-          <div class='col-sm-8'>
-            <h1 class='text-idea'><%= @idea_stage.title.html_safe if @idea_stage.title %></h1>
-            <p class='text-large'><%= @idea_stage.description.html_safe if @idea_stage.description %></p>
+        <div class="row">
+          <div class="col-sm-8">
+            <h1 class="text-idea"><%= @idea_stage.title.html_safe if @idea_stage.title %></h1>
+            <p class="text-large"><%= @idea_stage.description.html_safe if @idea_stage.description %></p>
 
             <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
 
             <% if @idea_stage.ends_at %>
-              &nbsp; <span class='text-large'>&bull;</span> &nbsp;
-              <i class='fa fa-clock-o' style='font-size:1.5em;'></i>&nbsp; <span class='text-large'><%= time_left(@idea_stage) %></span>
+              &nbsp; <span class="text-large">&bull;</span> &nbsp;
+              <i class="fa fa-clock-o" style='font-size:1.5em;'></i>&nbsp;
+              <span class="text-large"><%= time_left(@idea_stage) %></span>
             <% end %>
 
             <% if @featured_ideas.present? %>
               <div class="featured-contributors">
-                <h6 class='zero-margin-bottom'><%= t('.featured_contributions') %></h6>
+                <h6 class="zero-margin-bottom"><%= t('.featured_contributions') %></h6>
                 <% @featured_ideas.each do |idea| %>
-                  <%= render partial: 'shared/avatar', locals: { user:  idea.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
+                  <%= render partial: 'shared/avatar', locals: { user: idea.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
                 <% end %>
               </div>
             <% end %>
           </div>
-          <div class='col-sm-4 text-center'>
-            <p class='text-bold text-idea text-center'><%= @idea_stage.incentive.html_safe if @idea_stage.incentive.present? %></p>
-            <i class='fa fa-lightbulb-o hidden-xs'></i>
+          <div class="col-sm-4 text-center">
+            <p class="text-bold text-idea text-center"><%= @idea_stage.incentive.html_safe if @idea_stage.incentive.present? %></p>
+            <i class="fa fa-lightbulb-o hidden-xs"></i>
           </div>
         </div>
       </div>
@@ -36,63 +37,63 @@
   </div>
 </div>
 
-<div id='idea_stage-navigation' data-spy="affix" data-offset-top="375" class="affix-top">
-  <div class='container'>
+<div id="idea_stage-navigation" data-spy="affix" data-offset-top="375" class="affix-top">
+  <div class="container">
 
-    <div class='row'>
+    <div class="row">
       <% @problem_statements.each do |problem_statement| %>
-        <div class='col-sm-3 nav-link' href='#problem_statement-<%= problem_statement.id %>' du-smooth-scroll du-scrollspy offset='160'>
-          <p class='title'><%= problem_statement.title.html_safe %></p>
+        <div class="col-sm-3 nav-link" href='#problem_statement-<%= problem_statement.id %>' du-smooth-scroll du-scrollspy offset='160'>
+          <p class="title"><%= problem_statement.title.html_safe %></p>
 
-          <p class='cta text-lighter text-small'>
+          <p class="cta text-lighter text-small">
             <% if problem_statement.ideas.published.count.zero? %>
-              <i class='fa fa-plus'></i>
+              <i class="fa fa-plus"></i>
               <%= t('.add_first_idea') %>
             <% else %>
-              <i class='fa fa-lightbulb-o'></i> <%= problem_statement.ideas.published.count %>
+              <i class="fa fa-lightbulb-o"></i> <%= problem_statement.ideas.published.count %>
             <% end %>
           </p>
 
-          <i class='fa fa-3x fa-play fa-rotate-90'></i>
+          <i class="fa fa-3x fa-play fa-rotate-90"></i>
         </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<div id='idea_stage-content'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
+<div id="idea_stage-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
 
         <% @problem_statements.each do |problem_statement| %>
-          <div id='problem_statement-<%= problem_statement.id %>' class='content-block-xl'>
-            <h6 class='text-center'><%= t('.problem_statement') %></h6>
-            <h2 class='section-title text-idea'><%= problem_statement.title %></h2>
+          <div id="problem_statement-<%= problem_statement.id %>" class="content-block-xl">
+            <h6 class="text-center"><%= t('.problem_statement') %></h6>
+            <h2 class="section-title text-idea"><%= problem_statement.title %></h2>
 
-            <div class='row'>
-              <div class='col-md-8 col-md-offset-2'>
-                <p class='text-center'><%= problem_statement.description.html_safe if problem_statement.description.present? %></p>
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <p class="text-center"><%= problem_statement.description.html_safe if problem_statement.description.present? %></p>
               </div>
             </div>
 
-            <div class='row row-count'>
-              <div class='col-xs-6 col-xs-offset-3'>
-                <h6 class='text-center center-block'>
-                  <i class='fa fa-lightbulb-o fa-3x'></i><br>
+            <div class="row row-count">
+              <div class="col-xs-6 col-xs-offset-3">
+                <h6 class="text-center center-block">
+                  <i class="fa fa-lightbulb-o fa-3x"></i><br>
                   <span><%= pluralize(problem_statement.ideas.published.count, t('.stage')) %></span>
                 </h6>
               </div>
-              <div class='col-xs-3'>
+              <div class="col-xs-3">
                 <% unless @challenge.stage_number == 4 %>
-                  <p class='action text-right text-small'><%= link_to t('.add'), new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %></p>
+                  <p class="action text-right text-small"><%= link_to t('.add'), new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'pull-right' %></p>
                 <% end %>
               </div>
             </div>
-            
+
             <div ng-switch='problem_statement_<%= problem_statement.id %>_ideas' ng-init='problem_statement_<%= problem_statement.id %>_ideas=show_all'>
-              
-              <div class='row'>
+
+              <div class="row">
                 <% problem_statement.ideas.published.first(@challenge.stage_number == 4 ? 6 : 5).each do |idea| %>
                   <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
                 <% end %>
@@ -109,7 +110,7 @@
               </div>
 
               <% if problem_statement.ideas.published.count > (@challenge.stage_number == 4 ? 6 : 5) %>
-                <p class='center-block text-center'>
+                <p class="center-block text-center">
                   <%= link_to t('.show_more', pluralized_idea_count: pluralize(problem_statement.ideas.published.count-(@challenge.stage_number == 4 ? 6 : 5), t('.more_idea'))), '#', 'ng-hide' => "problem_statement_#{problem_statement.id}_ideas", 'ng-click' => "problem_statement_#{problem_statement.id}_ideas=true", onclick: 'return false;', class: 'text-bold' %>
                   <%= link_to t('.show_less'), "#problem_statement-#{problem_statement.id}", 'ng-show' => "problem_statement_#{problem_statement.id}_ideas", 'ng-click' => "problem_statement_#{problem_statement.id}_ideas=false", 'du-smooth-scroll' => true, offset: '140', onclick: 'return false;', class: 'text-bold' %>
                 </p>
@@ -119,8 +120,8 @@
           </div>
         <% end %>
 
-        <h2 class='section-title text-idea'><%= t('.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('.social_sharing_description') %></p>
+        <h2 class="section-title text-idea"><%= t('.social_sharing_question') %></h2>
+        <p class="section-description"><%= t('.social_sharing_description') %></p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
 

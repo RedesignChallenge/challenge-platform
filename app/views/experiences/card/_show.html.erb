@@ -1,4 +1,4 @@
-  <div class='experience-content'>
+  <div class="experience-content">
     <% if experience.featured? %>
       <div class="ribbon-wrapper">
         <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
@@ -8,35 +8,35 @@
     <% end %>
 
     <% if experience.embed.present? %>
-      <div class='row'>
-        <div class='col-sm-6'>
+      <div class="row">
+        <div class="col-sm-6">
           <p><%= experience.description %></p>
         </div>
-        <div class='col-sm-6'>
+        <div class="col-sm-6">
           <%= experience.embed.html_safe %>
         </div>
       </div>
     <% else %>
       <p><%= experience.description %></p>
       <% unless experience.link.blank? %>
-        <p><b><i class='fa fa-link'></i><%= t('experiences.card._show.link') %></b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
+        <p><b><i class="fa fa-link"></i><%= t('experiences.card._show.link') %></b> <%= link_to truncate(experience.link, length: 150), experience.link, target: '_blank' %></p>
       <% end %>
     <% end %>
   </div>
 
-  <div class='experience-actions'>
-    <ul class='actions list-inline'>
+  <div class="experience-actions">
+    <ul class="actions list-inline">
       <li id="experience-<%= experience.id %>-like">
         <%= render partial: 'experiences/card/like', locals: { challenge: @challenge, experience_stage: experience.experience_stage, experience: experience }%>
       </li>
 
-      <li id='experience-<%= experience.id %>-comments'>
+      <li id="experience-<%= experience.id %>-comments">
         <%= link_to "<i class='fa fa-comments-o'></i> #{experience.comments_count unless experience.comments_count.zero?}".html_safe, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience, anchor: 'experience-comments'), class: 'list-link' %>
       </li>
 
-      <li class='dropdown'>
+      <li class="dropdown">
         <a id="experience-<%= experience.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
-          <i class='fa fa-ellipsis-h'></i>
+          <i class="fa fa-ellipsis-h"></i>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="experience-<%= experience.id %>-other">
           <% if user_signed_in? && experience.user == current_user %>

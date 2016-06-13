@@ -1,18 +1,18 @@
-<div id='experience-<%= experience.id %>' class="row row-experience">
+<div id="experience-<%= experience.id %>" class="row row-experience">
 
   <div class="col-xs-2">
-    <div class='center-block text-center'>
-      <%= render partial: 'shared/avatar', locals: { user: experience.user, avatar_style: "width:3.75em", font_size: '3em' } %>
+    <div class="center-block text-center">
+      <%= render partial: 'shared/avatar', locals: { user: experience.user, avatar_style: 'width:3.75em', font_size: '3em' } %>
       <div class="user-caption">
-        <p class='user-name'><%= link_to "#{experience.user.display_name}", user_path(experience.user) %></p>
-        <p class='user-title text-default'><%= experience.user.display_organization %></p>
-        <p class='user-link'><%= link_to t('.time', time: time_ago_in_words(experience.created_at)).titleize, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience), class: 'list-link' %></p>
+        <p class="user-name"><%= link_to "#{experience.user.display_name}", user_path(experience.user) %></p>
+        <p class="user-title text-default"><%= experience.user.display_organization %></p>
+        <p class="user-link"><%= link_to t('.time', time: time_ago_in_words(experience.created_at)).titleize, challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience), class: 'list-link' %></p>
       </div>
     </div>
   </div>
 
   <div class="col-xs-8">
-    <div class='well well-experience'>
+    <div class="well well-experience">
       <% if user_signed_in? && experience.user == current_user %>
         <div ng-switch="experience_<%= experience.id %>_edit" ng-init="experience_<%= experience.id %>_edit=false">
           <div ng-hide="experience_<%= experience.id %>_edit">

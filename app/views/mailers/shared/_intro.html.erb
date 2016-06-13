@@ -2,6 +2,6 @@
 
   <tr style="font-family: Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 20px; margin: 0;">
     <td class="content-block" style="font-family: Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 20px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-      <%= "Hi #{resource.first_name}" %>,
+      <%= t('mailers.shared._intro.salutation', first_name: resource.first_name) %>
     </td>
   </tr>

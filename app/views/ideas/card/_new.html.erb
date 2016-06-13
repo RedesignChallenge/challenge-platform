@@ -1,8 +1,8 @@
-<div id='problem_statement-<%= problem_statement.id %>-idea-new' class="col-sm-6 col-md-4">
+<div id="problem_statement-<%= problem_statement.id %>-idea-new" class="col-sm-6 col-md-4">
   <% if @challenge.stage_number == 4 %>
-    <div class='thumbnail idea-thumbnail idea-add-thumbnail'>
+    <div class="thumbnail idea-thumbnail idea-add-thumbnail">
       <div class="idea-add">
-        <p class='instruction text-bold'>
+        <p class="instruction text-bold">
           <%= t('ideas.card._new.get_involved', stage_number_link: link_to(t('ideas.card._new.stage_number', number: @challenge.stage_number), challenge_active_stage_path(@challenge))).html_safe %>
         </p>
       </div>
@@ -11,7 +11,7 @@
     <%= link_to new_challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, problem_statement), class: 'thumbnail idea-thumbnail idea-add-thumbnail' do %>
       <div class="idea-add">
         <i class="fa fa-plus"></i>
-        <p class='instruction'><%= t('ideas.card._new.add') %></p>
+        <p class="instruction"><%= t('ideas.card._new.add') %></p>
       </div>
     <% end %>
   <% end %>

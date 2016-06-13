@@ -1,23 +1,22 @@
 <nav id="top-nav" class="navbar navbar-default navbar-center" role="navigation">
-  <div class='container'>
+  <div class="container">
 
     <div class="navbar-header">
-      <button id='navbar-hamburger' type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav">
+      <button id="navbar-hamburger" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav">
         <span class="sr-only"><%= t('layouts._header.header') %></span>
-        <i class='fa fa-inverse fa-bars'></i>
+        <i class="fa fa-inverse fa-bars"></i>
       </button>
       <%= link_to I18n.t(:project_name), root_path, class: 'navbar-brand' %>
-      
-      <!-- Custom link for new designs with challenge links in navigation -->
-      <div class='navbar-center-link hidden-xs'>
-        <%= link_to(@challenge.title.ellipsisize(15,15), challenge_path(@challenge), class: 'text-lighter') if @challenge %>
+
+      <div class="navbar-center-link hidden-xs">
+        <%= link_to(@challenge.title.ellipsisize(15, 15), challenge_path(@challenge), class: 'text-lighter') if @challenge %>
       </div>
 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id='collapse-nav'>
-      
+    <div class="collapse navbar-collapse" id="collapse-nav">
+
       <ul class="nav navbar-nav">
         <li><%= link_to t('layouts._header.about'), about_path, class: 'text-lighter' %></li>
       </ul>
@@ -39,18 +38,18 @@
             <ul class="dropdown-menu">
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <i class='fa fa-user'></i> <%= t('layouts._header.profile') %>
+                  <i class="fa fa-user"></i> <%= t('layouts._header.profile') %>
                 <% end %>
               </li>
               <li>
                 <%= link_to edit_user_registration_path do %>
-                  <i class='fa fa-gears'></i> <%= t('layouts._header.settings') %>
+                  <i class="fa fa-gears"></i> <%= t('layouts._header.settings') %>
                 <% end %>
               </li>
-              <li class='divider'></li>
+              <li class="divider"></li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class='fa fa-sign-out'></i><%= t('layouts._header.sign_out') %>
+                  <i class="fa fa-sign-out"></i><%= t('layouts._header.sign_out') %>
                 <% end %>
               </li>
             </ul>

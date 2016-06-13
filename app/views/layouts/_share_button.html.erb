@@ -1,26 +1,27 @@
 <% url = user_signed_in? ? "#{url}?referrer_id=#{current_user.id}" : url %>
 
 <div class="btn-group btn-block" style='margin-bottom: 10px'>
-  <button type="button" class="btn btn-block btn-fa btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-share"></i><%= t('layouts._share_button.button_label') %></button>
+  <button type="button" class="btn btn-block btn-fa btn-sm btn-rounded btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <i class="fa fa-share"></i><%= t('layouts._share_button.button_label') %></button>
   <ul class="dropdown-menu" role='menu'>
     <li role="presentation">
       <%= link_to "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' do %>
-        <i class='fa fa-twitter'></i> <%= t('layouts._share_button.twitter') %>
+        <i class="fa fa-twitter"></i> <%= t('layouts._share_button.twitter') %>
       <% end %>
     </li>
     <li role="presentation">
       <%= link_to "https://www.facebook.com/sharer/sharer.php?s=100&p[url]=#{url_encode(url)}&p[title]=#{url_encode(title)}&p[summary]=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" do %>
-        <i class='fa fa-facebook'></i> <%= t('layouts._share_button.facebook') %>
+        <i class="fa fa-facebook"></i> <%= t('layouts._share_button.facebook') %>
       <% end %>
     </li>
     <li role="presentation">
       <%= link_to "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" do %>
-        <i class='fa fa-linkedin'></i> <%= t('layouts._share_button.linked_in') %>
+        <i class="fa fa-linkedin"></i> <%= t('layouts._share_button.linked_in') %>
       <% end %>
     </li>
     <li role="presentation">
-      <%= mail_to '', { subject: t('layouts._share_button.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_button.email_body_html', url: url), onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"} do %>
-        <i class='fa fa-envelope'></i> <%= t('layouts._share_button.email') %>
+      <%= mail_to '', { subject: t('layouts._share_button.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_button.email_body_html', url: url), onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" } do %>
+        <i class="fa fa-envelope"></i> <%= t('layouts._share_button.email') %>
       <% end %>
     </li>
   </ul>

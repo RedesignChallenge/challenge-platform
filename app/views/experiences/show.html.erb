@@ -1,18 +1,16 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id='experience-overview'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
+<div id="experience-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <%= render partial: 'experiences/header' %>
+        <div class="well well-experience">
+          <span class="label label-experience pull-left"><i class="fa fa-comment"></i><%= t('.header') %></span>
+          <div class="clearfix"></div>
 
-        <div class='well well-experience'>
-          <span class="label label-experience pull-left"><i class='fa fa-comment'></i><%= t('.header') %></span>
-          <div class='clearfix'></div>
-
-          <div class='experience-content'>
-            <div class='row row-experience-show'>
+          <div class="experience-content">
+            <div class="row row-experience-show">
               <div class="col-sm-4">
 
                 <div class="media media-author">
@@ -20,38 +18,37 @@
                     <%= render partial: 'shared/avatar', locals: { user: @experience.user, avatar_style: 'width:4.5em' } %>
                   </div>
                   <div class="media-body" style='<%= 'padding-left: 0em' if @experience.user.avatar.present? %>'>
-                    <div class='user-caption' style='<%= 'margin-top: 0.5em' if @experience.user.avatar.present? %>'>
-                      <p class='user-name'><%= link_to "#{@experience.user.display_name}", user_path(@experience.user) %></p>
-                      <p class='user-title text-default'><%= @experience.user.display_organization %></p>
-                      <p class='user-link'><%= t('.time', time: time_ago_in_words(@experience.created_at)).titleize %></p>
+                    <div class="user-caption" style='<%= 'margin-top: 0.5em' if @experience.user.avatar.present? %>'>
+                      <p class="user-name"><%= link_to "#{@experience.user.display_name}", user_path(@experience.user) %></p>
+                      <p class="user-title text-default"><%= @experience.user.display_organization %></p>
+                      <p class="user-link"><%= t('.time', time: time_ago_in_words(@experience.created_at)).titleize %></p>
                     </div>
                   </div>
                 </div>
 
-                <div class='row'>
-                  <div class='col-xs-8'>
-
+                <div class="row">
+                  <div class="col-xs-8">
                     <% if @experience.published_at? %>
                       <% if user_signed_in? && @experience.user == current_user %>
                         <div class="btn-group btn-block" role="group" style='margin-bottom:10px'>
                           <%= link_to edit_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), class: 'btn btn-sm btn-rounded btn-warning', style: 'width:50%' do %>
-                            <i class='fa fa-edit'></i> <%= t('experiences.show.edit') %>
+                            <i class="fa fa-edit"></i> <%= t('experiences.show.edit') %>
                           <% end %>
-                          <%= link_to challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: {confirm: t('.confirm')}, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' do %>
-                            <i class='fa fa-trash'></i> <%= t('experiences.show.delete') %>
+                          <%= link_to challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-sm btn-rounded btn-danger', style: 'width:50%' do %>
+                            <i class="fa fa-trash"></i> <%= t('experiences.show.delete') %>
                           <% end %>
                         </div>
                       <% end %>
-                      <div id='experience-<%= @experience.id %>-like'>
+                      <div id="experience-<%= @experience.id %>-like">
                         <%= render partial: 'experiences/like' %>
                       </div>
-                      <div id='experience-<%= @experience.id %>-discuss' style='margin-bottom:10px'>
+                      <div id="experience-<%= @experience.id %>-discuss" style='margin-bottom:10px'>
                         <%= link_to '#experience-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true do %>
-                          <i class='fa fa-reply'></i> <%= t('experiences.show.discuss') %>
+                          <i class="fa fa-reply"></i> <%= t('experiences.show.discuss') %>
                         <% end %>
                       </div>
-                      <div id='experience-<%= @experience.id %>-share'>
-                        <%= render partial: 'layouts/share_button', locals: {url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag} %>
+                      <div id="experience-<%= @experience.id %>-share">
+                        <%= render partial: 'layouts/share_button', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag } %>
                       </div>
                     <% else %>
                       <%= render partial: 'shared/draft', locals: { edit_path: edit_challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), delete_path: challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience) } %>
@@ -60,20 +57,20 @@
                 </div>
               </div>
 
-              <div class='col-sm-8'>
+              <div class="col-sm-8">
                 <% if @experience.embed.present? %>
-                  <div class='content-block'>
+                  <div class="content-block">
                     <%= @experience.embed.html_safe %>
                   </div>
                 <% end %>
-                
-                <div class='content-block'>
+
+                <div class="content-block">
                   <p><%= @experience.description.html_safe %></p>
                 </div>
 
                 <% if @experience.link.present? && @experience.embed.blank? %>
-                  <div class='content-block'>
-                    <p class='text-experience text-large text-bold text-uppercase'><%= t('.link') %></p>
+                  <div class="content-block">
+                    <p class="text-experience text-large text-bold text-uppercase"><%= t('.link') %></p>
                     <p><%= link_to @experience.link.html_safe, @experience.link, target: '_blank' %></p>
                   </div>
                 <% end %>
@@ -86,8 +83,8 @@
   </div>
 </div>
 
-<div id='experience-comments'>
-  <div class='container'>
+<div id="experience-comments">
+  <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <%= render partial: 'comments/discussion', locals: { commentable: @experience } %>
@@ -96,16 +93,16 @@
   </div>
 </div>
 
-<div id='experience-share'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
+<div id="experience-share">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
 
-        <h2 class='section-title text-submit'><%= t('.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('.social_sharing_description') %></p>
-        
+        <h2 class="section-title text-submit"><%= t('.social_sharing_question') %></h2>
+        <p class="section-description"><%= t('.social_sharing_description') %></p>
+
         <%= render partial: 'layouts/share_links', locals: { url: challenge_experience_stage_theme_experience_url(@challenge, @experience.experience_stage, @experience.theme, @experience), title: @challenge.title.html_safe, description: @experience.description.html_safe, hashtag: @challenge.hashtag } %>
-        
+
       </div>
     </div>
   </div>
