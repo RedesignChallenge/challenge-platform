@@ -15,7 +15,7 @@
       <%= link_to like_suggestion_path(suggestion.id, vote_weight: weight), method: :put, remote: user_signed_in? do %>
         <span class="fa-stack">
           <i class="fa fa-stack-2x fa-circle-thin"></i>
-          <i class='fa fa-stack-1x fa-inverse'><%= weight %></i>
+          <i class="fa fa-stack-1x fa-inverse"><%= weight %></i>
         </span>
       <% end %>
     </li>

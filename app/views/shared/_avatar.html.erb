@@ -5,9 +5,9 @@
 
 <% if user %>
   <% link_path = user_path(user) unless local_assigns[:link_path] %>
-  
+
   <% if user.avatar.present? %>
-    <%= link_to image_tag(user.avatar.profile.url,  class: 'img-circle', style: avatar_style.html_safe), link_path %>
+    <%= link_to image_tag(user.avatar.profile.url, class: 'img-circle', style: avatar_style.html_safe), link_path %>
   <% else %>
     <% if user_signed_in? && current_user == user %>
       <%= link_to link_path do %>
@@ -21,16 +21,16 @@
         <span class="fa-stack fa-user-avatar">
           <i class="fa fa-stack-2x fa-circle" style='color:<%= user.color %>;<%= "font-size: #{font_size}" if font_size.present? %>'></i>
           <i class="fa fa-stack-1x fa-inverse" <%= "style='font-size: #{inverse_font_size}'".html_safe if inverse_font_size %> >
-            <%= user.initials  %>
+            <%= user.initials %>
           </i>
         </span>
       <% end %>
     <% end %>
   <% end %>
 <% else %>
-  <% # This is to cover the case on the experience page in which we show the "you" avatar for a user that's not logged in. %>
+  <%# This is to cover the case on the experience page in which we show the "you" avatar for a user that's not logged in.%>
   <span class="fa-stack fa-user-avatar">
     <i class="fa fa-stack-2x fa-circle" <%= "style='font-size: #{circle_font_size}'".html_safe if circle_font_size %>></i>
     <i class="fa fa-stack-1x fa-inverse" <%= "style='font-size: #{inverse_font_size}'".html_safe if inverse_font_size %>><%= t('shared._avatar.you') %></i>
   </span>
-<% end %>
+<% end %>s

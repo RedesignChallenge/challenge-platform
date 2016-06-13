@@ -1,4 +1,4 @@
-<div id='recipe-<%= recipe.id %>' class="well well-recipe">
+<div id="recipe-<%= recipe.id %>" class="well well-recipe">
   <% if recipe.featured? %>
     <div class="ribbon-wrapper">
       <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) do %>
@@ -7,50 +7,50 @@
     </div>
   <% end %>
 
-  <div class='row row-heading'>
-    <div class='col-xs-1'>
-      <i class='fa fa-flask text-recipe fa-3x'></i>
+  <div class="row row-heading">
+    <div class="col-xs-1">
+      <i class="fa fa-flask text-recipe fa-3x"></i>
     </div>
 
-    <div class='col-xs-7'>
-      <h4 class='text-recipe'><%= link_to recipe.title, challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe), class: 'text-recipe' %></h4>
+    <div class="col-xs-7">
+      <h4 class="text-recipe"><%= link_to recipe.title, challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe), class: 'text-recipe' %></h4>
     </div>
 
-    <div class='col-xs-4'>
-      <div class='row'>
-        <div class='col-sm-5'>
+    <div class="col-xs-4">
+      <div class="row">
+        <div class="col-sm-5">
           <div class="media media-author">
             <div class="media-left">
               <%= render partial: 'shared/avatar', locals: { user: recipe.user, avatar_style: 'width:2em' } %>
             </div>
             <div class="media-body" style='<%= 'padding-left: 0em' if recipe.user.avatar.present? %>'>
-              <div class='user-caption' style='<%= 'margin-top: 0.5em' if recipe.user.avatar.present? %>'>
-                <p class='text-small text-gray'><%= link_to truncate(recipe.user.display_name, length: 10), user_path(recipe.user) %></p>
+              <div class="user-caption" style='<%= 'margin-top: 0.5em' if recipe.user.avatar.present? %>'>
+                <p class="text-small text-gray"><%= link_to truncate(recipe.user.display_name, length: 10), user_path(recipe.user) %></p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class='col-sm-7'>
-          <ul class='list-actions'>
-            <li id='recipe-<%= recipe.id %>-comments'>
+        <div class="col-sm-7">
+          <ul class="list-actions">
+            <li id="recipe-<%= recipe.id %>-comments">
               <%= link_to "<i class='fa fa-comments-o'></i> #{recipe.comments_count unless recipe.comments_count.zero?}".html_safe, challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, { anchor: 'recipe-comments' }) %>
             </li>
 
-            <li id='recipe-<%= recipe.id %>-like'>
+            <li id="recipe-<%= recipe.id %>-like">
               <%= render partial: 'recipes/card/like', locals: { recipe: recipe } %>
             </li>
 
-            <li class='dropdown'>
+            <li class="dropdown">
               <a id="recipe-<%= recipe.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
-                <i class='fa fa-ellipsis-h'></i>
+                <i class="fa fa-ellipsis-h"></i>
               </a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="recipe-<%= recipe.id %>-other">
                 <% if user_signed_in? && recipe.user == current_user %>
-                  <li class='dropdown-link'><%= link_to t('recipes.card._show.edit'), edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) %></li>
-                  <li class='dropdown-link'><%= link_to t('recipes.card._show.delete'), challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe.id), method: :delete, data: { confirm: t('recipes.card._show.confirm')} %></li>
+                  <li class="dropdown-link"><%= link_to t('recipes.card._show.edit'), edit_challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) %></li>
+                  <li class="dropdown-link"><%= link_to t('recipes.card._show.delete'), challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe.id), method: :delete, data: { confirm: t('recipes.card._show.confirm') } %></li>
                 <% else %>
-                  <li  class='dropdown-link'><%= link_to t('recipes.card._show.flag'), '#' %></li>
+                  <li class="dropdown-link"><%= link_to t('recipes.card._show.flag'), '#' %></li>
                 <% end %>
               </ul>
             </li>
@@ -61,24 +61,26 @@
     </div>
   </div>
 
-  <div class='row row-content'>
-    <div class='col-xs-7 col-xs-offset-1'>
+  <div class="row row-content">
+    <div class="col-xs-7 col-xs-offset-1">
       <% if !recipe.steps.count.zero? %>
-        <div class='recipe-steps'>
-          <h6 class='text-recipe'><%= t('recipes.card._show.how_to') %></h6>
-          <p><b class='text-recipe'>1.</b> <%= truncate_html(recipe.steps.first.description, length: 140).html_safe %></p>
+        <div class="recipe-steps">
+          <h6 class="text-recipe"><%= t('recipes.card._show.how_to') %></h6>
+          <p><b class="text-recipe">1.</b> <%= truncate_html(recipe.steps.first.description, length: 140).html_safe %>
+          </p>
           <% if recipe.steps.count > 2 %>
-            <p style='margin-left: 15px'><i class='fa fa-ellipsis-v text-recipe'></i></p>
-            <p><b class='text-recipe'><%= recipe.steps.count %>.</b> <%= truncate_html(recipe.steps.last.description, length: 140).html_safe %></p>
+            <p style='margin-left: 15px'><i class="fa fa-ellipsis-v text-recipe"></i></p>
+            <p><b class="text-recipe"><%= recipe.steps.count %>
+              .</b> <%= truncate_html(recipe.steps.last.description, length: 140).html_safe %></p>
           <% end %>
         </div>
       <% else %>
-        <h6 class='text-recipe'><%= t('recipes.card._show.description') %></h6>
-        <p class='recipe-description'><%= truncate_html(recipe.description, length: 140).html_safe %></p>
+        <h6 class="text-recipe"><%= t('recipes.card._show.description') %></h6>
+        <p class="recipe-description"><%= truncate_html(recipe.description, length: 140).html_safe %></p>
       <% end %>
     </div>
-    <div class='col-xs-4'>
-      <h6 class='text-recipe'><%= t('recipes.card._show.materials_needed') %></h6>
+    <div class="col-xs-4">
+      <h6 class="text-recipe"><%= t('recipes.card._show.materials_needed') %></h6>
       <p><%= truncate_html(recipe.materials, length: 250).html_safe %></p>
     </div>
   </div>

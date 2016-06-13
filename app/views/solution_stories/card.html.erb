@@ -1,4 +1,4 @@
-<div id='solution_story-<%= solution_story.id %>' class='col-sm-6'>
+<div id="solution_story-<%= solution_story.id %>" class="col-sm-6">
 
   <div class="thumbnail solution_story-thumbnail">
     <% if solution_story.solution.featured? %>
@@ -11,14 +11,14 @@
 
     <%= link_to image_tag(solution_story.image.url, style: 'width:100%'), challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) %>
 
-    <div class='solution_story-content'>
-    
-      <h3 class='text-solution text-bold' style='margin: 0em 0em 0.5em'><%= link_to truncate(solution_story.title, length: 75), challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) %></h3>
+    <div class="solution_story-content">
+
+      <h3 class="text-solution text-bold" style='margin: 0em 0em 0.5em'><%= link_to truncate(solution_story.title, length: 75), challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story) %></h3>
 
       <p><%= truncate_html(solution_story.description, length: 200).html_safe %></p>
 
-      <div class='solution_story-effort'>
-        <div class='solution-effort' style='margin-bottom: 0px'>
+      <div class="solution_story-effort">
+        <div class="solution-effort" style='margin-bottom: 0px'>
           <span class="badge"><%= t('.required_effort_html') %></span>
           <% %w(hours days weeks months).each do |effort| %>
             <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>

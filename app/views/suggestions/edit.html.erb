@@ -1,23 +1,21 @@
-<div id='suggestion-form'>
-  <div class='container'>
+<div id="suggestion-form">
+  <div class="container">
 
     <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, root_path %>
-    <div class='clearfix'></div>
+    <div class="clearfix"></div>
 
-    <div class='row'>
-      <div class='col-sm-10 col-sm-offset-1'>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
 
-        <div class='suggestion-block'>
-          <h6 class='suggestion-header'><%= t('.header') %></h6>
-          <h2 class='suggestion-title'><%= t('.edit_suggestion') %></h2>
+        <div class="suggestion-block">
+          <h6 class="suggestion-header"><%= t('.header') %></h6>
+          <h2 class="suggestion-title"><%= t('.edit_suggestion') %></h2>
         </div>
-        
-        <div class="well well-lg well-suggestion"> 
+
+        <div class="well well-lg well-suggestion">
           <%= render partial: 'suggestions/form', locals: { url: suggestion_path, cancel_path: root_path, submit_text: t('.submit') } %>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

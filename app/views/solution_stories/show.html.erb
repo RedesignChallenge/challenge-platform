@@ -7,28 +7,28 @@
 
         <div class="well well-solution_story">
           <% if @solution_story.embed.present? %>
-              <div class='solution_story-show-embed'><%= @solution_story.embed.html_safe %></div>
+              <div class="solution_story-show-embed"><%= @solution_story.embed.html_safe %></div>
           <% elsif @solution_story.image.present? %>
               <%= image_tag(@solution_story.image.url, width: '100%') %>
           <% end %>
 
-          <div class='row'>
-            <div class='col-sm-10 col-sm-offset-1'>
-              <div class='solution_story-content'>
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+              <div class="solution_story-content">
 
-                <h6 class='text-center center-block'>
-                  <i class='fa fa-puzzle-piece fa-3x' style='margin-bottom: 0.25em'></i><br>
-                  <span class='text-bolder'><%= t('.story_from_the_field') %></span>
+                <h6 class="text-center center-block">
+                  <i class="fa fa-puzzle-piece fa-3x" style='margin-bottom: 0.25em'></i><br>
+                  <span class="text-bolder"><%= t('.story_from_the_field') %></span>
                 </h6>
 
-                <h2 class='text-solution' style='font-size: 2.1em;line-height: 1.4em;margin:0.5em 0em'><%= @solution_story.title.html_safe %></h2>
-                <p class='text-large text-double-spaced'><%= @solution_story.description %></p>
+                <h2 class="text-solution" style='font-size: 2.1em;line-height: 1.4em;margin:0.5em 0em'><%= @solution_story.title.html_safe %></h2>
+                <p class="text-large text-double-spaced"><%= @solution_story.description %></p>
 
-                <hr class='break'>
+                <hr class="break">
 
-                <h6 class='text-center center-block'>
-                  <i class='fa fa-puzzle-piece fa-3x' style='margin-bottom: 0.25em'></i><br>
-                  <span class='text-bolder'><%= t('.how_to_guide') %></span>
+                <h6 class="text-center center-block">
+                  <i class="fa fa-puzzle-piece fa-3x" style='margin-bottom: 0.25em'></i><br>
+                  <span class="text-bolder"><%= t('.how_to_guide') %></span>
                 </h6>
 
                 <%= render file: 'solutions/show', locals: { solution: @solution_story.solution } %>
@@ -40,8 +40,8 @@
     </div>
   </div>
 
-  <div id='solution_story-comments'>
-    <div class='container'>
+  <div id="solution_story-comments">
+    <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <%= render partial: 'comments/discussion', locals: { commentable: @solution_story.solution } %>
