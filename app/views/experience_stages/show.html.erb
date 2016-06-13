@@ -86,14 +86,14 @@
               </div>
             </div>
 
-            <div ng-switch='theme_<%= theme.id %>_experiences' ng-init='theme_<%= theme.id %>_experiences=show_all'>
+            <div ng-switch="theme_<%= theme.id %>_experiences" ng-init="theme_<%= theme.id %>_experiences=show_all">
 
               <% theme.experiences.published.first(2).each do |experience| %>
                 <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
               <% end %>
 
               <% if theme.experiences.published.count > 2 %>
-                <div ng-show='theme_<%= theme.id %>_experiences'>
+                <div ng-show="theme_<%= theme.id %>_experiences">
                   <% (theme.experiences.published - theme.experiences.published.first(2)).each do |experience| %>
                     <%= render file: 'experiences/card', cache: true, locals: { experience: experience } %>
                   <% end %>

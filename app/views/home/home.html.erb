@@ -158,7 +158,7 @@
           <% end %>
 
           <% if @suggestions.count > 2 %>
-              <div ng-show='suggestions'>
+              <div ng-show="suggestions">
                 <% (@suggestions - @suggestions.first(2)).each do |suggestion| %>
                     <%= render file: 'suggestions/card', cache: true, locals: {suggestion: suggestion} %>
                 <% end %>

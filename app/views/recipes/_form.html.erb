@@ -102,8 +102,8 @@
   <p class="header-label"><%= t('recipes._form.header_optional') %></p>
   <hr style='border-top: 2px dashed #C3C5C6;margin: 5px 0px 20px'>
 
-  <div class="input-switch" ng-switch='recipe_link' ng-init='recipe_link=<%= @recipe.link.present? %>'>
-    <div ng-hide='recipe_link' ng-click="recipe_link=true">
+  <div class="input-switch" ng-switch="recipe_link" ng-init="recipe_link=<%= @recipe.link.present? %>">
+    <div ng-hide="recipe_link" ng-click="recipe_link=true">
 
       <div class="row">
         <div class="media col-xs-4 col-xs-offset-4">
@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    <div ng-show='recipe_link' class="form-group">
+    <div ng-show="recipe_link" class="form-group">
       <%= f.text_field :link, placeholder: t('recipes._form.add_url'), class: 'form-control' %>
       <span class="help-block"><%= t('recipes._form.instructions') %></span>
     </div>

@@ -91,7 +91,7 @@
               </div>
             </div>
 
-            <div ng-switch='problem_statement_<%= problem_statement.id %>_ideas' ng-init='problem_statement_<%= problem_statement.id %>_ideas=show_all'>
+            <div ng-switch="problem_statement_<%= problem_statement.id %>_ideas" ng-init="problem_statement_<%= problem_statement.id %>_ideas=show_all">
 
               <div class="row">
                 <% problem_statement.ideas.published.first(@challenge.stage_number == 4 ? 6 : 5).each do |idea| %>
@@ -99,7 +99,7 @@
                 <% end %>
 
                 <% if problem_statement.ideas.published.count > (@challenge.stage_number == 4 ? 6 : 5) %>
-                  <div ng-show='problem_statement_<%= problem_statement.id %>_ideas'>
+                  <div ng-show="problem_statement_<%= problem_statement.id %>_ideas">
                     <% (problem_statement.ideas.published - problem_statement.ideas.published.first(@challenge.stage_number == 4 ? 6 : 5)).each do |idea| %>
                       <%= render file: 'ideas/card', cache: true, locals: { idea: idea, columns: 'col-md-4 col-sm-6' } %>
                     <% end %>

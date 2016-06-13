@@ -1,9 +1,9 @@
 <div id="<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" class="new-comment">
   <div class="comment-header">
     <div class="media media-commenter pull-left">
-      <p class="timestamp" ng-show='temporal_parent_id != null'>
+      <p class="timestamp" ng-show="temporal_parent_id != null">
         <%= t('comments.card._new.reply') %>
-        <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>
+        <a href='#' onclick='return false;' ng-click="temporal_parent_id=null">
           <%= t('comments.card._new.cancel') %>
         </a>
       </p>

@@ -1,9 +1,9 @@
-<div class="suggestion-form" id="new-suggestion" ng-switch='suggestion_draft' ng-init='suggestion_draft=false'>
-  <div class="well well-lg well-share" ng-hide='suggestion_draft' ng-click='suggestion_draft=true'>
+<div class="suggestion-form" id="new-suggestion" ng-switch="suggestion_draft" ng-init="suggestion_draft=false">
+  <div class="well well-lg well-share" ng-hide="suggestion_draft" ng-click="suggestion_draft=true">
     <p><i class="fa fa-pencil"></i>&nbsp; <%= t('suggestions.card._new.placeholder', platform: t('project_name')) %></p>
   </div>
 
-  <div ng-show='suggestion_draft' class="well well-suggestion">
+  <div ng-show="suggestion_draft" class="well well-suggestion">
     <%= render partial: 'suggestions/card/form', locals: { suggestion: new_suggestion, url: suggestions_path, cancel_path: 'suggestion_draft=false', submit_text: t('suggestions.card._new.submit') } %>
     <div class="clearfix"></div>
   </div>

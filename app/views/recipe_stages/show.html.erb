@@ -112,12 +112,12 @@
                 <% end %>
               </div>
             </div>
-            <div ng-switch='cookbook_<%= cookbook.id %>_recipes' ng-init='cookbook_<%= cookbook.id %>_recipes=show_all'>
+            <div ng-switch="cookbook_<%= cookbook.id %>_recipes" ng-init="cookbook_<%= cookbook.id %>_recipes=show_all">
               <% cookbook.recipes.published.first(3).each do |recipe| %>
                 <%= render file: 'recipes/card', cache: true, locals: { recipe: recipe } %>
               <% end %>
               <% if cookbook.recipes.published.count > 3 %>
-                <div ng-show='cookbook_<%= cookbook.id %>_recipes'>
+                <div ng-show="cookbook_<%= cookbook.id %>_recipes">
                   <% (cookbook.recipes.published - cookbook.recipes.published.first(3)).each do |recipe| %>
                     <%= render file: 'recipes/card', cache: true, locals: { recipe: recipe } %>
                   <% end %>

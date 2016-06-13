@@ -45,12 +45,12 @@
     <label for='user_district_ids'>
       <%= t('devise.registrations.forms._profile.which_districts') %>
       <small>
-        <a href='#' onclick="return false;" ng-hide='other_lea' ng-click='otherLEA(true)'><%= t('devise.registrations.forms._profile.cant_find_district') %></a>
-        <a href='#' onclick="return false;" ng-show='other_lea' ng-click='otherLEA(false)'><%= t('devise.registrations.forms._profile.prepopulated_district_list') %></a>
+        <a href='#' onclick="return false;" ng-hide="other_lea" ng-click="otherLEA(true)"><%= t('devise.registrations.forms._profile.cant_find_district') %></a>
+        <a href='#' onclick="return false;" ng-show="other_lea" ng-click="otherLEA(false)"><%= t('devise.registrations.forms._profile.prepopulated_district_list') %></a>
       </small>
     </label>
 
-    <select ng-hide='other_lea' id="user_district_ids" name='user[district_ids][]' class="form-control" multiple='true'>
+    <select ng-hide="other_lea" id="user_district_ids" name="user[district_ids][]" class="form-control" multiple='true'>
       <% if resource.districts.present? %>
         <% resource.districts.each do |district| %>
           <option selected='selected' value='<%= district.id %>'>
@@ -66,12 +66,12 @@
     <label for='user_school_ids'>
       <%= t('devise.registrations.forms._profile.which_schools') %>
       <small>
-        <a href='#' onclick='return false;' ng-hide='other_school' ng-click="otherSchool(true)"><%= t('devise.registrations.forms._profile.cant_find_school') %></a>
-        <a href='#' onclick='return false;' ng-show='other_school' ng-click="otherSchool(false)"><%= t('devise.registrations.forms._profile.prepopulated_school_list') %></a>
+        <a href='#' onclick='return false;' ng-hide="other_school" ng-click="otherSchool(true)"><%= t('devise.registrations.forms._profile.cant_find_school') %></a>
+        <a href='#' onclick='return false;' ng-show="other_school" ng-click="otherSchool(false)"><%= t('devise.registrations.forms._profile.prepopulated_school_list') %></a>
       </small>
     </label>
 
-    <select ng-hide='other_school' id="user_school_ids" name='user[school_ids][]' class="form-control" multiple="true">
+    <select ng-hide="other_school" id="user_school_ids" name="user[school_ids][]" class="form-control" multiple="true">
       <% if resource.schools.present? %>
         <% resource.schools.each do |school| %>
           <option selected='selected' value='<%= school.id %>'><%= "#{school.name} (#{school.location_city}, #{school.location_state})" %></option>
@@ -86,7 +86,7 @@
     <%= f.text_field :organization, class: 'form-control', placeholder: "{{ role != 'Other' && role != 'Pre-Service Teacher' ? other_placeholder : ''}}", 'ng-model' => 'organization' %>
   </div>
 
-  <div class="form-group" ng-show='role && role != "Pre-Service Teacher"' ng-init="title='<%= resource.title %>'">
+  <div class="form-group" ng-show="role && role != 'Pre-Service Teacher'" ng-init="title='<%= resource.title %>'">
     <label for='user_title' ng-show="role == 'LEA Staff' || role == 'SEA Staff' || role == 'Other'"><%= t('devise.registrations.forms._profile.what_title') %></label>
     <label for='user_title' ng-show="role == 'Current Teacher' || role == 'Teacher Leader' || role == 'Instructional Coach' || role == 'School Leader'"><%= t('devise.registrations.forms._profile.which_grades_taught') %></label>
     <%= f.text_field :title, class: 'form-control', 'ng-model' => 'title' %>

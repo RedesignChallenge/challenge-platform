@@ -13,12 +13,12 @@
     </div>
 
     <div class="col-xs-8">
-      <div ng-switch='theme_<%= theme.id %>_draft' ng-init='theme_<%= theme.id %>_draft=false'>
-        <div class="well well-lg well-share" ng-hide='theme_<%= theme.id %>_draft' ng-click='theme_<%= theme.id %>_draft=true'>
+      <div ng-switch="theme_<%= theme.id %>_draft" ng-init="theme_<%= theme.id %>_draft=false">
+        <div class="well well-lg well-share" ng-hide="theme_<%= theme.id %>_draft" ng-click="theme_<%= theme.id %>_draft=true">
           <p><i class="fa fa-pencil"></i>&nbsp; <%= t('experiences.card._new.share_something_related') %></p>
         </div>
 
-        <div ng-show='theme_<%= theme.id %>_draft' class="well well-experience">
+        <div ng-show="theme_<%= theme.id %>_draft" class="well well-experience">
           <%= render partial: 'experiences/card/form', locals: { experience: new_experience, theme: theme, url: challenge_experience_stage_theme_experiences_path(@challenge, @challenge.experience_stage, theme), cancel_path: "theme_#{theme.id}_draft=false", submit_text: t('experiences.card._new.submit') } %>
           <div class="clearfix"></div>
         </div>

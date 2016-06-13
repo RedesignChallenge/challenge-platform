@@ -26,8 +26,8 @@
 
             <div class="row">
               <div class="col-sm-8">
-                <div class="input-switch" ng-switch='experience_<%= @experience.id %>_link' ng-init='experience_<%= @experience.id %>_link=<%= @experience.link.present? %>'>
-                  <div ng-hide='experience_<%= @experience.id %>_link' ng-click="experience_<%= @experience.id %>_link=true" class="media">
+                <div class="input-switch" ng-switch="experience_<%= @experience.id %>_link" ng-init="experience_<%= @experience.id %>_link=<%= @experience.link.present? %>">
+                  <div ng-hide="experience_<%= @experience.id %>_link" ng-click="experience_<%= @experience.id %>_link=true" class="media">
                     <div class="media-left">
                       <span class="fa-stack">
                         <i class="fa fa-stack-2x fa-circle-thin"></i>
@@ -39,7 +39,7 @@
                     </div>
                   </div>
 
-                  <div ng-show='experience_<%= @experience.id %>_link'>
+                  <div ng-show="experience_<%= @experience.id %>_link">
                     <%= f.text_field :link, placeholder: t('experiences._form.add_url'), class: 'form-control' %>
                     <span class="help-block"><%= t('experiences._form.link_description') %></span>
                   </div>

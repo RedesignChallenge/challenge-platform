@@ -1,9 +1,9 @@
 <div class="well well-comment">
   <div class="comment-header">
     <div class="media media-commenter pull-left">
-      <p class="timestamp" ng-show='temporal_parent_id != null'>
+      <p class="timestamp" ng-show="temporal_parent_id != null">
         <%= t('comments._form.reply') %>
-        <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>
+        <a href='#' onclick='return false;' ng-click="temporal_parent_id=null">
           <%= t('comments._form.cancel') %>
         </a>
       </p>
@@ -42,8 +42,8 @@
     <div class="row">
 
       <div class="col-sm-8">
-        <div class="input-switch" ng-switch='comment_<%= @comment.id %>_link' ng-init='comment_<%= @comment.id %>_link=<%= @comment.link.present? %>'>
-          <div ng-hide='comment_<%= @comment.id %>_link' ng-click="comment_<%= @comment.id %>_link=true" class="media">
+        <div class="input-switch" ng-switch="comment_<%= @comment.id %>_link" ng-init="comment_<%= @comment.id %>_link=<%= @comment.link.present? %>">
+          <div ng-hide="comment_<%= @comment.id %>_link" ng-click="comment_<%= @comment.id %>_link=true" class="media">
             <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-stack-2x fa-circle-thin"></i>
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          <div ng-show='comment_<%= @comment.id %>_link' class="form-group">
+          <div ng-show="comment_<%= @comment.id %>_link" class="form-group">
             <%= f.text_field :link, placeholder: t('comments._form.url'), class: 'form-control' %>
             <span class="help-block"><%= t('comments._form.link2') %></span>
           </div>

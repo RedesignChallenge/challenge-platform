@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-sm-8">
-      <div class="input-switch" ng-switch='comment_<%= comment.id %>_link' ng-init="comment_<%= comment.id %>_link=<%= comment.link.present? %>">
+      <div class="input-switch" ng-switch="comment_<%= comment.id %>_link" ng-init="comment_<%= comment.id %>_link=<%= comment.link.present? %>">
         <div ng-hide="comment_<%= comment.id %>_link" ng-click="comment_<%= comment.id %>_link=true" class="media">
           <div class="media-left">
             <span class="fa-stack">

@@ -5,16 +5,17 @@
 
         <%= render partial: "#{@class_name.pluralize}/preview", locals: eval("{ #{@class_name}: @object }") %>
 
-        <div class="well well-auth" ng-switch='new_user' ng-init='new_user=true'>
+        <div class="well well-auth" ng-switch="new_user" ng-init="new_user=true">
           <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, @cancel_path, class: 'auth-cancel' %>
-          <h2 class="section-title"><%= t('.title',
-                                          entity: @class_name,
-                                          action: if MAIN_ENTITIES.include?(@object.class)
-                                                    @object.published_at? ? t('.shared') : t('.saved_as_draft')
-                                                  else
-                                                    t('.shared')
-                                                  end)
-                                                %></h2>
+          <h2 class="section-title">
+            <%= t('.title',
+                  entity: @class_name,
+                  action: if MAIN_ENTITIES.include?(@object.class)
+                            @object.published_at? ? t('.shared') : t('.saved_as_draft')
+                          else
+                            t('.shared')
+                          end) %>
+          </h2>
 
           <div ng-hide="new_user">
             <%= render partial: 'devise/sessions/form', locals: { cancel_path: @cancel_path, switch_link: link_to(t('.sign_up_link'), '#', onclick: 'return false;', 'ng-click' => 'new_user=true') } %>
@@ -23,9 +24,7 @@
           <div ng-show="new_user">
             <%= render partial: 'devise/registrations/forms/new', locals: { cancel_path: @cancel_path, switch_link: link_to(t('.sign_in_link'), '#', onclick: 'return false;', 'ng-click' => 'new_user=false') } %>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>

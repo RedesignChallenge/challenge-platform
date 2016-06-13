@@ -1,6 +1,6 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id="idea-form" ng-controller='IdeaCtrl'>
+<div id="idea-form" ng-controller="IdeaCtrl">
   <div class="container">
     <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), data: { confirm: t('.confirm') } %>
     <div class="clearfix"></div>
@@ -10,7 +10,7 @@
 
   <div class="example-switch">
     <% if @idea.refinement_parent %>
-      <div ng-show='refinement'>
+      <div ng-show="refinement">
         <div class="container">
           <%= render partial: 'ideas/refinement' %>
         </div>
@@ -22,9 +22,9 @@
       </div>
     <% end %>
 
-    <div ng-show='form'>
+    <div ng-show="form">
       <% if @idea.refinement_parent %>
-        <div id="refinement-idea-show" class="well well-example well-left" ng-click="showRefinement()" ng-show='refinement_parent_id'>
+        <div id="refinement-idea-show" class="well well-example well-left" ng-click="showRefinement()" ng-show="refinement_parent_id">
           <p class="example-heading"><%= t('.original_idea_html') %></p>
           <p class="example-description"><%= t('.expand_original_idea_html') %></p>
         </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div ng-show='example'>
+    <div ng-show="example">
       <div id="example-idea-hide" class="well well-example well-left" ng-click="showForm()">
         <p class="example-heading"><%= t('.keep_editing_html') %></p>
         <p class="example-description"><%= t('.expand_keep_editing_html') %></p>

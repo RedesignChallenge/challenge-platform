@@ -8,7 +8,7 @@
 
         <% if @idea.refinement_parent %>
           <div ng-init="refinement_parent_id=<%= @idea.refinement_parent_id %>"></div>
-          <div id="idea_refinement" class="form-group" ng-show='refinement_parent_id'>
+          <div id="idea_refinement" class="form-group" ng-show="refinement_parent_id">
             <%= f.hidden_field :refinement_parent_id, 'ng-value' => 'refinement_parent_id' %>
             <i class="fa fa-close" ng-click="refinement_parent_id=null"></i>
             <span class="idea-refinement"><%= t('ideas._form.refinement') %><%= link_to @idea.refinement_parent.title.html_safe, '#', 'ng-click' => 'showRefinement()', onclick: 'return false;' %></span>
@@ -26,8 +26,8 @@
           <%= f.text_area :description, placeholder: t('ideas._form.description_placeholder'), class: 'form-control', rows: 5 %>
         </div>
 
-        <div class="input-switch" ng-switch='idea_impact' ng-init='idea_impact=<%= @idea.impact.present? %>'>
-          <div ng-hide='idea_impact' ng-click="idea_impact=true" class="media">
+        <div class="input-switch" ng-switch="idea_impact" ng-init="idea_impact=<%= @idea.impact.present? %>">
+          <div ng-hide="idea_impact" ng-click="idea_impact=true" class="media">
             <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-stack-2x fa-circle-thin"></i>
@@ -39,14 +39,14 @@
             </div>
           </div>
 
-          <div ng-show='idea_impact' class="form-group">
+          <div ng-show="idea_impact" class="form-group">
             <%= f.label :impact, t('ideas._form.impact_label') %>
             <%= f.text_area :impact, placeholder: t('ideas._form.impact_placeholder'), class: 'form-control', rows: 3 %>
           </div>
         </div>
 
-        <div class="input-switch" ng-switch='idea_implementation' ng-init='idea_implementation=<%= @idea.implementation.present? %>'>
-          <div ng-hide='idea_implementation' ng-click="idea_implementation=true" class="media">
+        <div class="input-switch" ng-switch="idea_implementation" ng-init="idea_implementation=<%= @idea.implementation.present? %>">
+          <div ng-hide="idea_implementation" ng-click="idea_implementation=true" class="media">
             <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-stack-2x fa-circle-thin"></i>
@@ -58,14 +58,14 @@
             </div>
           </div>
 
-          <div ng-show='idea_implementation' class="form-group">
+          <div ng-show="idea_implementation" class="form-group">
             <%= f.label :implementation, t('ideas._form.implementation_label') %>
             <%= f.text_area :implementation, placeholder: t('ideas._form.implementation_placeholder'), class: 'form-control', rows: 3 %>
           </div>
         </div>
 
-        <div class="input-switch" ng-switch='idea_link' ng-init='idea_link=<%= @idea.link.present? %>'>
-          <div ng-hide='idea_link' ng-click="idea_link=true" class="media">
+        <div class="input-switch" ng-switch="idea_link" ng-init="idea_link=<%= @idea.link.present? %>">
+          <div ng-hide="idea_link" ng-click="idea_link=true" class="media">
             <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-stack-2x fa-circle-thin"></i>
@@ -77,7 +77,7 @@
             </div>
           </div>
 
-          <div ng-show='idea_link' class="form-group">
+          <div ng-show="idea_link" class="form-group">
             <%= f.text_field :link, placeholder: t('ideas._form.url'), class: 'form-control' %>
             <span class="help-block"><%= t('ideas._form.link_description') %></span>
           </div>
