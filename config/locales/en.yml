@@ -63,7 +63,6 @@ en:
       time_left: "%{number} %{unit} Left"
     show:
       completed: "Completed"
-      active: "Not yet active"
       challenge: "The Challenge"
       goal: "The Goal"
       role: "Your Role"
@@ -278,6 +277,7 @@ en:
         sign_in_with_omniauth: "Sign in with %{provider}"
     unlocks:
       new:
+        title: "Resend unlock instructions"
         email_label: "Email"
         submit: "Resend unlock instructions"
 

@@ -1,16 +1,16 @@
-<div class='row row-count'>
-  <div class='col-xs-6 col-xs-offset-3'>
-    <h6 class='text-center center-block'>
-      <i class='fa fa-comments-o fa-3x'></i><br>
-      <span class='text-bolder'><%= t('comments._discussion.header', count: commentable.comments_count) unless commentable.comments_count.zero? %></span>
+<div class="row row-count">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h6 class="text-center center-block">
+      <i class="fa fa-comments-o fa-3x"></i><br>
+      <span class="text-bolder"><%= t('comments._discussion.header', count: commentable.comments_count) unless commentable.comments_count.zero? %></span>
     </h6>
   </div>
-  <div class='col-xs-3'>
-    <p class='action text-right text-small'><%= link_to(t('comments._discussion.add'), "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', 'du-smooth-scroll' => true) unless commentable.comments_count.zero? %></p>
+  <div class="col-xs-3">
+    <p class="action text-right text-small"><%= link_to(t('comments._discussion.add'), "##{commentable.class.to_s.downcase}-#{commentable.id}-new-comment", class: 'pull-right', 'du-smooth-scroll' => true) unless commentable.comments_count.zero? %></p>
   </div>
 </div>
 
-<div class='well well-lg well-discussion'>
+<div class="well well-lg well-discussion">
   <% commentable.root_comments.each do |comment| %>
     <%= render file: 'comments/card', locals: { comment: comment } %>
   <% end %>

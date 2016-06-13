@@ -1,8 +1,7 @@
-<div id='user-header'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
-
+<div id="user-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <% if current_user.avatar.present? %>
           <%= image_tag(current_user.avatar.profile.url, class: 'img-circle') %>
         <% else %>
@@ -12,17 +11,16 @@
           </span>
         <% end %>
 
-        <div class='user-caption'>
-          <p class='user-name'><%= current_user.display_name %></p>
-          <p class='user-title'><%= current_user.display_organization %></p>
+        <div class="user-caption">
+          <p class="user-name"><%= current_user.display_name %></p>
+          <p class="user-title"><%= current_user.display_organization %></p>
         </div>
 
         <ul class="nav nav-tabs nav-justified">
-          <li role="presentation" class='active'><%= link_to t('devise.registrations.headers._profile.edit_profile'), edit_user_registration_path(setting: 'profile') %></li>
+          <li role="presentation" class="active"><%= link_to t('devise.registrations.headers._profile.edit_profile'), edit_user_registration_path(setting: 'profile') %></li>
           <li role="presentation"><%= link_to t('devise.registrations.headers._profile.account_settings'), edit_user_registration_path(setting: 'account') %></li>
           <li role="presentation"><%= link_to t('devise.registrations.headers._profile.activity'), user_path(current_user) %></li>
         </ul>
-
       </div>
     </div>
   </div>

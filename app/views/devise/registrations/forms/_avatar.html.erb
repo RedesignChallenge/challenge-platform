@@ -1,4 +1,4 @@
-<div class='form-group' ng-init="avatar_option='<%= resource.avatar_option %>'">
+<div class="form-group" ng-init="avatar_option='<%= resource.avatar_option %>'">
   <%= f.label :avatar, t('devise.registrations.forms._avatar.profile_photo') %><br>
   <label class="radio-inline text-normal">
     <%= f.radio_button :avatar_option, 'twitter', 'ng-model' => 'avatar_option' %> <%= t('devise.registrations.forms._avatar.use_twitter') %>
@@ -11,7 +11,7 @@
   </label>
 </div>
 
-<div class='form-group' ng-show='avatar_option=="upload"'>
+<div class="form-group" ng-show='avatar_option=="upload"'>
   <% if resource.avatar.present? %>
     <div ng-init='upload_new=false' ng-hide='upload_new'>
       <label>

@@ -1,13 +1,12 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id='challenge-overview' style='background-image:url("<%= @challenge.banner.present? ? @challenge.banner.url.html_safe : asset_path('bg.png') %>")'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
-        <div class='row'>
+<div id="challenge-overview" style="background-image:url('<%= @challenge.banner.present? ? @challenge.banner.url.html_safe : asset_path('bg.png') %>')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
           <div class="col-sm-7">
-            <h1 class='challenge-headline'><%= @challenge.headline.html_safe %></h1>
+            <h1 class="challenge-headline"><%= @challenge.headline.html_safe %></h1>
 
             <%= link_to "<i class='fa icon-twitter' style='font-size:1.5em'></i> ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-white text-lighter text-large' %>
           </div>
@@ -21,34 +20,31 @@
   </div>
 </div>
 
-<div id='challenge-description'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
+<div id="challenge-description">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <%= @challenge.description.html_safe if @challenge.description.present? %>
-
       </div>
     </div>
   </div>
 </div>
 
-<div id='challenge-details'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
+<div id="challenge-details">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <!-- Experience Process Bubbles: START -->
-        <div id='challenge-process' class='row'>
+        <div id="challenge-process" class="row">
           <% if @challenge.incentive.present? %>
-            <div class='col-sm-9 col-sm-offset-3'>
-              <p class='text-center text-recipe'><%= @challenge.incentive.html_safe %></p>
+            <div class="col-sm-9 col-sm-offset-3">
+              <p class="text-center text-recipe"><%= @challenge.incentive.html_safe %></p>
             </div>
           <% end %>
 
           <% Challenge::STAGES.each_with_index do |stage, index| %>
             <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
-              <div class='stage-recap'>
+              <div class="stage-recap">
                 <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
                   <% if @challenge.stage_number == stage[:number] %>
                       <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %> active">
@@ -69,31 +65,31 @@
                     <% end %>
                   <% end %>
 
-                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution') ) %>
-                  
-                  <div class='clearfix'></div>
+                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
+
+                  <div class="clearfix"></div>
                   <div class="caption">
-                    <h4 class='text-black'>
+                    <h4 class="text-black">
                       <% if @challenge.stage_number > stage[:number] %>
-                        <i class='fa icon-check'></i> 
+                        <i class="fa icon-check"></i>
                         <%= pluralize(eval("@challenge.#{stage[:name]}_stage.#{stage[:name].pluralize}.published.count"), stage[:name]).titleize %> <%= stage[:action].titleize %>
                       <% else %>
                         <%= stage[:headline] %>
                       <% end %>
                     </h4>
-                    <p class='description'><%= stage[:description] %></p>
+                    <p class="description"><%= stage[:description] %></p>
                   </div>
                 <% end %>
               </div>
 
-              <div class='stage-cta'>
+              <div class="stage-cta">
                 <% if @challenge.stage_number == stage[:number] %>
                   <%= link_to t('.story'), challenge_active_stage_path(@challenge), class: 'btn btn-info btn-rounded text-small' unless stage[:name] == 'solution' %>
                 <% else %>
                   <% if @challenge.stage_number > stage[:number] %>
-                    <p class='text-small'><%= link_to t('.completed'), eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)"), class: 'completed text-default' %></p>
+                    <p class="text-small"><%= link_to t('.completed'), eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)"), class: 'completed text-default' %></p>
                   <% else %>
-                    <!--<p class='text-small pending'><%#= t('.active') %></p>-->
+
                   <% end %>
                 <% end %>
               </div>
@@ -105,98 +101,94 @@
 
         <div class="row">
           <div class="col-sm-4">
-            <h3 class='text-bold'><%= t('.challenge') %></h3>
+            <h3 class="text-bold"><%= t('.challenge') %></h3>
             <p><%= @challenge.background.html_safe %></p>
           </div>
           <div class="col-sm-4">
-            <h3 class='text-bold'><%= t('.goal') %></h3>
+            <h3 class="text-bold"><%= t('.goal') %></h3>
             <p><%= @challenge.outcome.html_safe %></p>
           </div>
           <div class="col-sm-4">
-            <h3 class='text-bold'><%= t('.role') %></h3>
+            <h3 class="text-bold"><%= t('.role') %></h3>
             <p><%= @challenge.help.html_safe %></p>
           </div>
         </div>
 
-        <div class='text-center center-block' style='margin:3em 0em -2em'>
+        <div class="text-center center-block" style='margin:3em 0em -2em'>
           <%= link_to t('.get_started'), challenge_active_stage_path(@challenge), class: 'btn btn-lg btn-longer btn-rounded btn-info' %>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
-<div id='challenge-featured'>
+<div id="challenge-featured">
   <div class="container">
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <h2 class="text-center"><%= t('.featured', challenge: @challenge.title) %></h2>
 
-        <div class='row'>
+        <div class="row">
           <% @challenge.featured_contributions.each do |featured| %>
             <%= render file: "#{featured.class.name.pluralize.downcase}/card", cache: true, locals: eval("{ #{featured.class.name.downcase}: featured }") %>
           <% end %>
         </div>
-        
-        <div class='text-center center-block'>
+
+        <div class="text-center center-block">
           <%= link_to t('.more'), challenge_active_stage_path(@challenge), class: 'text-bold' %>
         </div>
-
       </div>
     </div>
   </div>
 </div>
 
-<div id='challenge-panel'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
+<div id="challenge-panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <div class="row">
           <h2 class="text-center"><%= t('.guides') %></h2>
-          
-          <div class='col-sm-10 col-sm-offset-1'>
-            <p class='section-description'><%= @challenge.panel.about.html_safe %></p>
+
+          <div class="col-sm-10 col-sm-offset-1">
+            <p class="section-description"><%= @challenge.panel.about.html_safe %></p>
           </div>
         </div>
 
         <% if @challenge.panelists.count > 4 %>
-          <div class='row row-panelists' style='margin-bottom:2em'>
+          <div class="row row-panelists" style='margin-bottom:2em'>
             <% @challenge.panelists.first(4).each do |panelist| %>
               <div class="col-xs-6 col-sm-3">
                 <%= link_to image_tag(panelist.avatar.profile.url, class: 'img-circle', style: 'width:50%'), '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" } %>
                 <div class="user-caption">
-                  <p class='user-name'><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
-                  <p class='user-title'><%= panelist.title %></p>
-                  <p class='user-title'><%= panelist.organization %></p>
+                  <p class="user-name"><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
+                  <p class="user-title"><%= panelist.title %></p>
+                  <p class="user-title"><%= panelist.organization %></p>
                 </div>
               </div>
             <% end %>
           </div>
 
-          <div class='row row-panelists'>
+          <div class="row row-panelists">
             <% (@challenge.panelists - @challenge.panelists.first(4)).each do |panelist| %>
               <div class="col-xs-6 col-sm-3">
                 <%= link_to image_tag(panelist.avatar.profile.url, class: 'img-circle', style: 'width:50%'), '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" } %>
                 <div class="user-caption">
-                  <p class='user-name'><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
-                  <p class='user-title'><%= panelist.title %></p>
-                  <p class='user-title'><%= panelist.organization %></p>
+                  <p class="user-name"><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
+                  <p class="user-title"><%= panelist.title %></p>
+                  <p class="user-title"><%= panelist.organization %></p>
                 </div>
               </div>
             <% end %>
           </div>
         <% else %>
-          <div class='row row-panelists'>
+          <div class="row row-panelists">
             <% @challenge.panelists.each do |panelist| %>
               <div class="col-xs-6 col-sm-3">
                 <%= link_to image_tag(panelist.avatar.profile.url, class: 'img-circle', style: 'width:50%'), '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" } %>
                 <div class="user-caption">
-                  <p class='user-name'><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
-                  <p class='user-title'><%= panelist.title %></p>
-                  <p class='user-title'><%= panelist.organization %></p>
+                  <p class="user-name"><%= link_to panelist.name, '#', data: { toggle: 'modal', target: "#panelist-#{panelist.id}" }, class: 'text-default text-bolder' %></p>
+                  <p class="user-title"><%= panelist.title %></p>
+                  <p class="user-title"><%= panelist.organization %></p>
                 </div>
               </div>
             <% end %>
@@ -209,30 +201,29 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <p class='panelist-title'><%= t('.about_panelist', panelist: panelist.name) %></p>
+                  <p class="panelist-title"><%= t('.about_panelist', panelist: panelist.name) %></p>
                 </div>
-                <div class='modal-body'>
-                  <p class='panelist-bio'><%= panelist.bio.present? ? panelist.bio.html_safe : t('.empty_bio') %></p>
+                <div class="modal-body">
+                  <p class="panelist-bio"><%= panelist.bio.present? ? panelist.bio.html_safe : t('.empty_bio') %></p>
                 </div>
-                <div class='modal-footer'>
-                  <div class='text-center'><%= link_to t('.view_panelist_profile'), user_path(panelist) %></div>
+                <div class="modal-footer">
+                  <div class="text-center"><%= link_to t('.view_panelist_profile'), user_path(panelist) %></div>
                 </div>
               </div>
             </div>
           </div>
         <% end %>
-
       </div>
     </div>
   </div>
 </div>
 
-<div id='challenge-invite'>
+<div id="challenge-invite">
   <div class="container">
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
         <h2 class="section-title text-submit" style='margin-bottom:10px'><%= t('.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('.social_sharing_description') %></p>
+        <p class="section-description"><%= t('.social_sharing_description') %></p>
         <%= render partial: 'layouts/share_links', locals: { url: challenge_url(@challenge), title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
       </div>
     </div>

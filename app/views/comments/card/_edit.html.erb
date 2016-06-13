@@ -1,18 +1,18 @@
-<div class='comment-header'>
+<div class="comment-header">
   <div class="media media-commenter pull-left">
     <p class="timestamp"><%= t('comments.card._edit.time', time: time_ago_in_words(comment.created_at).titleize) %></p>
     <div class="media-left">
       <%= render partial: 'shared/avatar', locals: { user: current_user, avatar_style: 'width:2.25em' } %>
     </div>
     <div class="media-body" style='<%= 'padding-left: 0em' if current_user.avatar.present? %>'>
-      <div class='user-caption' style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
-        <p class='user-name'><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
-        <p class='user-title'><%= current_user.display_organization %></p>
+      <div class="user-caption" style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
+        <p class="user-name"><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
+        <p class="user-title"><%= current_user.display_organization %></p>
       </div>
     </div>
   </div>
 
-  <div class='clearfix'></div>
+  <div class="clearfix"></div>
 </div>
 
 <%= render partial: 'comments/card/form', locals: { comment: comment, url: comment_path(comment), cancel_path: "comment_#{comment.id}_edit=false", submit_text: t('comments.card._edit.submit')} %>

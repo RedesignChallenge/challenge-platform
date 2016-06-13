@@ -2,60 +2,60 @@
   <%= f.hidden_field :remember_me, value: true %>
   <%= f.hidden_field :referrer_id, value: session[:referrer_id] %>
 
-  <div class='row row-errors'>
-    <div class='col-sm-8 col-sm-offset-2'>
+  <div class="row row-errors">
+    <div class="col-sm-8 col-sm-offset-2">
       <%= devise_error_messages! %>
     </div>
   </div>
 
-  <div class='row row-fields'>
-    <div id='email' class='col-sm-8 col-sm-offset-2'>
-      <div class='form-group'>
+  <div class="row row-fields">
+    <div id="email" class="col-sm-8 col-sm-offset-2">
+      <div class="form-group">
         <%= f.label t('devise.registrations.forms._new.email') %>
         <%= f.email_field :email, autofocus: true, placeholder: t('devise.registrations.forms._new.enter_email'), class: 'form-control input-lg' %>
       </div>
 
-      <div class='form-group'>
+      <div class="form-group">
         <%= f.label t('devise.registrations.forms._new.password') %>
         <%= f.password_field :password, autocomplete: 'off', placeholder: t('devise.registrations.forms._new.choose_password'), class: 'form-control input-lg' %>
       </div>
 
-      <div class='row'>
-        <div class='col-xs-6 form-group'>
+      <div class="row">
+        <div class="col-xs-6 form-group">
           <%= f.label t('devise.registrations.forms._new.first_name') %>
           <%= f.text_field :first_name, class: 'form-control input-lg' %>
         </div>
-        <div class='col-xs-6 form-group'>
+        <div class="col-xs-6 form-group">
           <%= f.label t('devise.registrations.forms._new.last_name') %>
           <%= f.text_field :last_name, class: 'form-control input-lg' %>
         </div>
       </div>
 
-      <div class='form-group'>
+      <div class="form-group">
         <%= f.label :role, t('devise.registrations.forms._new.role_label') %>
         <%= f.select :role, options_for_select(User::ROLES, (resource.role if resource.role)), { prompt: t('devise.registrations.forms._new.role_select_prompt') }, class: 'form-control input-lg' %>
       </div>
     </div>
   </div>
 
-  <div class='row row-disclaimer'>
-    <div class='col-sm-8 col-sm-offset-2'>
-      <div class='auth-disclaimer text-small'>
+  <div class="row row-disclaimer">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="auth-disclaimer text-small">
         <%= t('devise.registrations.forms._new.sign_up_agreement_html',
-                                                  tos_link: link_to(t('devise.registrations.forms._new.tos'), terms_path, target: '_blank'),
-                                                  privacy_policy_link: link_to(t('devise.registrations.forms._new.privacy_policy'), privacy_path, target: '_blank')) %>
+              tos_link: link_to(t('devise.registrations.forms._new.tos'), terms_path, target: '_blank'),
+              privacy_policy_link: link_to(t('devise.registrations.forms._new.privacy_policy'), privacy_path, target: '_blank')) %>
       </div>
     </div>
   </div>
 
-  <div class='row row-actions'>
-    <div class='col-sm-4'>
-      <p class='auth-switch'><%= t('devise.registrations.forms._new.have_account_html', switch_link: switch_link) %></p>
+  <div class="row row-actions">
+    <div class="col-sm-4">
+      <p class="auth-switch"><%= t('devise.registrations.forms._new.have_account_html', switch_link: switch_link) %></p>
     </div>
-    <div class='col-sm-2'>
+    <div class="col-sm-2">
       <%= link_to t('devise.registrations.forms._new.cancel'), cancel_path, class: 'btn btn-default btn-block btn-rounded' %>
     </div>
-    <div class='col-sm-2'>
+    <div class="col-sm-2">
       <%= f.submit t('devise.registrations.forms._new.submit'), class: 'btn btn-info btn-block btn-rounded' %>
     </div>
   </div>

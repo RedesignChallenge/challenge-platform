@@ -2,19 +2,19 @@
   <%= f.hidden_field :setting, value: params[:setting] %>
   <%= devise_error_messages! %>
 
-  <div class='form-group'>
+  <div class="form-group">
     <%= f.label :comment_posted, t('devise.registrations.forms._notifications.comment_posted_label') %>
     <%= f.radio_button :comment_posted, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
     <%= f.radio_button :comment_posted, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
   </div>
 
-  <div class='form-group'>
+  <div class="form-group">
     <%= f.label :comment_replied, t('devise.registrations.forms._notifications.comment_replied_label') %>
     <%= f.radio_button :comment_replied, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
     <%= f.radio_button :comment_replied, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
   </div>
 
-  <div class='form-group'>
+  <div class="form-group">
     <%= f.label :comment_followed, t('devise.registrations.forms._notifications.comment_followed_label') %>
     <%= f.radio_button :comment_followed, 'true' %> <%= t('devise.registrations.forms._notifications.true_value') %>
     <%= f.radio_button :comment_followed, 'false' %> <%= t('devise.registrations.forms._notifications.false_value') %>
@@ -22,5 +22,5 @@
 
   <hr>
 
-  <div class='text-center center-block'><%= f.submit t('devise.registrations.forms._notifications.submit'), class: 'btn btn-submit btn-rounded btn-longer' %></div>
+  <div class="text-center center-block"><%= f.submit t('devise.registrations.forms._notifications.submit'), class: 'btn btn-submit btn-rounded btn-longer' %></div>
 <% end %>

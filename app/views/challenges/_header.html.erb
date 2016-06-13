@@ -1,9 +1,8 @@
-<div id='challenge-header' class='<%= current_page?(challenge_path(@challenge)) || @solution_stage ? 'splash' : controller_name %>'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-10 col-md-offset-1'>
-
-        <div id='challenge-nav' style='<%= challenge_nav_margin(@challenge) %>'>
+<div id="challenge-header" class="<%= current_page?(challenge_path(@challenge)) || @solution_stage ? 'splash' : controller_name %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div id="challenge-nav" style="<%= challenge_nav_margin(@challenge) %>">
           <% Challenge::STAGES.each_with_index do |stage, index| %>
 
             <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
@@ -15,20 +14,17 @@
                     <i class="fa fa-stack-1x <%= stage[:icon] %> text-<%= eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") ? stage[:name] : 'white' %>"></i>
                   </span>
                 <% else %>
-                  <i class='fa <%= stage[:icon] %> text-<%= eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") ? 'white' : stage[:name] %>'></i>
+                  <i class="fa <%= stage[:icon] %> text-<%= eval("params[:#{stage[:name]}_stage_id] || @#{stage[:name]}_stage") ? 'white' : stage[:name] %>"></i>
                 <% end %>
-                
-                <%= "<i class='fa fa-check'></i>".html_safe if @challenge.stage_number > stage[:number] %>
 
-                <span class='headline text-<%= stage[:name] if @challenge.stage_number == stage[:number] %>'><%= stage[:headline] %></span>
+                <%= '<i class="fa fa-check"></i>'.html_safe if @challenge.stage_number > stage[:number] %>
+
+                <span class="headline text-<%= stage[:name] if @challenge.stage_number == stage[:number] %>"><%= stage[:headline] %></span>
               </span>
             <% end %>
-
-            <%= "<i class='fa fa-play'></i>".html_safe unless index+1 == Challenge::STAGES.length %>
-
+            <%= '<i class="fa fa-play"></i>'.html_safe unless index+1 == Challenge::STAGES.length %>
           <% end %>
         </div>
-
       </div>
     </div>
   </div>
