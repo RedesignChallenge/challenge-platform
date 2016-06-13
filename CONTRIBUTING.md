@@ -32,9 +32,30 @@ We require that all PRs follow the style:
 To ensure clear and concise communication of the issue being highlighted, or the solution being presented, we ask that reporters follow these conventions.
 
  - When reporting a bug, describe what the bug is and leave **clear reproduction steps** in the issue.  Even if one is submitting a pull request to address the issue, it helps facilitate understanding as to why this behavior is a bug in the first place.
+
+   Reports *without* reproduction steps **will be de-prioritized over other reports** which do contain steps.  Should the bug represent a critical break in one's use of this platform, it is of the utmost importance to include reproduction steps.
+
  - If this issue is an urgent feature request, please politely indicate so in the issue.  Depending on the work required, we may be able to accommodate the request in a timely fashion; however, please understand that we may not be able to introduce a rapid turnaround.
  - When submitting a pull request, please be aware that we may reject it due to conflicts with upstream consumers. **We reserve the right to reject any PR, at any time, for any reason,** however we will often endeavor to provide an explanation as to the rejection.
  - Except in extrenuous and varying circumstances, **pull requests without any associated tests will be rejected.**
+
+
+The following is roughly what we would expect from a typical bug report.  As long as the report is clear, concise and easy to understand, we will honor it.
+
+---
+
+  Bug:  Saving experiences jumbles their order
+
+  Steps to Reproduce:
+
+   - Precondition:  There must be data in the database to fully observe this bug.  If there is no data, there is no error.
+   - Precondition:  The state of the project must not be at the last step.  One must be able to create experiences.
+   - Log in as a contributor without any special privileges.
+   - Create a new experience, save and publish it.
+   - Observe the order of the experiences in this state.
+   - Create another experience, save and publish it.
+   - Observe that the order of the experiencs has changed.
+
 
 ## Code Style and Conventions
 
@@ -74,7 +95,8 @@ Examples of unacceptable behavior by participants include:
 - Public or private harassment
 - Publishing others' private information, such as a physical or electronic address, without explicit permission
 - Other conduct which could reasonably be considered inappropriate in a professional setting
-- Our Responsibilities
+
+### Our Responsibilities
 
 Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
