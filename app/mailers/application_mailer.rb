@@ -7,7 +7,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   default from: "#{I18n.t(:project_name)} <#{ENV['GMAIL_USERNAME']}>"
-  default content_type: "text/html"
+  default content_type: 'text/html'
   layout 'mailer'
 
   before_action :set_action_and_header

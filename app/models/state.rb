@@ -23,5 +23,4 @@ class State < ActiveRecord::Base
   def self.search(search)
     limit(5).where('LOWER(name) LIKE ?', "%#{search.downcase}%") if search != ''
   end
-  
 end

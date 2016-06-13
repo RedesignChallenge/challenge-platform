@@ -11,9 +11,9 @@ module Embeddable
   def update_embed_code
     if self.link_changed? || self.embed.nil?
       if self.link.present?
-        if IMAGE_EXTENSION_WHITELIST.any?{ |extension| self.link.end_with?(extension) }
+        if IMAGE_EXTENSION_WHITELIST.any? { |extension| self.link.end_with?(extension) }
           embed_code = ActionController::Base.helpers.image_tag(self.link, width: '100%')
-        elsif ['youtube.com', 'youtu.be', 'vimeo.com'].any?{ |video| self.link.include?(video) }
+        elsif %w(youtube.com youtu.be vimeo.com).any? { |video| self.link.include?(video) }
           embed_code = video_embed(self.link)
         elsif self.link.include?('twitter.com')
           tweet_id = self.link.split('status/')[1]
@@ -31,5 +31,4 @@ module Embeddable
     end
   rescue
   end
-
 end

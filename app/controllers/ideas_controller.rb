@@ -1,9 +1,9 @@
 class IdeasController < ApplicationController
   before_action :load_challenge
-  before_action :authenticate_user!,  except: [:new, :create, :show, :like]
-  before_action :load_idea,           only:   [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :authorize_user!,     only:   [:edit, :update, :destroy]
-  before_action :set_published_at!,   only: [:create, :update]
+  before_action :authenticate_user!, except: [:new, :create, :show, :like]
+  before_action :load_idea, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_published_at!, only: [:create, :update]
 
   def new
     @idea = Idea.new(problem_statement_id: params[:problem_statement_id], refinement_parent_id: params[:refinement_parent_id])
@@ -38,7 +38,7 @@ class IdeasController < ApplicationController
   def update
     published = !@idea.published_at? && idea_params[:published_at].present?
     if @idea.update(idea_params)
-      flash[:success] = object_flash_message_for(@idea, {published: published})
+      flash[:success] = object_flash_message_for(@idea, { published: published })
       redirect_to after_update_object_path_for(@idea)
     else
       render :edit
@@ -56,27 +56,35 @@ class IdeasController < ApplicationController
       @idea.liked_by(current_user, vote_scope: @idea.default_like[:scope])
       respond_to do |format|
         format.html { redirect_to after_update_object_path_for(@idea) }
-        format.js   { render :like, locals: { partial: "#{params[:partial]}" } }
+        format.js { render :like, locals: { partial: "#{params[:partial]}" } }
       end
     else
-      cache_pending_like(@idea, {vote_scope: @idea.default_like[:scope]})
+      cache_pending_like(@idea, { vote_scope: @idea.default_like[:scope] })
       redirect_to preview_path(class_name: 'vote')
     end
   end
 
   def unlike
     @idea.unliked_by(current_user, vote_scope: @idea.default_like[:scope])
-    
+
     respond_to do |format|
       format.html { redirect_to after_update_object_path_for(@idea) }
-      format.js   { render :unlike, locals: { partial: "#{params[:partial]}" } }
+      format.js { render :unlike, locals: { partial: "#{params[:partial]}" } }
     end
   end
 
-private
+  private
 
   def idea_params
-    params.require(:idea).permit(:title, :description, :impact, :implementation, :link, :problem_statement_id, :refinement_parent_id, :published_at)
+    params.require(:idea)
+      .permit(:title,
+              :description,
+              :impact,
+              :implementation,
+              :link,
+              :problem_statement_id,
+              :refinement_parent_id,
+              :published_at)
   end
 
   def load_idea
@@ -98,5 +106,4 @@ private
   def set_published_at!
     params[:idea][:published_at] = params[:idea][:published] == 'true' ? Time.now : nil
   end
-
 end

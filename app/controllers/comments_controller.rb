@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!,  except: [:new, :create, :like]
-  before_action :load_comment,        only:   [:edit, :update, :destroy, :like, :unlike]
-  before_action :authorize_user!,     only:   [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:new, :create, :like]
+  before_action :load_comment, only: [:edit, :update, :destroy, :like, :unlike]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def new
   end
@@ -50,10 +50,10 @@ class CommentsController < ApplicationController
       @comment.liked_by(current_user, vote_scope: @comment.default_like[:scope])
       respond_to do |format|
         format.html { redirect_to after_update_object_path_for(@comment) }
-        format.js   { render :like, locals: { partial: "#{params[:partial]}" } }
+        format.js { render :like, locals: { partial: "#{params[:partial]}" } }
       end
     else
-      cache_pending_like(@comment, {vote_scope: @comment.default_like[:scope]})
+      cache_pending_like(@comment, { vote_scope: @comment.default_like[:scope] })
       redirect_to preview_path(class_name: 'vote')
     end
   end
@@ -63,11 +63,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to after_update_object_path_for(@comment) }
-      format.js   { render :unlike, locals: { partial: "#{params[:partial]}" } }
+      format.js { render :unlike, locals: { partial: "#{params[:partial]}" } }
     end
   end
 
-private
+  private
 
   def comment_params
     # If the parent does not exist, nil out the field for the temporal_parent_id to prevent incredulous spoofs.
@@ -88,9 +88,8 @@ private
 
   def authorize_user!
     unless @comment.user == current_user
-      flash[:danger] = 'You do not have access to that area or operation.'
+      flash[:danger] = I18n.t('controllers.comments.flash.danger')
       redirect_to after_update_object_path_for(@comment)
     end
   end
-
 end

@@ -6,5 +6,4 @@ class ExperienceStagesController < ApplicationController
     @themes = @experience_stage.themes
     @featured_experiences = @experience_stage.experiences.where(featured: true)
   end
-
 end

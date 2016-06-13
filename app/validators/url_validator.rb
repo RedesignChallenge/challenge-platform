@@ -17,7 +17,7 @@ class UrlValidator < ActiveModel::EachValidator
           return
         end
         url.scheme = 'http'
-        unless PublicSuffix.valid?(url.hostname || url.path )
+        unless PublicSuffix.valid?(url.hostname || url.path)
           record.errors[attribute] << (options[:message] || I18n.t('validators.url.invalid_hostname', hostname: url.hostname))
           return
         end

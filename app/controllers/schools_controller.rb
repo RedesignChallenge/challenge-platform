@@ -8,5 +8,4 @@ class SchoolsController < ApplicationController
       format.json { render json: @schools, each_serializer: SchoolSerializer }
     end
   end
-
 end

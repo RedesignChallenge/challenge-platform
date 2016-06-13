@@ -58,8 +58,8 @@ class User < ActiveRecord::Base
   has_many :solutions
   has_many :comments
   has_many :suggestions
-  belongs_to :referrer, class_name: "User", foreign_key: :referrer_id
-  has_many :referrals, class_name: "User", foreign_key: :referrer_id
+  belongs_to :referrer, class_name: 'User', foreign_key: :referrer_id
+  has_many :referrals, class_name: 'User', foreign_key: :referrer_id
   store_accessor :notifications, :comment_replied, :comment_posted, :comment_followed
 
   mount_uploader :avatar, AvatarUploader
@@ -172,5 +172,4 @@ class User < ActiveRecord::Base
       errors.add(:avatar, I18n.t('activerecord.errors.user.avatar_size_error', avatar_size: MAX_AVATAR_SIZE))
     end
   end
-
 end

@@ -33,6 +33,9 @@ en:
       saved_draft: "saved a draft of"
       updated_draft: "updated the draft of"
       message: "You've successfully %{action} your %{actionable}. <a href='%{url}'>Click here</a> to see all of your contributions."
+    comments:
+      flash:
+        danger: "You do not have access to that area or operation."
     experiences:
       flash:
         error: "Sorry, that experience has not been published yet."
@@ -556,16 +559,19 @@ en:
   mailers:
     comment:
       followed:
+        subject: "%{user} added a comment in the discussion of %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} added a comment in the discussion of %{commentable}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
       posted:
+        subject: "%{user} commented on your %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} posted a comment on your %{commentable} %{commentable_link}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
       replied:
+        subject: "%{user} replied to your comment on the %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} replied to your comment on the %{commentable} %{commentable_link}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"

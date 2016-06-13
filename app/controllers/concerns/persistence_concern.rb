@@ -36,5 +36,4 @@ module PersistenceConcern
     session.delete(:like)
     session.delete(:object)
   end
-
 end

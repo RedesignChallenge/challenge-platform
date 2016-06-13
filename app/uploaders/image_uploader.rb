@@ -23,5 +23,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     IMAGE_EXTENSION_WHITELIST
   end
-
 end

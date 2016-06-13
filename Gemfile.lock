@@ -432,6 +432,7 @@ DEPENDENCIES
   exception_notification
   factory_girl_rails
   faker
+  font-awesome-rails
   font-awesome-sass
   friendly_id
   i18n-recursive-lookup

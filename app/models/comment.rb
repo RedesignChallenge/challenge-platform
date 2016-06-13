@@ -35,7 +35,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_one :feature, as: :featureable
-  
+
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   acts_as_votable
@@ -67,14 +67,14 @@ class Comment < ActiveRecord::Base
     ## PARENT COMMENT USER
     parent_comment_user = self.parent ? self.parent.user : nil
     if parent_comment_user && parent_comment_user != self.user && parent_comment_user.comment_replied.true?
-      CommentMailer.delay.replied(self.id) 
+      CommentMailer.delay.replied(self.id)
       replied_notification_sent = true
     end
 
     ## POSTING COMMENT USER
     commentable_user = self.commentable.user ? self.commentable.user : nil
     if commentable_user && commentable_user != self.user && commentable_user.comment_posted.true? &&
-       (commentable_user == parent_comment_user ? !replied_notification_sent : true)
+      (commentable_user == parent_comment_user ? !replied_notification_sent : true)
       CommentMailer.delay.posted(self.id)
       posted_notification_sent = true
     end
@@ -82,17 +82,17 @@ class Comment < ActiveRecord::Base
     ## SIBLING COMMENT USERS
     self.sibling_comments.collect(&:user).uniq.each do |sibling_comment_user|
       if sibling_comment_user != self.user && sibling_comment_user.comment_followed.true? &&
-         (
-          if sibling_comment_user == parent_comment_user
-            !replied_notification_sent
-          else
-            sibling_comment_user == commentable_user ? !posted_notification_sent : true
-          end
-         )
-             
+        (
+        if sibling_comment_user == parent_comment_user
+          !replied_notification_sent
+        else
+          sibling_comment_user == commentable_user ? !posted_notification_sent : true
+        end
+        )
+
         CommentMailer.delay.followed(self.id, sibling_comment_user.id)
       end
-    end    
+    end
   end
 
   def challenge
@@ -133,7 +133,9 @@ class Comment < ActiveRecord::Base
 
   # Helper class method to look up all comments for
   # commentable class name and commentable id.
-  scope :find_comments_for_commentable,lambda { |commentable_str, commentable_id| where(commentable_type: commentable_str.to_s, commentable_id: commentable_id).order(created_at: :desc)}
+  scope :find_comments_for_commentable, lambda { |commentable_str, commentable_id|
+    where(commentable_type: commentable_str.to_s, commentable_id: commentable_id).order(created_at: :desc)
+  }
 
   # Helper class method to look up a commentable object
   # given the commentable class name and id
@@ -145,7 +147,7 @@ class Comment < ActiveRecord::Base
     DEFAULT_LIKE
   end
 
-private
+  private
 
   def update_commentable_values
     # These classes are the only ones that have the new comments_count column defined on them.
@@ -154,5 +156,4 @@ private
       self.commentable.update_column(:comments_count, self.commentable.comment_threads.count)
     end
   end
-
 end

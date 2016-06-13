@@ -23,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-private
+  private
 
   #
   # Parse both district_ids into arrays
@@ -49,11 +49,11 @@ private
 
   def set_edit_setting
     @setting = params[:user] ? params[:user][:setting] : params[:setting]
-    @setting = 'profile' unless @setting && ['profile', 'account', 'onboard', 'notifications'].include?(@setting)
+    @setting = 'profile' unless @setting && %w(profile account onboard notifications).include?(@setting)
   end
 
   def after_update_path_for(resource)
-    edit_user_registration_path(setting: (@setting == 'onboard' ? 'profile': "#{@setting}"))
+    edit_user_registration_path(setting: (@setting == 'onboard' ? 'profile' : "#{@setting}"))
   end
 
   def update_avatar(resource)
@@ -70,5 +70,4 @@ private
     remove_avatar = resource.avatar.present? && params[:user][:avatar_option] == 'none'
     twitter_changed || remove_avatar
   end
-
 end

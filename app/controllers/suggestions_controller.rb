@@ -1,7 +1,7 @@
 class SuggestionsController < ApplicationController
-  before_action :authenticate_user!,  except: [:new, :create, :like]
-  before_action :load_suggestion,     only:   [:edit, :update, :destroy, :like, :unlike]
-  before_action :authorize_user!,     only:   [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:new, :create, :like]
+  before_action :load_suggestion, only: [:edit, :update, :destroy, :like, :unlike]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def new
     @suggestion = Suggestion.new
@@ -53,21 +53,21 @@ class SuggestionsController < ApplicationController
         format.js
       end
     else
-      cache_pending_like(@suggestion, {vote_scope: 'rating', vote_weight: params[:vote_weight]})
+      cache_pending_like(@suggestion, { vote_scope: 'rating', vote_weight: params[:vote_weight] })
       redirect_to preview_path(class_name: 'vote')
     end
   end
 
   def unlike
     @suggestion.unliked_by(current_user, vote_scope: 'rating', vote_weight: params[:vote_weight])
-    
+
     respond_to do |format|
       format.html { redirect_to after_update_object_path_for(@suggestion) }
       format.js
     end
   end
 
-private
+  private
 
   def suggestion_params
     params.require(:suggestion).permit(:title, :description, :link)
@@ -83,5 +83,4 @@ private
       redirect_to after_update_object_path_for(@suggestion)
     end
   end
-
 end
