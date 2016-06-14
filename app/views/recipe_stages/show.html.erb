@@ -7,18 +7,21 @@
           <div class="col-sm-8">
             <h1 class="text-recipe"><%= @recipe_stage.title.html_safe if @recipe_stage.title %></h1>
             <p class="text-large"><%= @recipe_stage.description.html_safe if @recipe_stage.description %></p>
-            <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+            <%= link_to "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' do %>
+              <i class="fa fa-twitter"></i>  <%= "##{@challenge.hashtag.html_safe}" %>
+            <% end %>
 
             <% if @recipe_stage.ends_at %>
               &nbsp; <span class="text-large">&bull;</span> &nbsp;
-              <i class="fa fa-clock-o" style='font-size:1.5em;'></i>&nbsp; <span class="text-large"><%= time_left(@recipe_stage) %></span>
+              <i class="fa fa-clock-o" style='font-size:1.5em;'></i>&nbsp;
+              <span class="text-large"><%= time_left(@recipe_stage) %></span>
             <% end %>
 
             <% if @featured_recipes.present? %>
               <div class="featured-contributors">
                 <h6 class="zero-margin-bottom"><%= t('recipe_stages.show.featured_contributions') %></h6>
                 <% @featured_recipes.each do |recipe| %>
-                  <%= render partial: 'shared/avatar', locals: { user:  recipe.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, recipe.cookbook, recipe) } %>
+                  <%= render partial: 'shared/avatar', locals: { user: recipe.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, recipe.cookbook, recipe) } %>
                 <% end %>
               </div>
             <% end %>
@@ -107,7 +110,7 @@
                 </h6>
               </div>
               <div class="col-xs-3">
-                <% if OPEN_RECIPE_SUBMISSIONS && @challenge.stage_number != 4  %>
+                <% if OPEN_RECIPE_SUBMISSIONS && @challenge.stage_number != 4 %>
                   <p class="action text-right text-small"><%= link_to t('recipe_stages.show.add_new'), new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook), class: 'pull-right' %></p>
                 <% end %>
               </div>

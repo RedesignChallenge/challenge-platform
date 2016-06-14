@@ -6,7 +6,9 @@
         <%= render partial: "#{@class_name.pluralize}/preview", locals: eval("{ #{@class_name}: @object }") %>
 
         <div class="well well-auth" ng-switch="new_user" ng-init="new_user=true">
-          <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, @cancel_path, class: 'auth-cancel' %>
+          <%= link_to @cancel_path, class: 'auth-cancel' do %>
+            <i class="fa fa-close fa-2x"></i>
+          <% end %>
           <h2 class="section-title">
             <%= t('.title',
                   entity: @class_name,

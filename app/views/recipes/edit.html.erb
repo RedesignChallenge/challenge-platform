@@ -3,7 +3,9 @@
 <div id="recipe-form">
   <div class="container">
 
-    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), data: { confirm: t('recipes.edit.confirm') } %>
+    <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), data: { confirm: t('recipes.edit.confirm') } do %>
+      <i class="fa fa-close fa-2x"></i>
+    <% end %>
     <div class="clearfix"></div>
 
     <%= render partial: 'recipes/header' %>
@@ -19,9 +21,7 @@
             <%= render partial: 'recipes/form', locals: { url: challenge_recipe_stage_cookbook_recipe_path, cancel_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe.recipe_stage, @recipe.cookbook, @recipe), submit_text: t('recipes.edit.submit') } %>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

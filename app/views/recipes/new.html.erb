@@ -2,7 +2,9 @@
 
 <div id="recipe-form">
   <div class="container">
-    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), data: { confirm: t('.confirm') } %>
+    <%= link_to challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), data: { confirm: t('.confirm') } do %>
+      <i class="fa fa-close fa-2x"></i>
+    <% end %>
     <div class="clearfix"></div>
     <%= render partial: 'recipes/header' %>
     <div class="row">

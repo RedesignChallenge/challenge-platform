@@ -34,7 +34,9 @@
         <div class="col-sm-7">
           <ul class="list-actions">
             <li id="recipe-<%= recipe.id %>-comments">
-              <%= link_to "<i class='fa fa-comments-o'></i> #{recipe.comments_count unless recipe.comments_count.zero?}".html_safe, challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, { anchor: 'recipe-comments' }) %>
+              <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe, { anchor: 'recipe-comments' }) do %>
+                <i class="fa fa-comments-o"></i> <%= "#{recipe.comments_count unless recipe.comments_count.zero?}" %>
+            <% end %>
             </li>
 
             <li id="recipe-<%= recipe.id %>-like">

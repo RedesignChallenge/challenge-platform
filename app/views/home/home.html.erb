@@ -10,17 +10,17 @@
             <div class="row">
               <div class="col-md-4">
                 <% if user_signed_in? %>
-                    <% if @featured %>
-                        <%= link_to t('.return_to_challenge'), challenge_active_stage_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
-                    <% else %>
-                        <%= link_to t('.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
-                    <% end %>
+                  <% if @featured %>
+                    <%= link_to t('.return_to_challenge'), challenge_active_stage_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                  <% else %>
+                    <%= link_to t('.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                  <% end %>
                 <% else %>
-                    <% if @featured %>
-                        <%= link_to t('.see_featured_challenge'), challenge_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
-                    <% else %>
-                        <%= link_to t('.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
-                    <% end %>
+                  <% if @featured %>
+                    <%= link_to t('.see_featured_challenge'), challenge_path(@featured), class: 'btn btn-lg btn-rounded btn-info half-margin-bottom' %>
+                  <% else %>
+                    <%= link_to t('.learn_more'), about_path, class: 'btn btn-lg btn-rounded btn-longer btn-info half-margin-bottom' %>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -62,18 +62,18 @@
           <h2 class="section-title"><%= t('.challenge_phases_header') %></h2>
           <div class="row row-process">
             <% Challenge::STAGES.each_with_index do |stage, index| %>
-                <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
+              <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
                 <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %>">
                   <i class="fa fa-stack-2x fa-circle"></i>
                   <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %>"></i>
                 </span>
-                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
-                  <div class="clearfix"></div>
-                  <div class="caption">
-                    <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
-                    <p class="description"><%= stage[:description] %></p>
-                  </div>
+                <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
+                <div class="clearfix"></div>
+                <div class="caption">
+                  <h4><%= "#{index+1}. #{stage[:headline]}" %></h4>
+                  <p class="description"><%= stage[:description] %></p>
                 </div>
+              </div>
             <% end %>
           </div>
         </div>
@@ -95,30 +95,30 @@
             <p class="text-large"><%= t('.share_experience') %></p>
             <div class="break"></div>
             <% if user_signed_in? %>
-                <% if @featured %>
-                    <%= link_to challenge_path(@featured) do %>
-                        <h4 class="half-margin-bottom">
-                          <%= t('.learn_more_and_participate') %>
-                          <small class="text-link"><i class="fa fa-chevron-right"></i></small>
-                        </h4>
-                    <% end %>
+              <% if @featured %>
+                <%= link_to challenge_path(@featured) do %>
+                  <h4 class="half-margin-bottom">
+                    <%= t('.learn_more_and_participate') %>
+                    <small class="text-link"><i class="fa fa-chevron-right"></i></small>
+                  </h4>
                 <% end %>
+              <% end %>
             <% else %>
-                <% if @featured %>
-                    <%= link_to challenge_path(@featured) do %>
-                        <h4 class="half-margin-bottom">
-                          <%= t('.learn_more_and_participate') %>
-                          <small class="text-link"><i class="fa fa-chevron-right"></i></small>
-                        </h4>
-                    <% end %>
-                <% else %>
-                    <%= link_to new_user_registration_path do %>
-                        <h4 class="half-margin-bottom">
-                          <%= t('.register_today_to_participate') %>
-                          <small class="text-link"><i class="fa fa-chevron-right"></i></small>
-                        </h4>
-                    <% end %>
+              <% if @featured %>
+                <%= link_to challenge_path(@featured) do %>
+                  <h4 class="half-margin-bottom">
+                    <%= t('.learn_more_and_participate') %>
+                    <small class="text-link"><i class="fa fa-chevron-right"></i></small>
+                  </h4>
                 <% end %>
+              <% else %>
+                <%= link_to new_user_registration_path do %>
+                  <h4 class="half-margin-bottom">
+                    <%= t('.register_today_to_participate') %>
+                    <small class="text-link"><i class="fa fa-chevron-right"></i></small>
+                  </h4>
+                <% end %>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -135,8 +135,14 @@
         <p class="section-title"><%= t('.cta_tackle_header') %></p>
         <div class="row" style='margin-bottom: 15px'>
           <div class="col-sm-10 col-sm-offset-1">
-            <p class="section-description"><%= link_to "<i class='fa fa-twitter'></i> #{t('project_hashtag')}".html_safe, "https://twitter.com/#{t(:project_name)}", target: '_blank' %></p>
-            <p class="section-description"><%= t('.cta_tackle') %></p>
+            <p class="section-description">
+              <%= link_to "https://twitter.com/#{t(:project_name)}", target: '_blank' do %>
+                <i class="fa fa-twitter"></i> <%= t('project_hashtag') %>
+              <% end %>
+            </p>
+            <p class="section-description">
+              <%= t('.cta_tackle') %>
+            </p>
           </div>
         </div>
 
@@ -154,24 +160,24 @@
 
         <div ng-switch="suggestions" ng-init="suggestions=show_all">
           <% @suggestions.first(2).each do |suggestion| %>
-              <%= render file: 'suggestions/card', cache: true, locals: {suggestion: suggestion} %>
+            <%= render file: 'suggestions/card', cache: true, locals: { suggestion: suggestion } %>
           <% end %>
 
           <% if @suggestions.count > 2 %>
-              <div ng-show="suggestions">
-                <% (@suggestions - @suggestions.first(2)).each do |suggestion| %>
-                    <%= render file: 'suggestions/card', cache: true, locals: {suggestion: suggestion} %>
-                <% end %>
-              </div>
+            <div ng-show="suggestions">
+              <% (@suggestions - @suggestions.first(2)).each do |suggestion| %>
+                <%= render file: 'suggestions/card', cache: true, locals: { suggestion: suggestion } %>
+              <% end %>
+            </div>
           <% end %>
 
           <%= render partial: 'suggestions/card/new', cache: true %>
 
           <% if @suggestions.count > 2 %>
-              <p class="center-block text-center">
-                <%= link_to t('.more', count: @suggestions.count-2), '#', 'ng-hide' => 'suggestions', 'ng-click' => 'suggestions=true', onclick: 'return false;', class: 'text-bold' %>
-                <%= link_to t('.less'), '#landing-suggest', 'ng-show' => 'suggestions', 'ng-click' => 'suggestions=false', 'du-smooth-scroll' => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
-              </p>
+            <p class="center-block text-center">
+              <%= link_to t('.more', count: @suggestions.count-2), '#', 'ng-hide' => 'suggestions', 'ng-click' => 'suggestions=true', onclick: 'return false;', class: 'text-bold' %>
+              <%= link_to t('.less'), '#landing-suggest', 'ng-show' => 'suggestions', 'ng-click' => 'suggestions=false', 'du-smooth-scroll' => true, offset: '100', onclick: 'return false;', class: 'text-bold' %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -185,7 +191,7 @@
       <div class="col-md-10 col-md-offset-1">
         <h2 class="section-title text-submit"><%= t('.social_sharing_question') %></h2>
         <p class="section-description"><%= t('.social_sharing_description') %></p>
-        <%= render partial: 'layouts/share_links', locals: {url: root_url, title: t(:formal_project, project: t(:project_name)), description: t('.social_description', platform: t(:project_name)), hashtag: t(:project_hashtag)} %>
+        <%= render partial: 'layouts/share_links', locals: { url: root_url, title: t(:formal_project, project: t(:project_name)), description: t('.social_description', platform: t(:project_name)), hashtag: t(:project_hashtag) } %>
       </div>
     </div>
   </div>

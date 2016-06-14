@@ -10,7 +10,9 @@
             <h1 class="text-experience"><%= @experience_stage.title.html_safe if @experience_stage.title %></h1>
             <p class="text-large"><%= @experience_stage.description.html_safe if @experience_stage.description %></p>
 
-            <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+            <%= link_to "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' do %>
+              <i class="fa fa-twitter"></i>  <%= "##{@challenge.hashtag.html_safe}" %>
+            <% end %>
 
             <% if @experience_stage.ends_at %>
               &nbsp; <span class="text-large">&bull;</span> &nbsp;
