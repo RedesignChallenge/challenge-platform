@@ -103,6 +103,7 @@ group :development, :test do
   gem 'i18n-tasks'
   gem 'jasmine'
   gem 'rails-assets-angular-mocks'
+  gem 'scss_lint'
 end
 
 group :test do
