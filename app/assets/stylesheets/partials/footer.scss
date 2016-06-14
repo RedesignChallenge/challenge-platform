@@ -1,0 +1,60 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+  background-color: $lightestGrayBG;
+}
+
+#bottom-footer {
+  background-color: $footerBG;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 20px 0px;
+
+  ul {
+    margin-bottom: 0px;
+  }
+
+  ul, li, a, div, span {
+    color: white;
+
+    a.btn {
+      background-color: white;
+      color: $footerBG;
+
+      @extend .text-bold;
+
+      padding: 3px 35px;
+    }
+  }
+
+  #footer-gates {
+    li {
+      position: relative;
+      top: 1px;
+
+      &:first-child {
+        top: 0px;
+      }
+    }
+  }
+
+  #footer-social {
+    a {
+      font-size: 1.2em;
+    }
+  }
+
+  #footer-legal {
+    margin-top: 10px;
+  }
+
+  .row {
+    background-color: $footerBG;
+  }
+}

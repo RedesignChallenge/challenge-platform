@@ -7,3 +7,4 @@ test:
   override:
     - bundle exec rspec
     - bundle exec rake jasmine:ci
+    - bundle exec scss-lint --color -e 'vendor/**/*.scss'

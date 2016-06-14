@@ -1,0 +1,262 @@
+.popover {
+  @extend .text-white;
+
+  background-color: $link-color !important;
+  border-color: $link-color !important;
+
+  .popover-content {
+    @extend .text-small;
+  }
+
+  &.right {
+    .arrow {
+      border-right-color: $link-color !important;
+
+      &:after {
+        border-right-color: $link-color !important;
+      }
+    }
+  }
+
+  &.bottom {
+    .arrow {
+      border-bottom-color: $link-color !important;
+
+      &:after {
+        border-bottom-color: $link-color !important;
+      }
+    }
+  }
+}
+
+.bootstrap-switch-info {
+  background-color: $link-color !important;
+}
+
+.table-borderless {
+  @extend .table;
+
+  td {
+    border: none !important;
+  }
+}
+
+.dropdown {
+  a {
+    color: $lightGrayText;
+  }
+
+  .dropdown-menu {
+    li {
+      a {
+        @extend .text-default, .text-small;
+      }
+    }
+  }
+}
+
+.radio, .checkbox {
+  label {
+    font-weight: bold !important;
+
+    .help-block {
+      font-weight: normal;
+      font-size: 0.85em;
+    }
+  }
+}
+
+.help-block {
+  font-size: 0.8em;
+}
+
+.field_with_errors {
+  .input-borderless {
+    border: 1px solid #a94442;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+}
+
+blockquote.quote {
+  text-align: center;
+  border-left: 5px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+
+  p {
+    font-size: 2em;
+    font-style: italic;
+    line-height: 1.9em;
+  }
+}
+
+.container-sm {
+  @extend .container;
+
+  max-width: 940px;
+}
+
+.modal-md {
+  @media (min-width: 768px) {
+    width: 450px;
+  }
+}
+
+.label-borderless {
+  padding: 0px 12px;
+}
+
+.label {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.label-experience {
+  @extend .label;
+
+  padding: 0.25em 3em 0.75em;
+  border-radius: 0.5em 0em 0em 0em;
+  background-color: $experience !important;
+}
+
+.label-idea {
+  @extend .label;
+
+  padding: 0.25em 3em 0.75em;
+  border-radius: 0.5em 0em 0em 0em;
+  background-color: $idea !important;
+}
+
+.label-recipe {
+  @extend .label;
+
+  padding: 0.25em 3em 0.75em;
+  border-radius: 0.5em 0em 0em 0em;
+  background-color: $recipe !important;
+}
+
+.label-solution {
+  @extend .label;
+
+  padding: 0.25em 3em 0.75em;
+  border-radius: 0.5em 0em 0em 0em;
+  background-color: $solution !important;
+}
+
+.btn:focus, .btn:active, .btn:active:focus,
+a:focus, a:active, a:active:focus, .submit-link {
+  outline: none;
+}
+
+.btn-sm {
+  font-size: 12px !important;
+}
+
+.btn-fa {
+  padding-top: 0.15em;
+}
+
+.btn-rounded {
+  @include border-radius(25px);
+}
+
+.btn-longer {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+.alert-fullpage {
+  border-radius: 0px !important;
+  text-align: center !important;
+  margin-bottom: 0px !important;
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  position: relative;
+  bottom: $line-height-computed;
+}
+
+.alert-info {
+  background-color: $link-color;
+  border: 1px solid white;
+  border-left: 0px;
+  border-right: 0px;
+  color: white;
+
+  a {
+    @extend .text-bold;
+
+    @extend .text-underline;
+
+    color: white;
+  }
+
+  button {
+    opacity: 1;
+
+    .fa-close {
+      color: white;
+    }
+  }
+}
+
+.input-borderless {
+  border: none;
+  box-shadow: none;
+}
+
+.input-graybg {
+  background-color: $lightestGrayBG;
+}
+
+.panel-rdc {
+  @extend .panel;
+
+  border-color: $navbar-default-bg;
+
+  .panel-heading {
+    background-color: $navbar-default-bg;
+    border-color: $navbar-default-bg;
+    color: white;
+
+    small {
+      font-size: 0.7em;
+      font-weight: lighter;
+      color: $lightGrayBG;
+
+      a {
+        color: $lightGrayBG;
+        text-decoration: underline;
+      }
+    }
+
+    .panel-title {
+      font-size: 1.4em;
+    }
+
+    a.btn {
+      color: white;
+    }
+  }
+}
+
+.well-share {
+  border: 2px dashed #B1B0B2;
+  background-color: #ebeced;
+
+  p {
+    font-size: 1.6em;
+    color: #B1B0B2;
+    margin-bottom: 0px;
+
+    &.subtitle {
+      font-size: 1em;
+    }
+  }
+
+  &:hover, &:focus, &:active {
+    cursor: pointer;
+  }
+}
+
+.badge-green {
+  background-color: $footerBG !important;
+}

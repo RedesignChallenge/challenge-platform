@@ -1,0 +1,104 @@
+#top-nav {
+  z-index: 9999;
+
+  a {
+    @extend .text-small;
+
+    &:hover, &:focus, &:active, &.active {
+      @extend .text-underline;
+    }
+  }
+
+  a.btn-info {
+    @extend .btn-rounded;
+
+    top: 0.675em;
+    padding: 3px 35px;
+
+    &:hover, &:focus, &:active, &.active {
+      text-decoration: none !important;
+      color: $btn-info-color;
+      background-color: $btn-info-border;
+      border-color: $btn-info-border;
+    }
+  }
+
+  #navbar-hamburger {
+    padding: 5px 10px;
+
+    &:hover {
+      background-color: #eeeeee;
+    }
+
+    .icon-bar {
+      background-color: white;
+    }
+  }
+
+  #user {
+    padding: ($line-height-computed / 2) 0px;
+
+    a {
+      padding: 0px;
+    }
+
+    .dropdown-menu {
+      &:hover {
+        background-color: white;
+      }
+
+      a {
+        color: $text-color;
+        padding: 10px;
+
+        &:hover {
+          background-color: whitesmoke;
+        }
+      }
+    }
+
+    .header-user-avatar {
+      height: auto;
+      bottom: 0.5em;
+      margin-bottom: 2em;
+
+      .fa-stack-2x {
+        @extend .fa-3x;
+
+        color: $newUser;
+      }
+
+      .fa-stack-1x {
+        @extend .text-bolder;
+
+        margin-left: 0.25em;
+        margin-top: 0.35em;
+      }
+    }
+  }
+
+  .navbar-center-link {
+    width: 100%;
+    height: 0px;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+
+    a {
+      @extend .text-lighter;
+
+      @extend .text-normal;
+
+      color: white;
+      position: relative;
+      top: 12px;
+      padding: 15px;
+
+      &:hover, &:focus, &:active, &.active {
+        color: white;
+
+        @extend .text-underline;
+      }
+    }
+  }
+}

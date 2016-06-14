@@ -1,0 +1,25 @@
+#solution_stage-overview {
+  padding: 60px 0px;
+  background-color: white;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .fa-puzzle-piece {
+    @extend .text-solution-light;
+
+    top: 0.15em;
+    font-size: 18em;
+    line-height: 0.5em;
+  }
+}
+
+#solution_stage-content {
+  padding: 40px 0px 20px;
+  background-color: $lightestGrayBG;
+
+  &.affix {
+    margin-top: 40px;
+  }
+}

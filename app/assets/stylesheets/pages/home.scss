@@ -1,0 +1,169 @@
+#landing-splash {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 0%;
+
+  .opacity-content {
+    padding: 40px 0;
+    color: white;
+
+    #headline {
+      margin: 10px 0px 30px;
+    }
+
+    .embed-responsive {
+      margin-top: 30px;
+    }
+  }
+}
+
+#landing-challenge {
+  padding: 30px 0px;
+  background-color: white;
+
+  .panel-rdc {
+    margin-top: 1.5em;
+
+    @include border-radius(20px);
+
+    border-color: $solution;
+
+    .panel-heading {
+      @include border-radius(18px);
+
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      background-color: $solution;
+      border-color: $solution;
+      color: white;
+    }
+  }
+
+  .well-challenge {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+    color: $challengeWellTextColor;
+    position: relative;
+    min-height: 420px;
+
+    .well-content {
+      margin: 5em 2em 0em;
+
+      .well-title {
+        margin-bottom: 20px;
+      }
+
+      .well-subtitle {
+        @extend .text-large;
+
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  h2 {
+    .link-span {
+      padding-left: 20px;
+
+      a {
+        color: $link-color;
+      }
+    }
+  }
+}
+
+#landing-report {
+  padding: 30px 0px;
+  background-color: $lightGrayBG;
+}
+
+#landing-what {
+  padding: 30px 0px;
+  background-color: $lightGrayBG;
+
+  #process-stages {
+    margin: 30px 0px 0px;
+  }
+}
+
+#landing-suggest {
+  padding: 30px 0px;
+  background-color: white;
+
+  .section-description {
+    a {
+      color: $gray;
+
+      @extend .text-lighter;
+    }
+  }
+}
+
+#landing-invite {
+  padding: 30px 0px;
+  background-color: $lightGrayBG;
+}
+
+.row-process {
+  @extend .center-block, .text-center;
+
+  padding-top: 30px;
+
+  .fa-play {
+    float: right;
+    top: 1em;
+    position: relative;
+    font-size: 1.5em;
+    right: -25px;
+    color: #D1D3D4;
+  }
+
+  .challenge-fa-bubble {
+    width: 100% !important;
+
+    .fa-stack-2x {
+      font-size: 9em !important;
+    }
+
+    .fa-stack-1x {
+      &.icon-experience {
+        font-size: 5em !important;
+        top: 0.45em;
+      }
+
+      &.icon-idea {
+        font-size: 6.5em !important;
+        top: 0.175em;
+      }
+
+      &.icon-recipe {
+        font-size: 6.5em !important;
+        top: 0.175em;
+      }
+
+      &.icon-story {
+        font-size: 6.5em !important;
+        top: 0.175em;
+      }
+    }
+  }
+
+  .caption {
+    @extend .text-center;
+
+    @extend .text-black;
+
+    margin-top: 7em;
+    margin-bottom: 20px;
+
+    h4 {
+      font-size: 1.5em;
+    }
+
+    .description {
+      line-height: 1.2em;
+      margin-bottom: 10px;
+    }
+  }
+}

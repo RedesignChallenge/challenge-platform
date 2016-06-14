@@ -1,0 +1,54 @@
+#idea_stage-overview {
+  padding: 30px 0px;
+  background-color: white;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .fa-lightbulb-o {
+    @extend .text-idea-light;
+
+    top: 0.1em;
+    font-size: 15em;
+    line-height: 0.5em;
+  }
+}
+
+#idea_stage-navigation {
+  @extend .hidden-xs;
+
+  background-color: $idea;
+  color: white;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(2, 1, 1, 0.27);
+  margin-bottom: 20px;
+
+  &.affix {
+    top: 0;
+
+    & + #idea_stage-content {
+      margin-top: 120px;
+    }
+  }
+
+  .nav-link {
+    &:hover, &:focus, &.active {
+      @extend .text-idea;
+    }
+  }
+
+  .title {
+    min-height: 7em;
+  }
+}
+
+#idea_stage-content {
+  padding: 20px 0px;
+  background-color: $lightestGrayBG;
+
+  &.affix {
+    margin-top: 40px;
+  }
+}
