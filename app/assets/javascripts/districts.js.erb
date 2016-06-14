@@ -1,42 +1,44 @@
-(function () {
+var challenge_platform_js = challenge_platform_js || {};
+
+(function() {
   'use strict';
 
-  $(function () {
-    invokeDistrictSelectBox();
+  $(function() {
+    challenge_platform_js.invokeDistrictSelectBox();
   });
-})();
 
-var districtSelectProcessFn = function (data) {
-  return {
-    results: _.map(data, function (district) {
-      return {
-        id: district.id,
-        text: district.name + ' (' + district.location_city + ', ' + district.location_state + ')'
-      }
-    })
-  };
-};
-
-var districtSelectAjaxOptions = {
-  url: '/districts/search.json',
-  data: function (params) {
+  challenge_platform_js.districtSelectProcessFn = function districtSelectProcessFn(data) {
     return {
-      search: params.term
+      results: _.map(data, function(district) {
+        return {
+          id: district.id,
+          text: district.name + ' (' + district.location_city + ', ' + district.location_state + ')'
+        }
+      })
     };
-  },
+  };
 
-  processResults: districtSelectProcessFn
-};
+  challenge_platform_js.districtSelectAjaxOptions = {
+    url: '/districts/search.json',
+    data: function(params) {
+      return {
+        search: params.term
+      };
+    },
 
-var districtSelectOptions = {
-  width: '100%',
-  allowClear: true,
-  multiple: true,
-  minimumInputLength: 1,
-  placeholder: '<%= I18n.t('devise.registrations.forms._profile.please_select_district') %>',
-  ajax: districtSelectAjaxOptions
-};
+    processResults: challenge_platform_js.districtSelectProcessFn
+  };
 
-var invokeDistrictSelectBox = function () {
-  $('#user_district_ids').select2(districtSelectOptions);
-};
+  challenge_platform_js.districtSelectOptions = {
+    width: '100%',
+    allowClear: true,
+    multiple: true,
+    minimumInputLength: 1,
+    placeholder: '<%= I18n.t('devise.registrations.forms._profile.please_select_district') %>',
+    ajax: challenge_platform_js.districtSelectAjaxOptions
+  };
+
+  challenge_platform_js.invokeDistrictSelectBox = function() {
+    $('#user_district_ids').select2(challenge_platform_js.districtSelectOptions);
+  };
+})();

@@ -1,44 +1,44 @@
-(function () {
+var challenge_platform_js = challenge_platform_js || {};
+
+(function() {
   'use strict';
 
-  $(function () {
-    invokeStateSelectBox();
+  $(function() {
+    challenge_platform_js.invokeStateSelectBox();
   });
-})();
 
-var stateSelectProcessFn = function (data) {
-  return {
-    results: _.map(data, function (state) {
-      return {
-        id: state.id,
-        text: state.name + ' (' + state.mail_state + ')'
-      }
-    })
-  };
-};
-
-
-var stateSelectAjaxOptions = {
-  url: '/states/search.json',
-  data: function (params) {
+  challenge_platform_js.stateSelectProcessFn = function stateSelectProcessFn(data) {
     return {
-      search: params.term
+      results: _.map(data, function(state) {
+        return {
+          id: state.id,
+          text: state.name + ' (' + state.mail_state + ')'
+        }
+      })
     };
-  },
+  };
 
-  processResults: stateSelectProcessFn
-};
+  challenge_platform_js.stateSelectAjaxOptions = {
+    url: '/states/search.json',
+    data: function(params) {
+      return {
+        search: params.term
+      };
+    },
 
+    processResults: challenge_platform_js.stateSelectProcessFn
+  };
 
-var stateSelectOptions = {
-  width: '100%',
-  allowClear: true,
-  multiple: true,
-  minimumInputLength: 1,
-  placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_state') %>",
-  ajax: stateSelectAjaxOptions
-};
+  challenge_platform_js.stateSelectOptions = {
+    width: '100%',
+    allowClear: true,
+    multiple: true,
+    minimumInputLength: 1,
+    placeholder: "<%= I18n.t('devise.registrations.forms._profile.please_select_state') %>",
+    ajax: challenge_platform_js.stateSelectAjaxOptions
+  };
 
-var invokeStateSelectBox = function () {
-  $("#user_state_ids").select2(stateSelectOptions)
-};
+  challenge_platform_js.invokeStateSelectBox = function invokeStateSelectBox() {
+    $('#user_state_ids').select2(challenge_platform_js.stateSelectOptions)
+  };
+})();

@@ -3,7 +3,7 @@
 
   describe('states.js.erb', function () {
     describe('standard options', function () {
-      var testObj = stateSelectOptions;
+      var testObj = challenge_platform_js.stateSelectOptions;
 
       it('sets the right width', function () {
         expect(testObj.width).toBe('100%');
@@ -31,7 +31,7 @@
     });
 
     describe('ajax options', function () {
-      var testObj = stateSelectAjaxOptions;
+      var testObj = challenge_platform_js.stateSelectAjaxOptions;
 
       it('has the right URL', function () {
         expect(testObj.url).toEqual('/states/search.json');
@@ -59,7 +59,7 @@
 
       var actual;
       beforeEach(function () {
-        actual = stateSelectProcessFn(data);
+        actual = challenge_platform_js.stateSelectProcessFn(data);
       });
 
       it('returns the data in the right format', function () {

@@ -3,7 +3,7 @@
 
   describe('districts.js.erb', function () {
     describe('standard options', function () {
-      var testObj = districtSelectOptions;
+      var testObj = challenge_platform_js.districtSelectOptions;
 
       it('sets the right width', function () {
         expect(testObj.width).toBe('100%');
@@ -31,7 +31,7 @@
     });
 
     describe('ajax options', function () {
-      var testObj = districtSelectAjaxOptions;
+      var testObj = challenge_platform_js.districtSelectAjaxOptions;
 
       it('has the right URL', function () {
         expect(testObj.url).toEqual('/districts/search.json');
@@ -59,7 +59,7 @@
 
       var actual;
       beforeEach(function () {
-        actual = districtSelectProcessFn(data);
+        actual = challenge_platform_js.districtSelectProcessFn(data);
       });
 
       it('returns the data in the right format', function () {

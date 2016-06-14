@@ -3,7 +3,7 @@
 
   describe('schools.js.erb', function () {
     describe('standard options', function () {
-      var testObj = schoolSelectOptions;
+      var testObj = challenge_platform_js.schoolSelectOptions;
 
       it('sets the right width', function () {
         expect(testObj.width).toBe('100%');
@@ -31,7 +31,7 @@
     });
 
     describe('ajax options', function () {
-      var testObj = schoolSelectAjaxOptions;
+      var testObj = challenge_platform_js.schoolSelectAjaxOptions;
 
       it('has the right URL', function () {
         expect(testObj.url).toEqual('/schools/search.json');
@@ -59,7 +59,7 @@
 
       var actual;
       beforeEach(function () {
-        actual = schoolSelectProcessFn(data);
+        actual = challenge_platform_js.schoolSelectProcessFn(data);
       });
 
       it('returns the data in the right format', function () {
