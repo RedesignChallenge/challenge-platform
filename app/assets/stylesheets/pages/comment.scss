@@ -21,7 +21,7 @@
           .fa-stack-2x {
             @extend .fa-2x;
 
-            color: $newUser;
+            color: $new-user;
           }
 
           .fa-stack-1x {
@@ -73,19 +73,19 @@
 
       li {
         font-size: $font-size-h6;
-        color: $lightGrayText;
+        color: $light-gray-text;
         margin-right: 1.5em;
 
         &.dropdown-link {
           margin-right: 0px;
 
           a {
-            color: $lightGrayText;
+            color: $light-gray-text;
           }
         }
 
         a {
-          color: $lightGrayText;
+          color: $light-gray-text;
         }
       }
     }
@@ -94,7 +94,7 @@
   form {
     textarea {
       display: unset !important;
-      background-color: $lightestGrayBG;
+      background-color: $lightest-gray-background;
       box-shadow: none;
       border: none;
       resize: vertical;
@@ -115,7 +115,7 @@
 
   form {
     textarea {
-      background-color: $lightestGrayBG;
+      background-color: $lightest-gray-background;
       box-shadow: none;
       border: none;
       resize: vertical;
@@ -155,7 +155,7 @@
 
   font-weight: bold;
   text-transform: uppercase;
-  color: $lightGrayText;
+  color: $light-gray-text;
   font-size: 0.9em;
   margin-bottom: 10px;
 }
@@ -186,7 +186,7 @@
       font-weight: bold;
       margin-bottom: 0px;
       text-transform: uppercase;
-      color: $lightGrayText;
+      color: $light-gray-text;
       font-size: 0.9em;
     }
 

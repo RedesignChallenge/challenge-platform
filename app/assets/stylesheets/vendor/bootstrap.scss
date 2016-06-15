@@ -11,10 +11,10 @@
     small {
       font-size: 0.7em;
       font-weight: lighter;
-      color: $lightGrayBG;
+      color: $light-gray-background;
 
       a {
-        color: $lightGrayBG;
+        color: $light-gray-background;
         text-decoration: underline;
       }
     }
@@ -113,7 +113,7 @@
 }
 
 .input-graybg {
-  background-color: $lightestGrayBG;
+  background-color: $lightest-gray-background;
 }
 
 .field_with_errors {

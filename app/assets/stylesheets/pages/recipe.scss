@@ -30,7 +30,7 @@
 
     li {
       margin: 0.5em 0.1em;
-      color: $lightGrayText;
+      color: $light-gray-text;
 
       .fa {
         font-size: 1.3em;
@@ -40,7 +40,7 @@
       }
 
       a {
-        color: $lightGrayText;
+        color: $light-gray-text;
       }
     }
   }
@@ -72,7 +72,7 @@
 
     #actions {
       a {
-        color: $grayText;
+        color: $gray-text;
       }
     }
 
@@ -297,6 +297,6 @@
 
 .text-gray {
   a {
-    color: $lightGrayText;
+    color: $light-gray-text;
   }
 }

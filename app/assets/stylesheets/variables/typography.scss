@@ -16,6 +16,10 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Weights
 
+%bold {
+  font-weight: 500;
+}
+
 .text-lighter {
   font-weight: 100 !important;
 }
@@ -25,7 +29,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-bold {
-  font-weight: 500 !important;
+  @extend %bold;
 }
 
 .text-bolder {
@@ -34,21 +38,29 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Decorations
 
+%underline {
+  text-decoration: underline;
+}
+
 .text-italic {
   font-style: italic !important;
 }
 
 .text-underline {
-  text-decoration: underline !important;
+  @extend %underline;
 }
 
 // Sizing
+%small-text {
+  font-size: $font-size-small;
+}
+
 .text-large {
   font-size: $font-size-large !important;
 }
 
 .text-small {
-  font-size: $font-size-small !important;
+  @extend %small-text;
 }
 
 .text-xsmall {
@@ -59,7 +71,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-xsmall-normal {
-  @extend .text-bold;
+  @extend %bold;
 
   font-size: $font-size-xsmall !important;
   color: #979797;
@@ -84,6 +96,10 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Colors
 
+%text-white-color {
+  color: $white-text;
+}
+
 .text-experience {
   color: $experience !important;
 }
@@ -101,19 +117,19 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-experience-light {
-  color: $experienceLight !important;
+  color: $experience-light !important;
 }
 
 .text-idea-light {
-  color: $ideaLight !important;
+  color: $idea-light !important;
 }
 
 .text-recipe-light {
-  color: $recipeLight !important;
+  color: $recipe-light !important;
 }
 
 .text-solution-light {
-  color: $solutionLight !important;
+  color: $solution-light !important;
 }
 
 .text-green, .text-submit {
@@ -135,7 +151,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-white {
-  color: #FFF !important;
+  @extend %text-white-color;
 }
 
 .text-default {
@@ -185,7 +201,7 @@ h6 {
 }
 
 a, label {
-  @extend .text-bold;
+  @extend %bold;
 }
 
 p, span, li, input, div {
@@ -206,4 +222,10 @@ p, span, li, input, div {
   @extend .text-large;
 
   color: $gray;
+}
+
+// Placeholders
+
+%default-small-text {
+  @extend .text-default, .text-small;
 }

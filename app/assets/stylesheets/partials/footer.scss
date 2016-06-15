@@ -5,11 +5,11 @@ html {
 
 body {
   margin-bottom: 100px;
-  background-color: $lightestGrayBG;
+  background-color: $lightest-gray-background;
 }
 
 #bottom-footer {
-  background-color: $footerBG;
+  background-color: $footer-background;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -25,7 +25,7 @@ body {
 
     a.btn {
       background-color: white;
-      color: $footerBG;
+      color: $footer-background;
 
       @extend .text-bold;
 
@@ -55,6 +55,6 @@ body {
   }
 
   .row {
-    background-color: $footerBG;
+    background-color: $footer-background;
   }
 }

@@ -1,30 +1,39 @@
-.popover {
-  @extend .text-white;
+@mixin arrow-style($direction) {
+  @if $direction == 'right' {
+    .arrow {
+      border-right-color: $link-color;
 
-  background-color: $link-color !important;
-  border-color: $link-color !important;
+      &::after {
+        border-right-color: $link-color;
+      }
+    }
+  } @else if $direction == 'bottom' {
+    .arrow {
+      border-bottom-color: $link-color;
+
+      &::after {
+        border-bottom-color: $link-color;
+      }
+    }
+  }
+}
+
+.popover {
+  @extend %text-white-color;
+
+  background-color: $link-color;
+  border-color: $link-color;
 
   .popover-content {
-    @extend .text-small;
+    @extend %small-text;
   }
 
   &.right {
-    .arrow {
-      border-right-color: $link-color !important;
-      &:after {
-        border-right-color: $link-color !important;
-      }
-    }
+    @include arrow-style('right');
   }
 
   &.bottom {
-    .arrow {
-      border-bottom-color: $link-color !important;
-
-      &:after {
-        border-bottom-color: $link-color !important;
-      }
-    }
+    @include arrow-style('bottom');
   }
 }
 
@@ -33,23 +42,29 @@
 }
 
 .table-borderless {
+  // Built-in style from Bootstrap, cannot modify
+  // scss-lint:disable PlaceholderInExtend
   @extend .table;
-
+  // scss-lint:enable PlaceholderInExtend
   td {
     border: none !important;
   }
 }
 
+%dropdown-small-link-text {
+  a {
+    @extend %default-small-text;
+  }
+}
+
 .dropdown {
   a {
-    color: $lightGrayText;
+    color: $light-gray-text;
   }
 
   .dropdown-menu {
     li {
-      a {
-        @extend .text-default, .text-small;
-      }
+      @extend %dropdown-small-link-text;
     }
   }
 }
@@ -70,16 +85,19 @@
   font-size: 0.8em;
 }
 
+// Built-in style from Rails; cannot change.
+// scss-lint:disable SelectorFormat
 .field_with_errors {
+  // scss-lint:enable SelectorFormat
   .input-borderless {
-    border: 1px solid #a94442;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    border: 1px solid $error-border;
+    box-shadow: inset 0 1px 1px $error-box-shadow;
   }
 }
 
-blockquote.quote {
+.quote {
   text-align: center;
-  border-left: 5px solid rgba(0, 0, 0, 0.15);
+  border-left: 5px solid $quote-border-left;
   margin-bottom: 20px;
 
   p {
@@ -90,8 +108,10 @@ blockquote.quote {
 }
 
 .container-sm {
+  // Built-in style from Bootstrap, cannot modify
+  // scss-lint:disable PlaceholderInExtend
   @extend .container;
-
+  // scss-lint:enable PlaceholderInExtend
   max-width: 940px;
 }
 
@@ -102,48 +122,57 @@ blockquote.quote {
 }
 
 .label-borderless {
-  padding: 0px 12px;
+  padding: 0 12px;
 }
 
-.label {
+%label-style {
   font-size: 1em;
   margin-bottom: 1em;
 }
 
+.label {
+  @extend %label-style;
+}
+
 .label-experience {
-  @extend .label;
+  @extend %label-style;
 
   padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0em 0em 0em;
+  border-radius: 0.5em 0 0;
   background-color: $experience !important;
 }
 
 .label-idea {
-  @extend .label;
+  @extend %label-style;
 
   padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0em 0em 0em;
+  border-radius: 0.5em 0 0;
   background-color: $idea !important;
 }
 
 .label-recipe {
-  @extend .label;
+  @extend %label-style;
 
   padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0em 0em 0em;
+  border-radius: 0.5em 0 0;
   background-color: $recipe !important;
 }
 
 .label-solution {
-  @extend .label;
+  @extend %label-style;
 
   padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0em 0em 0em;
+  border-radius: 0.5em 0 0;
   background-color: $solution !important;
 }
 
-.btn:focus, .btn:active, .btn:active:focus,
-a:focus, a:active, a:active:focus, .submit-link {
+.btn:focus,
+.btn:active,
+.btn:active:focus,
+a:focus,
+a:active,
+a:active:focus,
+.submit-link {
   outline: none;
 }
 
@@ -165,9 +194,9 @@ a:focus, a:active, a:active:focus, .submit-link {
 }
 
 .alert-fullpage {
-  border-radius: 0px !important;
+  border-radius: 0 !important;
   text-align: center !important;
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
   padding-top: 0.5em !important;
   padding-bottom: 0.5em !important;
   position: relative;
@@ -176,87 +205,56 @@ a:focus, a:active, a:active:focus, .submit-link {
 
 .alert-info {
   background-color: $link-color;
-  border: 1px solid white;
-  border-left: 0px;
-  border-right: 0px;
-  color: white;
+  border: 1px solid $white;
+  border-left: 0;
+  border-right: 0;
+  color: $white-text;
 
   a {
-    @extend .text-bold;
-
-    @extend .text-underline;
-
-    color: white;
+    @extend %bold;
+    @extend %underline;
+    color: $white-text;
   }
 
   button {
     opacity: 1;
 
     .fa-close {
-      color: white;
+      color: $white-text;
     }
   }
 }
 
 .input-borderless {
-  border: none;
+  border: 0;
   box-shadow: none;
 }
 
 .input-graybg {
-  background-color: $lightestGrayBG;
-}
-
-.panel-rdc {
-  @extend .panel;
-
-  border-color: $navbar-default-bg;
-
-  .panel-heading {
-    background-color: $navbar-default-bg;
-    border-color: $navbar-default-bg;
-    color: white;
-
-    small {
-      font-size: 0.7em;
-      font-weight: lighter;
-      color: $lightGrayBG;
-
-      a {
-        color: $lightGrayBG;
-        text-decoration: underline;
-      }
-    }
-
-    .panel-title {
-      font-size: 1.4em;
-    }
-
-    a.btn {
-      color: white;
-    }
-  }
+  background-color: $lightest-gray-background;
 }
 
 .well-share {
-  border: 2px dashed #B1B0B2;
-  background-color: #ebeced;
+  border: 2px dashed $well-border;
+  background-color: $well-bg;
 
   p {
     font-size: 1.6em;
-    color: #B1B0B2;
-    margin-bottom: 0px;
+    color: $well-text;
+    margin-bottom: 0;
 
     &.subtitle {
       font-size: 1em;
     }
   }
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     cursor: pointer;
   }
 }
 
 .badge-green {
-  background-color: $footerBG !important;
+  background-color: $footer-background !important;
 }

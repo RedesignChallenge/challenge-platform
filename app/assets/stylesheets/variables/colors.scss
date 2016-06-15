@@ -1,25 +1,36 @@
 // Stage Colors
-$experience: #11487e;
+$experience: #11487E;
 $idea: #8BB734;
 $recipe: #7F3F98;
 $solution: #F26606;
 
-$experienceLight: #979EBD;
-$ideaLight: #D1E2AE;
-$recipeLight: #CCB2D6;
-$solutionLight: #FAC29B;
-
-$newUser: #EC297B;
+$experience-light: #979EBD;
+$idea-light: #D1E2AE;
+$recipe-light: #CCB2D6;
+$solution-light: #FAC29B;
 
 // Background Colors
-$footerBG: #0B3F57;
-$lightGrayBG: #f1f1f1;
-$lightestGrayBG: #F4F5F5;
-$nestedCommentGrayBG: #EFEFEF;
+$footer-background: #0B3F57;
+$light-gray-background: #F1F1F1;
+$lightest-gray-background: #F4F5F5;
+$nested-comment-gray-background: #EFEFEF;
 
+// Comment Well Colors
+$well-border: #B1B0B2;
+$well-bg: #EBECED;
+$well-text: #B1B0B2;
+
+// Generic Colors
+$white: #FFFFFF;
+$new-user: #EC297B;
+$error-border: #A94442;
+$error-box-shadow: rgba(0, 0, 0, 0.075);
+$quote-border-left: rgba(0, 0, 0, 0.15);
 
 // Text Colors
-$grayText: #666666;
-$lightGrayText: #999999;
-$darkText: #2D2D2D;
-$challengeWellTextColor: $grayText;
+$gray-text: #666666;
+$light-gray-text: #999999;
+$dark-text: #2D2D2D;
+$white-text: $white;
+$black-text: #000000;
+$challenge-well-text-color: $gray-text;

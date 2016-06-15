@@ -51,11 +51,11 @@ $baseFontFamily: "Source Sans Pro", sans-serif;
 }
 
 .text-experience-light {
-  color: $experienceLight !important;
+  color: $experience-light !important;
 }
 
 .text-idea-light {
-  color: $ideaLight !important;
+  color: $idea-light !important;
 }
 
 .text-approach-light {
@@ -63,7 +63,7 @@ $baseFontFamily: "Source Sans Pro", sans-serif;
 }
 
 .text-solution-light {
-  color: $solutionLight !important;
+  color: $solution-light !important;
 }
 
 .text-green {
@@ -121,5 +121,5 @@ p.section-description {
   font-size: 1.3em;
   font-weight: 300;
   text-align: center;
-  color: $grayText;
+  color: $gray-text;
 }

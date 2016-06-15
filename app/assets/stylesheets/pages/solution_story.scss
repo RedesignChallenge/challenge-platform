@@ -47,7 +47,7 @@
 
     #actions {
       a {
-        color: $grayText;
+        color: $gray-text;
       }
     }
 
@@ -72,7 +72,7 @@
             .new-user-avatar {
               .fa-stack-2x {
                 font-size: 4em !important;
-                color: $newUser;
+                color: $new-user;
               }
 
               .fa-stack-1x {
@@ -95,7 +95,7 @@
             .title {
               font-size: 0.85em;
               margin-bottom: 0px;
-              color: $lightGrayText;
+              color: $light-gray-text;
               font-weight: bold;
             }
           }
@@ -181,7 +181,7 @@
           margin-top: 20px;
 
           .fa-4x {
-            color: $lightGrayText;
+            color: $light-gray-text;
           }
         }
       }
