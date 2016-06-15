@@ -2,10 +2,13 @@
   z-index: 9999;
 
   a {
-    @extend .text-small;
+    @extend %small-text;
 
-    &:hover, &:focus, &:active, &.active {
-      @extend .text-underline;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      @extend %underline;
     }
   }
 
@@ -15,7 +18,10 @@
     top: 0.675em;
     padding: 3px 35px;
 
-    &:hover, &:focus, &:active, &.active {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
       text-decoration: none !important;
       color: $btn-info-color;
       background-color: $btn-info-border;
@@ -27,24 +33,24 @@
     padding: 5px 10px;
 
     &:hover {
-      background-color: #eeeeee;
+      background-color: $navbar-hamburger-hover;
     }
 
     .icon-bar {
-      background-color: white;
+      background-color: $white;
     }
   }
 
   #user {
-    padding: ($line-height-computed / 2) 0px;
+    padding: ($line-height-computed / 2) 0;
 
     a {
-      padding: 0px;
+      padding: 0;
     }
 
     .dropdown-menu {
       &:hover {
-        background-color: white;
+        background-color: $white;
       }
 
       a {
@@ -52,7 +58,7 @@
         padding: 10px;
 
         &:hover {
-          background-color: whitesmoke;
+          background-color: $dropdown-hover;
         }
       }
     }
@@ -69,7 +75,7 @@
       }
 
       .fa-stack-1x {
-        @extend .text-bolder;
+        @extend %bolder;
 
         margin-left: 0.25em;
         margin-top: 0.35em;
@@ -79,25 +85,26 @@
 
   .navbar-center-link {
     width: 100%;
-    height: 0px;
+    height: 0;
     text-align: center;
     position: absolute;
-    left: 0px;
+    left: 0;
 
     a {
-      @extend .text-lighter;
+      @extend %lighter;
+      @extend %normal;
 
-      @extend .text-normal;
-
-      color: white;
+      color: $white-text;
       position: relative;
       top: 12px;
       padding: 15px;
 
-      &:hover, &:focus, &:active, &.active {
-        color: white;
-
-        @extend .text-underline;
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        @extend %underline;
+        color: $white-text;
       }
     }
   }
