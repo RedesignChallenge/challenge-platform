@@ -4,28 +4,30 @@ $font-size-xsmall: ceil($font-size-base * 0.65);
 $font-size-xlarge: ceil($font-size-base * 1.65);
 $font-size-medium: ceil($font-size-base * 1.1);
 
-// Families
-
-.text-sans {
-  font-family: $font-family-sans-serif;
-}
-
-.text-serif {
-  font-family: $font-family-serif;
-}
-
 // Weights
 
 %bold {
   font-weight: 500;
 }
 
+%bolder {
+  font-weight: 700;
+}
+
+%normal {
+  font-weight: 300;
+}
+
+%lighter {
+  font-weight: 100;
+}
+
 .text-lighter {
-  font-weight: 100 !important;
+  @extend %lighter;
 }
 
 .text-normal {
-  font-weight: 300 !important;
+  @extend %normal;
 }
 
 .text-bold {
@@ -33,7 +35,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-bolder {
-  font-weight: 700 !important;
+  @extend %bolder;
 }
 
 // Decorations
@@ -64,17 +66,17 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-xsmall {
-  @extend .text-bolder;
+  @extend %bolder;
 
   font-size: $font-size-xsmall !important;
-  color: #979797;
+  color: $xsmall-text-color;
 }
 
 .text-xsmall-normal {
   @extend %bold;
 
   font-size: $font-size-xsmall !important;
-  color: #979797;
+  color: $xsmall-text-color;
 }
 
 .text-xlarge {
@@ -98,6 +100,14 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 %text-white-color {
   color: $white-text !important;
+}
+
+%navbar-color {
+  color: $navbar-default-bg !important;
+}
+
+%text-default-color {
+  color: $text-color !important;
 }
 
 .text-experience {
@@ -132,22 +142,23 @@ $font-size-medium: ceil($font-size-base * 1.1);
   color: $solution-light !important;
 }
 
-.text-green, .text-submit {
-  color: $navbar-default-bg !important;
+.text-green,
+.text-submit {
+  @extend %navbar-color;
 }
 
 .text-suggestion {
-  @extend .text-submit;
+  @extend %navbar-color;
 
-  margin: 0.5em 0em 1em !important;
+  margin: 0.5em 0 1em !important;
 }
 
 .text-gray {
-  color: #979797 !important;
+  color: $gray-light;
 }
 
 .text-black {
-  color: #000000 !important;
+  color: $black-text !important;
 }
 
 .text-white {
@@ -155,7 +166,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-default {
-  color: $text-color !important;
+  @extend %text-default-color;
 }
 
 .text-link {
@@ -164,62 +175,85 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Element definitions
 
-h1, h2, h3, h4, h5 {
-  @extend .text-bolder;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @extend %bolder;
 
   margin-bottom: 1em;
 
   a {
-    @extend .text-bolder;
+    @extend %bolder;
 
     color: inherit;
 
-    &:hover, &:focus, &:active, &.active {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
       color: inherit;
     }
   }
 }
 
 h6 {
-  @extend .text-bolder;
-
+  @extend %bolder;
+  // .text-uppercase belongs to Bootstrap; can't be changed to a placeholder
+  // scss-lint:disable PlaceholderInExtend
   @extend .text-uppercase;
+  // scss-lint:enable PlaceholderInExtend
 
-  color: #979797;
+  color: $gray-light;
 
   a {
-    @extend .text-bolder;
-
+    @extend %bolder;
+    // .text-uppercase belongs to Bootstrap; can't be changed to a placeholder
+    // scss-lint:disable PlaceholderInExtend
     @extend .text-uppercase;
-
+    // scss-lint:enable PlaceholderInExtend
     color: inherit;
 
-    &:hover, &:focus, &:active, &.active {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
       color: inherit;
     }
   }
 }
 
-a, label {
+a,
+label {
   @extend %bold;
 }
 
-p, span, li, input, div {
-  @extend .text-normal;
+p,
+span,
+li,
+input,
+div {
+  @extend %normal;
 }
 
 // Universal Classes
 
 .section-title {
+  // .text-center belongs to Bootstrap; can't be changed to a placeholder
+  // scss-lint:disable PlaceholderInExtend
   @extend .text-center;
+  // scss-lint:enable PlaceholderInExtend
 
   margin-bottom: 0.5em;
 }
 
 .section-description {
+  // .text-center and .text-large belong to Bootstrap; can't be changed to a placeholder
+  // scss-lint:disable PlaceholderInExtend
   @extend .text-center;
-
   @extend .text-large;
+  // scss-lint:enable PlaceholderInExtend
 
   color: $gray;
 }
@@ -227,5 +261,8 @@ p, span, li, input, div {
 // Placeholders
 
 %default-small-text {
-  @extend .text-default, .text-small;
+  // .text-small belongs to Bootstrap; can't be changed to a placeholder
+  // scss-lint:disable PlaceholderInExtend
+  @extend %text-default-color, .text-small;
+  // scss-lint:enable PlaceholderInExtend
 }

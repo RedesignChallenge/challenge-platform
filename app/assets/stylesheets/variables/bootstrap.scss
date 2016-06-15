@@ -2,15 +2,6 @@
 //**
 // Override Bootstrap variables here (defaults from bootstrap-sass v3.3.4):
 
-$gray-dark: #2D2D2D;
-$gray: #666666;
-$gray-light: #999999;
-$gray-lighter: #D1D3D4;
-$brand-info: #3da7de;
-$body-bg: #F4F5F5;
-$text-color: #464646;
-$link-color: #00aef9;
-
 $font-family-sans-serif: sans-serif;
 
 $font-size-base: 16px;
@@ -26,14 +17,14 @@ $font-size-h6: ceil($font-size-base * 0.75);
 
 $headings-font-weight: 500;
 
-$navbar-border-radius: 0px;
+$navbar-border-radius: 0;
 
-$navbar-default-color: #FFF;
+$navbar-default-color: $white;
 $navbar-default-bg: #0B3F57;
 $navbar-default-border: darken($navbar-default-bg, 6.5%);
 
-$navbar-default-link-color: #FFF;
-$navbar-default-link-hover-color: #FFF;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: $white;
 $navbar-default-link-hover-bg: transparent;
-$navbar-default-link-active-color: #FFF;
+$navbar-default-link-active-color: $white;
 $navbar-default-link-active-bg: darken($navbar-default-bg, 6.5%);

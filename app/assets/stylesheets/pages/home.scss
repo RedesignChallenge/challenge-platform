@@ -127,22 +127,22 @@
     }
 
     .fa-stack-1x {
-      &.icon-experience {
+      &.fa-comment {
         font-size: 5em !important;
         top: 0.45em;
       }
 
-      &.icon-idea {
+      &.fa-lightbulb-o {
         font-size: 6.5em !important;
         top: 0.175em;
       }
 
-      &.icon-recipe {
+      &.fa-flask {
         font-size: 6.5em !important;
         top: 0.175em;
       }
 
-      &.icon-story {
+      &.fa-puzzle-piece {
         font-size: 6.5em !important;
         top: 0.175em;
       }
@@ -151,7 +151,6 @@
 
   .caption {
     @extend .text-center;
-
     @extend .text-black;
 
     margin-top: 7em;
