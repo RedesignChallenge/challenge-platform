@@ -38,6 +38,15 @@ $error-border: #A94442;
 $error-box-shadow: rgba(0, 0, 0, 0.075);
 $quote-border-left: rgba(0, 0, 0, 0.15);
 
+// Navbar Colors
+$navbar-default-color: $white;
+$navbar-default-bg: #0B3F57;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: $white;
+$navbar-default-link-hover-bg: transparent;
+$navbar-default-link-active-color: $white;
+$navbar-default-link-active-bg: darken($navbar-default-bg, 6.5%);
+
 // Text Colors
 $gray-text: $gray;
 $light-gray-text: $gray-light;
@@ -45,4 +54,4 @@ $dark-text: $gray-dark;
 $white-text: $white;
 $black-text: #000000;
 $challenge-well-text-color: $gray-text;
-$xsmall-text-color: #979797
+$xsmall-text-color: #979797;
