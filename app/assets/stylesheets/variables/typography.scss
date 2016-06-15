@@ -261,8 +261,5 @@ div {
 // Placeholders
 
 %default-small-text {
-  // .text-small belongs to Bootstrap; can't be changed to a placeholder
-  // scss-lint:disable PlaceholderInExtend
-  @extend %text-default-color, .text-small;
-  // scss-lint:enable PlaceholderInExtend
+  @extend %text-default-color, %small-text;
 }
