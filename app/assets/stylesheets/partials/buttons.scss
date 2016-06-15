@@ -65,12 +65,12 @@
 .btn-submit {
   @extend .btn-primary;
 
-  background-color: $headerBG;
-  border-color: $headerBG;
+  background-color: $header-background;
+  border-color: $header-background;
 
   &:focus, &:hover, &:active, &.active {
-    background-color: $headerBG;
-    border-color: $headerBG;
+    background-color: $header-background;
+    border-color: $header-background;
   }
 }
 

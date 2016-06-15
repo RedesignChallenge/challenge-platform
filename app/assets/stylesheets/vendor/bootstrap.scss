@@ -1,35 +1,5 @@
-.panel-platform {
-  @extend .panel;
-
-  border-color: $headerBG;
-
-  .panel-heading {
-    background-color: $headerBG;
-    border-color: $headerBG;
-    color: white;
-
-    small {
-      font-size: 0.7em;
-      font-weight: lighter;
-      color: $light-gray-background;
-
-      a {
-        color: $light-gray-background;
-        text-decoration: underline;
-      }
-    }
-
-    .panel-title {
-      font-size: 1.4em;
-    }
-
-    a.btn {
-      color: white;
-    }
-  }
-}
-
-.radio, .checkbox {
+.radio,
+.checkbox {
   label {
     font-weight: bold !important;
 
@@ -45,14 +15,16 @@
 }
 
 .btn-info {
-  background-color: $linkText;
-  border-color: $linkText;
-  color: white;
+  background-color: $link-color;
+  border-color: $link-color;
+  color: $white-text;
 
-  &:hover, &:focus, &:active {
-    background-color: $linkText;
-    border-color: $linkText;
-    color: white;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $link-color;
+    border-color: $link-color;
+    color: $white-text;
   }
 }
 
@@ -60,40 +32,44 @@
   font-size: 0.8em;
 }
 
-.label {
+%default-label-style {
   font-size: 1em;
   margin-bottom: 15px;
 }
 
+.label {
+  @extend %default-label-style;
+}
+
 .label-experience {
-  @extend .label;
+  @extend %default-label-style;
 
   padding: 8px 40px;
-  border-radius: 8px 0em 0em 0em;
+  border-radius: 8px 0 0;
   background-color: $experience !important;
 }
 
 .label-idea {
-  @extend .label;
+  @extend %default-label-style;
 
   padding: 8px 40px;
-  border-radius: 8px 0em 0em 0em;
+  border-radius: 8px 0 0;
   background-color: $idea !important;
 }
 
 .label-approach {
-  @extend .label;
+  @extend %default-label-style;
 
   padding: 8px 40px;
-  border-radius: 8px 0em 0em 0em;
+  border-radius: 8px 0 0;
   background-color: $approach !important;
 }
 
 .label-solution {
-  @extend .label;
+  @extend %default-label-style;
 
   padding: 8px 40px;
-  border-radius: 8px 0em 0em 0em;
+  border-radius: 8px 0 0;
   background-color: $solution !important;
 }
 
@@ -104,11 +80,11 @@
 }
 
 .label-borderless {
-  padding: 0px 12px;
+  padding: 0 12px;
 }
 
 .input-borderless {
-  border: none;
+  border: 0;
   box-shadow: none;
 }
 
@@ -116,33 +92,35 @@
   background-color: $lightest-gray-background;
 }
 
+// Built-in style from Rails; cannot change.
+// scss-lint:disable SelectorFormat
 .field_with_errors {
+  // scss-lint:enable SelectorFormat
   .input-borderless {
-    border: 1px solid #a94442;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    border: 1px solid $error-border;
+    box-shadow: inset 0 1px 1px $error-box-shadow;
   }
 }
 
 .alert-info {
-  background-color: $linkText;
-  border: 1px solid white;
-  border-left: 0px;
-  border-right: 0px;
-  color: white;
+  background-color: $link-color;
+  border: 1px solid $white-text;
+  border-left: 0;
+  border-right: 0;
+  color: $white-text;
 
   a {
-    @extend .text-bold;
+    @extend %bold;
+    @extend %underline;
 
-    @extend .text-underline;
-
-    color: white;
+    color: $white-text;
   }
 
   button {
     opacity: 1;
 
     .fa-close {
-      color: white;
+      color: $white-text;
     }
   }
 }
