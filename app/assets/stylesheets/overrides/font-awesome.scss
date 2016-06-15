@@ -16,7 +16,7 @@
 .fa-linkedin,
 .fa-facebook,
 .fa-envelope {
-  font-family: "icomoon";
+  font-family: 'icomoon';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -24,13 +24,12 @@
   text-transform: none;
   line-height: 1;
   font-size: 1.5em;
-
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   top: 0.2em;
-
+  // .fa-* classes belong to Font Awesome; we can't change them to placeholders.
+  // scss-lint:disable PlaceholderInExtend
   &.fa-2x {
     @extend .fa-2x;
   }
@@ -42,82 +41,83 @@
   &.fa-4x {
     @extend .fa-4x;
   }
+  // scss-lint:enable PlaceholderInExtend
 }
 
 // Given via Icon Import
 .fa-comments-o {
-  @extend .icon-comments;
+  @extend %comments-icon;
 }
 
 .fa-share {
-  @extend .icon-share;
+  @extend %share-icon;
 }
 
 .fa-comments {
-  @extend .icon-experiences;
+  @extend %experiences-icon;
 }
 
 .fa-download {
-  @extend .icon-download;
+  @extend %download-icon;
 }
 
 .fa-flask {
-  @extend .icon-recipe;
+  @extend %recipe-icon;
 }
 
 .fa-check {
-  @extend .icon-check;
+  @extend %check-icon;
 }
 
 .fa-comment {
-  @extend .icon-experience;
+  @extend %experience-icon;
 }
 
 .fa-lightbulb-o {
-  @extend .icon-idea;
+  @extend %idea-icon;
 }
 
 .fa-thumbs-o-up {
-  @extend .icon-like;
+  @extend %like-icon;
 }
 
 .fa-thumbs-up {
-  @extend .icon-liked;
+  @extend %liked-icon;
 }
 
 .fa-ellipsis-h {
-  @extend .icon-more;
+  @extend %more-icon;
 
   font-size: 2em;
   top: 0.3em;
 }
 
 .fa-pencil {
-  @extend .icon-refine;
+  @extend %refine-icon;
 }
 
 .fa-reply {
-  @extend .icon-reply;
+  @extend %reply-icon;
 }
 
 .fa-puzzle-piece {
-  @extend .icon-story;
+  @extend %story-icon;
 }
 
 .fa-twitter {
-  @extend .icon-twitter;
+  @extend %twitter-icon;
 }
 
 .fa-linkedin {
-  @extend .icon-linkedin;
+  @extend %linkedin-icon;
 }
 
 .fa-facebook {
-  @extend .icon-facebook;
+  @extend %facebook-icon;
 }
 
 .fa-envelope {
-  @extend .icon-email;
+  @extend %email-icon;
 }
 
 .fa-wrench {

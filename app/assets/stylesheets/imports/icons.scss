@@ -19,78 +19,154 @@
   text-transform: none;
 }
 
-.icon-recipe::before {
+%recipe-icon{
   content: '';
 }
 
-.icon-check::before {
+%check-icon{
   content: '';
 }
 
-.icon-comments::before {
+%comments-icon{
   content: '';
 }
 
-.icon-download::before {
+%download-icon{
   content: '';
 }
 
-.icon-email::before {
+%email-icon{
   content: '';
 }
 
-.icon-experience::before {
+%experience-icon{
   content: '';
 }
 
-.icon-experiences::before {
+%experiences-icon{
   content: '';
 }
 
-.icon-facebook::before {
+%facebook-icon{
   content: '';
 }
 
-.icon-idea::before {
+%idea-icon{
   content: '';
 }
 
-.icon-like::before {
+%like-icon{
   content: '';
 }
 
-.icon-liked::before {
+%liked-icon{
   content: '';
 }
 
-.icon-linkedin::before {
+%linkedin-icon{
   content: '';
 }
 
-.icon-more::before {
+%more-icon{
   content: '';
 }
 
-.icon-refine::before {
+%refine-icon{
   content: '';
 }
 
-.icon-replied::before {
+%replied-icon{
   content: '';
 }
 
-.icon-reply::before {
+%reply-icon{
   content: '';
 }
 
-.icon-share::before {
+%share-icon{
   content: '';
 }
 
-.icon-story::before {
+%story-icon{
   content: '';
 }
 
-.icon-twitter::before {
+%twitter-icon{
   content: '';
+}
+
+.icon-recipe::before {
+  @extend %recipe-icon;
+}
+
+.icon-check::before {
+  @extend %check-icon;
+}
+
+.icon-comments::before {
+  @extend %comments-icon;
+}
+
+.icon-download::before {
+  @extend %download-icon;
+}
+
+.icon-email::before {
+  @extend %email-icon;
+}
+
+.icon-experience::before {
+  @extend %experience-icon;
+}
+
+.icon-experiences::before {
+  @extend %experiences-icon;
+}
+
+.icon-facebook::before {
+  @extend %facebook-icon;
+}
+
+.icon-idea::before {
+  @extend %idea-icon;
+}
+
+.icon-like::before {
+  @extend %like-icon;
+}
+
+.icon-liked::before {
+  @extend %liked-icon;
+}
+
+.icon-linkedin::before {
+  @extend %linkedin-icon;
+}
+
+.icon-more::before {
+  @extend %more-icon;
+}
+
+.icon-refine::before {
+  @extend %refine-icon;
+}
+
+.icon-replied::before {
+  @extend %replied-icon;
+}
+
+.icon-reply::before {
+  @extend %reply-icon;
+}
+
+.icon-share::before {
+  @extend %share-icon;
+}
+
+.icon-story::before {
+  @extend %story-icon;
+}
+
+.icon-twitter::before {
+  @extend %twitter-icon;
 }
