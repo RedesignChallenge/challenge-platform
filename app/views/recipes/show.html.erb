@@ -26,7 +26,7 @@
                     <div class="user-caption" style='<%= 'margin-top: 0.5em' if @recipe.user.avatar.present? %>'>
                       <p class="user-name"><%= link_to "#{@recipe.user.display_name}", user_path(@recipe.user) %></p>
                       <p class="user-title text-default"><%= @recipe.user.display_organization %></p>
-                      <p class="user-link"><%= t('recipes.show.time', time: time_ago_in_words(@recipe.created_at).titleize) %></p>
+                      <p class="stage-creation-date"><%= t('recipes.show.time', time: time_ago_in_words(@recipe.created_at).titleize) %></p>
                     </div>
                   </div>
                 </div>

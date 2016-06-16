@@ -2,7 +2,7 @@
   @extend .text-small;
 
   background-color: transparent;
-  border: none;
+  border: 0;
   cursor: pointer;
   color: $link-color;
 
@@ -12,7 +12,7 @@
 }
 
 ul.actions {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   li, .list-link {
     @extend .text-small;
@@ -21,7 +21,7 @@ ul.actions {
   }
 
   &#actions {
-    margin-right: 0px;
+    margin-right: 0;
 
     a.dropdown-toggle {
       color: $light-gray-text;
@@ -60,7 +60,7 @@ ul.actions {
 
   .fa-inverse {
     a {
-      color: white;
+      color: $white-text;
     }
   }
 }
@@ -85,10 +85,10 @@ ul.actions {
   .user-title {
     @extend .text-xsmall;
 
-    margin-bottom: 0em;
+    margin-bottom: 0;
   }
 
-  .user-link {
+  .stage-creation-date {
     @extend .user-title;
 
     a {
@@ -112,19 +112,19 @@ ul.actions {
   }
 
   &:last-child {
-    border-right: none;
+    border-right: 0;
   }
 
   &:hover, &:focus, &.active {
     @extend .text-experience;
 
-    background-color: white;
+    background-color: $white;
     cursor: pointer;
   }
 
   &.active {
     .fa-play {
-      @extend .text-white;
+      @extend %text-white-color;
     }
   }
 
@@ -153,7 +153,7 @@ ul.actions {
 }
 
 .featured-contributors {
-  padding: 1em 0em 0em;
+  padding: 1em 0 0;
 
   .fa-user-avatar {
     width: auto !important;
@@ -201,7 +201,7 @@ ul.actions {
 }
 
 .zero-margin-bottom {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 .half-margin-bottom {
@@ -220,7 +220,7 @@ hr.break {
   @extend .text-center;
 
   font-weight: bold;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   text-transform: uppercase;
   color: $light-gray-text;
   font-size: 0.9em;
@@ -238,18 +238,18 @@ ul.share-links {
   @extend .text-center, .center-block, .list-inline;
 
   li {
-    padding: 0px 10px;
+    padding: 0 10px;
   }
 }
 
 ul.share-popover {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   @extend .text-center, .center-block, .list-inline;
 
   li {
     &:last-of-type {
-      padding-right: 0px;
+      padding-right: 0;
     }
 
     a {
@@ -273,7 +273,7 @@ ul.share-popover {
 
   .media {
     margin-bottom: 10px;
-    padding: 0px 6px;
+    padding: 0 6px;
 
     .media-body {
       vertical-align: middle;

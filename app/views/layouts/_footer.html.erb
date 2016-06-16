@@ -1,11 +1,11 @@
-<footer id="bottom-footer">
+<footer class="bottom-footer">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="row">
           <div class="col-sm-4">
             <p><i class="fa fa-copyright"></i> <%= "#{Date.today.year.to_s} #{I18n.t(:project_name)}."%> </p>
-            <ul id="footer-legal" class="list-inline">
+            <ul class="footer-legal list-inline">
               <li><%= link_to t('layouts._footer.terms'), terms_path %></li>
               <li><%= link_to t('layouts._footer.privacy'), privacy_path %></li>
             </ul>

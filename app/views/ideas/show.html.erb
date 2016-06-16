@@ -21,7 +21,7 @@
                     <div class="user-caption" style='<%= 'margin-top: 0.5em' if @idea.user.avatar.present? %>'>
                       <p class="user-name"><%= link_to "#{@idea.user.display_name}", user_path(@idea.user) %></p>
                       <p class="user-title text-default"><%= @idea.user.display_organization %></p>
-                      <p class="user-link"><%= t('.time', time: time_ago_in_words(@idea.created_at)).titleize %></p>
+                      <p class="stage-creation-date"><%= t('.time', time: time_ago_in_words(@idea.created_at)).titleize %></p>
                     </div>
                   </div>
                 </div>
