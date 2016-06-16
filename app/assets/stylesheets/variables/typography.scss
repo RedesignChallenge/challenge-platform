@@ -1,10 +1,44 @@
-// Additional on top of bootstrap
+// The following CSS classes belong to Bootstrap and have been wrapped as placeholders.
+// scss-lint:disable PlaceholderInExtend
 
-$font-size-xsmall: ceil($font-size-base * 0.65);
-$font-size-xlarge: ceil($font-size-base * 1.65);
-$font-size-medium: ceil($font-size-base * 1.1);
+%centered-text {
+  @extend .text-center;
+}
 
-// Weights
+%large-text {
+  @extend .text-large;
+}
+
+%centered-block {
+  @extend .center-block;
+}
+
+%inline-list {
+  @extend .list-inline;
+}
+
+// scss-lint:enable PlaceholderInExtend
+
+
+%text-white-color {
+  color: $white-text !important;
+}
+
+%navbar-color {
+  color: $navbar-default-bg !important;
+}
+
+%text-default-color {
+  color: $text-color !important;
+}
+
+%small-text {
+  font-size: $font-size-small;
+}
+
+%default-small-text {
+  @extend %text-default-color, %small-text;
+}
 
 %bold {
   font-weight: 500;
@@ -21,6 +55,18 @@ $font-size-medium: ceil($font-size-base * 1.1);
 %lighter {
   font-weight: 100;
 }
+
+%underline {
+  text-decoration: underline;
+}
+
+// Additional on top of bootstrap
+
+$font-size-xsmall: ceil($font-size-base * 0.65);
+$font-size-xlarge: ceil($font-size-base * 1.65);
+$font-size-medium: ceil($font-size-base * 1.1);
+
+// Weights
 
 .text-lighter {
   @extend %lighter;
@@ -40,10 +86,6 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Decorations
 
-%underline {
-  text-decoration: underline;
-}
-
 .text-italic {
   font-style: italic !important;
 }
@@ -53,9 +95,6 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 // Sizing
-%small-text {
-  font-size: $font-size-small;
-}
 
 .text-large {
   font-size: $font-size-large !important;
@@ -97,18 +136,6 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 // Colors
-
-%text-white-color {
-  color: $white-text !important;
-}
-
-%navbar-color {
-  color: $navbar-default-bg !important;
-}
-
-%text-default-color {
-  color: $text-color !important;
-}
 
 .text-experience {
   color: $experience !important;
@@ -240,26 +267,13 @@ div {
 // Universal Classes
 
 .section-title {
-  // .text-center belongs to Bootstrap; can't be changed to a placeholder
-  // scss-lint:disable PlaceholderInExtend
-  @extend .text-center;
-  // scss-lint:enable PlaceholderInExtend
-
+  @extend %centered-text;
   margin-bottom: 0.5em;
 }
 
 .section-description {
-  // .text-center and .text-large belong to Bootstrap; can't be changed to a placeholder
-  // scss-lint:disable PlaceholderInExtend
-  @extend .text-center;
-  @extend .text-large;
-  // scss-lint:enable PlaceholderInExtend
+  @extend %centered-text, %large-text;
 
   color: $gray;
 }
 
-// Placeholders
-
-%default-small-text {
-  @extend %text-default-color, %small-text;
-}

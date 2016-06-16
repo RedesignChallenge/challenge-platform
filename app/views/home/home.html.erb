@@ -93,7 +93,7 @@
               <%= t('.featured_challenge_title', id: @featured.id, title: @featured.title) %>
             </h2>
             <p class="text-large"><%= t('.share_experience') %></p>
-            <div class="break"></div>
+            <div class="div-break"></div>
             <% if user_signed_in? %>
               <% if @featured %>
                 <%= link_to challenge_path(@featured) do %>

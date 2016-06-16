@@ -1,60 +1,39 @@
 .submit-link {
-  @extend .text-small;
+  @extend %small-text;
 
   background-color: transparent;
   border: 0;
   cursor: pointer;
   color: $link-color;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     text-decoration: underline;
   }
 }
 
-ul.actions {
-  margin-bottom: 0;
-
-  li, .list-link {
-    @extend .text-small;
-
-    color: $light-gray-text;
-  }
-
-  &#actions {
-    margin-right: 0;
-
-    a.dropdown-toggle {
-      color: $light-gray-text;
-    }
-
-    .dropdown-menu {
-      min-width: 100%;
-    }
-  }
-}
-
 .fa-user-avatar {
+  font-size: 1.33333333em;
   width: 100%;
   margin-top: 0.5em;
   margin-left: 0.05em;
 
-  @extend .fa-lg;
-
   .fa-stack-2x {
-    @extend .fa-3x;
-
-    @extend .fa-lg;
+    // Should probably not extend but we do want to preseve this behavior.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-3x, .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
 
     color: $new-user;
   }
 
   .fa-stack-1x {
+    // Should probably not extend but we do want to preserve this behavior.
+    // scss-lint:disable PlaceholderInExtend
     @extend .fa-lg;
-
-    @extend .text-small;
-
-    @extend .text-bolder;
-
+    // scss-lint:enable PlaceholderInExtend
+    @extend %small-text, %bolder;
     margin-top: 1.4em;
   }
 
@@ -69,30 +48,32 @@ ul.actions {
   margin-top: 1em;
 
   .user-name {
-    @extend .text-default;
-
-    @extend .text-bolder;
+    @extend %text-default-color, %bolder;
 
     margin-bottom: 0.25em;
 
     a {
+      @extend %text-default-color;
       font-weight: inherit !important;
-
-      @extend .text-default;
     }
   }
 
+  %user-title-style {
+    @extend %bolder;
+    margin-bottom: 0;
+  }
+
   .user-title {
-    @extend .text-xsmall;
+    @extend %bolder;
 
     margin-bottom: 0;
   }
 
   .stage-creation-date {
-    @extend .user-title;
+    @extend %user-title-style;
 
     a {
-      color: #AEAEAE;
+      color: $stage-creation-date-text;
     }
   }
 }
@@ -100,7 +81,7 @@ ul.actions {
 .nav-link {
   padding-top: 0.85em;
   min-height: 3.5em;
-  border-right: 1px solid #D8D9DA;
+  border-right: 1px solid $navbar-divider-border;
 
   .fa-play {
     color: transparent;
@@ -115,9 +96,10 @@ ul.actions {
     border-right: 0;
   }
 
-  &:hover, &:focus, &.active {
-    @extend .text-experience;
-
+  &:hover,
+  &:focus,
+  &.active {
+    color: $experience !important;
     background-color: $white;
     cursor: pointer;
   }
@@ -138,7 +120,7 @@ ul.actions {
   }
 }
 
-.content-block {
+%content-block-style {
   margin-bottom: 2em;
 
   .section-title {
@@ -146,9 +128,12 @@ ul.actions {
   }
 }
 
-.content-block-xl {
-  @extend .content-block;
+.content-block {
+  @extend %content-block-style;
+}
 
+.content-block-xl {
+  @extend %content-block-style;
   margin-bottom: 4em;
 }
 
@@ -160,7 +145,10 @@ ul.actions {
     margin-right: 2em;
 
     .fa-stack-2x {
+      // Cannot convert Font Awesome class to placeholder
+      // scss-lint:disable PlaceholderInExtend
       @extend .fa-2x;
+      // scss-lint:enable PlaceholderInExtend
     }
 
     .fa-stack-1x {
@@ -179,21 +167,11 @@ ul.actions {
 
   .action {
     margin-top: 3.85em;
-
-    ul {
-      a {
-        &:hover, &:focus, &:active, .active {
-          cursor: pointer;
-
-          @extend .text-bolder;
-        }
-      }
-    }
   }
 }
 
 .opacity-layer {
-  background-color: rgba(47, 52, 64, 0.25);
+  background-color: $opacity-background;
 }
 
 .page-wrap {
@@ -208,16 +186,16 @@ ul.actions {
   margin-bottom: 0.5em !important;
 }
 
-hr.break {
+.hr-break {
   display: block;
   width: 30%;
   margin: 50px auto;
   border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid $hr-break;
 }
 
 .header-label {
-  @extend .text-center;
+  @extend %centered-text;
 
   font-weight: bold;
   margin-bottom: 0;
@@ -226,7 +204,7 @@ hr.break {
   font-size: 0.9em;
 }
 
-div.break {
+.div-break {
   margin-bottom: 30px;
 }
 
@@ -234,18 +212,17 @@ div.break {
   margin-bottom: 1em;
 }
 
-ul.share-links {
-  @extend .text-center, .center-block, .list-inline;
+.share-links {
+  @extend %centered-text, %centered-block, %inline-list;
 
   li {
     padding: 0 10px;
   }
 }
 
-ul.share-popover {
+.share-popover {
+  @extend %centered-text, %centered-block, %inline-list;
   margin-bottom: 0;
-
-  @extend .text-center, .center-block, .list-inline;
 
   li {
     &:last-of-type {
@@ -259,7 +236,9 @@ ul.share-popover {
 }
 
 .input-switch {
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     cursor: pointer;
   }
 
@@ -277,13 +256,12 @@ ul.share-popover {
 
     .media-body {
       vertical-align: middle;
-
-      .help-text {
-        @extend .text-small;
-
-        color: $light-gray-text;
-      }
     }
+  }
+
+  .help-text {
+    @extend %small-text;
+    color: $light-gray-text;
   }
 }
 

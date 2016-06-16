@@ -99,11 +99,7 @@
             <% end %>
 
             <div class="row row-count">
-              <div class="col-xs-3">
-                <ul class="action text-left text-small list-inline">
-                </ul>
-              </div>
-              <div class="col-xs-6">
+              <div class="col-xs-6 col-xs-offset-3">
                 <h6 class="text-center center-block">
                   <i class="fa fa-flask fa-3x"></i><br>
                   <span><%= pluralize(cookbook.recipes.published.count, t('recipe_stages.show.recipe')) %></span>
