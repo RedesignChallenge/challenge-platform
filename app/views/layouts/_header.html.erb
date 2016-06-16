@@ -1,8 +1,8 @@
-<nav id="top-nav" class="navbar navbar-default navbar-center" role="navigation">
+<nav class="navbar navbar-default navbar-center header-nav" role="navigation">
   <div class="container">
 
     <div class="navbar-header">
-      <button id="navbar-hamburger" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav">
+      <button type="button" class="navbar-toggle collapsed navbar-hamburger" data-toggle="collapse" data-target="#collapse-nav">
         <span class="sr-only"><%= t('layouts._header.header') %></span>
         <i class="fa fa-inverse fa-bars"></i>
       </button>
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="collapse-nav">
+    <div id="collapse-nav" class="collapse navbar-collapse">
 
       <ul class="nav navbar-nav">
         <li><%= link_to t('layouts._header.about'), about_path, class: 'text-lighter' %></li>
@@ -23,7 +23,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li id="user" class="dropdown pull-right">
+          <li class="dropdown pull-right user-dropdown">
             <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
               <span style='padding:0px 15px;position:relative;top:1px'><%= current_user.first_name %></span>
               <% if current_user.avatar.present? %>

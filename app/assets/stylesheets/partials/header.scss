@@ -1,4 +1,4 @@
-#top-nav {
+.header-nav {
   z-index: 9999;
 
   a {
@@ -12,8 +12,8 @@
     }
   }
 
-  a.btn-info {
-    @extend .btn-rounded;
+  .btn-info {
+    @extend %round-btn;
 
     top: 0.675em;
     padding: 3px 35px;
@@ -29,7 +29,7 @@
     }
   }
 
-  #navbar-hamburger {
+  .navbar-hamburger {
     padding: 5px 10px;
 
     &:hover {
@@ -41,7 +41,10 @@
     }
   }
 
-  #user {
+  // Nesting here is a symptom of the markup; will silence for now.
+  // scss-lint:disable NestingDepth
+  // scss-lint:disable SelectorDepth
+  .user-dropdown {
     padding: ($line-height-computed / 2) 0;
 
     a {
@@ -69,8 +72,7 @@
       margin-bottom: 2em;
 
       .fa-stack-2x {
-        @extend .fa-3x;
-
+        font-size: 3em;
         color: $new-user;
       }
 
@@ -82,6 +84,8 @@
       }
     }
   }
+  // scss-lint:enable SelectorDepth
+  // scss-lint:enable NestingDepth
 
   .navbar-center-link {
     width: 100%;
@@ -99,6 +103,10 @@
       top: 12px;
       padding: 15px;
 
+      // Nesting here is a symptom of the markup; will silence for now.
+      // scss-lint:disable NestingDepth
+      // scss-lint:disable SelectorDepth
+
       &:hover,
       &:focus,
       &:active,
@@ -106,6 +114,9 @@
         @extend %underline;
         color: $white-text;
       }
+
+      // scss-lint:enable SelectorDepth
+      // scss-lint:enable NestingDepth
     }
   }
 }

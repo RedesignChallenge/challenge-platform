@@ -184,8 +184,12 @@ a:active:focus,
   padding-top: 0.15em;
 }
 
-.btn-rounded {
+%round-btn {
   @include border-radius(25px);
+}
+
+.btn-rounded {
+  @extend %round-btn;
 }
 
 .btn-longer {
