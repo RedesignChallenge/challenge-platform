@@ -1,16 +1,14 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id="experience-form">
+<div class="experience-form">
   <div class="container">
-
     <%= link_to challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), data: { confirm: t('.confirm') } do %>
       <i class="fa fa-close fa-2x"></i>
     <% end %>
+
     <div class="clearfix"></div>
 
     <%= render partial: 'experiences/header' %>
-
     <%= render partial: 'experiences/form', locals: { url: challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), cancel_path: challenge_experience_stage_theme_experience_path(@challenge, @experience.experience_stage, @experience.theme, @experience), submit_text: t('.submit') } %>
-
   </div>
 </div>

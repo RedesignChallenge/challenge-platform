@@ -1,16 +1,16 @@
 .row-experience {
-  margin-left: 0px;
+  margin-left: 0;
   margin-bottom: 20px;
 }
 
 .well-experience {
   position: relative;
   z-index: 5;
-  background-color: white;
+  background-color: $white;
   padding: 15px 15px 10px;
 
   .twitter-tweet {
-    margin: 0px !important;
+    margin: 0 !important;
   }
 
   .experience-actions {
@@ -18,22 +18,8 @@
   }
 
   &.discussion {
-    margin-bottom: 0px;
-    box-shadow: 0px 10px 15px -5px rgba(2, 1, 1, 0.27);
-  }
-
-  form {
-    #experience_description {
-      @extend .input-borderless;
-
-      @extend .text-bold;
-    }
-
-    #experience_link {
-      @extend .input-borderless;
-
-      @extend .input-graybg;
-    }
+    margin-bottom: 0;
+    box-shadow: 0 10px 15px -5px $discussion-box-shadow;
   }
 }
 
@@ -44,10 +30,10 @@
   z-index: 3;
 
   .experience-discussion {
-    padding: 15px 30px 0px;
+    padding: 15px 30px 0;
 
     .discussion-header {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 
     hr.break {
@@ -60,49 +46,37 @@
 .row-new {
   @extend .row-experience;
 
-  margin-bottom: 0px;
-}
-
-#experience-preview {
-  padding: 20px 0px;
-
-  .preview-header {
-    @extend .text-center;
-
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 0px;
-  }
+  margin-bottom: 0;
 }
 
 .well-embed {
   @extend .text-center;
 
   margin-bottom: 5px;
-  border: 2px dashed #B1B0B2;
-  background-color: #ebeced;
+  border: 2px dashed $well-border;
+  background-color: $well-bg;
 
   p {
     font-size: 1.6em;
-    color: #B1B0B2;
-    margin-bottom: 0px;
+    color: $well-text;
+    margin-bottom: 0;
   }
 }
 
-#experience-form {
-  padding: 0px 0px 40px;
+.experience-form {
+  padding: 0 0 40px;
 
   .fa-close.fa-2x {
     @extend .pull-right;
 
     position: relative;
     top: 30px;
-    color: #999999;
+    color: $gray-light;
   }
 }
 
-#experience-overview {
-  padding: 40px 0px;
+.experience-overview {
+  padding: 40px 0;
 
   .well-featured-experience {
     @extend .well, .well-sm, .text-center, .text-white;
@@ -114,19 +88,12 @@
   }
 
   .well-experience {
-    padding: 0px;
-    background-color: white;
-
     @include border-radius(10px);
-
-    #actions {
-      a {
-        color: $light-gray-text;
-      }
-    }
+    padding: 0;
+    background-color: $white;
 
     .experience-content {
-      padding: 0px 3em 1.5em;
+      padding: 0 3em 1.5em;
 
       .row-experience-show {
         margin-bottom: 2em;
@@ -155,17 +122,14 @@
         }
 
         .content-block:last-child {
-          margin-bottom: 0px;
+          margin-bottom: 0;
         }
       }
     }
   }
 }
 
-#experience-comments {
-  padding: 20px 0px;
-}
-
-#experience-share {
-  padding: 20px 0px;
+.experience-comments,
+.experience-share {
+  padding: 20px 0;
 }

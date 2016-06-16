@@ -36,8 +36,6 @@ $well-text: #B1B0B2;
 $white: #FFFFFF;
 $new-user: #EC297B;
 $error-border: #A94442;
-$ribbon-box-shadow: rgba(0, 0, 0, 0.3);
-$error-box-shadow: rgba(0, 0, 0, 0.075);
 $quote-border-left: rgba(0, 0, 0, 0.15);
 $opacity-background: rgba(47, 52, 64, 0.25);
 $hr-break: rgba(0, 0, 0, 0.15);
@@ -54,6 +52,11 @@ $navbar-hamburger-hover: #EEEEEE;
 $navbar-divider-border: #D8D9DA;
 
 $dropdown-hover: #F5F5F5;
+
+// Shadows
+$ribbon-box-shadow: rgba(0, 0, 0, 0.3);
+$error-box-shadow: rgba(0, 0, 0, 0.075);
+$discussion-box-shadow: rgba(2, 1, 1, 0.27);
 
 // Text Colors
 $gray-text: $gray;
