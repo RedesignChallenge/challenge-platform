@@ -7,19 +7,10 @@
   }
 
   .fa-puzzle-piece {
-    @include text-for-stage('solution-light');
-
-    top: 0.15em;
-    font-size: 18em;
-    line-height: 0.5em;
+    @include expand-icon('solution-light', 0.15em, 18em);
   }
 }
 
 .solution-stage-content {
-  padding: 40px 0 20px;
-  background-color: $lightest-gray-background;
-
-  &.affix {
-    margin-top: 40px;
-  }
+  @include stage-content(40px, 40px 0 20px)
 }

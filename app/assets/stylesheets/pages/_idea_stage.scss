@@ -7,23 +7,12 @@
   }
 
   .fa-lightbulb-o {
-    @include text-for-stage('idea-light');
-
-    top: 0.1em;
-    font-size: 15em;
-    line-height: 0.5em;
+    @include expand-icon('idea-light', 0.1em);
   }
 }
 
 .idea-stage-navigation {
-  @extend %xs-hidden;
-
-  background-color: $idea;
-  color: $white;
-  z-index: 1000;
-  width: 100%;
-  box-shadow: 0 5px 10px $idea-stage-nav-box-shadow;
-  margin-bottom: 20px;
+  @include stage-navigation($idea);
 
   &.affix {
     top: 0;
@@ -47,10 +36,5 @@
 }
 
 .idea-stage-content {
-  padding: 20px 0;
-  background-color: $lightest-gray-background;
-
-  &.affix {
-    margin-top: 40px;
-  }
+  @include stage-content();
 }

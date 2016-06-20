@@ -1,50 +1,36 @@
-#experience_stage-overview {
-  padding: 30px 0px;
-  background-color: white;
+.experience-stage-overview {
+  padding: 30px 0;
+  background-color: $white;
 
   h1 {
     margin-bottom: 10px;
   }
 
   .fa-comments {
-    @extend .text-experience-light;
-
-    top: 0;
-    font-size: 15em;
-    line-height: 0.5em;
+    @include expand-icon('experience-light', 0);
   }
 }
 
-#experience_stage-navigation {
-  @extend .hidden-xs;
-
-  background-color: $experience;
-  color: white;
-  z-index: 1000;
-  width: 100%;
-  box-shadow: 0px 5px 10px rgba(2, 1, 1, 0.27);
-  margin-bottom: 20px;
+.experience-stage-navigation {
+  @include stage-navigation($experience);
 
   &.affix {
     top: 0;
 
-    & + #experience_stage-content {
+    + .experience-stage-content {
       margin-top: 110px;
     }
   }
 
   .nav-link {
-    &:hover, &:focus, &.active {
-      @extend .text-experience;
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('experience');
     }
   }
 }
 
-#experience_stage-content {
-  padding: 20px 0px;
-  background-color: $lightest-gray-background;
-
-  &.affix {
-    margin-top: 40px;
-  }
+.experience-stage-content {
+  @include stage-content();
 }

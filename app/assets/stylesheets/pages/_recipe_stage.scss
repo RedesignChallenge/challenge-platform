@@ -1,58 +1,36 @@
-#recipe_stage-overview {
-  padding: 1.8em 0em;
-  background-color: white;
+.recipe-stage-overview {
+  padding: 1.8em 0;
+  background-color: $white;
 
   h1 {
     margin-bottom: 0.75em;
   }
 
   .fa-flask {
-    @extend .text-recipe-light;
-
-    top: 0.25em;
-    font-size: 15em;
-    line-height: 0.5em;
+    @include expand-icon('recipe-light', 0.25em);
   }
 }
 
-#recipe_stage-navigation {
-  @extend .hidden-xs;
-
-  background-color: $recipe;
-  color: white;
-  z-index: 1000;
-  width: 100%;
-  box-shadow: 0px 5px 10px rgba(2, 1, 1, 0.27);
-  margin-bottom: 20px;
+.recipe-stage-navigation {
+  @include stage-navigation($recipe);
 
   &.affix {
     top: 0;
 
-    & + #recipe_stage-content {
+    + .recipe-stage-content {
       margin-top: 20px;
     }
   }
 
   .nav-link {
-    &:hover, &:focus, &.active {
-      @extend .text-recipe;
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('recipe');
     }
   }
 }
 
-#recipe_stage-content {
-  padding: 20px 0;
-  background-color: $lightest-gray-background;
-
-  &.affix {
-    margin-top: 20px;
-  }
-
-  .recipe-new {
-    .well-share {
-      &:hover, &:focus, &:active {
-        cursor: default;
-      }
-    }
-  }
+.recipe-stage-content {
+  @include stage-content(20px);
 }

@@ -145,10 +145,6 @@ $font-size-medium: ceil($font-size-base * 1.1);
 
 // Colors
 
-@mixin text-for-stage($stage) {
-  color: map-get($stage-colors, $stage);
-}
-
 .text-experience {
   color: $experience !important;
 }
