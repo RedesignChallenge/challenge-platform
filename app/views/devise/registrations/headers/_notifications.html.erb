@@ -1,4 +1,4 @@
-<div id="user-header">
+<div class="user-header">
   <div class="container">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -20,9 +20,8 @@
         <ul class="nav nav-tabs nav-justified">
           <li role="presentation"><%= link_to t('devise.registrations.headers._notifications.profile'), edit_user_registration_path(setting: 'profile') %></li>
           <li role="presentation"><%= link_to t('devise.registrations.headers._notifications.account'), edit_user_registration_path(setting: 'account') %></li>
-          <li role="presentation" class="active"><%= link_to t('devise.registrations.headers._notifications.notifications'), edit_user_registration_path(setting: 'notifications') %></li>
+          <li role="presentation"><%= link_to t('devise.registrations.headers._notifications.notifications'), edit_user_registration_path(setting: 'notifications'), class: 'active' %></li>
         </ul>
-
       </div>
     </div>
   </div>

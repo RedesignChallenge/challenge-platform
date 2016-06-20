@@ -17,6 +17,10 @@
   @extend .list-inline;
 }
 
+%justified-navigation {
+  @extend .nav-justified;
+}
+
 // scss-lint:enable PlaceholderInExtend
 
 

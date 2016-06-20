@@ -1,9 +1,9 @@
-#user-header {
-  padding: 40px 0px 0px;
-  background-color: #F1F1F1;
-  border-bottom: 4px solid $link-color;
+.user-header {
+  @extend %centered-text;
 
-  @extend .text-center;
+  padding: 40px 0 0;
+  background-color: $light-gray-background;
+  border-bottom: 4px solid $link-color;
 
   .img-circle {
     width: 9em;
@@ -28,54 +28,57 @@
   }
 
   .nav-tabs {
-    @extend .nav-justified;
+    @extend %justified-navigation;
+    border-radius: 0;
 
     li {
-      border-radius: 0px;
-      background-color: white;
+      background-color: $white;
       color: $text-color;
-
-      a {
-        @extend .text-bold;
-
-        color: $text-color;
-        border-radius: 0px;
-        border: 1px solid #F1F1F1;
-
-        &:hover, &:active, &:focus {
-          background-color: $link-color;
-          border-bottom-color: $link-color !important;
-          color: white;
-        }
-      }
     }
 
-    li.active {
-      a {
-        background-color: $link-color;
-        border-bottom-color: $link-color !important;
-        color: white;
+    a {
+      @extend %bold;
 
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      color: $text-color;
+      border-radius: 0;
+      border: 1px solid $light-gray-border;
+
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+      border-radius: 0;
+      background-color: $link-color;
+      border-bottom-color: $link-color !important;
+      color: $white;
+    }
+
+    .active {
+      background-color: $link-color;
+      border-bottom-color: $link-color !important;
+      color: $white-text;
+      border-radius: 0;
+    }
+
+    .active:hover {
+      cursor: pointer;
     }
   }
 }
 
-#user-overview {
-  padding: 40px 0px;
-  background-color: white;
+.user-overview {
+  padding: 40px 0;
+  background-color: $white;
 
   h4 {
-    margin: 0em 0em 1em;
+    margin: 0 0 1em;
   }
 }
 
-#user-edit {
-  background-color: white;
-  padding: 30px 0px;
+.user-edit {
+  background-color: $white;
+  padding: 30px 0;
 
   .select2-chosen {
     padding-top: 6px;
