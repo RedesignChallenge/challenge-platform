@@ -1,13 +1,13 @@
-#solution_stage-overview {
-  padding: 60px 0px;
-  background-color: white;
+.solution-stage-overview {
+  padding: 60px 0;
+  background-color: $white;
 
   h1 {
     margin-bottom: 10px;
   }
 
   .fa-puzzle-piece {
-    @extend .text-solution-light;
+    @include text-for-stage('solution-light');
 
     top: 0.15em;
     font-size: 18em;
@@ -15,8 +15,8 @@
   }
 }
 
-#solution_stage-content {
-  padding: 40px 0px 20px;
+.solution-stage-content {
+  padding: 40px 0 20px;
   background-color: $lightest-gray-background;
 
   &.affix {
