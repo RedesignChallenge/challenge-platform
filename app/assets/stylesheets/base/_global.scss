@@ -99,7 +99,7 @@
   &:hover,
   &:focus,
   &.active {
-    color: $experience !important;
+    color: $experience;
     background-color: $white;
     cursor: pointer;
   }

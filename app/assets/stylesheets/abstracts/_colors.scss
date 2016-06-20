@@ -15,11 +15,21 @@ $experience: #11487E;
 $idea: #8BB734;
 $recipe: #7F3F98;
 $solution: #F26606;
-
 $experience-light: #979EBD;
 $idea-light: #D1E2AE;
 $recipe-light: #CCB2D6;
 $solution-light: #FAC29B;
+
+$stage-colors: (
+    experience: $experience,
+    experience-light: $experience-light,
+    idea: $idea,
+    idea-light: $idea-light,
+    recipe: $recipe,
+    recipe-light: $recipe-light,
+    solution: $solution,
+    solution-light: $solution-light
+);
 
 // Background Colors
 $footer-background: #0B3F57;
@@ -58,6 +68,7 @@ $dropdown-hover: #F5F5F5;
 $ribbon-box-shadow: rgba(0, 0, 0, 0.3);
 $error-box-shadow: rgba(0, 0, 0, 0.075);
 $discussion-box-shadow: rgba(2, 1, 1, 0.27);
+$idea-stage-nav-box-shadow: rgba(2, 1, 1, 0.27);
 
 // Text Colors
 $gray-text: $gray;

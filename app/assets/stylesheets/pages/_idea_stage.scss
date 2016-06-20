@@ -1,13 +1,13 @@
-#idea_stage-overview {
-  padding: 30px 0px;
-  background-color: white;
+.idea-stage-overview {
+  padding: 30px 0;
+  background-color: $white;
 
   h1 {
     margin-bottom: 10px;
   }
 
   .fa-lightbulb-o {
-    @extend .text-idea-light;
+    @include text-for-stage('idea-light');
 
     top: 0.1em;
     font-size: 15em;
@@ -15,27 +15,29 @@
   }
 }
 
-#idea_stage-navigation {
-  @extend .hidden-xs;
+.idea-stage-navigation {
+  @extend %xs-hidden;
 
   background-color: $idea;
-  color: white;
+  color: $white;
   z-index: 1000;
   width: 100%;
-  box-shadow: 0px 5px 10px rgba(2, 1, 1, 0.27);
+  box-shadow: 0 5px 10px $idea-stage-nav-box-shadow;
   margin-bottom: 20px;
 
   &.affix {
     top: 0;
 
-    & + #idea_stage-content {
+    + .idea-stage-content {
       margin-top: 120px;
     }
   }
 
   .nav-link {
-    &:hover, &:focus, &.active {
-      @extend .text-idea;
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('idea');
     }
   }
 
@@ -44,8 +46,8 @@
   }
 }
 
-#idea_stage-content {
-  padding: 20px 0px;
+.idea-stage-content {
+  padding: 20px 0;
   background-color: $lightest-gray-background;
 
   &.affix {
