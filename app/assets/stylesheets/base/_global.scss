@@ -269,3 +269,116 @@
   font-variant: small-caps;
   margin-left: 10px;
 }
+
+.challenge-nav {
+  @extend %text-default-color, %centered-block, %small-text;
+  @include border-radius(2em);
+
+  background-color: $white;
+  margin: 0.25em 1.5em;
+  padding: 0;
+
+  .fa {
+    min-height: 1.1em;
+    top: 0;
+
+    &.fa-check {
+      @extend %text-default-color;
+
+      font-size: 1.1em;
+      top: -0.1em;
+    }
+  }
+
+  .fa-stack {
+    height: 1.7em;
+    width: 1.8em;
+    vertical-align: bottom;
+
+    .fa-stack-2x {
+      font-size: 1.8em;
+    }
+  }
+
+  .badge {
+    @extend %text-default-color, %small-text;
+    @include border-radius(2em);
+
+    background-color: $white;
+    padding: 5px 15px;
+    vertical-align: bottom;
+
+
+    .headline {
+      @extend %xs-hidden, %bolder;
+
+      top: -0.3em;
+      position: relative;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .fa-play {
+    color: $challenge-nav-arrow-color;
+    position: relative;
+    top: -0.4em;
+    margin: 0 1em;
+  }
+}
+
+.badge-experience {
+  &.active {
+    .fa-stack-1x {
+      font-size: 1em;
+    }
+  }
+
+  &.selected {
+    background-color: $experience !important;
+
+    .headline,
+    .fa.fa-check {
+      @extend %text-white-color;
+    }
+  }
+}
+
+.badge-idea {
+  &.selected {
+    background-color: $idea !important;
+
+    .headline,
+    .fa.fa-check {
+      @extend %text-white-color;
+    }
+  }
+}
+
+.badge-recipe {
+  &.selected {
+    background-color: $recipe !important;
+
+    .headline,
+    .fa.fa-check {
+      @extend %text-white-color;
+    }
+  }
+}
+
+.badge-solution {
+  &.selected {
+    background-color: $solution !important;
+
+    .headline,
+    .fa.fa-check {
+      @extend %text-white-color;
+    }
+  }
+}

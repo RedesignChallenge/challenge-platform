@@ -1,13 +1,13 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id="challenge-overview" style="background-image:url('<%= @challenge.banner.present? ? @challenge.banner.url.html_safe : asset_path('bg.png') %>')">
+<div class="challenge-overview" style="background-image:url('<%= @challenge.banner.present? ? @challenge.banner.url.html_safe : asset_path('bg.png') %>')">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="row">
           <div class="col-sm-7">
             <h1 class="challenge-headline"><%= @challenge.headline.html_safe %></h1>
-            <%= link_to "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-white text-lighter text-large' do %>
+            <%= link_to "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large' do %>
               <i class="fa fa-twitter" style='font-size:1.5em'></i> <%= "##{@challenge.hashtag.html_safe}" %>
           <% end %>
           </div>
@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<div id="challenge-description">
+<div class="challenge-description">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -31,72 +31,12 @@
   </div>
 </div>
 
-<div id="challenge-details">
+<div class="challenge-details">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <!-- Experience Process Bubbles: START -->
-        <div id="challenge-process" class="row">
-          <% if @challenge.incentive.present? %>
-            <div class="col-sm-9 col-sm-offset-3">
-              <p class="text-center text-recipe"><%= @challenge.incentive.html_safe %></p>
-            </div>
-          <% end %>
-
-          <% Challenge::STAGES.each_with_index do |stage, index| %>
-            <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
-              <div class="stage-recap">
-                <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
-                  <% if @challenge.stage_number == stage[:number] %>
-                      <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %> active">
-                        <i class="fa fa-stack-2x fa-circle"></i>
-                        <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %>"></i>
-                      </span>
-                  <% else %>
-                    <% if @challenge.stage_number > stage[:number] %>
-                      <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %> completed">
-                        <i class="fa fa-stack-2x fa-circle-thin"></i>
-                        <i class="fa fa-stack-1x text-<%= stage[:name] %> <%= stage[:icon] %>"></i>
-                      </span>
-                    <% else %>
-                      <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %>-light pending">
-                        <i class="fa fa-stack-2x fa-circle-thin"></i>
-                        <i class="fa fa-stack-1x text-<%= stage[:name] %>-light <%= stage[:icon] %>"></i>
-                      </span>
-                    <% end %>
-                  <% end %>
-
-                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
-
-                  <div class="clearfix"></div>
-                  <div class="caption">
-                    <h4 class="text-black">
-                      <% if @challenge.stage_number > stage[:number] %>
-                        <i class="fa icon-check"></i>
-                        <%= pluralize(eval("@challenge.#{stage[:name]}_stage.#{stage[:name].pluralize}.published.count"), stage[:name]).titleize %> <%= stage[:action].titleize %>
-                      <% else %>
-                        <%= stage[:headline] %>
-                      <% end %>
-                    </h4>
-                    <p class="description"><%= stage[:description] %></p>
-                  </div>
-                <% end %>
-              </div>
-
-              <div class="stage-cta">
-                <% if @challenge.stage_number == stage[:number] %>
-                  <%= link_to t('.story'), challenge_active_stage_path(@challenge), class: 'btn btn-info btn-rounded text-small' unless stage[:name] == 'solution' %>
-                <% else %>
-                  <% if @challenge.stage_number > stage[:number] %>
-                    <p class="text-small"><%= link_to t('.completed'), eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)"), class: 'completed text-default' %></p>
-                  <% else %>
-
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+        b
         <!-- Experience Process Bubbles: END -->
 
 
@@ -123,7 +63,7 @@
   </div>
 </div>
 
-<div id="challenge-featured">
+<div class="challenge-featured">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -143,7 +83,7 @@
   </div>
 </div>
 
-<div id="challenge-panel">
+<div class="challenge-panel">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -219,7 +159,7 @@
   </div>
 </div>
 
-<div id="challenge-invite">
+<div class="challenge-invite">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">

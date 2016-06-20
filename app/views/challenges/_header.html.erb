@@ -1,8 +1,8 @@
-<div id="challenge-header" class="<%= current_page?(challenge_path(@challenge)) || @solution_stage ? 'splash' : controller_name %>">
+<div class="challenge-header <%= current_page?(challenge_path(@challenge)) || @solution_stage ? 'splash' : controller_name %>">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <div id="challenge-nav" style="<%= challenge_nav_margin(@challenge) %>">
+        <div class="challenge-nav" style="<%= challenge_nav_margin(@challenge) %>">
           <% Challenge::STAGES.each_with_index do |stage, index| %>
 
             <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
