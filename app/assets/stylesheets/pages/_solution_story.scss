@@ -30,15 +30,6 @@
 #solution_story-overview {
   padding: 4em 0em;
 
-  .well-featured-solution_story {
-    @extend .well, .well-sm, .text-center, .text-white;
-
-    @include border-radius(1em);
-
-    padding: 0.25em;
-    background-color: $solution !important;
-  }
-
   .well-solution_story {
     padding: 0px;
     background-color: white;

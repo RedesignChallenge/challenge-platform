@@ -1,5 +1,5 @@
-#preview-screen {
-  @extend .auth-screen;
+.preview-screen {
+  @extend %auth-screen;
 
   .media-preview {
     margin-bottom: 30px;
@@ -10,11 +10,11 @@
 
     .media-body {
       padding-left: 20px;
+    }
 
-      .media-heading {
-        font-size: 1.6em;
-        font-weight: bold;
-      }
+    .media-heading {
+      font-size: 1.6em;
+      font-weight: bold;
     }
   }
 }

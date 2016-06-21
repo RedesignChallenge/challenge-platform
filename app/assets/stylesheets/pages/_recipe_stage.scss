@@ -7,7 +7,7 @@
   }
 
   .fa-flask {
-    @include expand-icon('recipe-light', 0.25em);
+    @include stage-large-icon('recipe-light', 0.25em);
   }
 }
 

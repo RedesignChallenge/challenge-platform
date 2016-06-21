@@ -7,7 +7,7 @@
   color: map-get($stage-colors, $stage);
 }
 
-@mixin expand-icon($stage-text-color, $top, $font-size: 15em, $line-height: 0.5em) {
+@mixin stage-large-icon($stage-text-color, $top, $font-size: 15em, $line-height: 0.5em) {
   @include text-for-stage($stage-text-color);
   top: $top;
   font-size: $font-size;
@@ -36,4 +36,16 @@
   &.affix {
     margin-top: $affix-top-margin;
   }
+}
+
+@mixin featured-well($background-color) {
+  // Built-in to Bootstrap.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .well, .well-sm;
+  // scss-lint:enable PlaceholderInExtend
+  @extend %centered-text, %text-white-color;
+  @include border-radius(1em);
+
+  padding: 0.25em;
+  background-color: $background-color;
 }

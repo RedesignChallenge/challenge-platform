@@ -7,7 +7,7 @@
   }
 
   .fa-puzzle-piece {
-    @include expand-icon('solution-light', 0.15em, 18em);
+    @include stage-large-icon('solution-light', 0.15em, 18em);
   }
 }
 

@@ -147,12 +147,7 @@
   padding: 40px 0px;
 
   .well-featured-idea {
-    @extend .well, .well-sm, .text-center, .text-white;
-
-    @include border-radius(1em);
-
-    padding: 0.25em;
-    background-color: $idea !important;
+    @include featured-well($idea);
   }
 
   .well-idea {
