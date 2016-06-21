@@ -1,5 +1,8 @@
 .preview-screen {
-  @extend %auth-screen;
+  // Entangled properties here; best to fix on its own
+  // scss-lint:disable PlaceholderInExtend
+  @extend .auth-screen;
+  // scss-lint:enable PlaceholderInExtend
 
   .media-preview {
     margin-bottom: 30px;

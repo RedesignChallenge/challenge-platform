@@ -1,194 +1,142 @@
+@mixin devise-links($color: null) {
+  a {
+    @extend %bold;
+    @if $color != null {
+      color: $color;
+    }
+  }
+}
+
+
 .devise-form {
   margin: 40px 0;
 
   .panel-title {
-    @extend .text-center;
+    @extend %centered-text;
   }
 }
 
+// Devise-driven CSS; will not change.
+// scss-lint:disable IdSelector
+// scss-lint:disable SelectorFormat
 #error_explanation {
-  color: #f00;
+  color: $red;
 
   ul {
-    padding: 0px;
+    padding: 0;
     list-style: none;
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
   }
 }
+// scss-lint:enable SelectorFormat
+// scss-lint:enable IdSelector
 
+// Devise-driven CSS; will not change.
+// scss-lint:disable SelectorFormat
 .field_with_errors {
+  // Neither of these classes are under our control.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .control-group !optional;
+  @extend .has-error !optional;
+  // scss-lint:enable PlaceholderInExtend
+
   display: inline;
 
-  @extend .control-group !optional;
-
-  @extend .has-error !optional;
-
   .input-group {
+    // Not under our control.
+    // scss-lint:disable PlaceholderInExtend
     @extend .has-error;
+    // scss-lint:enable PlaceholderInExtend
   }
 }
 
+// scss-lint:enable SelectorFormat
+
 .devise-links {
-  @extend .text-center;
+  @extend %centered-text, %centered-block;
 
-  @extend .center-block;
-
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
-.well-header {
-  @extend .text-center;
-
-  margin: (-10px) 0px 20px;
-}
-
-.well-help {
-  @extend .help-block;
-
-  font-size: 0.9em;
-  margin: 5px 0px 15px;
-}
-
-%auth-screen {
-  padding: 80px 0px;
+.auth-screen {
+  padding: 80px 0;
 
   .well-auth {
     padding: 19px 50px;
-    background-color: white;
+    background-color: $white;
 
     .auth-cancel {
-      @extend .pull-right;
+      @extend %right-pull;
 
-      color: #999999;
+      color: $gray-light;
     }
 
     .auth-title {
-      @extend .section-title;
+      @extend %section-title;
     }
 
+    // Regulated by Select2 - until replaced, we should keep this here.
+    // scss-lint:disable QualifyingElement
     span.select2-chosen {
+      // Bootstrap class; no sense in wrapping this one
+      // scss-lint:disable PlaceholderInExtend
       @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
 
       padding: 0.5em;
     }
-
-    .auth-header {
-      @extend .page-header;
-
-      @extend .text-bold;
-
-      margin: 30px auto 10px;
-    }
+    // scss-lint:enable QualifyingElement
 
     .row-fields {
       margin-bottom: 15px;
+    }
 
-      .form-group {
-        label {
-          font-size: 1.4em;
-          color: #9D9D9D;
-        }
+    label {
+      font-size: 1.4em;
+      color: $devise-label-text;
+    }
 
-        input {
-          @extend .input-borderless;
+    input {
+      // Bootstrap class; no sense in wrapping this one
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
 
-          background-color: $light-gray-background;
-        }
-      }
+      background-color: $light-gray-background;
+    }
 
-      .auth-helper {
-        margin: 10px 0px 0px;
+    .auth-helper {
+      @extend %bold;
+      @include devise-links();
+      margin: 10px 0 0;
 
-        @extend .text-bold;
-
-        a {
-          @extend .text-bold;
-        }
-      }
-
-      #or {
-        @extend .text-center;
-
-        @extend .center-block;
-
-        .fa-stack {
-          margin-top: 35px;
-
-          .fa-stack-2x {
-            color: #F1F1F1;
-            font-size: 3em;
-          }
-
-          .fa-stack-1x {
-            color: #9D9D9D;
-            font-size: 1.5em;
-            top: 0.25em;
-            left: 0.15em;
-          }
-        }
-      }
-
-      #oauth {
-        label {
-          color: transparent;
-        }
-
-        .fa-t2t {
-          @extend .text-bold;
-
-          font-size: 0.9em;
-        }
-      }
     }
 
     .row-disclaimer {
       margin-bottom: 30px;
+    }
 
-      .auth-disclaimer {
-        @extend .text-center;
-
-        a {
-          @extend .text-bold;
-
-          color: black;
-        }
-      }
+    .auth-disclaimer {
+      @extend %centered-text;
+      @include devise-links($black-text);
     }
 
     .row-actions {
       margin-top: 15px;
+    }
 
-      .auth-switch {
-        @extend .text-bold;
+    .auth-switch {
+      @extend %bold;
+      @include devise-links();
 
-        margin-top: 5px;
-        margin-bottom: 0px;
-
-        a {
-          @extend .text-bold;
-        }
-      }
+      margin-top: 5px;
+      margin-bottom: 0;
     }
   }
 }
 
-.well-hr {
-  border-top: 1px solid #e3e3e3;
-  margin: 15px auto;
-}
-
-.select-option {
-  font-weight: bold;
-  margin-bottom: 0px;
-}
-
-.select-help {
-  font-size: 0.85em;
-  margin: 0px 15px;
-}
-
 .select2-container {
-  padding: 0px !important;
+  padding: 0 !important;
   border: none !important;
 }
 
