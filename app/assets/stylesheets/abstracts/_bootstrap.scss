@@ -15,6 +15,11 @@ $font-size-h4: ceil($font-size-base * 1.125);
 $font-size-h5: $font-size-base;
 $font-size-h6: ceil($font-size-base * 0.75);
 
+$font-size-xsmall: ceil($font-size-base * 0.65);
+$font-size-xlarge: ceil($font-size-base * 1.65);
+$font-size-medium: ceil($font-size-base * 1.1);
+
+
 $headings-font-weight: 500;
 
 $navbar-border-radius: 0;

@@ -59,14 +59,12 @@
   }
 
   %user-title-style {
-    @extend %bolder;
+    @extend %xsmall-text;
     margin-bottom: 0;
   }
 
   .user-title {
-    @extend %bolder;
-
-    margin-bottom: 0;
+    @extend %user-title-style;
   }
 
   .stage-creation-date {
@@ -307,7 +305,6 @@
     background-color: $white;
     padding: 5px 15px;
     vertical-align: bottom;
-
 
     .headline {
       @extend %xs-hidden, %bolder;

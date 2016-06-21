@@ -1,3 +1,12 @@
+%comment-textarea {
+  background-color: $lightest-gray-background;
+  box-shadow: none;
+  border: 0;
+  resize: vertical;
+  font-size: 16px;
+  line-height: 1.7em;
+}
+
 .comment {
   background-color: $white;
   border-bottom: 1.5px solid $comment-border;
@@ -10,50 +19,51 @@
   .comment-header {
     .media-commenter {
       margin-bottom: 0.75em;
+    }
 
-      .media-left {
-        .fa-user-avatar {
-          @extend .fa-lg;
-          width: 100% !important;
-          margin-top: 0.5em;
+    .fa-user-avatar {
+      // Should probably not extend but we do want to preserve this behavior.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .fa-lg;
+      // scss-lint:enable PlaceholderInExtend
+      width: 100% !important;
+      margin-top: 0.5em;
+    }
 
-          .fa-stack-2x {
-            @extend .fa-2x;
+    .fa-stack-2x {
+      // Should probably not extend but we do want to preserve this behavior.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .fa-2x;
+      // scss-lint:enable PlaceholderInExtend
 
-            color: $new-user;
-          }
+      color: $new-user;
+    }
 
-          .fa-stack-1x {
-            @extend .fa-lg;
+    .fa-stack-1x {
+      // Should probably not extend but we do want to preserve this behavior.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .fa-lg;
+      // scss-lint:enable PlaceholderInExtend
+      @extend %small-text, %bolder;
 
-            @extend .text-small;
+      margin-top: 0.75em;
+      margin-left: 0.5em;
+    }
 
-            @extend .text-bolder;
+    .media-body {
+      padding-left: 2.25em;
+    }
 
-            margin-top: 0.75em;
-            margin-left: 0.5em;
-          }
-        }
-      }
+    .user-caption {
+      margin-top: 0.5em;
+    }
 
-      .media-body {
-        padding-left: 2.25em;
-
-        .user-caption {
-          margin-top: 0.5em;
-
-          .user-name {
-            margin-bottom: 0;
-          }
-        }
-      }
+    .user-name {
+      margin-bottom: 0;
     }
 
     .timestamp {
-      @extend .text-xsmall;
-
-      @extend .pull-right;
-
+      @extend %xsmall-text, %right-pull;
       margin-top: 2.5em;
     }
   }
@@ -69,36 +79,27 @@
   .comment-actions {
     ul {
       margin-bottom: 0;
+    }
 
-      li {
-        font-size: $font-size-h6;
-        color: $light-gray-text;
-        margin-right: 1.5em;
+    li {
+      font-size: $font-size-h6;
+      color: $light-gray-text;
+      margin-right: 1.5em;
+    }
 
-        &.dropdown-link {
-          margin-right: 0;
+    a {
+      color: $light-gray-text;
+    }
 
-          a {
-            color: $light-gray-text;
-          }
-        }
-
-        a {
-          color: $light-gray-text;
-        }
-      }
+    .dropdown-link {
+      margin-right: 0;
     }
   }
 
   form {
     textarea {
-      display: unset !important;
-      background-color: $lightest-gray-background;
-      box-shadow: none;
-      border: 0;
-      resize: vertical;
-      font-size: 16px;
-      line-height: 1.7em;
+      @extend %comment-textarea;
+      display: unset;
     }
   }
 }
@@ -114,31 +115,27 @@
 
   form {
     textarea {
-      background-color: $lightest-gray-background;
-      box-shadow: none;
-      border: 0;
-      resize: vertical;
-      font-size: 16px;
-      line-height: 1.7em;
+      @extend %comment-textarea;
     }
   }
 }
 
 .new-comment {
+  // Hierarchy extension; no major qualms with this.
+  // scss-lint:disable PlaceholderInExtend
   @extend .comment;
+  // scss-lint:enable PlaceholderInExtend
 
   padding-bottom: 0;
   margin: 0;
   border-bottom: 0;
 
-  .input-switch {
-    .form-group {
-      margin-bottom: 0;
+  .form-group {
+    margin-bottom: 0;
+  }
 
-      .help-block {
-        margin-bottom: 0;
-      }
-    }
+  .help-block {
+    margin-bottom: 0;
   }
 }
 
@@ -150,7 +147,7 @@
 }
 
 .discussion-header {
-  @extend .text-center;
+  @extend %centered-text;
 
   font-weight: bold;
   text-transform: uppercase;
@@ -171,42 +168,43 @@
   padding: 0 0 40px;
 
   .fa-close.fa-2x {
-    @extend .pull-right;
+    @extend %right-pull;
 
     position: relative;
     top: 30px;
-    color: $gray-light;
+    color: $light-gray-text;
   }
 
-  .comment-block {
-    .comment-header {
-      @extend .text-center;
+  .comment-header {
+    @extend %centered-text;
 
+    font-weight: bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: $light-gray-text;
+    font-size: 0.9em;
+  }
+
+  .comment-title {
+    @extend %section-title;
+
+    margin-bottom: 5px;
+
+    a {
       font-weight: bold;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      color: $light-gray-text;
-      font-size: 0.9em;
     }
+  }
 
-    .comment-title {
-      @extend .section-title;
-
-      margin-bottom: 5px;
-
-      a {
-        font-weight: bold;
-      }
-    }
-
-    .comment-description {
-      font-size: 1.1em;
-      margin-bottom: 20px;
-    }
+  .comment-description {
+    font-size: 1.1em;
+    margin-bottom: 20px;
   }
 
   .well-comment {
+    // Hierarchy extension; no major qualms with this.
+    // scss-lint:disable PlaceholderInExtend
     @extend .comment;
+    // scss-lint:enable PlaceholderInExtend
     @include border-radius(10px);
 
     padding: 30px 40px 15px;

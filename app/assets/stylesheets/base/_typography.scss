@@ -25,6 +25,10 @@
   @extend .hidden-xs;
 }
 
+%right-pull {
+  @extend .pull-right;
+}
+
 // scss-lint:enable PlaceholderInExtend
 
 
@@ -68,11 +72,12 @@
   text-decoration: underline;
 }
 
-// Additional on top of bootstrap
+%xsmall-text {
+  @extend %bolder;
 
-$font-size-xsmall: ceil($font-size-base * 0.65);
-$font-size-xlarge: ceil($font-size-base * 1.65);
-$font-size-medium: ceil($font-size-base * 1.1);
+  font-size: $font-size-xsmall;
+  color: $xsmall-text-color;
+}
 
 // Weights
 
@@ -113,10 +118,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-xsmall {
-  @extend %bolder;
-
-  font-size: $font-size-xsmall !important;
-  color: $xsmall-text-color;
+  @extend %xsmall-text;
 }
 
 .text-xsmall-normal {
@@ -189,7 +191,7 @@ $font-size-medium: ceil($font-size-base * 1.1);
 }
 
 .text-gray {
-  color: $gray-light;
+  color: $light-gray-text;
 }
 
 .text-black {
@@ -240,7 +242,7 @@ h6 {
   @extend .text-uppercase;
   // scss-lint:enable PlaceholderInExtend
 
-  color: $gray-light;
+  color: $light-gray-text;
 
   a {
     @extend %bolder;
@@ -274,9 +276,13 @@ div {
 
 // Universal Classes
 
-.section-title {
+%section-title {
   @extend %centered-text;
   margin-bottom: 0.5em;
+}
+
+.section-title {
+  @extend %section-title;
 }
 
 .section-description {
