@@ -1,14 +1,13 @@
-#landing-splash {
-  background-repeat: no-repeat;
+.landing-splash {
   background-size: cover;
-  background-position: 50% 0%;
+  background: no-repeat 50% 0;
 
   .opacity-content {
     padding: 40px 0;
-    color: white;
+    color: $white-text;
 
-    #headline {
-      margin: 10px 0px 30px;
+    .headline {
+      margin: 10px 0 30px;
     }
 
     .embed-responsive {
@@ -17,79 +16,55 @@
   }
 }
 
-#landing-challenge {
-  padding: 30px 0px;
-  background-color: white;
-
-  .panel-rdc {
-    margin-top: 1.5em;
-
-    @include border-radius(20px);
-
-    border-color: $solution;
-
-    .panel-heading {
-      @include border-radius(18px);
-
-      border-bottom-right-radius: 0px;
-      border-bottom-left-radius: 0px;
-      background-color: $solution;
-      border-color: $solution;
-      color: white;
-    }
-  }
+.landing-challenge {
+  padding: 30px 0;
+  background-color: $white;
 
   .well-challenge {
-    background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0% 0%;
+    background: no-repeat 0 0;
     color: $challenge-well-text-color;
     position: relative;
     min-height: 420px;
 
     .well-content {
-      margin: 5em 2em 0em;
+      margin: 5em 2em 0;
+    }
 
-      .well-title {
-        margin-bottom: 20px;
-      }
+    .well-title {
+      margin-bottom: 20px;
+    }
 
-      .well-subtitle {
-        @extend .text-large;
+    .well-subtitle {
+      @extend .text-large;
 
-        margin-bottom: 40px;
-      }
+      margin-bottom: 40px;
     }
   }
 
   h2 {
     .link-span {
       padding-left: 20px;
+    }
 
-      a {
-        color: $link-color;
-      }
+    a {
+      color: $link-color;
     }
   }
 }
 
-#landing-report {
-  padding: 30px 0px;
+.landing-what {
+  padding: 30px 0;
   background-color: $light-gray-background;
 }
 
-#landing-what {
-  padding: 30px 0px;
-  background-color: $light-gray-background;
-
-  #process-stages {
-    margin: 30px 0px 0px;
-  }
+.process-stages {
+  margin: 30px 0 0;
 }
 
-#landing-suggest {
-  padding: 30px 0px;
-  background-color: white;
+.landing-suggest {
+  padding: 30px 0;
+  background-color: $white;
 
   .section-description {
     a {
@@ -100,8 +75,8 @@
   }
 }
 
-#landing-invite {
-  padding: 30px 0px;
+.landing-invite {
+  padding: 30px 0;
   background-color: $light-gray-background;
 }
 
@@ -116,7 +91,7 @@
     position: relative;
     font-size: 1.5em;
     right: -25px;
-    color: #D1D3D4;
+    color: $gray-lighter;
   }
 
   .challenge-fa-bubble {

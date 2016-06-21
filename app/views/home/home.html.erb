@@ -1,4 +1,4 @@
-<div id="landing-splash">
+<div class="landing-splash">
   <div class="opacity-layer">
     <div class="opacity-content">
       <div class="container">
@@ -37,7 +37,7 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="row">
           <div class="col-sm-7">
-            <h1 id="headline">
+            <h1 class="headline">
               <%= t('.welcome', platform: t(:project_name)) %>
             </h1>
             <%= link_to t('.explore'), challenge_path(@featured), class: 'btn btn-info btn-rounded text-small' if @featured %>
@@ -48,7 +48,7 @@
   </div>
 </div>
 
-<div id="landing-what">
+<div class="landing-what">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -58,7 +58,7 @@
             <p class="section-description"><%= t('.description', platform: t('project_name')) %></p>
           </div>
         </div>
-        <div id="process-stages">
+        <div class="process-stages">
           <h2 class="section-title"><%= t('.challenge_phases_header') %></h2>
           <div class="row row-process">
             <% Challenge::STAGES.each_with_index do |stage, index| %>
@@ -82,7 +82,7 @@
   </div>
 </div>
 
-<div id="landing-challenge">
+<div class="landing-challenge">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -127,7 +127,7 @@
   </div>
 </div>
 
-<div id="landing-suggest">
+<div class="landing-suggest">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -185,7 +185,7 @@
   </div>
 </div>
 
-<div id="landing-invite">
+<div class="landing-invite">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
