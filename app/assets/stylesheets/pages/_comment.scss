@@ -1,10 +1,10 @@
 .comment {
-  background-color: white;
-  border-bottom: 1.5px solid #e6e6e6;
-  padding: 1em 0px;
+  background-color: $white;
+  border-bottom: 1.5px solid $comment-border;
+  padding: 1em 0;
 
   &:first-child {
-    padding-top: 0px;
+    padding-top: 0;
   }
 
   .comment-header {
@@ -13,10 +13,9 @@
 
       .media-left {
         .fa-user-avatar {
+          @extend .fa-lg;
           width: 100% !important;
           margin-top: 0.5em;
-
-          @extend .fa-lg;
 
           .fa-stack-2x {
             @extend .fa-2x;
@@ -44,7 +43,7 @@
           margin-top: 0.5em;
 
           .user-name {
-            margin-bottom: 0em;
+            margin-bottom: 0;
           }
         }
       }
@@ -69,7 +68,7 @@
 
   .comment-actions {
     ul {
-      margin-bottom: 0em;
+      margin-bottom: 0;
 
       li {
         font-size: $font-size-h6;
@@ -77,7 +76,7 @@
         margin-right: 1.5em;
 
         &.dropdown-link {
-          margin-right: 0px;
+          margin-right: 0;
 
           a {
             color: $light-gray-text;
@@ -96,7 +95,7 @@
       display: unset !important;
       background-color: $lightest-gray-background;
       box-shadow: none;
-      border: none;
+      border: 0;
       resize: vertical;
       font-size: 16px;
       line-height: 1.7em;
@@ -105,19 +104,19 @@
 }
 
 .nested-comment {
-  border-top: 1.5px solid #e6e6e6;
+  border-top: 1.5px solid $comment-border;
   margin-top: 15px;
-  padding: 15px 0px 0px;
+  padding: 15px 0 0;
 
   ul {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   form {
     textarea {
       background-color: $lightest-gray-background;
       box-shadow: none;
-      border: none;
+      border: 0;
       resize: vertical;
       font-size: 16px;
       line-height: 1.7em;
@@ -128,26 +127,26 @@
 .new-comment {
   @extend .comment;
 
-  padding-bottom: 0px;
-  margin: 0px;
-  border-bottom: 0px;
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: 0;
 
   .input-switch {
     .form-group {
-      margin-bottom: 0px;
+      margin-bottom: 0;
 
       .help-block {
-        margin-bottom: 0px;
+        margin-bottom: 0;
       }
     }
   }
 }
 
 .well-discussion {
-  padding: 30px 40px 15px;
-  background-color: white;
-
   @include border-radius(10px);
+  padding: 30px 40px 15px;
+  background-color: $white;
+
 }
 
 .discussion-header {
@@ -168,15 +167,15 @@
   }
 }
 
-#comment-form {
-  padding: 0px 0px 40px;
+.comment-form {
+  padding: 0 0 40px;
 
   .fa-close.fa-2x {
     @extend .pull-right;
 
     position: relative;
     top: 30px;
-    color: #999999;
+    color: $gray-light;
   }
 
   .comment-block {
@@ -184,7 +183,7 @@
       @extend .text-center;
 
       font-weight: bold;
-      margin-bottom: 0px;
+      margin-bottom: 0;
       text-transform: uppercase;
       color: $light-gray-text;
       font-size: 0.9em;
@@ -208,10 +207,10 @@
 
   .well-comment {
     @extend .comment;
+    @include border-radius(10px);
 
     padding: 30px 40px 15px;
-    background-color: white;
+    background-color: $white;
 
-    @include border-radius(10px);
   }
 }

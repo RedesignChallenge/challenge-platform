@@ -15,6 +15,10 @@
 
   .experience-actions {
     margin-top: 15px;
+
+    a {
+      color: $light-gray-text;
+    }
   }
 
   &.discussion {

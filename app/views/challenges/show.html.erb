@@ -36,7 +36,65 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <!-- Experience Process Bubbles: START -->
-        b
+        <div class="row challenge-process">
+          <% if @challenge.incentive.present? %>
+            <div class="col-sm-9 col-sm-offset-3">
+              <p class="text-center text-recipe"><%= @challenge.incentive.html_safe %></p>
+            </div>
+          <% end %>
+
+          <% Challenge::STAGES.each do |stage| %>
+            <div class="col-xs-6 col-sm-3" style='margin-bottom:15px'>
+              <div class="stage-recap">
+                <%= link_to eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)") do %>
+                  <% if @challenge.stage_number == stage[:number] %>
+                      <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %> active">
+                        <i class="fa fa-stack-2x fa-circle"></i>
+                        <i class="fa fa-stack-1x fa-inverse <%= stage[:icon] %>"></i>
+                      </span>
+                  <% elsif @challenge.stage_number > stage[:number] %>
+                      <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %> completed">
+                        <i class="fa fa-stack-2x fa-circle-thin"></i>
+                        <i class="fa fa-stack-1x text-<%= stage[:name] %> <%= stage[:icon] %>"></i>
+                      </span>
+                  <% else %>
+                    <span class="fa-stack challenge-fa-bubble text-<%= stage[:name] %>-light pending">
+                      <i class="fa fa-stack-2x fa-circle-thin"></i>
+                      <i class="fa fa-stack-1x text-<%= stage[:name] %>-light <%= stage[:icon] %>"></i>
+                    </span>
+                  <% end %>
+
+                  <%= content_tag(:i, '', class: 'fa fa-play', style: ('color: transparent' if stage[:name] == 'solution')) %>
+
+                  <div class="clearfix"></div>
+                  <div class="caption">
+                    <h4 class="text-black">
+                      <% if @challenge.stage_number > stage[:number] %>
+                        <i class="fa icon-check"></i>
+                        <%= pluralize(eval("@challenge.#{stage[:name]}_stage.#{stage[:name].pluralize}.published.count"), stage[:name]).titleize %> <%= stage[:action].titleize %>
+                      <% else %>
+                        <%= stage[:headline] %>
+                      <% end %>
+                    </h4>
+                    <p class="description"><%= stage[:description] %></p>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="stage-cta">
+                <% if @challenge.stage_number == stage[:number] %>
+                  <%= link_to t('.story'), challenge_active_stage_path(@challenge), class: 'btn btn-info btn-rounded text-small' unless stage[:name] == 'solution' %>
+                <% else %>
+                  <% if @challenge.stage_number > stage[:number] %>
+                    <p class="cta-paragraph"><%= link_to t('.completed'), eval("challenge_#{stage[:name]}_stage_path(@challenge, @challenge.#{stage[:name]}_stage)"), class: 'completed text-default' %></p>
+                  <% else %>
+
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
         <!-- Experience Process Bubbles: END -->
 
 
