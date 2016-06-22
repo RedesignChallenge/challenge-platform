@@ -13,37 +13,6 @@
   }
 }
 
-.fa-user-avatar {
-  font-size: 1.33333333em;
-  width: 100%;
-  margin-top: 0.5em;
-  margin-left: 0.05em;
-
-  .fa-stack-2x {
-    // Should probably not extend but we do want to preseve this behavior.
-    // scss-lint:disable PlaceholderInExtend
-    @extend .fa-3x, .fa-lg;
-    // scss-lint:enable PlaceholderInExtend
-
-    color: $new-user;
-  }
-
-  .fa-stack-1x {
-    // Should probably not extend but we do want to preserve this behavior.
-    // scss-lint:disable PlaceholderInExtend
-    @extend .fa-lg;
-    // scss-lint:enable PlaceholderInExtend
-    @extend %small-text, %bolder;
-    margin-top: 1.4em;
-  }
-
-  .fa-inverse {
-    a {
-      color: $white-text;
-    }
-  }
-}
-
 .user-caption {
   margin-top: 1em;
 

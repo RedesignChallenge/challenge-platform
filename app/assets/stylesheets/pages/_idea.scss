@@ -1,3 +1,37 @@
+@mixin idea-action-link($color: $dropdown-toggle-text) {
+  ul {
+    @extend %small-text;
+
+    margin-top: 10px;
+
+    a {
+      color: $color;
+    }
+  }
+}
+
+@mixin idea-action-base($color: $dropdown-toggle-text) {
+  @include idea-action-link($color);
+
+  position: absolute;
+  left: 20px;
+  bottom: 0.25em;
+  width: 100%;
+  padding-right: 2.5em;
+
+  .actions {
+    margin-right: 0;
+  }
+
+  .dropdown-toggle {
+    color: $color;
+  }
+
+  a {
+    color: $white-text;
+  }
+}
+
 .idea-thumbnail {
   height: 425px;
   padding: 20px;
@@ -24,33 +58,12 @@
   }
 
   .idea-actions {
-    position: absolute;
-    left: 20px;
-    bottom: 0.25em;
-    width: 100%;
-    padding-right: 2.5em;
+    @include idea-action-base();
 
-    a {
-      color: $white-text;
-    }
+  }
 
-    ul {
-      @extend %small-text;
-
-      margin-top: 10px;
-
-      a {
-        color: $dropdown-toggle-text;
-      }
-    }
-
-    .actions {
-      margin-right: 0;
-    }
-
-    .dropdown-toggle {
-      color: $dropdown-toggle-text;
-    }
+  .idea-inspiration-actions {
+    @include idea-action-base($white-text);
   }
 
   .dropdown-menu {
@@ -60,26 +73,13 @@
       color: $text-color;
     }
   }
-
-  .fa-user-avatar {
-    @extend %right-pull;
-
-    width: auto !important;
-    right: 1.5em;
-
-    .fa-stack-2x {
-      @extend .fa-2x;
-    }
-
-    .fa-stack-1x {
-      margin-top: 0.75em;
-      margin-left: 0.5em;
-    }
-  }
 }
 
 .idea-inspiration {
+  // Won't get converted into a placeholder, may be worth doing in the future
+  // scss-lint:disable PlaceholderInExtend
   @extend .idea-thumbnail;
+  // scss-lint:enable PlaceholderInExtend
 
   background-color: $idea !important;
   color: $white-text;
@@ -129,98 +129,74 @@
     top: 40%;
     color: $gray-light;
 
-    p.instruction {
+    .instruction {
       font-size: 1.5em;
       font-weight: bold;
     }
   }
 }
 
+.well-featured-idea {
+  @include featured-well($idea);
+}
+
 .idea-overview {
   padding: 40px 0;
+}
 
-  .well-featured-idea {
-    @include featured-well($idea);
+.media-refinement {
+  .media-body {
+    padding-top: 0.5em;
+    padding-left: 2.25em;
   }
+}
 
-  .well-idea {
-    @include border-radius(10px);
+.well-idea {
+  @include border-radius(10px);
 
-    padding: 0;
-    background-color: $white;
+  padding: 0;
+  background-color: $white;
 
-    .actions {
-      a {
-        color: $gray-text;
-      }
-    }
-
-    .fa-close {
-      padding-right: 15px;
-      padding-top: 15px;
-    }
-
-    .idea-content {
-      padding: 0 3em 1.5em;
-    }
-
-    .row-idea {
-      margin-bottom: 30px;
-    }
-
-    .content-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .media-author {
-      margin-bottom: 30px;
-    }
-
-    .media-body {
-      padding-left: 5em;
-    }
-
-    .media-left {
-      height: 5em;
-
-      .fa-user-avatar {
-        .fa-stack-2x {
-          font-size: 4em !important;
-        }
-
-        .fa-stack-1x {
-          margin-top: 1.9em;
-          margin-left: 1.9em;
-        }
-      }
-    }
-
-    .refinement-header {
-      @extend %bold;
-
-      color: $light-gray-text;
-      font-size: 0.95em;
+  .actions {
+    a {
+      color: $gray-text;
     }
   }
 
-  .media-refinement {
-    .media-left {
-      .fa-user-avatar {
-        .fa-stack-2x {
-          @extend .fa-2x;
-        }
+  .fa-close {
+    padding-right: 15px;
+    padding-top: 15px;
+  }
 
-        .fa-stack-1x {
-          margin-top: 0.85em;
-          margin-left: 0.45em;
-        }
-      }
-    }
+  .idea-content {
+    padding: 0 3em 1.5em;
+  }
 
-    .media-body {
-      padding-top: 0.5em;
-      padding-left: 2.25em;
-    }
+  .row-idea {
+    margin-bottom: 30px;
+  }
+
+  .content-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .media-author {
+    margin-bottom: 30px;
+  }
+
+  .media-body {
+    padding-left: 5em;
+  }
+
+  .media-left {
+    height: 5em;
+  }
+
+  .refinement-header {
+    @extend %bold;
+
+    color: $light-gray-text;
+    font-size: 0.95em;
   }
 }
 
@@ -264,48 +240,60 @@
     }
 
     label {
+      // Bootstrap classes; no sense in wrapping these in a placeholder at this time.
+      // scss-lint:disable PlaceholderInExtend
       @extend .label-borderless;
-      @extend .text-idea;
       @extend .text-uppercase;
+      // scss-lint:enable PlaceholderInExtend
 
+      color: $idea;
       font-size: 18px;
+    }
+  }
+
+  .idea-refinement {
+    padding: 0 12px;
+
+    .fa-close {
+      @extend %left-pull;
+
+      margin-right: 10px;
+      color: $idea-refinement-text;
+
+
+      // FIXME:  The nesting here appears to be the nature of the beast.  May be better to move the pointer piece to its own class in the future?
+      // scss-lint:disable NestingDepth
+      &:hover,
+      &:focus,
+      &:active {
+        cursor: pointer;
+      }
+      // scss-lint:enable NestingDepth
     }
 
     .idea-refinement {
-      padding: 0 12px;
+      // Bootstrap origin; won't turn into a placeholder
+      // scss-lint:disable PlaceholderInExtend
+      @extend .help-block;
+      // scss-lint:enable PlaceholderInExtend
 
-      .fa-close {
-        @extend .pull-left;
-
-        margin-right: 10px;
-        color: $idea-refinement-text;
-
-        &:hover,
-        &:focus,
-        &:active {
-          cursor: pointer;
-        }
-      }
-
-      .idea-refinement {
-        @extend .help-block;
-
-        font-size: 0.8em !important;
-      }
+      font-size: 0.8em !important;
     }
   }
 }
 
 .idea-example-thumbnail {
+  // Not likely to be turned into a placeholder right now
+  // scss-lint:disable PlaceholderInExtend
   @extend .idea-form-thumbnail;
+  // scss-lint:enable PlaceholderInExtend
 
   p {
     padding: 6px 12px;
 
     &.example-idea-title {
-      @extend .text-idea;
-
       @extend %bold;
+      color: $idea;
 
       font-size: 1.6em;
       margin-bottom: 0;

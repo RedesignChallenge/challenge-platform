@@ -1,0 +1,85 @@
+@mixin user-avatar($avatar-args) {
+  .fa-stack-2x {
+    // Class comes from Font Awesome; not going to turn into placeholder.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-2x;
+    // scss-lint:enable PlaceholderInExtend
+    font-size: map-get($avatar-args, 2x-font-size);
+  }
+
+  .fa-stack-1x {
+    margin-top: map-get($avatar-args, 1x-margin-top);
+    margin-left: map-get($avatar-args, 1x-margin-left);
+  }
+}
+
+
+.fa-user-avatar {
+  font-size: 1.33333333em;
+  width: 100%;
+  margin-top: 0.5em;
+  margin-left: 0.05em;
+
+  .fa-stack-2x {
+    // Classes come from Font Awesome; not going to turn into placeholders.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-3x, .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+
+    color: $new-user;
+  }
+
+  .fa-stack-1x {
+    // Class comes from Font Awesome; not going to turn into placeholder.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+    @extend %small-text, %bolder;
+    margin-top: 1.4em;
+  }
+
+  .fa-inverse {
+    a {
+      color: $white-text;
+    }
+  }
+}
+
+.media-refinement {
+  .fa-user-avatar {
+    $refinement-avatar-args: (
+      1x-margin-top: 0.85em,
+      1x-margin-left: 0.45em
+    );
+
+    @include user-avatar($refinement-avatar-args);
+  }
+}
+
+.media-author {
+  .fa-user-avatar {
+    $author-avatar-args: (
+        2x-font-size: 4em,
+        1x-margin-top: 1.9em,
+        1x-margin-left: 1.9em
+    );
+
+    @include user-avatar($author-avatar-args);
+  }
+}
+
+.idea-thumbnail {
+  .fa-user-avatar {
+    $idea-thumbnail-args: (
+        1x-margin-top: 0.75em,
+        1x-margin-left: 0.5em
+    );
+
+    @extend %right-pull;
+    @include user-avatar($idea-thumbnail-args);
+
+    width: auto;
+    right: 1.5em;
+
+  }
+}

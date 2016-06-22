@@ -29,6 +29,10 @@
   @extend .pull-right;
 }
 
+%left-pull {
+  @extend .pull-left;
+}
+
 %black-text {
   color: $black-text !important;
 }
