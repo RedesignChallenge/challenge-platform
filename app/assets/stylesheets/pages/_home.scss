@@ -36,7 +36,7 @@
     }
 
     .well-subtitle {
-      @extend .text-large;
+      @extend %large-text;
 
       margin-bottom: 40px;
     }
@@ -68,9 +68,8 @@
 
   .section-description {
     a {
+      @extend %lighter;
       color: $gray;
-
-      @extend .text-lighter;
     }
   }
 }
@@ -81,7 +80,7 @@
 }
 
 .row-process {
-  @extend .center-block, .text-center;
+  @extend %centered-block, %centered-text;
 
   padding-top: 30px;
 
@@ -95,38 +94,22 @@
   }
 
   .challenge-fa-bubble {
-    width: 100% !important;
+    width: 100%;
 
     .fa-stack-2x {
-      font-size: 9em !important;
+      font-size: 9em;
     }
 
     .fa-stack-1x {
-      &.fa-comment {
-        font-size: 5em !important;
-        top: 0.45em;
-      }
-
-      &.fa-lightbulb-o {
-        font-size: 6.5em !important;
-        top: 0.175em;
-      }
-
-      &.fa-flask {
-        font-size: 6.5em !important;
-        top: 0.175em;
-      }
-
-      &.fa-puzzle-piece {
-        font-size: 6.5em !important;
-        top: 0.175em;
-      }
+      @include challenge-step-icon('experience', 5em, 0.45em);
+      @include challenge-step-icon('idea');
+      @include challenge-step-icon('recipe');
+      @include challenge-step-icon('solution');
     }
   }
 
   .caption {
-    @extend .text-center;
-    @extend .text-black;
+    @extend %centered-text, %black-text;
 
     margin-top: 7em;
     margin-bottom: 20px;

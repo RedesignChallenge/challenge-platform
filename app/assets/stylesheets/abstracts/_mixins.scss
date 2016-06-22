@@ -2,7 +2,6 @@
   border-radius: $radius;
 }
 
-
 @mixin text-for-stage($stage) {
   color: map-get($stage-colors, $stage);
 }
@@ -48,4 +47,28 @@
 
   padding: 0.25em;
   background-color: $background-color;
+}
+
+@mixin challenge-step-icon($step, $font-size: 6.5em, $top: 0.175em) {
+  @if $step == 'experience' {
+    &.fa-comment {
+      font-size: $font-size;
+      top: 0.45em;
+    }
+  } @else if $step == 'idea' {
+    &.fa-lightbulb-o {
+      font-size: $font-size;
+      top: 0.175em;
+    }
+  } @else if $step == 'recipe' {
+    &.fa-flask {
+      font-size: $font-size;
+      top: 0.175em;
+    }
+  } @else if $step == 'solution' {
+    &.fa-puzzle-piece {
+      font-size: $font-size;
+      top: $top;
+    }
+  }
 }

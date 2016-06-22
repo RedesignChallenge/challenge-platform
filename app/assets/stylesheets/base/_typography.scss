@@ -29,6 +29,10 @@
   @extend .pull-right;
 }
 
+%black-text {
+  color: $black-text !important;
+}
+
 // scss-lint:enable PlaceholderInExtend
 
 
@@ -195,7 +199,7 @@
 }
 
 .text-black {
-  color: $black-text !important;
+  @extend %black-text;
 }
 
 .text-white {
