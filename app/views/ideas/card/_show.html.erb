@@ -24,7 +24,7 @@
     </div>
 
     <div class="idea-actions">
-      <ul id="actions" class="list-inline pull-left">
+      <ul class="actions list-inline pull-left">
         <li id="idea-<%= idea.id %>-comments">
           <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) do %>
             <i class="fa fa-comments-o"></i> <%= "#{idea.comments_count unless idea.comments_count.zero?}" %>

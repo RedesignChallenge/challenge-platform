@@ -2,22 +2,20 @@
   height: 425px;
   padding: 20px;
   position: relative;
-  background-color: white;
+  background-color: $white;
 
   .folded-corner {
     margin: 0 auto;
-
-    // font-size: 12px
     position: relative;
   }
 
-  &:after {
-    content: "";
+  &::after {
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
     border-width: 0 20px 20px 0;
-    border-color: #B9B9B9 $lightest-gray-background;
+    border-color: $idea-thumbnail-border $lightest-gray-background;
     border-style: solid;
   }
 
@@ -32,35 +30,39 @@
     width: 100%;
     padding-right: 2.5em;
 
+    a {
+      color: $white-text;
+    }
+
     ul {
-      @extend .text-small;
+      @extend %small-text;
 
       margin-top: 10px;
 
       a {
-        color: #AEAEAE;
+        color: $dropdown-toggle-text;
       }
+    }
 
-      &#actions {
-        margin-right: 0px;
+    .actions {
+      margin-right: 0;
+    }
 
-        a.dropdown-toggle {
-          color: #AEAEAE;
-        }
+    .dropdown-toggle {
+      color: $dropdown-toggle-text;
+    }
+  }
 
-        .dropdown-menu {
-          min-width: 100%;
+  .dropdown-menu {
+    min-width: 100%;
 
-          a {
-            color: #333;
-          }
-        }
-      }
+    a {
+      color: $text-color;
     }
   }
 
   .fa-user-avatar {
-    @extend .pull-right;
+    @extend %right-pull;
 
     width: auto !important;
     right: 1.5em;
@@ -80,61 +82,52 @@
   @extend .idea-thumbnail;
 
   background-color: $idea !important;
-  color: white;
+  color: $white-text;
 
   .folded-corner {
     margin: 0 auto;
-
-    // font-size: 12px
     position: relative;
   }
 
-  &:after {
-    content: "";
+  &::after {
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
-    border-width: 0 20px 20px 0;
-    border-color: $idea-light $lightest-gray-background;
-    border-style: solid;
+    border: 0 solid $idea-light;
+    border-right: 20px $lightest-gray-background;
+    border-bottom-width: 20px;
+    border-left-color: $lightest-gray-background;
   }
 
-  .idea-actions {
-    ul {
-      a {
-        color: white;
-      }
+  .dropdown-toggle {
+    color: $white-text;
+  }
 
-      &#actions {
-        a.dropdown-toggle {
-          color: white;
-        }
-
-        .dropdown-menu {
-          a {
-            color: #333;
-          }
-        }
-      }
+  .dropdown-menu {
+    a {
+      color: $text-color;
     }
   }
 }
 
 .idea-add-thumbnail {
-  border: 2px dashed #B1B0B2;
-  background-color: #ebeced;
+  border: 2px dashed $well-text;
+  background-color: $well-bg;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     text-decoration: none;
     color: $gray-text;
   }
 
   .idea-add {
-    @extend .text-center;
+    @extend %centered-text;
 
     position: relative;
     top: 40%;
-    color: #999999;
+    color: $gray-light;
 
     p.instruction {
       font-size: 1.5em;
@@ -143,20 +136,20 @@
   }
 }
 
-#idea-overview {
-  padding: 40px 0px;
+.idea-overview {
+  padding: 40px 0;
 
   .well-featured-idea {
     @include featured-well($idea);
   }
 
   .well-idea {
-    padding: 0px;
-    background-color: white;
-
     @include border-radius(10px);
 
-    #actions {
+    padding: 0;
+    background-color: $white;
+
+    .actions {
       a {
         color: $gray-text;
       }
@@ -168,92 +161,90 @@
     }
 
     .idea-content {
-      padding: 0px 3em 1.5em;
+      padding: 0 3em 1.5em;
+    }
 
-      .row-idea {
-        margin-bottom: 30px;
+    .row-idea {
+      margin-bottom: 30px;
+    }
 
-        .media-author {
-          margin-bottom: 30px;
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
 
-          .media-left {
-            height: 5em;
+    .media-author {
+      margin-bottom: 30px;
+    }
 
-            .fa-user-avatar {
-              .fa-stack-2x {
-                font-size: 4em !important;
-              }
+    .media-body {
+      padding-left: 5em;
+    }
 
-              .fa-stack-1x {
-                margin-top: 1.9em;
-                margin-left: 1.9em;
-              }
-            }
-          }
+    .media-left {
+      height: 5em;
 
-          .media-body {
-            padding-left: 5em;
-          }
+      .fa-user-avatar {
+        .fa-stack-2x {
+          font-size: 4em !important;
         }
 
-        .content-block:last-child {
-          margin-bottom: 0px;
-        }
-      }
-
-      .row-refinements {
-        .refinement-header {
-          @extend .text-bold;
-
-          color: $light-gray-text;
-          font-size: 0.95em;
-        }
-
-        .media-refinement {
-          .media-left {
-            .fa-user-avatar {
-              .fa-stack-2x {
-                @extend .fa-2x;
-              }
-
-              .fa-stack-1x {
-                margin-top: 0.85em;
-                margin-left: 0.45em;
-              }
-            }
-          }
-
-          .media-body {
-            padding-top: 0.5em;
-            padding-left: 2.25em;
-          }
+        .fa-stack-1x {
+          margin-top: 1.9em;
+          margin-left: 1.9em;
         }
       }
+    }
+
+    .refinement-header {
+      @extend %bold;
+
+      color: $light-gray-text;
+      font-size: 0.95em;
+    }
+  }
+
+  .media-refinement {
+    .media-left {
+      .fa-user-avatar {
+        .fa-stack-2x {
+          @extend .fa-2x;
+        }
+
+        .fa-stack-1x {
+          margin-top: 0.85em;
+          margin-left: 0.45em;
+        }
+      }
+    }
+
+    .media-body {
+      padding-top: 0.5em;
+      padding-left: 2.25em;
     }
   }
 }
 
-#idea-comments {
-  padding: 20px 0px;
+.idea-comments {
+  padding: 20px 0;
 }
 
-#idea-share {
-  padding: 20px 0px;
+.idea-share {
+  padding: 20px 0;
 }
 
-#idea-form {
-  padding: 0px 0px 40px;
+.idea-form {
+  padding: 0 0 40px;
 
   .fa-close.fa-2x {
-    @extend .pull-right;
+    @extend %right-pull;
 
     position: relative;
     top: 30px;
-    color: #999999;
+    color: $gray-light;
   }
 
   .idea-form-thumbnail {
-    background-color: white;
+    background-color: $white;
     padding: 20px;
     position: relative;
 
@@ -262,70 +253,36 @@
       position: relative;
     }
 
-    &:after {
-      content: "";
+    &::after {
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
       border-width: 0 20px 20px 0;
-      border-color: #B9B9B9 #F4F5F5;
+      border-color: $idea-thumbnail-border $body-bg;
       border-style: solid;
     }
 
     label {
       @extend .label-borderless;
-
       @extend .text-idea;
-
       @extend .text-uppercase;
 
       font-size: 18px;
     }
 
-    #idea_title {
-      @extend .input-borderless;
-
-      @extend .text-bold;
-
-      @extend .text-idea;
-
-      font-size: 1.6em;
-      padding: 6px 12px;
-    }
-
-    #idea_description {
-      @extend .input-borderless;
-
-      line-height: 1.5em;
-      box-shadow: none;
-      border: none;
-      resize: vertical;
-    }
-
-    #idea_impact {
-      @extend .input-borderless;
-    }
-
-    #idea_implementation {
-      @extend .input-borderless;
-    }
-
-    #idea_link {
-      @extend .input-borderless;
-
-      @extend .input-graybg;
-    }
-
-    #idea_refinement {
-      padding: 0px 12px;
+    .idea-refinement {
+      padding: 0 12px;
 
       .fa-close {
         @extend .pull-left;
 
         margin-right: 10px;
-        color: #656565;
+        color: $idea-refinement-text;
 
-        &:hover, &:focus, &:active {
+        &:hover,
+        &:focus,
+        &:active {
           cursor: pointer;
         }
       }
@@ -339,44 +296,6 @@
   }
 }
 
-#idea-refinement_parent {
-  .idea-title {
-    margin-bottom: 0px;
-
-    a {
-      color: $idea;
-      font-size: 1.8em;
-      line-height: 1em;
-    }
-  }
-
-  .modal-body {
-    max-height: 405px;
-    overflow-y: auto;
-
-    label {
-      padding: 0px !important;
-    }
-
-    .idea-embed {
-      margin-bottom: 15px;
-    }
-
-    .idea-description {
-      line-height: 1.5em;
-      margin-bottom: 30px;
-
-      &:last-child {
-        margin-bottom: 0px;
-      }
-    }
-  }
-
-  .modal-dialog {
-    margin-top: 70px;
-  }
-}
-
 .idea-example-thumbnail {
   @extend .idea-form-thumbnail;
 
@@ -386,10 +305,10 @@
     &.example-idea-title {
       @extend .text-idea;
 
-      @extend .text-bold;
+      @extend %bold;
 
       font-size: 1.6em;
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 
     &.example-idea-description {
@@ -406,12 +325,17 @@
   position: relative;
 
   .well-example {
-    @extend .hidden-xs;
+    @extend %xs-hidden;
 
     color: $light-gray-text;
 
+    background-color: $white;
+    position: absolute;
+    padding: 100px 19px;
+    top: 10px;
+
     .example-heading {
-      @extend .text-bold;
+      @extend %bold;
 
       font-size: 1.8em;
       line-height: 1.4em;
@@ -421,26 +345,24 @@
       font-size: 1.1em;
     }
 
-    background-color: white;
-    position: absolute;
-    padding: 100px 19px;
-    top: 10px;
-
     &.well-right {
-      right: 0px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      border-right: 0px;
+      right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
     }
 
     &.well-left {
-      left: 0px;
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-left: 0px;
+      left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
     }
 
-    &:hover, &:focus, &:active, &.active {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
       cursor: pointer;
     }
   }

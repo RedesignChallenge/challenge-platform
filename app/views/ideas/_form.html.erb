@@ -8,7 +8,7 @@
 
         <% if @idea.refinement_parent %>
           <div ng-init="refinement_parent_id=<%= @idea.refinement_parent_id %>"></div>
-          <div id="idea_refinement" class="form-group" ng-show="refinement_parent_id">
+          <div class="idea-refinement form-group" ng-show="refinement_parent_id">
             <%= f.hidden_field :refinement_parent_id, 'ng-value' => 'refinement_parent_id' %>
             <i class="fa fa-close" ng-click="refinement_parent_id=null"></i>
             <span class="idea-refinement"><%= t('ideas._form.refinement') %><%= link_to @idea.refinement_parent.title.html_safe, '#', 'ng-click' => 'showRefinement()', onclick: 'return false;' %></span>

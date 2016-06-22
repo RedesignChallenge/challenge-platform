@@ -1,6 +1,6 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id="idea-form" ng-controller="IdeaCtrl">
+<div class="idea-form" ng-controller="IdeaCtrl">
   <div class="container">
     <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, @idea.idea_stage, @idea.problem_statement, @idea), data: { confirm: t('.confirm') } do %>
       <i class="fa fa-close fa-2x"></i>
