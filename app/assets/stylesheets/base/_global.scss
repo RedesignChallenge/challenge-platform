@@ -104,27 +104,6 @@
   margin-bottom: 4em;
 }
 
-.featured-contributors {
-  padding: 1em 0 0;
-
-  .fa-user-avatar {
-    width: auto !important;
-    margin-right: 2em;
-
-    .fa-stack-2x {
-      // Cannot convert Font Awesome class to placeholder
-      // scss-lint:disable PlaceholderInExtend
-      @extend .fa-2x;
-      // scss-lint:enable PlaceholderInExtend
-    }
-
-    .fa-stack-1x {
-      margin-left: 0.5em;
-      margin-top: 0.65em;
-    }
-  }
-}
-
 .row-count {
   h6 {
     .fa {
