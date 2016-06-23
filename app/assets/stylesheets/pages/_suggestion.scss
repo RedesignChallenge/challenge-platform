@@ -1,18 +1,13 @@
 .well-suggestion {
   @include border-radius(10px);
 
-  background-color: white;
+  background-color: $white;
   margin-bottom: 15px;
   padding-left: 3em;
   padding-right: 3em;
 
   .suggestion-time {
-    @extend .text-xsmall;
-
-    @extend .text-right;
-
-    @extend .text-capitalize;
-
+    @extend %xsmall-text, %right-pull, %capitalized-text;
     margin-top: 2.6em;
   }
 
@@ -21,57 +16,56 @@
   }
 
   .suggestion-user {
-    @extend .text-small;
+    @extend %small-text, %bolder;
 
-    @extend .text-bolder;
-
-    color: #333;
-    margin-bottom: 0px;
+    color: $gray-dark;
+    margin-bottom: 0;
   }
 
-  ul.vote {
-    @extend .list-inline;
+  .vote {
+    @extend %inline-list, %centered-text;
 
-    @extend .text-center;
-
-    margin: 0px;
+    margin: 0;
     bottom: 5px;
     position: relative;
 
     .fa {
-      color: #979797;
-
-      &.fa-stack-2x {
-        font-size: 2.25em;
-      }
-
-      &.fa-stack-1x {
-        margin-top: 1px;
-        font-size: 1.125em;
-      }
+      color: $xsmall-text-color;
     }
 
-    li, .list-link {
-      @extend .text-xsmall;
+    .fa-stack-2x {
+      font-size: 2.25em;
+    }
 
-      padding: 0px 3px;
+    .fa-stack-1x {
+      margin-top: 1px;
+      font-size: 1.125em;
+    }
+
+    li,
+    .list-link {
+      @extend %xsmall-text;
+
+      padding: 0 3px;
     }
   }
 }
 
 .suggestion-form {
   .well-share {
-    border: 2px dashed #B1B0B2;
-    background-color: white;
+    border: 2px dashed $well-text;
+    background-color: $white;
 
     p {
-      @extend .text-large;
+      @extend %large-text;
 
-      color: #B1B0B2;
-      margin-bottom: 0px;
+      color: $well-text;
+      margin-bottom: 0;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       cursor: pointer;
     }
   }
@@ -79,65 +73,41 @@
   form {
     margin-top: 15px;
 
-    #suggestion_title {
-      @extend .input-borderless;
-
-      @extend .text-black;
-
-      @extend .text-bold;
-
-      font-size: $font-size-h3;
-      padding: 6px;
+    .form-group {
+      margin-bottom: 0;
     }
 
-    #suggestion_description {
-      @extend .input-borderless;
-
-      @extend .input-graybg;
-    }
-
-    #suggestion_link {
-      @extend .input-borderless;
-
-      @extend .input-graybg;
-    }
-
-    .input-switch {
-      .form-group {
-        margin-bottom: 0px;
-      }
-
-      .help-block {
-        margin-bottom: 0px;
-      }
+    .help-block {
+      margin-bottom: 0;
     }
   }
 }
 
-#suggestion-form {
+.suggestion-form-field {
+  // Hierarchical inheritance; won't adjust at this time
+  // scss-lint:disable PlaceholderInExtend
   @extend .suggestion-form;
+  // scss-lint:enable PlaceholderInExtend
 
-  padding: 20px 0px 40px;
+  padding: 20px 0 40px;
 
   .fa-close.fa-2x {
-    @extend .pull-right;
+    @extend %right-pull;
 
     position: relative;
     top: 30px;
-    color: #999999;
+    color: $gray-light;
   }
 
   .suggestion-block {
     .suggestion-header {
-      @extend .text-center;
+      @extend %centered-text;
 
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 
     .suggestion-title {
-      @extend .section-title;
-
-      @extend .text-green;
+      @extend %section-title, %navbar-color;
     }
   }
 }
