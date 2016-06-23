@@ -31,10 +31,10 @@
   }
 }
 
-.recipe-thumbnail {
-  .media-body {
-    padding-left: 0;
-  }
+.media-card-body {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 1.6em;
 }
 
 .recipe-overview {
@@ -137,9 +137,7 @@
     border-top-left-radius: 10px;
 
     .panel-title {
-      @extend .text-center;
-
-      @extend .text-bold;
+      @extend %centered-text, %bold;
 
       text-transform: uppercase;
       color: $white-text;
@@ -159,13 +157,13 @@
     padding: 20px 50px 10px;
 
     label {
+      // Bootstrap class; won't make into a placeholder.
+      // scss-lint:disable PlaceholderInExtend
       @extend .label-borderless;
-
-      @extend .text-large;
-
       @extend .text-uppercase;
+      // scss-lint:enable PlaceholderInExtend
 
-      @extend .text-recipe;
+      @extend %large-text, %text-recipe;
     }
   }
 
@@ -191,7 +189,10 @@
     padding-left: 20px;
 
     textarea {
+      // Bootstrap class; not wrapping this one just yet.
+      // scss-lint:disable PlaceholderInExtend
       @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
     }
   }
 
@@ -201,7 +202,10 @@
 }
 
 .media-step-new {
+  // Extension of hierarchy; leaving alone for now
+  // scss-lint:disable PlaceholderInExtend
   @extend .media-step;
+  // scss-lint:enable PlaceholderInExtend
 
   margin-top: -15px;
 

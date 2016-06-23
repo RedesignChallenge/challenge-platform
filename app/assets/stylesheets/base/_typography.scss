@@ -155,36 +155,14 @@
 
 // Colors
 
-.text-experience {
-  color: $experience !important;
-}
+@each $key, $value in $stage-colors {
+  %text-#{$key} {
+    color: $value !important;
+  }
 
-.text-idea {
-  color: $idea !important;
-}
-
-.text-recipe {
-  color: $recipe !important;
-}
-
-.text-solution {
-  color: $solution !important;
-}
-
-.text-experience-light {
-  color: $experience-light !important;
-}
-
-.text-idea-light {
-  color: $idea-light !important;
-}
-
-.text-recipe-light {
-  color: $recipe-light !important;
-}
-
-.text-solution-light {
-  color: $solution-light !important;
+  .text-#{$key} {
+    @extend %text-#{$key};
+  }
 }
 
 .text-green,

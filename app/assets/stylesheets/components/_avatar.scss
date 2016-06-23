@@ -91,6 +91,22 @@
 }
 
 .well-recipe {
+  .media-author {
+    margin-bottom: 30px;
+
+    .media-left {
+      height: 5em;
+    }
+
+    .media-body {
+      padding-left: 5em;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   .fa-user-avatar {
     $recipe-author-avatar-args: (
         font-size: 4em,
