@@ -8,6 +8,7 @@
   }
 
   .fa-stack-1x {
+    font-size: map-get($avatar-args, font-size-1x);
     margin-top: map-get($avatar-args, margin-top);
     margin-left: map-get($avatar-args, margin-left);
   }
@@ -146,4 +147,43 @@
     right: 1.5em;
 
   }
+}
+
+.solution-experiences {
+  .fa-user-avatar {
+    $solution-experience-avatar-args: (
+      margin-left: 0.09em,
+      margin-top: 0.75em
+    );
+
+    @include user-avatar($solution-experience-avatar-args);
+    width: 1.5em;
+    height: 1.5em;
+
+  }
+}
+
+.solution-recipe {
+  .fa-user-avatar {
+    $solution-recipe-avatar-args: (
+      font-size: 6em,
+      font-size-1x: 2em,
+      margin-top: 0.8em
+    );
+
+    @include user-avatar($solution-recipe-avatar-args);
+    width: 6em;
+    height: 6em;
+    line-height: 6em;
+  }
+}
+
+.solution-ideas {
+
+  .fa-user-avatar {
+    width: 2.5em;
+    height: 3.5em;
+    line-height: 3.5em;
+  }
+
 }

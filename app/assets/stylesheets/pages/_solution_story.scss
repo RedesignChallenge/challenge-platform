@@ -1,20 +1,20 @@
-.solution_story-thumbnail {
-  background-color: white;
-  padding: 0px;
-
+.solution-story-thumbnail {
   @include border-radius(10px);
+
+  background-color: $white;
+  padding: 0;
 
   img {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
   }
 
-  .solution_story-content {
+  .solution-story-content {
     min-height: 250px;
     padding: 1.5em;
     position: relative;
 
-    .solution_story-effort {
+    .solution-story-effort {
       position: absolute;
       bottom: 1.5em;
       left: 0.75em;
@@ -27,27 +27,21 @@
   }
 }
 
-#solution_story-overview {
-  padding: 4em 0em;
+.solution-story-overview {
+  padding: 4em 0;
 
-  .well-solution_story {
-    padding: 0px;
-    background-color: white;
-
+  .well-solution-story {
     @include border-radius(10px);
 
-    #actions {
-      a {
-        color: $gray-text;
-      }
-    }
+    padding: 0;
+    background-color: $white;
 
     .fa-close {
       padding-right: 15px;
       padding-top: 15px;
     }
 
-    .solution_story-content {
+    .solution-story-content {
       padding-top: 15px;
 
       .row-solution {
@@ -80,12 +74,12 @@
             .name {
               font-size: 1.3em;
               font-weight: bold;
-              margin-bottom: 0px;
+              margin-bottom: 0;
             }
 
             .title {
               font-size: 0.85em;
-              margin-bottom: 0px;
+              margin-bottom: 0;
               color: $light-gray-text;
               font-weight: bold;
             }
@@ -99,9 +93,7 @@
             margin-bottom: 20px;
 
             .credit-heading {
-              @extend .text-solution;
-
-              @extend .text-bold;
+              @extend %text-solution, %bold;
             }
 
             .credit-names {
@@ -112,32 +104,11 @@
               .img-circle {
                 width: 7.5em;
               }
-
-              .fa-user-avatar {
-                width: 6em;
-                height: 6em;
-                line-height: 6em;
-
-                .fa-stack-2x {
-                  font-size: 6em !important;
-                }
-
-                .fa-stack-1x {
-                  font-size: 2em !important;
-                  margin-top: 0.8em;
-                }
-              }
             }
 
             &.solution-ideas {
               .img-circle {
                 width: 4em;
-              }
-
-              .fa-user-avatar {
-                width: 2.5em;
-                height: 3.5em;
-                line-height: 3.5em;
               }
             }
 
@@ -145,27 +116,12 @@
               .img-circle {
                 width: 2em;
               }
-
-              .fa-user-avatar {
-                width: 1.5em;
-                height: 1.5em;
-                line-height: 1em;
-
-                .fa-stack-2x {
-                  @extend .fa-2x;
-                }
-
-                .fa-stack-1x {
-                  margin-left: 0.09em;
-                  margin-top: 0.75em;
-                }
-              }
             }
           }
         }
 
         .content-block:last-child {
-          margin-bottom: 0px;
+          margin-bottom: 0;
         }
 
         .solution-show-file {
@@ -189,41 +145,37 @@
     }
 
     &:last-child {
-      margin-bottom: 0em;
+      margin-bottom: 0;
     }
   }
 }
 
-#solution_story-comments {
-  padding: 2em 0em;
+.solution-story-comments {
+  padding: 2em 0;
 }
 
-#solution_story-share {
-  padding: 2em 0em;
-}
 
 .solution-effort {
-  margin-bottom: 15px;
-
   @extend .badge;
 
+  margin-bottom: 15px;
   padding: 5px;
   border-radius: 20px;
-  background-color: #E6E7E8;
+  background-color: $solution-badge-bg;
 
   .badge {
     border-radius: 20px;
     padding: 5px 15px;
     color: $text-color;
-    background-color: #E6E7E8;
+    background-color: $solution-badge-bg;
 
     &:first-child {
-      background-color: white;
+      background-color: $white;
     }
 
     &.active {
       background-color: $solution;
-      color: white;
+      color: $white-text;
     }
   }
 }
