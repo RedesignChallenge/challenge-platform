@@ -1,15 +1,16 @@
 <%= render partial: 'challenges/header', cache: true %>
 
-<div id="recipe-form">
+<div class="recipe-form">
   <div class="container">
     <%= link_to challenge_recipe_stage_path(@challenge, @recipe.recipe_stage), data: { confirm: t('.confirm') } do %>
       <i class="fa fa-close fa-2x"></i>
     <% end %>
     <div class="clearfix"></div>
+
     <%= render partial: 'recipes/header' %>
+
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1">
-
         <div class="panel panel-recipe">
           <div class="panel-heading">
             <p class="panel-title"><%= t('recipes.new.title') %></p>

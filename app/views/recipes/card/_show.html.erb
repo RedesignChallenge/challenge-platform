@@ -1,4 +1,4 @@
-<div id="recipe-<%= recipe.id %>" class="well well-recipe">
+<div id="recipe-<%= recipe.id %>" class="well well-recipe recipe-thumbnail">
   <% if recipe.featured? %>
     <div class="ribbon-wrapper">
       <%= link_to challenge_recipe_stage_cookbook_recipe_path(@challenge, recipe.recipe_stage, recipe.cookbook, recipe) do %>

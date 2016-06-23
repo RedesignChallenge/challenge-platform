@@ -4,15 +4,14 @@
     // scss-lint:disable PlaceholderInExtend
     @extend .fa-2x;
     // scss-lint:enable PlaceholderInExtend
-    font-size: map-get($avatar-args, 2x-font-size);
+    font-size: map-get($avatar-args, font-size);
   }
 
   .fa-stack-1x {
-    margin-top: map-get($avatar-args, 1x-margin-top);
-    margin-left: map-get($avatar-args, 1x-margin-left);
+    margin-top: map-get($avatar-args, margin-top);
+    margin-left: map-get($avatar-args, margin-left);
   }
 }
-
 
 .fa-user-avatar {
   font-size: 1.33333333em;
@@ -69,31 +68,59 @@
 .media-refinement {
   .fa-user-avatar {
     $refinement-avatar-args: (
-      1x-margin-top: 0.85em,
-      1x-margin-left: 0.45em
+        margin-top: 0.85em,
+        margin-left: 0.45em
     );
 
     @include user-avatar($refinement-avatar-args);
   }
 }
 
-.media-author {
+.well-idea {
+  .media-author {
+    .fa-user-avatar {
+      $idea-author-avatar-args: (
+          font-size: 4em,
+          margin-top: 1.9em,
+          margin-left: 1.9em
+      );
+
+      @include user-avatar($idea-author-avatar-args);
+    }
+  }
+}
+
+.well-recipe {
   .fa-user-avatar {
-    $author-avatar-args: (
-        2x-font-size: 4em,
-        1x-margin-top: 1.9em,
-        1x-margin-left: 1.9em
+    $recipe-author-avatar-args: (
+        font-size: 4em,
+        margin-top: 1.9em,
+        margin-left: 1.9em
     );
 
-    @include user-avatar($author-avatar-args);
+    @include user-avatar($recipe-author-avatar-args);
+  }
+}
+
+.recipe-thumbnail {
+  .media-author {
+    .fa-user-avatar {
+      $recipe-author-avatar-args: (
+        font-size: 1.75em,
+        margin-top: 0.65em,
+        margin-left: 0.45em
+      );
+
+      @include user-avatar($recipe-author-avatar-args);
+    }
   }
 }
 
 .idea-thumbnail {
   .fa-user-avatar {
     $idea-thumbnail-args: (
-        1x-margin-top: 0.75em,
-        1x-margin-left: 0.5em
+        margin-top: 0.75em,
+        margin-left: 0.5em
     );
 
     @extend %right-pull;
