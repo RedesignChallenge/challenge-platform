@@ -70,7 +70,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: false
+    enabled: true
 
   ImportPath:
     enabled: true

@@ -5,7 +5,10 @@
   padding: 15px 15px 10px;
 
   .twitter-tweet {
+    // Overrides a class provided externally by Twitter.
+    // scss-lint:disable ImportantRule
     margin: 0 !important;
+    // scss-lint:enable ImportantRule
   }
 
   .experience-actions {
@@ -82,7 +85,7 @@
     }
 
     .fa-stack-2x {
-      font-size: 4em !important;
+      font-size: 4em;
     }
 
     .fa-stack-1x {

@@ -81,7 +81,7 @@
   @extend .idea-thumbnail;
   // scss-lint:enable PlaceholderInExtend
 
-  background-color: $idea !important;
+  background-color: $idea;
   color: $white-text;
 
   .folded-corner {
@@ -277,7 +277,7 @@
       @extend .help-block;
       // scss-lint:enable PlaceholderInExtend
 
-      font-size: 0.8em !important;
+      font-size: 0.8em;
     }
   }
 }

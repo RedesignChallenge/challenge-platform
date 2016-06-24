@@ -24,7 +24,7 @@
               <div class="featured-contributors">
                 <h6 class="zero-margin-bottom"><%= t('.featured_contributions') %></h6>
                 <% @featured_experiences.each do |experience| %>
-                  <%= render partial: 'shared/avatar', locals: { user: experience.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_experience_stage_theme_experience_path(@challenge, @experience_stage, experience.theme, experience) } %>
+                  <%= render partial: 'shared/avatar', locals: { user: experience.user, inverse_font_size: '0.7em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_experience_stage_theme_experience_path(@challenge, @experience_stage, experience.theme, experience) } %>
                 <% end %>
               </div>
             <% end %>

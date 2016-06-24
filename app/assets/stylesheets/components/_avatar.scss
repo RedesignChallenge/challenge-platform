@@ -45,11 +45,42 @@
   }
 }
 
+.comment-header {
+  .fa-user-avatar {
+    // Should probably not extend but we do want to preserve this behavior.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+
+    $comment-header-avatar-args: (
+        margin-top: 0.75em,
+        margin-left: 0.5em
+    );
+
+    @include user-avatar($comment-header-avatar-args);
+  }
+}
+
+.user-header {
+  .fa-user-avatar {
+    $user-header-avatar-args: (
+        font-size: 7em,
+        font-size-1x: 2em,
+        margin-top: 1em
+    );
+
+    @include user-avatar($user-header-avatar-args);
+
+    width: 7em;
+    height: 5.5em;
+  }
+}
+
 .featured-contributors {
   padding: 1em 0 0;
 
   .fa-user-avatar {
-    width: auto !important;
+    width: auto;
     margin-right: 2em;
 
     .fa-stack-2x {

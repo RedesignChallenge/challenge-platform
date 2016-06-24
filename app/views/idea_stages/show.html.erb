@@ -24,7 +24,7 @@
               <div class="featured-contributors">
                 <h6 class="zero-margin-bottom"><%= t('.featured_contributions') %></h6>
                 <% @featured_ideas.each do |idea| %>
-                  <%= render partial: 'shared/avatar', locals: { user: idea.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
+                  <%= render partial: 'shared/avatar', locals: { user: idea.user, inverse_font_size: '0.7em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_idea_stage_problem_statement_idea_path(@challenge, @idea_stage, idea.problem_statement, idea) } %>
                 <% end %>
               </div>
             <% end %>

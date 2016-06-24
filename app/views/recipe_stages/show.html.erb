@@ -21,7 +21,7 @@
               <div class="featured-contributors">
                 <h6 class="zero-margin-bottom"><%= t('recipe_stages.show.featured_contributions') %></h6>
                 <% @featured_recipes.each do |recipe| %>
-                  <%= render partial: 'shared/avatar', locals: { user: recipe.user, circle_font_size: '1.8em', inverse_font_size: '0.76em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, recipe.cookbook, recipe) } %>
+                  <%= render partial: 'shared/avatar', locals: { user: recipe.user, inverse_font_size: '0.7em', avatar_style: 'width:2em;margin-right:0.5em', link_path: challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, recipe.cookbook, recipe) } %>
                 <% end %>
               </div>
             <% end %>

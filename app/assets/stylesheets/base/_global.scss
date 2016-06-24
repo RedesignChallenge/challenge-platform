@@ -23,7 +23,7 @@
 
     a {
       @extend %text-default-color;
-      font-weight: inherit !important;
+      font-weight: inherit;
     }
   }
 
@@ -125,11 +125,7 @@
 }
 
 .zero-margin-bottom {
-  margin-bottom: 0 !important;
-}
-
-.half-margin-bottom {
-  margin-bottom: 0.5em !important;
+  margin-bottom: 0;
 }
 
 .hr-break {
@@ -278,52 +274,26 @@
   }
 }
 
-.badge-experience {
-  &.active {
-    .fa-stack-1x {
-      font-size: 1em;
+$stages: 'experience', 'idea', 'recipe', 'solution';
+
+@each $stage in $stages {
+  .badge-#{$stage} {
+    @if $stage == 'experience' {
+      &.active {
+        .fa-stack-1x {
+          font-size: 1em;
+        }
+      }
     }
-  }
 
-  &.selected {
-    background-color: $experience !important;
+    &.selected {
+      background-color: map-get($stage-colors, $stage);
 
-    .headline,
-    .fa.fa-check {
-      @extend %text-white-color;
-    }
-  }
-}
-
-.badge-idea {
-  &.selected {
-    background-color: $idea !important;
-
-    .headline,
-    .fa.fa-check {
-      @extend %text-white-color;
+      .headline,
+      .fa.fa-check {
+        @extend %text-white-color;
+      }
     }
   }
 }
 
-.badge-recipe {
-  &.selected {
-    background-color: $recipe !important;
-
-    .headline,
-    .fa.fa-check {
-      @extend %text-white-color;
-    }
-  }
-}
-
-.badge-solution {
-  &.selected {
-    background-color: $solution !important;
-
-    .headline,
-    .fa.fa-check {
-      @extend %text-white-color;
-    }
-  }
-}

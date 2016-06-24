@@ -21,35 +21,6 @@
       margin-bottom: 0.75em;
     }
 
-    .fa-user-avatar {
-      // Should probably not extend but we do want to preserve this behavior.
-      // scss-lint:disable PlaceholderInExtend
-      @extend .fa-lg;
-      // scss-lint:enable PlaceholderInExtend
-      width: 100% !important;
-      margin-top: 0.5em;
-    }
-
-    .fa-stack-2x {
-      // Should probably not extend but we do want to preserve this behavior.
-      // scss-lint:disable PlaceholderInExtend
-      @extend .fa-2x;
-      // scss-lint:enable PlaceholderInExtend
-
-      color: $new-user;
-    }
-
-    .fa-stack-1x {
-      // Should probably not extend but we do want to preserve this behavior.
-      // scss-lint:disable PlaceholderInExtend
-      @extend .fa-lg;
-      // scss-lint:enable PlaceholderInExtend
-      @extend %small-text, %bolder;
-
-      margin-top: 0.75em;
-      margin-left: 0.5em;
-    }
-
     .media-body {
       padding-left: 2.25em;
     }

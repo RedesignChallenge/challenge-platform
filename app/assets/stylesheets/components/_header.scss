@@ -22,9 +22,12 @@
     &:focus,
     &:active,
     &.active {
-      text-decoration: none !important;
+      text-decoration: none;
       color: $btn-info-color;
-      background-color: $btn-info-border;
+      // Due to Bootstrap's hierarchy, this rule is overridden by .navbar-nav > li > a:hover.  Making !important to get around this limitation.
+      // scss-lint:disable ImportantRule
+      background-color: $btn-info-border !important;
+      // scss-lint:enable ImportantRule
       border-color: $btn-info-border;
     }
   }

@@ -38,22 +38,22 @@
 }
 
 %black-text {
-  color: $black-text !important;
+  color: $black-text;
 }
 
 // scss-lint:enable PlaceholderInExtend
 
 
 %text-white-color {
-  color: $white-text !important;
+  color: $white-text;
 }
 
 %navbar-color {
-  color: $navbar-default-bg !important;
+  color: $navbar-default-bg;
 }
 
 %text-default-color {
-  color: $text-color !important;
+  color: $text-color;
 }
 
 %small-text {
@@ -112,7 +112,7 @@
 // Decorations
 
 .text-italic {
-  font-style: italic !important;
+  font-style: italic;
 }
 
 .text-underline {
@@ -122,7 +122,7 @@
 // Sizing
 
 .text-large {
-  font-size: $font-size-large !important;
+  font-size: $font-size-large;
 }
 
 .text-small {
@@ -136,21 +136,21 @@
 .text-xsmall-normal {
   @extend %bold;
 
-  font-size: $font-size-xsmall !important;
+  font-size: $font-size-xsmall;
   color: $xsmall-text-color;
 }
 
 .text-xlarge {
-  font-size: $font-size-xlarge !important;
+  font-size: $font-size-xlarge;
   line-height: 1.2em;
 }
 
 .text-medium {
-  font-size: $font-size-medium !important;
+  font-size: $font-size-medium;
 }
 
 .text-h2 {
-  font-size: $font-size-h2 !important;
+  font-size: $font-size-h2;
 }
 
 .text-double-spaced {
@@ -161,7 +161,7 @@
 
 @each $key, $value in $stage-colors {
   %text-#{$key} {
-    color: $value !important;
+    color: $value;
   }
 
   .text-#{$key} {
@@ -177,7 +177,7 @@
 .text-suggestion {
   @extend %navbar-color;
 
-  margin: 0.5em 0 1em !important;
+  margin: 0.5em 0 1em;
 }
 
 .text-gray {
@@ -197,7 +197,7 @@
 }
 
 .text-link {
-  color: $link-color !important;
+  color: $link-color;
 }
 
 // Element definitions
