@@ -1,3 +1,7 @@
+// Global variables
+
+$stages: 'experience', 'idea', 'recipe', 'solution';
+
 .submit-link {
   @extend %small-text;
 
@@ -273,8 +277,6 @@
     margin: 0 1em;
   }
 }
-
-$stages: 'experience', 'idea', 'recipe', 'solution';
 
 @each $stage in $stages {
   .badge-#{$stage} {

@@ -37,18 +37,25 @@
   }
 }
 
+// Bootstrap class; will respect !important
+// scss-lint:disable ImportantRule
 .bootstrap-switch-info {
   background-color: $link-color !important;
 }
+// scss-lint:enable ImportantRule
 
 .table-borderless {
   // Built-in style from Bootstrap, cannot modify
   // scss-lint:disable PlaceholderInExtend
   @extend .table;
   // scss-lint:enable PlaceholderInExtend
+
+  // Border is coming in from Bootstrap; will respect !important
+  // scss-lint:disable ImportantRule
   td {
     border: none !important;
   }
+  // scss-lint:enable ImportantRule
 }
 
 %dropdown-small-link-text {
@@ -69,6 +76,8 @@
   }
 }
 
+// Likely overriding a value from Boostrap; will respect !important in this context.
+// scss-lint:disable ImportantRule
 .radio,
 .checkbox {
   label {
@@ -80,6 +89,7 @@
     }
   }
 }
+//scss-lint:enable ImportantRule
 
 .help-block {
   font-size: 0.8em;
@@ -134,36 +144,16 @@
   @extend %label-style;
 }
 
-.label-experience {
-  @extend %label-style;
+$stages: 'experience', 'idea', 'recipe', 'solution';
 
-  padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0 0;
-  background-color: $experience !important;
-}
+@each $stage in $stages {
+  .label-#{$stage} {
+    @extend %label-style;
 
-.label-idea {
-  @extend %label-style;
-
-  padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0 0;
-  background-color: $idea !important;
-}
-
-.label-recipe {
-  @extend %label-style;
-
-  padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0 0;
-  background-color: $recipe !important;
-}
-
-.label-solution {
-  @extend %label-style;
-
-  padding: 0.25em 3em 0.75em;
-  border-radius: 0.5em 0 0;
-  background-color: $solution !important;
+    padding: 0.25em 3em 0.75em;
+    border-radius: 0.5em 0 0;
+    background-color: map-get($stage-colors, $stage);
+  }
 }
 
 .btn:focus,
@@ -176,9 +166,12 @@ a:active:focus,
   outline: none;
 }
 
+// Bootstrap override; !important respected
+// scss-lint:disable ImportantRule
 .btn-sm {
   font-size: 12px !important;
 }
+// scss-lint:enable ImportantRule
 
 .btn-fa {
   padding-top: 0.15em;
@@ -197,6 +190,8 @@ a:active:focus,
   padding-right: 2.5em;
 }
 
+// Bootstrap class; respecting !important.
+// scss-lint:disable ImportantRule
 .alert-fullpage {
   border-radius: 0 !important;
   text-align: center !important;
@@ -206,6 +201,7 @@ a:active:focus,
   position: relative;
   bottom: $line-height-computed;
 }
+// scss-lint:enable ImportantRule
 
 .alert-info {
   background-color: $link-color;
@@ -259,6 +255,11 @@ a:active:focus,
   }
 }
 
-.badge-green {
-  background-color: $footer-background !important;
+.badge-bg {
+  @extend %xsmall-text-no-color;
+
+  background-color: $footer-background;
+  color: $white-text;
+  bottom: 0.2em;
+  position: relative;
 }

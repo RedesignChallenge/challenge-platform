@@ -9,7 +9,7 @@
         <p class="user-name">
           <%= link_to "#{comment.user.display_name}", user_path(comment.user) %>
           <% if @challenge.panel.user_ids.include?(comment.user_id) %>
-            <span class="badge badge-green text-xsmall text-white" style='bottom: 0.2em;position: relative;'>
+            <span class="badge badge-bg">
               <%= t('comments.card._show.community_guide') %>
             </span>
           <% end %>

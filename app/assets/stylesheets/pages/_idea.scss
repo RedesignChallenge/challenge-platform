@@ -38,6 +38,10 @@
   position: relative;
   background-color: $white;
 
+  a:hover {
+    color: $idea;
+  }
+
   .folded-corner {
     margin: 0 auto;
     position: relative;

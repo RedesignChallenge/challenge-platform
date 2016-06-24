@@ -91,6 +91,12 @@
   color: $xsmall-text-color;
 }
 
+%xsmall-text-no-color {
+  @extend %bolder;
+
+  font-size: $font-size-xsmall;
+}
+
 // Weights
 
 .text-lighter {
