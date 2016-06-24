@@ -71,7 +71,7 @@
     }
 
     .credit-heading {
-      @extend %text-solution, %bold;
+      @extend %text-solution, %text-bold;
     }
 
     .credit-names {
@@ -164,7 +164,7 @@
 
     &.active {
       background-color: $solution;
-      color: $white-text;
+      color: $white;
     }
   }
 }

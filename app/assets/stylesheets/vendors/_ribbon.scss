@@ -12,10 +12,10 @@
     // scss-lint:disable PlaceholderInExtend
     @extend .text-center;
     // scss-lint:enable PlaceholderInExtend
-    @extend %text-white-color;
-    @extend %bolder;
+    @extend %text-bolder;
     @include transform(rotate(-45deg));
 
+    color: $white;
     float: right;
     line-height: 1.2em;
     position: relative;

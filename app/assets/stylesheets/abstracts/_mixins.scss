@@ -14,7 +14,7 @@
 }
 
 @mixin stage-navigation($background-color) {
-  @extend %xs-hidden;
+  @extend %hidden-xs;
 
   background-color: $background-color;
   color: $white;
@@ -42,8 +42,10 @@
   // scss-lint:disable PlaceholderInExtend
   @extend .well, .well-sm;
   // scss-lint:enable PlaceholderInExtend
-  @extend %centered-text, %text-white-color;
+  @extend %text-center;
   @include border-radius(1em);
+
+  color: $white;
 
   padding: 0.25em;
   background-color: $background-color;

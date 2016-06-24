@@ -4,7 +4,7 @@
 
   .opacity-content {
     padding: 40px 0;
-    color: $white-text;
+    color: $white;
 
     .headline {
       margin: 10px 0 30px;
@@ -36,7 +36,7 @@
     }
 
     .well-subtitle {
-      @extend %large-text;
+      @extend %text-large;
 
       margin-bottom: 40px;
     }
@@ -68,7 +68,7 @@
 
   .section-description {
     a {
-      @extend %lighter;
+      @extend %text-lighter;
       color: $gray;
     }
   }
@@ -80,7 +80,7 @@
 }
 
 .row-process {
-  @extend %centered-block, %centered-text;
+  @extend %center-block, %text-center;
 
   padding-top: 30px;
 
@@ -109,7 +109,9 @@
   }
 
   .caption {
-    @extend %centered-text, %black-text;
+    @extend %text-center;
+
+    color: $black-text;
 
     margin-top: 7em;
     margin-bottom: 20px;

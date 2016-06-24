@@ -63,7 +63,7 @@
     }
 
     .stage-cta {
-      @extend %centered-text;
+      @extend %text-center;
 
       position: absolute;
       bottom: 0;
@@ -112,14 +112,14 @@
   background-color: $white;
 
   .row-panelists {
-    @extend %centered-block, %centered-text;
+    @extend %center-block, %text-center;
 
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
   .panelist-title {
-    @extend %centered-text, %large-text;
+    @extend %text-center, %text-large;
 
     margin: 0;
   }

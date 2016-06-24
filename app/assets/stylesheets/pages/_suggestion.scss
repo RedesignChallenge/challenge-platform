@@ -7,7 +7,9 @@
   padding-right: 3em;
 
   .suggestion-time {
-    @extend %xsmall-text, %right-pull, %capitalized-text;
+    @extend %pull-right, %text-capitalize;
+
+    color: $xsmall-text-color;
     margin-top: 2.6em;
   }
 
@@ -16,14 +18,14 @@
   }
 
   .suggestion-user {
-    @extend %small-text, %bolder;
+    @extend %small-text, %text-bolder;
 
     color: $gray-dark;
     margin-bottom: 0;
   }
 
   .vote {
-    @extend %inline-list, %centered-text;
+    @extend %list-inline, %text-center;
 
     margin: 0;
     bottom: 5px;
@@ -44,8 +46,9 @@
 
     li,
     .list-link {
-      @extend %xsmall-text;
+      @extend %text-xsmall;
 
+      color: $xsmall-text-color;
       padding: 0 3px;
     }
   }
@@ -57,7 +60,7 @@
     background-color: $white;
 
     p {
-      @extend %large-text;
+      @extend %text-large;
 
       color: $well-text;
       margin-bottom: 0;
@@ -70,15 +73,41 @@
     }
   }
 
+  .media-borderless {
+    margin-bottom: 0;
+  }
+
   form {
     margin-top: 15px;
 
-    .form-group {
+    .help-block {
       margin-bottom: 0;
     }
 
-    .help-block {
+    .suggestion-link {
       margin-bottom: 0;
+    }
+
+
+    .suggestion-title {
+      // Bootstrap override class; no interference intended
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
+      @extend %text-bold;
+
+      color: $black-text;
+      font-size: $font-size-h3;
+      padding: 6px;
+    }
+
+    .suggestion-description,
+    .suggestion-link {
+      // Bootstrap override class; no interference intended
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      @extend .input-graybg;
+      // scss-lint:enable PlaceholderInExtend
     }
   }
 }
@@ -92,7 +121,7 @@
   padding: 20px 0 40px;
 
   .fa-close.fa-2x {
-    @extend %right-pull;
+    @extend %pull-right;
 
     position: relative;
     top: 30px;
@@ -101,13 +130,15 @@
 
   .suggestion-block {
     .suggestion-header {
-      @extend %centered-text;
+      @extend %text-center;
 
       margin-bottom: 0;
     }
 
     .suggestion-title {
-      @extend %section-title, %navbar-color;
+      @extend %section-title;
+
+      color: $navbar-default-bg;
     }
   }
 }

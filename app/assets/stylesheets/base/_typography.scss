@@ -1,59 +1,46 @@
 // The following CSS classes belong to Bootstrap and have been wrapped as placeholders.
-// scss-lint:disable PlaceholderInExtend
 
-%centered-text {
-  @extend .text-center;
+$bootstrap-classes: (
+  'text-center',
+  'text-large',
+  'center-block',
+  'list-inline',
+  'nav-justified',
+  'hidden-xs',
+  'pull-right',
+  'pull-left',
+  'text-capitalize',
+  'text-uppercase'
+);
+
+@each $bootstrap-class in $bootstrap-classes {
+  // Bootstrap classes to be generated dynamically - will ignore the placeholder clause while generating placeholders
+  // scss-lint:disable PlaceholderInExtend
+  %#{$bootstrap-class} {
+    @extend .#{$bootstrap-class};
+  }
+  // scss-lint:enable PlaceholderInExtend
+
+  .#{$bootstrap-class} {
+    @extend %#{$bootstrap-class};
+  }
 }
 
-%large-text {
-  @extend .text-large;
-}
+$font-weights: (
+  'text-lighter': 100,
+  'text-normal': 300,
+  'text-bold': 500,
+  'text-bolder': 700
+);
 
-%centered-block {
-  @extend .center-block;
-}
+@each $type, $weight in $font-weights {
+  %#{$type} {
+    font-weight: $weight;
+  }
 
-%inline-list {
-  @extend .list-inline;
-}
-
-%justified-navigation {
-  @extend .nav-justified;
-}
-
-%xs-hidden {
-  @extend .hidden-xs;
-}
-
-%right-pull {
-  @extend .pull-right;
-}
-
-%left-pull {
-  @extend .pull-left;
-}
-
-%capitalized-text {
-  @extend .text-capitalize;
-}
-
-%black-text {
-  color: $black-text;
-}
-
-// scss-lint:enable PlaceholderInExtend
-
-
-%text-white-color {
-  color: $white-text;
-}
-
-%navbar-color {
-  color: $navbar-default-bg;
-}
-
-%text-default-color {
-  color: $text-color;
+  .#{$type} {
+    @extend %#{$type};
+  }
 }
 
 %small-text {
@@ -61,58 +48,23 @@
 }
 
 %default-small-text {
-  @extend %text-default-color, %small-text;
+  @extend %small-text;
+  color: $text-color;
 }
 
-%bold {
-  font-weight: 500;
-}
-
-%bolder {
-  font-weight: 700;
-}
-
-%normal {
-  font-weight: 300;
-}
-
-%lighter {
-  font-weight: 100;
-}
-
-%underline {
+%text-underline {
   text-decoration: underline;
 }
 
-%xsmall-text {
-  @extend %bolder;
-
-  font-size: $font-size-xsmall;
-  color: $xsmall-text-color;
-}
-
-%xsmall-text-no-color {
-  @extend %bolder;
-
+%text-xsmall {
+  @extend %text-bolder;
   font-size: $font-size-xsmall;
 }
 
-// Weights
+%text-xsmall-no-color {
+  @extend %text-bolder;
 
-.text-lighter {
-  @extend %lighter;
-}
-
-.text-normal {
-  @extend %normal;
-}
-
-.text-bold {
-  @extend %bold;
-}
-
-.text-bolder {
-  @extend %bolder;
+  font-size: $font-size-xsmall;
 }
 
 // Decorations
@@ -122,7 +74,7 @@
 }
 
 .text-underline {
-  @extend %underline;
+  @extend %text-underline;
 }
 
 // Sizing
@@ -136,11 +88,11 @@
 }
 
 .text-xsmall {
-  @extend %xsmall-text;
+  @extend %text-xsmall;
 }
 
 .text-xsmall-normal {
-  @extend %bold;
+  @extend %text-bold;
 
   font-size: $font-size-xsmall;
   color: $xsmall-text-color;
@@ -177,12 +129,11 @@
 
 .text-green,
 .text-submit {
-  @extend %navbar-color;
+  color: $navbar-default-bg;
 }
 
 .text-suggestion {
-  @extend %navbar-color;
-
+  color: $navbar-default-bg;
   margin: 0.5em 0 1em;
 }
 
@@ -191,15 +142,15 @@
 }
 
 .text-black {
-  @extend %black-text;
+  color: $black-text;
 }
 
 .text-white {
-  @extend %text-white-color;
+  color: $white;
 }
 
 .text-default {
-  @extend %text-default-color;
+  color: $text-color;
 }
 
 .text-link {
@@ -213,12 +164,12 @@ h2,
 h3,
 h4,
 h5 {
-  @extend %bolder;
+  @extend %text-bolder;
 
   margin-bottom: 1em;
 
   a {
-    @extend %bolder;
+    @extend %text-bolder;
 
     color: inherit;
 
@@ -232,20 +183,12 @@ h5 {
 }
 
 h6 {
-  @extend %bolder;
-  // .text-uppercase belongs to Bootstrap; can't be changed to a placeholder
-  // scss-lint:disable PlaceholderInExtend
-  @extend .text-uppercase;
-  // scss-lint:enable PlaceholderInExtend
+  @extend %text-bolder, %text-uppercase;
 
   color: $light-gray-text;
 
   a {
-    @extend %bolder;
-    // .text-uppercase belongs to Bootstrap; can't be changed to a placeholder
-    // scss-lint:disable PlaceholderInExtend
-    @extend .text-uppercase;
-    // scss-lint:enable PlaceholderInExtend
+    @extend %text-bolder, %text-uppercase;
     color: inherit;
 
     &:hover,
@@ -259,7 +202,7 @@ h6 {
 
 a,
 label {
-  @extend %bold;
+  @extend %text-bold;
 }
 
 p,
@@ -267,13 +210,12 @@ span,
 li,
 input,
 div {
-  @extend %normal;
+  @extend %text-normal;
 }
 
 // Universal Classes
-
 %section-title {
-  @extend %centered-text;
+  @extend %text-center;
   margin-bottom: 0.5em;
 }
 
@@ -282,7 +224,7 @@ div {
 }
 
 .section-description {
-  @extend %centered-text, %large-text;
+  @extend %text-center, %text-large;
 
   color: $gray;
 }

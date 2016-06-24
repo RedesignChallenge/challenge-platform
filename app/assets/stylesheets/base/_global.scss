@@ -21,18 +21,19 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
   margin-top: 1em;
 
   .user-name {
-    @extend %text-default-color, %bolder;
+    @extend %text-bolder;
 
+    color: $text-color;
     margin-bottom: 0.25em;
 
     a {
-      @extend %text-default-color;
+      color: $text-color;
       font-weight: inherit;
     }
   }
 
   %user-title-style {
-    @extend %xsmall-text;
+    @extend %text-xsmall;
     margin-bottom: 0;
   }
 
@@ -77,7 +78,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 
   &.active {
     .fa-play {
-      @extend %text-white-color;
+      color: $white;
     }
   }
 
@@ -141,7 +142,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 }
 
 .header-label {
-  @extend %centered-text;
+  @extend %text-center;
 
   font-weight: bold;
   margin-bottom: 0;
@@ -159,7 +160,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 }
 
 .share-links {
-  @extend %centered-text, %centered-block, %inline-list;
+  @extend %text-center, %center-block, %list-inline;
 
   li {
     padding: 0 10px;
@@ -167,7 +168,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 }
 
 .share-popover {
-  @extend %centered-text, %centered-block, %inline-list;
+  @extend %text-center, %center-block, %list-inline;
   margin-bottom: 0;
 
   li {
@@ -217,10 +218,11 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 }
 
 .challenge-nav {
-  @extend %text-default-color, %centered-block, %small-text;
+  @extend %center-block, %small-text;
   @include border-radius(2em);
 
   background-color: $white;
+  color: $text-color;
   margin: 0.25em 1.5em;
   padding: 0;
 
@@ -229,7 +231,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
     top: 0;
 
     &.fa-check {
-      @extend %text-default-color;
+      color: $text-color;
 
       font-size: 1.1em;
       top: -0.1em;
@@ -247,15 +249,16 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
   }
 
   .badge {
-    @extend %text-default-color, %small-text;
+    @extend %small-text;
     @include border-radius(2em);
 
     background-color: $white;
+    color: $text-color;
     padding: 5px 15px;
     vertical-align: bottom;
 
     .headline {
-      @extend %xs-hidden, %bolder;
+      @extend %hidden-xs, %text-bolder;
 
       top: -0.3em;
       position: relative;
@@ -293,7 +296,7 @@ $stages: 'experience', 'idea', 'recipe', 'solution';
 
       .headline,
       .fa.fa-check {
-        @extend %text-white-color;
+        color: $white;
       }
     }
   }

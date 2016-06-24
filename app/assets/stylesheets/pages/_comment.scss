@@ -34,7 +34,9 @@
     }
 
     .timestamp {
-      @extend %xsmall-text, %right-pull;
+      @extend %text-xsmall, %pull-right;
+
+      color: $xsmall-text-color;
       margin-top: 2.5em;
     }
   }
@@ -118,7 +120,7 @@
 }
 
 .discussion-header {
-  @extend %centered-text;
+  @extend %text-center;
 
   font-weight: bold;
   text-transform: uppercase;
@@ -139,7 +141,7 @@
   padding: 0 0 40px;
 
   .fa-close.fa-2x {
-    @extend %right-pull;
+    @extend %pull-right;
 
     position: relative;
     top: 30px;
@@ -147,7 +149,7 @@
   }
 
   .comment-header {
-    @extend %centered-text;
+    @extend %text-center;
 
     font-weight: bold;
     margin-bottom: 0;

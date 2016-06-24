@@ -8,7 +8,7 @@
   }
 
   .list-actions {
-    @extend %inline-list, %right-pull;
+    @extend %list-inline, %pull-right;
 
     li {
       margin: 0.5em 0.1em;
@@ -123,7 +123,7 @@
   padding: 0 0 40px;
 
   .fa-close.fa-2x {
-    @extend %right-pull;
+    @extend %pull-right;
 
     position: relative;
     top: 30px;
@@ -132,15 +132,15 @@
 
   .panel-heading {
     background-color: $recipe;
-    color: $white-text;
+    color: $white;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 
     .panel-title {
-      @extend %centered-text, %bold;
+      @extend %text-center, %text-bold;
 
       text-transform: uppercase;
-      color: $white-text;
+      color: $white;
       line-height: 0.9em;
       letter-spacing: 1px;
       font-size: 1em;
@@ -163,7 +163,7 @@
       @extend .text-uppercase;
       // scss-lint:enable PlaceholderInExtend
 
-      @extend %large-text, %text-recipe;
+      @extend %text-large, %text-recipe;
     }
   }
 

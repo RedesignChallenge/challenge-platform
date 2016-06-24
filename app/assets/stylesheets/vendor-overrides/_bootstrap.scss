@@ -19,10 +19,9 @@
 }
 
 .popover {
-  @extend %text-white-color;
-
   background-color: $link-color;
   border-color: $link-color;
+  color: $white;
 
   .popover-content {
     @extend %small-text;
@@ -208,19 +207,19 @@ a:active:focus,
   border: 1px solid $white;
   border-left: 0;
   border-right: 0;
-  color: $white-text;
+  color: $white;
 
   a {
-    @extend %bold;
-    @extend %underline;
-    color: $white-text;
+    @extend %text-bold;
+    @extend %text-underline;
+    color: $white;
   }
 
   button {
     opacity: 1;
 
     .fa-close {
-      color: $white-text;
+      color: $white;
     }
   }
 }
@@ -256,10 +255,10 @@ a:active:focus,
 }
 
 .badge-bg {
-  @extend %xsmall-text-no-color;
+  @extend %text-xsmall-no-color;
 
   background-color: $footer-background;
-  color: $white-text;
+  color: $white;
   bottom: 0.2em;
   position: relative;
 }

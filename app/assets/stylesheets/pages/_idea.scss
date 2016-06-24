@@ -28,7 +28,7 @@
   }
 
   a {
-    color: $white-text;
+    color: $white;
   }
 }
 
@@ -67,7 +67,7 @@
   }
 
   .idea-inspiration-actions {
-    @include idea-action-base($white-text);
+    @include idea-action-base($white);
   }
 
   .dropdown-menu {
@@ -86,7 +86,7 @@
   // scss-lint:enable PlaceholderInExtend
 
   background-color: $idea;
-  color: $white-text;
+  color: $white;
 
   .folded-corner {
     margin: 0 auto;
@@ -105,7 +105,7 @@
   }
 
   .dropdown-toggle {
-    color: $white-text;
+    color: $white;
   }
 
   .dropdown-menu {
@@ -127,7 +127,7 @@
   }
 
   .idea-add {
-    @extend %centered-text;
+    @extend %text-center;
 
     position: relative;
     top: 40%;
@@ -197,7 +197,7 @@
   }
 
   .refinement-header {
-    @extend %bold;
+    @extend %text-bold;
 
     color: $light-gray-text;
     font-size: 0.95em;
@@ -216,7 +216,7 @@
   padding: 0 0 40px;
 
   .fa-close.fa-2x {
-    @extend %right-pull;
+    @extend %pull-right;
 
     position: relative;
     top: 30px;
@@ -259,7 +259,7 @@
     padding: 0 12px;
 
     .fa-close {
-      @extend %left-pull;
+      @extend %pull-left;
 
       margin-right: 10px;
       color: $gray-medium;
@@ -296,7 +296,7 @@
     padding: 6px 12px;
 
     &.example-idea-title {
-      @extend %bold;
+      @extend %text-bold;
       color: $idea;
 
       font-size: 1.6em;
@@ -317,7 +317,7 @@
   position: relative;
 
   .well-example {
-    @extend %xs-hidden;
+    @extend %hidden-xs;
 
     color: $light-gray-text;
 
@@ -327,7 +327,7 @@
     top: 10px;
 
     .example-heading {
-      @extend %bold;
+      @extend %text-bold;
 
       font-size: 1.8em;
       line-height: 1.4em;

@@ -34,13 +34,13 @@
     // scss-lint:disable PlaceholderInExtend
     @extend .fa-lg;
     // scss-lint:enable PlaceholderInExtend
-    @extend %small-text, %bolder;
+    @extend %small-text, %text-bolder;
     margin-top: 1.4em;
   }
 
   .fa-inverse {
     a {
-      color: $white-text;
+      color: $white;
     }
   }
 }
@@ -171,7 +171,7 @@
         margin-left: 0.5em
     );
 
-    @extend %right-pull;
+    @extend %pull-right;
     @include user-avatar($idea-thumbnail-args);
 
     width: auto;

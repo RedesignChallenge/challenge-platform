@@ -8,7 +8,7 @@
     &:focus,
     &:active,
     &.active {
-      @extend %underline;
+      @extend %text-underline;
     }
   }
 
@@ -80,7 +80,7 @@
       }
 
       .fa-stack-1x {
-        @extend %bolder;
+        @extend %text-bolder;
 
         margin-left: 0.25em;
         margin-top: 0.35em;
@@ -98,10 +98,10 @@
     left: 0;
 
     a {
-      @extend %lighter;
-      @extend %normal;
+      @extend %text-lighter;
+      @extend %text-normal;
 
-      color: $white-text;
+      color: $white;
       position: relative;
       top: 12px;
       padding: 15px;
@@ -114,8 +114,8 @@
       &:focus,
       &:active,
       &.active {
-        @extend %underline;
-        color: $white-text;
+        @extend %text-underline;
+        color: $white;
       }
 
       // scss-lint:enable SelectorDepth

@@ -1,6 +1,6 @@
 @mixin devise-links($color: null) {
   a {
-    @extend %bold;
+    @extend %text-bold;
     @if $color != null {
       color: $color;
     }
@@ -12,7 +12,7 @@
   margin: 40px 0;
 
   .panel-title {
-    @extend %centered-text;
+    @extend %text-center;
   }
 }
 
@@ -53,7 +53,7 @@
 // scss-lint:enable SelectorFormat
 
 .devise-links {
-  @extend %centered-text, %centered-block;
+  @extend %text-center, %center-block;
 
   margin-bottom: 0;
 }
@@ -66,7 +66,7 @@
     background-color: $white;
 
     .auth-cancel {
-      @extend %right-pull;
+      @extend %pull-right;
 
       color: $gray-light;
     }
@@ -106,7 +106,7 @@
     }
 
     .auth-helper {
-      @extend %bold;
+      @extend %text-bold;
       @include devise-links();
       margin: 10px 0 0;
 
@@ -117,7 +117,7 @@
     }
 
     .auth-disclaimer {
-      @extend %centered-text;
+      @extend %text-center;
       @include devise-links($black-text);
     }
 
@@ -126,7 +126,7 @@
     }
 
     .auth-switch {
-      @extend %bold;
+      @extend %text-bold;
       @include devise-links();
 
       margin-top: 5px;
