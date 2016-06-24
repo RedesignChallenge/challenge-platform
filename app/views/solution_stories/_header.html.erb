@@ -1,3 +1,5 @@
-<div class='center-block text-center' style='margin: 30px auto'>
-  <%= link_to "<i class='fa fa-arrow-left fa-2x' style='color:#969696'></i>".html_safe, challenge_solution_stage_path(@challenge, @challenge.solution_stage) %>
+<div class="center-block text-center" style='margin: 30px auto'>
+  <%= link_to challenge_solution_stage_path(@challenge, @challenge.solution_stage) do %>
+    <i class="fa fa-arrow-left fa-2x" style='color:#969696'></i>
+  <% end %>
 </div>

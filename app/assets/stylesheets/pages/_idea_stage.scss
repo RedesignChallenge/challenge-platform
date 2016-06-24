@@ -1,0 +1,40 @@
+.idea-stage-overview {
+  padding: 30px 0;
+  background-color: $white;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .fa-lightbulb-o {
+    @include stage-large-icon('idea-light', 0.1em);
+  }
+}
+
+.idea-stage-navigation {
+  @include stage-navigation($idea);
+
+  &.affix {
+    top: 0;
+
+    + .idea-stage-content {
+      margin-top: 120px;
+    }
+  }
+
+  .nav-link {
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('idea');
+    }
+  }
+
+  .title {
+    min-height: 7em;
+  }
+}
+
+.idea-stage-content {
+  @include stage-content();
+}

@@ -1,0 +1,170 @@
+.solution-story-thumbnail {
+  @include border-radius(10px);
+
+  background-color: $white;
+  padding: 0;
+
+  img {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .solution-story-content {
+    min-height: 250px;
+    padding: 1.5em;
+    position: relative;
+
+    .solution-story-effort {
+      position: absolute;
+      bottom: 1.5em;
+      left: 0.75em;
+    }
+  }
+
+  .ribbon-wrapper {
+    top: 1px;
+    left: 16px;
+  }
+}
+
+.solution-story-overview {
+  padding: 4em 0;
+
+  .well-solution-story {
+    @include border-radius(10px);
+
+    padding: 0;
+    background-color: $white;
+
+    .fa-close {
+      padding-right: 15px;
+      padding-top: 15px;
+    }
+
+    .solution-story-content {
+      padding-top: 15px;
+    }
+
+    .row-solution {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .solution-show-file {
+      margin-top: 20px;
+    }
+
+    .fa-4x {
+      color: $light-gray-text;
+    }
+
+    .solution-credits {
+      margin-bottom: 30px;
+    }
+
+    .solution-credit {
+      margin-bottom: 20px;
+    }
+
+    .credit-heading {
+      @extend %text-solution, %text-bold;
+    }
+
+    .credit-names {
+      margin-top: 10px;
+    }
+
+    .media-author {
+      margin-bottom: 30px;
+    }
+
+    .media-left {
+      height: 5em;
+    }
+
+    .media-body {
+      padding-left: 30px;
+    }
+
+    .name {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    .title {
+      font-size: 0.85em;
+      margin-bottom: 0;
+      color: $light-gray-text;
+      font-weight: bold;
+    }
+  }
+
+  .solution-recipe {
+    .img-circle {
+      width: 7.5em;
+    }
+  }
+
+  .solution-ideas {
+    .img-circle {
+      width: 4em;
+    }
+  }
+
+  .solution-experiences {
+    .img-circle {
+      width: 2em;
+    }
+  }
+
+  .media-step {
+    min-height: 4em;
+    margin-bottom: 2em;
+
+    .media-body {
+      padding-top: 0.5em;
+      padding-left: 1em;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.solution-story-comments {
+  padding: 2em 0;
+}
+
+.solution-effort {
+  // Hierarchical inheritance; not going to interfere with this for now.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .badge;
+  // scss-lint:enable PlaceholderInExtend
+
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: $solution-badge-bg;
+
+  .badge {
+    border-radius: 20px;
+    padding: 5px 15px;
+    color: $text-color;
+    background-color: $solution-badge-bg;
+
+    &:first-child {
+      background-color: $white;
+    }
+
+    &.active {
+      background-color: $solution;
+      color: $white;
+    }
+  }
+}

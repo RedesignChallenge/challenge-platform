@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'icomoon';
+  src: font-url('icomoon.eot?-3gcgrf');
+  src: font-url('icomoon.eot?#iefix-3gcgrf') format('embedded-opentype'), font-url('icomoon.woff?-3gcgrf') format('woff'), font-url('icomoon.ttf?-3gcgrf') format('truetype'), font-url('icomoon.svg?-3gcgrf#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  font-family: 'icomoon';
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+}
+
+%recipe-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%check-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%comments-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%download-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%email-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%experience-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%experiences-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%facebook-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%idea-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%like-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%liked-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%linkedin-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%more-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%refine-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%replied-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%reply-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%share-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%story-icon {
+  &::before {
+    content: '';
+  }
+}
+
+%twitter-icon {
+  &::before {
+    content: '';
+  }
+}

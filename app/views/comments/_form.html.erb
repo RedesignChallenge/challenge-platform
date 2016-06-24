@@ -1,9 +1,9 @@
 <div class="well well-comment">
-  <div class='comment-header'>
+  <div class="comment-header">
     <div class="media media-commenter pull-left">
-      <p class="timestamp" ng-show='temporal_parent_id != null'>
+      <p class="timestamp" ng-show="temporal_parent_id != null">
         <%= t('comments._form.reply') %>
-        <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>
+        <a href='#' onclick='return false;' ng-click="temporal_parent_id=null">
           <%= t('comments._form.cancel') %>
         </a>
       </p>
@@ -12,21 +12,21 @@
       </div>
       <% if user_signed_in? %>
         <div class="media-body" style='<%= 'padding-left: 0em' if current_user.avatar.present? %>'>
-          <div class='user-caption' style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
-            <p class='user-name'><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
-            <p class='user-title'><%= current_user.display_organization %></p>
+          <div class="user-caption" style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
+            <p class="user-name"><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
+            <p class="user-title"><%= current_user.display_organization %></p>
           </div>
         </div>
       <% else %>
         <div class="media-body">
-          <div class='user-caption'>
-            <p class='user-name'><%= t('comments._form.name') %></p>
-            <p class='user-title'><%= t('comments._form.organization') %></p>
+          <div class="user-caption">
+            <p class="user-name"><%= t('comments._form.name') %></p>
+            <p class="user-title"><%= t('comments._form.organization') %></p>
           </div>
         </div>
       <% end %>
     </div>
-    <div class='clearfix'></div>
+    <div class="clearfix"></div>
   </div>
 
   <%= form_for(@comment, url: url) do |f| %>
@@ -39,34 +39,34 @@
       <%= f.text_area :body, class: 'form-control', rows: 3, placeholder: t('comments._form.opinion', class: @comment.commentable.class.to_s.downcase) %>
     </div>
 
-    <div class='row'>
+    <div class="row">
 
-      <div class='col-sm-8'>
-        <div class='input-switch' ng-switch='comment_<%= @comment.id %>_link' ng-init='comment_<%= @comment.id %>_link=<%= @comment.link.present? %>'>
-          <div ng-hide='comment_<%= @comment.id %>_link' ng-click="comment_<%= @comment.id %>_link=true" class='media'>
-            <div class='media-left'>
+      <div class="col-sm-8">
+        <div class="input-switch" ng-switch="comment_<%= @comment.id %>_link" ng-init="comment_<%= @comment.id %>_link=<%= @comment.link.present? %>">
+          <div ng-hide="comment_<%= @comment.id %>_link" ng-click="comment_<%= @comment.id %>_link=true" class="media">
+            <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-stack-2x fa-circle-thin"></i>
                 <i class="fa fa-stack-1x fa-plus"></i>
               </span>
             </div>
-            <div class='media-body'>
-              <span class='help-text'><%= t('comments._form.link') %></span>
+            <div class="media-body">
+              <span class="help-text"><%= t('comments._form.link') %></span>
             </div>
           </div>
 
-          <div ng-show='comment_<%= @comment.id %>_link' class='form-group'>
+          <div ng-show="comment_<%= @comment.id %>_link" class="form-group">
             <%= f.text_field :link, placeholder: t('comments._form.url'), class: 'form-control' %>
-            <span class='help-block'><%= t('comments._form.link2') %></span>
+            <span class="help-block"><%= t('comments._form.link2') %></span>
           </div>
         </div>
       </div>
 
-      <div class='col-sm-2 col-xs-6'>
+      <div class="col-sm-2 col-xs-6">
         <%= link_to t('comments._form.cancel'), cancel_path, class: 'btn btn-sm btn-rounded btn-block btn-default' %>
       </div>
 
-      <div class='col-sm-2 col-xs-6'>
+      <div class="col-sm-2 col-xs-6">
         <%= f.submit submit_text, class: 'btn btn-sm btn-rounded btn-block btn-info' %>
       </div>
 

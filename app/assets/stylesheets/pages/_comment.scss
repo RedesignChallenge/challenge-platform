@@ -1,0 +1,187 @@
+%comment-textarea {
+  background-color: $lightest-gray-background;
+  box-shadow: none;
+  border: 0;
+  resize: vertical;
+  font-size: 16px;
+  line-height: 1.7em;
+}
+
+.comment {
+  background-color: $white;
+  border-bottom: 1.5px solid $comment-border;
+  padding: 1em 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  .comment-header {
+    .media-commenter {
+      margin-bottom: 0.75em;
+    }
+
+    .media-body {
+      padding-left: 2.25em;
+    }
+
+    .user-caption {
+      margin-top: 0.5em;
+    }
+
+    .user-name {
+      margin-bottom: 0;
+    }
+
+    .timestamp {
+      @extend %text-xsmall, %pull-right;
+
+      color: $xsmall-text-color;
+      margin-top: 2.5em;
+    }
+  }
+
+  .comment-content {
+    margin-bottom: 1em;
+  }
+
+  .comment-link {
+    color: $text-color;
+  }
+
+  .comment-actions {
+    ul {
+      margin-bottom: 0;
+    }
+
+    li {
+      font-size: $font-size-h6;
+      color: $light-gray-text;
+      margin-right: 1.5em;
+    }
+
+    a {
+      color: $light-gray-text;
+    }
+
+    .dropdown-link {
+      margin-right: 0;
+    }
+  }
+
+  form {
+    textarea {
+      @extend %comment-textarea;
+      display: unset;
+    }
+  }
+}
+
+.nested-comment {
+  border-top: 1.5px solid $comment-border;
+  margin-top: 15px;
+  padding: 15px 0 0;
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  form {
+    textarea {
+      @extend %comment-textarea;
+    }
+  }
+}
+
+.new-comment {
+  // Hierarchy extension; no major qualms with this.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .comment;
+  // scss-lint:enable PlaceholderInExtend
+
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: 0;
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .help-block {
+    margin-bottom: 0;
+  }
+}
+
+.well-discussion {
+  @include border-radius(10px);
+  padding: 30px 40px 15px;
+  background-color: $white;
+
+}
+
+.discussion-header {
+  @extend %text-center;
+
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $light-gray-text;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.row-discussion-count {
+  .col-xs-3 {
+    a {
+      margin-top: 35px;
+    }
+  }
+}
+
+.comment-form {
+  padding: 0 0 40px;
+
+  .fa-close.fa-2x {
+    @extend %pull-right;
+
+    position: relative;
+    top: 30px;
+    color: $light-gray-text;
+  }
+
+  .comment-header {
+    @extend %text-center;
+
+    font-weight: bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: $light-gray-text;
+    font-size: 0.9em;
+  }
+
+  .comment-title {
+    @extend %section-title;
+
+    margin-bottom: 5px;
+
+    a {
+      font-weight: bold;
+    }
+  }
+
+  .comment-description {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+
+  .well-comment {
+    // Hierarchy extension; no major qualms with this.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .comment;
+    // scss-lint:enable PlaceholderInExtend
+    @include border-radius(10px);
+
+    padding: 30px 40px 15px;
+    background-color: $white;
+
+  }
+}

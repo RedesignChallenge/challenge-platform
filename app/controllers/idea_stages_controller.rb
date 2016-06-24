@@ -6,5 +6,4 @@ class IdeaStagesController < ApplicationController
     @problem_statements = @idea_stage.problem_statements
     @featured_ideas = @idea_stage.ideas.where(featured: true)
   end
-
 end

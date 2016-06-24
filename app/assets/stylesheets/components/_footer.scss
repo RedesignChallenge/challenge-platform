@@ -1,0 +1,39 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+  background-color: $lightest-gray-background;
+}
+
+.bottom-footer {
+  background-color: $footer-background;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 20px 0;
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  ul,
+  li,
+  a,
+  div,
+  span {
+    color: $white;
+  }
+
+  .footer-legal {
+    margin-top: 10px;
+  }
+
+  .row {
+    background-color: $footer-background;
+  }
+}

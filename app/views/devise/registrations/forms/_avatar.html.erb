@@ -1,4 +1,4 @@
-<div class='form-group' ng-init="avatar_option='<%= resource.avatar_option %>'">
+<div class="form-group" ng-init="avatar_option='<%= resource.avatar_option %>'">
   <%= f.label :avatar, t('devise.registrations.forms._avatar.profile_photo') %><br>
   <label class="radio-inline text-normal">
     <%= f.radio_button :avatar_option, 'twitter', 'ng-model' => 'avatar_option' %> <%= t('devise.registrations.forms._avatar.use_twitter') %>
@@ -11,25 +11,25 @@
   </label>
 </div>
 
-<div class='form-group' ng-show='avatar_option=="upload"'>
+<div class="form-group" ng-show="avatar_option=='upload'">
   <% if resource.avatar.present? %>
-    <div ng-init='upload_new=false' ng-hide='upload_new'>
+    <div ng-init="upload_new=false" ng-hide="upload_new">
       <label>
         <%= t('devise.registrations.forms._avatar.current_avatar') %>
-        <a href='#' onclick='return false;' ng-click='upload_new=true'>
+        <a href='#' onclick='return false;' ng-click="upload_new=true">
           <small><%= t('devise.registrations.forms._avatar.upload_new') %></small>
         </a>
       </label><br>
       <%= image_tag(current_user.avatar.thumb.url, class: 'img-circle', size: '52x52') %>
     </div>
-    <label ng-hide='!upload_new'>
+    <label ng-hide="!upload_new">
       <%= t('devise.registrations.forms._avatar.upload_avatar') %>
-      <a href='#' onclick='return false;' ng-click='upload_new=false'>
+      <a href='#' onclick='return false;' ng-click="upload_new=false">
         <small><%= t('devise.registrations.forms._avatar.cancel') %></small>
       </a>
       <br>
     </label>
-    <div class="input-group" ng-hide='!upload_new'>
+    <div class="input-group" ng-hide="!upload_new">
       <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
       <%= f.file_field :avatar, class: 'form-control' %>
     </div>

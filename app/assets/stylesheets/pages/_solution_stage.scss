@@ -1,0 +1,16 @@
+.solution-stage-overview {
+  padding: 60px 0;
+  background-color: $white;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .fa-puzzle-piece {
+    @include stage-large-icon('solution-light', 0.15em, 18em);
+  }
+}
+
+.solution-stage-content {
+  @include stage-content(40px, 40px 0 20px)
+}

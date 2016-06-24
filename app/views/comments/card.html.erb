@@ -1,67 +1,67 @@
 <div id="comment-<%= comment.id %>" class="comment">
   <% if user_signed_in? %>
-      <% if comment.user == current_user %>
-          <div ng-switch="comment_<%= comment.id %>_edit" ng-init="comment_<%= comment.id %>_edit=false">
-            <div ng-hide="comment_<%= comment.id %>_edit">
-              <%= render partial: 'comments/card/show', locals: {comment: comment} %>
-            </div>
-            <div ng-show="comment_<%= comment.id %>_edit">
-              <%= render partial: 'comments/card/edit', locals: {comment: comment} %>
-            </div>
-            <% comment.descendants.each do |descendant| %>
-                <div class="row row-descendant">
-                  <div class="col-sm-11 col-sm-offset-1">
-                    <div id="comment-<%= descendant.id %>" class="nested-comment">
-                      <% if descendant.user == current_user %>
-                          <div ng-switch="comment_<%= descendant.id %>_edit" ng-init="comment_<%= descendant.id %>_edit=false">
-                            <div ng-hide="comment_<%= descendant.id %>_edit">
-                              <%= render partial: 'comments/card/show', locals: {comment: descendant} %>
-                            </div>
-                            <div ng-show="comment_<%= descendant.id %>_edit">
-                              <%= render partial: 'comments/card/edit', locals: {comment: descendant} %>
-                            </div>
-                          </div>
-                      <% else %>
-                          <%= render partial: 'comments/card/show', locals: {comment: descendant} %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-      <% else %>
-          <%= render partial: 'comments/card/show', locals: {comment: comment} %>
-          <% comment.descendants.where(destroyed_at: nil).each do |descendant| %>
-              <div class="row row-descendant">
-                <div class="col-sm-11 col-sm-offset-1">
-                  <div id="comment-<%= descendant.id %>" class="nested-comment">
-                    <% if descendant.user == current_user %>
-                        <div ng-switch="comment_<%= descendant.id %>_edit" ng-init="comment_<%= descendant.id %>_edit=false">
-                          <div ng-hide="comment_<%= descendant.id %>_edit">
-                            <%= render partial: 'comments/card/show', locals: {comment: descendant} %>
-                          </div>
-                          <div ng-show="comment_<%= descendant.id %>_edit">
-                            <%= render partial: 'comments/card/edit', locals: {comment: descendant} %>
-                          </div>
-                        </div>
-                    <% else %>
-                        <%= render partial: 'comments/card/show', locals: {comment: descendant} %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-          <% end %>
-      <% end %>
-  <% else %>
-      <%= render partial: 'comments/card/show', locals: {comment: comment} %>
-      <% comment.descendants.each do |descendant| %>
+    <% if comment.user == current_user %>
+      <div ng-switch="comment_<%= comment.id %>_edit" ng-init="comment_<%= comment.id %>_edit=false">
+        <div ng-hide="comment_<%= comment.id %>_edit">
+          <%= render partial: 'comments/card/show', locals: { comment: comment } %>
+        </div>
+        <div ng-show="comment_<%= comment.id %>_edit">
+          <%= render partial: 'comments/card/edit', locals: { comment: comment } %>
+        </div>
+        <% comment.descendants.each do |descendant| %>
           <div class="row row-descendant">
             <div class="col-sm-11 col-sm-offset-1">
               <div id="comment-<%= descendant.id %>" class="nested-comment">
-                <%= render partial: 'comments/card/show', locals: {comment: descendant} %>
+                <% if descendant.user == current_user %>
+                  <div ng-switch="comment_<%= descendant.id %>_edit" ng-init="comment_<%= descendant.id %>_edit=false">
+                    <div ng-hide="comment_<%= descendant.id %>_edit">
+                      <%= render partial: 'comments/card/show', locals: { comment: descendant } %>
+                    </div>
+                    <div ng-show="comment_<%= descendant.id %>_edit">
+                      <%= render partial: 'comments/card/edit', locals: { comment: descendant } %>
+                    </div>
+                  </div>
+                <% else %>
+                  <%= render partial: 'comments/card/show', locals: { comment: descendant } %>
+                <% end %>
               </div>
             </div>
           </div>
+        <% end %>
+      </div>
+    <% else %>
+      <%= render partial: 'comments/card/show', locals: { comment: comment } %>
+      <% comment.descendants.where(destroyed_at: nil).each do |descendant| %>
+        <div class="row row-descendant">
+          <div class="col-sm-11 col-sm-offset-1">
+            <div id="comment-<%= descendant.id %>" class="nested-comment">
+              <% if descendant.user == current_user %>
+                <div ng-switch="comment_<%= descendant.id %>_edit" ng-init="comment_<%= descendant.id %>_edit=false">
+                  <div ng-hide="comment_<%= descendant.id %>_edit">
+                    <%= render partial: 'comments/card/show', locals: { comment: descendant } %>
+                  </div>
+                  <div ng-show="comment_<%= descendant.id %>_edit">
+                    <%= render partial: 'comments/card/edit', locals: { comment: descendant } %>
+                  </div>
+                </div>
+              <% else %>
+                <%= render partial: 'comments/card/show', locals: { comment: descendant } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
+    <% end %>
+  <% else %>
+    <%= render partial: 'comments/card/show', locals: { comment: comment } %>
+    <% comment.descendants.each do |descendant| %>
+      <div class="row row-descendant">
+        <div class="col-sm-11 col-sm-offset-1">
+          <div id="comment-<%= descendant.id %>" class="nested-comment">
+            <%= render partial: 'comments/card/show', locals: { comment: descendant } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

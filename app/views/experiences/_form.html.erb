@@ -1,60 +1,58 @@
-<div class='row'>
-  <div class='col-md-10 col-md-offset-1'>
-
-    <div id='experience-<%= @experience.id %>' class="row row-experience">
-      
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div id="experience-<%= @experience.id %>" class="row row-experience">
       <div class="col-xs-2">
-        <div class='experience-user center-block text-center'>
+        <div class="experience-user center-block text-center">
           <%= render partial: 'shared/avatar', locals: { user: current_user, avatar_style: "width:3.5em" } %>
           <% if user_signed_in? %>
             <div class="user-caption">
-              <p class='user-name'><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
-              <p class='user-title text-default'><%= current_user.display_organization %></p>
+              <p class="user-name"><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
+              <p class="user-title text-default"><%= current_user.display_organization %></p>
             </div>
           <% end %>
         </div>
       </div>
       
       <div class="col-xs-8">
-        <div class='well well-experience'>
+        <div class="well well-experience">
           <%= form_for(@experience, url: url) do |f| %>
             <%= f.hidden_field :theme_id %>
             <%= f.hidden_field :published, value: nil, 'ng-value' => 'published' %>
             <%= render partial: 'layouts/error_messages', locals: { model: @experience } %>
 
-            <div class='form-group'>
+            <div class="form-group">
               <%= f.text_area :description, placeholder: t('experiences._form.description_placeholder'), class: 'form-control', autofocus: true, rows: 4 %>
             </div>
 
-            <div class='row'>
-              <div class='col-sm-8'>
-                <div class='input-switch' ng-switch='experience_<%= @experience.id %>_link' ng-init='experience_<%= @experience.id %>_link=<%= @experience.link.present? %>'>
-                  <div ng-hide='experience_<%= @experience.id %>_link' ng-click="experience_<%= @experience.id %>_link=true" class='media'>
-                    <div class='media-left'>
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="input-switch" ng-switch="experience_<%= @experience.id %>_link" ng-init="experience_<%= @experience.id %>_link=<%= @experience.link.present? %>">
+                  <div ng-hide="experience_<%= @experience.id %>_link" ng-click="experience_<%= @experience.id %>_link=true" class="media">
+                    <div class="media-left">
                       <span class="fa-stack">
                         <i class="fa fa-stack-2x fa-circle-thin"></i>
                         <i class="fa fa-stack-1x fa-plus"></i>
                       </span>
                     </div>
-                    <div class='media-body'>
-                      <span class='help-text'><%= t('experiences._form.add_link') %></span>
+                    <div class="media-body">
+                      <span class="help-text"><%= t('experiences._form.add_link') %></span>
                     </div>
                   </div>
 
-                  <div ng-show='experience_<%= @experience.id %>_link'>
+                  <div ng-show="experience_<%= @experience.id %>_link">
                     <%= f.text_field :link, placeholder: t('experiences._form.add_url'), class: 'form-control' %>
-                    <span class='help-block'><%= t('experiences._form.link_description') %></span>
+                    <span class="help-block"><%= t('experiences._form.link_description') %></span>
                   </div>
                 </div>
               </div>
 
-              <div class='col-sm-4' ng-init="published=<%= @experience.published_at? %>">
-                <div class='row'>
-                  <div class='col-xs-6'>
+              <div class="col-sm-4" ng-init="published=<%= @experience.published_at? %>">
+                <div class="row">
+                  <div class="col-xs-6">
                     <%= link_to t('experiences._form.cancel'), cancel_path, data: { confirm: t('experiences._form.confirm') }, class: 'btn btn-rounded btn-block btn-sm btn-default' %>
                   </div>
 
-                  <div class='col-xs-6'>
+                  <div class="col-xs-6">
                     <%= f.submit submit_text, class: 'btn btn-rounded btn-block btn-sm btn-info', 'ng-click' => 'published=true' %>
                   </div>
                 </div>

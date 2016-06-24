@@ -1,15 +1,13 @@
-<div class='row'>
-  <div class='col-sm-10 col-sm-offset-1'>
-
-    <div class='media media-preview'>
-      <div class='media-left'>
-        <i class='fa fa-flask text-recipe'></i>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="media media-preview">
+      <div class="media-left">
+        <i class="fa fa-flask text-recipe"></i>
       </div>
-      <div class='media-body'>
-        <h4 class='media-heading text-recipe'><%= recipe.title %></h4>
-        <p class='media-description'><%= truncate_html(recipe.description, length: 250).html_safe %></p>
+      <div class="media-body">
+        <h4 class="media-heading text-recipe"><%= recipe.title %></h4>
+        <p class="media-description"><%= truncate_html(recipe.description, length: 250).html_safe %></p>
       </div>
     </div>
-
   </div>
 </div>

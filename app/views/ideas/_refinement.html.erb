@@ -1,39 +1,39 @@
-<div class='row'>
-  <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
     <div class="thumbnail idea-example-thumbnail">
-      <div class='form-group'>
-        <p class='example-idea-title'><%= @idea.refinement_parent.title.html_safe %></p>
+      <div class="form-group">
+        <p class="example-idea-title"><%= @idea.refinement_parent.title.html_safe %></p>
       </div>
       <% if @idea.refinement_parent.embed.present? %>
-        <div class='example-idea-embed'><%= @idea.refinement_parent.embed.html_safe %></div>
+        <div class="example-idea-embed"><%= @idea.refinement_parent.embed.html_safe %></div>
       <% end %>
 
-      <div class='form-group'>
-        <p class='example-idea-description'><%= @idea.refinement_parent.description.html_safe %></p>
+      <div class="form-group">
+        <p class="example-idea-description"><%= @idea.refinement_parent.description.html_safe %></p>
         <% if @idea.refinement_parent.impact.present? %>
           <label><%= t('ideas._refinement.potential_impact') %></label>
-          <p class='example-idea-description'><%= @idea.refinement_parent.impact.html_safe %></p>
+          <p class="example-idea-description"><%= @idea.refinement_parent.impact.html_safe %></p>
         <% end %>
         <% if @idea.refinement_parent.implementation.present? %>
           <label><%= t('ideas._refinement.possible_implementation') %></label>
-          <p class='example-idea-description'><%= @idea.refinement_parent.implementation.html_safe %></p>
+          <p class="example-idea-description"><%= @idea.refinement_parent.implementation.html_safe %></p>
         <% end %>
       </div>
 
-      <div class='form-group'>
+      <div class="form-group">
         <% if @idea.refinement_parent.link.present? && @idea.refinement_parent.embed.blank? %>
           <label><%= t('ideas._refinement.link') %></label>
-          <p class='example-idea-description'><%= link_to @idea.refinement_parent.link.html_safe, @idea.refinement_parent.link, target: '_blank' %></p>
+          <p class="example-idea-description"><%= link_to @idea.refinement_parent.link.html_safe, @idea.refinement_parent.link, target: '_blank' %></p>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3'>
-    <div class='row'>
-      <div class='col-xs-4 col-xs-offset-8'>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-8">
         <%= link_to t('ideas._refinement.go_back'), '#', class: 'btn btn-default btn-rounded btn-block pull-right', 'ng-click' => 'showForm()', onclick: 'return false;' %>
       </div>
     </div>

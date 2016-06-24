@@ -1,0 +1,136 @@
+.challenge-header {
+  background-color: transparent;
+  padding: 0.25em 0;
+
+  &.splash {
+    position: absolute;
+    top: 3.5em;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+.challenge-overview {
+  padding: 4.5em 0 1.5em;
+  background-size: cover;
+  background: no-repeat 50% 0;
+
+  .challenge-headline {
+    margin-bottom: 20px;
+  }
+
+  .embed-responsive {
+    margin-top: 10px;
+  }
+}
+
+.challenge-description {
+  padding: 20px 0 0;
+  background-color: $light-gray-background;
+}
+
+.challenge-details {
+  padding: 15px 0 30px;
+  background-color: $light-gray-background;
+
+  .section-title {
+    color: $text-color;
+    font-weight: bold;
+    font-size: 1.9em;
+    line-height: 1.4em;
+  }
+
+  .section-description {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    font-size: 2em;
+  }
+
+  .challenge-process {
+    // FIXME:  Refactor .row-process
+    // scss-lint:disable PlaceholderInExtend
+    @extend .row-process;
+    // scss-lint:enable PlaceholderInExtend
+
+    margin-bottom: 45px;
+
+    .col-xs-6,
+    .col-sm-3 {
+      min-height: 300px;
+    }
+
+    .stage-cta {
+      @extend %text-center;
+
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin: -15px;
+    }
+
+    .btn {
+      @extend %small-text;
+    }
+
+    .cta-paragraph {
+      @extend %small-text;
+
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.stage-recap {
+  > :hover,
+  > :focus,
+  > :active,
+  > .active {
+    text-decoration: none;
+  }
+
+  .pending > .fa-circle-thin {
+    color: $gray-lighter;
+  }
+
+  h4 {
+    font-size: 1.5em;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.challenge-panel {
+  padding: 30px 0;
+  background-color: $white;
+
+  .row-panelists {
+    @extend %center-block, %text-center;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .panelist-title {
+    @extend %text-center, %text-large;
+
+    margin: 0;
+  }
+}
+
+.challenge-featured {
+  padding: 30px 0;
+  background-color: $light-gray-background;
+}
+
+.challenge-invite {
+  padding: 30px 0;
+  background-color: $light-gray-background;
+}

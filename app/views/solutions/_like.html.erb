@@ -1,11 +1,11 @@
 <% if user_signed_in? && current_user.liked?(@solution, {vote_scope: @solution.default_like[:scope]}) %>
   <%= link_to unlike_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info active', style: 'margin-bottom: 10px', method: :put, remote: true do %>
-    <i class='<%= @solution.default_like[:liked][:icon] %>'></i> <%= t('constants.liked') %>
+    <i class="<%= @solution.default_like[:liked][:icon] %>"></i> <%= t('constants.liked') %>
     <%= "(#{@solution.cached_votes_up})" unless @solution.cached_votes_up.zero? %>
   <% end %>
 <% else %>
   <%= link_to like_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution.id, partial: 'like'), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', style: 'margin-bottom: 10px', method: :put, remote: user_signed_in? do %>
-    <i class='<%= @solution.default_like[:unliked][:icon] %>'></i> <%= t('constants.like') %>
+    <i class="<%= @solution.default_like[:unliked][:icon] %>"></i> <%= t('constants.like') %>
     <%= "(#{@solution.cached_votes_up})" unless @solution.cached_votes_up.zero? %>
   <% end %>
 <% end %>

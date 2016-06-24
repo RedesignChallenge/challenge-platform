@@ -1,52 +1,58 @@
 <div class="row" style='margin-bottom: 15px'>
-  <div class='col-sm-10'>
+  <div class="col-sm-10">
     <h3 class="suggestion-title text-black">
       <%= suggestion.title %>
       <% if user_signed_in? && suggestion.user == current_user %>
         <small style='margin-left:10px'>
-          <%= link_to "<i class='fa fa-edit'></i>".html_safe, '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' %> 
+          <%= link_to '#', 'ng-click' => "suggestion_#{suggestion.id}_edit=true", onclick: 'return false;', class: 'list-link' do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
           &nbsp; &bull; &nbsp;
-          <%= link_to "<i class='fa fa-trash'></i>".html_safe, suggestion_path(suggestion.id), method: :delete, data: { confirm: t('suggestions.card._show.confirm')}, class: 'list-link' %>
+          <%= link_to suggestion_path(suggestion.id), method: :delete, data: { confirm: t('suggestions.card._show.confirm') }, class: 'list-link' do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
         </small>
       <% end %>
     </h3>
   </div>
 
-  <div class='col-sm-2'>
-    <p class='suggestion-time'><%= t('suggestions.card._show.time', time: time_ago_in_words(suggestion.created_at)) %></p>
+  <div class="col-sm-2">
+    <p class="suggestion-time"><%= t('suggestions.card._show.time', time: time_ago_in_words(suggestion.created_at)) %></p>
   </div>
 </div>
 
-<div class='suggestion-content'>
+<div class="suggestion-content">
   <% if suggestion.embed.present? %>
-    <div class='row'>
-      <div class='col-sm-4'>
+    <div class="row">
+      <div class="col-sm-4">
         <%= suggestion.embed.html_safe %>
       </div>
-      <div class='col-sm-8'>
-        <p class='suggestion-description'><%= suggestion.description %></p>
+      <div class="col-sm-8">
+        <p class="suggestion-description"><%= suggestion.description %></p>
       </div>
     </div>
   <% else %>
-    <p class='suggestion-description'><%= suggestion.description %></p>
+    <p class="suggestion-description"><%= suggestion.description %></p>
     <% unless suggestion.link.blank? %>
-      <p class='suggestion-link'><b><i class='fa fa-link'></i> <%=  t('suggestions.card._show.link')%></b> <%= link_to truncate(suggestion.link, length: 150), suggestion.link, target: '_blank' %></p>
+      <p class="suggestion-link"><b><i class="fa fa-link"></i> <%= t('suggestions.card._show.link') %>
+      </b> <%= link_to truncate(suggestion.link, length: 150), suggestion.link, target: '_blank' %></p>
     <% end %>
   <% end %>
 </div>
 
 <div class="row">
   <div class="col-sm-4">
-    <p class='suggestion-user text-left'><%= t('suggestions.card._show.impact') %></p>
+    <p class="suggestion-user text-left"><%= t('suggestions.card._show.impact') %></p>
   </div>
 
   <div class="col-sm-5">
-    <ul id='suggestion-<%= suggestion.id %>-vote' class='vote'>
+    <ul id="suggestion-<%= suggestion.id %>-vote" class="vote">
       <%= render partial: 'suggestions/card/vote', locals: { suggestion: suggestion } %>
     </ul>
   </div>
 
   <div class="col-sm-3">
-    <p class='suggestion-user text-right'><%= suggestion.user.initials %>, <%= suggestion.user.display_organization %></p>
+    <p class="suggestion-user text-right"><%= suggestion.user.initials %>
+      , <%= suggestion.user.display_organization %></p>
   </div>
 </div>

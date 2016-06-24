@@ -1,0 +1,144 @@
+.well-suggestion {
+  @include border-radius(10px);
+
+  background-color: $white;
+  margin-bottom: 15px;
+  padding-left: 3em;
+  padding-right: 3em;
+
+  .suggestion-time {
+    @extend %pull-right, %text-capitalize;
+
+    color: $xsmall-text-color;
+    margin-top: 2.6em;
+  }
+
+  .suggestion-content {
+    margin-bottom: 15px;
+  }
+
+  .suggestion-user {
+    @extend %small-text, %text-bolder;
+
+    color: $gray-dark;
+    margin-bottom: 0;
+  }
+
+  .vote {
+    @extend %list-inline, %text-center;
+
+    margin: 0;
+    bottom: 5px;
+    position: relative;
+
+    .fa {
+      color: $xsmall-text-color;
+    }
+
+    .fa-stack-2x {
+      font-size: 2.25em;
+    }
+
+    .fa-stack-1x {
+      margin-top: 1px;
+      font-size: 1.125em;
+    }
+
+    li,
+    .list-link {
+      @extend %text-xsmall;
+
+      color: $xsmall-text-color;
+      padding: 0 3px;
+    }
+  }
+}
+
+.suggestion-form {
+  .well-share {
+    border: 2px dashed $well-text;
+    background-color: $white;
+
+    p {
+      @extend %text-large;
+
+      color: $well-text;
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      cursor: pointer;
+    }
+  }
+
+  .media-borderless {
+    margin-bottom: 0;
+  }
+
+  form {
+    margin-top: 15px;
+
+    .help-block {
+      margin-bottom: 0;
+    }
+
+    .suggestion-link {
+      margin-bottom: 0;
+    }
+
+
+    .suggestion-title {
+      // Bootstrap override class; no interference intended
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
+      @extend %text-bold;
+
+      color: $black-text;
+      font-size: $font-size-h3;
+      padding: 6px;
+    }
+
+    .suggestion-description,
+    .suggestion-link {
+      // Bootstrap override class; no interference intended
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      @extend .input-graybg;
+      // scss-lint:enable PlaceholderInExtend
+    }
+  }
+}
+
+.suggestion-form-field {
+  // Hierarchical inheritance; won't adjust at this time
+  // scss-lint:disable PlaceholderInExtend
+  @extend .suggestion-form;
+  // scss-lint:enable PlaceholderInExtend
+
+  padding: 20px 0 40px;
+
+  .fa-close.fa-2x {
+    @extend %pull-right;
+
+    position: relative;
+    top: 30px;
+    color: $gray-light;
+  }
+
+  .suggestion-block {
+    .suggestion-header {
+      @extend %text-center;
+
+      margin-bottom: 0;
+    }
+
+    .suggestion-title {
+      @extend %section-title;
+
+      color: $navbar-default-bg;
+    }
+  }
+}

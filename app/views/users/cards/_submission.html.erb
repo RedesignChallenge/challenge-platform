@@ -1,16 +1,16 @@
 <tr>
   <td>
-    <h6 class='text-right text-normal'><%= submission.class.to_s %></h6>
+    <h6 class="text-right text-normal"><%= submission.class.to_s %></h6>
     <% unless submission.class.to_s.downcase == 'suggestion' || submission.published_at? %>
-      <small class='text-xsmall-normal text-white label label-danger pull-right' style='bottom:0.25em;position:relative;'><%= t('users.cards._submission.draft') %></small>
+      <small class="text-xsmall-normal text-white label label-danger pull-right" style='bottom:0.25em;position:relative;'><%= t('users.cards._submission.draft') %></small>
     <% end %>
   </td>
   <td>
-    <h4 class='text-<%= submission.class.to_s.downcase %>'>
-      <i class='fa <%= submission.icon %>'></i>
+    <h4 class="text-<%= submission.class.to_s.downcase %>">
+      <i class="fa <%= submission.icon %>"></i>
       <%= link_to submission.title, after_update_object_path_for(submission) %>
     </h4>
-    <p class='zero-margin-bottom'><%= submission.description %></p>
+    <p class="zero-margin-bottom"><%= submission.description %></p>
   </td>
 </tr>
 
@@ -19,7 +19,7 @@
     <td>
       <% # This table dimension intentionally left blank. %>
     </td>
-    <td class='text-small'>
+    <td class="text-small">
       <i class="fa fa-comments-o"></i>
       <b><%= display_commenters(submission) %></b>
       <i><%= t('users.cards._submission.commented', submission_type: submission.class.to_s.downcase) %></i>
@@ -32,7 +32,7 @@
     <td>
       <% # This table dimension intentionally left blank. %>
     </td>
-    <td class='text-small'>
+    <td class="text-small">
       <i class="fa fa-thumbs-up"></i>
       <b><%= display_likers(submission) %></b>
       <i><%= t('users.cards._submission.liked', submission_type: submission.class.to_s.downcase) %></i>

@@ -1,0 +1,224 @@
+.well-recipe {
+  @include border-radius(10px);
+  position: relative;
+  background-color: $white;
+
+  .media-body {
+    padding-left: 1.6em;
+  }
+
+  .list-actions {
+    @extend %list-inline, %pull-right;
+
+    li {
+      margin: 0.5em 0.1em;
+      color: $light-gray-text;
+    }
+
+    .fa {
+      font-size: 1.3em;
+    }
+
+    a {
+      color: $light-gray-text;
+    }
+  }
+
+  .row-content {
+    h6 {
+      margin-top: 0.25em;
+    }
+  }
+}
+
+.media-card-body {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 1.6em;
+}
+
+.recipe-overview {
+  padding: 40px 0;
+
+  .well-featured-recipe {
+    @include featured-well($recipe);
+  }
+
+  .well-recipe {
+    @include border-radius(10px);
+
+    padding: 0;
+    background-color: $white;
+
+    .fa-close {
+      padding-right: 15px;
+      padding-top: 15px;
+    }
+
+    .recipe-content {
+      padding: 0 3em 1.5em;
+    }
+
+    .row-recipe {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.media-author {
+  margin-bottom: 30px;
+
+  .media-left {
+    height: 5em;
+  }
+
+  .media-body {
+    padding-left: 5em;
+  }
+
+  .content-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.media-step {
+  min-height: 3em;
+  margin-bottom: 1.5em;
+
+  .media-left {
+    .fa-stack-2x {
+      font-size: 3em;
+    }
+
+    .fa-stack-1x {
+      font-size: 1.75em;
+      margin-left: 4px;
+      margin-top: 7px;
+    }
+  }
+
+  .media-body {
+    padding-top: 5px;
+    padding-left: 20px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.content-block:last-child {
+  margin-bottom: 0;
+}
+
+.recipe-comments {
+  padding: 20px 0;
+}
+
+.recipe-share {
+  padding: 20px 0;
+}
+
+.recipe-form {
+  padding: 0 0 40px;
+
+  .fa-close.fa-2x {
+    @extend %pull-right;
+
+    position: relative;
+    top: 30px;
+    color: $gray-light;
+  }
+
+  .panel-heading {
+    background-color: $recipe;
+    color: $white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    .panel-title {
+      @extend %text-center, %text-bold;
+
+      text-transform: uppercase;
+      color: $white;
+      line-height: 0.9em;
+      letter-spacing: 1px;
+      font-size: 1em;
+    }
+  }
+
+  .panel-recipe {
+    @include border-radius(10px);
+
+    border: 1px solid $well-border;
+  }
+
+  .panel-body {
+    padding: 20px 50px 10px;
+
+    label {
+      // Bootstrap class; won't make into a placeholder.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .label-borderless;
+      @extend .text-uppercase;
+      // scss-lint:enable PlaceholderInExtend
+
+      @extend %text-large, %text-recipe;
+    }
+  }
+
+  .icon-list > .fa {
+    color: $gray-light;
+  }
+}
+
+.media-step {
+  min-height: 50px;
+  margin-bottom: 30px;
+
+  .fa-close {
+    color: $gray-medium;
+  }
+
+  .media-left {
+    padding: 0.25em 0.85em;
+  }
+
+  .media-body {
+    padding-top: 5px;
+    padding-left: 20px;
+
+    textarea {
+      // Bootstrap class; not wrapping this one just yet.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.media-step-new {
+  // Extension of hierarchy; leaving alone for now
+  // scss-lint:disable PlaceholderInExtend
+  @extend .media-step;
+  // scss-lint:enable PlaceholderInExtend
+
+  margin-top: -15px;
+
+  .placeholder {
+    font-size: 1em;
+    color: $gray-light;
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+}
+
+.text-gray {
+  a {
+    color: $light-gray-text;
+  }
+}

@@ -97,7 +97,7 @@ Rails.application.configure do
   config.middleware.use ExceptionNotification::Rack, 
   ignore_crawlers: %w{Googlebot Bingbot Baiduspider YandexBot},
   email: {
-    email_prefix: "[ERROR] ",
+    email_prefix: '[ERROR] ',
     sender_address: %{"Exception Notifier" <#{ENV['GMAIL_USERNAME']}>},
     exception_recipients: [ENV['GMAIL_USERNAME']]
   }

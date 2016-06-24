@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html ng-app="ChallengePlatform">
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <base href="/">
+  <meta name="google-site-verification" content="u4p4qpOBjgw-UwR8pXo5VrVxTEHdDqY-WvZuiXdtw_0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png', rel: 'apple-touch-icon' %>
 
-  <head>
-    <title><%= full_title(yield(:title)) %></title>
-    <base href="/">
-    <meta name="google-site-verification" content="u4p4qpOBjgw-UwR8pXo5VrVxTEHdDqY-WvZuiXdtw_0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
-    <%= favicon_link_tag 'favicon.png', type: 'image/png', rel: 'apple-touch-icon' %>
+  <%= render partial: 'layouts/shim', cache: true %>
+  <%= render partial: 'layouts/google', cache: true if ENV['GA_KEY'].present? %>
+  <%= render partial: 'layouts/twitter' %>
 
-    <%= render partial: 'layouts/shim', cache: true %>
-    <%= render partial: 'layouts/google', cache: true if ENV['GA_KEY'].present? %>
-    <%= render partial: 'layouts/twitter' %>
+  <%= csrf_meta_tags %>
+</head>
 
-    <%= csrf_meta_tags %>
-  </head>
+<body>
+<%= render partial: 'layouts/facebook', cache: true %>
+<%= render partial: 'layouts/header', cache: true unless @hide_navs %>
+<%= render partial: 'layouts/flashes', cache: true unless @hide_navs %>
 
-  <body>
-    <%= render partial: 'layouts/facebook', cache: true %>
-    <%= render partial: 'layouts/header', cache: true unless @hide_navs %>
-    <%= render partial: 'layouts/flashes', cache: true unless @hide_navs %>
+<div class='page-wrap'>
+  <%= yield %>
+</div>
 
-    <div class='page-wrap'>
-      <%= yield %>
-    </div>
-
-    <%= render partial: 'layouts/footer', cache: true unless @hide_navs %>
-  </body>
-
+<%= render partial: 'layouts/footer', cache: true unless @hide_navs %>
+</body>
 </html>

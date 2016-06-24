@@ -1,0 +1,132 @@
+.landing-splash {
+  background-size: cover;
+  background: no-repeat 50% 0;
+
+  .opacity-content {
+    padding: 40px 0;
+    color: $white;
+
+    .headline {
+      margin: 10px 0 30px;
+    }
+
+    .embed-responsive {
+      margin-top: 30px;
+    }
+  }
+}
+
+.landing-challenge {
+  padding: 30px 0;
+  background-color: $white;
+
+  .well-challenge {
+    background-size: cover;
+    background: no-repeat 0 0;
+    color: $challenge-well-text-color;
+    position: relative;
+    min-height: 420px;
+
+    .well-content {
+      margin: 5em 2em 0;
+    }
+
+    .well-title {
+      margin-bottom: 20px;
+    }
+
+    .well-subtitle {
+      @extend %text-large;
+
+      margin-bottom: 40px;
+    }
+  }
+
+  h2 {
+    .link-span {
+      padding-left: 20px;
+    }
+
+    a {
+      color: $link-color;
+    }
+  }
+}
+
+.landing-what {
+  padding: 30px 0;
+  background-color: $light-gray-background;
+}
+
+.process-stages {
+  margin: 30px 0 0;
+}
+
+.landing-suggest {
+  padding: 30px 0;
+  background-color: $white;
+
+  .section-description {
+    a {
+      @extend %text-lighter;
+      color: $gray;
+    }
+  }
+}
+
+.landing-invite {
+  padding: 30px 0;
+  background-color: $light-gray-background;
+}
+
+.row-process {
+  @extend %center-block, %text-center;
+
+  padding-top: 30px;
+
+  .fa-play {
+    float: right;
+    top: 1em;
+    position: relative;
+    font-size: 1.5em;
+    right: -25px;
+    color: $gray-lighter;
+  }
+
+  .challenge-fa-bubble {
+    width: 100%;
+
+    .fa-stack-2x {
+      font-size: 9em;
+    }
+
+    .fa-stack-1x {
+      @include challenge-step-icon('experience', 5em, 0.45em);
+      @include challenge-step-icon('idea');
+      @include challenge-step-icon('recipe');
+      @include challenge-step-icon('solution');
+    }
+  }
+
+  .caption {
+    @extend %text-center;
+
+    color: $black-text;
+
+    margin-top: 7em;
+    margin-bottom: 20px;
+
+    h4 {
+      font-size: 1.5em;
+    }
+
+    .description {
+      line-height: 1.2em;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.half-margin-bottom {
+  margin-bottom: 0.5em;
+}

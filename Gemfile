@@ -36,6 +36,7 @@ gem 'font-awesome-sass'
 gem 'bootstrap-switch-rails'
 gem 'bourbon'
 gem 'select2-rails'
+gem 'font-awesome-rails'
 
 ## FILE/PHOTO UPLOADS
 gem 'twitter'
@@ -102,6 +103,7 @@ group :development, :test do
   gem 'i18n-tasks'
   gem 'jasmine'
   gem 'rails-assets-angular-mocks'
+  gem 'scss_lint', require: false
 end
 
 group :test do

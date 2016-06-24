@@ -1,0 +1,304 @@
+// Global variables
+
+$stages: 'experience', 'idea', 'recipe', 'solution';
+
+.submit-link {
+  @extend %small-text;
+
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: $link-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.user-caption {
+  margin-top: 1em;
+
+  .user-name {
+    @extend %text-bolder;
+
+    color: $text-color;
+    margin-bottom: 0.25em;
+
+    a {
+      color: $text-color;
+      font-weight: inherit;
+    }
+  }
+
+  %user-title-style {
+    @extend %text-xsmall;
+    margin-bottom: 0;
+  }
+
+  .user-title {
+    @extend %user-title-style;
+  }
+
+  .stage-creation-date {
+    @extend %user-title-style;
+
+    a {
+      color: $creation-date-text;
+    }
+  }
+}
+
+.nav-link {
+  padding-top: 0.85em;
+  min-height: 3.5em;
+  border-right: 1px solid $navbar-divider-border;
+
+  .fa-play {
+    color: transparent;
+    position: absolute;
+    text-align: center;
+    bottom: -20px;
+    left: 43%;
+    z-index: -1;
+  }
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: $experience;
+    background-color: $white;
+    cursor: pointer;
+  }
+
+  &.active {
+    .fa-play {
+      color: $white;
+    }
+  }
+
+  .title {
+    min-height: 5em;
+  }
+
+  .cta {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+%content-block-style {
+  margin-bottom: 2em;
+
+  .section-title {
+    margin-top: 0.25em;
+  }
+}
+
+.content-block {
+  @extend %content-block-style;
+}
+
+.content-block-xl {
+  @extend %content-block-style;
+  margin-bottom: 4em;
+}
+
+.row-count {
+  h6 {
+    .fa {
+      margin-bottom: 0.25em;
+    }
+  }
+
+  .action {
+    margin-top: 3.85em;
+  }
+}
+
+.opacity-layer {
+  background-color: $opacity-background;
+}
+
+.page-wrap {
+  margin: (-$line-height-computed) auto $line-height-computed;
+}
+
+.zero-margin-bottom {
+  margin-bottom: 0;
+}
+
+.hr-break {
+  display: block;
+  width: 30%;
+  margin: 50px auto;
+  border: 0;
+  border-top: 1px solid $hr-break;
+}
+
+.header-label {
+  @extend %text-center;
+
+  font-weight: bold;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: $light-gray-text;
+  font-size: 0.9em;
+}
+
+.div-break {
+  margin-bottom: 30px;
+}
+
+.section-heading {
+  margin-bottom: 1em;
+}
+
+.share-links {
+  @extend %text-center, %center-block, %list-inline;
+
+  li {
+    padding: 0 10px;
+  }
+}
+
+.share-popover {
+  @extend %text-center, %center-block, %list-inline;
+  margin-bottom: 0;
+
+  li {
+    &:last-of-type {
+      padding-right: 0;
+    }
+
+    a {
+      color: $light-gray-text;
+    }
+  }
+}
+
+.input-switch {
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+  }
+
+  .fa-circle-thin {
+    color: $light-gray-text;
+  }
+
+  .fa-plus {
+    color: $link-color;
+  }
+
+  .media {
+    margin-bottom: 10px;
+    padding: 0 6px;
+
+    .media-body {
+      vertical-align: middle;
+    }
+  }
+
+  .help-text {
+    @extend %small-text;
+    color: $light-gray-text;
+  }
+}
+
+.moderator {
+  font-variant: small-caps;
+  margin-left: 10px;
+}
+
+.challenge-nav {
+  @extend %center-block, %small-text;
+  @include border-radius(2em);
+
+  background-color: $white;
+  color: $text-color;
+  margin: 0.25em 1.5em;
+  padding: 0;
+
+  .fa {
+    min-height: 1.1em;
+    top: 0;
+
+    &.fa-check {
+      color: $text-color;
+
+      font-size: 1.1em;
+      top: -0.1em;
+    }
+  }
+
+  .fa-stack {
+    height: 1.7em;
+    width: 1.8em;
+    vertical-align: bottom;
+
+    .fa-stack-2x {
+      font-size: 1.8em;
+    }
+  }
+
+  .badge {
+    @extend %small-text;
+    @include border-radius(2em);
+
+    background-color: $white;
+    color: $text-color;
+    padding: 5px 15px;
+    vertical-align: bottom;
+
+    .headline {
+      @extend %hidden-xs, %text-bolder;
+
+      top: -0.3em;
+      position: relative;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .fa-play {
+    color: $challenge-nav-arrow-color;
+    position: relative;
+    top: -0.4em;
+    margin: 0 1em;
+  }
+}
+
+@each $stage in $stages {
+  .badge-#{$stage} {
+    @if $stage == 'experience' {
+      &.active {
+        .fa-stack-1x {
+          font-size: 1em;
+        }
+      }
+    }
+
+    &.selected {
+      background-color: map-get($stage-colors, $stage);
+
+      .headline,
+      .fa.fa-check {
+        color: $white;
+      }
+    }
+  }
+}
+

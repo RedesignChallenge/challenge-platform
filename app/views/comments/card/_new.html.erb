@@ -1,32 +1,32 @@
 <div id="<%= "#{comment.commentable.class.to_s.downcase}-#{comment.commentable.id}-new-comment" %>" class="new-comment">
-  <div class='comment-header'>
+  <div class="comment-header">
     <div class="media media-commenter pull-left">
-      <p class="timestamp" ng-show='temporal_parent_id != null'>
+      <p class="timestamp" ng-show="temporal_parent_id != null">
         <%= t('comments.card._new.reply') %>
-        <a href='#' onclick='return false;' ng-click='temporal_parent_id=null'>
+        <a href='#' onclick='return false;' ng-click="temporal_parent_id=null">
           <%= t('comments.card._new.cancel') %>
         </a>
       </p>
       <div class="media-left">
-        <%= render partial: 'shared/avatar', locals: {user: current_user, avatar_style: 'width:2.25em' } %>
+        <%= render partial: 'shared/avatar', locals: { user: current_user, avatar_style: 'width:2.25em' } %>
       </div>
       <% if user_signed_in? %>
         <div class="media-body" style='<%= 'padding-left: 0em' if current_user.avatar.present? %>'>
-          <div class='user-caption' style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
-            <p class='user-name'><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
-            <p class='user-title'><%= current_user.display_organization %></p>
+          <div class="user-caption" style='<%= 'margin-top: 0em' if current_user.avatar.present? %>'>
+            <p class="user-name"><%= link_to "#{current_user.display_name}", user_path(current_user) %></p>
+            <p class="user-title"><%= current_user.display_organization %></p>
           </div>
         </div>
       <% else %>
         <div class="media-body">
-          <div class='user-caption'>
-            <p class='user-name'><%= t('comments.card._new.name') %></p>
-            <p class='user-title'><%= t('comments.card._new.organization') %></p>
+          <div class="user-caption">
+            <p class="user-name"><%= t('comments.card._new.name') %></p>
+            <p class="user-title"><%= t('comments.card._new.organization') %></p>
           </div>
         </div>
       <% end %>
-      <div class='clearfix'></div>
+      <div class="clearfix"></div>
     </div>
   </div>
-  <%= render partial: 'comments/card/form', locals: {comment: comment, url: comments_path, cancel_path: false, submit_text: t('comments.card._new.submit')} %>
+  <%= render partial: 'comments/card/form', locals: { comment: comment, url: comments_path, cancel_path: false, submit_text: t('comments.card._new.submit') } %>
 </div>

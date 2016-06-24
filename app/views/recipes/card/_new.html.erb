@@ -1,12 +1,12 @@
-<div id='cookbook-<%= cookbook.id %>-new' class='recipe-new'>
-  <div class='well well-lg well-share'>
+<div id="cookbook-<%= cookbook.id %>-new" class="recipe-new">
+  <div class="well well-lg well-share">
     <p><%= t('recipes.card._new.new_question') %> <%= link_to t('recipes.card._new.submit_new'), new_challenge_recipe_stage_cookbook_recipe_path(@challenge, @recipe_stage, cookbook) %></p>
 
-    <p class='subtitle'>
+    <p class="subtitle">
       <%= t('recipes.card._new.discussion_question') %>
       <%= link_to challenge_recipe_stage_cookbook_path(@challenge, @recipe_stage, cookbook) do %>
-          <%= t('recipes.card._new.see_discusion') %>
-          <i class='fa fa-angle-right'></i>
+        <%= t('recipes.card._new.see_discusion') %>
+        <i class="fa fa-angle-right"></i>
       <% end %>
     </p>
   </div>

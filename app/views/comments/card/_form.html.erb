@@ -1,7 +1,5 @@
-<div ng-init='temporal_parent_id=<%= params[:temporal_parent_id] || 'null' %> '> </div>
-
 <%= form_for(comment, url: url) do |f| %>
-  <%= f.hidden_field :temporal_parent_id, 'ng-value' =>  'temporal_parent_id' %>
+  <%= f.hidden_field :temporal_parent_id, 'ng-value' => 'temporal_parent_id' %>
   <%= f.hidden_field :commentable_type %>
   <%= f.hidden_field :commentable_id %>
 
@@ -9,36 +7,35 @@
     <%= f.text_area :body, class: 'form-control', rows: 3, placeholder: t('comments.card._form.comment_placeholder', stage: comment.commentable.class.to_s.downcase) %>
   </div>
 
-  <div class='row'>
+  <div class="row">
 
-    <div class='col-sm-8'>
-      <div class='input-switch' ng-switch='comment_<%= comment.id %>_link' ng-init='comment_<%= comment.id %>_link=<%= comment.link.present? %>'>
-        <div ng-hide='comment_<%= comment.id %>_link' ng-click="comment_<%= comment.id %>_link=true" class='media'>
-          <div class='media-left'>
+    <div class="col-sm-8">
+      <div class="input-switch" ng-switch="comment_<%= comment.id %>_link" ng-init="comment_<%= comment.id %>_link=<%= comment.link.present? %>">
+        <div ng-hide="comment_<%= comment.id %>_link" ng-click="comment_<%= comment.id %>_link=true" class="media">
+          <div class="media-left">
             <span class="fa-stack">
               <i class="fa fa-stack-2x fa-circle-thin"></i>
               <i class="fa fa-stack-1x fa-plus"></i>
             </span>
           </div>
-          <div class='media-body'>
-            <span class='help-text'><%= t('comments.card._form.add_link') %></span>
+          <div class="media-body">
+            <span class="help-text"><%= t('comments.card._form.add_link') %></span>
           </div>
         </div>
 
-        <div ng-show='comment_<%= comment.id %>_link' class='form-group'>
+        <div ng-show="comment_<%= comment.id %>_link" class="form-group">
           <%= f.text_field :link, placeholder: t('comments.card._form.url_placeholder'), class: 'form-control' %>
-          <span class='help-block'><%= t('comments.card._form.url_help') %></span>
+          <span class="help-block"><%= t('comments.card._form.url_help') %></span>
         </div>
       </div>
     </div>
 
-    <div class='col-sm-2 col-xs-6'>
+    <div class="col-sm-2 col-xs-6">
       <%= link_to t('comments.card._form.cancel'), '#', class: 'btn btn-sm btn-rounded btn-block btn-default', 'ng-click' => cancel_path, onclick: 'return false;' if cancel_path %>
     </div>
 
-    <div class='col-sm-2 col-xs-6'>
+    <div class="col-sm-2 col-xs-6">
       <%= f.submit submit_text, class: 'btn btn-sm btn-rounded btn-block btn-info' %>
     </div>
-
   </div>
 <% end %>

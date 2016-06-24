@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     if object.destroyed_at?
       action = I18n.t('controllers.application.deleted')
     else
-      if ['experience', 'idea', 'recipe'].include?(object.class.to_s.downcase)
+      if %w(experience idea recipe).include?(object.class.to_s.downcase)
         if object.published_at?
           action = if object.created_at == object.updated_at
                      I18n.t('controllers.application.shared')
@@ -82,5 +82,4 @@ class ApplicationController < ActionController::Base
     return message
   rescue
   end
-
 end

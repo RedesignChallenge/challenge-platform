@@ -1,0 +1,218 @@
+@mixin user-avatar($avatar-args) {
+  .fa-stack-2x {
+    // Class comes from Font Awesome; not going to turn into placeholder.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-2x;
+    // scss-lint:enable PlaceholderInExtend
+    font-size: map-get($avatar-args, font-size);
+  }
+
+  .fa-stack-1x {
+    font-size: map-get($avatar-args, font-size-1x);
+    margin-top: map-get($avatar-args, margin-top);
+    margin-left: map-get($avatar-args, margin-left);
+  }
+}
+
+.fa-user-avatar {
+  font-size: 1.33333333em;
+  width: 100%;
+  margin-top: 0.5em;
+  margin-left: 0.05em;
+
+  .fa-stack-2x {
+    // Classes come from Font Awesome; not going to turn into placeholders.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-3x, .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+
+    color: $new-user;
+  }
+
+  .fa-stack-1x {
+    // Class comes from Font Awesome; not going to turn into placeholder.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+    @extend %small-text, %text-bolder;
+    margin-top: 1.4em;
+  }
+
+  .fa-inverse {
+    a {
+      color: $white;
+    }
+  }
+}
+
+.comment-header {
+  .fa-user-avatar {
+    // Should probably not extend but we do want to preserve this behavior.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .fa-lg;
+    // scss-lint:enable PlaceholderInExtend
+
+    $comment-header-avatar-args: (
+        margin-top: 0.75em,
+        margin-left: 0.5em
+    );
+
+    @include user-avatar($comment-header-avatar-args);
+  }
+}
+
+.user-header {
+  .fa-user-avatar {
+    $user-header-avatar-args: (
+        font-size: 7em,
+        font-size-1x: 2em,
+        margin-top: 1em
+    );
+
+    @include user-avatar($user-header-avatar-args);
+
+    width: 7em;
+    height: 5.5em;
+  }
+}
+
+.featured-contributors {
+  padding: 1em 0 0;
+
+  .fa-user-avatar {
+    width: auto;
+    margin-right: 2em;
+
+    .fa-stack-2x {
+      // Cannot convert Font Awesome class to placeholder
+      // scss-lint:disable PlaceholderInExtend
+      @extend .fa-2x;
+      // scss-lint:enable PlaceholderInExtend
+    }
+
+    .fa-stack-1x {
+      margin-left: 0.5em;
+      margin-top: 0.65em;
+    }
+  }
+}
+
+.media-refinement {
+  .fa-user-avatar {
+    $refinement-avatar-args: (
+        margin-top: 0.85em,
+        margin-left: 0.45em
+    );
+
+    @include user-avatar($refinement-avatar-args);
+  }
+}
+
+.well-idea {
+  .media-author {
+    .fa-user-avatar {
+      $idea-author-avatar-args: (
+          font-size: 4em,
+          margin-top: 1.9em,
+          margin-left: 1.9em
+      );
+
+      @include user-avatar($idea-author-avatar-args);
+    }
+  }
+}
+
+.well-recipe {
+  .media-author {
+    margin-bottom: 30px;
+
+    .media-left {
+      height: 5em;
+    }
+
+    .media-body {
+      padding-left: 5em;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .fa-user-avatar {
+    $recipe-author-avatar-args: (
+        font-size: 4em,
+        margin-top: 1.9em,
+        margin-left: 1.9em
+    );
+
+    @include user-avatar($recipe-author-avatar-args);
+  }
+}
+
+.recipe-thumbnail {
+  .media-author {
+    .fa-user-avatar {
+      $recipe-author-avatar-args: (
+        font-size: 1.75em,
+        margin-top: 0.65em,
+        margin-left: 0.45em
+      );
+
+      @include user-avatar($recipe-author-avatar-args);
+    }
+  }
+}
+
+.idea-thumbnail {
+  .fa-user-avatar {
+    $idea-thumbnail-args: (
+        margin-top: 0.75em,
+        margin-left: 0.5em
+    );
+
+    @extend %pull-right;
+    @include user-avatar($idea-thumbnail-args);
+
+    width: auto;
+    right: 1.5em;
+
+  }
+}
+
+.solution-experiences {
+  .fa-user-avatar {
+    $solution-experience-avatar-args: (
+      margin-left: 0.09em,
+      margin-top: 0.75em
+    );
+
+    @include user-avatar($solution-experience-avatar-args);
+    width: 1.5em;
+    height: 1.5em;
+
+  }
+}
+
+.solution-recipe {
+  .fa-user-avatar {
+    $solution-recipe-avatar-args: (
+      font-size: 6em,
+      font-size-1x: 2em,
+      margin-top: 0.8em
+    );
+
+    @include user-avatar($solution-recipe-avatar-args);
+    width: 6em;
+    height: 6em;
+    line-height: 6em;
+  }
+}
+
+.solution-ideas {
+  .fa-user-avatar {
+    width: 2.5em;
+    height: 3.5em;
+    line-height: 3.5em;
+  }
+}

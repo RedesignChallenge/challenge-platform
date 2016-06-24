@@ -1,0 +1,36 @@
+.recipe-stage-overview {
+  padding: 1.8em 0;
+  background-color: $white;
+
+  h1 {
+    margin-bottom: 0.75em;
+  }
+
+  .fa-flask {
+    @include stage-large-icon('recipe-light', 0.25em);
+  }
+}
+
+.recipe-stage-navigation {
+  @include stage-navigation($recipe);
+
+  &.affix {
+    top: 0;
+
+    + .recipe-stage-content {
+      margin-top: 20px;
+    }
+  }
+
+  .nav-link {
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('recipe');
+    }
+  }
+}
+
+.recipe-stage-content {
+  @include stage-content(20px);
+}

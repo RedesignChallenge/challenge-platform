@@ -1,0 +1,231 @@
+// The following CSS classes belong to Bootstrap and have been wrapped as placeholders.
+
+$bootstrap-classes: (
+  'text-center',
+  'text-large',
+  'center-block',
+  'list-inline',
+  'nav-justified',
+  'hidden-xs',
+  'pull-right',
+  'pull-left',
+  'text-capitalize',
+  'text-uppercase'
+);
+
+@each $bootstrap-class in $bootstrap-classes {
+  // Bootstrap classes to be generated dynamically - will ignore the placeholder clause while generating placeholders
+  // scss-lint:disable PlaceholderInExtend
+  %#{$bootstrap-class} {
+    @extend .#{$bootstrap-class};
+  }
+  // scss-lint:enable PlaceholderInExtend
+
+  .#{$bootstrap-class} {
+    @extend %#{$bootstrap-class};
+  }
+}
+
+$font-weights: (
+  'text-lighter': 100,
+  'text-normal': 300,
+  'text-bold': 500,
+  'text-bolder': 700
+);
+
+@each $type, $weight in $font-weights {
+  %#{$type} {
+    font-weight: $weight;
+  }
+
+  .#{$type} {
+    @extend %#{$type};
+  }
+}
+
+%small-text {
+  font-size: $font-size-small;
+}
+
+%default-small-text {
+  @extend %small-text;
+  color: $text-color;
+}
+
+%text-underline {
+  text-decoration: underline;
+}
+
+%text-xsmall {
+  @extend %text-bolder;
+  font-size: $font-size-xsmall;
+}
+
+%text-xsmall-no-color {
+  @extend %text-bolder;
+
+  font-size: $font-size-xsmall;
+}
+
+// Decorations
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-underline {
+  @extend %text-underline;
+}
+
+// Sizing
+
+.text-large {
+  font-size: $font-size-large;
+}
+
+.text-small {
+  @extend %small-text;
+}
+
+.text-xsmall {
+  @extend %text-xsmall;
+}
+
+.text-xsmall-normal {
+  @extend %text-bold;
+
+  font-size: $font-size-xsmall;
+  color: $xsmall-text-color;
+}
+
+.text-xlarge {
+  font-size: $font-size-xlarge;
+  line-height: 1.2em;
+}
+
+.text-medium {
+  font-size: $font-size-medium;
+}
+
+.text-h2 {
+  font-size: $font-size-h2;
+}
+
+.text-double-spaced {
+  line-height: 1.9em;
+}
+
+// Colors
+
+@each $key, $value in $stage-colors {
+  %text-#{$key} {
+    color: $value;
+  }
+
+  .text-#{$key} {
+    @extend %text-#{$key};
+  }
+}
+
+.text-green,
+.text-submit {
+  color: $navbar-default-bg;
+}
+
+.text-suggestion {
+  color: $navbar-default-bg;
+  margin: 0.5em 0 1em;
+}
+
+.text-gray {
+  color: $light-gray-text;
+}
+
+.text-black {
+  color: $black-text;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-default {
+  color: $text-color;
+}
+
+.text-link {
+  color: $link-color;
+}
+
+// Element definitions
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @extend %text-bolder;
+
+  margin-bottom: 1em;
+
+  a {
+    @extend %text-bolder;
+
+    color: inherit;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: inherit;
+    }
+  }
+}
+
+h6 {
+  @extend %text-bolder, %text-uppercase;
+
+  color: $light-gray-text;
+
+  a {
+    @extend %text-bolder, %text-uppercase;
+    color: inherit;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: inherit;
+    }
+  }
+}
+
+a,
+label {
+  @extend %text-bold;
+}
+
+p,
+span,
+li,
+input,
+div {
+  @extend %text-normal;
+}
+
+// Universal Classes
+%section-title {
+  @extend %text-center;
+  margin-bottom: 0.5em;
+}
+
+.section-title {
+  @extend %section-title;
+}
+
+.section-description {
+  @extend %text-center, %text-large;
+
+  color: $gray;
+}
+

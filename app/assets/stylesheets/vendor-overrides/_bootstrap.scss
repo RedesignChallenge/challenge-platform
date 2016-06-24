@@ -1,0 +1,264 @@
+@mixin arrow-style($direction) {
+  @if $direction == 'right' {
+    .arrow {
+      border-right-color: $link-color;
+
+      &::after {
+        border-right-color: $link-color;
+      }
+    }
+  } @else if $direction == 'bottom' {
+    .arrow {
+      border-bottom-color: $link-color;
+
+      &::after {
+        border-bottom-color: $link-color;
+      }
+    }
+  }
+}
+
+.popover {
+  background-color: $link-color;
+  border-color: $link-color;
+  color: $white;
+
+  .popover-content {
+    @extend %small-text;
+  }
+
+  &.right {
+    @include arrow-style('right');
+  }
+
+  &.bottom {
+    @include arrow-style('bottom');
+  }
+}
+
+// Bootstrap class; will respect !important
+// scss-lint:disable ImportantRule
+.bootstrap-switch-info {
+  background-color: $link-color !important;
+}
+// scss-lint:enable ImportantRule
+
+.table-borderless {
+  // Built-in style from Bootstrap, cannot modify
+  // scss-lint:disable PlaceholderInExtend
+  @extend .table;
+  // scss-lint:enable PlaceholderInExtend
+
+  // Border is coming in from Bootstrap; will respect !important
+  // scss-lint:disable ImportantRule
+  td {
+    border: none !important;
+  }
+  // scss-lint:enable ImportantRule
+}
+
+%dropdown-small-link-text {
+  a {
+    @extend %default-small-text;
+  }
+}
+
+.dropdown {
+  a {
+    color: $light-gray-text;
+  }
+
+  .dropdown-menu {
+    li {
+      @extend %dropdown-small-link-text;
+    }
+  }
+}
+
+// Likely overriding a value from Boostrap; will respect !important in this context.
+// scss-lint:disable ImportantRule
+.radio,
+.checkbox {
+  label {
+    font-weight: bold !important;
+
+    .help-block {
+      font-weight: normal;
+      font-size: 0.85em;
+    }
+  }
+}
+//scss-lint:enable ImportantRule
+
+.help-block {
+  font-size: 0.8em;
+}
+
+// Built-in style from Rails; cannot change.
+// scss-lint:disable SelectorFormat
+.field_with_errors {
+  // scss-lint:enable SelectorFormat
+  .input-borderless {
+    border: 1px solid $error-border;
+    box-shadow: inset 0 1px 1px $error-box-shadow;
+  }
+}
+
+.quote {
+  text-align: center;
+  border-left: 5px solid $quote-border-left;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 2em;
+    font-style: italic;
+    line-height: 1.9em;
+  }
+}
+
+.container-sm {
+  // Built-in style from Bootstrap, cannot modify
+  // scss-lint:disable PlaceholderInExtend
+  @extend .container;
+  // scss-lint:enable PlaceholderInExtend
+  max-width: 940px;
+}
+
+.modal-md {
+  @media (min-width: 768px) {
+    width: 450px;
+  }
+}
+
+.label-borderless {
+  padding: 0 12px;
+}
+
+%label-style {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+.label {
+  @extend %label-style;
+}
+
+$stages: 'experience', 'idea', 'recipe', 'solution';
+
+@each $stage in $stages {
+  .label-#{$stage} {
+    @extend %label-style;
+
+    padding: 0.25em 3em 0.75em;
+    border-radius: 0.5em 0 0;
+    background-color: map-get($stage-colors, $stage);
+  }
+}
+
+.btn:focus,
+.btn:active,
+.btn:active:focus,
+a:focus,
+a:active,
+a:active:focus,
+.submit-link {
+  outline: none;
+}
+
+// Bootstrap override; !important respected
+// scss-lint:disable ImportantRule
+.btn-sm {
+  font-size: 12px !important;
+}
+// scss-lint:enable ImportantRule
+
+.btn-fa {
+  padding-top: 0.15em;
+}
+
+%round-btn {
+  @include border-radius(25px);
+}
+
+.btn-rounded {
+  @extend %round-btn;
+}
+
+.btn-longer {
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+// Bootstrap class; respecting !important.
+// scss-lint:disable ImportantRule
+.alert-fullpage {
+  border-radius: 0 !important;
+  text-align: center !important;
+  margin-bottom: 0 !important;
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  position: relative;
+  bottom: $line-height-computed;
+}
+// scss-lint:enable ImportantRule
+
+.alert-info {
+  background-color: $link-color;
+  border: 1px solid $white;
+  border-left: 0;
+  border-right: 0;
+  color: $white;
+
+  a {
+    @extend %text-bold;
+    @extend %text-underline;
+    color: $white;
+  }
+
+  button {
+    opacity: 1;
+
+    .fa-close {
+      color: $white;
+    }
+  }
+}
+
+.input-borderless {
+  border: 0;
+  box-shadow: none;
+}
+
+.input-graybg {
+  background-color: $lightest-gray-background;
+}
+
+.well-share {
+  border: 2px dashed $well-border;
+  background-color: $well-bg;
+
+  p {
+    font-size: 1.6em;
+    color: $well-text;
+    margin-bottom: 0;
+
+    &.subtitle {
+      font-size: 1em;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+  }
+}
+
+.badge-bg {
+  @extend %text-xsmall-no-color;
+
+  background-color: $footer-background;
+  color: $white;
+  bottom: 0.2em;
+  position: relative;
+}

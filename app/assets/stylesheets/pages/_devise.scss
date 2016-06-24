@@ -1,0 +1,136 @@
+@mixin devise-links($color: null) {
+  a {
+    @extend %text-bold;
+    @if $color != null {
+      color: $color;
+    }
+  }
+}
+
+
+.devise-form {
+  margin: 40px 0;
+
+  .panel-title {
+    @extend %text-center;
+  }
+}
+
+// Devise-driven CSS; will not change.
+// scss-lint:disable IdSelector
+// scss-lint:disable SelectorFormat
+#error_explanation {
+  color: $red;
+
+  ul {
+    padding: 0;
+    list-style: none;
+    margin: 0 0 5px;
+  }
+}
+// scss-lint:enable SelectorFormat
+// scss-lint:enable IdSelector
+
+// Devise-driven CSS; will not change.
+// scss-lint:disable SelectorFormat
+.field_with_errors {
+  // Neither of these classes are under our control.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .control-group !optional;
+  @extend .has-error !optional;
+  // scss-lint:enable PlaceholderInExtend
+
+  display: inline;
+
+  .input-group {
+    // Not under our control.
+    // scss-lint:disable PlaceholderInExtend
+    @extend .has-error;
+    // scss-lint:enable PlaceholderInExtend
+  }
+}
+
+// scss-lint:enable SelectorFormat
+
+.devise-links {
+  @extend %text-center, %center-block;
+
+  margin-bottom: 0;
+}
+
+.auth-screen {
+  padding: 80px 0;
+
+  .well-auth {
+    padding: 19px 50px;
+    background-color: $white;
+
+    .auth-cancel {
+      @extend %pull-right;
+
+      color: $gray-light;
+    }
+
+    .auth-title {
+      @extend %section-title;
+    }
+
+    // Regulated by Select2 - until replaced, we should keep this here.
+    // scss-lint:disable QualifyingElement
+    span.select2-chosen {
+      // Bootstrap class; no sense in wrapping this one
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
+
+      padding: 0.5em;
+    }
+    // scss-lint:enable QualifyingElement
+
+    .row-fields {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 1.4em;
+      color: $devise-label-text;
+    }
+
+    input {
+      // Bootstrap class; no sense in wrapping this one
+      // scss-lint:disable PlaceholderInExtend
+      @extend .input-borderless;
+      // scss-lint:enable PlaceholderInExtend
+
+      background-color: $light-gray-background;
+    }
+
+    .auth-helper {
+      @extend %text-bold;
+      @include devise-links();
+      margin: 10px 0 0;
+
+    }
+
+    .row-disclaimer {
+      margin-bottom: 30px;
+    }
+
+    .auth-disclaimer {
+      @extend %text-center;
+      @include devise-links($black-text);
+    }
+
+    .row-actions {
+      margin-top: 15px;
+    }
+
+    .auth-switch {
+      @extend %text-bold;
+      @include devise-links();
+
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -33,6 +33,9 @@ en:
       saved_draft: "saved a draft of"
       updated_draft: "updated the draft of"
       message: "You've successfully %{action} your %{actionable}. <a href='%{url}'>Click here</a> to see all of your contributions."
+    comments:
+      flash:
+        danger: "You do not have access to that area or operation."
     experiences:
       flash:
         error: "Sorry, that experience has not been published yet."
@@ -60,7 +63,6 @@ en:
       time_left: "%{number} %{unit} Left"
     show:
       completed: "Completed"
-      active: "Not yet active"
       challenge: "The Challenge"
       goal: "The Goal"
       role: "Your Role"
@@ -275,6 +277,7 @@ en:
         sign_in_with_omniauth: "Sign in with %{provider}"
     unlocks:
       new:
+        title: "Resend unlock instructions"
         email_label: "Email"
         submit: "Resend unlock instructions"
 
@@ -556,26 +559,34 @@ en:
   mailers:
     comment:
       followed:
+        subject: "%{user} added a comment in the discussion of %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} added a comment in the discussion of %{commentable}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
       posted:
+        subject: "%{user} commented on your %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} posted a comment on your %{commentable} %{commentable_link}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
       replied:
+        subject: "%{user} replied to your comment on the %{commentable}: %{commentable_title}"
         content: "One of your esteemed collaborators on %{platform} replied to your comment on the %{commentable} %{commentable_link}:"
         action: "View and Reply"
         unsubscribe: "Unsubscribe from your settings page"
         callout_html: "Don't want to receive these kinds of notifications? %{unsubscribe_link}."
     shared:
-      action:
-        confirm_email: "Please confirm your email address by clicking the link below."
-        send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
-        confirm_address: "Confirm email address"
-        signature: "The %{project} Team"
+      _intro:
+        salutation: "Hi %{first_name},"
+      _outro:
+        valediction: "Thanks,"
+        team: "The %{platform} Team "
+    action:
+      confirm_email: "Please confirm your email address by clicking the link below."
+      send_critical_info: "We may need to send you critical information about our service and it is important that we have an accurate email address."
+      confirm_address: "Confirm email address"
+      signature: "The %{project} Team"
 
   mailkick:
     subscriptions:

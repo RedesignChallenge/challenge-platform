@@ -1,0 +1,36 @@
+.experience-stage-overview {
+  padding: 30px 0;
+  background-color: $white;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .fa-comments {
+    @include stage-large-icon('experience-light', 0);
+  }
+}
+
+.experience-stage-navigation {
+  @include stage-navigation($experience);
+
+  &.affix {
+    top: 0;
+
+    + .experience-stage-content {
+      margin-top: 110px;
+    }
+  }
+
+  .nav-link {
+    &:hover,
+    &:focus,
+    &.active {
+      @include text-for-stage('experience');
+    }
+  }
+}
+
+.experience-stage-content {
+  @include stage-content();
+}

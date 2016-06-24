@@ -8,5 +8,4 @@ class DistrictsController < ApplicationController
       format.json { render json: @districts, each_serializer: DistrictSerializer }
     end
   end
-
 end

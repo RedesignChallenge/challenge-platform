@@ -5,5 +5,4 @@ class SolutionStagesController < ApplicationController
     @solution_stage = @challenge.solution_stage
     @solution_stories = @solution_stage.solution_stories
   end
-
 end

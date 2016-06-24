@@ -39,5 +39,4 @@ class Suggestion < ActiveRecord::Base
   def icon
     'fa-archive'
   end
-  
 end

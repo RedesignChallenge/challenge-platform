@@ -1,0 +1,129 @@
+.fa-comments-o,
+.fa-reply,
+.fa-share,
+.fa-comments,
+.fa-download,
+.fa-flask,
+.fa-check,
+.fa-comment,
+.fa-lightbulb-o,
+.fa-thumbs-o-up,
+.fa-thumbs-up,
+.fa-ellipsis-h,
+.fa-pencil,
+.fa-puzzle-piece,
+.fa-twitter,
+.fa-linkedin,
+.fa-facebook,
+.fa-envelope {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 1.5em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: 0.2em;
+  // .fa-* classes belong to Font Awesome; we can't change them to placeholders.
+  // scss-lint:disable PlaceholderInExtend
+  &.fa-2x {
+    @extend .fa-2x;
+  }
+
+  &.fa-3x {
+    @extend .fa-3x;
+  }
+
+  &.fa-4x {
+    @extend .fa-4x;
+  }
+  // scss-lint:enable PlaceholderInExtend
+}
+
+// Given via Icon Import
+.fa-comments-o {
+  @extend %comments-icon;
+}
+
+.fa-share {
+  @extend %share-icon;
+}
+
+.fa-comments {
+  @extend %experiences-icon;
+}
+
+.fa-download {
+  @extend %download-icon;
+}
+
+.fa-flask {
+  @extend %recipe-icon;
+}
+
+.fa-check {
+  @extend %check-icon;
+}
+
+.fa-comment {
+  @extend %experience-icon;
+}
+
+.fa-lightbulb-o {
+  @extend %idea-icon;
+}
+
+.fa-thumbs-o-up {
+  @extend %like-icon;
+}
+
+.fa-thumbs-up {
+  @extend %liked-icon;
+}
+
+.fa-ellipsis-h {
+  @extend %more-icon;
+
+  font-size: 2em;
+  top: 0.3em;
+}
+
+.fa-pencil {
+  @extend %refine-icon;
+}
+
+.fa-reply {
+  @extend %reply-icon;
+}
+
+.fa-puzzle-piece {
+  @extend %story-icon;
+}
+
+.fa-twitter {
+  @extend %twitter-icon;
+}
+
+.fa-linkedin {
+  @extend %linkedin-icon;
+}
+
+.fa-facebook {
+  @extend %facebook-icon;
+}
+
+.fa-envelope {
+  @extend %email-icon;
+}
+
+.fa-wrench {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin-right: 0.1em;
+  position: relative;
+  top: 0.1em;
+}

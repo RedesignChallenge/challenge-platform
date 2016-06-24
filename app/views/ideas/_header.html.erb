@@ -1,13 +1,13 @@
-<div class='row'>
-  <div class='col-sm-10 col-sm-offset-1'>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
 
-    <div class='content-block'>
-      <h6 class='text-center'><%= t('ideas._header.header') %></h6>
+    <div class="content-block">
+      <h6 class="text-center"><%= t('ideas._header.header') %></h6>
 
-      <h2 class='section-title text-idea'><%= link_to @idea.problem_statement.title, challenge_idea_stage_path(@challenge, @idea.problem_statement, anchor: "problem_statement-#{@idea.problem_statement.id}") %></h2>
+      <h2 class="section-title text-idea"><%= link_to @idea.problem_statement.title, challenge_idea_stage_path(@challenge, @idea.problem_statement, anchor: "problem_statement-#{@idea.problem_statement.id}") %></h2>
 
-      <div class='row'>
-        <div class='col-md-8 col-md-offset-2'>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
           <p><%= @idea.problem_statement.description.html_safe %></p>
         </div>
       </div>
@@ -17,11 +17,11 @@
       <div class="row">
         <div class="col-sm-10 col-md-offset-1">
 
-          <div class='well-featured-idea'>
-            <div class='row'>
-              <div class='col-sm-10 col-sm-offset-1'>
-                <h6 class='text-white'><%= t('ideas._header.featured_idea') %></h6>
-                <p class='text-small'><%= @idea.feature.reason %></p>
+          <div class="well-featured-idea">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h6 class="text-white"><%= t('ideas._header.featured_idea') %></h6>
+                <p class="text-small"><%= @idea.feature.reason %></p>
               </div>
             </div>
           </div>
@@ -29,6 +29,5 @@
         </div>
       </div>
     <% end %>
-
   </div>
 </div>

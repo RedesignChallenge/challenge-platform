@@ -1,0 +1,361 @@
+@mixin idea-action-link($color: $dropdown-toggle-text) {
+  ul {
+    @extend %small-text;
+
+    margin-top: 10px;
+
+    a {
+      color: $color;
+    }
+  }
+}
+
+@mixin idea-action-base($color: $dropdown-toggle-text) {
+  @include idea-action-link($color);
+
+  position: absolute;
+  left: 20px;
+  bottom: 0.25em;
+  width: 100%;
+  padding-right: 2.5em;
+
+  .actions {
+    margin-right: 0;
+  }
+
+  .dropdown-toggle {
+    color: $color;
+  }
+
+  a {
+    color: $white;
+  }
+}
+
+.idea-thumbnail {
+  height: 425px;
+  padding: 20px;
+  position: relative;
+  background-color: $white;
+
+  a:hover {
+    color: $idea;
+  }
+
+  .folded-corner {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 20px 20px 0;
+    border-color: $idea-thumbnail-border $lightest-gray-background;
+    border-style: solid;
+  }
+
+  .idea-title {
+    min-height: 100px;
+  }
+
+  .idea-actions {
+    @include idea-action-base();
+
+  }
+
+  .idea-inspiration-actions {
+    @include idea-action-base($white);
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
+
+    a {
+      color: $text-color;
+    }
+  }
+}
+
+.idea-inspiration {
+  // Won't get converted into a placeholder, may be worth doing in the future
+  // scss-lint:disable PlaceholderInExtend
+  @extend .idea-thumbnail;
+  // scss-lint:enable PlaceholderInExtend
+
+  background-color: $idea;
+  color: $white;
+
+  .folded-corner {
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0 solid $idea-light;
+    border-right: 20px $lightest-gray-background;
+    border-bottom-width: 20px;
+    border-left-color: $lightest-gray-background;
+  }
+
+  .dropdown-toggle {
+    color: $white;
+  }
+
+  .dropdown-menu {
+    a {
+      color: $text-color;
+    }
+  }
+}
+
+.idea-add-thumbnail {
+  border: 2px dashed $well-text;
+  background-color: $well-bg;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: $gray-text;
+  }
+
+  .idea-add {
+    @extend %text-center;
+
+    position: relative;
+    top: 40%;
+    color: $gray-light;
+
+    .instruction {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+  }
+}
+
+.well-featured-idea {
+  @include featured-well($idea);
+}
+
+.idea-overview {
+  padding: 40px 0;
+}
+
+.media-refinement {
+  .media-body {
+    padding-top: 0.5em;
+    padding-left: 2.25em;
+  }
+}
+
+.well-idea {
+  @include border-radius(10px);
+
+  padding: 0;
+  background-color: $white;
+
+  .actions {
+    a {
+      color: $gray-text;
+    }
+  }
+
+  .fa-close {
+    padding-right: 15px;
+    padding-top: 15px;
+  }
+
+  .idea-content {
+    padding: 0 3em 1.5em;
+  }
+
+  .row-idea {
+    margin-bottom: 30px;
+  }
+
+  .content-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .media-author {
+    margin-bottom: 30px;
+  }
+
+  .media-body {
+    padding-left: 5em;
+  }
+
+  .media-left {
+    height: 5em;
+  }
+
+  .refinement-header {
+    @extend %text-bold;
+
+    color: $light-gray-text;
+    font-size: 0.95em;
+  }
+}
+
+.idea-comments {
+  padding: 20px 0;
+}
+
+.idea-share {
+  padding: 20px 0;
+}
+
+.idea-form {
+  padding: 0 0 40px;
+
+  .fa-close.fa-2x {
+    @extend %pull-right;
+
+    position: relative;
+    top: 30px;
+    color: $gray-light;
+  }
+
+  .idea-form-thumbnail {
+    background-color: $white;
+    padding: 20px;
+    position: relative;
+
+    .folded-corner {
+      margin: 0 auto;
+      position: relative;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-width: 0 20px 20px 0;
+      border-color: $idea-thumbnail-border $body-bg;
+      border-style: solid;
+    }
+
+    label {
+      // Bootstrap classes; no sense in wrapping these in a placeholder at this time.
+      // scss-lint:disable PlaceholderInExtend
+      @extend .label-borderless;
+      @extend .text-uppercase;
+      // scss-lint:enable PlaceholderInExtend
+
+      color: $idea;
+      font-size: 18px;
+    }
+  }
+
+  .idea-refinement {
+    padding: 0 12px;
+
+    .fa-close {
+      @extend %pull-left;
+
+      margin-right: 10px;
+      color: $gray-medium;
+
+
+      // FIXME:  The nesting here appears to be the nature of the beast.  May be better to move the pointer piece to its own class in the future?
+      // scss-lint:disable NestingDepth
+      &:hover,
+      &:focus,
+      &:active {
+        cursor: pointer;
+      }
+      // scss-lint:enable NestingDepth
+    }
+
+    .idea-refinement {
+      // Bootstrap origin; won't turn into a placeholder
+      // scss-lint:disable PlaceholderInExtend
+      @extend .help-block;
+      // scss-lint:enable PlaceholderInExtend
+
+      font-size: 0.8em;
+    }
+  }
+}
+
+.idea-example-thumbnail {
+  // Not likely to be turned into a placeholder right now
+  // scss-lint:disable PlaceholderInExtend
+  @extend .idea-form-thumbnail;
+  // scss-lint:enable PlaceholderInExtend
+
+  p {
+    padding: 6px 12px;
+
+    &.example-idea-title {
+      @extend %text-bold;
+      color: $idea;
+
+      font-size: 1.6em;
+      margin-bottom: 0;
+    }
+
+    &.example-idea-description {
+      font-size: 1em;
+    }
+  }
+
+  .example-idea-embed {
+    padding: 6px 12px;
+  }
+}
+
+.example-switch {
+  position: relative;
+
+  .well-example {
+    @extend %hidden-xs;
+
+    color: $light-gray-text;
+
+    background-color: $white;
+    position: absolute;
+    padding: 100px 19px;
+    top: 10px;
+
+    .example-heading {
+      @extend %text-bold;
+
+      font-size: 1.8em;
+      line-height: 1.4em;
+    }
+
+    .example-description {
+      font-size: 1.1em;
+    }
+
+    &.well-right {
+      right: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
+    }
+
+    &.well-left {
+      left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      cursor: pointer;
+    }
+  }
+}

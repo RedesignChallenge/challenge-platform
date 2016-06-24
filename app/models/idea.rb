@@ -66,5 +66,4 @@ class Idea < ActiveRecord::Base
   def icon
     'fa-lightbulb-o'
   end
-
 end

@@ -1,54 +1,60 @@
-<div id='idea-<%= idea.id %>' class="<%= columns %>">
+<div id="idea-<%= idea.id %>" class="<%= columns %>">
 
   <div class="thumbnail idea-inspiration">
     <div class="folded-corner">
 
-      <h6 class='text-uppercase text-bold text-idea-light'><%= t('ideas.card._inspiration.inspiration') %></h6>
+      <h6 class="text-uppercase text-bold text-idea-light"><%= t('ideas.card._inspiration.inspiration') %></h6>
 
-      <div class='idea-title'>
-        <p class='text-xlarge text-lighter text-normal text-white'><%= link_to truncate(idea.title, length: 50), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-xlarge text-idea text-normal text-white' %></p>
+      <div class="idea-title">
+        <%= link_to truncate(idea.title, length: 50),
+                    challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea),
+                    class: 'text-xlarge text-lighter text-normal text-white' %>
       </div>
 
       <p><%= truncate_html(idea.description, length: 200).html_safe %></p>
 
       <% if idea.refinement_parent %>
-        <p class='text-xsmall-normal text-white'>
-          <i class='fa fa-pencil text-white'></i> <%= t('ideas.card._inspiration.refinement') %>
+        <p class="text-xsmall-normal text-white">
+          <i class="fa fa-pencil text-white"></i> <%= t('ideas.card._inspiration.refinement') %>
           <%= link_to idea.refinement_parent.title, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.refinement_parent), class: 'text-white text-underline' %>
         </p>
       <% end %>
     </div>
 
-    <div class='idea-actions text-white'>
-      <ul id='actions' class='list-inline pull-left'>
+    <div class="idea-inspiration-actions">
+      <ul class="actions list-inline pull-left">
         <li id="idea-<%= idea.id %>-comments">
-          <%= link_to "<i class='fa fa-comments-o'></i> #{idea.comments_count unless idea.comments_count.zero?}".html_safe, challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) %>
+          <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea, { anchor: 'idea-comments' }) do %>
+            <i class="fa fa-comments-o"></i> <%= "#{idea.comments_count unless idea.comments_count.zero?}" %>
+          <% end %>
         </li>
 
         <li id="idea-<%= idea.id %>-like">
           <%= render partial: 'ideas/card/like', locals: { idea: idea } %>
         </li>
 
-        <li class='dropdown'>
+        <li class="dropdown">
           <a id="idea-<%= idea.id %>-other" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" style='right: 0; left: auto;'>
-            <i class='fa fa-ellipsis-h'></i>
+            <i class="fa fa-ellipsis-h"></i>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="idea-<%= idea.id %>-other">
             <% if user_signed_in? && idea.user == current_user %>
-              <li><%= link_to t('ideas.card._inspiration.edit'), edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) %></li>
-              <li><%= link_to t('ideas.card._inspiration.delete'), challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id), method: :delete, data: { confirm: t('ideas.card._inspiration.confirm')} %></li>
+              <li><%= link_to t('ideas.card._inspiration.edit'), edit_challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea), class: 'text-white' %></li>
+              <li><%= link_to t('ideas.card._inspiration.delete'),
+                              challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea.id),
+                              method: :delete, data: { confirm: t('ideas.card._inspiration.confirm') } %></li>
             <% else %>
-              <li role="presentation"><%= link_to t('ideas.card._inspiration.flag'), '#' %></li>
+              <li role="presentation"><%= link_to t('ideas.card._inspiration.flag'), '#', class: 'text-white' %></li>
             <% end %>
           </ul>
         </li>
       </ul>
-      
-      <div class='pull-right'>
-        <%= render partial: 'shared/avatar', locals: {user: idea.user, avatar_style: 'width:2.25em;top: 0.5em;position: relative;' } %>
+
+      <div class="pull-right">
+        <%= render partial: 'shared/avatar', locals: { user: idea.user, avatar_style: 'width:2.25em;top: 0.5em;position: relative;' } %>
       </div>
     </div>
 
-    <div class='clearfix'></div>
+    <div class="clearfix"></div>
   </div>
 </div>

@@ -68,5 +68,4 @@ class Solution < ActiveRecord::Base
   def icon
     'fa-puzzle-piece'
   end
-
 end

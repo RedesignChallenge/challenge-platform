@@ -7,16 +7,16 @@
         <li data-target="#solution_stage-carousel" data-slide-to="<%= index %>" class="<%= index.zero? ? 'active' : '' %>"></li>
       <% end %>
     </ol>
-    
+
     <div class="carousel-inner" role="listbox">
       <% @solution_stories.first(3).each_with_index do |solution_story, index| %>
-        <div class='item <%= index.zero? ? 'active' : '' %>'>
-          <div class='opacity-layer'>
+        <div class="item <%= index.zero? ? 'active' : '' %>">
+          <div class="opacity-layer">
             <%= image_tag(solution_story.image.url, style: 'width: 100%; max-height: 400px') %>
           </div>
           <div class="carousel-caption">
-            <p class='text-h2 text-white text-left'><%= link_to solution_story.title, challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story), style: 'color: white' %></p>
-            <p class='text-white text-left'><%= truncate_html(solution_story.description, length: 300).html_safe %></p>
+            <p class="text-h2 text-white text-left"><%= link_to solution_story.title, challenge_solution_stage_solution_story_path(@challenge, solution_story.solution_stage, solution_story), style: 'color: white' %></p>
+            <p class="text-white text-left"><%= truncate_html(solution_story.description, length: 300).html_safe %></p>
           </div>
         </div>
       <% end %>
@@ -30,19 +30,21 @@
     </a>
   </div>
 <% else %>
-  <div id='solution_stage-overview'>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
-          <div class='row'>
-            <div class='col-sm-9'>
-              <h1 class='text-solution'><%= t('.coming_soon.header') %></h1>
-              <p class='text-large'><%= t('.coming_soon.check_back') %></p>
+  <div class="solution-stage-overview">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row">
+            <div class="col-sm-9">
+              <h1 class="text-solution"><%= t('.coming_soon.header') %></h1>
+              <p class="text-large"><%= t('.coming_soon.check_back') %></p>
 
-              <%= link_to "<i class='fa fa-twitter'></i>  ##{@challenge.hashtag.html_safe}".html_safe, "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' %>
+              <%= link_to "https://twitter.com/hashtag/#{@challenge.hashtag.html_safe}", target: '_blank', class: 'text-default text-large text-normal' do %>
+                <i class="fa fa-twitter"></i><%= "##{@challenge.hashtag.html_safe}" %>
+              <% end %>
             </div>
-            <div class='col-sm-3 text-center'>
-              <i class='fa fa-puzzle-piece hidden-xs'></i>
+            <div class="col-sm-3 text-center">
+              <i class="fa fa-puzzle-piece hidden-xs"></i>
             </div>
           </div>
         </div>
@@ -51,33 +53,33 @@
   </div>
 <% end %>
 
-<div id="solution_stage-content">
+<div class="solution-stage-content">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <% if @challenge.stage_number == 4 %>
-          <h2 class='text-center'><%= t('.meeting_the_challenge') %>></h2>
-          <div class='row row-count'>
-            <div class='col-xs-6 col-xs-offset-3'>
-              <h6 class='text-center center-block'>
-                <i class='fa fa-puzzle-piece fa-3x'></i><br>
-                <span class='text-bolder'><%= pluralize(@solution_stories.count, t('.stage')) %></span>
+          <h2 class="text-center"><%= t('.meeting_the_challenge') %></h2>
+          <div class="row row-count">
+            <div class="col-xs-6 col-xs-offset-3">
+              <h6 class="text-center center-block">
+                <i class="fa fa-puzzle-piece fa-3x"></i><br>
+                <span class="text-bolder"><%= pluralize(@solution_stories.count, t('.stage')) %></span>
               </h6>
             </div>
           </div>
 
-          <div class='row' style='margin-bottom: 50px'>
+          <div class="row" style='margin-bottom: 50px'>
             <% @solution_stories.each do |solution_story| %>
               <%= render file: 'solution_stories/card', locals: { solution_story: solution_story } %>
             <% end %>
           </div>
         <% end %>
 
-        <h2 class='section-title text-submit'><%= t('.social_sharing_question') %></h2>
-        <p class='section-description'><%= t('.social_sharing_description') %></p>
+        <h2 class="section-title text-submit"><%= t('.social_sharing_question') %></h2>
+        <p class="section-description"><%= t('.social_sharing_description') %></p>
 
         <%= render partial: 'layouts/share_links', locals: { url: root_url, title: @challenge.title.html_safe, description: @challenge.description.html_safe, hashtag: @challenge.hashtag } %>
-        
+
       </div>
     </div>
   </div>

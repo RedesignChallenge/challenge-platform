@@ -5,5 +5,4 @@ class CookbooksController < ApplicationController
     @recipe_stage = @cookbook.recipe_stage
     @challenge = @cookbook.challenge
   end
-
 end

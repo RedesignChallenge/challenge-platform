@@ -1,16 +1,17 @@
-<div id='comment-form'>
-  <div class='container'>
+<div class="comment-form">
+  <div class="container">
 
-    <%= link_to "<i class='fa fa-close fa-2x'></i>".html_safe, after_update_object_path_for(@comment.commentable) %>
-    <div class='clearfix'></div>
+    <%= link_to after_update_object_path_for(@comment.commentable) do %>
+      <i class="fa fa-close fa-2x"></i>
+    <% end %>
+    <div class="clearfix"></div>
 
-    <div class='row'>
-      <div class='col-sm-10 col-sm-offset-1'>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
         <%= render partial: 'comments/header' %>
 
         <%= render partial: 'comments/form', locals: { url: comments_path, cancel_path: after_update_object_path_for(@comment.commentable), submit_text: t('comments.new.submit') } %>
       </div>
     </div>
-    
   </div>
 </div>

@@ -17,5 +17,4 @@ class FileUploader < CarrierWave::Uploader::Base
   def extension_white_list
     FILE_EXTENSION_WHITELIST
   end
-
 end

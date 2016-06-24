@@ -1,45 +1,55 @@
-@import "bourbon";
-@import "font-awesome";
-@import "select2";
-@import "bootstrap3-switch";
-@import "vendor/shake";
-@import "vendor/bootstrap-social";
-@import "imports/icons";
-@import "partials/mixins";
+@charset 'utf-8';
 
-@import "variables/colors";
-@import "variables/bootstrap";
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "variables/typography";
+@import
+  'abstracts/colors',
+  'abstracts/bootstrap',
+  'abstracts/mixins';
 
-@import "overrides/bootstrap";
-@import "overrides/font-awesome";
+@import
+  'bootstrap',
+  'bootstrap3-switch',
+  'bootstrap-sprockets',
+  'bourbon',
+  'font-awesome',
+  'select2',
+  'vendors/bootstrap-social',
+  'vendors/ribbon',
+  'vendors/shake';
 
-@import "vendor/ribbon";
-@import "partials/animate";
-@import "partials/header";
-@import "partials/footer";
-@import "partials/global";
-@import "partials/draft";
+@import
+  'vendor-overrides/bootstrap',
+  'vendor-overrides/font-awesome';
 
-@import "pages/home";
-@import "pages/preview";
-@import "pages/devise";
-@import "pages/research";
-@import "pages/legal";
-@import "pages/about";
-@import "pages/user";
-@import "pages/suggestion";
-@import "pages/comment";
+@import
+  'base/typography',
+  'base/global';
 
-@import "pages/challenge";
-@import "pages/experience_stage";
-@import "pages/experience";
-@import "pages/idea_stage";
-@import "pages/idea";
-@import "pages/recipe_stage";
-@import "pages/cookbook";
-@import "pages/recipe";
-@import "pages/solution_stage";
-@import "pages/solution_story";
+@import
+  'layout/icons';
+
+@import
+  'components/animate',
+  'components/draft',
+  'components/footer',
+  'components/avatar',
+  'components/header';
+
+@import
+  'pages/home',
+  'pages/preview',
+  'pages/devise',
+  'pages/legal',
+  'pages/about',
+  'pages/user',
+  'pages/suggestion',
+  'pages/comment',
+  'pages/challenge',
+  'pages/experience_stage',
+  'pages/experience',
+  'pages/idea_stage',
+  'pages/idea',
+  'pages/recipe_stage',
+  'pages/cookbook',
+  'pages/recipe',
+  'pages/solution_stage',
+  'pages/solution_story';

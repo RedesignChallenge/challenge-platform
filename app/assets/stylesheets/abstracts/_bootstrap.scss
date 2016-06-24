@@ -1,0 +1,27 @@
+//** FROM: https://raw.githubusercontent.com/twbs/bootstrap-sass/master/templates/project/_bootstrap-variables.sass
+//**
+// Override Bootstrap variables here (defaults from bootstrap-sass v3.3.4):
+
+$font-family-sans-serif: sans-serif;
+
+$font-size-base: 16px;
+$font-size-large: ceil($font-size-base * 1.25);
+$font-size-small: ceil($font-size-base * 0.85);
+
+$font-size-h1: floor($font-size-base * 3);
+$font-size-h2: floor($font-size-base * 1.75);
+$font-size-h3: ceil($font-size-base * 1.25);
+$font-size-h4: ceil($font-size-base * 1.125);
+$font-size-h5: $font-size-base;
+$font-size-h6: ceil($font-size-base * 0.75);
+
+$font-size-xsmall: ceil($font-size-base * 0.65);
+$font-size-xlarge: ceil($font-size-base * 1.65);
+$font-size-medium: ceil($font-size-base * 1.1);
+
+
+$headings-font-weight: 500;
+
+$navbar-border-radius: 0;
+
+$navbar-default-border: darken($navbar-default-bg, 6.5%);

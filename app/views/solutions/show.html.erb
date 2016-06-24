@@ -1,20 +1,20 @@
-<h3 class='text-solution text-center'><%= @solution.title.html_safe %></h3>
+<h3 class="text-solution text-center"><%= @solution.title.html_safe %></h3>
 
-<div class='row row-solution'>
+<div class="row row-solution">
 
   <div class="col-sm-3">
-    <div class='solution-credits text-center center-block'>
+    <div class="solution-credits text-center center-block">
 
-      <div class='solution-credit solution-recipe'>
-        <h5 class='text-solution'><%= t('.implemented_by') %></h5>
+      <div class="solution-credit solution-recipe">
+        <h5 class="text-solution"><%= t('.implemented_by') %></h5>
         <%= render partial: 'shared/avatar', locals: { user: @solution.user } %>
-        <p class='text-small'><%= @solution.user.display_name %></p>
+        <p class="text-small"><%= @solution.user.display_name %></p>
       </div>
 
-      <div class='solution-credit solution-ideas'>
-        <h5 class='text-solution'><%= t('.based_on_ideas') %></h5>
+      <div class="solution-credit solution-ideas">
+        <h5 class="text-solution"><%= t('.based_on_ideas') %></h5>
         
-        <ul class='list-inline'>
+        <ul class="list-inline">
           <% @solution.ideas.each do |idea| %>
             <li>
               <%= link_to challenge_idea_stage_problem_statement_idea_path(@challenge, idea.idea_stage, idea.problem_statement, idea) do %>
@@ -38,13 +38,13 @@
           <% end %>
         </ul>
 
-        <p class='text-small'><%= @solution.ideas.collect{|i| i.user.display_name}.join(', ') %></p>
+        <p class="text-small"><%= @solution.ideas.collect{|i| i.user.display_name}.join(', ') %></p>
       </div>
 
-      <div class='solution-credit solution-experiences'>
-        <h5 class='text-solution'><%= t('.inspired_by') %></h5>
+      <div class="solution-credit solution-experiences">
+        <h5 class="text-solution"><%= t('.inspired_by') %></h5>
         
-        <ul class='list-inline'>
+        <ul class="list-inline">
           <% @solution.experiences.each do |experience| %>
             <li>
               <%= link_to challenge_experience_stage_theme_experience_path(@challenge, experience.experience_stage, experience.theme, experience) do %>
@@ -68,53 +68,53 @@
           <% end %>
         </ul>
 
-        <p class='text-small'><%= @solution.experiences.collect{|e| e.user.display_name}.join(', ') %></p>
+        <p class="text-small"><%= @solution.experiences.collect{|e| e.user.display_name}.join(', ') %></p>
       </div>
     </div>
 
-    <div class='solution-buttons'>
+    <div class="solution-buttons">
 
-      <div id='solution-<%= @solution.id %>-like'>
+      <div id="solution-<%= @solution.id %>-like">
         <%= render partial: 'solutions/like' %>
       </div>
 
-      <div id='solution-<%= @solution.id %>-discuss' style='margin-bottom:10px'>
+      <div id="solution-<%= @solution.id %>-discuss" style='margin-bottom:10px'>
         <%= link_to '#solution_story-comments', class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info', 'du-smooth-scroll' => true, offset: '20' do %>
-          <i class='fa fa-reply'></i><%= t('.discuss') %>
+          <i class="fa fa-reply"></i><%= t('.discuss') %>
         <% end %>
       </div>
 
-      <div id='solution-<%= @solution.id %>-share'>
+      <div id="solution-<%= @solution.id %>-share">
         <%= render partial: 'layouts/share_button', locals: { url: challenge_solution_stage_solution_story_solution_url(@challenge, @solution.solution_stage, @solution.solution_story, @solution), title: @solution.title.html_safe, description: @solution.description.html_safe, hashtag: @challenge.hashtag } %>
       </div>
 
       <% if @solution.file.present? %>
-        <div class='solution-show-file'>
+        <div class="solution-show-file">
           <%= link_to "<p class='text-center'><i class='fa fa-file-text-o fa-4x'></i></p>".html_safe, file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution) %>
           <%= link_to file_challenge_solution_stage_solution_story_solution_path(@challenge, @solution.solution_stage, @solution.solution_story, @solution), class: 'btn btn-block btn-fa btn-sm btn-rounded btn-info' do %>
-            <i class='fa fa-download'></i><%= t('.download') %>
+            <i class="fa fa-download"></i><%= t('.download') %>
           <% end %>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class='col-sm-9'>
+  <div class="col-sm-9">
     <% if @solution.embed.present? %>
-      <div class='content-block'>
+      <div class="content-block">
         <%= @solution.embed.html_safe %>
       </div>
     <% end %>
     
-    <div class='content-block'>
+    <div class="content-block">
       <p><%= @solution.description.html_safe %></p>
     </div>
 
     <% if @solution.materials.present? %>
-      <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'><%= t('.what_you_need') %></p>
+      <div class="content-block">
+        <p class="text-solution text-large text-bold text-uppercase"><%= t('.what_you_need') %></p>
 
-        <div class='solution-effort'>
+        <div class="solution-effort">
           <span class="badge"><%= t('.required_effort_html') %></span>
           <% %w(hours days weeks months).each do |effort| %>
             <span class="badge <%= effort == @solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
@@ -126,18 +126,18 @@
     <% end %>
 
     <% if @solution.steps.present? %>
-      <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'><%= t('.how_to') %></p>
+      <div class="content-block">
+        <p class="text-solution text-large text-bold text-uppercase"><%= t('.how_to') %></p>
         <% @solution.steps.each_with_index do |step, index| %>
-          <div class='media media-step'>
-            <div class='media-left'>
+          <div class="media media-step">
+            <div class="media-left">
               <span class="fa-stack">
                 <i class="fa fa-circle-thin text-solution fa-stack-2x"></i>
                 <i class="fa text-solution fa-stack-1x"><%= index+1 %></i>
               </span>
             </div>
-            <div class='media-body'>
-              <p class='solution-show-description'><%= step.description %></p>
+            <div class="media-body">
+              <p class="solution-show-description"><%= step.description %></p>
             </div>
           </div>
         <% end %>
@@ -145,9 +145,9 @@
     <% end %>
 
     <% if @solution.link.present? && @solution.embed.blank? %>
-      <div class='content-block'>
-        <p class='text-solution text-large text-bold text-uppercase'><%= t('.link') %></p>
-        <p class='solution-show-description'><%= link_to @solution.link.html_safe, @solution.link, target: '_blank' %></p>
+      <div class="content-block">
+        <p class="text-solution text-large text-bold text-uppercase"><%= t('.link') %></p>
+        <p class="solution-show-description"><%= link_to @solution.link.html_safe, @solution.link, target: '_blank' %></p>
       </div>
     <% end %>
   </div>

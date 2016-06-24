@@ -1,11 +1,27 @@
 <% url = user_signed_in? ? "#{url}?referrer_id=#{current_user.id}" : url %>
 
 <ul class="share-popover" style='margin-bottom:0px'>
-  <li><%= link_to "<i class='fa fa-twitter'></i>".html_safe, "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' %></li>
+  <li>
+    <%= link_to "https://twitter.com/intent/tweet?text=#{url_encode(title)}&url=#{url_encode(url)}&hashtags=#{hashtag}", target: '_blank' do %>
+      <i class="fa fa-twitter"></i>
+    <% end %>
+  </li>
 
-  <li><%= link_to "<i class='fa fa-facebook'></i>".html_safe, "https://www.facebook.com/dialog/share?app_id=811290972280440&display=popup&href=#{url_encode(url)}&redirect_uri=#{url_encode(url)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %></li>
+  <li>
+    <%= link_to "https://www.facebook.com/dialog/share?app_id=811290972280440&display=popup&href=#{url_encode(url)}&redirect_uri=#{url_encode(url)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" do %>
+      <i class="fa fa-facebook"></i>
+    <% end %>
+  </li>
 
-  <li><%= link_to "<i class='fa fa-linkedin'></i>".html_safe, "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" %></li>
+  <li>
+    <%= link_to "http://www.linkedin.com/shareArticle?mini=true&url=#{url_encode(url)}&title=#{url_encode(title)}&summary=#{url_encode(description)}", onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" do %>
+      <i class="fa fa-linkedin"></i>
+    <% end %>
+  </li>
 
-  <li style='padding-right:0px'><%= mail_to '', "<i class='fa fa-envelope'></i>".html_safe, {onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", subject: t('layouts._share_popover.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_popover.email_body_html', url: url)} %></li>
+  <li style='padding-right:0px'>
+    <%= mail_to '', { onclick: "javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;", subject: t('layouts._share_popover.email_subject', title: title, platform: t('project_name')), body: t('layouts._share_popover.email_body_html', url: url) } do %>
+      <i class="fa fa-envelope"></i>
+    <% end %>
+  </li>
 </ul>

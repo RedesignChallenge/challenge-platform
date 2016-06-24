@@ -1,9 +1,9 @@
 class ExperiencesController < ApplicationController
   before_action :load_challenge
-  before_action :authenticate_user!,  except: [:new, :create, :show, :like]
-  before_action :load_experience,     only:   [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :authorize_user!,     only:   [:edit, :update, :destroy]
-  before_action :set_published_at!,   only: [:create, :update]
+  before_action :authenticate_user!, except: [:new, :create, :show, :like]
+  before_action :load_experience, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_published_at!, only: [:create, :update]
 
   def new
     @experience = Experience.new(theme_id: params[:theme_id])
@@ -35,7 +35,7 @@ class ExperiencesController < ApplicationController
   def update
     published = !@experience.published_at? && experience_params[:published_at].present?
     if @experience.update(experience_params)
-      flash[:success] = object_flash_message_for(@experience, {published: published})
+      flash[:success] = object_flash_message_for(@experience, { published: published })
       redirect_to after_update_object_path_for(@experience)
     else
       render :edit
@@ -53,25 +53,25 @@ class ExperiencesController < ApplicationController
       @experience.liked_by(current_user, vote_scope: @experience.default_like[:scope])
       respond_to do |format|
         format.html { redirect_to after_update_object_path_for(@experience) }
-        format.js   { render :like, locals: { partial: "#{params[:partial]}" } }
+        format.js { render :like, locals: { partial: "#{params[:partial]}" } }
       end
     else
-      cache_pending_like(@experience, {vote_scope: @experience.default_like[:scope]})
+      cache_pending_like(@experience, { vote_scope: @experience.default_like[:scope] })
       redirect_to preview_path(class_name: 'vote')
     end
   end
 
   def unlike
     @experience.unliked_by(current_user, vote_scope: @experience.default_like[:scope])
-    
+
     respond_to do |format|
       format.html { redirect_to after_update_object_path_for(@experience) }
-      format.js   { render :unlike, locals: { partial: "#{params[:partial]}" } }
+      format.js { render :unlike, locals: { partial: "#{params[:partial]}" } }
     end
   end
 
-private
-  
+  private
+
   def experience_params
     params.require(:experience).permit(:description, :link, :theme_id, :published_at)
   end

@@ -1,17 +1,16 @@
-<div class='row'>
-  <div class='col-sm-10 col-sm-offset-1'>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
 
-    <div class='content-block'>
-      <h6 class='text-center'><%= t('cookbooks._header.title') %></h6>
+    <div class="content-block">
+      <h6 class="text-center"><%= t('cookbooks._header.title') %></h6>
 
-      <h2 class='section-title text-recipe'><%= link_to @cookbook.title, challenge_recipe_stage_path(@challenge, @cookbook.recipe_stage, anchor: "cookbook-#{@cookbook.id}") %></h2>
+      <h2 class="section-title text-recipe"><%= link_to @cookbook.title, challenge_recipe_stage_path(@challenge, @cookbook.recipe_stage, anchor: "cookbook-#{@cookbook.id}") %></h2>
 
-      <div class='row'>
-        <div class='col-md-8 col-md-offset-2'>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
           <p><%= @cookbook.description.html_safe %></p>
         </div>
       </div>
     </div>
-
   </div>
 </div>

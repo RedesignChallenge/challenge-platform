@@ -1,0 +1,76 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin text-for-stage($stage) {
+  color: map-get($stage-colors, $stage);
+}
+
+@mixin stage-large-icon($stage-text-color, $top, $font-size: 15em, $line-height: 0.5em) {
+  @include text-for-stage($stage-text-color);
+  top: $top;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin stage-navigation($background-color) {
+  @extend %hidden-xs;
+
+  background-color: $background-color;
+  color: $white;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 5px 10px $stage-nav-box-shadow;
+  margin-bottom: 20px;
+}
+
+@mixin stage-content($affix-top-margin: 40px, $padding...) {
+  @if length($padding) == 0 {
+    $padding: 20px 0;
+  }
+
+  padding: $padding;
+  background-color: $lightest-gray-background;
+
+  &.affix {
+    margin-top: $affix-top-margin;
+  }
+}
+
+@mixin featured-well($background-color) {
+  // Built-in to Bootstrap.
+  // scss-lint:disable PlaceholderInExtend
+  @extend .well, .well-sm;
+  // scss-lint:enable PlaceholderInExtend
+  @extend %text-center;
+  @include border-radius(1em);
+
+  color: $white;
+
+  padding: 0.25em;
+  background-color: $background-color;
+}
+
+@mixin challenge-step-icon($step, $font-size: 6.5em, $top: 0.175em) {
+  @if $step == 'experience' {
+    &.fa-comment {
+      font-size: $font-size;
+      top: 0.45em;
+    }
+  } @else if $step == 'idea' {
+    &.fa-lightbulb-o {
+      font-size: $font-size;
+      top: 0.175em;
+    }
+  } @else if $step == 'recipe' {
+    &.fa-flask {
+      font-size: $font-size;
+      top: 0.175em;
+    }
+  } @else if $step == 'solution' {
+    &.fa-puzzle-piece {
+      font-size: $font-size;
+      top: $top;
+    }
+  }
+}

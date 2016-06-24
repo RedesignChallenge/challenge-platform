@@ -1,0 +1,11 @@
+// Overrides may use !important.
+// scss-lint:disable ImportantRule
+.select2-container {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.select2-choices {
+  border-radius: 4px !important;
+}
+// scss-lint:enable ImportantRule

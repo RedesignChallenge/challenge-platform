@@ -1,0 +1,109 @@
+%well-experience {
+  position: relative;
+  z-index: 5;
+  background-color: $white;
+  padding: 15px 15px 10px;
+
+  .twitter-tweet {
+    // Overrides a class provided externally by Twitter.
+    // scss-lint:disable ImportantRule
+    margin: 0 !important;
+    // scss-lint:enable ImportantRule
+  }
+
+  .experience-actions {
+    margin-top: 15px;
+
+    a {
+      color: $light-gray-text;
+    }
+  }
+
+  &.discussion {
+    margin-bottom: 0;
+    box-shadow: 0 10px 15px -5px $discussion-box-shadow;
+  }
+}
+
+%row-experience {
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+.row-experience {
+  @extend %row-experience;
+}
+
+.well-experience {
+  @extend %well-experience;
+}
+
+.row-new {
+  @extend %row-experience;
+
+  margin-bottom: 0;
+}
+
+.experience-form {
+  padding: 0 0 40px;
+
+  .fa-close.fa-2x {
+    @extend %pull-right;
+
+    position: relative;
+    top: 30px;
+    color: $light-gray-text;
+  }
+}
+
+.experience-overview {
+  padding: 40px 0;
+
+  .well-featured-experience {
+    @include featured-well($experience);
+  }
+
+  .well-experience {
+    @include border-radius(10px);
+    padding: 0;
+    background-color: $white;
+
+    .experience-content {
+      padding: 0 3em 1.5em;
+    }
+
+    .row-experience-show {
+      margin-bottom: 2em;
+    }
+
+    .media-author {
+      margin-bottom: 2em;
+    }
+
+    .media-left {
+      height: 5em;
+    }
+
+    .fa-stack-2x {
+      font-size: 4em;
+    }
+
+    .fa-stack-1x {
+      margin-top: 1.9em;
+      margin-left: 1.9em;
+    }
+
+    .media-body {
+      padding-left: 5em;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.experience-comments,
+.experience-share {
+  padding: 20px 0;
+}
