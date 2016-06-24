@@ -43,95 +43,82 @@
 
     .solution-story-content {
       padding-top: 15px;
+    }
 
-      .row-solution {
-        margin-top: 20px;
-        margin-bottom: 30px;
+    .row-solution {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
 
-        .media-author {
-          margin-bottom: 30px;
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
 
-          .media-left {
-            height: 5em;
+    .solution-show-file {
+      margin-top: 20px;
+    }
 
-            .new-user-avatar {
-              .fa-stack-2x {
-                font-size: 4em !important;
-                color: $new-user;
-              }
+    .fa-4x {
+      color: $light-gray-text;
+    }
 
-              .fa-stack-1x {
-                margin-top: 1em;
-                margin-left: 0.75em;
-                font-weight: bold;
-              }
-            }
-          }
+    .solution-credits {
+      margin-bottom: 30px;
+    }
 
-          .media-body {
-            padding-left: 30px;
+    .solution-credit {
+      margin-bottom: 20px;
+    }
 
-            .name {
-              font-size: 1.3em;
-              font-weight: bold;
-              margin-bottom: 0;
-            }
+    .credit-heading {
+      @extend %text-solution, %bold;
+    }
 
-            .title {
-              font-size: 0.85em;
-              margin-bottom: 0;
-              color: $light-gray-text;
-              font-weight: bold;
-            }
-          }
-        }
+    .credit-names {
+      margin-top: 10px;
+    }
 
-        .solution-credits {
-          margin-bottom: 30px;
+    .media-author {
+      margin-bottom: 30px;
+    }
 
-          .solution-credit {
-            margin-bottom: 20px;
+    .media-left {
+      height: 5em;
+    }
 
-            .credit-heading {
-              @extend %text-solution, %bold;
-            }
+    .media-body {
+      padding-left: 30px;
+    }
 
-            .credit-names {
-              margin-top: 10px;
-            }
+    .name {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
 
-            &.solution-recipe {
-              .img-circle {
-                width: 7.5em;
-              }
-            }
+    .title {
+      font-size: 0.85em;
+      margin-bottom: 0;
+      color: $light-gray-text;
+      font-weight: bold;
+    }
+  }
 
-            &.solution-ideas {
-              .img-circle {
-                width: 4em;
-              }
-            }
+  .solution-recipe {
+    .img-circle {
+      width: 7.5em;
+    }
+  }
 
-            &.solution-experiences {
-              .img-circle {
-                width: 2em;
-              }
-            }
-          }
-        }
+  .solution-ideas {
+    .img-circle {
+      width: 4em;
+    }
+  }
 
-        .content-block:last-child {
-          margin-bottom: 0;
-        }
-
-        .solution-show-file {
-          margin-top: 20px;
-
-          .fa-4x {
-            color: $light-gray-text;
-          }
-        }
-      }
+  .solution-experiences {
+    .img-circle {
+      width: 2em;
     }
   }
 
@@ -154,9 +141,11 @@
   padding: 2em 0;
 }
 
-
 .solution-effort {
+  // Hierarchical inheritance; not going to interfere with this for now.
+  // scss-lint:disable PlaceholderInExtend
   @extend .badge;
+  // scss-lint:enable PlaceholderInExtend
 
   margin-bottom: 15px;
   padding: 5px;
