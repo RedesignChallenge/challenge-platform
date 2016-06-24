@@ -299,11 +299,6 @@ en:
   experiences:
     card:
       time: "%{time} ago"
-      _discussion:
-        leave_a_comment: "Leave a Comment"
-        comment: "Comment"
-        discussion: "Discussion"
-        count: "Show All %{pluralized_comment_count}"
       _edit:
         submit: "Update"
       _form:
