@@ -5,7 +5,10 @@ TWITTER_CONFIG = {
   access_token_secret:  ENV['TWITTER_ACCESS_SECRET']
 }
 
-if !TWITTER_CONFIG.values.include? nil || Rails.env.test?
+puts Rails.env
+if !TWITTER_CONFIG.values.include? nil
+  TWITTER_REST_CLIENT = Twitter::REST::Client.new(TWITTER_CONFIG)
+elsif Rails.env.test?
   TWITTER_REST_CLIENT = Twitter::REST::Client.new(TWITTER_CONFIG)
 else
   TWITTER_REST_CLIENT = nil

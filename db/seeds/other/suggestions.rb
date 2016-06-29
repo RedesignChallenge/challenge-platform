@@ -2,7 +2,7 @@ links = ['https://youtube.com/watch?v=rzfhs3M4lus', 'https://twitter.com/MrBronk
 
 ## CREATING DEMO SUGGESTIONS
 15.times do
-  suggestion = Suggestion.create!(
+  Suggestion.create!(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph(5),
     user_id: User.pluck(:id).sample,

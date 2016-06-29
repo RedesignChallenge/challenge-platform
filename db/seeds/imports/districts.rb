@@ -1,13 +1,16 @@
-# This variable can be set to "small" to reduce the seed time
-seed_task = 'small' if ['local', 'staging'].include?(ENV['DEPLOY_REMOTE'])
-
 require 'csv'
 require 'open-uri'
 
 import_bucket = []
 total_imported = 0
 
-CSV.foreach(open("https://s3.amazonaws.com/pdc-dev-seeds/districts.txt"), headers: true, col_sep: "\t", encoding: "ISO-8859-1") do |row|
+if %w(local staging).include?(ENV['DEPLOY_REMOTE'])
+  file = Rails.root.join('db', 'seeds', 'seed_data', 'districts.txt')
+else
+  file = 'http://challengeplatform.mobility-labs.com/districts.txt'
+end
+
+CSV.foreach(open(file), headers: true, col_sep: "\t", encoding: 'ISO-8859-1') do |row|
   district = District.new
   import = row.to_hash
 
@@ -60,12 +63,6 @@ CSV.foreach(open("https://s3.amazonaws.com/pdc-dev-seeds/districts.txt"), header
   district.number_of_ells = import['ELL'].to_i
 
   import_bucket << district
-
-  # We need these first 1000 schools or schools_spec test will fail
-  if seed_task == 'small' && import_bucket.length >= 50
-    puts "- finished small import"
-    break
-  end
 end
 
 District.transaction do
