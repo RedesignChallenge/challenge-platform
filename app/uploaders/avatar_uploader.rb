@@ -4,9 +4,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include ::CarrierWave::Backgrounder::Delay
 
-  # Choose what kind of storage to use for this uploader:
-  storage :aws
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -16,9 +13,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
     if model.twitter.present?
-      "http://avatars.io/twitter/#{model.twitter}?size=large"
+      "https://avatars.io/twitter/#{model.twitter}?size=large"
     else
-      "http://avatars.io/email/#{model.email}?size=large"
+      "https://avatars.io/email/#{model.email}?size=large"
       # [version_name, "default.png"].compact.join('_')
     end
   end

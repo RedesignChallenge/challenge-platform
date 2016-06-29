@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
     elsif self.states.present?
       self.states.first.name
     else
-      ""
+      ''
     end
   end
 
@@ -142,23 +142,29 @@ class User < ActiveRecord::Base
 
   def set_avatar_from_twitter
     best_avatar_url = nil
-
     if self.twitter.present? && self.avatar_option == 'twitter'
       begin
-        twitter_rest_client = Twitter::REST::Client.new(TWITTER_CONFIG)
-        twitter_user_object = twitter_rest_client.user(self.twitter)
-        best_avatar_url = twitter_user_object.profile_image_url_https.to_s.sub('_normal', '_400x400')
+        if TWITTER_REST_CLIENT
+          twitter_user_object = TWITTER_REST_CLIENT.user(self.twitter)
+          best_avatar_url = twitter_user_object.profile_image_url_https.to_s.sub('_normal', '_400x400')
+        else
+          best_avatar_url = "https://avatars.io/twitter/#{self.twitter}?size=large"
+        end
       rescue Twitter::Error::NotFound
         self.twitter = nil
       rescue Twitter::Error::RateLimited
-        best_avatar_url = "http://avatars.io/twitter/#{self.twitter}?size=large"
-      rescue
+        best_avatar_url = "https://avatars.io/twitter/#{self.twitter}?size=large"
+      rescue Exception => e
+        logger.warn(e)
+        raise e
       end
     end
 
     self.remote_avatar_url = best_avatar_url
     self.save!
-  rescue
+  rescue Exception => e
+    logger.warn(e)
+    raise e
   end
 
   ROLES = UsersHelper::ROLES

@@ -9,26 +9,36 @@ module Embeddable
   ## UPDATING METHODS
 
   def update_embed_code
-    if self.link_changed? || self.embed.nil?
-      if self.link.present?
-        if IMAGE_EXTENSION_WHITELIST.any? { |extension| self.link.end_with?(extension) }
-          embed_code = ActionController::Base.helpers.image_tag(self.link, width: '100%')
-        elsif %w(youtube.com youtu.be vimeo.com).any? { |video| self.link.include?(video) }
-          embed_code = video_embed(self.link)
-        elsif self.link.include?('twitter.com')
-          tweet_id = self.link.split('status/')[1]
-          if tweet_id.present?
-            twitter_rest_client = Twitter::REST::Client.new(TWITTER_CONFIG)
-            tweet = twitter_rest_client.oembed(tweet_id)
-            embed_code = tweet.html
-          end
-        end
+    begin
+      if self.link_changed? || self.embed.nil?
+        if self.link.present?
+          begin
+            if IMAGE_EXTENSION_WHITELIST.any? { |extension| self.link.end_with?(extension) }
+              embed_code = ActionController::Base.helpers.image_tag(self.link, width: '100%')
+            elsif %w(youtube.com youtu.be vimeo.com).any? { |video| self.link.include?(video) }
+              embed_code = video_embed(self.link)
+            elsif self.link.include?('twitter.com') && TWITTER_REST_CLIENT
+              tweet_id = self.link.split('status/')[1]
+              if tweet_id.present?
+                tweet = TWITTER_REST_CLIENT.oembed(tweet_id)
+                embed_code = tweet.html
+              end
+            end
 
-        embed_code ? self.update_column(:embed, embed_code) : nil
-      else
-        self.update_column(:embed, nil)
+            if embed_code
+              self.update_columns(embed: embed_code)
+            end
+          rescue Exception => e
+            logger.warn(e)
+            raise e
+          end
+        else
+          self.update_columns(embed: nil)
+        end
       end
+    rescue Exception => e
+      logger.warn(e)
+      raise e
     end
-  rescue
   end
 end

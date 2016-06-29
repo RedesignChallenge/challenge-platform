@@ -11,7 +11,11 @@
 /log
 /tmp
 /config/database.yml
-.env
+.env*
+public/uploads/
+public/solution_story
+public/user
+public/carrierwave
 .ruby-gemset
 .ruby-version
 .DS_Store

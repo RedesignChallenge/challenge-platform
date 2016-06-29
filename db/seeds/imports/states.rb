@@ -4,7 +4,13 @@ require 'open-uri'
 import_bucket = []
 total_imported = 0
 
-CSV.foreach(open("https://s3.amazonaws.com/pdc-dev-seeds/states.txt"), headers: true, col_sep: "\t", encoding: "ISO-8859-1") do |row|
+if %w(local staging).include?(ENV['DEPLOY_REMOTE'])
+  file = Rails.root.join('db', 'seeds', 'seed_data', 'states.txt')
+else
+  file = 'http://challengeplatform.mobility-labs.com/states.txt'
+end
+
+CSV.foreach(open(file), headers: true, col_sep: "\t", encoding: 'ISO-8859-1') do |row|
   state = State.new
   import = row.to_hash
 
