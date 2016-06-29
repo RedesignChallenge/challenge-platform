@@ -44,28 +44,44 @@ A sample:
 
 ## .env configuration
 
-You will require a file called `.env` in the root of the folder.  The following keys should be supplied to it:
+You will require a file called `.env` in the root of the project.
 
-    # Which environment to deploy to; supported values are local, staging, and production. For development, "local" is required.
+    ## Keys which are mandatory and will prevent the application from running
+
+    # Supported values are http and https
+    SITE_PROTOCOL
+
+    # Configuration which specifies the address and port of the server you're deploying
+    SITE_HOST
+
+    # Which environment to deploy to; supported values are local, staging, and production.
+    # For development and the rake db:recreate command,  "local" is required.
     DEPLOY_REMOTE
 
+    ## Keys which are optional
+
     # Configuration associated with emailing registrants of the platform
+    # Required if the intent is to send emails in production; not needed for local development.
     MANDRILL_APIKEY
     MANDRILL_USERNAME
 
     # Configuration associated with Amazon S3
+    # Required if the intent is to allow uploading of avatars.
     S3_BUCKET
     S3_KEY
     S3_SECRET
     S3_REGION
 
-    # Configuration associated with Twitter; namely, pulling down Twitter-centric user avatars
+    # Configuration associated with Twitter.
+    # Required if the intent is to display tweets inline with content, or to allow the fetching of avatars from Twitter.
+    # Note that there exists a fallback for pulling back avatars with Twitter.
     TWITTER_CONSUMER_KEY
     TWITTER_CONSUMER_SECRET
     TWITTER_ACCESS_TOKEN
     TWITTER_ACCESS_SECRET
 
     # Username under which all emails are sent as from the platform
+    # Required if the intent is to send emails in production.
     GMAIL_USERNAME
 
     # This adds support for Sidekiq to have more threads when connecting to the database.
@@ -77,9 +93,3 @@ You will require a file called `.env` in the root of the folder.  The following 
 
     # Used for production, this is in support of the Dalli cache store used for the site.
     MEMCACHIER_SERVERS
-
-    # Supported values are http and https
-    SITE_PROTOCOL
-
-    # Configuration which specifies the address and port of the server you're deploying
-    SITE_HOST
