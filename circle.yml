@@ -1,8 +1,6 @@
 machine:
   ruby:
     version: 2.2.4
-  environment:
-    S3_REGION: test
 test:
   override:
     - bundle exec rspec

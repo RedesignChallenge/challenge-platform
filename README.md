@@ -20,7 +20,7 @@ In order to initialize the database, use `rake db:recreate`.
 
 ## Running the Test Suite
 
-```S3_REGION=test bundle exec rspec```
+```bundle exec rspec```
 
 ## database.yml configuration
 
