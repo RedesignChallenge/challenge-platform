@@ -644,7 +644,14 @@ en:
       header_optional: "Optional"
       add_link: "Add a link to a video, article, image or other supporting material"
       add_url: "Add URL"
-      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach." # line 115
+      instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach."
+      title_instructions: "Add a Title"
+      description_instructions: "Describe your recipe. What are the goals?  What are the challenges?  Why does this recipe matter?"
+      materials_instructions: "What equipment or supplies are needed?"
+      community_instructions: "Every good recipe provides the number of servings. How many people need to participate and who are they?"
+      conditions_instructions: "What needs to be true of the culture or environment to try out this recipe?"
+      evidence_instructions: "What evidence can we collect to know when we’re on the right track?"
+      protips_instructions: "What advice can you offer to make the experience of trying out your recipe as smooth as possible?  Is there anything you can identify as a possible stumbling block? Things to keep in mind?"
     _header:
       title: "A recipe for the cookbook"
       featured: "Featured Recipe"
@@ -703,6 +710,10 @@ en:
     card:
       required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
       featured: "Featured"
+      hours: "Hours"
+      days: "Days"
+      weeks: "Weeks"
+      months: "Months"
     show:
       story_from_the_field: "Story From The Field"
       how_to_guide: "How To Guide"
@@ -719,6 +730,10 @@ en:
       required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
       how_to: "How To"
       link: "Link"
+      hours: "Hours"
+      days: "Days"
+      weeks: "Weeks"
+      months: "Months"
 
   suggestions:
     card:
