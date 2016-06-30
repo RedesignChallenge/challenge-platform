@@ -647,7 +647,6 @@ en:
       instructions: "Share a link to a video, article, image, or other supporting materials and we'll display it alongside your approach."
       title_instructions: "Add a Title"
       description_instructions: "Describe your recipe. What are the goals?  What are the challenges?  Why does this recipe matter?"
-      steps_instructions: "Outline how to implement this recipe step by step."
       materials_instructions: "What equipment or supplies are needed?"
       community_instructions: "Every good recipe provides the number of servings. How many people need to participate and who are they?"
       conditions_instructions: "What needs to be true of the culture or environment to try out this recipe?"
