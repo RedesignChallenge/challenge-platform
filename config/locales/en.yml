@@ -710,6 +710,10 @@ en:
     card:
       required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
       featured: "Featured"
+      hours: "Hours"
+      days: "Days"
+      weeks: "Weeks"
+      months: "Months"
     show:
       story_from_the_field: "Story From The Field"
       how_to_guide: "How To Guide"
@@ -726,6 +730,10 @@ en:
       required_effort_html: "<span class='hidden-xs hidden-sm hidden-md text-bold'>Required</span> Effort"
       how_to: "How To"
       link: "Link"
+      hours: "Hours"
+      days: "Days"
+      weeks: "Weeks"
+      months: "Months"
 
   suggestions:
     card:

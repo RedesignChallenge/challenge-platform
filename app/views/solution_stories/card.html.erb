@@ -21,7 +21,7 @@
         <div class="solution-effort" style='margin-bottom: 0px'>
           <span class="badge"><%= t('.required_effort_html') %></span>
           <% %w(hours days weeks months).each do |effort| %>
-            <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= effort.titleize %></span>
+            <span class="badge <%= effort == solution_story.solution.effort ? 'active' : '' %>"><%= t("solution_stories.card.#{effort}") %></span>
           <% end %>
         </div>
       </div>
