@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017211613) do
+ActiveRecord::Schema.define(version: 20160630153559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -335,14 +335,6 @@ ActiveRecord::Schema.define(version: 20151017211613) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "incentive"
-    t.text     "title_instructions",       default: "Add a Title"
-    t.text     "description_instructions", default: "Describe your recipe. What are the goals? What are the challenges? Why does this recipe matter?"
-    t.text     "steps_instructions",       default: "Outline how to implement this recipe step by step."
-    t.text     "materials_instructions",   default: "What equipment or supplies are needed?"
-    t.text     "community_instructions",   default: "Every good recipe provides the number of servings. How many people need to participate and who are they?"
-    t.text     "conditions_instructions",  default: "What needs to be true of the culture or environment to try out this recipe?"
-    t.text     "evidence_instructions",    default: "What evidence can we collect to know when we’re on the right track?"
-    t.text     "protips_instructions",     default: "What advice can you offer to make the experience of trying out your recipe as smooth as possible?  Is there anything you can identify as a possible stumbling block? Things to keep in mind?"
   end
 
   add_index "recipe_stages", ["challenge_id"], name: "index_recipe_stages_on_challenge_id", using: :btree
