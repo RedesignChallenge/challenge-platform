@@ -12,7 +12,7 @@ module ChallengePlatform
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.action_controller.asset_host = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}"
+    config.action_controller.asset_host = "//#{ENV['SITE_HOST']}"
     config.action_mailer.asset_host     = "#{ENV['SITE_PROTOCOL']}://#{ENV['SITE_HOST']}"
     config.action_mailer.default_url_options = { host: "#{ENV['SITE_HOST']}", protocol: "#{ENV['SITE_PROTOCOL']}" }
 
